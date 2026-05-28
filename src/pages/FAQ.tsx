@@ -124,7 +124,7 @@ export default function FAQ() {
     <div className="pt-16 lg:pt-18">
       {/* Header */}
       <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
             FAQ
           </span>
@@ -139,7 +139,7 @@ export default function FAQ() {
 
       {/* FAQ Content */}
       <section className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           {categories.map((category) => (
             <div key={category} className="mb-14 last:mb-0">
               <h2 className="text-xl font-bold mb-6 flex items-center gap-3" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
@@ -162,7 +162,7 @@ export default function FAQ() {
 
       {/* Still have questions */}
       <section className="py-16" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             Still Have Questions?
           </h2>

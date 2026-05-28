@@ -45,7 +45,7 @@ export default function About() {
     <div className="pt-16 lg:pt-18">
       {/* Mission Hero */}
       <section className="py-20 lg:py-28" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
             Our Mission
           </span>
@@ -61,7 +61,7 @@ export default function About() {
 
       {/* Why We Built Blast */}
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
@@ -101,7 +101,7 @@ export default function About() {
 
       {/* Company Stats */}
       <section className="py-16" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {companyStats.map((s) => (
               <div key={s.label} className="text-center">
@@ -115,7 +115,7 @@ export default function About() {
 
       {/* Team */}
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 className="text-3xl lg:text-4xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
               The Team Behind Blast Learning
@@ -140,7 +140,7 @@ export default function About() {
 
       {/* Values */}
       <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 className="text-3xl lg:text-4xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
               What We Stand For
@@ -162,7 +162,7 @@ export default function About() {
 
       {/* CTA */}
       <section className="py-16" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             Join Us in Building a Better Way to Learn
           </h2>

@@ -101,7 +101,7 @@ export default function Home() {
   return (
     <div className="pt-16 lg:pt-20">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-white py-16 lg:py-24">
+      <section className="relative overflow-hidden bg-white py-12 lg:py-20">
         {/* Decorative SVG lines */}
         <svg
           className="absolute top-0 right-0 opacity-[0.04] pointer-events-none"
@@ -116,7 +116,7 @@ export default function Home() {
           <line x1="498" y1="102" x2="102" y2="498" stroke="#1AAFCB" strokeWidth="0.5" />
         </svg>
 
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Left */}
             <div>
@@ -126,7 +126,7 @@ export default function Home() {
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A', letterSpacing: '-0.02em' }}>
                 Your Child Retains Only{' '}
-                <span className="text-[#E8357A]">10%</span>{' '}
+        10%{' '}
                 of Coaching
                 <br />
                 <span style={{ color: '#1AAFCB' }}>We Make It 90%</span>
@@ -211,12 +211,12 @@ export default function Home() {
       </section>
 
       {/* Social Proof Bar */}
-      <section className="py-16" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+      <section className="py-12 lg:py-20" style={{ background: '#F4F7FB' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <p className="text-center text-sm font-medium mb-10" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
             Trusted by thousands of families across India
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-3xl font-bold mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{stat.value}</div>
@@ -237,8 +237,8 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+      <section className="py-12 lg:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-4" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
               Simple Process
@@ -249,12 +249,10 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {howItWorks.map(({ num, title, desc, icon: Icon }) => (
-              <div key={num} className="bg-white rounded-xl p-8 relative" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
-                <div className="flex items-center gap-4 mb-5">
-                  <span className="text-4xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: 'rgba(26,175,203,0.15)' }}>{num}</span>
-                  <div className="w-10 h-10 rounded-[10px] flex items-center justify-center" style={{ background: '#1AAFCB' }}>
-                    <Icon size={20} className="text-white" />
-                  </div>
+              <div key={num} className="bg-white rounded-2xl p-8 relative overflow-hidden border border-gray-50" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
+                <span className="absolute top-4 right-6 text-6xl font-bold leading-none select-none" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: 'rgba(26,175,203,0.12)' }}>{num}</span>
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style={{ background: '#1AAFCB' }}>
+                  <Icon size={20} className="text-white" />
                 </div>
                 <h3 className="text-lg font-bold mb-3" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{title}</h3>
                 <p className="text-sm leading-relaxed" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
@@ -274,8 +272,8 @@ export default function Home() {
       </section>
 
       {/* Programs Preview */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+      <section className="py-12 lg:py-20" style={{ background: '#F4F7FB' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-end justify-between mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
               Our Programs
@@ -316,8 +314,8 @@ export default function Home() {
       </section>
 
       {/* What Makes Us Different */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+      <section className="py-12 lg:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 className="text-3xl lg:text-4xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
               What Makes Us Different
@@ -338,8 +336,8 @@ export default function Home() {
       </section>
 
       {/* Results Banner */}
-      <section className="py-20" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+      <section className="py-12 lg:py-20" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             See Results Within{' '}
             <span style={{ color: '#1AAFCB' }}>One Month</span>
@@ -370,8 +368,8 @@ export default function Home() {
       </section>
 
       {/* Parents Pain/Solution */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+      <section className="py-12 lg:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h2 className="text-3xl lg:text-4xl font-bold text-center mb-14" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             From Parent Worries to Real Results
           </h2>
@@ -407,8 +405,8 @@ export default function Home() {
       </section>
 
       {/* Parent Dashboard Showcase */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+      <section className="py-12 lg:py-20" style={{ background: '#F4F7FB' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
@@ -440,8 +438,8 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+      <section className="py-12 lg:py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 className="text-3xl lg:text-4xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
               Real Results from Real Students
@@ -460,8 +458,8 @@ export default function Home() {
       </section>
 
       {/* FAQ Preview */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10">
+      <section className="py-12 lg:py-20" style={{ background: '#F4F7FB' }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
               Frequently Asked Questions
@@ -503,8 +501,8 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+      <section className="py-12 lg:py-20" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             Help Your Child{' '}
             <span style={{ color: '#1AAFCB' }}>Learn Independently</span>

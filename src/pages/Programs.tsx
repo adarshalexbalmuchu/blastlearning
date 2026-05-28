@@ -86,7 +86,7 @@ export default function Programs() {
     <div className="pt-16 lg:pt-18">
       {/* Header */}
       <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
             Learning Programs
           </span>
@@ -101,7 +101,7 @@ export default function Programs() {
 
       {/* Program Cards */}
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-8">
             {programs.map((prog) => {
               const Icon = prog.icon;
@@ -171,7 +171,7 @@ export default function Programs() {
 
       {/* Comparison Table */}
       <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             How We Compare
           </h2>
@@ -212,7 +212,7 @@ export default function Programs() {
 
       {/* Bottom CTA */}
       <section className="py-16" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             Not sure which plan is right?
           </h2>

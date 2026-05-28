@@ -70,7 +70,7 @@ export default function ForStudents() {
     <div className="pt-16 lg:pt-18">
       {/* Hero */}
       <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
@@ -164,7 +164,7 @@ export default function ForStudents() {
 
       {/* Benefit Cards */}
       <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-white rounded-xl p-6" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
@@ -181,7 +181,7 @@ export default function ForStudents() {
 
       {/* AI Tools */}
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 className="text-3xl lg:text-4xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
               AI-Powered Study Tools Built for You
@@ -203,7 +203,7 @@ export default function ForStudents() {
 
       {/* Collaborative Learning */}
       <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
               Learn Better, Together
@@ -237,7 +237,7 @@ export default function ForStudents() {
 
       {/* Testimonials */}
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             What Students Are Saying
           </h2>
@@ -251,7 +251,7 @@ export default function ForStudents() {
 
       {/* CTA */}
       <section className="py-20" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             Ready to Actually Remember What You Study?
           </h2>

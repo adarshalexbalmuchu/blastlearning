@@ -65,7 +65,7 @@ export default function ForParents() {
     <div className="pt-16 lg:pt-18">
       {/* Hero */}
       <section className="py-20 lg:py-28" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
             For Parents
           </span>
@@ -97,7 +97,7 @@ export default function ForParents() {
 
       {/* Pain/Solution */}
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h2 className="text-3xl font-bold text-center mb-14" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             We Understand Your Concerns
           </h2>
@@ -134,7 +134,7 @@ export default function ForParents() {
 
       {/* Dashboard Showcase */}
       <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold mb-5" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
@@ -167,7 +167,7 @@ export default function ForParents() {
 
       {/* How Parents Use */}
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h2 className="text-3xl font-bold text-center mb-14" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             Getting Started Takes 10 Minutes
           </h2>
@@ -190,7 +190,7 @@ export default function ForParents() {
 
       {/* Testimonials */}
       <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             What Parents Are Saying
           </h2>
@@ -204,7 +204,7 @@ export default function ForParents() {
 
       {/* FAQ */}
       <section className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             Common Parent Questions
           </h2>
@@ -218,7 +218,7 @@ export default function ForParents() {
 
       {/* CTA */}
       <section className="py-20" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             Give Your Child the Retention Advantage
           </h2>
