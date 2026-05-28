@@ -99,107 +99,249 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className="pt-16 lg:pt-20">
+    <div>
       {/* Hero */}
-      <section className="relative overflow-hidden bg-white pt-8 pb-16 lg:pt-16 lg:pb-24">
-        {/* Decorative SVG lines */}
-        <svg
-          className="absolute top-0 right-0 opacity-[0.04] pointer-events-none"
-          width="600" height="600" viewBox="0 0 600 600" fill="none"
-        >
-          <circle cx="300" cy="300" r="280" stroke="#1AAFCB" strokeWidth="1.5" />
-          <circle cx="300" cy="300" r="200" stroke="#1AAFCB" strokeWidth="1" />
-          <circle cx="300" cy="300" r="120" stroke="#1AAFCB" strokeWidth="0.5" />
-          <line x1="20" y1="300" x2="580" y2="300" stroke="#1AAFCB" strokeWidth="0.5" />
-          <line x1="300" y1="20" x2="300" y2="580" stroke="#1AAFCB" strokeWidth="0.5" />
-          <line x1="102" y1="102" x2="498" y2="498" stroke="#1AAFCB" strokeWidth="0.5" />
-          <line x1="498" y1="102" x2="102" y2="498" stroke="#1AAFCB" strokeWidth="0.5" />
-        </svg>
+      <section className="bg-white" style={{ paddingTop: '80px', paddingBottom: '80px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Left */}
-            <div className="order-1">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 text-sm font-semibold" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
+          {/* Two column grid */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(1, 1fr)',
+            gap: '48px',
+            alignItems: 'center',
+          }}
+          className="lg:grid-cols-hero"
+          >
+
+            {/* LEFT COLUMN */}
+            <div style={{ minWidth: 0 }}>
+
+              {/* Badge */}
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 16px',
+                borderRadius: '9999px',
+                background: 'rgba(26,175,203,0.1)',
+                color: '#1AAFCB',
+                fontSize: '14px',
+                fontWeight: 600,
+                fontFamily: 'Inter, sans-serif',
+                marginBottom: '24px',
+              }}>
                 <Zap size={14} />
                 AI-Powered Retention System
               </div>
-              <h1 className="mb-6" style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.02em' }}>
+
+              {/* Heading */}
+              <h1 style={{
+                fontSize: 'clamp(2rem, 4vw, 3.5rem)',
+                fontFamily: 'Plus Jakarta Sans, sans-serif',
+                fontWeight: 800,
+                color: '#0D1B2A',
+                lineHeight: 1.15,
+                letterSpacing: '-0.02em',
+                marginBottom: '24px',
+              }}>
                 Your Child Retains Only 10% of Coaching
                 <br />
-                <span className="text-[#1AAFCB]">We Make It 90%</span>
+                <span style={{ color: '#1AAFCB' }}>We Make It 90%</span>
               </h1>
-              <p className="text-lg leading-relaxed mb-8 max-w-lg text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >
-                Stop wasting money on coaching your child forgets. Our Metacognition Engine uses scientifically-proven spaced repetition to convert expensive tuition into lasting retention.
+
+              {/* Subtext */}
+              <p style={{
+                fontSize: '18px',
+                lineHeight: 1.7,
+                color: '#5A6A7A',
+                fontFamily: 'Inter, sans-serif',
+                marginBottom: '32px',
+                maxWidth: '520px',
+              }}>
+                Stop wasting money on coaching your child forgets. Our Metacognition
+                Engine uses scientifically-proven spaced repetition to convert
+                expensive tuition into lasting retention.
               </p>
-              <div className="flex flex-wrap gap-4 mb-10">
+
+              {/* CTA Buttons */}
+              <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '16px',
+                marginBottom: '32px',
+              }}>
                 <Link
                   to="/programs"
-                  className="flex items-center gap-2 px-6 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors duration-200 hover:bg-[#148fa5] bg-[#1AAFCB]"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '14px 24px',
+                    borderRadius: '8px',
+                    background: '#1AAFCB',
+                    color: 'white',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    fontFamily: 'Inter, sans-serif',
+                    textDecoration: 'none',
+                  }}
                 >
                   Start 7-Day Trial <ArrowRight size={16} />
                 </Link>
                 <button
-                  className="flex items-center gap-2 px-6 py-3.5 rounded-lg font-semibold text-sm border-2 transition-colors duration-200 hover:border-[#1AAFCB] hover:text-[#1AAFCB]"
-                  style={{ borderColor: '#0D1B2A', color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '14px 24px',
+                    borderRadius: '8px',
+                    border: '2px solid #0D1B2A',
+                    background: 'transparent',
+                    color: '#0D1B2A',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    fontFamily: 'Inter, sans-serif',
+                    cursor: 'pointer',
+                  }}
                 >
                   <Play size={16} /> See How It Works
                 </button>
               </div>
+
               {/* Trust signals */}
-              <div className="flex flex-wrap gap-4">
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
                 {['No credit card required', 'Free 7-day trial', 'Cancel anytime'].map((t) => (
-                  <div key={t} className="flex items-center gap-1.5 text-sm text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >
-                    <CheckCircle size={14} className="text-[#1AAFCB]" />
+                  <div key={t} style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    fontSize: '14px',
+                    color: '#5A6A7A',
+                    fontFamily: 'Inter, sans-serif',
+                  }}>
+                    <CheckCircle size={14} style={{ color: '#1AAFCB' }} />
                     {t}
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Right: Image card */}
-            <div className="order-2 w-full">
-              {/* Badge above card (no absolute positioning) */}
-              <div className="mb-3">
-                <span className="inline-block px-4 py-2 rounded-xl text-white text-sm font-bold" style={{ background: '#1AAFCB', boxShadow: '0 4px 20px rgba(26,175,203,0.4)', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+            {/* RIGHT COLUMN */}
+            <div style={{ minWidth: 0, width: '100%' }}>
+
+              {/* Retention badge above card */}
+              <div style={{ marginBottom: '12px' }}>
+                <span style={{
+                  display: 'inline-block',
+                  padding: '8px 16px',
+                  borderRadius: '10px',
+                  background: '#1AAFCB',
+                  color: 'white',
+                  fontSize: '14px',
+                  fontWeight: 700,
+                  fontFamily: 'Plus Jakarta Sans, sans-serif',
+                  boxShadow: '0 4px 20px rgba(26,175,203,0.4)',
+                }}>
                   90% Retention Rate
                 </span>
               </div>
-              <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-[#F4F7FB] to-white p-8" style={{ boxShadow: '0 8px 40px rgba(13,27,42,0.12)' }}>
-                {/* Mock card visual */}
-                <div className="flex items-center justify-between mb-6">
+
+              {/* Dashboard card */}
+              <div style={{
+                background: 'linear-gradient(135deg, #F4F7FB 0%, #ffffff 100%)',
+                borderRadius: '20px',
+                padding: '32px',
+                boxShadow: '0 8px 40px rgba(13,27,42,0.12)',
+                width: '100%',
+                boxSizing: 'border-box',
+              }}>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  marginBottom: '24px',
+                  flexWrap: 'wrap',
+                  gap: '8px',
+                }}>
                   <div>
-                    <p className="text-xs font-medium mb-0.5 text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >Today's Learning Session</p>
-                    <p className="text-lg font-bold text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >Arjun's Progress</p>
+                    <p style={{ fontSize: '12px', color: '#5A6A7A', fontFamily: 'Inter, sans-serif', marginBottom: '4px' }}>
+                      Today's Learning Session
+                    </p>
+                    <p style={{ fontSize: '18px', fontWeight: 700, color: '#0D1B2A', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+                      Arjun's Progress
+                    </p>
                   </div>
-                  <div className="px-3 py-1.5 rounded-full text-xs font-semibold text-white bg-[#E8357A]" style={{ fontFamily: 'Inter, sans-serif' }} >
+                  <span style={{
+                    padding: '6px 12px',
+                    borderRadius: '9999px',
+                    background: '#E8357A',
+                    color: 'white',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    fontFamily: 'Inter, sans-serif',
+                  }}>
                     Today's Progress: 87%
-                  </div>
+                  </span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 mb-6">
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
+                  gap: '12px',
+                  marginBottom: '24px',
+                }}>
                   {[
                     { label: 'Retention Score', val: '87%', color: '#1AAFCB' },
                     { label: 'Topics Covered', val: '12/15', color: '#0D1B2A' },
                     { label: 'Study Streak', val: '14 days', color: '#E8357A' },
                     { label: 'Quiz Score', val: '92%', color: '#1AAFCB' },
                   ].map((item) => (
-                    <div key={item.label} className="rounded-xl p-4 bg-[#F4F7FB]" >
-                      <p className="text-lg font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: item.color }}>{item.val}</p>
-                      <p className="text-xs mt-0.5 text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{item.label}</p>
+                    <div key={item.label} style={{
+                      background: '#F4F7FB',
+                      borderRadius: '12px',
+                      padding: '16px',
+                    }}>
+                      <p style={{ fontSize: '20px', fontWeight: 700, color: item.color, fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+                        {item.val}
+                      </p>
+                      <p style={{ fontSize: '12px', color: '#5A6A7A', fontFamily: 'Inter, sans-serif', marginTop: '4px' }}>
+                        {item.label}
+                      </p>
                     </div>
                   ))}
                 </div>
 
-                <div className="rounded-xl p-4 bg-[#0D1B2A]" >
-                  <p className="text-xs font-medium mb-3 text-white/60" style={{ fontFamily: 'Inter, sans-serif' }}>Today's Revision Queue</p>
+                <div style={{
+                  background: '#0D1B2A',
+                  borderRadius: '12px',
+                  padding: '16px',
+                }}>
+                  <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif', marginBottom: '12px' }}>
+                    Today's Revision Queue
+                  </p>
                   {['Chapter 4 — Quadratic Equations', 'Photosynthesis Process', 'English Grammar — Tenses'].map((topic, i) => (
-                    <div key={topic} className="flex items-center gap-3 mb-2 last:mb-0">
-                      <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: i === 0 ? '#1AAFCB' : 'rgba(255,255,255,0.1)' }}>
-                        <span className="text-white text-xs font-bold">{i + 1}</span>
+                    <div key={topic} style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '12px',
+                      marginBottom: i < 2 ? '8px' : '0',
+                    }}>
+                      <div style={{
+                        width: '20px',
+                        height: '20px',
+                        borderRadius: '50%',
+                        background: i === 0 ? '#1AAFCB' : 'rgba(255,255,255,0.1)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}>
+                        <span style={{ color: 'white', fontSize: '11px', fontWeight: 700 }}>{i + 1}</span>
                       </div>
-                      <span className="text-xs text-white/80" style={{ fontFamily: 'Inter, sans-serif' }}>{topic}</span>
+                      <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '13px', fontFamily: 'Inter, sans-serif' }}>
+                        {topic}
+                      </span>
                     </div>
                   ))}
                 </div>

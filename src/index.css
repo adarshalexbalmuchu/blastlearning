@@ -35,3 +35,9 @@ h1, h2, h3, h4, h5, h6 {
 #root {
   min-height: 100vh;
 }
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-hero {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
