@@ -51,21 +51,19 @@ export default function Library() {
   });
 
   return (
-    <div className="pt-16 lg:pt-18">
-      {/* Header */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
+    <div>
+      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#F4F7FB' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-4" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
               Resource Library
             </span>
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+            <h1 className="font-bold mb-6" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
               Learning Resources
             </h1>
             <p className="text-lg max-w-2xl mx-auto mb-8" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
               Videos, notes, and practice quizzes for CBSE Classes 8-12, SAT Prep, and competitive exams. Some resources are free — subscribe for full access.
             </p>
-            {/* Search */}
             <div className="relative max-w-xl mx-auto">
               <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: '#5A6A7A' }} />
               <input
@@ -78,8 +76,6 @@ export default function Library() {
               />
             </div>
           </div>
-
-          {/* Filter tabs */}
           <div className="flex items-center gap-2 flex-wrap justify-center">
             {filterTabs.map((tab) => (
               <button
@@ -100,15 +96,14 @@ export default function Library() {
         </div>
       </section>
 
-      {/* Resources Grid */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section style={{ paddingTop: '64px', paddingBottom: '64px', background: 'white' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           {filtered.length === 0 ? (
             <div className="text-center py-16">
               <p className="text-base" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>No resources found for your search.</p>
             </div>
           ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-2-sm grid-cols-3-lg">
               {filtered.map((resource) => (
                 <div
                   key={resource.id}
@@ -160,10 +155,9 @@ export default function Library() {
         </div>
       </section>
 
-      {/* Upgrade CTA */}
-      <section className="py-16" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+      <section style={{ paddingTop: '64px', paddingBottom: '64px', background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
+        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
+          <h2 className="font-bold text-white mb-4" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             Unlock 500+ Resources with a Subscription
           </h2>
           <p className="mb-8" style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'Inter, sans-serif' }}>

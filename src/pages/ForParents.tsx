@@ -62,14 +62,14 @@ const parentFaqs = [
 
 export default function ForParents() {
   return (
-    <div className="pt-16 lg:pt-18">
+    <div>
       {/* Hero */}
-      <section className="py-20 lg:py-28" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#F4F7FB' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
             For Parents
           </span>
-          <h1 className="text-4xl lg:text-5xl font-bold mb-6 max-w-3xl mx-auto" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A', letterSpacing: '-0.02em' }}>
+          <h1 className="font-bold mb-6 max-w-3xl mx-auto" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A', letterSpacing: '-0.02em' }}>
             From Constant Worry to{' '}
             <span style={{ color: '#1AAFCB' }}>Complete Confidence</span>
           </h1>
@@ -96,13 +96,13 @@ export default function ForParents() {
       </section>
 
       {/* Pain/Solution */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-14" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'white' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <h2 className="font-bold text-center mb-14" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             We Understand Your Concerns
           </h2>
-          <div className="grid lg:grid-cols-2 gap-8">
-            <div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '32px' }} className="grid-cols-2-lg">
+            <div style={{ minWidth: 0 }}>
               <h3 className="text-sm font-bold mb-6 flex items-center gap-2 uppercase tracking-wide" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#E8357A' }}>
                 <AlertCircle size={16} /> What Parents Tell Us
               </h3>
@@ -115,7 +115,7 @@ export default function ForParents() {
                 ))}
               </div>
             </div>
-            <div>
+            <div style={{ minWidth: 0 }}>
               <h3 className="text-sm font-bold mb-6 flex items-center gap-2 uppercase tracking-wide" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#1AAFCB' }}>
                 <CheckCircle size={16} /> How Blast Learning Solves It
               </h3>
@@ -133,17 +133,17 @@ export default function ForParents() {
       </section>
 
       {/* Dashboard Showcase */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-5" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F4F7FB' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }} className="grid-cols-2-lg">
+            <div style={{ minWidth: 0 }}>
+              <h2 className="font-bold mb-5" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
                 The Parent Dashboard — Your Window Into Your Child's Learning
               </h2>
               <p className="text-base leading-relaxed mb-8" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
                 A beautifully simple interface that gives you all the information you need without overwhelming you. Check it in 2 minutes each morning and you'll always know exactly where your child stands.
               </p>
-              <div className="grid grid-cols-2 gap-4">
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
                 {[
                   { icon: BarChart3, label: 'Retention Score', desc: 'Daily retention percentage across all subjects' },
                   { icon: Bell, label: 'Smart Alerts', desc: 'Notified when child misses a session or drops in a subject' },
@@ -154,24 +154,26 @@ export default function ForParents() {
                     <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-3" style={{ background: '#1AAFCB' }}>
                       <Icon size={16} className="text-white" />
                     </div>
-                    <p className="text-sm font-semibold mb-1" style={{ color: '#0D1B2A', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{label}</p>
+                    <p className="text-sm font-semibold mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{label}</p>
                     <p className="text-xs leading-relaxed" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
                   </div>
                 ))}
               </div>
             </div>
-            <DashboardMockup />
+            <div style={{ minWidth: 0, width: '100%' }}>
+              <DashboardMockup />
+            </div>
           </div>
         </div>
       </section>
 
       {/* How Parents Use */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-14" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'white' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <h2 className="font-bold text-center mb-14" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             Getting Started Takes 10 Minutes
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-3-md">
             {howParentsUse.map(({ num, title, desc, icon: Icon }) => (
               <div key={num} className="bg-white rounded-xl p-8" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
                 <div className="flex items-center gap-4 mb-5">
@@ -189,12 +191,12 @@ export default function ForParents() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F4F7FB' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <h2 className="font-bold text-center mb-12" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             What Parents Are Saying
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-3-md">
             <TestimonialCard name="Sunita Reddy" role="Parent of Class 10 student, Pune" content="We were spending ₹15,000 a month on coaching and my daughter was still forgetting everything. Blast Learning at ₹1,299 has done more for her retention than all that coaching combined." rating={5} />
             <TestimonialCard name="Deepak Sharma" role="Parent of Class 11 student, Delhi" content="The parent dashboard is a game changer. I can see exactly what my son studied, for how long, and his retention scores. No more guessing if he's actually studying or just watching YouTube." rating={5} />
             <TestimonialCard name="Meena Iyer" role="Parent of Class 9 student, Bangalore" content="My daughter's confidence has improved dramatically. She used to dread exams, now she actually looks forward to revision sessions. The AI makes it feel manageable, not overwhelming." rating={5} />
@@ -203,9 +205,9 @@ export default function ForParents() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'white' }}>
+        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
+          <h2 className="font-bold text-center mb-12" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             Common Parent Questions
           </h2>
           <div className="flex flex-col gap-3">
@@ -217,9 +219,9 @@ export default function ForParents() {
       </section>
 
       {/* CTA */}
-      <section className="py-20" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
+        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
+          <h2 className="font-bold text-white mb-6" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             Give Your Child the Retention Advantage
           </h2>
           <p className="text-base mb-10" style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'Inter, sans-serif' }}>

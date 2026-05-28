@@ -28,14 +28,13 @@ export default function Contact() {
   const inputStyle = { borderColor: '#E2E8F0', fontFamily: 'Inter, sans-serif', color: '#0D1B2A' };
 
   return (
-    <div className="pt-16 lg:pt-18">
-      {/* Header */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div>
+      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#F4F7FB' }}>
+        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
             Get in Touch
           </span>
-          <h1 className="text-4xl lg:text-5xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+          <h1 className="font-bold mb-6" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             Contact Us
           </h1>
           <p className="text-lg" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
@@ -44,12 +43,10 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Main content */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Left: Contact info */}
-            <div>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'white' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px' }} className="grid-cols-2-lg">
+            <div style={{ minWidth: 0 }}>
               <div className="bg-white rounded-2xl p-8 mb-6" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
                 <h2 className="text-xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>Contact Information</h2>
                 <div className="flex flex-col gap-5">
@@ -90,7 +87,6 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
-                {/* Social links */}
                 <div className="mt-8 pt-6 border-t border-gray-100">
                   <p className="text-xs font-semibold mb-4" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>Follow Us</p>
                   <div className="flex items-center gap-3">
@@ -108,29 +104,27 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Map placeholder */}
               <div className="rounded-2xl overflow-hidden" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)', height: '240px', background: '#F4F7FB' }}>
                 <div className="h-full flex flex-col items-center justify-center gap-3">
                   <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ background: 'rgba(26,175,203,0.1)' }}>
                     <MapPin size={24} style={{ color: '#1AAFCB' }} />
                   </div>
                   <div className="text-center">
-                    <p className="text-sm font-semibold" style={{ color: '#0D1B2A', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>Blast Learning HQ</p>
+                    <p className="text-sm font-semibold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>Blast Learning HQ</p>
                     <p className="text-xs mt-1" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>Bangalore, Karnataka, India</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Right: Contact form */}
-            <div>
+            <div style={{ minWidth: 0 }}>
               <div className="bg-white rounded-2xl p-8" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
                 {submitted ? (
                   <div className="flex flex-col items-center justify-center py-16 text-center">
                     <div className="w-16 h-16 rounded-full flex items-center justify-center mb-6" style={{ background: 'rgba(26,175,203,0.1)' }}>
                       <Send size={28} style={{ color: '#1AAFCB' }} />
                     </div>
-                    <h2 className="text-2xl font-bold mb-3" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>Message Sent!</h2>
+                    <h2 className="font-bold mb-3" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>Message Sent!</h2>
                     <p className="text-sm" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
                       Thank you for reaching out. Our team will get back to you within 2 business hours.
                     </p>
@@ -139,57 +133,24 @@ export default function Contact() {
                   <>
                     <h2 className="text-xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>Send Us a Message</h2>
                     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                      <div className="grid sm:grid-cols-2 gap-4">
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px' }} className="grid-cols-2-sm">
                         <div>
                           <label className="block text-xs font-medium mb-1.5" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>Full Name *</label>
-                          <input
-                            type="text"
-                            name="name"
-                            required
-                            value={form.name}
-                            onChange={handleChange}
-                            placeholder="Your full name"
-                            className={inputClass}
-                            style={inputStyle}
-                          />
+                          <input type="text" name="name" required value={form.name} onChange={handleChange} placeholder="Your full name" className={inputClass} style={inputStyle} />
                         </div>
                         <div>
                           <label className="block text-xs font-medium mb-1.5" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>Email *</label>
-                          <input
-                            type="email"
-                            name="email"
-                            required
-                            value={form.email}
-                            onChange={handleChange}
-                            placeholder="your@email.com"
-                            className={inputClass}
-                            style={inputStyle}
-                          />
+                          <input type="email" name="email" required value={form.email} onChange={handleChange} placeholder="your@email.com" className={inputClass} style={inputStyle} />
                         </div>
                       </div>
-                      <div className="grid sm:grid-cols-2 gap-4">
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px' }} className="grid-cols-2-sm">
                         <div>
                           <label className="block text-xs font-medium mb-1.5" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>Phone Number</label>
-                          <input
-                            type="tel"
-                            name="phone"
-                            value={form.phone}
-                            onChange={handleChange}
-                            placeholder="+91 XXXXX XXXXX"
-                            className={inputClass}
-                            style={inputStyle}
-                          />
+                          <input type="tel" name="phone" value={form.phone} onChange={handleChange} placeholder="+91 XXXXX XXXXX" className={inputClass} style={inputStyle} />
                         </div>
                         <div>
                           <label className="block text-xs font-medium mb-1.5" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>I am a *</label>
-                          <select
-                            name="role"
-                            required
-                            value={form.role}
-                            onChange={handleChange}
-                            className={inputClass}
-                            style={inputStyle}
-                          >
+                          <select name="role" required value={form.role} onChange={handleChange} className={inputClass} style={inputStyle}>
                             <option value="">Select role</option>
                             <option value="parent">Parent</option>
                             <option value="student">Student</option>
@@ -227,10 +188,9 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Speak to an Advisor */}
-      <section className="py-16" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section style={{ paddingTop: '64px', paddingBottom: '64px', background: '#F4F7FB' }}>
+        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
+          <h2 className="font-bold mb-4" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             Prefer to Talk?
           </h2>
           <p className="mb-6" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>

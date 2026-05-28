@@ -42,14 +42,14 @@ const values = [
 
 export default function About() {
   return (
-    <div className="pt-16 lg:pt-18">
+    <div>
       {/* Mission Hero */}
-      <section className="py-20 lg:py-28" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#F4F7FB' }}>
+        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
             Our Mission
           </span>
-          <h1 className="text-4xl lg:text-5xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A', letterSpacing: '-0.02em' }}>
+          <h1 className="font-bold mb-6" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A', letterSpacing: '-0.02em' }}>
             Making Learning{' '}
             <span style={{ color: '#1AAFCB' }}>Stick for Every Indian Student</span>
           </h1>
@@ -60,11 +60,11 @@ export default function About() {
       </section>
 
       {/* Why We Built Blast */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'white' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'center' }} className="grid-cols-2-lg">
+            <div style={{ minWidth: 0 }}>
+              <h2 className="font-bold mb-6" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
                 Why We Built Blast Learning
               </h2>
               <div className="flex flex-col gap-5">
@@ -82,7 +82,7 @@ export default function About() {
                 </p>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px', minWidth: 0 }}>
               {[
                 { val: '90%', desc: 'Average retention achieved by Blast students vs 10% without structured revision' },
                 { val: '₹1,299', desc: 'Starting price — a fraction of the cost of coaching, with far better retention outcomes' },
@@ -100,9 +100,9 @@ export default function About() {
       </section>
 
       {/* Company Stats */}
-      <section className="py-16" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <section style={{ paddingTop: '64px', paddingBottom: '64px', background: '#F4F7FB' }}>
+        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }} className="grid-cols-4-md">
             {companyStats.map((s) => (
               <div key={s.label} className="text-center">
                 <div className="text-4xl font-bold mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{s.value}</div>
@@ -114,14 +114,14 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'white' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+            <h2 className="font-bold" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
               The Team Behind Blast Learning
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-2-sm grid-cols-3-lg">
             {team.map((member) => (
               <div key={member.name} className="bg-white rounded-xl p-6 text-center" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
                 <div
@@ -139,14 +139,14 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F4F7FB' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+            <h2 className="font-bold" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
               What We Stand For
             </h2>
           </div>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-2-sm">
             {values.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-white rounded-xl p-8" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
                 <div className="w-12 h-12 rounded-[10px] flex items-center justify-center mb-5" style={{ background: '#1AAFCB' }}>
@@ -161,9 +161,9 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="py-16" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+      <section style={{ paddingTop: '64px', paddingBottom: '64px', background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
+        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
+          <h2 className="font-bold text-white mb-4" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             Join Us in Building a Better Way to Learn
           </h2>
           <p className="mb-8" style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'Inter, sans-serif' }}>
