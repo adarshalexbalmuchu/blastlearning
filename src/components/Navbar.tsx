@@ -53,7 +53,7 @@ export default function Navbar() {
           scrolled ? 'shadow-[0_2px_20px_rgba(13,27,42,0.12)]' : ''
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
           <div className="flex items-center justify-between h-16 lg:h-18">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5 flex-shrink-0">

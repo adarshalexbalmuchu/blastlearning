@@ -54,7 +54,7 @@ export default function Library() {
     <div className="pt-16 lg:pt-18">
       {/* Header */}
       <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
           <div className="text-center mb-10">
             <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-4" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
               Resource Library
@@ -102,7 +102,7 @@ export default function Library() {
 
       {/* Resources Grid */}
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
           {filtered.length === 0 ? (
             <div className="text-center py-16">
               <p className="text-base" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>No resources found for your search.</p>
@@ -162,7 +162,7 @@ export default function Library() {
 
       {/* Upgrade CTA */}
       <section className="py-16" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 text-center">
           <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             Unlock 500+ Resources with a Subscription
           </h2>
