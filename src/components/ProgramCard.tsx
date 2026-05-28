@@ -14,7 +14,8 @@ interface ProgramCardProps {
 export default function ProgramCard({ icon, name, price, classRange, description, outcomes, featured }: ProgramCardProps) {
   return (
     <div
-      className={`relative bg-white rounded-2xl p-6 border shadow-[0_2px_16px_rgba(13,27,42,0.08)] hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(13,27,42,0.14)] transition-all duration-300 flex flex-col ${featured ? 'border-[#1AAFCB]' : 'border-gray-50'}`}
+      className={`relative bg-white rounded-2xl p-6 border hover:-translate-y-1 transition-all duration-300 flex flex-col ${featured ? 'border-[#1AAFCB]' : 'border-gray-50'}`}
+      style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}
     >
       {featured && (
         <span className="absolute -top-3 left-6 px-3 py-1 text-xs font-semibold text-white bg-[#1AAFCB] rounded-full" style={{ fontFamily: 'Inter, sans-serif' }}>

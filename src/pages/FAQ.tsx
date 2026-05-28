@@ -123,27 +123,27 @@ export default function FAQ() {
   return (
     <div className="pt-16 lg:pt-18">
       {/* Header */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+      <section className="py-16 lg:py-24 bg-[#F4F7FB]" >
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
             FAQ
           </span>
-          <h1 className="text-4xl lg:text-5xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+          <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
             Frequently Asked Questions
           </h1>
-          <p className="text-lg" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
+          <p className="text-lg text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >
             Everything you need to know about Blast Learning. Can't find your answer? Contact our team.
           </p>
         </div>
       </section>
 
       {/* FAQ Content */}
-      <section className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           {categories.map((category) => (
             <div key={category} className="mb-14 last:mb-0">
-              <h2 className="text-xl font-bold mb-6 flex items-center gap-3" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
-                <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold" style={{ background: '#1AAFCB' }}>
+              <h2 className="text-xl font-bold mb-6 flex items-center gap-3 text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
+                <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold bg-[#1AAFCB]" >
                   {category.charAt(0)}
                 </span>
                 {category}
@@ -161,16 +161,16 @@ export default function FAQ() {
       </section>
 
       {/* Still have questions */}
-      <section className="py-16" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section className="py-16 bg-[#F4F7FB]" >
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-bold mb-4 text-[#0D1B2A]" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
             Still Have Questions?
           </h2>
-          <p className="mb-8" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
+          <p className="mb-8 text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >
             Our team is available Monday to Saturday, 9 AM to 9 PM. We typically respond within 2 hours.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact" className="flex items-center gap-2 px-8 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5]" style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
+            <Link to="/contact" className="flex items-center gap-2 px-8 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5] bg-[#1AAFCB]" style={{ fontFamily: 'Inter, sans-serif' }} >
               Contact Us <ArrowRight size={16} />
             </Link>
             <a href="mailto:hello@blastlearning.in" className="flex items-center gap-2 px-8 py-3.5 rounded-lg font-semibold text-sm border-2 transition-colors hover:border-[#1AAFCB] hover:text-[#1AAFCB]" style={{ borderColor: '#0D1B2A', color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>

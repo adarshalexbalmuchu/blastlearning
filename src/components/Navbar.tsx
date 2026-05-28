@@ -47,7 +47,7 @@ export default function Navbar() {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
 
             {/* Logo */}
@@ -90,7 +90,7 @@ export default function Navbar() {
                 <ChevronDown size={13} className={`transition-transform duration-200 ${loginOpen ? 'rotate-180' : ''}`} />
               </button>
               {loginOpen && (
-                <div className="absolute right-0 top-full mt-2 w-44 bg-white rounded-xl shadow-[0_8px_24px_rgba(13,27,42,0.12)] border border-gray-100 overflow-hidden z-50">
+                <div className="absolute right-0 top-full mt-2 w-44 bg-white rounded-xl border border-gray-100 overflow-hidden z-50" style={{ boxShadow: '0 8px 24px rgba(13,27,42,0.12)' }}>
                   {loginOptions.map((opt) => (
                     <a
                       key={opt.label}

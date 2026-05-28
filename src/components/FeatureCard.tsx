@@ -8,7 +8,7 @@ interface FeatureCardProps {
 
 export default function FeatureCard({ icon, title, description }: FeatureCardProps) {
   return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-50 shadow-[0_2px_16px_rgba(13,27,42,0.08)] hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(13,27,42,0.14)] transition-all duration-300">
+    <div className="bg-white rounded-2xl p-6 border border-gray-50 hover:-translate-y-1 transition-all duration-300" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
       <div className="w-11 h-11 rounded-xl flex items-center justify-center mb-4 text-white bg-[#1AAFCB]">
         {icon}
       </div>

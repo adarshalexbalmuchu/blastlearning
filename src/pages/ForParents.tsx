@@ -64,23 +64,23 @@ export default function ForParents() {
   return (
     <div className="pt-16 lg:pt-18">
       {/* Hero */}
-      <section className="py-20 lg:py-28" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+      <section className="py-16 lg:py-24 lg:py-28 bg-[#F4F7FB]" >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
             For Parents
           </span>
           <h1 className="text-4xl lg:text-5xl font-bold mb-6 max-w-3xl mx-auto" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A', letterSpacing: '-0.02em' }}>
             From Constant Worry to{' '}
-            <span style={{ color: '#1AAFCB' }}>Complete Confidence</span>
+            <span className="text-[#1AAFCB]">Complete Confidence</span>
           </h1>
-          <p className="text-lg max-w-2xl mx-auto mb-10" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
+          <p className="text-lg max-w-2xl mx-auto mb-10 text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >
             Know exactly what your child is learning, how well they retain it, and where they need help — every single day. No more guessing, no more surprises at exam time.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/programs"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5]"
-              style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5] bg-[#1AAFCB]"
+              style={{ fontFamily: 'Inter, sans-serif' }}
             >
               Start 7-Day Free Trial <ArrowRight size={16} />
             </Link>
@@ -96,34 +96,34 @@ export default function ForParents() {
       </section>
 
       {/* Pain/Solution */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-center mb-14" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-bold text-center mb-14 text-[#0D1B2A]" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
             We Understand Your Concerns
           </h2>
           <div className="grid lg:grid-cols-2 gap-8">
             <div>
-              <h3 className="text-sm font-bold mb-6 flex items-center gap-2 uppercase tracking-wide" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#E8357A' }}>
+              <h3 className="text-sm font-bold mb-6 flex items-center gap-2 uppercase tracking-wide text-[#E8357A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
                 <AlertCircle size={16} /> What Parents Tell Us
               </h3>
               <div className="flex flex-col gap-3">
                 {concerns.map(({ concern }) => (
                   <div key={concern} className="flex items-start gap-3 p-4 rounded-xl" style={{ borderLeft: '3px solid #E8357A', background: 'rgba(232,53,122,0.04)' }}>
-                    <AlertCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: '#E8357A' }} />
-                    <p className="text-sm" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>{concern}</p>
+                    <AlertCircle size={14} className="flex-shrink-0 mt-0.5 text-[#E8357A]"  />
+                    <p className="text-sm text-[#0D1B2A]" style={{ fontFamily: 'Inter, sans-serif' }} >{concern}</p>
                   </div>
                 ))}
               </div>
             </div>
             <div>
-              <h3 className="text-sm font-bold mb-6 flex items-center gap-2 uppercase tracking-wide" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#1AAFCB' }}>
+              <h3 className="text-sm font-bold mb-6 flex items-center gap-2 uppercase tracking-wide text-[#1AAFCB]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
                 <CheckCircle size={16} /> How Blast Learning Solves It
               </h3>
               <div className="flex flex-col gap-3">
                 {concerns.map(({ solution }) => (
                   <div key={solution} className="flex items-start gap-3 p-4 rounded-xl" style={{ borderLeft: '3px solid #1AAFCB', background: 'rgba(26,175,203,0.04)' }}>
-                    <CheckCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: '#1AAFCB' }} />
-                    <p className="text-sm" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>{solution}</p>
+                    <CheckCircle size={14} className="flex-shrink-0 mt-0.5 text-[#1AAFCB]"  />
+                    <p className="text-sm text-[#0D1B2A]" style={{ fontFamily: 'Inter, sans-serif' }} >{solution}</p>
                   </div>
                 ))}
               </div>
@@ -133,14 +133,14 @@ export default function ForParents() {
       </section>
 
       {/* Dashboard Showcase */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-16 lg:py-24 bg-[#F4F7FB]" >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-bold mb-5" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+              <h2 className="font-bold mb-5 text-[#0D1B2A]" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
                 The Parent Dashboard — Your Window Into Your Child's Learning
               </h2>
-              <p className="text-base leading-relaxed mb-8" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
+              <p className="text-base leading-relaxed mb-8 text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >
                 A beautifully simple interface that gives you all the information you need without overwhelming you. Check it in 2 minutes each morning and you'll always know exactly where your child stands.
               </p>
               <div className="grid grid-cols-2 gap-4">
@@ -151,11 +151,11 @@ export default function ForParents() {
                   { icon: FileText, label: 'Exam Readiness', desc: 'Pre-exam readiness score so there are no surprises' },
                 ].map(({ icon: Icon, label, desc }) => (
                   <div key={label} className="p-4 rounded-xl bg-white" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.06)' }}>
-                    <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-3" style={{ background: '#1AAFCB' }}>
+                    <div className="w-8 h-8 rounded-lg flex items-center justify-center mb-3 bg-[#1AAFCB]" >
                       <Icon size={16} className="text-white" />
                     </div>
-                    <p className="text-sm font-semibold mb-1" style={{ color: '#0D1B2A', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>{label}</p>
-                    <p className="text-xs leading-relaxed" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
+                    <p className="text-sm font-semibold mb-1 text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >{label}</p>
+                    <p className="text-xs leading-relaxed text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{desc}</p>
                   </div>
                 ))}
               </div>
@@ -166,9 +166,9 @@ export default function ForParents() {
       </section>
 
       {/* How Parents Use */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-center mb-14" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-bold text-center mb-14 text-[#0D1B2A]" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
             Getting Started Takes 10 Minutes
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -176,12 +176,12 @@ export default function ForParents() {
               <div key={num} className="bg-white rounded-xl p-8" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
                 <div className="flex items-center gap-4 mb-5">
                   <span className="text-4xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: 'rgba(26,175,203,0.15)' }}>{num}</span>
-                  <div className="w-10 h-10 rounded-[10px] flex items-center justify-center" style={{ background: '#1AAFCB' }}>
+                  <div className="w-10 h-10 rounded-[10px] flex items-center justify-center bg-[#1AAFCB]" >
                     <Icon size={20} className="text-white" />
                   </div>
                 </div>
-                <h3 className="text-base font-bold mb-3" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
+                <h3 className="text-base font-bold mb-3 text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >{title}</h3>
+                <p className="text-sm leading-relaxed text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{desc}</p>
               </div>
             ))}
           </div>
@@ -189,9 +189,9 @@ export default function ForParents() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section className="py-16 lg:py-24 bg-[#F4F7FB]" >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-bold text-center mb-12 text-[#0D1B2A]" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
             What Parents Are Saying
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -203,9 +203,9 @@ export default function ForParents() {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-bold text-center mb-12 text-[#0D1B2A]" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
             Common Parent Questions
           </h2>
           <div className="flex flex-col gap-3">
@@ -217,16 +217,16 @@ export default function ForParents() {
       </section>
 
       {/* CTA */}
-      <section className="py-20" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+      <section className="py-16 lg:py-24" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-bold text-white mb-6" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             Give Your Child the Retention Advantage
           </h2>
           <p className="text-base mb-10" style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'Inter, sans-serif' }}>
             Start with a 7-day free trial. No credit card required. See real retention data for your child within the first week.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/programs" className="flex items-center gap-2 px-8 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5]" style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
+            <Link to="/programs" className="flex items-center gap-2 px-8 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5] bg-[#1AAFCB]" style={{ fontFamily: 'Inter, sans-serif' }} >
               Start Free Trial <ArrowRight size={16} />
             </Link>
             <Link to="/contact" className="flex items-center gap-2 px-8 py-3.5 rounded-lg font-semibold text-sm border-2 border-white/30 text-white hover:border-white/60 transition-colors" style={{ fontFamily: 'Inter, sans-serif' }}>

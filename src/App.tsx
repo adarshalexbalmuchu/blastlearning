@@ -24,7 +24,7 @@ function AppLayout() {
     <>
       <ScrollToTop />
       <Navbar />
-      <main>
+      <main className="min-h-screen pb-[72px] md:pb-0">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/programs" element={<Programs />} />

@@ -11,7 +11,7 @@ interface TestimonialCardProps {
 
 export default function TestimonialCard({ name, role, content, rating = 5, before, after, metric, improvement }: TestimonialCardProps) {
   return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-50 shadow-[0_2px_16px_rgba(13,27,42,0.08)] hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(13,27,42,0.14)] transition-all duration-300 flex flex-col">
+    <div className="bg-white rounded-2xl p-6 border border-gray-50 hover:-translate-y-1 transition-all duration-300 flex flex-col" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
       {metric && improvement && before && after && (
         <div className="flex items-center gap-3 mb-5 p-3 rounded-xl" style={{ background: 'rgba(26,175,203,0.06)' }}>
           <div className="text-center flex-1">

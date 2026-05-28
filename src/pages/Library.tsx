@@ -53,28 +53,28 @@ export default function Library() {
   return (
     <div className="pt-16 lg:pt-18">
       {/* Header */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-16 lg:py-24 bg-[#F4F7FB]" >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-4" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
               Resource Library
             </span>
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
               Learning Resources
             </h1>
-            <p className="text-lg max-w-2xl mx-auto mb-8" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
+            <p className="text-lg max-w-2xl mx-auto mb-8 text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >
               Videos, notes, and practice quizzes for CBSE Classes 8-12, SAT Prep, and competitive exams. Some resources are free — subscribe for full access.
             </p>
             {/* Search */}
             <div className="relative max-w-xl mx-auto">
-              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: '#5A6A7A' }} />
+              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5A6A7A]"  />
               <input
                 type="text"
                 placeholder="Search resources, topics, subjects..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-gray-200 text-sm outline-none focus:border-[#1AAFCB]"
-                style={{ fontFamily: 'Inter, sans-serif', color: '#0D1B2A' }}
+                className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-gray-200 text-sm outline-none focus:border-[#1AAFCB] text-[#0D1B2A]"
+                style={{ fontFamily: 'Inter, sans-serif' }}
               />
             </div>
           </div>
@@ -102,10 +102,10 @@ export default function Library() {
 
       {/* Resources Grid */}
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {filtered.length === 0 ? (
             <div className="text-center py-16">
-              <p className="text-base" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>No resources found for your search.</p>
+              <p className="text-base text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >No resources found for your search.</p>
             </div>
           ) : (
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -117,7 +117,7 @@ export default function Library() {
                 >
                   {resource.locked && (
                     <div className="absolute top-4 right-4">
-                      <Lock size={14} style={{ color: '#5A6A7A' }} />
+                      <Lock size={14} className="text-[#5A6A7A]" />
                     </div>
                   )}
                   <div className="flex items-center gap-2 mb-4">
@@ -132,11 +132,11 @@ export default function Library() {
                       {resource.subject}
                     </span>
                     {resource.duration && (
-                      <span className="text-xs" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{resource.duration}</span>
+                      <span className="text-xs text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{resource.duration}</span>
                     )}
                   </div>
-                  <h3 className="text-base font-bold mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{resource.title}</h3>
-                  <p className="text-sm leading-relaxed mb-5" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{resource.description}</p>
+                  <h3 className="text-base font-bold mb-2 text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >{resource.title}</h3>
+                  <p className="text-sm leading-relaxed mb-5 text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{resource.description}</p>
                   {resource.locked ? (
                     <Link
                       to="/programs"
@@ -147,8 +147,8 @@ export default function Library() {
                     </Link>
                   ) : (
                     <button
-                      className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-white text-sm font-semibold transition-colors hover:bg-[#148fa5]"
-                      style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}
+                      className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-white text-sm font-semibold transition-colors hover:bg-[#148fa5] bg-[#1AAFCB]"
+                      style={{ fontFamily: 'Inter, sans-serif' }}
                     >
                       <TypeIcon type={resource.type} /> Access {resource.type}
                     </button>
@@ -162,8 +162,8 @@ export default function Library() {
 
       {/* Upgrade CTA */}
       <section className="py-16" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-bold text-white mb-4" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             Unlock 500+ Resources with a Subscription
           </h2>
           <p className="mb-8" style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'Inter, sans-serif' }}>
@@ -171,8 +171,8 @@ export default function Library() {
           </p>
           <Link
             to="/programs"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5]"
-            style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5] bg-[#1AAFCB]"
+            style={{ fontFamily: 'Inter, sans-serif' }}
           >
             View Plans & Pricing <ArrowRight size={16} />
           </Link>

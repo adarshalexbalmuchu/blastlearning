@@ -69,8 +69,8 @@ export default function ForStudents() {
   return (
     <div className="pt-16 lg:pt-18">
       {/* Hero */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-16 lg:py-24 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
@@ -78,16 +78,16 @@ export default function ForStudents() {
               </span>
               <h1 className="text-4xl lg:text-5xl font-bold mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A', letterSpacing: '-0.02em' }}>
                 Learning That{' '}
-                <span style={{ color: '#1AAFCB' }}>Adapts to You</span>
+                <span className="text-[#1AAFCB]">Adapts to You</span>
               </h1>
-              <p className="text-lg leading-relaxed mb-8 max-w-lg" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
+              <p className="text-lg leading-relaxed mb-8 max-w-lg text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >
                 Stop studying harder. Start studying smarter. Blast Learning's AI builds a personalized study plan that fits your pace, your style, and your exam schedule.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
                 <Link
                   to="/programs"
-                  className="flex items-center gap-2 px-6 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5]"
-                  style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}
+                  className="flex items-center gap-2 px-6 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5] bg-[#1AAFCB]"
+                  style={{ fontFamily: 'Inter, sans-serif' }}
                 >
                   Start Free Trial <ArrowRight size={16} />
                 </Link>
@@ -101,8 +101,8 @@ export default function ForStudents() {
               </div>
               <div className="flex flex-wrap gap-4">
                 {['Free 7-day trial', 'No credit card needed', 'Works alongside coaching'].map((t) => (
-                  <div key={t} className="flex items-center gap-1.5 text-sm" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
-                    <CheckCircle size={14} style={{ color: '#1AAFCB' }} /> {t}
+                  <div key={t} className="flex items-center gap-1.5 text-sm text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >
+                    <CheckCircle size={14}  /> {t} className="text-[#1AAFCB]"
                   </div>
                 ))}
               </div>
@@ -111,10 +111,10 @@ export default function ForStudents() {
             <div className="bg-white rounded-2xl overflow-hidden" style={{ boxShadow: '0 8px 40px rgba(13,27,42,0.12)' }}>
               <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
                 <div>
-                  <p className="text-xs" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>Today's Learning</p>
-                  <p className="text-base font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>Arjun's Study Plan</p>
+                  <p className="text-xs text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >Today's Learning</p>
+                  <p className="text-base font-bold text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >Arjun's Study Plan</p>
                 </div>
-                <div className="text-xs font-semibold px-3 py-1.5 rounded-full text-white" style={{ background: '#E8357A', fontFamily: 'Inter, sans-serif' }}>🔥 14-Day Streak</div>
+                <div className="text-xs font-semibold px-3 py-1.5 rounded-full text-white bg-[#E8357A]" style={{ fontFamily: 'Inter, sans-serif' }} >🔥 14-Day Streak</div>
               </div>
               <div className="p-6">
                 <div className="grid grid-cols-3 gap-3 mb-5">
@@ -123,35 +123,35 @@ export default function ForStudents() {
                     { label: 'Study Time', val: '1h 30m' },
                     { label: 'Score', val: '87%' },
                   ].map((s) => (
-                    <div key={s.label} className="rounded-xl p-3 text-center" style={{ background: '#F4F7FB' }}>
-                      <p className="text-lg font-bold mb-0.5" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#1AAFCB' }}>{s.val}</p>
-                      <p className="text-xs" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{s.label}</p>
+                    <div key={s.label} className="rounded-xl p-3 text-center bg-[#F4F7FB]" >
+                      <p className="text-lg font-bold mb-0.5 text-[#1AAFCB]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >{s.val}</p>
+                      <p className="text-xs text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{s.label}</p>
                     </div>
                   ))}
                 </div>
-                <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>Today's Tasks</p>
+                <p className="text-xs font-semibold uppercase tracking-wide mb-3 text-[#0D1B2A]" style={{ fontFamily: 'Inter, sans-serif' }} >Today's Tasks</p>
                 <div className="flex flex-col gap-2">
                   {todayTasks.map((task) => (
                     <div key={task.topic} className="flex items-center gap-3 p-3 rounded-lg" style={{ background: task.status === 'active' ? 'rgba(26,175,203,0.06)' : '#F4F7FB' }}>
                       <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0`} style={{ background: task.status === 'done' ? '#1AAFCB' : task.status === 'active' ? 'rgba(26,175,203,0.2)' : 'rgba(0,0,0,0.08)' }}>
                         {task.status === 'done' && <CheckCircle size={12} className="text-white" />}
-                        {task.status === 'active' && <div className="w-2 h-2 rounded-full" style={{ background: '#1AAFCB' }} />}
+                        {task.status === 'active' && <div className="w-2 h-2 rounded-full bg-[#1AAFCB]"  />}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="text-xs font-medium truncate" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>{task.topic}</p>
-                        <p className="text-xs" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{task.subject} · {task.time}</p>
+                        <p className="text-xs font-medium truncate text-[#0D1B2A]" style={{ fontFamily: 'Inter, sans-serif' }} >{task.topic}</p>
+                        <p className="text-xs text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{task.subject} · {task.time}</p>
                       </div>
                     </div>
                   ))}
                 </div>
                 {/* Achievements */}
                 <div className="mt-5 pt-4 border-t border-gray-100">
-                  <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>Recent Achievements</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide mb-3 text-[#0D1B2A]" style={{ fontFamily: 'Inter, sans-serif' }} >Recent Achievements</p>
                   <div className="flex gap-2">
                     {[{ icon: Award, label: '7-Day Streak', color: '#E8357A' }, { icon: Zap, label: 'Speed Learner', color: '#1AAFCB' }, { icon: Target, label: 'Math Master', color: '#0D1B2A' }].map(({ icon: Icon, label, color }) => (
-                      <div key={label} className="flex-1 flex flex-col items-center gap-1 py-2 rounded-lg" style={{ background: '#F4F7FB' }}>
+                      <div key={label} className="flex-1 flex flex-col items-center gap-1 py-2 rounded-lg bg-[#F4F7FB]" >
                         <Icon size={14} style={{ color }} />
-                        <p className="text-xs text-center leading-tight" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{label}</p>
+                        <p className="text-xs text-center leading-tight text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{label}</p>
                       </div>
                     ))}
                   </div>
@@ -163,16 +163,16 @@ export default function ForStudents() {
       </section>
 
       {/* Benefit Cards */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-16 lg:py-24 bg-[#F4F7FB]" >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-white rounded-xl p-6" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
-                <div className="w-10 h-10 rounded-[10px] flex items-center justify-center mb-4" style={{ background: '#1AAFCB' }}>
+                <div className="w-10 h-10 rounded-[10px] flex items-center justify-center mb-4 bg-[#1AAFCB]" >
                   <Icon size={20} className="text-white" />
                 </div>
-                <h3 className="font-bold text-base mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
+                <h3 className="font-bold text-base mb-2 text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >{title}</h3>
+                <p className="text-sm leading-relaxed text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{desc}</p>
               </div>
             ))}
           </div>
@@ -180,21 +180,21 @@ export default function ForStudents() {
       </section>
 
       {/* AI Tools */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+            <h2 className="font-bold text-[#0D1B2A]" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
               AI-Powered Study Tools Built for You
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {aiTools.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-white rounded-xl p-6" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
-                <div className="w-10 h-10 rounded-[10px] flex items-center justify-center mb-4" style={{ background: '#1AAFCB' }}>
+                <div className="w-10 h-10 rounded-[10px] flex items-center justify-center mb-4 bg-[#1AAFCB]" >
                   <Icon size={20} className="text-white" />
                 </div>
-                <h3 className="font-bold text-base mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
+                <h3 className="font-bold text-base mb-2 text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >{title}</h3>
+                <p className="text-sm leading-relaxed text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{desc}</p>
               </div>
             ))}
           </div>
@@ -202,24 +202,24 @@ export default function ForStudents() {
       </section>
 
       {/* Collaborative Learning */}
-      <section className="py-20" style={{ background: '#F4F7FB' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section className="py-16 lg:py-24 bg-[#F4F7FB]" >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+            <h2 className="font-bold mb-4 text-[#0D1B2A]" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
               Learn Better, Together
             </h2>
-            <p className="text-base max-w-2xl mx-auto" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
+            <p className="text-base max-w-2xl mx-auto text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >
               Join a community of thousands of Indian students who are all working toward the same goal. Studying doesn't have to be a lonely grind.
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {collaborativeFeatures.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-white rounded-xl p-6" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
-                <div className="w-10 h-10 rounded-[10px] flex items-center justify-center mb-4" style={{ background: '#1AAFCB' }}>
+                <div className="w-10 h-10 rounded-[10px] flex items-center justify-center mb-4 bg-[#1AAFCB]" >
                   <Icon size={20} className="text-white" />
                 </div>
-                <h3 className="font-bold text-sm mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{title}</h3>
-                <p className="text-xs leading-relaxed" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
+                <h3 className="font-bold text-sm mb-2 text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >{title}</h3>
+                <p className="text-xs leading-relaxed text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{desc}</p>
               </div>
             ))}
           </div>
@@ -227,8 +227,8 @@ export default function ForStudents() {
           <div className="bg-white rounded-2xl p-8 grid grid-cols-3 gap-6" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
             {communityStats.map((s) => (
               <div key={s.label} className="text-center">
-                <div className="text-3xl font-bold mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#1AAFCB' }}>{s.value}</div>
-                <div className="text-sm" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{s.label}</div>
+                <div className="text-3xl font-bold mb-1 text-[#1AAFCB]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >{s.value}</div>
+                <div className="text-sm text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{s.label}</div>
               </div>
             ))}
           </div>
@@ -236,9 +236,9 @@ export default function ForStudents() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-center mb-12" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      <section className="py-16 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-bold text-center mb-12 text-[#0D1B2A]" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
             What Students Are Saying
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
@@ -250,16 +250,16 @@ export default function ForStudents() {
       </section>
 
       {/* CTA */}
-      <section className="py-20" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+      <section className="py-16 lg:py-24" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-bold text-white mb-6" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             Ready to Actually Remember What You Study?
           </h2>
           <p className="text-base mb-10" style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'Inter, sans-serif' }}>
             Start your 7-day free trial today. No credit card. No pressure. Just smarter studying.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/programs" className="flex items-center gap-2 px-8 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5]" style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
+            <Link to="/programs" className="flex items-center gap-2 px-8 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5] bg-[#1AAFCB]" style={{ fontFamily: 'Inter, sans-serif' }} >
               Start Free Trial <ArrowRight size={16} />
             </Link>
             <Link to="/library" className="flex items-center gap-2 px-8 py-3.5 rounded-lg font-semibold text-sm border-2 border-white/30 text-white hover:border-white/60 transition-colors" style={{ fontFamily: 'Inter, sans-serif' }}>
