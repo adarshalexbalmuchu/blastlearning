@@ -83,58 +83,62 @@ const comparisonRows = [
 
 export default function Programs() {
   return (
-    <div className="pt-16 lg:pt-18">
+    <div>
       {/* Header */}
-      <section className="py-16 lg:py-24 bg-[#F4F7FB]" >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#F4F7FB' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
             Learning Programs
           </span>
-          <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
+          <h1 className="font-bold mb-6" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             Our Programs
           </h1>
-          <p className="text-lg max-w-2xl mx-auto text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
             Carefully designed for Indian students in Classes 8–12. Each program uses our Metacognition Engine to ensure lasting retention — not just short-term cramming.
           </p>
         </div>
       </section>
 
       {/* Program Cards */}
-      <section className="py-16 lg:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'white' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '32px' }} className="grid-cols-2-md">
             {programs.map((prog) => {
               const Icon = prog.icon;
               return (
                 <div
                   key={prog.name}
-                  className={`relative bg-white rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 ${prog.featured ? 'ring-2 ring-[#1AAFCB]' : ''}`}
-                  style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}
+                  className="relative bg-white rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                  style={{
+                    boxShadow: prog.featured
+                      ? '0 0 0 2px #1AAFCB, 0 2px 16px rgba(13,27,42,0.08)'
+                      : '0 2px 16px rgba(13,27,42,0.08)',
+                  }}
                 >
                   {prog.featured && (
-                    <div className="px-4 py-2 text-xs font-semibold text-white text-center bg-[#1AAFCB]" style={{ fontFamily: 'Inter, sans-serif' }} >
+                    <div className="px-4 py-2 text-xs font-semibold text-white text-center" style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
                       Most Popular
                     </div>
                   )}
                   <div className="p-8">
                     <div className="flex items-start gap-5 mb-6">
-                      <div className="w-12 h-12 rounded-[10px] flex items-center justify-center flex-shrink-0 bg-[#1AAFCB]" >
+                      <div className="w-12 h-12 rounded-[10px] flex items-center justify-center flex-shrink-0" style={{ background: '#1AAFCB' }}>
                         <Icon size={22} className="text-white" />
                       </div>
                       <div className="flex-1">
-                        <h2 className="text-xl font-bold mb-1 text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >{prog.name}</h2>
+                        <h2 className="text-xl font-bold mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{prog.name}</h2>
                         <div className="flex items-center gap-3">
-                          <span className="text-2xl font-bold text-[#1AAFCB]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >{prog.price}</span>
-                          <span className="text-sm text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >/month</span>
+                          <span className="text-2xl font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#1AAFCB' }}>{prog.price}</span>
+                          <span className="text-sm" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>/month</span>
                           <span className="px-2.5 py-0.5 rounded-md text-xs font-medium" style={{ background: '#F4F7FB', color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{prog.classes}</span>
                         </div>
                       </div>
                     </div>
 
-                    <p className="text-sm leading-relaxed mb-6 text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{prog.description}</p>
+                    <p className="text-sm leading-relaxed mb-6" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{prog.description}</p>
 
                     <div className="mb-6">
-                      <p className="text-xs font-semibold uppercase tracking-wide mb-3 text-[#0D1B2A]" style={{ fontFamily: 'Inter, sans-serif' }} >Key Outcomes</p>
+                      <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>Key Outcomes</p>
                       <div className="flex flex-wrap gap-2">
                         {prog.outcomes.map((o) => (
                           <span key={o} className="px-3 py-1 text-xs font-medium rounded-md" style={{ background: 'rgba(26,175,203,0.08)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>{o}</span>
@@ -143,12 +147,12 @@ export default function Programs() {
                     </div>
 
                     <div className="mb-6">
-                      <p className="text-xs font-semibold uppercase tracking-wide mb-3 text-[#0D1B2A]" style={{ fontFamily: 'Inter, sans-serif' }} >What's Included</p>
-                      <div className="grid sm:grid-cols-2 gap-2">
+                      <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>What's Included</p>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '8px' }} className="grid-cols-2-sm">
                         {prog.features.map((f) => (
                           <div key={f} className="flex items-start gap-2">
-                            <CheckCircle size={14} className="flex-shrink-0 mt-0.5 text-[#1AAFCB]"  />
-                            <span className="text-xs leading-relaxed text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{f}</span>
+                            <CheckCircle size={14} className="flex-shrink-0 mt-0.5" style={{ color: '#1AAFCB' }} />
+                            <span className="text-xs leading-relaxed" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{f}</span>
                           </div>
                         ))}
                       </div>
@@ -156,8 +160,8 @@ export default function Programs() {
 
                     <Link
                       to="/contact"
-                      className="flex items-center justify-center gap-2 py-3 rounded-lg text-white text-sm font-semibold transition-colors hover:bg-[#148fa5] bg-[#1AAFCB]"
-                      style={{ fontFamily: 'Inter, sans-serif' }}
+                      className="flex items-center justify-center gap-2 py-3 rounded-lg text-white text-sm font-semibold transition-colors hover:bg-[#148fa5]"
+                      style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}
                     >
                       Start 7-Day Free Trial <ArrowRight size={16} />
                     </Link>
@@ -170,18 +174,18 @@ export default function Programs() {
       </section>
 
       {/* Comparison Table */}
-      <section className="py-16 lg:py-24 bg-[#F4F7FB]" >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-bold text-center mb-12 text-[#0D1B2A]" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F4F7FB' }}>
+        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
+          <h2 className="font-bold text-center mb-12" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
             How We Compare
           </h2>
           <div className="bg-white rounded-2xl overflow-hidden" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
-            <div className="grid grid-cols-4">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
               <div className="p-4" />
               {['Blast Learning', 'Coaching Classes', 'Other Apps'].map((h, i) => (
                 <div
                   key={h}
-                  className={`p-4 text-center text-sm font-bold ${i === 0 ? 'text-white' : ''}`}
+                  className="p-4 text-center text-sm font-bold"
                   style={{
                     background: i === 0 ? '#1AAFCB' : 'transparent',
                     fontFamily: 'Plus Jakarta Sans, sans-serif',
@@ -193,14 +197,22 @@ export default function Programs() {
               ))}
             </div>
             {comparisonRows.map((row, i) => (
-              <div key={row.feature} className={`grid grid-cols-4 border-t`} style={{ borderColor: '#F4F7FB', background: i % 2 === 0 ? 'white' : '#FAFBFD' }}>
-                <div className="p-4 text-sm font-medium text-[#0D1B2A]" style={{ fontFamily: 'Inter, sans-serif' }} >{row.feature}</div>
+              <div
+                key={row.feature}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(4, 1fr)',
+                  borderTop: '1px solid #F4F7FB',
+                  background: i % 2 === 0 ? 'white' : '#FAFBFD',
+                }}
+              >
+                <div className="p-4 text-sm font-medium" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>{row.feature}</div>
                 {[row.blast, row.coaching, row.apps].map((val, j) => (
                   <div key={j} className="p-4 flex items-center justify-center">
                     {val ? (
                       <CheckCircle size={18} style={{ color: j === 0 ? '#1AAFCB' : '#5A6A7A' }} />
                     ) : (
-                      <span className="text-lg text-[#E8357A]" >×</span>
+                      <span className="text-lg" style={{ color: '#E8357A' }}>×</span>
                     )}
                   </div>
                 ))}
@@ -211,8 +223,8 @@ export default function Programs() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-16" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section style={{ paddingTop: '64px', paddingBottom: '64px', background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
+        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <h2 className="font-bold text-white mb-4" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
             Not sure which plan is right?
           </h2>
