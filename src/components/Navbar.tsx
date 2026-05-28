@@ -32,9 +32,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [location]);
+  useEffect(() => { setMobileOpen(false); }, [location]);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -48,40 +46,33 @@ export default function Navbar() {
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300 ${
-          scrolled ? 'shadow-[0_2px_20px_rgba(13,27,42,0.12)]' : ''
-        }`}
-      >
+      <nav className={`fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-100 transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-18">
+          <div className="flex items-center justify-between h-16">
+
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5 flex-shrink-0">
-              <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: '#1AAFCB' }}>
-                <span className="text-white font-bold text-base" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>BL</span>
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-[#1AAFCB]">
+                <span className="text-white font-bold text-sm" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>BL</span>
               </div>
-              <span className="font-bold text-lg hidden sm:block" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+              <span className="font-semibold text-base hidden sm:block text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
                 Blast Learning
               </span>
             </Link>
 
             {/* Desktop Nav */}
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-6">
               {navLinks.map((link) => {
                 const active = location.pathname === link.path;
                 return (
                   <Link
                     key={link.path}
                     to={link.path}
-                    className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                      active ? 'text-[#1AAFCB]' : 'text-[#0D1B2A] hover:text-[#1AAFCB]'
-                    }`}
+                    className={`relative pb-0.5 text-sm font-medium transition-colors duration-200 ${active ? 'text-[#1AAFCB]' : 'text-[#0D1B2A] hover:text-[#1AAFCB]'}`}
                     style={{ fontFamily: 'Inter, sans-serif' }}
                   >
                     {link.label}
-                    {active && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full" style={{ background: '#1AAFCB' }} />
-                    )}
+                    {active && <span className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-[#1AAFCB] rounded-full" />}
                   </Link>
                 );
               })}
@@ -91,15 +82,15 @@ export default function Navbar() {
             <div className="hidden lg:block relative" ref={dropdownRef}>
               <button
                 onClick={() => setLoginOpen((v) => !v)}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-medium transition-all duration-200 hover:border-[#1AAFCB] hover:text-[#1AAFCB]"
-                style={{ borderColor: '#0D1B2A', color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#0D1B2A] text-[#0D1B2A] text-sm font-medium hover:border-[#1AAFCB] hover:text-[#1AAFCB] transition-colors duration-200"
+                style={{ fontFamily: 'Inter, sans-serif' }}
               >
-                <User size={16} />
+                <User size={15} />
                 Login
-                <ChevronDown size={14} className={`transition-transform duration-200 ${loginOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown size={13} className={`transition-transform duration-200 ${loginOpen ? 'rotate-180' : ''}`} />
               </button>
               {loginOpen && (
-                <div className="absolute right-0 top-full mt-2 w-44 bg-white rounded-xl shadow-[0_8px_24px_rgba(13,27,42,0.12)] border border-gray-100 overflow-hidden">
+                <div className="absolute right-0 top-full mt-2 w-44 bg-white rounded-xl border border-gray-100 overflow-hidden z-50" style={{ boxShadow: '0 8px 24px rgba(13,27,42,0.12)' }}>
                   {loginOptions.map((opt) => (
                     <a
                       key={opt.label}
@@ -121,43 +112,30 @@ export default function Navbar() {
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
 
         {/* Mobile drawer */}
-        <div
-          className={`lg:hidden bg-white border-t border-gray-100 overflow-hidden transition-all duration-300 ${
-            mobileOpen ? 'max-h-screen' : 'max-h-0'
-          }`}
-        >
-          <div className="px-4 py-4 flex flex-col gap-1">
+        <div className={`lg:hidden bg-white overflow-hidden transition-all duration-300 ${mobileOpen ? 'max-h-screen border-t border-gray-100' : 'max-h-0'}`}>
+          <div className="px-4 py-3 flex flex-col">
             {navLinks.map((link) => {
               const active = location.pathname === link.path;
               return (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                    active
-                      ? 'bg-[#F4F7FB] text-[#1AAFCB]'
-                      : 'text-[#0D1B2A] hover:bg-[#F4F7FB] hover:text-[#1AAFCB]'
-                  }`}
+                  className={`px-3 py-3 text-sm font-medium border-b border-gray-50 transition-colors duration-200 ${active ? 'text-[#1AAFCB]' : 'text-[#0D1B2A] hover:text-[#1AAFCB]'}`}
                   style={{ fontFamily: 'Inter, sans-serif' }}
                 >
                   {link.label}
                 </Link>
               );
             })}
-            <div className="mt-2 border-t border-gray-100 pt-3 flex flex-col gap-1">
+            <div className="pt-3 flex flex-col gap-1">
               {loginOptions.map((opt) => (
-                <a
-                  key={opt.label}
-                  href={opt.href}
-                  className="px-4 py-3 rounded-lg text-sm font-medium text-[#0D1B2A] hover:bg-[#F4F7FB] hover:text-[#1AAFCB] transition-colors duration-200"
-                  style={{ fontFamily: 'Inter, sans-serif' }}
-                >
+                <a key={opt.label} href={opt.href} className="px-3 py-2.5 text-sm text-[#5A6A7A] hover:text-[#1AAFCB] transition-colors" style={{ fontFamily: 'Inter, sans-serif' }}>
                   {opt.label}
                 </a>
               ))}
@@ -166,15 +144,22 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile sticky CTA */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-50 px-4 py-3 bg-white border-t border-gray-100 shadow-[0_-4px_16px_rgba(13,27,42,0.08)]">
+      {/* Mobile sticky bottom bar */}
+      <div className="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-100 p-4 flex gap-3 md:hidden">
         <Link
           to="/programs"
-          className="block w-full text-center py-3 rounded-lg text-white text-sm font-semibold transition-colors duration-200 hover:bg-[#148fa5]"
-          style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}
+          className="flex-1 text-center py-2.5 rounded-lg bg-[#1AAFCB] text-white text-sm font-semibold hover:bg-[#158fab] transition-colors"
+          style={{ fontFamily: 'Inter, sans-serif' }}
         >
           Start Free Trial
         </Link>
+        <a
+          href="#"
+          className="flex-1 text-center py-2.5 rounded-lg border-2 border-[#0D1B2A] text-[#0D1B2A] text-sm font-semibold hover:bg-gray-50 transition-colors"
+          style={{ fontFamily: 'Inter, sans-serif' }}
+        >
+          Login
+        </a>
       </div>
     </>
   );

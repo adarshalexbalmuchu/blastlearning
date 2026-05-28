@@ -24,7 +24,7 @@ function AppLayout() {
     <>
       <ScrollToTop />
       <Navbar />
-      <main>
+      <main style={{ paddingBottom: '0' }} className="pb-20 md:pb-0">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/programs" element={<Programs />} />
@@ -43,7 +43,7 @@ function AppLayout() {
 
 export default function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <AppLayout />
     </Router>
   );
