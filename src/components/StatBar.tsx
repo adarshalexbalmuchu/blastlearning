@@ -14,7 +14,7 @@ export default function StatBar({ stats, subheading }: StatBarProps) {
       {subheading && (
         <p className="text-center text-sm font-medium mb-8 text-[#5A6A7A]" style={{ fontFamily: 'Inter, sans-serif' }} >{subheading}</p>
       )}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }} className="grid-cols-4-md">
         {stats.map((stat) => (
           <div key={stat.label} className="text-center">
             <div className="text-3xl font-bold mb-1 text-[#0D1B2A]" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }} >
