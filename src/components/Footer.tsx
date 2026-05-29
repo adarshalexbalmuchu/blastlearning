@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Globe, MessageCircle, Share2, Rss, Play, Mail, Phone, MapPin } from 'lucide-react';
+import blastLogo from '../assets/blast-logo.webp';
 
 const quickLinks = [
   { label: 'Home', path: '/' },
@@ -34,7 +35,7 @@ export default function Footer() {
           <div>
             <Link to="/" className="flex items-center mb-4" style={{ textDecoration: 'none' }}>
               <div style={{ background: 'white', borderRadius: '10px', padding: '6px 10px', display: 'inline-flex' }}>
-                <img src="/blast-logo.webp" alt="Blast Learning" style={{ height: '34px', width: 'auto' }} />
+                <img src={blastLogo} alt="Blast Learning" style={{ height: '34px', width: 'auto' }} />
               </div>
             </Link>
             <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>

@@ -7,6 +7,7 @@ import {
   LayoutDashboard, MessageSquare, BarChart2,
   Brain, Layers, Zap,
 } from 'lucide-react';
+import blastLogo from '../assets/blast-logo.webp';
 
 interface SubItem {
   label: string;
@@ -125,7 +126,7 @@ export default function Navbar() {
 
             {/* Logo */}
             <Link to="/" className="flex items-center flex-shrink-0" style={{ textDecoration: 'none' }}>
-              <img src="/blast-logo.webp" alt="Blast Learning" style={{ height: '44px', width: 'auto' }} />
+              <img src={blastLogo} alt="Blast Learning" style={{ height: '44px', width: 'auto' }} />
             </Link>
 
             {/* Desktop Nav */}
