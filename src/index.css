@@ -69,6 +69,15 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Hero banner progress bar */
+@keyframes banner-progress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+.banner-progress-bar {
+  animation: banner-progress 4.5s linear forwards;
+}
+
 /* Responsive display helpers */
 .show-sm-blk { display: none; }
 .show-lg-flex { display: none; }
