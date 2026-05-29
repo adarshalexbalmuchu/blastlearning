@@ -24,42 +24,54 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0D1B2A] text-white pb-24 md:pb-0">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-
+    <footer className="footer-root" style={{ background: '#0D1B2A', color: 'white' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '64px 24px 64px' }}>
+        <div
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '40px', marginBottom: '48px' }}
+          className="grid-cols-2-md grid-cols-4-lg"
+        >
           {/* Brand */}
           <div>
             <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-lg flex items-center justify-center bg-[#1AAFCB]">
+              <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: '#1AAFCB' }}>
                 <span className="text-white font-bold text-sm" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>BL</span>
               </div>
               <span className="font-semibold text-base" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>Blast Learning</span>
             </Link>
-            <p className="text-sm leading-relaxed text-gray-400 mb-6" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>
               AI-powered retention platform for Indian students in Classes 8–12.
             </p>
             <div className="flex items-center gap-2 mb-6">
               {socialLinks.map(({ icon: Icon, label }) => (
-                <a key={label} href="#" aria-label={label} className="w-9 h-9 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-colors duration-200">
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-200"
+                  style={{ background: 'rgba(255,255,255,0.1)' }}
+                >
                   <Icon size={15} />
                 </a>
               ))}
             </div>
-            <div className="text-xs text-gray-500 mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>App Coming Soon</div>
+            <div className="text-xs mb-2" style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Inter, sans-serif' }}>App Coming Soon</div>
             <div className="flex gap-2">
-              <div className="px-3 py-1.5 rounded-lg text-xs border border-white/10 text-white/40" style={{ fontFamily: 'Inter, sans-serif' }}>App Store</div>
-              <div className="px-3 py-1.5 rounded-lg text-xs border border-white/10 text-white/40" style={{ fontFamily: 'Inter, sans-serif' }}>Google Play</div>
+              <div className="px-3 py-1.5 rounded-lg text-xs" style={{ border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.25)', fontFamily: 'Inter, sans-serif' }}>App Store</div>
+              <div className="px-3 py-1.5 rounded-lg text-xs" style={{ border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.25)', fontFamily: 'Inter, sans-serif' }}>Google Play</div>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#1AAFCB] mb-5" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>Quick Links</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wider mb-5" style={{ color: '#1AAFCB', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>Quick Links</h4>
             <ul className="flex flex-col gap-2.5">
               {quickLinks.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="text-sm text-gray-400 hover:text-white transition-colors duration-200" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  <Link
+                    to={link.path}
+                    className="text-sm hover:text-white transition-colors duration-200"
+                    style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}
+                  >
                     {link.label}
                   </Link>
                 </li>
@@ -69,11 +81,15 @@ export default function Footer() {
 
           {/* Programs */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#1AAFCB] mb-5" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>Programs</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wider mb-5" style={{ color: '#1AAFCB', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>Programs</h4>
             <ul className="flex flex-col gap-2.5">
               {programs.map((prog) => (
                 <li key={prog}>
-                  <Link to="/programs" className="text-sm text-gray-400 hover:text-white transition-colors duration-200" style={{ fontFamily: 'Inter, sans-serif' }}>
+                  <Link
+                    to="/programs"
+                    className="text-sm hover:text-white transition-colors duration-200"
+                    style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}
+                  >
                     {prog}
                   </Link>
                 </li>
@@ -83,29 +99,55 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#1AAFCB] mb-5" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>Contact</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wider mb-5" style={{ color: '#1AAFCB', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>Contact</h4>
             <ul className="flex flex-col gap-4">
               <li className="flex items-start gap-3">
-                <Mail size={15} className="mt-0.5 flex-shrink-0 text-[#1AAFCB]" />
-                <a href="mailto:hello@blastlearning.in" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'Inter, sans-serif' }}>hello@blastlearning.in</a>
+                <Mail size={15} className="mt-0.5 flex-shrink-0" style={{ color: '#1AAFCB' }} />
+                <a
+                  href="mailto:hello@blastlearning.in"
+                  className="text-sm hover:text-white transition-colors"
+                  style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}
+                >
+                  hello@blastlearning.in
+                </a>
               </li>
               <li className="flex items-start gap-3">
-                <Phone size={15} className="mt-0.5 flex-shrink-0 text-[#1AAFCB]" />
-                <a href="tel:+911234567890" className="text-sm text-gray-400 hover:text-white transition-colors" style={{ fontFamily: 'Inter, sans-serif' }}>+91 123 456 7890</a>
+                <Phone size={15} className="mt-0.5 flex-shrink-0" style={{ color: '#1AAFCB' }} />
+                <a
+                  href="tel:+911234567890"
+                  className="text-sm hover:text-white transition-colors"
+                  style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}
+                >
+                  +91 123 456 7890
+                </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin size={15} className="mt-0.5 flex-shrink-0 text-[#1AAFCB]" />
-                <span className="text-sm text-gray-400" style={{ fontFamily: 'Inter, sans-serif' }}>Bangalore, Karnataka</span>
+                <MapPin size={15} className="mt-0.5 flex-shrink-0" style={{ color: '#1AAFCB' }} />
+                <span className="text-sm" style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>
+                  Bangalore, Karnataka
+                </span>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-500" style={{ fontFamily: 'Inter, sans-serif' }}>© {new Date().getFullYear()} Blast Learning. All rights reserved.</p>
+        <div
+          className="flex items-center justify-between gap-4 row-sm"
+          style={{ paddingTop: '32px', borderTop: '1px solid rgba(255,255,255,0.1)' }}
+        >
+          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Inter, sans-serif' }}>
+            © {new Date().getFullYear()} Blast Learning. All rights reserved.
+          </p>
           <div className="flex items-center gap-6">
             {['Privacy Policy', 'Terms of Service', 'Refund Policy'].map((t) => (
-              <a key={t} href="#" className="text-xs text-gray-500 hover:text-white transition-colors" style={{ fontFamily: 'Inter, sans-serif' }}>{t}</a>
+              <a
+                key={t}
+                href="#"
+                className="text-xs hover:text-white transition-colors"
+                style={{ color: 'rgba(255,255,255,0.3)', fontFamily: 'Inter, sans-serif' }}
+              >
+                {t}
+              </a>
             ))}
           </div>
         </div>

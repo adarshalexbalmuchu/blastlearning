@@ -68,3 +68,26 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(4, 1fr) !important;
   }
 }
+
+/* Responsive display helpers */
+.show-sm-blk { display: none; }
+.show-lg-flex { display: none; }
+.show-lg-blk { display: none; }
+.row-sm { flex-direction: column; }
+.footer-root { padding-bottom: 96px; }
+
+@media (min-width: 640px) {
+  .show-sm-blk { display: block !important; }
+  .row-sm { flex-direction: row; }
+}
+
+@media (min-width: 768px) {
+  .hide-md { display: none !important; }
+  .footer-root { padding-bottom: 0 !important; }
+}
+
+@media (min-width: 1024px) {
+  .show-lg-flex { display: flex !important; }
+  .show-lg-blk { display: block !important; }
+  .hide-lg { display: none !important; }
+}
