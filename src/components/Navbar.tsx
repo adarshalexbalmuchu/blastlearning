@@ -124,19 +124,8 @@ export default function Navbar() {
           <div className="flex items-center justify-between" style={{ height: '64px' }}>
 
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-2.5 flex-shrink-0" style={{ textDecoration: 'none' }}>
-              <div
-                className="w-9 h-9 rounded-lg flex items-center justify-center"
-                style={{ background: '#1AAFCB' }}
-              >
-                <span className="text-white font-bold text-sm" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>BL</span>
-              </div>
-              <span
-                className="show-sm-blk font-semibold text-base"
-                style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}
-              >
-                Blast Learning
-              </span>
+            <Link to="/" className="flex items-center flex-shrink-0" style={{ textDecoration: 'none' }}>
+              <img src="/logo.svg" alt="Blast Learning" style={{ height: '44px', width: 'auto' }} />
             </Link>
 
             {/* Desktop Nav */}
