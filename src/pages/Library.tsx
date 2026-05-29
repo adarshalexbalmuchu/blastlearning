@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, Play, FileText, HelpCircle, Lock, ArrowRight } from 'lucide-react';
 
@@ -28,16 +29,25 @@ const resources: Resource[] = [
   { id: 9, title: 'CBSE Maths Board Paper — 2023 Analysis', subject: 'CBSE', type: 'Notes', description: 'Detailed analysis of the 2023 board exam with pattern breakdown and high-weightage topics.', locked: true },
 ];
 
-const typeColors: Record<string, { bg: string; text: string }> = {
-  Video: { bg: 'rgba(232,53,122,0.08)', text: '#E8357A' },
-  Notes: { bg: 'rgba(26,175,203,0.08)', text: '#1AAFCB' },
-  Quiz: { bg: 'rgba(13,27,42,0.06)', text: '#0D1B2A' },
+const typeStyles: Record<string, { bg: string; text: string }> = {
+  Video: { bg: 'rgba(232,53,122,0.12)', text: '#ff6b9d' },
+  Notes: { bg: 'rgba(6,182,212,0.12)', text: '#06B6D4' },
+  Quiz: { bg: 'rgba(139,92,246,0.12)', text: '#8B5CF6' },
 };
 
 const TypeIcon = ({ type }: { type: Resource['type'] }) => {
-  if (type === 'Video') return <Play size={14} />;
-  if (type === 'Notes') return <FileText size={14} />;
-  return <HelpCircle size={14} />;
+  if (type === 'Video') return <Play size={13} />;
+  if (type === 'Notes') return <FileText size={13} />;
+  return <HelpCircle size={13} />;
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const stagger: Variants = {
+  visible: { transition: { staggerChildren: 0.08 } },
 };
 
 export default function Library() {
@@ -51,126 +61,157 @@ export default function Library() {
   });
 
   return (
-    <div>
-      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#F4F7FB' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-4" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
+    <div style={{ background: '#07111F' }}>
+      {/* Hero */}
+      <section style={{ position: 'relative', overflow: 'hidden', background: '#07111F', paddingTop: '120px', paddingBottom: '80px' }}>
+        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
+        <div style={{ position: 'absolute', bottom: '-5%', left: '-5%', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            style={{ textAlign: 'center', marginBottom: '40px' }}
+          >
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px', background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
               Resource Library
             </span>
-            <h1 className="font-bold mb-6" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', background: 'linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.75) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               Learning Resources
             </h1>
-            <p className="text-lg max-w-2xl mx-auto mb-8" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', maxWidth: '560px', margin: '0 auto 32px' }}>
               Videos, notes, and practice quizzes for CBSE Classes 8-12, SAT Prep, and competitive exams. Some resources are free — subscribe for full access.
             </p>
-            <div className="relative max-w-xl mx-auto">
-              <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2" style={{ color: '#5A6A7A' }} />
+            <div style={{ position: 'relative', maxWidth: '520px', margin: '0 auto' }}>
+              <Search size={17} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.35)' }} />
               <input
                 type="text"
                 placeholder="Search resources, topics, subjects..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-12 pr-4 py-3.5 rounded-xl border border-gray-200 text-sm outline-none focus:border-[#1AAFCB]"
-                style={{ fontFamily: 'Inter, sans-serif', color: '#0D1B2A' }}
+                style={{ width: '100%', paddingLeft: '48px', paddingRight: '16px', paddingTop: '14px', paddingBottom: '14px', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', fontSize: '14px', color: 'rgba(255,255,255,0.85)', fontFamily: 'Inter, sans-serif', outline: 'none', boxSizing: 'border-box' }}
               />
             </div>
-          </div>
-          <div className="flex items-center gap-2 flex-wrap justify-center">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', justifyContent: 'center' }}
+          >
             {filterTabs.map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveFilter(tab)}
-                className="px-5 py-2 rounded-lg text-sm font-medium transition-all duration-200"
                 style={{
-                  background: activeFilter === tab ? '#1AAFCB' : 'white',
-                  color: activeFilter === tab ? 'white' : '#5A6A7A',
-                  boxShadow: '0 2px 8px rgba(13,27,42,0.06)',
+                  padding: '8px 20px',
+                  borderRadius: '9999px',
+                  fontSize: '13px',
+                  fontWeight: 600,
                   fontFamily: 'Inter, sans-serif',
+                  cursor: 'pointer',
+                  border: activeFilter === tab ? 'none' : '1px solid rgba(255,255,255,0.1)',
+                  background: activeFilter === tab ? 'linear-gradient(135deg, #06B6D4, #3B82F6, #8B5CF6)' : 'rgba(255,255,255,0.04)',
+                  color: activeFilter === tab ? 'white' : 'rgba(255,255,255,0.5)',
+                  transition: 'all 0.2s',
                 }}
               >
                 {tab}
               </button>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      <section style={{ paddingTop: '64px', paddingBottom: '64px', background: 'white' }}>
+      {/* Resources Grid */}
+      <section style={{ paddingTop: '64px', paddingBottom: '96px', background: '#0a1628' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           {filtered.length === 0 ? (
-            <div className="text-center py-16">
-              <p className="text-base" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>No resources found for your search.</p>
-            </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              style={{ textAlign: 'center', padding: '80px 0' }}
+            >
+              <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.4)', fontFamily: 'Inter, sans-serif' }}>No resources found for your search.</p>
+            </motion.div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-2-sm grid-cols-3-lg">
+            <motion.div
+              variants={stagger}
+              initial="hidden"
+              animate="visible"
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}
+              className="grid-cols-2-sm grid-cols-3-lg"
+            >
               {filtered.map((resource) => (
-                <div
+                <motion.div
                   key={resource.id}
-                  className={`bg-white rounded-xl p-6 relative ${resource.locked ? 'opacity-75' : ''}`}
-                  style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}
+                  variants={fadeUp}
+                  style={{ position: 'relative', padding: '24px', borderRadius: '20px', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.07)', opacity: resource.locked ? 0.75 : 1, display: 'flex', flexDirection: 'column' }}
                 >
                   {resource.locked && (
-                    <div className="absolute top-4 right-4">
-                      <Lock size={14} style={{ color: '#5A6A7A' }} />
+                    <div style={{ position: 'absolute', top: '16px', right: '16px' }}>
+                      <Lock size={13} style={{ color: 'rgba(255,255,255,0.3)' }} />
                     </div>
                   )}
-                  <div className="flex items-center gap-2 mb-4">
-                    <span
-                      className="flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium"
-                      style={{ background: typeColors[resource.type].bg, color: typeColors[resource.type].text, fontFamily: 'Inter, sans-serif' }}
-                    >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '4px 10px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif', background: typeStyles[resource.type].bg, color: typeStyles[resource.type].text }}>
                       <TypeIcon type={resource.type} />
                       {resource.type}
                     </span>
-                    <span className="px-2.5 py-1 rounded-md text-xs font-medium" style={{ background: '#F4F7FB', color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
+                    <span style={{ padding: '4px 10px', borderRadius: '9999px', fontSize: '11px', fontWeight: 500, background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.4)', fontFamily: 'Inter, sans-serif' }}>
                       {resource.subject}
                     </span>
                     {resource.duration && (
-                      <span className="text-xs" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{resource.duration}</span>
+                      <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)', fontFamily: 'Inter, sans-serif' }}>{resource.duration}</span>
                     )}
                   </div>
-                  <h3 className="text-base font-bold mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{resource.title}</h3>
-                  <p className="text-sm leading-relaxed mb-5" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{resource.description}</p>
+                  <h3 style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)', marginBottom: '10px' }}>{resource.title}</h3>
+                  <p style={{ fontSize: '13px', lineHeight: 1.65, color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif', marginBottom: '20px', flex: 1 }}>{resource.description}</p>
                   {resource.locked ? (
                     <Link
                       to="/programs"
-                      className="flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold border-2 transition-colors hover:border-[#1AAFCB] hover:text-[#1AAFCB]"
-                      style={{ borderColor: '#0D1B2A', color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}
+                      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '10px', borderRadius: '9999px', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.6)' }}
                     >
-                      <Lock size={14} /> Unlock with Subscription
+                      <Lock size={13} /> Unlock with Subscription
                     </Link>
                   ) : (
                     <button
-                      className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg text-white text-sm font-semibold transition-colors hover:bg-[#148fa5]"
-                      style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}
+                      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', width: '100%', padding: '10px', borderRadius: '9999px', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', cursor: 'pointer', background: 'linear-gradient(135deg, rgba(6,182,212,0.15), rgba(139,92,246,0.15))', border: '1px solid rgba(6,182,212,0.25)', color: '#06B6D4' }}
                     >
                       <TypeIcon type={resource.type} /> Access {resource.type}
                     </button>
                   )}
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
         </div>
       </section>
 
-      <section style={{ paddingTop: '64px', paddingBottom: '64px', background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
-          <h2 className="font-bold text-white mb-4" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+      {/* CTA */}
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(6,182,212,0.07), rgba(59,130,246,0.05), rgba(139,92,246,0.07))', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '800px', height: '400px', borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(6,182,212,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{ position: 'relative', maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
+        >
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', background: 'linear-gradient(135deg, #ffffff, rgba(255,255,255,0.8))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
             Unlock 500+ Resources with a Subscription
           </h2>
-          <p className="mb-8" style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'Inter, sans-serif' }}>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
             Get full access to all videos, notes, and quizzes — plus your personalized AI study plan and parent dashboard — starting from ₹999/month.
           </p>
           <Link
             to="/programs"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5]"
-            style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%)', color: 'white' }}
           >
             View Plans & Pricing <ArrowRight size={16} />
           </Link>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

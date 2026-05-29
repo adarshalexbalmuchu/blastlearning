@@ -1,3 +1,4 @@
+import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight, Brain, Target, CheckCircle, Zap, BookOpen, Users, MessageSquare, Shield,
@@ -65,210 +66,308 @@ const todayTasks = [
   { subject: 'Maths', topic: 'Trigonometry — Quiz', time: '20 min', status: 'pending' },
 ];
 
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const stagger: Variants = {
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
 export default function ForStudents() {
   return (
-    <div>
+    <div style={{ background: '#07111F' }}>
       {/* Hero */}
-      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: 'white' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }} className="grid-cols-2-lg">
-            <div style={{ minWidth: 0 }}>
-              <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: '#07111F', paddingTop: '120px', paddingBottom: '100px' }}>
+        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
+        <div style={{ position: 'absolute', bottom: '-5%', left: '-5%', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="visible"
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }}
+            className="grid-cols-2-lg"
+          >
+            <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
+              <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '24px', background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
                 For Students
               </span>
-              <h1 className="font-bold mb-6" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A', letterSpacing: '-0.02em' }}>
-                Learning That{' '}
-                <span style={{ color: '#1AAFCB' }}>Adapts to You</span>
+              <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', lineHeight: 1.15 }}>
+                <span style={{ background: 'linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.85) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                  Learning That{' '}
+                </span>
+                <span style={{ background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                  Adapts to You
+                </span>
               </h1>
-              <p className="text-lg leading-relaxed mb-8 max-w-lg" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', marginBottom: '32px', maxWidth: '480px' }}>
                 Stop studying harder. Start studying smarter. Blast Learning's AI builds a personalized study plan that fits your pace, your style, and your exam schedule.
               </p>
-              <div className="flex flex-wrap gap-4 mb-8">
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginBottom: '28px' }}>
                 <Link
                   to="/programs"
-                  className="flex items-center gap-2 px-6 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5]"
-                  style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', borderRadius: '9999px', fontSize: '14px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%)', color: 'white' }}
                 >
-                  Start Free Trial <ArrowRight size={16} />
+                  Start Free Trial <ArrowRight size={15} />
                 </Link>
                 <Link
                   to="/library"
-                  className="flex items-center gap-2 px-6 py-3.5 rounded-lg font-semibold text-sm border-2 transition-colors hover:border-[#1AAFCB] hover:text-[#1AAFCB]"
-                  style={{ borderColor: '#0D1B2A', color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', borderRadius: '9999px', fontSize: '14px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.85)' }}
                 >
                   Explore Library
                 </Link>
               </div>
-              <div className="flex flex-wrap gap-4">
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
                 {['Free 7-day trial', 'No credit card needed', 'Works alongside coaching'].map((t) => (
-                  <div key={t} className="flex items-center gap-1.5 text-sm" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
-                    <CheckCircle size={14} style={{ color: '#1AAFCB' }} /> {t}
+                  <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>
+                    <CheckCircle size={13} style={{ color: '#06B6D4', flexShrink: 0 }} /> {t}
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
+
             {/* Student Dashboard Mockup */}
-            <div style={{ minWidth: 0, width: '100%', boxSizing: 'border-box' }}>
-              <div className="bg-white rounded-2xl overflow-hidden" style={{ boxShadow: '0 8px 40px rgba(13,27,42,0.12)' }}>
-                <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+            <motion.div variants={fadeUp} style={{ minWidth: 0, width: '100%' }}>
+              <div style={{ background: 'rgba(7,17,31,0.85)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '24px', overflow: 'hidden' }}>
+                <div style={{ padding: '16px 24px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <div>
-                    <p className="text-xs" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>Today's Learning</p>
-                    <p className="text-base font-bold" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>Arjun's Study Plan</p>
+                    <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', fontFamily: 'Inter, sans-serif' }}>Today's Learning</p>
+                    <p style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)' }}>Arjun's Study Plan</p>
                   </div>
-                  <div className="text-xs font-semibold px-3 py-1.5 rounded-full text-white" style={{ background: '#E8357A', fontFamily: 'Inter, sans-serif' }}>🔥 14-Day Streak</div>
+                  <div style={{ fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '9999px', background: 'linear-gradient(135deg, rgba(232,53,122,0.25), rgba(232,53,122,0.1))', color: '#ff6b9d', border: '1px solid rgba(232,53,122,0.3)', fontFamily: 'Inter, sans-serif' }}>
+                    🔥 14-Day Streak
+                  </div>
                 </div>
-                <div className="p-6">
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '20px' }}>
+                <div style={{ padding: '24px' }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '24px' }}>
                     {[
                       { label: 'Topics Today', val: '4' },
                       { label: 'Study Time', val: '1h 30m' },
                       { label: 'Score', val: '87%' },
                     ].map((s) => (
-                      <div key={s.label} className="rounded-xl p-3 text-center" style={{ background: '#F4F7FB' }}>
-                        <p className="text-lg font-bold mb-0.5" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#1AAFCB' }}>{s.val}</p>
-                        <p className="text-xs" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{s.label}</p>
+                      <div key={s.label} style={{ borderRadius: '12px', padding: '12px', textAlign: 'center', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                        <p style={{ fontSize: '18px', fontWeight: 800, marginBottom: '4px', fontFamily: 'Space Grotesk, sans-serif', background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{s.val}</p>
+                        <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontFamily: 'Inter, sans-serif' }}>{s.label}</p>
                       </div>
                     ))}
                   </div>
-                  <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>Today's Tasks</p>
-                  <div className="flex flex-col gap-2">
+                  <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgba(255,255,255,0.35)', fontFamily: 'Inter, sans-serif', marginBottom: '10px' }}>Today's Tasks</p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {todayTasks.map((task) => (
-                      <div key={task.topic} className="flex items-center gap-3 p-3 rounded-lg" style={{ background: task.status === 'active' ? 'rgba(26,175,203,0.06)' : '#F4F7FB' }}>
-                        <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: task.status === 'done' ? '#1AAFCB' : task.status === 'active' ? 'rgba(26,175,203,0.2)' : 'rgba(0,0,0,0.08)' }}>
-                          {task.status === 'done' && <CheckCircle size={12} className="text-white" />}
-                          {task.status === 'active' && <div className="w-2 h-2 rounded-full" style={{ background: '#1AAFCB' }} />}
+                      <div key={task.topic} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', borderRadius: '10px', background: task.status === 'active' ? 'rgba(6,182,212,0.08)' : 'rgba(255,255,255,0.03)', border: task.status === 'active' ? '1px solid rgba(6,182,212,0.2)' : '1px solid rgba(255,255,255,0.05)' }}>
+                        <div style={{ width: '20px', height: '20px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: task.status === 'done' ? 'linear-gradient(135deg, #06B6D4, #8B5CF6)' : task.status === 'active' ? 'rgba(6,182,212,0.2)' : 'rgba(255,255,255,0.06)' }}>
+                          {task.status === 'done' && <CheckCircle size={12} style={{ color: 'white' }} />}
+                          {task.status === 'active' && <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#06B6D4' }} />}
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-xs font-medium truncate" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>{task.topic}</p>
-                          <p className="text-xs" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{task.subject} · {task.time}</p>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <p style={{ fontSize: '12px', fontWeight: 500, color: 'rgba(255,255,255,0.8)', fontFamily: 'Inter, sans-serif', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{task.topic}</p>
+                          <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', fontFamily: 'Inter, sans-serif' }}>{task.subject} · {task.time}</p>
                         </div>
                       </div>
                     ))}
                   </div>
-                  {/* Achievements */}
-                  <div className="mt-5 pt-4 border-t border-gray-100">
-                    <p className="text-xs font-semibold uppercase tracking-wide mb-3" style={{ color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>Recent Achievements</p>
-                    <div className="flex gap-2">
-                      {[{ icon: Award, label: '7-Day Streak', color: '#E8357A' }, { icon: Zap, label: 'Speed Learner', color: '#1AAFCB' }, { icon: Target, label: 'Math Master', color: '#0D1B2A' }].map(({ icon: Icon, label, color }) => (
-                        <div key={label} className="flex-1 flex flex-col items-center gap-1 py-2 rounded-lg" style={{ background: '#F4F7FB' }}>
-                          <Icon size={14} style={{ color }} />
-                          <p className="text-xs text-center leading-tight" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{label}</p>
+                  <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                    <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgba(255,255,255,0.35)', fontFamily: 'Inter, sans-serif', marginBottom: '10px' }}>Recent Achievements</p>
+                    <div style={{ display: 'flex', gap: '8px' }}>
+                      {[{ icon: Award, label: '7-Day Streak', color: '#ff6b9d' }, { icon: Zap, label: 'Speed Learner', color: '#06B6D4' }, { icon: Target, label: 'Math Master', color: '#8B5CF6' }].map(({ icon: Icon, label, color }) => (
+                        <div key={label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', padding: '10px 6px', borderRadius: '10px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
+                          <Icon size={13} style={{ color }} />
+                          <p style={{ fontSize: '10px', textAlign: 'center', lineHeight: 1.3, color: 'rgba(255,255,255,0.4)', fontFamily: 'Inter, sans-serif' }}>{label}</p>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* Benefit Cards */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F4F7FB' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#0a1628' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-2-sm grid-cols-4-lg">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
+            className="grid-cols-2-sm grid-cols-4-lg"
+          >
             {benefits.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-xl p-6" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
-                <div className="w-10 h-10 rounded-[10px] flex items-center justify-center mb-4" style={{ background: '#1AAFCB' }}>
-                  <Icon size={20} className="text-white" />
+              <motion.div
+                key={title}
+                variants={fadeUp}
+                style={{ padding: '24px', borderRadius: '20px', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.07)' }}
+              >
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', background: 'linear-gradient(135deg, rgba(6,182,212,0.2), rgba(139,92,246,0.2))', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
+                  <Icon size={20} />
                 </div>
-                <h3 className="font-bold text-base mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
-              </div>
+                <h3 style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)', marginBottom: '8px' }}>{title}</h3>
+                <p style={{ fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* AI Tools */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'white' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
-            <h2 className="font-bold" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ textAlign: 'center', marginBottom: '56px' }}
+          >
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)' }}>
               AI-Powered Study Tools Built for You
             </h2>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-2-md grid-cols-3-lg">
+          </motion.div>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
+            className="grid-cols-2-md grid-cols-3-lg"
+          >
             {aiTools.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-xl p-6" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
-                <div className="w-10 h-10 rounded-[10px] flex items-center justify-center mb-4" style={{ background: '#1AAFCB' }}>
-                  <Icon size={20} className="text-white" />
+              <motion.div
+                key={title}
+                variants={fadeUp}
+                style={{ padding: '24px', borderRadius: '20px', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.07)' }}
+              >
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', background: 'linear-gradient(135deg, rgba(6,182,212,0.2), rgba(139,92,246,0.2))', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
+                  <Icon size={20} />
                 </div>
-                <h3 className="font-bold text-base mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
-              </div>
+                <h3 style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)', marginBottom: '8px' }}>{title}</h3>
+                <p style={{ fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Collaborative Learning */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F4F7FB' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#0a1628' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
-            <h2 className="font-bold mb-4" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ textAlign: 'center', marginBottom: '56px' }}
+          >
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)', marginBottom: '16px' }}>
               Learn Better, Together
             </h2>
-            <p className="text-base max-w-2xl mx-auto" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
+            <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.55)', fontFamily: 'Inter, sans-serif', maxWidth: '560px', margin: '0 auto' }}>
               Join a community of thousands of Indian students who are all working toward the same goal. Studying doesn't have to be a lonely grind.
             </p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '48px' }} className="grid-cols-2-md grid-cols-4-lg">
+          </motion.div>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '40px' }}
+            className="grid-cols-2-md grid-cols-4-lg"
+          >
             {collaborativeFeatures.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white rounded-xl p-6" style={{ boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
-                <div className="w-10 h-10 rounded-[10px] flex items-center justify-center mb-4" style={{ background: '#1AAFCB' }}>
-                  <Icon size={20} className="text-white" />
+              <motion.div
+                key={title}
+                variants={fadeUp}
+                style={{ padding: '24px', borderRadius: '20px', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.07)' }}
+              >
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', background: 'linear-gradient(135deg, rgba(6,182,212,0.2), rgba(139,92,246,0.2))', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
+                  <Icon size={20} />
                 </div>
-                <h3 className="font-bold text-sm mb-2" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>{title}</h3>
-                <p className="text-xs leading-relaxed" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
-              </div>
+                <h3 style={{ fontSize: '14px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)', marginBottom: '8px' }}>{title}</h3>
+                <p style={{ fontSize: '13px', lineHeight: 1.65, color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
+              </motion.div>
             ))}
-          </div>
-          {/* Community stats */}
-          <div className="bg-white rounded-2xl p-8" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', boxShadow: '0 2px 16px rgba(13,27,42,0.08)' }}>
+          </motion.div>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', padding: '32px', borderRadius: '20px', background: 'rgba(6,182,212,0.05)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(6,182,212,0.15)' }}
+          >
             {communityStats.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="text-3xl font-bold mb-1" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#1AAFCB' }}>{s.value}</div>
-                <div className="text-sm" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{s.label}</div>
+              <div key={s.label} style={{ textAlign: 'center' }}>
+                <div style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '6px', fontFamily: 'Space Grotesk, sans-serif', background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{s.value}</div>
+                <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>{s.label}</div>
               </div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'white' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <h2 className="font-bold text-center mb-12" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)', textAlign: 'center', marginBottom: '48px' }}
+          >
             What Students Are Saying
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-3-md">
-            <TestimonialCard name="Ananya Krishnan" role="Class 10, Bangalore" content="I used to forget everything after coaching. Now I actually remember what I studied a month ago. My maths score jumped from 65 to 89 in one term." rating={5} before="65%" after="89%" metric="Math Score" improvement="24%" />
-            <TestimonialCard name="Rahul Mehta" role="Class 12, Mumbai" content="The AI study planner is incredible. It knows exactly which topics I'm weak in and schedules revision before I forget. My Physics retention is now consistently above 80%." rating={5} before="52%" after="81%" metric="Physics Score" improvement="29%" />
-            <TestimonialCard name="Kavitha Suresh" role="Class 9, Hyderabad" content="English was my weakest subject. After two months on Blast Learning, I got my first A in a grammar test. The structured approach really works for me." rating={5} before="58%" after="84%" metric="English Score" improvement="26%" />
-          </div>
+          </motion.h2>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
+            className="grid-cols-3-md"
+          >
+            <motion.div variants={fadeUp}>
+              <TestimonialCard name="Ananya Krishnan" role="Class 10, Bangalore" content="I used to forget everything after coaching. Now I actually remember what I studied a month ago. My maths score jumped from 65 to 89 in one term." rating={5} before="65%" after="89%" metric="Math Score" improvement="24%" />
+            </motion.div>
+            <motion.div variants={fadeUp}>
+              <TestimonialCard name="Rahul Mehta" role="Class 12, Mumbai" content="The AI study planner is incredible. It knows exactly which topics I'm weak in and schedules revision before I forget. My Physics retention is now consistently above 80%." rating={5} before="52%" after="81%" metric="Physics Score" improvement="29%" />
+            </motion.div>
+            <motion.div variants={fadeUp}>
+              <TestimonialCard name="Kavitha Suresh" role="Class 9, Hyderabad" content="English was my weakest subject. After two months on Blast Learning, I got my first A in a grammar test. The structured approach really works for me." rating={5} before="58%" after="84%" metric="English Score" improvement="26%" />
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'linear-gradient(135deg, #0D1B2A 0%, #0a2a3d 100%)' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
-          <h2 className="font-bold text-white mb-6" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(6,182,212,0.07), rgba(59,130,246,0.05), rgba(139,92,246,0.07))', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '800px', height: '400px', borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(6,182,212,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{ position: 'relative', maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
+        >
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', background: 'linear-gradient(135deg, #ffffff, rgba(255,255,255,0.8))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
             Ready to Actually Remember What You Study?
           </h2>
-          <p className="text-base mb-10" style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'Inter, sans-serif' }}>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
             Start your 7-day free trial today. No credit card. No pressure. Just smarter studying.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/programs" className="flex items-center gap-2 px-8 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5]" style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
+            <Link to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%)', color: 'white' }}>
               Start Free Trial <ArrowRight size={16} />
             </Link>
-            <Link to="/library" className="flex items-center gap-2 px-8 py-3.5 rounded-lg font-semibold text-sm border-2 border-white/30 text-white hover:border-white/60 transition-colors" style={{ fontFamily: 'Inter, sans-serif' }}>
+            <Link to="/library" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.85)' }}>
               Browse the Library
             </Link>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );

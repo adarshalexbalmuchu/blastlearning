@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -8,9 +8,16 @@
   --color-magenta: #E8357A;
   --color-surface: #F4F7FB;
   --color-text-secondary: #5A6A7A;
+  --color-primary: #06B6D4;
+  --color-secondary: #8B5CF6;
+  --color-accent: #3B82F6;
+  --color-success: #22C55E;
+  --color-dark: #07111F;
+  --color-bg: #F8FAFC;
 
   --font-jakarta: 'Plus Jakarta Sans', sans-serif;
   --font-inter: 'Inter', sans-serif;
+  --font-grotesk: 'Space Grotesk', sans-serif;
 }
 
 * {
@@ -22,20 +29,103 @@
 body {
   font-family: 'Inter', sans-serif;
   color: #0D1B2A;
-  background: #ffffff;
+  background: #F8FAFC;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 #root {
   min-height: 100vh;
 }
 
+/* ── Glass morphism ─────────────────────────────────────────────────────────── */
+.glass {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.glass-dark {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(7, 17, 31, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-light {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* ── Glow utilities ─────────────────────────────────────────────────────────── */
+.glow-cyan {
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.3);
+}
+
+.glow-violet {
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.3);
+}
+
+/* ── Gradient text ──────────────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Aurora background ──────────────────────────────────────────────────────── */
+.aurora-bg {
+  background: linear-gradient(135deg, #07111F 0%, #0c1a2e 60%, #130a2e 100%);
+  animation: aurora 10s ease infinite alternate;
+}
+
+/* ── Keyframes ──────────────────────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes aurora {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(20px, -20px) scale(1.05); }
+  66%  { transform: translate(-10px, 15px) scale(0.97); }
+}
+
+@keyframes banner-progress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+.banner-progress-bar {
+  animation: banner-progress 4.5s linear forwards;
+}
+
+/* ── Bento grid ─────────────────────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+  .bento-span-2 {
+    grid-column: span 2 !important;
+  }
+}
+
+/* ── Responsive grid helpers ────────────────────────────────────────────────── */
 @media (min-width: 640px) {
   .grid-cols-2-sm {
     grid-template-columns: repeat(2, 1fr) !important;
@@ -69,21 +159,12 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Hero banner progress bar */
-@keyframes banner-progress {
-  from { width: 0%; }
-  to { width: 100%; }
-}
-.banner-progress-bar {
-  animation: banner-progress 4.5s linear forwards;
-}
-
-/* Responsive display helpers */
-.show-sm-blk { display: none; }
+/* ── Responsive display helpers ─────────────────────────────────────────────── */
+.show-sm-blk  { display: none; }
 .show-lg-flex { display: none; }
-.show-lg-blk { display: none; }
-.row-sm { flex-direction: column; }
-.footer-root { padding-bottom: 96px; }
+.show-lg-blk  { display: none; }
+.row-sm       { flex-direction: column; }
+.footer-root  { padding-bottom: 96px; }
 
 @media (min-width: 640px) {
   .show-sm-blk { display: block !important; }
@@ -97,6 +178,6 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 1024px) {
   .show-lg-flex { display: flex !important; }
-  .show-lg-blk { display: block !important; }
-  .hide-lg { display: none !important; }
+  .show-lg-blk  { display: block !important; }
+  .hide-lg      { display: none !important; }
 }

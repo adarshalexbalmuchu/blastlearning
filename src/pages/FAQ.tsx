@@ -1,3 +1,4 @@
+import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import FAQItem from '../components/FAQItem';
@@ -115,62 +116,116 @@ const faqs: FAQEntry[] = [
 
 const categories: Category[] = ['General', 'Programs', 'Parents', 'Students'];
 
+const categoryColors: Record<Category, string> = {
+  General: '#06B6D4',
+  Programs: '#8B5CF6',
+  Parents: '#3B82F6',
+  Students: '#22C55E',
+};
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const stagger: Variants = {
+  visible: { transition: { staggerChildren: 0.08 } },
+};
+
 export default function FAQ() {
   return (
-    <div>
-      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#F4F7FB' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
-          <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold mb-5" style={{ background: 'rgba(26,175,203,0.1)', color: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
-            FAQ
-          </span>
-          <h1 className="font-bold mb-6" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
-            Frequently Asked Questions
-          </h1>
-          <p className="text-lg" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
-            Everything you need to know about Blast Learning. Can't find your answer? Contact our team.
-          </p>
+    <div style={{ background: '#07111F' }}>
+      {/* Hero */}
+      <section style={{ position: 'relative', overflow: 'hidden', background: '#07111F', paddingTop: '120px', paddingBottom: '80px' }}>
+        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
+        <div style={{ position: 'absolute', bottom: '-5%', left: '-5%', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
+        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px', background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
+              FAQ
+            </span>
+            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', background: 'linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.75) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              Frequently Asked Questions
+            </h1>
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif' }}>
+              Everything you need to know about Blast Learning. Can't find your answer? Contact our team.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'white' }}>
+      {/* FAQ Content */}
+      <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#0a1628' }}>
         <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
-          {categories.map((category) => (
-            <div key={category} className="mb-14 last:mb-0">
-              <h2 className="text-xl font-bold mb-6 flex items-center gap-3" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
-                <span className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-sm font-bold" style={{ background: '#1AAFCB' }}>
+          {categories.map((category, ci) => (
+            <motion.div
+              key={category}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              style={{ marginBottom: ci < categories.length - 1 ? '56px' : 0 }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+                <span style={{ width: '32px', height: '32px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 700, color: 'white', background: `linear-gradient(135deg, ${categoryColors[category]}, rgba(0,0,0,0.2))`, fontFamily: 'Inter, sans-serif', flexShrink: 0 }}>
                   {category.charAt(0)}
                 </span>
-                {category}
-              </h2>
-              <div className="flex flex-col gap-3">
+                <h2 style={{ fontSize: '20px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)' }}>
+                  {category}
+                </h2>
+              </div>
+              <motion.div
+                variants={stagger}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}
+              >
                 {faqs
                   .filter((f) => f.category === category)
                   .map((faq) => (
-                    <FAQItem key={faq.question} question={faq.question} answer={faq.answer} />
+                    <motion.div key={faq.question} variants={fadeUp}>
+                      <FAQItem question={faq.question} answer={faq.answer} />
+                    </motion.div>
                   ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           ))}
         </div>
       </section>
 
-      <section style={{ paddingTop: '64px', paddingBottom: '64px', background: '#F4F7FB' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
-          <h2 className="font-bold mb-4" style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#0D1B2A' }}>
+      {/* Still Have Questions */}
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(6,182,212,0.07), rgba(59,130,246,0.05), rgba(139,92,246,0.07))', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '700px', height: '350px', borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(6,182,212,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{ position: 'relative', maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
+        >
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', background: 'linear-gradient(135deg, #ffffff, rgba(255,255,255,0.8))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
             Still Have Questions?
           </h2>
-          <p className="mb-8" style={{ color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
             Our team is available Monday to Saturday, 9 AM to 9 PM. We typically respond within 2 hours.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact" className="flex items-center gap-2 px-8 py-3.5 rounded-lg text-white font-semibold text-sm transition-colors hover:bg-[#148fa5]" style={{ background: '#1AAFCB', fontFamily: 'Inter, sans-serif' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
+            <Link
+              to="/contact"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%)', color: 'white' }}
+            >
               Contact Us <ArrowRight size={16} />
             </Link>
-            <a href="mailto:hello@blastlearning.in" className="flex items-center gap-2 px-8 py-3.5 rounded-lg font-semibold text-sm border-2 transition-colors hover:border-[#1AAFCB] hover:text-[#1AAFCB]" style={{ borderColor: '#0D1B2A', color: '#0D1B2A', fontFamily: 'Inter, sans-serif' }}>
+            <a
+              href="mailto:hello@blastlearning.in"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.85)' }}
+            >
               Email hello@blastlearning.in
             </a>
           </div>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
