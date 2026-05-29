@@ -4,9 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Security Headers -->
+    <!-- Security Headers (set X-Frame-Options + frame-ancestors at server/host level) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta http-equiv="Content-Security-Policy"
@@ -16,7 +15,6 @@
                font-src https://fonts.gstatic.com;
                img-src 'self' data: https:;
                connect-src 'self';
-               frame-ancestors 'none';
                base-uri 'self';
                form-action 'self';" />
 
