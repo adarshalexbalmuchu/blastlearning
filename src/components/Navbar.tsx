@@ -125,7 +125,7 @@ export default function Navbar() {
 
             {/* Logo */}
             <Link to="/" className="flex items-center flex-shrink-0" style={{ textDecoration: 'none' }}>
-              <img src="/logo.svg" alt="Blast Learning" style={{ height: '44px', width: 'auto' }} />
+              <img src="/blast-logo.webp" alt="Blast Learning" style={{ height: '44px', width: 'auto' }} />
             </Link>
 
             {/* Desktop Nav */}

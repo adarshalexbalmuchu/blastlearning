@@ -32,9 +32,10 @@ export default function Footer() {
         >
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <img src="/logo-icon.svg" alt="BL" style={{ height: '40px', width: 'auto' }} />
-              <span className="font-semibold text-base" style={{ fontFamily: 'Plus Jakarta Sans, sans-serif' }}>Blast Learning</span>
+            <Link to="/" className="flex items-center mb-4" style={{ textDecoration: 'none' }}>
+              <div style={{ background: 'white', borderRadius: '10px', padding: '6px 10px', display: 'inline-flex' }}>
+                <img src="/blast-logo.webp" alt="Blast Learning" style={{ height: '34px', width: 'auto' }} />
+              </div>
             </Link>
             <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>
               AI-powered retention platform for Indian students in Classes 8–12.
