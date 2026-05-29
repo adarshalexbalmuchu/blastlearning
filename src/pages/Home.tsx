@@ -436,52 +436,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* ── Banner controls ── */}
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', marginTop: '48px' }}>
-            {/* Progress track */}
-            <div style={{ width: '220px', height: '3px', background: '#E5E7EB', borderRadius: '999px', overflow: 'hidden' }}>
-              <div
-                key={progressKey}
-                className="banner-progress-bar"
-                style={{ height: '100%', background: '#1AAFCB', borderRadius: '999px' }}
-              />
-            </div>
-
-            {/* Dot indicators */}
-            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-              {banners.map((b, i) => (
-                <button
-                  key={i}
-                  onClick={() => handleDotClick(i)}
-                  title={b.badge}
-                  style={{
-                    width: activeBanner === i ? '28px' : '8px',
-                    height: '8px',
-                    borderRadius: '4px',
-                    background: activeBanner === i ? '#1AAFCB' : '#D1D5DB',
-                    border: 'none',
-                    cursor: 'pointer',
-                    padding: 0,
-                    transition: 'all 0.35s ease',
-                  }}
-                />
-              ))}
-            </div>
-
-            {/* Banner label */}
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={`label-${activeBanner}`}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25 }}
-                style={{ fontSize: '12px', color: '#5A6A7A', fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em' }}
-              >
-                {activeBanner + 1} / {banners.length} — {banner.badge}
-              </motion.p>
-            </AnimatePresence>
-          </div>
         </div>
       </section>
 
