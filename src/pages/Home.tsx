@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   ArrowRight, Play, Brain, Target, BookOpen, Users, Globe, BarChart3,
   ChevronDown, CheckCircle, AlertCircle, TrendingUp, Zap, Star,
@@ -8,7 +10,17 @@ import {
 import TestimonialCard from '../components/TestimonialCard';
 import DashboardMockup from '../components/DashboardMockup';
 import FeatureCard from '../components/FeatureCard';
-import { useState, useEffect, useRef } from 'react';
+import {
+  HeroIllustration,
+  ForgettingCurveIllustration,
+  HowItWorksStep1,
+  HowItWorksStep2,
+  HowItWorksStep3,
+  ScoreTransformIllustration,
+} from '../components/illustrations';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
 
@@ -18,18 +30,21 @@ const howItWorks = [
     title: 'Record or Upload Content',
     desc: 'Upload your class notes, recordings, or textbook chapters. Our AI processes and structures everything for optimal learning.',
     icon: BookOpen,
+    Illustration: HowItWorksStep1,
   },
   {
     num: '02',
     title: 'AI Creates Your Study Plan',
     desc: 'Our Metacognition Engine analyzes your learning patterns and creates a personalized study schedule using spaced repetition science.',
     icon: Brain,
+    Illustration: HowItWorksStep2,
   },
   {
     num: '03',
     title: 'Learn, Practice, Master',
     desc: 'Follow your adaptive plan, practice with smart quizzes, and track your retention scores. Master every concept before your exams.',
     icon: Target,
+    Illustration: HowItWorksStep3,
   },
 ];
 
@@ -37,15 +52,15 @@ const features = [
   { icon: Brain, title: 'Metacognition Engine', desc: 'Our proprietary AI maps how your child actually learns and adapts the study plan in real-time for maximum retention.' },
   { icon: Target, title: 'Focus Trainer', desc: 'Guided study sessions with focus techniques that reduce distraction and build lasting concentration habits.' },
   { icon: BookOpen, title: 'Class Recording Integration', desc: 'Connect any coaching or school recording. Our AI converts lectures into interactive revision material instantly.' },
-  { icon: BarChart3, title: 'Parent Dashboard', desc: 'Real-time visibility into your child\'s study habits, retention scores, and academic progress — all in one place.' },
+  { icon: BarChart3, title: 'Parent Dashboard', desc: "Real-time visibility into your child's study habits, retention scores, and academic progress — all in one place." },
   { icon: Users, title: 'Tutor Mom Support', desc: 'Dedicated human mentors who check in weekly, answer doubts, and keep students accountable and motivated.' },
   { icon: Globe, title: 'Multilingual Support', desc: 'Learn in your comfort language — English, Hindi, Kannada, Tamil, Telugu, and more regional languages supported.' },
 ];
 
 const parentConcerns = [
   { concern: 'My child forgets everything within days of studying', solution: 'Spaced repetition schedules content exactly when your child needs to review for maximum retention' },
-  { concern: 'Coaching fees keep increasing but results don\'t improve', solution: 'Our AI ensures every rupee spent on coaching becomes long-term knowledge, not forgotten lessons' },
-  { concern: 'I can\'t tell if my child is actually studying', solution: 'Live dashboard shows study time, topics covered, quiz scores, and retention percentage daily' },
+  { concern: "Coaching fees keep increasing but results don't improve", solution: 'Our AI ensures every rupee spent on coaching becomes long-term knowledge, not forgotten lessons' },
+  { concern: "I can't tell if my child is actually studying", solution: 'Live dashboard shows study time, topics covered, quiz scores, and retention percentage daily' },
   { concern: 'My child is stressed and losing confidence', solution: 'Personalized pace and progress celebrations build confidence as students see real improvement' },
   { concern: 'Different coaching teachers explain things differently', solution: 'AI synthesizes all sources into one consistent, personalised learning path with no contradictions' },
 ];
@@ -53,8 +68,8 @@ const parentConcerns = [
 const homeFaqs = [
   { q: 'What is Blast Learning and how does it work?', a: 'Blast Learning is an AI-powered learning retention platform. Students upload their coaching notes or recordings, and our Metacognition Engine creates a spaced repetition study plan that helps them retain 90% of what they learn — compared to the 10% most students retain without structured revision.' },
   { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Plan is specifically designed for Classes 8-10, with full syllabus coverage, NCERT alignment, and board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
-  { q: 'How is Blast Learning different from other coaching apps?', a: 'Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn\'t just teach — it tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams.' },
-  { q: 'Can I try Blast Learning before paying?', a: 'Yes! We offer a 7-day free trial with full access to all features. No credit card required. You\'ll see real retention data for your child within the first week.' },
+  { q: 'How is Blast Learning different from other coaching apps?', a: "Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn't just teach — it tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams." },
+  { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 7-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first week." },
 ];
 
 // ─── Banner definitions ────────────────────────────────────────────────────────
@@ -107,7 +122,7 @@ const banners: BannerDef[] = [
     BadgeIcon: TrendingUp,
     headline: '91% of Students',
     highlight: 'Improve Their Grades',
-    subtext: 'Science-backed spaced repetition and active recall techniques trusted by top students worldwide. Join 4,999+ Indian families who\'ve transformed academic performance in just 30 days.',
+    subtext: "Science-backed spaced repetition and active recall techniques trusted by top students worldwide. Join 4,999+ Indian families who've transformed academic performance in just 30 days.",
     primaryCta: { label: 'Start Free Trial', to: '/programs' },
     secondaryCta: 'See Success Stories',
     trust: ['Results in 30 days', '91% improvement rate', '4.0/5 parent rating'],
@@ -315,7 +330,7 @@ function HeroVisual({ index }: { index: number }) {
           </div>
           <div style={{ textAlign: 'right' }}>
             <div style={{ display: 'flex', gap: '2px', justifyContent: 'flex-end', marginBottom: '4px' }}>
-              {[1,2,3,4,5].map((s) => <Star key={s} size={11} fill={s <= 4 ? '#06B6D4' : 'none'} style={{ color: '#06B6D4' }} />)}
+              {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={11} fill={s <= 4 ? '#06B6D4' : 'none'} style={{ color: '#06B6D4' }} />)}
             </div>
             <p style={{ fontSize: '10px', color: 'rgba(255,255,255,0.35)', fontFamily: 'Inter, sans-serif' }}>4.0/5 parent rating</p>
           </div>
@@ -325,36 +340,34 @@ function HeroVisual({ index }: { index: number }) {
   );
 }
 
-// ─── Animated stat counter ─────────────────────────────────────────────────────
+// ─── GSAP-powered stat counter ─────────────────────────────────────────────────
 function StatCounter({ num, displayFn, label }: { num: number; displayFn: (v: number) => string; label: string }) {
   const [value, setValue] = useState(0);
-  const [started, setStarted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const node = ref.current;
     if (!node) return;
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setStarted(true); obs.disconnect(); } },
-      { threshold: 0.5 }
-    );
-    obs.observe(node);
-    return () => obs.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!started) return;
-    const startTs = performance.now();
-    let rafId: number;
-    const tick = (now: number) => {
-      const t = Math.min((now - startTs) / 1800, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
-      setValue(Math.round(eased * num));
-      if (t < 1) { rafId = requestAnimationFrame(tick); }
+    const counterObj = { val: 0 };
+    let tween: gsap.core.Tween | null = null;
+    const trigger = ScrollTrigger.create({
+      trigger: node,
+      start: 'top 82%',
+      once: true,
+      onEnter: () => {
+        tween = gsap.to(counterObj, {
+          val: num,
+          duration: 1.8,
+          ease: 'power2.out',
+          onUpdate: () => setValue(Math.round(counterObj.val)),
+        });
+      },
+    });
+    return () => {
+      trigger.kill();
+      tween?.kill();
     };
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
-  }, [started, num]);
+  }, [num]);
 
   return (
     <div ref={ref} className="text-center">
@@ -375,7 +388,7 @@ function StatCounter({ num, displayFn, label }: { num: number; displayFn: (v: nu
   );
 }
 
-// ─── Scroll-reveal wrapper ──────────────────────────────────────────────────────
+// ─── Scroll-reveal variants ─────────────────────────────────────────────────────
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -419,6 +432,11 @@ export default function Home() {
         <div style={{ position: 'absolute', top: '-200px', left: '-100px', width: '600px', height: '600px', borderRadius: '50%', background: 'rgba(6,182,212,0.12)', filter: 'blur(80px)', willChange: 'transform', pointerEvents: 'none', animation: 'blob-float 9s ease-in-out infinite' }} />
         <div style={{ position: 'absolute', top: '100px', right: '-150px', width: '500px', height: '500px', borderRadius: '50%', background: 'rgba(139,92,246,0.1)', filter: 'blur(80px)', willChange: 'transform', pointerEvents: 'none', animation: 'blob-float 11s ease-in-out infinite reverse' }} />
         <div style={{ position: 'absolute', bottom: '-80px', left: '35%', width: '400px', height: '400px', borderRadius: '50%', background: 'rgba(59,130,246,0.08)', filter: 'blur(80px)', willChange: 'transform', pointerEvents: 'none', animation: 'blob-float 13s ease-in-out infinite' }} />
+
+        {/* Ambient hero illustration */}
+        <div style={{ position: 'absolute', bottom: 0, right: 0, width: '480px', height: '400px', opacity: 0.04, pointerEvents: 'none', zIndex: 0 }}>
+          <HeroIllustration width="100%" height="100%" />
+        </div>
 
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
           <div
@@ -487,7 +505,7 @@ export default function Home() {
               </AnimatePresence>
             </div>
 
-            {/* RIGHT: glass visual card with float */}
+            {/* RIGHT: glass visual card */}
             <div style={{ minWidth: 0, width: '100%' }}>
               <AnimatePresence mode="wait">
                 <motion.div
@@ -528,7 +546,7 @@ export default function Home() {
               />
             </div>
 
-            {/* Animated pill indicators */}
+            {/* Pill indicators */}
             <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
               {banners.map((b, i) => (
                 <motion.button
@@ -550,7 +568,6 @@ export default function Home() {
 
       {/* ── Stats Section ── */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#07111F', position: 'relative' }}>
-        {/* Dot grid texture */}
         <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(6,182,212,0.15) 1px, transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none', opacity: 0.4 }} />
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
           <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontFamily: 'Inter, sans-serif', marginBottom: '52px', fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 600 }}>
@@ -569,6 +586,70 @@ export default function Home() {
               content="Blast Learning transformed how my daughter studies. Her board exam preparation used to be chaotic, but now she has a clear plan and her retention scores are remarkable. I can see her progress every day on the parent dashboard."
               rating={5}
             />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Science of Retention ── */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#07111F', position: 'relative', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <div
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }}
+            className="grid-cols-2-lg"
+          >
+            {/* Illustration */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              style={{ minWidth: 0 }}
+            >
+              <div style={{
+                background: 'rgba(255,255,255,0.02)',
+                border: '1px solid rgba(255,255,255,0.06)',
+                borderRadius: '20px',
+                padding: '24px',
+              }}>
+                <ForgettingCurveIllustration animated width="100%" />
+              </div>
+            </motion.div>
+
+            {/* Text */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              style={{ minWidth: 0 }}
+            >
+              <span style={{ display: 'inline-block', padding: '6px 16px', borderRadius: '9999px', background: 'rgba(6,182,212,0.1)', color: '#06B6D4', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px', border: '1px solid rgba(6,182,212,0.2)' }}>
+                The Science
+              </span>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700, color: 'white', marginBottom: '20px', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                Why Students Forget — and How We Fix It
+              </h2>
+              <p style={{ fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.55)', fontFamily: 'Inter, sans-serif', marginBottom: '28px' }}>
+                Ebbinghaus's Forgetting Curve shows students lose 80% of what they learn within 24 hours. Blast Learning's spaced repetition system fights this directly — scheduling reviews at the exact moment your child is about to forget.
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                {[
+                  { label: 'Spaced Repetition', desc: 'Reviews scheduled at optimal intervals — not random, not cramming.' },
+                  { label: 'Active Recall', desc: 'Smart quizzes that make your brain work harder, creating stronger memories.' },
+                  { label: 'Metacognition Tracking', desc: 'AI maps exactly where knowledge gaps exist and fills them before exams.' },
+                ].map(({ label, desc }) => (
+                  <div key={label} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                    <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: 'linear-gradient(135deg, #06B6D4, #3B82F6)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                      <CheckCircle size={11} style={{ color: 'white' }} />
+                    </div>
+                    <div>
+                      <span style={{ fontSize: '14px', fontWeight: 600, color: 'rgba(255,255,255,0.85)', fontFamily: 'Space Grotesk, sans-serif' }}>{label}</span>
+                      <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.45)', fontFamily: 'Inter, sans-serif' }}> — {desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -599,7 +680,7 @@ export default function Home() {
             style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '48px' }}
             className="grid-cols-3-md"
           >
-            {howItWorks.map(({ num, title, desc, icon: Icon }) => (
+            {howItWorks.map(({ num, title, desc, icon: Icon, Illustration }) => (
               <motion.div
                 key={num}
                 variants={fadeUp}
@@ -607,15 +688,19 @@ export default function Home() {
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 style={{ background: 'white', borderRadius: '20px', padding: '32px', position: 'relative', overflow: 'hidden', border: '1px solid rgba(6,182,212,0.08)', boxShadow: '0 4px 24px rgba(7,17,31,0.06)' }}
               >
-                {/* Large step number in background */}
+                {/* Large step number */}
                 <span style={{ position: 'absolute', top: '-8px', right: '16px', fontSize: '96px', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', background: 'linear-gradient(135deg, rgba(6,182,212,0.1), rgba(139,92,246,0.05))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1, userSelect: 'none' }}>
                   {num}
                 </span>
-                <div style={{ width: '44px', height: '44px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: 'linear-gradient(135deg, #06B6D4, #3B82F6)', boxShadow: '0 0 20px rgba(6,182,212,0.3)' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', background: 'linear-gradient(135deg, #06B6D4, #3B82F6)', boxShadow: '0 0 20px rgba(6,182,212,0.3)' }}>
                   <Icon size={20} style={{ color: 'white' }} />
                 </div>
                 <h3 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '10px', fontFamily: 'Space Grotesk, sans-serif', color: '#07111F' }}>{title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
+                <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A6A7A', fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>{desc}</p>
+                {/* Step illustration */}
+                <div style={{ opacity: 0.85 }}>
+                  <Illustration width="100%" height="140" />
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -747,7 +832,7 @@ export default function Home() {
       {/* ── Results Banner ── */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'linear-gradient(135deg, #07111F 0%, #0c1728 50%, #130a2e 100%)', position: 'relative', overflow: 'hidden' }}>
         {/* Particle dots */}
-        {[...Array(12)].map((_, i) => (
+        {Array.from({ length: 12 }, (_, i) => (
           <div key={i} style={{ position: 'absolute', width: '3px', height: '3px', borderRadius: '50%', background: i % 2 === 0 ? 'rgba(6,182,212,0.4)' : 'rgba(139,92,246,0.4)', top: `${10 + (i * 7) % 80}%`, left: `${5 + (i * 8) % 90}%`, pointerEvents: 'none', animation: `blob-float ${4 + (i % 4)}s ease-in-out infinite`, animationDelay: `${i * 0.3}s` }} />
         ))}
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
@@ -759,6 +844,24 @@ export default function Home() {
             <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.55)', fontFamily: 'Inter, sans-serif', maxWidth: '580px', margin: '0 auto 48px', lineHeight: 1.7 }}>
               Our students consistently report higher retention scores, improved exam performance, and greater confidence within their first 30 days on Blast Learning.
             </p>
+          </motion.div>
+
+          {/* Score transformation arcs */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            style={{ maxWidth: '520px', margin: '0 auto 48px' }}
+          >
+            <div style={{
+              background: 'rgba(255,255,255,0.02)',
+              border: '1px solid rgba(255,255,255,0.06)',
+              borderRadius: '20px',
+              padding: '24px 16px 8px',
+            }}>
+              <ScoreTransformIllustration width="100%" />
+            </div>
           </motion.div>
 
           <motion.div
@@ -865,7 +968,7 @@ export default function Home() {
               </Link>
             </motion.div>
 
-            {/* Dashboard with perspective + floating notifications */}
+            {/* Dashboard with floating notifications */}
             <div style={{ minWidth: 0, width: '100%', position: 'relative' }}>
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
@@ -886,7 +989,7 @@ export default function Home() {
                 style={{ position: 'absolute', top: '-16px', right: '-16px', background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', borderRadius: '12px', padding: '10px 14px', boxShadow: '0 8px 24px rgba(0,0,0,0.15)', border: '1px solid rgba(255,255,255,0.5)' }}
               >
                 <p style={{ fontSize: '12px', fontWeight: 600, color: '#07111F', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>
-                  ✓ Study session complete
+                  Study session complete
                 </p>
                 <p style={{ fontSize: '10px', color: '#5A6A7A', fontFamily: 'Inter, sans-serif' }}>1h 42m — just now</p>
               </motion.div>
@@ -898,7 +1001,7 @@ export default function Home() {
                 style={{ position: 'absolute', bottom: '-16px', left: '-16px', background: 'rgba(7,17,31,0.9)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', borderRadius: '12px', padding: '10px 14px', boxShadow: '0 8px 24px rgba(0,0,0,0.3)', border: '1px solid rgba(6,182,212,0.2)' }}
               >
                 <p style={{ fontSize: '12px', fontWeight: 600, color: '#06B6D4', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>
-                  📈 Math retention +8%
+                  Math retention +8%
                 </p>
                 <p style={{ fontSize: '10px', color: 'rgba(255,255,255,0.4)', fontFamily: 'Inter, sans-serif' }}>This week</p>
               </motion.div>
