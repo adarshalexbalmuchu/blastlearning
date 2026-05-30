@@ -1,15 +1,33 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ErrorBoundary from './components/ErrorBoundary';
+
+// Code-split all pages — only Home ships in the initial bundle
 import Home from './pages/Home';
-import Programs from './pages/Programs';
-import ForParents from './pages/ForParents';
-import ForStudents from './pages/ForStudents';
-import About from './pages/About';
-import Library from './pages/Library';
-import FAQ from './pages/FAQ';
-import Contact from './pages/Contact';
+
+const Programs    = lazy(() => import('./pages/Programs'));
+const ForParents  = lazy(() => import('./pages/ForParents'));
+const ForStudents = lazy(() => import('./pages/ForStudents'));
+const About       = lazy(() => import('./pages/About'));
+const Library     = lazy(() => import('./pages/Library'));
+const FAQ         = lazy(() => import('./pages/FAQ'));
+const Contact     = lazy(() => import('./pages/Contact'));
+const NotFound    = lazy(() => import('./pages/NotFound'));
+
+function PageLoader() {
+  return (
+    <div
+      aria-busy="true"
+      aria-label="Loading page"
+      style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+    >
+      <div style={{ width: '36px', height: '36px', borderRadius: '50%', border: '3px solid #E0F5FC', borderTopColor: '#0FA8DC', animation: 'spin 0.7s linear infinite' }} />
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+    </div>
+  );
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -22,20 +40,42 @@ function ScrollToTop() {
 function AppLayout() {
   return (
     <>
+      {/* Skip navigation for screen readers */}
+      <a
+        href="#main-content"
+        style={{
+          position: 'absolute', left: '-9999px', top: '8px', zIndex: 9999,
+          padding: '8px 16px', background: '#F03C6F', color: 'white',
+          fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '14px',
+          borderRadius: '8px', textDecoration: 'none',
+        }}
+        onFocus={(e) => { e.currentTarget.style.left = '8px'; }}
+        onBlur={(e) => { e.currentTarget.style.left = '-9999px'; }}
+      >
+        Skip to main content
+      </a>
+
       <ScrollToTop />
       <Navbar />
-      <main style={{ paddingBottom: '0' }} className="pb-20 md:pb-0">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/programs" element={<Programs />} />
-          <Route path="/for-parents" element={<ForParents />} />
-          <Route path="/for-students" element={<ForStudents />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/library" element={<Library />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+
+      <main id="main-content" style={{ paddingBottom: '0' }} className="pb-20 md:pb-0">
+        <ErrorBoundary>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
+              <Route path="/"             element={<Home />} />
+              <Route path="/programs"     element={<Programs />} />
+              <Route path="/for-parents"  element={<ForParents />} />
+              <Route path="/for-students" element={<ForStudents />} />
+              <Route path="/about"        element={<About />} />
+              <Route path="/library"      element={<Library />} />
+              <Route path="/faq"          element={<FAQ />} />
+              <Route path="/contact"      element={<Contact />} />
+              <Route path="*"             element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </main>
+
       <Footer />
     </>
   );

@@ -449,6 +449,11 @@ export default function Home() {
   const [progressKey, setProgressKey] = useState(0);
 
   useEffect(() => {
+    document.title = 'Blast Learning | AI-Powered Study Retention for Indian Students';
+    return () => { document.title = 'Blast Learning'; };
+  }, []);
+
+  useEffect(() => {
     const timer = setInterval(() => {
       setDirection(1);
       setActiveBanner((prev) => (prev + 1) % banners.length);
@@ -469,8 +474,13 @@ export default function Home() {
 
   return (
     <div>
+      {/* Screen reader announcement for carousel changes */}
+      <div aria-live="polite" aria-atomic="true" style={{ position: 'absolute', width: '1px', height: '1px', padding: 0, margin: '-1px', overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
+        {banner.badge} — {banner.headline} {banner.highlight}
+      </div>
+
       {/* ── Hero Banner Carousel ── */}
-      <section style={{ position: 'relative', paddingTop: '104px', paddingBottom: '80px', background: '#FFFFFF', overflow: 'hidden', borderBottom: '1px solid #ECECF1' }}>
+      <section aria-label="Featured highlights" style={{ position: 'relative', paddingTop: '104px', paddingBottom: '80px', background: '#FFFFFF', overflow: 'hidden', borderBottom: '1px solid #ECECF1' }}>
         {/* Ambient illustration */}
         <div style={{ position: 'absolute', bottom: 0, right: 0, width: '420px', height: '350px', opacity: 0.04, pointerEvents: 'none', zIndex: 0 }}>
           <HeroIllustration width="100%" height="100%" />

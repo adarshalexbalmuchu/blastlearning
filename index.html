@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Security Headers (set X-Frame-Options + frame-ancestors at server/host level) -->
+    <!-- Security -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -18,14 +18,63 @@
                base-uri 'self';
                form-action 'self';" />
 
-    <!-- Fonts -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="apple-touch-icon" href="./blast-logo.webp" />
+
+    <!-- Fonts — <link> tag loads non-blocking; faster than CSS @import -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    />
 
-    <!-- SEO -->
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <meta name="description" content="Blast Learning helps Indian students in Classes 8-12 actually remember what they study. Personalized revision schedules, parent dashboards, and real results from ₹999/month." />
-    <title>Blast Learning | Study Smarter for CBSE and SAT</title>
+    <!-- Primary SEO -->
+    <title>Blast Learning | AI-Powered Study Retention for Indian Students</title>
+    <meta name="description" content="Blast Learning helps Indian students in Classes 8–12 retain 90% of what they study. Personalized revision schedules, real-time parent dashboards, and proven results from ₹999/month. Start your 7-day free trial." />
+    <meta name="keywords" content="CBSE study app, AI learning India, spaced repetition, student retention, board exam preparation, parent dashboard, online tuition India" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://adarshalexbalmuchu.github.io/blastlearning/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://adarshalexbalmuchu.github.io/blastlearning/" />
+    <meta property="og:title" content="Blast Learning | AI-Powered Study Retention for Indian Students" />
+    <meta property="og:description" content="Stop wasting money on coaching your child forgets. Our Metacognition Engine uses spaced repetition to convert expensive tuition into lasting retention. 91% improvement rate." />
+    <meta property="og:image" content="https://adarshalexbalmuchu.github.io/blastlearning/blast-logo.webp" />
+    <meta property="og:site_name" content="Blast Learning" />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Blast Learning | AI-Powered Study Retention" />
+    <meta name="twitter:description" content="Help your child retain 90% of what they learn. Spaced repetition + AI study plans for CBSE students. 7-day free trial." />
+    <meta name="twitter:image" content="https://adarshalexbalmuchu.github.io/blastlearning/blast-logo.webp" />
+
+    <!-- Structured Data — EducationalOrganization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Blast Learning",
+      "description": "AI-powered learning retention platform for Indian students in Classes 8–12",
+      "url": "https://adarshalexbalmuchu.github.io/blastlearning/",
+      "logo": "https://adarshalexbalmuchu.github.io/blastlearning/blast-logo.webp",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bangalore",
+        "addressRegion": "Karnataka",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-123-456-7890",
+        "contactType": "customer support",
+        "availableLanguage": ["English", "Hindi", "Kannada"]
+      }
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

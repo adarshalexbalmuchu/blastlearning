@@ -1,57 +1,109 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import blastLogo from '../assets/blast-logo.webp';
+
+const programs = [
+  { label: 'CBSE Plan', path: '/programs' },
+  { label: 'Math Genius Maker', path: '/programs' },
+  { label: 'English Mastery', path: '/programs' },
+  { label: 'SAT Prep Pass', path: '/programs' },
+];
+
+const company = [
+  { label: 'About Us', path: '/about' },
+  { label: 'For Parents', path: '/for-parents' },
+  { label: 'For Students', path: '/for-students' },
+  { label: 'Contact', path: '/contact' },
+];
+
+const resources = [
+  { label: 'Study Library', path: '/library' },
+  { label: 'FAQ', path: '/faq' },
+  { label: 'Programs Overview', path: '/programs' },
+  { label: 'Get Started', path: '/programs' },
+];
+
+const socials = [
+  {
+    name: 'Twitter / X',
+    label: 'Follow us on Twitter/X',
+    path: 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z',
+    viewBox: '0 0 24 24',
+    fill: true,
+  },
+  {
+    name: 'YouTube',
+    label: 'Follow us on YouTube',
+    path: 'M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z',
+    viewBox: '0 0 24 24',
+    fill: true,
+  },
+  {
+    name: 'Instagram',
+    label: 'Follow us on Instagram',
+    path: 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z',
+    viewBox: '0 0 24 24',
+    fill: true,
+  },
+  {
+    name: 'LinkedIn',
+    label: 'Follow us on LinkedIn',
+    path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z',
+    viewBox: '0 0 24 24',
+    fill: true,
+  },
+];
+
+const FooterLinkColumn = ({ heading, links }: { heading: string; links: { label: string; path: string }[] }) => (
+  <div>
+    <h3
+      style={{
+        fontFamily: 'Poppins, sans-serif',
+        fontSize: '1rem',
+        fontWeight: 600,
+        color: '#1C1C28',
+        marginBottom: '1.25rem',
+        marginTop: 0,
+      }}
+    >
+      {heading}
+    </h3>
+    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+      {links.map((link) => (
+        <li key={link.label + link.path}>
+          <Link
+            to={link.path}
+            onMouseEnter={(e) => { e.currentTarget.style.color = '#0FA8DC'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = '#5A5A6E'; }}
+            style={{
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '0.95rem',
+              color: '#5A5A6E',
+              textDecoration: 'none',
+              transition: 'color 0.2s ease',
+            }}
+          >
+            {link.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
 const Footer = () => {
-  const footerLinks = {
-    product: [
-      { label: 'Courses', path: '/courses' },
-      { label: 'Pricing', path: '/pricing' },
-      { label: 'For Teams', path: '/teams' },
-      { label: 'Enterprise', path: '/enterprise' },
-    ],
-    company: [
-      { label: 'About', path: '/about' },
-      { label: 'Blog', path: '/blog' },
-      { label: 'Careers', path: '/careers' },
-      { label: 'Contact', path: '/contact' },
-    ],
-    resources: [
-      { label: 'Help Center', path: '/help' },
-      { label: 'Community', path: '/community' },
-      { label: 'Guides', path: '/guides' },
-      { label: 'API Docs', path: '/api-docs' },
-    ],
-    legal: [
-      { label: 'Privacy', path: '/privacy' },
-      { label: 'Terms', path: '/terms' },
-      { label: 'Security', path: '/security' },
-      { label: 'Cookies', path: '/cookies' },
-    ],
-  };
-
-  const socialLinks = [
-    { name: 'Twitter', icon: 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z', url: 'https://twitter.com' },
-    { name: 'LinkedIn', icon: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M4 2a2 2 0 11-.001 4.001A2 2 0 014 2z', url: 'https://linkedin.com' },
-    { name: 'GitHub', icon: 'M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22', url: 'https://github.com' },
-    { name: 'YouTube', icon: 'M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z M9.75 15.02l5.75-3.27-5.75-3.27z', url: 'https://youtube.com' },
-  ];
-
   return (
     <footer
+      className="footer-root"
       style={{
         background: '#F7F7F8',
         borderTop: '1px solid #ECECF1',
-        paddingTop: '5rem',
+        paddingTop: '4rem',
       }}
     >
-      <div
-        style={{
-          maxWidth: '1280px',
-          margin: '0 auto',
-          padding: '0 2rem',
-        }}
-      >
-        {/* CTA Section */}
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2rem' }}>
+
+        {/* CTA Strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,133 +111,104 @@ const Footer = () => {
           style={{
             background: '#FFFFFF',
             border: '1px solid #ECECF1',
-            borderRadius: '24px',
-            padding: '3rem',
-            marginBottom: '5rem',
-            textAlign: 'center',
-            boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
+            borderRadius: '20px',
+            padding: '40px',
+            marginBottom: '4rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '1.5rem',
           }}
         >
-          <h2
-            style={{
-              fontFamily: 'Poppins, sans-serif',
-              fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
-              fontWeight: 700,
-              color: '#1C1C28',
-              marginBottom: '1rem',
-            }}
-          >
-            Ready to Transform Your Career?
-          </h2>
-          <p
-            style={{
-              fontFamily: 'Inter, sans-serif',
-              fontSize: '1.1rem',
-              color: '#5A5A6E',
-              marginBottom: '2rem',
-              maxWidth: '600px',
-              margin: '0 auto 2rem',
-            }}
-          >
-            Join thousands of learners advancing their careers with BlastLearning.
-          </p>
+          <div>
+            <h2
+              style={{
+                fontFamily: 'Poppins, sans-serif',
+                fontSize: 'clamp(1.4rem, 3vw, 1.875rem)',
+                fontWeight: 700,
+                color: '#1C1C28',
+                margin: '0 0 0.5rem',
+              }}
+            >
+              Start Learning Smarter Today
+            </h2>
+            <p
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: '1rem',
+                color: '#5A5A6E',
+                margin: 0,
+                lineHeight: 1.6,
+              }}
+            >
+              Join 4,999+ Indian families. 7-day free trial, no credit card required.
+            </p>
+          </div>
           <Link
-            to="/signup"
+            to="/programs"
+            onMouseEnter={(e) => { e.currentTarget.style.background = '#c42f59'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = '#F03C6F'; }}
             style={{
               display: 'inline-block',
-              fontFamily: 'Inter, sans-serif',
-              fontSize: '1rem',
-              fontWeight: 600,
+              background: '#F03C6F',
               color: 'white',
+              fontFamily: 'Inter, sans-serif',
+              fontWeight: 600,
+              fontSize: '1rem',
               textDecoration: 'none',
-              padding: '0.875rem 2rem',
               borderRadius: '10px',
-              background: '#0FA8DC',
+              padding: '12px 28px',
+              whiteSpace: 'nowrap',
+              transition: 'background 0.2s ease',
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = '#0D8BB5'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = '#0FA8DC'; }}
           >
-            Start Free Trial
+            Start Free Trial →
           </Link>
         </motion.div>
 
-        {/* Main Footer Content */}
+        {/* Main Columns */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr',
-            gap: '3rem',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+            gap: '2.5rem',
             marginBottom: '4rem',
           }}
         >
           {/* Brand Column */}
-          <div>
-            <Link
-              to="/"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.75rem',
-                textDecoration: 'none',
-                marginBottom: '1.5rem',
-              }}
-            >
-              <div
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '10px',
-                  background: '#0FA8DC',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontFamily: 'Poppins, sans-serif',
-                  fontWeight: 700,
-                  fontSize: '1.25rem',
-                  color: 'white',
-                }}
-              >
-                B
-              </div>
-              <span
-                style={{
-                  fontFamily: 'Poppins, sans-serif',
-                  fontWeight: 700,
-                  fontSize: '1.5rem',
-                  color: '#1C1C28',
-                }}
-              >
-                BlastLearning
-              </span>
+          <div style={{ gridColumn: 'span 1' }}>
+            <Link to="/" style={{ display: 'inline-block', marginBottom: '1.25rem', textDecoration: 'none' }}>
+              <img
+                src={blastLogo}
+                alt="Blast Learning"
+                height="36"
+                style={{ height: '36px', width: 'auto' }}
+              />
             </Link>
             <p
               style={{
                 fontFamily: 'Inter, sans-serif',
-                fontSize: '0.95rem',
+                fontSize: '0.9rem',
                 color: '#5A5A6E',
                 lineHeight: 1.7,
                 marginBottom: '1.5rem',
-                maxWidth: '300px',
+                marginTop: 0,
+                maxWidth: '280px',
               }}
             >
-              Empowering learners worldwide with cutting-edge courses and expert-led training.
+              AI-powered learning retention platform. We help Indian students in Classes 8–12 retain 90% of what they study — so coaching fees become lasting knowledge.
             </p>
 
-            {/* Social Links */}
-            <div
-              style={{
-                display: 'flex',
-                gap: '1rem',
-              }}
-            >
-              {socialLinks.map((social) => (
-                <motion.a
+            {/* Social Icons */}
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              {socials.map((social) => (
+                <a
                   key={social.name}
-                  href={social.url}
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  aria-label={social.name}
+                  aria-label={social.label}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = '#0FA8DC';
                     e.currentTarget.style.borderColor = '#B5E3F4';
@@ -195,8 +218,8 @@ const Footer = () => {
                     e.currentTarget.style.borderColor = '#ECECF1';
                   }}
                   style={{
-                    width: '40px',
-                    height: '40px',
+                    width: '38px',
+                    height: '38px',
                     borderRadius: '10px',
                     background: '#FFFFFF',
                     border: '1px solid #ECECF1',
@@ -205,84 +228,40 @@ const Footer = () => {
                     justifyContent: 'center',
                     color: '#5A5A6E',
                     cursor: 'pointer',
+                    transition: 'color 0.2s ease, border-color 0.2s ease',
+                    textDecoration: 'none',
                   }}
                 >
                   <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
+                    width="16"
+                    height="16"
+                    viewBox={social.viewBox}
+                    fill={social.fill ? 'currentColor' : 'none'}
+                    stroke={social.fill ? 'none' : 'currentColor'}
+                    strokeWidth={social.fill ? undefined : '2'}
                   >
-                    <path d={social.icon} />
+                    <path d={social.path} />
                   </svg>
-                </motion.a>
+                </a>
               ))}
             </div>
           </div>
 
-          {/* Links Columns */}
-          {Object.entries(footerLinks).map(([category, links]) => (
-            <div key={category}>
-              <h3
-                style={{
-                  fontFamily: 'Poppins, sans-serif',
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  color: '#1C1C28',
-                  marginBottom: '1.25rem',
-                  textTransform: 'capitalize',
-                }}
-              >
-                {category}
-              </h3>
-              <ul
-                style={{
-                  listStyle: 'none',
-                  padding: 0,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.75rem',
-                }}
-              >
-                {links.map((link) => (
-                  <li key={link.path}>
-                    <Link
-                      to={link.path}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = '#0FA8DC';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = '#5A5A6E';
-                      }}
-                      style={{
-                        fontFamily: 'Inter, sans-serif',
-                        fontSize: '0.95rem',
-                        color: '#5A5A6E',
-                        textDecoration: 'none',
-                        transition: 'color 0.2s ease',
-                      }}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <FooterLinkColumn heading="Programs" links={programs} />
+          <FooterLinkColumn heading="Company" links={company} />
+          <FooterLinkColumn heading="Resources" links={resources} />
         </div>
 
         {/* Bottom Bar */}
         <div
           style={{
             borderTop: '1px solid #ECECF1',
-            padding: '2rem 0',
+            padding: '1.5rem 0 2rem',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: '1rem',
+            gap: '0.75rem',
           }}
         >
           <p
@@ -290,26 +269,21 @@ const Footer = () => {
               fontFamily: 'Inter, sans-serif',
               fontSize: '0.875rem',
               color: '#8E8EA0',
+              margin: 0,
             }}
           >
-            © 2025 BlastLearning. All rights reserved.
+            © 2025 Blast Learning. All rights reserved. · Bangalore, India
           </p>
-          <div
+          <p
             style={{
-              display: 'flex',
-              gap: '2rem',
+              fontFamily: 'Inter, sans-serif',
+              fontSize: '0.875rem',
+              color: '#8E8EA0',
+              margin: 0,
             }}
           >
-            <span
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '0.875rem',
-                color: '#8E8EA0',
-              }}
-            >
-              Made with passion for learning
-            </span>
-          </div>
+            No credit card required · Cancel anytime
+          </p>
         </div>
       </div>
     </footer>

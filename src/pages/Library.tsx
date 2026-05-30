@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, Play, FileText, HelpCircle, Lock, ArrowRight } from 'lucide-react';
@@ -53,6 +53,11 @@ const stagger: Variants = {
 export default function Library() {
   const [activeFilter, setActiveFilter] = useState<FilterTab>('All');
   const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    document.title = 'Study Library | Free Resources — Blast Learning';
+    return () => { document.title = 'Blast Learning'; };
+  }, []);
 
   const filtered = resources.filter((r) => {
     const matchFilter = activeFilter === 'All' || r.subject === activeFilter;

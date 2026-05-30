@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shield, TrendingUp, Clock, Heart, BarChart3, Bell, ArrowRight, CheckCircle, Quote } from 'lucide-react';
@@ -78,6 +79,11 @@ const stagger: Variants = {
 };
 
 export default function ForParents() {
+  useEffect(() => {
+    document.title = "For Parents | Track Your Child's Progress — Blast Learning";
+    return () => { document.title = 'Blast Learning'; };
+  }, []);
+
   return (
     <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}
