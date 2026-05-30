@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -28,10 +27,14 @@
   --font-head: 'Poppins', sans-serif;
 }
 
-* {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -43,6 +46,18 @@ body {
   overflow-x: hidden;
 }
 
+/* Global focus-visible ring — keyboard navigation */
+:focus-visible {
+  outline: 2px solid #0FA8DC;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Remove outline for mouse users only */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', sans-serif;
   color: #1C1C28;
@@ -52,15 +67,14 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 100vh;
 }
 
-/* ── Deprecated utilities (kept inert for backwards-compat) ─────────────────── */
-.glass,
-.glass-dark,
-.glass-light,
-.glow-cyan,
-.glow-violet,
-.aurora-bg,
-.gradient-text {
-  /* intentionally empty — replaced by flat PW-style design */
+/* ── Reduced-motion: respect user OS preference ───────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* ── Keyframes ──────────────────────────────────────────────────────────────── */

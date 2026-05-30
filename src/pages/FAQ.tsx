@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
@@ -126,6 +127,11 @@ const stagger: Variants = {
 };
 
 export default function FAQ() {
+  useEffect(() => {
+    document.title = 'FAQ | Frequently Asked Questions — Blast Learning';
+    return () => { document.title = 'Blast Learning'; };
+  }, []);
+
   return (
     <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}

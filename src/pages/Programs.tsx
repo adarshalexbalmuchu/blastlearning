@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { BookOpen, Target, Brain, TrendingUp, ArrowRight, CheckCircle, Phone, Zap } from 'lucide-react';
@@ -95,6 +96,11 @@ const stagger: Variants = {
 };
 
 export default function Programs() {
+  useEffect(() => {
+    document.title = 'Programs | CBSE, Maths, English & SAT Prep — Blast Learning';
+    return () => { document.title = 'Blast Learning'; };
+  }, []);
+
   return (
     <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}
