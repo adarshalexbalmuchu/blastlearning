@@ -127,18 +127,18 @@ const stagger: Variants = {
 
 export default function FAQ() {
   return (
-    <div style={{ background: '#FAFAF7' }}>
+    <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}
-      <section style={{ background: '#FAFAF7', paddingTop: '120px', paddingBottom: '80px', borderBottom: '1px solid #E8E4D8' }}>
+      <section style={{ background: '#FFFFFF', paddingTop: '120px', paddingBottom: '80px', borderBottom: '1px solid #ECECF1' }}>
         <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', marginBottom: '20px', background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B' }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px', background: '#EEEDFC', color: '#5C56E8' }}>
               FAQ
             </span>
-            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', marginBottom: '20px', color: '#1A1A2E' }}>
+            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '20px', color: '#1C1C28' }}>
               Frequently Asked Questions
             </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
               Everything you need to know about Blast Learning. Can't find your answer? Contact our team.
             </p>
           </motion.div>
@@ -146,7 +146,7 @@ export default function FAQ() {
       </section>
 
       {/* FAQ Content */}
-      <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#F5F2EC' }}>
+      <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
           {categories.map((category, ci) => (
             <motion.div
@@ -158,10 +158,10 @@ export default function FAQ() {
               style={{ marginBottom: ci < categories.length - 1 ? '56px' : 0 }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                <span style={{ width: '32px', height: '32px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 700, color: 'white', background: '#E8336B', fontFamily: 'DM Sans, sans-serif', flexShrink: 0 }}>
+                <span style={{ width: '32px', height: '32px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 600, color: 'white', background: '#5C56E8', fontFamily: 'Poppins, sans-serif', flexShrink: 0 }}>
                   {category.charAt(0)}
                 </span>
-                <h2 style={{ fontSize: '20px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: '#1A1A2E' }}>
+                <h2 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>
                   {category}
                 </h2>
               </div>
@@ -186,7 +186,7 @@ export default function FAQ() {
       </section>
 
       {/* Still Have Questions */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -194,22 +194,22 @@ export default function FAQ() {
           viewport={{ once: true }}
           style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
         >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', marginBottom: '16px', color: 'white' }}>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', color: '#1C1C28' }}>
             Still Have Questions?
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
+          <p style={{ color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
             Our team is available Monday to Saturday, 9 AM to 9 PM. We typically respond within 2 hours.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
             <Link
               to="/contact"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: '#E8336B', color: 'white', boxShadow: '0 4px 16px rgba(232,51,107,0.2)' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#5C56E8', color: 'white' }}
             >
               Contact Us <ArrowRight size={16} />
             </Link>
             <a
               href="mailto:hello@blastlearning.in"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.85)' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'white', border: '1.5px solid #DCDCE5', color: '#1C1C28' }}
             >
               Email hello@blastlearning.in
             </a>

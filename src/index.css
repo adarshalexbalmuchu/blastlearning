@@ -1,20 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #1A1A2E;
-  --color-cream: #F5F2EC;
-  --color-border: #E8E4D8;
-  --color-muted: #5A5A7A;
-  --color-pink: #E8336B;
-  --color-cyan: #00B4D8;
-  --color-success: #00B89C;
-  --color-dark: #1A1A2E;
-  --color-bg: #FAFAF7;
+  --color-ink: #1C1C28;
+  --color-body: #5A5A6E;
+  --color-muted: #8E8EA0;
+  --color-border: #ECECF1;
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F7F7F8;
 
-  --font-serif: 'Playfair Display', serif;
-  --font-sans: 'DM Sans', sans-serif;
-  --font-inter: 'DM Sans', sans-serif;
+  --color-indigo: #5C56E8;
+  --color-indigo-dark: #4A43C9;
+  --color-indigo-soft: #EEEDFC;
+
+  --color-peach: #FDF3E7;
+  --color-pink: #FCEEF1;
+  --color-cyan: #E7F6FB;
+  --color-lavender: #F0EDFC;
+  --color-mint: #E9F7EF;
+  --color-blue: #E9F2FC;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-head: 'Poppins', sans-serif;
 }
 
 * {
@@ -24,38 +31,32 @@
 }
 
 body {
-  font-family: 'DM Sans', sans-serif;
-  color: #1A1A2E;
-  background: #FAFAF7;
+  font-family: 'Inter', sans-serif;
+  color: #1C1C28;
+  background: #FFFFFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
+  color: #1C1C28;
 }
 
 #root {
   min-height: 100vh;
 }
 
-/* ── Deprecated glass/glow utilities (kept inert for backwards-compat) ─────────── */
+/* ── Deprecated utilities (kept inert for backwards-compat) ─────────────────── */
 .glass,
 .glass-dark,
 .glass-light,
 .glow-cyan,
 .glow-violet,
-.aurora-bg {
-  /* intentionally empty — neon/glass styling removed in mature redesign */
-}
-
-/* ── Gradient text ──────────────────────────────────────────────────────────── */
+.aurora-bg,
 .gradient-text {
-  background: linear-gradient(135deg, #E8336B 0%, #00B4D8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  /* intentionally empty — replaced by flat PW-style design */
 }
 
 /* ── Keyframes ──────────────────────────────────────────────────────────────── */
@@ -64,25 +65,10 @@ h1, h2, h3, h4, h5, h6 {
   50% { transform: translateY(-12px); }
 }
 
-@keyframes aurora {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 @keyframes blob-float {
   0%, 100% { transform: translate(0, 0) scale(1); }
   33%  { transform: translate(20px, -20px) scale(1.05); }
   66%  { transform: translate(-10px, 15px) scale(0.97); }
-}
-
-@keyframes banner-progress {
-  from { width: 0%; }
-  to   { width: 100%; }
-}
-
-.banner-progress-bar {
-  animation: banner-progress 4.5s linear forwards;
 }
 
 /* ── Bento grid ─────────────────────────────────────────────────────────────── */

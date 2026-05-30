@@ -12,23 +12,23 @@ export default function FeatureCard({ icon, title, description, large }: Feature
     <div
       style={{
         background: '#FFFFFF',
-        border: '1px solid #E8E4D8',
-        borderRadius: '20px',
+        border: '1px solid #ECECF1',
+        borderRadius: '16px',
         padding: large ? '32px' : '24px',
         height: '100%',
-        boxShadow: '0 4px 24px rgba(26,26,46,0.06)',
+        boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
         transition: 'transform 0.3s, box-shadow 0.3s, border-color 0.3s',
         cursor: 'default',
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.transform = 'translateY(-6px)';
-        (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(232,51,107,0.08)';
-        (e.currentTarget as HTMLElement).style.borderColor = '#E8336B';
+        (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 28px rgba(92,86,232,0.12)';
+        (e.currentTarget as HTMLElement).style.borderColor = '#5C56E8';
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLElement).style.transform = 'none';
-        (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 24px rgba(26,26,46,0.06)';
-        (e.currentTarget as HTMLElement).style.borderColor = '#E8E4D8';
+        (e.currentTarget as HTMLElement).style.boxShadow = '0 2px 12px rgba(28,28,40,0.05)';
+        (e.currentTarget as HTMLElement).style.borderColor = '#ECECF1';
       }}
     >
       <div style={{
@@ -39,14 +39,13 @@ export default function FeatureCard({ icon, title, description, large }: Feature
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: '16px',
-        background: '#FFF0F5',
-        border: '1px solid #F5C0D4',
-        color: '#E8336B',
+        background: '#EEEDFC',
+        color: '#5C56E8',
       }}>
         {icon}
       </div>
-      <h3 style={{ fontSize: large ? '1.125rem' : '1rem', fontWeight: 700, color: '#1A1A2E', fontFamily: "'Playfair Display', serif", marginBottom: '8px' }}>{title}</h3>
-      <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A5A7A', fontFamily: "'DM Sans', sans-serif" }}>{description}</p>
+      <h3 style={{ fontSize: large ? '1.125rem' : '1rem', fontWeight: 600, color: '#1C1C28', fontFamily: "'Poppins', sans-serif", marginBottom: '8px' }}>{title}</h3>
+      <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{description}</p>
     </div>
   );
 }

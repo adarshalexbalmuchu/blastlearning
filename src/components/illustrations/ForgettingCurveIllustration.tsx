@@ -60,45 +60,45 @@ export const ForgettingCurveIllustration: FC<IllustrationProps> = ({
     >
       <defs>
         <linearGradient id="fci-blast" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#E8336B" />
-          <stop offset="100%" stopColor="#00B4D8" />
+          <stop offset="0%" stopColor="#5C56E8" />
+          <stop offset="100%" stopColor="#8B86F0" />
         </linearGradient>
       </defs>
 
       {/* Grid */}
       {[0, 1, 2, 3, 4].map((i) => (
-        <line key={`h${i}`} x1="60" y1={60 + i * 50} x2="470" y2={60 + i * 50} stroke="rgba(26,26,46,0.06)" strokeWidth="1" />
+        <line key={`h${i}`} x1="60" y1={60 + i * 50} x2="470" y2={60 + i * 50} stroke="rgba(28,28,40,0.06)" strokeWidth="1" />
       ))}
       {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-        <line key={`v${i}`} x1={60 + i * 60} y1="60" x2={60 + i * 60} y2="260" stroke="rgba(26,26,46,0.06)" strokeWidth="1" />
+        <line key={`v${i}`} x1={60 + i * 60} y1="60" x2={60 + i * 60} y2="260" stroke="rgba(28,28,40,0.06)" strokeWidth="1" />
       ))}
 
       {/* Axes */}
-      <line x1="60" y1="260" x2="470" y2="260" stroke="rgba(26,26,46,0.2)" strokeWidth="1.5" />
-      <line x1="60" y1="60" x2="60" y2="260" stroke="rgba(26,26,46,0.2)" strokeWidth="1.5" />
+      <line x1="60" y1="260" x2="470" y2="260" stroke="rgba(28,28,40,0.2)" strokeWidth="1.5" />
+      <line x1="60" y1="60" x2="60" y2="260" stroke="rgba(28,28,40,0.2)" strokeWidth="1.5" />
 
       {/* Y-axis labels */}
-      <text x="52" y="64" textAnchor="end" fontFamily="DM Sans, sans-serif" fontSize="9" fill="#9A9AAA">100%</text>
-      <text x="52" y="114" textAnchor="end" fontFamily="DM Sans, sans-serif" fontSize="9" fill="#9A9AAA">75%</text>
-      <text x="52" y="164" textAnchor="end" fontFamily="DM Sans, sans-serif" fontSize="9" fill="#9A9AAA">50%</text>
-      <text x="52" y="214" textAnchor="end" fontFamily="DM Sans, sans-serif" fontSize="9" fill="#9A9AAA">25%</text>
-      <text x="52" y="263" textAnchor="end" fontFamily="DM Sans, sans-serif" fontSize="9" fill="#9A9AAA">0%</text>
+      <text x="52" y="64" textAnchor="end" fontFamily="Inter, sans-serif" fontSize="9" fill="#8E8EA0">100%</text>
+      <text x="52" y="114" textAnchor="end" fontFamily="Inter, sans-serif" fontSize="9" fill="#8E8EA0">75%</text>
+      <text x="52" y="164" textAnchor="end" fontFamily="Inter, sans-serif" fontSize="9" fill="#8E8EA0">50%</text>
+      <text x="52" y="214" textAnchor="end" fontFamily="Inter, sans-serif" fontSize="9" fill="#8E8EA0">25%</text>
+      <text x="52" y="263" textAnchor="end" fontFamily="Inter, sans-serif" fontSize="9" fill="#8E8EA0">0%</text>
 
       {/* X-axis labels */}
-      <text x="60" y="278" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontSize="9" fill="#9A9AAA">Day 1</text>
-      <text x="180" y="278" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontSize="9" fill="#9A9AAA">Day 3</text>
-      <text x="300" y="278" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontSize="9" fill="#9A9AAA">Week 1</text>
-      <text x="420" y="278" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontSize="9" fill="#9A9AAA">Month 1</text>
-      <text x="265" y="298" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontSize="10" fill="#5A5A7A">Time</text>
+      <text x="60" y="278" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fill="#8E8EA0">Day 1</text>
+      <text x="180" y="278" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fill="#8E8EA0">Day 3</text>
+      <text x="300" y="278" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fill="#8E8EA0">Week 1</text>
+      <text x="420" y="278" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fill="#8E8EA0">Month 1</text>
+      <text x="265" y="298" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="10" fill="#5A5A6E">Time</text>
 
       {/* Y-axis title */}
-      <text x="18" y="175" textAnchor="middle" fontFamily="DM Sans, sans-serif" fontSize="10" fill="#5A5A7A" transform="rotate(-90, 18, 175)">Retention</text>
+      <text x="18" y="175" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="10" fill="#5A5A6E" transform="rotate(-90, 18, 175)">Retention</text>
 
       {/* Forgetting curve — exponential decay (muted) */}
       <path
         className="forgetting-curve-line"
         d="M 60 62 C 105 80, 155 128, 210 168 C 255 198, 318 228, 430 248"
-        stroke="#B8AEA4"
+        stroke="#C4C4D0"
         strokeWidth="2.5"
         strokeLinecap="round"
         fill="none"
@@ -115,11 +115,11 @@ export const ForgettingCurveIllustration: FC<IllustrationProps> = ({
       />
 
       {/* Legend */}
-      <rect x="300" y="88" width="162" height="56" rx="8" fill="#FFFFFF" stroke="#E8E4D8" strokeWidth="1" />
-      <line x1="312" y1="108" x2="332" y2="108" stroke="#B8AEA4" strokeWidth="2.5" strokeLinecap="round" />
-      <text x="338" y="112" fontFamily="DM Sans, sans-serif" fontSize="10" fill="#5A5A7A">Without Blast</text>
-      <line x1="312" y1="128" x2="332" y2="128" stroke="#E8336B" strokeWidth="2.5" strokeLinecap="round" />
-      <text x="338" y="132" fontFamily="DM Sans, sans-serif" fontSize="10" fill="#5A5A7A">With Blast</text>
+      <rect x="300" y="88" width="162" height="56" rx="8" fill="#FFFFFF" stroke="#ECECF1" strokeWidth="1" />
+      <line x1="312" y1="108" x2="332" y2="108" stroke="#C4C4D0" strokeWidth="2.5" strokeLinecap="round" />
+      <text x="338" y="112" fontFamily="Inter, sans-serif" fontSize="10" fill="#5A5A6E">Without Blast</text>
+      <line x1="312" y1="128" x2="332" y2="128" stroke="#5C56E8" strokeWidth="2.5" strokeLinecap="round" />
+      <text x="338" y="132" fontFamily="Inter, sans-serif" fontSize="10" fill="#5A5A6E">With Blast</text>
     </svg>
   );
 };

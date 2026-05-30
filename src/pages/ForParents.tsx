@@ -65,6 +65,9 @@ const testimonials = [
   },
 ];
 
+// Pastel fills rotated across benefit icon tiles
+const pastels = ['#FDF3E7', '#FCEEF1', '#E7F6FB', '#F0EDFC', '#E9F7EF', '#E9F2FC'];
+
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -76,18 +79,18 @@ const stagger: Variants = {
 
 export default function ForParents() {
   return (
-    <div style={{ background: '#FAFAF7' }}>
+    <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: '#FAFAF7', paddingTop: '120px', paddingBottom: '100px' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: '#F7F7F8', paddingTop: '120px', paddingBottom: '100px' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', marginBottom: '24px', background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B' }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: "'Inter', sans-serif", marginBottom: '24px', background: '#EEEDFC', color: '#5C56E8' }}>
               For Parents
             </span>
-            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.03em', marginBottom: '24px', color: '#1A1A2E' }}>
+            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', marginBottom: '24px', color: '#1C1C28' }}>
               Peace of Mind for Parents
             </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', maxWidth: '640px', margin: '0 auto' }}>
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
               Stay informed and involved in your child's education journey. Track progress, celebrate wins, and support their growth — all backed by transparent data.
             </p>
           </motion.div>
@@ -95,7 +98,7 @@ export default function ForParents() {
       </section>
 
       {/* Benefits Grid */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={fadeUp}
@@ -104,10 +107,10 @@ export default function ForParents() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '64px' }}
           >
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: 'white', marginBottom: '16px' }}>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '16px' }}>
               Everything You Need to Stay Involved
             </h2>
-            <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Sans, sans-serif', maxWidth: '600px', margin: '0 auto' }}>
+            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
               Powerful tools designed to keep you connected to your child's learning journey.
             </p>
           </motion.div>
@@ -119,25 +122,27 @@ export default function ForParents() {
             style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
             className="grid-cols-3-md"
           >
-            {benefits.map((benefit) => {
+            {benefits.map((benefit, idx) => {
               const Icon = benefit.icon;
+              const tile = pastels[idx % pastels.length];
               return (
                 <motion.div
                   key={benefit.title}
                   variants={fadeUp}
                   whileHover={{ y: -6 }}
                   style={{
-                    background: 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    borderRadius: '20px',
+                    background: '#FFFFFF',
+                    border: '1px solid #ECECF1',
+                    borderRadius: '16px',
                     padding: '32px',
+                    boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
                   }}
                 >
-                  <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: 'rgba(232,51,107,0.15)', border: '1px solid rgba(232,51,107,0.3)', color: '#E8336B' }}>
+                  <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: tile, color: '#5C56E8' }}>
                     <Icon size={24} />
                   </div>
-                  <h3 style={{ fontSize: '18px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: 'white', marginBottom: '10px' }}>{benefit.title}</h3>
-                  <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Sans, sans-serif' }}>{benefit.description}</p>
+                  <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{benefit.title}</h3>
+                  <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{benefit.description}</p>
                 </motion.div>
               );
             })}
@@ -146,21 +151,21 @@ export default function ForParents() {
       </section>
 
       {/* Trust Section */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F5F2EC' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }} className="grid-cols-2-md">
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: '#1A1A2E', marginBottom: '24px' }}>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '24px' }}>
                 Built on Trust & Transparency
               </h2>
-              <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '32px' }}>
+              <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '32px' }}>
                 We believe parents deserve complete clarity. No hidden costs, no confusing contracts — just honest, effective education.
               </p>
               <div style={{ display: 'grid', gap: '16px' }}>
                 {trustPoints.map((point) => (
                   <div key={point} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <CheckCircle size={20} style={{ color: '#00B89C', flexShrink: 0 }} />
-                    <span style={{ fontSize: '15px', color: '#1A1A2E', fontFamily: 'DM Sans, sans-serif' }}>{point}</span>
+                    <CheckCircle size={20} style={{ color: '#5C56E8', flexShrink: 0 }} />
+                    <span style={{ fontSize: '15px', color: '#1C1C28', fontFamily: "'Inter', sans-serif" }}>{point}</span>
                   </div>
                 ))}
               </div>
@@ -172,10 +177,10 @@ export default function ForParents() {
               viewport={{ once: true }}
               style={{
                 background: '#FFFFFF',
-                border: '1px solid #E8E4D8',
-                borderRadius: '24px',
+                border: '1px solid #ECECF1',
+                borderRadius: '16px',
                 padding: '40px',
-                boxShadow: '0 4px 24px rgba(26,26,46,0.06)',
+                boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
               }}
             >
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px' }}>
@@ -186,8 +191,8 @@ export default function ForParents() {
                   { value: '50,000+', label: 'Lessons Done' },
                 ].map((stat) => (
                   <div key={stat.label} style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '32px', fontWeight: 800, fontFamily: 'Playfair Display, serif', color: '#00B4D8', marginBottom: '8px' }}>{stat.value}</div>
-                    <div style={{ fontSize: '13px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{stat.label}</div>
+                    <div style={{ fontSize: '32px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '8px' }}>{stat.value}</div>
+                    <div style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif" }}>{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -197,14 +202,14 @@ export default function ForParents() {
       </section>
 
       {/* Testimonials */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FAFAF7' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: '#1A1A2E', textAlign: 'center', marginBottom: '56px' }}
+            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', textAlign: 'center', marginBottom: '56px' }}
           >
             What Parents Say
           </motion.h2>
@@ -222,17 +227,17 @@ export default function ForParents() {
                 variants={fadeUp}
                 style={{
                   background: '#FFFFFF',
-                  border: '1px solid #E8E4D8',
-                  borderRadius: '20px',
+                  border: '1px solid #ECECF1',
+                  borderRadius: '16px',
                   padding: '32px',
-                  boxShadow: '0 4px 24px rgba(26,26,46,0.06)',
+                  boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
                 }}
               >
-                <Quote size={32} style={{ color: '#F5C0D4', marginBottom: '16px' }} />
-                <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#1A1A2E', fontFamily: 'DM Sans, sans-serif', marginBottom: '24px', fontStyle: 'italic' }}>"{t.quote}"</p>
+                <Quote size={32} style={{ color: '#5C56E8', marginBottom: '16px' }} />
+                <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#1C1C28', fontFamily: "'Inter', sans-serif", marginBottom: '24px', fontStyle: 'italic' }}>"{t.quote}"</p>
                 <div>
-                  <div style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: '#1A1A2E' }}>{t.name}</div>
-                  <div style={{ fontSize: '13px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{t.role} · {t.location}</div>
+                  <div style={{ fontSize: '15px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{t.name}</div>
+                  <div style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif" }}>{t.role} · {t.location}</div>
                 </div>
               </motion.div>
             ))}
@@ -241,7 +246,7 @@ export default function ForParents() {
       </section>
 
       {/* CTA */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -249,22 +254,22 @@ export default function ForParents() {
           viewport={{ once: true }}
           style={{ position: 'relative', maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
         >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: 'white', marginBottom: '16px' }}>
-            Give Your Child the <span style={{ background: 'linear-gradient(135deg, #E8336B 0%, #00B4D8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Best</span>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '16px' }}>
+            Give Your Child the Best
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Sans, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
+          <p style={{ color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
             Join thousands of parents who trust Blast Learning with their child's education.
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link
               to="/contact"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: '#E8336B', color: 'white', border: 'none' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#5C56E8', color: 'white', border: 'none' }}
             >
               Start Free Trial <ArrowRight size={16} />
             </Link>
             <Link
               to="/programs"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: 'transparent', border: '1px solid rgba(255,255,255,0.2)', color: 'white' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#FFFFFF', border: '1.5px solid #DCDCE5', color: '#1C1C28' }}
             >
               View Programs
             </Link>
