@@ -9,9 +9,13 @@
   --color-bg: #FFFFFF;
   --color-bg-alt: #F7F7F8;
 
-  --color-indigo: #5C56E8;
-  --color-indigo-dark: #4A43C9;
-  --color-indigo-soft: #EEEDFC;
+  --color-indigo: #0FA8DC;
+  --color-indigo-dark: #0D8BB5;
+  --color-indigo-soft: #E0F5FC;
+
+  --color-rose: #F03C6F;
+  --color-rose-dark: #D42D5E;
+  --color-rose-soft: #FFF0F4;
 
   --color-peach: #FDF3E7;
   --color-pink: #FCEEF1;

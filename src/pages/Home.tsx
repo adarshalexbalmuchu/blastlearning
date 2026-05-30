@@ -3,9 +3,10 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
-  ArrowRight, Play, Brain, Target, BookOpen, Users, Globe, BarChart3,
+  ArrowRight, Play, Brain, Crosshair, FileVideo, LayoutDashboard,
+  HeartHandshake, Languages, BookOpen, Users,
   ChevronDown, CheckCircle, AlertCircle, TrendingUp, Zap, Star,
-  Bell, Award, BarChart2,
+  Bell, Award, BarChart2, MapPin,
 } from 'lucide-react';
 import TestimonialCard from '../components/TestimonialCard';
 import DashboardMockup from '../components/DashboardMockup';
@@ -43,18 +44,27 @@ const howItWorks = [
     num: '03',
     title: 'Learn, Practice, Master',
     desc: 'Follow your adaptive plan, practice with smart quizzes, and track your retention scores. Master every concept before your exams.',
-    icon: Target,
+    icon: Crosshair,
     Illustration: HowItWorksStep3,
   },
 ];
 
 const features = [
   { icon: Brain, title: 'Metacognition Engine', desc: 'Our proprietary AI maps how your child actually learns and adapts the study plan in real-time for maximum retention.' },
-  { icon: Target, title: 'Focus Trainer', desc: 'Guided study sessions with focus techniques that reduce distraction and build lasting concentration habits.' },
-  { icon: BookOpen, title: 'Class Recording Integration', desc: 'Connect any coaching or school recording. Our AI converts lectures into interactive revision material instantly.' },
-  { icon: BarChart3, title: 'Parent Dashboard', desc: "Real-time visibility into your child's study habits, retention scores, and academic progress — all in one place." },
-  { icon: Users, title: 'Tutor Mom Support', desc: 'Dedicated human mentors who check in weekly, answer doubts, and keep students accountable and motivated.' },
-  { icon: Globe, title: 'Multilingual Support', desc: 'Learn in your comfort language — English, Hindi, Kannada, Tamil, Telugu, and more regional languages supported.' },
+  { icon: Crosshair, title: 'Focus Trainer', desc: 'Guided study sessions with focus techniques that reduce distraction and build lasting concentration habits.' },
+  { icon: FileVideo, title: 'Class Recording Integration', desc: 'Connect any coaching or school recording. Our AI converts lectures into interactive revision material instantly.' },
+  { icon: LayoutDashboard, title: 'Parent Dashboard', desc: "Real-time visibility into your child's study habits, retention scores, and academic progress — all in one place." },
+  { icon: HeartHandshake, title: 'Tutor Mom Support', desc: 'Dedicated human mentors who check in weekly, answer doubts, and keep students accountable and motivated.' },
+  { icon: Languages, title: 'Multilingual Support', desc: 'Learn in your comfort language — English, Hindi, Kannada, Tamil, Telugu, and more regional languages supported.' },
+];
+
+const featureAccents = [
+  { color: '#0FA8DC', bg: '#E0F5FC' },
+  { color: '#F03C6F', bg: '#FFF0F4' },
+  { color: '#7C3AED', bg: '#F0EDFC' },
+  { color: '#059669', bg: '#E9F7EF' },
+  { color: '#D97706', bg: '#FDF3E7' },
+  { color: '#0FA8DC', bg: '#E0F5FC' },
 ];
 
 const parentConcerns = [
@@ -144,7 +154,7 @@ function HeroVisual({ index }: { index: number }) {
     fontSize: '18px',
     fontWeight: 700,
     fontFamily: 'Poppins, sans-serif',
-    color: '#5C56E8',
+    color: '#0FA8DC',
     display: 'block',
   });
 
@@ -152,7 +162,7 @@ function HeroVisual({ index }: { index: number }) {
     return (
       <div style={{ padding: '4px' }}>
         <div style={{ marginBottom: '10px' }}>
-          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#5C56E8', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
+          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#0FA8DC', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
             90% Retention Rate
           </span>
         </div>
@@ -162,7 +172,7 @@ function HeroVisual({ index }: { index: number }) {
               <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '3px' }}>Today's Learning Session</p>
               <p style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif' }}>Arjun's Progress</p>
             </div>
-            <span style={{ padding: '4px 11px', borderRadius: '9999px', background: '#5C56E8', color: 'white', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
+            <span style={{ padding: '4px 11px', borderRadius: '9999px', background: '#0FA8DC', color: 'white', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
               Today: 87%
             </span>
           </div>
@@ -183,7 +193,7 @@ function HeroVisual({ index }: { index: number }) {
             <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '10px' }}>Today's Revision Queue</p>
             {['Chapter 4 — Quadratic Equations', 'Photosynthesis Process', 'English Grammar — Tenses'].map((topic, i) => (
               <div key={topic} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: i < 2 ? '7px' : 0 }}>
-                <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: i === 0 ? '#5C56E8' : '#ECECF1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: i === 0 ? '#0FA8DC' : '#ECECF1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <span style={{ color: i === 0 ? 'white' : '#8E8EA0', fontSize: '10px', fontWeight: 700 }}>{i + 1}</span>
                 </div>
                 <span style={{ color: '#1C1C28', fontSize: '12px', fontFamily: 'Inter, sans-serif' }}>{topic}</span>
@@ -205,7 +215,7 @@ function HeroVisual({ index }: { index: number }) {
     return (
       <div style={{ padding: '4px' }}>
         <div style={{ marginBottom: '10px' }}>
-          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#5C56E8', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
+          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#0FA8DC', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
             CBSE Class 10 — On Track
           </span>
         </div>
@@ -215,7 +225,7 @@ function HeroVisual({ index }: { index: number }) {
               <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '3px' }}>Subject Retention Overview</p>
               <p style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif' }}>Priya's Board Prep</p>
             </div>
-            <span style={{ padding: '4px 10px', borderRadius: '9999px', background: '#EEEDFC', color: '#5C56E8', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif', border: '1px solid #DDD9FA' }}>
+            <span style={{ padding: '4px 10px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif', border: '1px solid #B5E3F4' }}>
               24/32 chapters
             </span>
           </div>
@@ -224,10 +234,10 @@ function HeroVisual({ index }: { index: number }) {
               <div key={name}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
                   <span style={{ fontSize: '12px', fontWeight: 500, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>{name}</span>
-                  <span style={{ fontSize: '12px', fontWeight: 600, color: '#5C56E8', fontFamily: 'Inter, sans-serif' }}>{pct}%</span>
+                  <span style={{ fontSize: '12px', fontWeight: 600, color: '#0FA8DC', fontFamily: 'Inter, sans-serif' }}>{pct}%</span>
                 </div>
                 <div style={{ height: '5px', background: '#ECECF1', borderRadius: '3px', overflow: 'hidden' }}>
-                  <div style={{ width: `${pct}%`, height: '100%', background: '#5C56E8', borderRadius: '3px' }} />
+                  <div style={{ width: `${pct}%`, height: '100%', background: '#0FA8DC', borderRadius: '3px' }} />
                 </div>
               </div>
             ))}
@@ -237,7 +247,7 @@ function HeroVisual({ index }: { index: number }) {
               <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '3px' }}>Board Exam Date</p>
               <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif' }}>March 2025</p>
             </div>
-            <span style={{ padding: '4px 12px', borderRadius: '9999px', background: '#5C56E8', color: 'white', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
+            <span style={{ padding: '4px 12px', borderRadius: '9999px', background: '#0FA8DC', color: 'white', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
               On Track
             </span>
           </div>
@@ -248,14 +258,14 @@ function HeroVisual({ index }: { index: number }) {
 
   if (index === 2) {
     const alerts = [
-      { Icon: CheckCircle, color: '#5C56E8', text: 'Session completed — 1h 42m (3:45 PM)' },
-      { Icon: BarChart2, color: '#5C56E8', text: 'Math retention up 8% this week' },
+      { Icon: CheckCircle, color: '#0FA8DC', text: 'Session completed — 1h 42m (3:45 PM)' },
+      { Icon: BarChart2, color: '#0FA8DC', text: 'Math retention up 8% this week' },
       { Icon: Award, color: '#1C8A5B', text: 'Weekly goal 85% — achieved today' },
     ];
     return (
       <div style={{ padding: '4px' }}>
         <div style={{ marginBottom: '10px' }}>
-          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#5C56E8', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
+          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#0FA8DC', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
             Live Parent Dashboard
           </span>
         </div>
@@ -271,7 +281,7 @@ function HeroVisual({ index }: { index: number }) {
               { label: 'Chapters', val: '3 done' },
             ].map((item) => (
               <div key={item.label} style={{ background: '#FFFFFF', borderRadius: '8px', padding: '10px', textAlign: 'center', border: '1px solid #ECECF1' }}>
-                <p style={{ fontSize: '13px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#5C56E8' }}>{item.val}</p>
+                <p style={{ fontSize: '13px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#0FA8DC' }}>{item.val}</p>
                 <p style={{ fontSize: '9px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '2px' }}>{item.label}</p>
               </div>
             ))}
@@ -304,7 +314,7 @@ function HeroVisual({ index }: { index: number }) {
   return (
     <div style={{ padding: '4px' }}>
       <div style={{ marginBottom: '10px' }}>
-        <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#5C56E8', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
+        <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#0FA8DC', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
           Real Student Results — 30 Days
         </span>
       </div>
@@ -322,8 +332,8 @@ function HeroVisual({ index }: { index: number }) {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <span style={{ fontSize: '16px', fontWeight: 600, color: '#8E8EA0', fontFamily: 'Poppins, sans-serif' }}>{before}%</span>
-                <ArrowRight size={13} style={{ color: '#5C56E8', flexShrink: 0 }} />
-                <span style={{ fontSize: '16px', fontWeight: 700, color: '#5C56E8', fontFamily: 'Poppins, sans-serif' }}>{after}%</span>
+                <ArrowRight size={13} style={{ color: '#0FA8DC', flexShrink: 0 }} />
+                <span style={{ fontSize: '16px', fontWeight: 700, color: '#0FA8DC', fontFamily: 'Poppins, sans-serif' }}>{after}%</span>
                 <span style={{ marginLeft: 'auto', fontSize: '11px', fontWeight: 600, padding: '2px 7px', borderRadius: '5px', background: '#E9F7EF', color: '#1C8A5B', fontFamily: 'Inter, sans-serif' }}>
                   +{after - before}%
                 </span>
@@ -334,11 +344,11 @@ function HeroVisual({ index }: { index: number }) {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px', background: '#FFFFFF', borderRadius: '10px', border: '1px solid #ECECF1' }}>
           <div>
             <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '2px' }}>Average improvement</p>
-            <p style={{ fontSize: '22px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#5C56E8' }}>+27%</p>
+            <p style={{ fontSize: '22px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#0FA8DC' }}>+27%</p>
           </div>
           <div style={{ textAlign: 'right' }}>
             <div style={{ display: 'flex', gap: '2px', justifyContent: 'flex-end', marginBottom: '4px' }}>
-              {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={11} fill={s <= 4 ? '#5C56E8' : 'none'} style={{ color: '#5C56E8' }} />)}
+              {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={11} fill={s <= 4 ? '#0FA8DC' : 'none'} style={{ color: '#0FA8DC' }} />)}
             </div>
             <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>4.0/5 parent rating</p>
           </div>
@@ -408,7 +418,7 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title:
   return (
     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '56px' }}>
       {eyebrow && (
-        <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#EEEDFC', color: '#5C56E8', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
+        <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
           {eyebrow}
         </span>
       )}
@@ -426,10 +436,10 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title:
 
 // ─── Home page ─────────────────────────────────────────────────────────────────
 const statCards = [
-  { num: 4999, displayFn: (v: number) => `${v.toLocaleString()}+`, label: 'Students Enrolled', bg: '#FDF3E7' },
-  { num: 40, displayFn: (v: number) => `${(v / 10).toFixed(1)}/5`, label: 'Parent Satisfaction', bg: '#FCEEF1' },
-  { num: 91, displayFn: (v: number) => `${v}%`, label: 'Academic Improvement', bg: '#E7F6FB' },
-  { num: 49, displayFn: (v: number) => `${v}+`, label: 'Cities Across India', bg: '#F0EDFC' },
+  { num: 4999, displayFn: (v: number) => `${v.toLocaleString()}+`, label: 'Students Enrolled', bg: '#FDF3E7', Icon: Users, iconColor: '#D97706' },
+  { num: 40, displayFn: (v: number) => `${(v / 10).toFixed(1)}/5`, label: 'Parent Satisfaction', bg: '#FCEEF1', Icon: Star, iconColor: '#F03C6F' },
+  { num: 91, displayFn: (v: number) => `${v}%`, label: 'Academic Improvement', bg: '#E7F6FB', Icon: TrendingUp, iconColor: '#0FA8DC' },
+  { num: 49, displayFn: (v: number) => `${v}+`, label: 'Cities Across India', bg: '#F0EDFC', Icon: MapPin, iconColor: '#7C3AED' },
 ];
 
 export default function Home() {
@@ -482,7 +492,7 @@ export default function Home() {
                   transition={{ duration: 0.4, ease: 'easeOut' }}
                 >
                   {/* Badge pill */}
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '7px 14px', borderRadius: '9999px', background: '#EEEDFC', color: '#5C56E8', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '24px' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '7px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '24px' }}>
                     <BadgeIcon size={13} />
                     {banner.badge}
                   </div>
@@ -491,7 +501,7 @@ export default function Home() {
                   <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.75rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.12, color: '#1C1C28', marginBottom: '24px' }}>
                     {banner.headline}
                     <br />
-                    <span style={{ color: '#5C56E8' }}>
+                    <span style={{ color: '#0FA8DC' }}>
                       {banner.highlight}
                     </span>
                   </h1>
@@ -506,7 +516,7 @@ export default function Home() {
                     <motion.div whileHover={{ scale: 1.03, y: -2 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
                       <Link
                         to={banner.primaryCta.to}
-                        style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', background: '#5C56E8', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(92,86,232,0.25)' }}
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 20px rgba(240,60,111,0.30)' }}
                       >
                         {banner.primaryCta.label} <ArrowRight size={16} />
                       </Link>
@@ -521,12 +531,20 @@ export default function Home() {
                   </div>
 
                   {/* Trust signals */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
                     {banner.trust.map((t) => (
                       <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                        <CheckCircle size={13} style={{ color: '#5C56E8' }} />
+                        <CheckCircle size={13} style={{ color: '#0FA8DC' }} />
                         {t}
                       </div>
+                    ))}
+                  </div>
+
+                  {/* City trust strip */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center', paddingTop: '16px', borderTop: '1px solid #ECECF1' }}>
+                    <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', fontWeight: 500, marginRight: '2px' }}>Students from:</span>
+                    {['Delhi', 'Mumbai', 'Bengaluru', 'Hyderabad', 'Chennai', 'Pune', '+43 more cities'].map((city) => (
+                      <span key={city} style={{ padding: '2px 8px', borderRadius: '6px', background: '#F7F7F8', border: '1px solid #ECECF1', fontSize: '11px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{city}</span>
                     ))}
                   </div>
                 </motion.div>
@@ -568,7 +586,7 @@ export default function Home() {
                 initial={{ width: '0%' }}
                 animate={{ width: '100%' }}
                 transition={{ duration: BANNER_INTERVAL / 1000, ease: 'linear' }}
-                style={{ height: '100%', background: '#5C56E8', borderRadius: '999px' }}
+                style={{ height: '100%', background: '#0FA8DC', borderRadius: '999px' }}
               />
             </div>
             <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -579,7 +597,7 @@ export default function Home() {
                   title={b.badge}
                   animate={{
                     width: activeBanner === i ? '32px' : '8px',
-                    background: activeBanner === i ? '#5C56E8' : '#DCDCE5',
+                    background: activeBanner === i ? '#0FA8DC' : '#DCDCE5',
                   }}
                   transition={{ duration: 0.3 }}
                   style={{ height: '8px', borderRadius: '4px', border: 'none', cursor: 'pointer', padding: 0 }}
@@ -593,13 +611,23 @@ export default function Home() {
       {/* ── Stats Strip (pastel cards) ── */}
       <section style={{ paddingTop: '88px', paddingBottom: '88px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <SectionHeading
-            title="A Platform Trusted by Families Across India"
-            subtitle="Don't just take our word for it — here's the impact, in numbers."
-          />
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ marginBottom: '48px' }}>
+            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
+              By the numbers
+            </span>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+              A Platform Trusted by<br />Families Across India
+            </h2>
+            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6 }}>
+              Don't just take our word for it — here's the impact, in numbers.
+            </p>
+          </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginBottom: '56px' }} className="grid-cols-4-lg">
             {statCards.map((s) => (
-              <motion.div key={s.label} variants={fadeUp} style={{ background: s.bg, borderRadius: '20px', padding: '36px 24px' }}>
+              <motion.div key={s.label} variants={fadeUp} style={{ background: s.bg, borderRadius: '20px', padding: '32px 24px' }}>
+                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(255,255,255,0.75)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                  <s.Icon size={20} style={{ color: s.iconColor }} />
+                </div>
                 <StatCounter num={s.num} displayFn={s.displayFn} label={s.label} />
               </motion.div>
             ))}
@@ -625,7 +653,7 @@ export default function Home() {
               </div>
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ minWidth: 0 }}>
-              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#EEEDFC', color: '#5C56E8', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>
+              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>
                 The Science
               </span>
               <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
@@ -641,7 +669,7 @@ export default function Home() {
                   { label: 'Metacognition Tracking', desc: 'AI maps exactly where knowledge gaps exist and fills them before exams.' },
                 ].map(({ label, desc }) => (
                   <div key={label} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                    <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#5C56E8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                    <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#0FA8DC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
                       <CheckCircle size={11} style={{ color: 'white' }} />
                     </div>
                     <div>
@@ -664,8 +692,8 @@ export default function Home() {
             title="How Blast Learning Works"
             subtitle="Three simple steps to turn everyday study into lasting retention."
           />
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '48px' }} className="grid-cols-3-md">
-            {howItWorks.map(({ num, title, desc, icon: Icon, Illustration }) => (
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '48px', position: 'relative' }} className="grid-cols-3-md">
+            {howItWorks.map(({ num, title, desc, icon: Icon, Illustration }, idx) => (
               <motion.div
                 key={num}
                 variants={fadeUp}
@@ -673,11 +701,12 @@ export default function Home() {
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 style={{ background: 'white', borderRadius: '20px', padding: '32px', position: 'relative', overflow: 'hidden', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
               >
-                <span style={{ position: 'absolute', top: '-8px', right: '16px', fontSize: '96px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: 'rgba(92,86,232,0.06)', lineHeight: 1, userSelect: 'none' }}>
-                  {num}
-                </span>
-                <div style={{ width: '44px', height: '44px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', background: '#5C56E8' }}>
-                  <Icon size={20} style={{ color: 'white' }} />
+                {/* Step badge */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
+                  <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: idx === 0 ? '#0FA8DC' : idx === 1 ? '#F03C6F' : '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <Icon size={17} style={{ color: 'white' }} />
+                  </div>
+                  <span style={{ fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', color: '#8E8EA0', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Step {num}</span>
                 </div>
                 <h3 style={{ fontSize: '17px', fontWeight: 600, marginBottom: '10px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>{title}</h3>
                 <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>{desc}</p>
@@ -688,7 +717,7 @@ export default function Home() {
             ))}
           </motion.div>
           <div style={{ textAlign: 'center' }}>
-            <Link to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#5C56E8', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(92,86,232,0.25)' }}>
+            <Link to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}>
               Start Your 7-Day Free Trial <ArrowRight size={16} />
             </Link>
           </div>
@@ -702,14 +731,14 @@ export default function Home() {
             <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em' }}>
               Our Programs
             </h2>
-            <Link to="/programs" style={{ fontSize: '14px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px', color: '#5C56E8', fontFamily: 'Inter, sans-serif', textDecoration: 'none', flexShrink: 0 }}>
-              View All <ChevronDown size={14} style={{ color: '#5C56E8' }} className="-rotate-90" />
+            <Link to="/programs" style={{ fontSize: '14px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px', color: '#0FA8DC', fontFamily: 'Inter, sans-serif', textDecoration: 'none', flexShrink: 0 }}>
+              View All <ChevronDown size={14} style={{ color: '#0FA8DC' }} className="-rotate-90" />
             </Link>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }} className="grid-cols-2-md grid-cols-4-lg">
             {[
               { name: 'CBSE Plan', price: '₹1,299', classes: 'Classes 8-10', desc: 'Full CBSE syllabus coverage with AI study buddy and board exam preparation.', outcomes: ['Board Mastery', 'NCERT Clarity', 'Retention'], icon: BookOpen, featured: true },
-              { name: 'Math Genius Maker', price: '₹999', classes: 'Classes 8-12', desc: 'Gap assessment and personalized math lessons from foundation to advanced.', outcomes: ['Gap Filling', 'Speed & Accuracy', 'Mastery'], icon: Target },
+              { name: 'Math Genius Maker', price: '₹999', classes: 'Classes 8-12', desc: 'Gap assessment and personalized math lessons from foundation to advanced.', outcomes: ['Gap Filling', 'Speed & Accuracy', 'Mastery'], icon: Crosshair },
               { name: 'English Mastery', price: '₹999', classes: 'All Classes', desc: 'Grammar, writing, reading, and comprehension skills built systematically.', outcomes: ['Grammar', 'Writing', 'Reading'], icon: Brain },
               { name: 'SAT Prep Pass', price: '₹999', classes: 'Classes 10-12', desc: 'Foundation-level SAT preparation with adaptive tests and complete score optimization.', outcomes: ['High Scores', 'Test Strategy', 'College Ready'], icon: TrendingUp },
             ].map((prog) => {
@@ -723,19 +752,19 @@ export default function Home() {
                   style={{
                     position: 'relative',
                     background: '#FFFFFF',
-                    border: prog.featured ? '2px solid #5C56E8' : '1px solid #ECECF1',
+                    border: prog.featured ? '2px solid #0FA8DC' : '1px solid #ECECF1',
                     borderRadius: '20px',
                     padding: '24px',
                     boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
                   }}
                 >
                   {prog.featured && (
-                    <span style={{ position: 'absolute', top: '-12px', left: '20px', padding: '4px 14px', fontSize: '11px', fontWeight: 600, color: 'white', background: '#5C56E8', borderRadius: '9999px', fontFamily: 'Inter, sans-serif' }}>
+                    <span style={{ position: 'absolute', top: '-12px', left: '20px', padding: '4px 14px', fontSize: '11px', fontWeight: 600, color: 'white', background: '#0FA8DC', borderRadius: '9999px', fontFamily: 'Inter, sans-serif' }}>
                       Most Popular
                     </span>
                   )}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: prog.featured ? '#5C56E8' : '#EEEDFC', color: prog.featured ? 'white' : '#5C56E8' }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: prog.featured ? '#0FA8DC' : '#E0F5FC', color: prog.featured ? 'white' : '#0FA8DC' }}>
                       <Icon size={18} />
                     </div>
                     <div style={{ textAlign: 'right' }}>
@@ -743,7 +772,7 @@ export default function Home() {
                       <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginLeft: '2px' }}>/mo</span>
                     </div>
                   </div>
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', marginBottom: '6px', padding: '2px 8px', borderRadius: '9999px', background: '#EEEDFC', fontSize: '10px', fontWeight: 600, color: '#5C56E8', fontFamily: 'Inter, sans-serif' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', marginBottom: '6px', padding: '2px 8px', borderRadius: '9999px', background: '#E0F5FC', fontSize: '10px', fontWeight: 600, color: '#0FA8DC', fontFamily: 'Inter, sans-serif' }}>
                     <Zap size={9} /> AI Powered
                   </div>
                   <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', marginBottom: '4px', fontFamily: 'Poppins, sans-serif' }}>{prog.name}</h3>
@@ -754,7 +783,7 @@ export default function Home() {
                       <span key={o} style={{ padding: '2px 9px', fontSize: '11px', fontWeight: 500, borderRadius: '9999px', border: '1px solid #ECECF1', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{o}</span>
                     ))}
                   </div>
-                  <Link to="/programs" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '11px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: prog.featured ? '#5C56E8' : 'white', color: prog.featured ? 'white' : '#1C1C28', border: prog.featured ? 'none' : '1.5px solid #DCDCE5' }}>
+                  <Link to="/programs" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '11px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: prog.featured ? '#0FA8DC' : 'white', color: prog.featured ? 'white' : '#1C1C28', border: prog.featured ? 'none' : '1.5px solid #DCDCE5' }}>
                     Learn More <ArrowRight size={13} />
                   </Link>
                 </motion.div>
@@ -775,9 +804,10 @@ export default function Home() {
             {features.map((f, i) => {
               const Icon = f.icon;
               const isSpan = i === 0 || i === 5;
+              const accent = featureAccents[i];
               return (
                 <div key={f.title} className={isSpan ? 'bento-span-2' : ''}>
-                  <FeatureCard icon={<Icon size={20} />} title={f.title} description={f.desc} large={isSpan} />
+                  <FeatureCard icon={<Icon size={20} />} title={f.title} description={f.desc} large={isSpan} accentColor={accent.color} accentBg={accent.bg} />
                 </div>
               );
             })}
@@ -812,7 +842,7 @@ export default function Home() {
             ))}
           </motion.div>
 
-          <Link to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#5C56E8', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(92,86,232,0.25)' }}>
+          <Link to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}>
             Start Your Free Trial Today <ArrowRight size={16} />
           </Link>
         </div>
@@ -839,13 +869,13 @@ export default function Home() {
               </div>
             </div>
             <div style={{ minWidth: 0 }}>
-              <h3 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Poppins, sans-serif', color: '#5C56E8' }}>
+              <h3 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Poppins, sans-serif', color: '#0FA8DC' }}>
                 <CheckCircle size={18} /> Blast Learning Solutions
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {parentConcerns.map(({ solution }) => (
-                  <div key={solution} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '14px 16px', borderRadius: '12px', background: '#FFFFFF', border: '1px solid #ECECF1', borderLeft: '3px solid #5C56E8' }}>
-                    <CheckCircle size={15} style={{ color: '#5C56E8', flexShrink: 0, marginTop: '1px' }} />
+                  <div key={solution} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '14px 16px', borderRadius: '12px', background: '#FFFFFF', border: '1px solid #ECECF1', borderLeft: '3px solid #0FA8DC' }}>
+                    <CheckCircle size={15} style={{ color: '#0FA8DC', flexShrink: 0, marginTop: '1px' }} />
                     <p style={{ fontSize: '14px', color: '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.5 }}>{solution}</p>
                   </div>
                 ))}
@@ -860,11 +890,11 @@ export default function Home() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ minWidth: 0 }}>
-              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#EEEDFC', color: '#5C56E8', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>
+              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>
                 For Parents
               </span>
               <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
-                Parent Dashboard — <span style={{ color: '#5C56E8' }}>Stay Informed Every Day</span>
+                Parent Dashboard — <span style={{ color: '#0FA8DC' }}>Stay Informed Every Day</span>
               </h2>
               <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px' }}>
                 Know exactly what your child is studying, how long they study, and how well they retain it. Our parent dashboard gives you real-time visibility without hovering over their shoulder.
@@ -872,14 +902,14 @@ export default function Home() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
                 {['Real-time retention score tracking', 'Subject-wise performance breakdown', 'Weekly progress reports via WhatsApp', 'Alerts when your child misses study sessions'].map((item) => (
                   <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#5C56E8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#0FA8DC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <CheckCircle size={11} style={{ color: 'white' }} />
                     </div>
                     <span style={{ fontSize: '14px', color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>{item}</span>
                   </div>
                 ))}
               </div>
-              <Link to="/for-parents" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '10px', background: '#5C56E8', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(92,86,232,0.25)' }}>
+              <Link to="/for-parents" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}>
                 Learn More for Parents <ArrowRight size={16} />
               </Link>
             </motion.div>
@@ -894,7 +924,7 @@ export default function Home() {
                 <p style={{ fontSize: '12px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>Study session complete</p>
                 <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>1h 42m — just now</p>
               </motion.div>
-              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }} style={{ position: 'absolute', bottom: '-16px', left: '-16px', background: '#5C56E8', borderRadius: '12px', padding: '10px 14px', boxShadow: '0 8px 28px rgba(92,86,232,0.25)' }}>
+              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }} style={{ position: 'absolute', bottom: '-16px', left: '-16px', background: '#0FA8DC', borderRadius: '12px', padding: '10px 14px', boxShadow: '0 8px 28px rgba(15,168,220,0.25)' }}>
                 <p style={{ fontSize: '12px', fontWeight: 600, color: 'white', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>Math retention +8%</p>
                 <p style={{ fontSize: '10px', color: 'rgba(255,255,255,0.7)', fontFamily: 'Inter, sans-serif' }}>This week</p>
               </motion.div>
@@ -906,10 +936,22 @@ export default function Home() {
       {/* ── Testimonials (light gray) ── */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <SectionHeading
-            title="Real Results from Real Students"
-            subtitle="Hear from the families who turned forgotten lessons into lasting marks."
-          />
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '16px', marginBottom: '48px' }}>
+            <div>
+              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E9F7EF', color: '#059669', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
+                Student Stories
+              </span>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+                Real Results from Real Students
+              </h2>
+              <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6 }}>
+                Hear from families who turned forgotten lessons into lasting marks.
+              </p>
+            </div>
+            <Link to="/programs" style={{ fontSize: '14px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px', color: '#0FA8DC', fontFamily: 'Inter, sans-serif', textDecoration: 'none', flexShrink: 0 }}>
+              Read all stories <ArrowRight size={14} />
+            </Link>
+          </motion.div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', marginBottom: '20px' }} className="grid-cols-3-md">
             <TestimonialCard name="Ananya Krishnan" role="Class 10 student, Bangalore" content="I used to forget everything after coaching. Now I actually remember what I studied a month ago. My maths score jumped from 65 to 89 in one term." rating={5} before="65%" after="89%" metric="Math Score" improvement="24%" />
             <TestimonialCard name="Rahul Mehta" role="Class 12 student, Mumbai" content="The AI study planner is incredible. It knows exactly which topics I'm weak in and schedules revision before I forget. My Physics retention is now consistently above 80%." rating={5} before="52%" after="81%" metric="Physics Score" improvement="29%" />
@@ -935,7 +977,7 @@ export default function Home() {
                 key={i}
                 style={{
                   background: '#FFFFFF',
-                  border: openFaq === i ? '1px solid #5C56E8' : '1px solid #ECECF1',
+                  border: openFaq === i ? '1px solid #0FA8DC' : '1px solid #ECECF1',
                   borderRadius: '14px',
                   overflow: 'hidden',
                   transition: 'border-color 0.25s',
@@ -946,8 +988,8 @@ export default function Home() {
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', padding: '18px 20px', textAlign: 'left', cursor: 'pointer', background: 'transparent', border: 'none' }}
                 >
-                  <span style={{ fontSize: '14px', fontWeight: 600, color: openFaq === i ? '#5C56E8' : '#1C1C28', fontFamily: 'Inter, sans-serif', transition: 'color 0.25s' }}>{faq.q}</span>
-                  <motion.div animate={{ rotate: openFaq === i ? 180 : 0 }} transition={{ duration: 0.25 }} style={{ flexShrink: 0, color: '#5C56E8' }}>
+                  <span style={{ fontSize: '14px', fontWeight: 600, color: openFaq === i ? '#0FA8DC' : '#1C1C28', fontFamily: 'Inter, sans-serif', transition: 'color 0.25s' }}>{faq.q}</span>
+                  <motion.div animate={{ rotate: openFaq === i ? 180 : 0 }} transition={{ duration: 0.25 }} style={{ flexShrink: 0, color: '#0FA8DC' }}>
                     <ChevronDown size={18} />
                   </motion.div>
                 </button>
@@ -965,8 +1007,8 @@ export default function Home() {
             ))}
           </div>
           <div style={{ textAlign: 'center' }}>
-            <Link to="/faq" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 600, color: '#5C56E8', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
-              View All FAQs <ArrowRight size={15} style={{ color: '#5C56E8' }} />
+            <Link to="/faq" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 600, color: '#0FA8DC', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
+              View All FAQs <ArrowRight size={15} style={{ color: '#0FA8DC' }} />
             </Link>
           </div>
         </div>
@@ -980,7 +1022,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            style={{ background: '#5C56E8', borderRadius: '28px', padding: '64px 32px', textAlign: 'center', boxShadow: '0 16px 40px rgba(92,86,232,0.25)' }}
+            style={{ background: '#0FA8DC', borderRadius: '28px', padding: '64px 32px', textAlign: 'center', boxShadow: '0 16px 40px rgba(15,168,220,0.25)' }}
           >
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: 'white', marginBottom: '20px', letterSpacing: '-0.02em', lineHeight: 1.15 }}>
               Help Your Child Learn Independently
@@ -990,11 +1032,11 @@ export default function Home() {
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '16px', marginBottom: '32px' }}>
               <motion.div whileHover={{ scale: 1.04, y: -2 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-                <Link to="/programs" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: 'white', color: '#5C56E8', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(0,0,0,0.12)' }}>
-                  Start 7-Day Trial <ArrowRight size={16} />
+                <Link to="/programs" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 22px rgba(240,60,111,0.40)' }}>
+                  Start 7-Day Free Trial <ArrowRight size={16} />
                 </Link>
               </motion.div>
-              <Link to="/contact" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', border: '1.5px solid rgba(255,255,255,0.5)', background: 'transparent', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
+              <Link to="/contact" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', border: '1.5px solid rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.1)', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
                 Speak to a Learning Advisor
               </Link>
             </div>

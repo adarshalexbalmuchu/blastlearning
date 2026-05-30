@@ -14,7 +14,7 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
     <div
       style={{
         background: '#FFFFFF',
-        border: open ? '1px solid #5C56E8' : '1px solid #ECECF1',
+        border: open ? '1px solid #0FA8DC' : '1px solid #ECECF1',
         borderRadius: '16px',
         overflow: 'hidden',
         boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
@@ -36,13 +36,13 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
           border: 'none',
         }}
       >
-        <span style={{ fontSize: '14px', fontWeight: 600, color: open ? '#5C56E8' : '#1C1C28', fontFamily: "'Poppins', sans-serif", transition: 'color 0.25s' }}>
+        <span style={{ fontSize: '14px', fontWeight: 600, color: open ? '#0FA8DC' : '#1C1C28', fontFamily: "'Poppins', sans-serif", transition: 'color 0.25s' }}>
           {question}
         </span>
         <motion.div
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.25 }}
-          style={{ flexShrink: 0, color: '#5C56E8' }}
+          style={{ flexShrink: 0, color: '#0FA8DC' }}
         >
           <ChevronDown size={18} />
         </motion.div>

@@ -19,11 +19,11 @@ export const HeroIllustration: FC<IllustrationProps> = ({ className, width = '10
   >
     <defs>
       <linearGradient id="hi-grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#5C56E8" />
+        <stop offset="0%" stopColor="#0FA8DC" />
         <stop offset="100%" stopColor="#8B86F0" />
       </linearGradient>
       <linearGradient id="hi-grad2" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#5C56E8" />
+        <stop offset="0%" stopColor="#0FA8DC" />
         <stop offset="100%" stopColor="#8B86F0" />
       </linearGradient>
     </defs>
@@ -48,7 +48,7 @@ export const HeroIllustration: FC<IllustrationProps> = ({ className, width = '10
     <rect x="148" y="198" width="184" height="122" rx="10" fill="#FFFFFF" stroke="#ECECF1" strokeWidth="1.5" />
     <rect x="156" y="206" width="168" height="106" rx="6" fill="#F0EDFC" />
     {/* Screen lines */}
-    <rect x="166" y="218" width="82" height="6" rx="3" fill="#5C56E8" />
+    <rect x="166" y="218" width="82" height="6" rx="3" fill="#0FA8DC" />
     <rect x="166" y="230" width="122" height="4" rx="2" fill="rgba(28,28,40,0.12)" />
     <rect x="166" y="240" width="100" height="4" rx="2" fill="rgba(28,28,40,0.08)" />
     <rect x="166" y="250" width="60" height="4" rx="2" fill="#8B86F0" />
@@ -56,10 +56,10 @@ export const HeroIllustration: FC<IllustrationProps> = ({ className, width = '10
     <path d="M128 292 L352 292 L342 304 L138 304 Z" fill="#F0EDFC" stroke="#ECECF1" strokeWidth="1" />
 
     {/* Student: head */}
-    <circle cx="240" cy="156" r="30" fill="#EEEDFC" stroke="#DDD9FA" strokeWidth="1.5" />
+    <circle cx="240" cy="156" r="30" fill="#E0F5FC" stroke="#B5E3F4" strokeWidth="1.5" />
     <circle cx="240" cy="152" r="18" fill="rgba(28,28,40,0.04)" />
     {/* Student: shoulders */}
-    <path d="M196 196 Q240 182 284 196 L284 258 L196 258 Z" fill="#EEEDFC" stroke="#DDD9FA" strokeWidth="1" />
+    <path d="M196 196 Q240 182 284 196 L284 258 L196 258 Z" fill="#E0F5FC" stroke="#B5E3F4" strokeWidth="1" />
 
     {/* Floating card — Math */}
     <g style={{ animation: 'float 4s ease-in-out infinite' }}>
@@ -83,15 +83,15 @@ export const HeroIllustration: FC<IllustrationProps> = ({ className, width = '10
       <text x="350" y="240" fontFamily="Inter, sans-serif" fontSize="10" fill="#8E8EA0">Today's Session</text>
       <text x="350" y="256" fontFamily="Poppins, sans-serif" fontSize="13" fontWeight="600" fill="#1C1C28">1h 42m</text>
       <rect x="350" y="262" width="80" height="3" rx="1.5" fill="#ECECF1" />
-      <rect x="350" y="262" width="62" height="3" rx="1.5" fill="#5C56E8" />
+      <rect x="350" y="262" width="62" height="3" rx="1.5" fill="#0FA8DC" />
     </g>
 
     {/* Neural connection dots */}
-    <circle cx="130" cy="109" r="4" fill="#5C56E8" opacity="0.85" className="neural-dot" />
-    <circle cx="350" cy="89" r="4" fill="#5C56E8" opacity="0.85" className="neural-dot" />
+    <circle cx="130" cy="109" r="4" fill="#0FA8DC" opacity="0.85" className="neural-dot" />
+    <circle cx="350" cy="89" r="4" fill="#0FA8DC" opacity="0.85" className="neural-dot" />
     <circle cx="402" cy="246" r="4" fill="#8B86F0" opacity="0.7" className="neural-dot" />
     <circle cx="240" cy="68" r="3" fill="#8B86F0" opacity="0.5" className="neural-dot" />
-    <circle cx="98" cy="198" r="3" fill="#5C56E8" opacity="0.4" className="neural-dot" />
+    <circle cx="98" cy="198" r="3" fill="#0FA8DC" opacity="0.4" className="neural-dot" />
 
     {/* Connection lines */}
     <line x1="130" y1="109" x2="196" y2="156" stroke="rgba(28,28,40,0.1)" strokeWidth="1" strokeDasharray="4 4" />

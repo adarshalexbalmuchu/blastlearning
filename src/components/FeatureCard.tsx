@@ -5,9 +5,11 @@ interface FeatureCardProps {
   title: string;
   description: string;
   large?: boolean;
+  accentColor?: string;
+  accentBg?: string;
 }
 
-export default function FeatureCard({ icon, title, description, large }: FeatureCardProps) {
+export default function FeatureCard({ icon, title, description, large, accentColor = '#0FA8DC', accentBg = '#E0F5FC' }: FeatureCardProps) {
   return (
     <div
       style={{
@@ -22,8 +24,8 @@ export default function FeatureCard({ icon, title, description, large }: Feature
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.transform = 'translateY(-6px)';
-        (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 28px rgba(92,86,232,0.12)';
-        (e.currentTarget as HTMLElement).style.borderColor = '#5C56E8';
+        (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 28px ${accentColor}30`;
+        (e.currentTarget as HTMLElement).style.borderColor = accentColor;
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLElement).style.transform = 'none';
@@ -39,8 +41,8 @@ export default function FeatureCard({ icon, title, description, large }: Feature
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: '16px',
-        background: '#EEEDFC',
-        color: '#5C56E8',
+        background: accentBg,
+        color: accentColor,
       }}>
         {icon}
       </div>

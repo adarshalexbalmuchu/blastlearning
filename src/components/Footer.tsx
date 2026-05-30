@@ -100,10 +100,10 @@ const Footer = () => {
               textDecoration: 'none',
               padding: '0.875rem 2rem',
               borderRadius: '10px',
-              background: '#5C56E8',
+              background: '#0FA8DC',
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = '#4A43C9'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = '#5C56E8'; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = '#0D8BB5'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = '#0FA8DC'; }}
           >
             Start Free Trial
           </Link>
@@ -135,7 +135,7 @@ const Footer = () => {
                   width: '40px',
                   height: '40px',
                   borderRadius: '10px',
-                  background: '#5C56E8',
+                  background: '#0FA8DC',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -187,8 +187,8 @@ const Footer = () => {
                   whileHover={{ scale: 1.1, y: -2 }}
                   aria-label={social.name}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#5C56E8';
-                    e.currentTarget.style.borderColor = '#DDD9FA';
+                    e.currentTarget.style.color = '#0FA8DC';
+                    e.currentTarget.style.borderColor = '#B5E3F4';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.color = '#5A5A6E';
@@ -251,7 +251,7 @@ const Footer = () => {
                     <Link
                       to={link.path}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.color = '#5C56E8';
+                        e.currentTarget.style.color = '#0FA8DC';
                       }}
                       onMouseLeave={(e) => {
                         e.currentTarget.style.color = '#5A5A6E';

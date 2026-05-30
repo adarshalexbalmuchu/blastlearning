@@ -19,15 +19,15 @@ export const ScoreTransformIllustration: FC<IllustrationProps> = ({ className, w
   >
     <defs>
       <linearGradient id="sti-g1" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#5C56E8" />
+        <stop offset="0%" stopColor="#0FA8DC" />
         <stop offset="100%" stopColor="#8B86F0" />
       </linearGradient>
       <linearGradient id="sti-g2" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#5C56E8" />
+        <stop offset="0%" stopColor="#0FA8DC" />
         <stop offset="100%" stopColor="#8B86F0" />
       </linearGradient>
       <linearGradient id="sti-g3" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#5C56E8" />
+        <stop offset="0%" stopColor="#0FA8DC" />
         <stop offset="100%" stopColor="#8B86F0" />
       </linearGradient>
     </defs>

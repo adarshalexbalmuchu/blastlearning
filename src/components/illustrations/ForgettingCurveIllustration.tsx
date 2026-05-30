@@ -60,7 +60,7 @@ export const ForgettingCurveIllustration: FC<IllustrationProps> = ({
     >
       <defs>
         <linearGradient id="fci-blast" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#5C56E8" />
+          <stop offset="0%" stopColor="#0FA8DC" />
           <stop offset="100%" stopColor="#8B86F0" />
         </linearGradient>
       </defs>
@@ -118,7 +118,7 @@ export const ForgettingCurveIllustration: FC<IllustrationProps> = ({
       <rect x="300" y="88" width="162" height="56" rx="8" fill="#FFFFFF" stroke="#ECECF1" strokeWidth="1" />
       <line x1="312" y1="108" x2="332" y2="108" stroke="#C4C4D0" strokeWidth="2.5" strokeLinecap="round" />
       <text x="338" y="112" fontFamily="Inter, sans-serif" fontSize="10" fill="#5A5A6E">Without Blast</text>
-      <line x1="312" y1="128" x2="332" y2="128" stroke="#5C56E8" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="312" y1="128" x2="332" y2="128" stroke="#0FA8DC" strokeWidth="2.5" strokeLinecap="round" />
       <text x="338" y="132" fontFamily="Inter, sans-serif" fontSize="10" fill="#5A5A6E">With Blast</text>
     </svg>
   );

@@ -42,7 +42,7 @@ const values = [
 ];
 
 const statPastels = ['#FDF3E7', '#FCEEF1', '#E7F6FB', '#F0EDFC'];
-const teamPastels = ['#5C56E8', '#FCEEF1', '#E7F6FB', '#F0EDFC', '#E9F7EF', '#FDF3E7'];
+const teamPastels = ['#0FA8DC', '#FCEEF1', '#E7F6FB', '#F0EDFC', '#E9F7EF', '#FDF3E7'];
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -60,7 +60,7 @@ export default function About() {
       <section style={{ background: '#FFFFFF', paddingTop: '120px', paddingBottom: '100px', borderBottom: '1px solid #ECECF1' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '24px', background: '#EEEDFC', color: '#5C56E8' }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '24px', background: '#E0F5FC', color: '#0FA8DC' }}>
               Our Mission
             </span>
             <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '24px', lineHeight: 1.15, color: '#1C1C28' }}>
@@ -138,7 +138,7 @@ export default function About() {
           >
             {companyStats.map((s) => (
               <motion.div key={s.label} variants={fadeUp} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '8px', fontFamily: 'Poppins, sans-serif', color: '#5C56E8' }}>{s.value}</div>
+                <div style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '8px', fontFamily: 'Poppins, sans-serif', color: '#0FA8DC' }}>{s.value}</div>
                 <div style={{ fontSize: '14px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{s.label}</div>
               </motion.div>
             ))}
@@ -170,16 +170,16 @@ export default function About() {
           >
             {team.map((member, i) => {
               const fill = teamPastels[i % teamPastels.length];
-              const isIndigo = fill === '#5C56E8';
+              const isIndigo = fill === '#0FA8DC';
               return (
                 <motion.div
                   key={member.name}
                   variants={fadeUp}
-                  whileHover={{ boxShadow: '0 8px 28px rgba(92,86,232,0.12)' }}
+                  whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
                   style={{ padding: '28px', borderRadius: '16px', textAlign: 'center', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
                 >
                   <div
-                    style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 600, color: isIndigo ? 'white' : '#5C56E8', margin: '0 auto 16px', fontFamily: 'Poppins, sans-serif', background: fill }}
+                    style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 600, color: isIndigo ? 'white' : '#0FA8DC', margin: '0 auto 16px', fontFamily: 'Poppins, sans-serif', background: fill }}
                   >
                     {member.name.split(' ').map((n) => n[0]).join('')}
                   </div>
@@ -218,10 +218,10 @@ export default function About() {
               <motion.div
                 key={title}
                 variants={fadeUp}
-                whileHover={{ boxShadow: '0 8px 28px rgba(92,86,232,0.12)' }}
+                whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
                 style={{ padding: '32px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
               >
-                <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: '#EEEDFC', color: '#5C56E8' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: '#E0F5FC', color: '#0FA8DC' }}>
                   <Icon size={22} />
                 </div>
                 <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>{title}</h3>
@@ -249,7 +249,7 @@ export default function About() {
           </p>
           <Link
             to="/contact"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#5C56E8', color: 'white' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
           >
             Get in Touch <ArrowRight size={16} />
           </Link>
