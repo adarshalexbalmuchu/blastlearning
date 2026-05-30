@@ -13,12 +13,11 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
   return (
     <div
       style={{
-        background: 'rgba(255,255,255,0.04)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        border: open ? '1px solid rgba(6,182,212,0.2)' : '1px solid rgba(255,255,255,0.07)',
+        background: '#FFFFFF',
+        border: open ? '1px solid #E8336B' : '1px solid #E8E4D8',
         borderRadius: '14px',
         overflow: 'hidden',
+        boxShadow: '0 4px 24px rgba(26,26,46,0.06)',
         transition: 'border-color 0.25s',
       }}
     >
@@ -37,13 +36,13 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
           border: 'none',
         }}
       >
-        <span style={{ fontSize: '14px', fontWeight: 600, color: open ? '#06B6D4' : 'rgba(255,255,255,0.85)', fontFamily: 'Space Grotesk, sans-serif', transition: 'color 0.25s' }}>
+        <span style={{ fontSize: '14px', fontWeight: 600, color: open ? '#E8336B' : '#1A1A2E', fontFamily: "'Playfair Display', serif", transition: 'color 0.25s' }}>
           {question}
         </span>
         <motion.div
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.25 }}
-          style={{ flexShrink: 0, color: '#06B6D4' }}
+          style={{ flexShrink: 0, color: '#E8336B' }}
         >
           <ChevronDown size={18} />
         </motion.div>
@@ -59,9 +58,9 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             style={{ overflow: 'hidden' }}
           >
-            <div style={{ padding: '0 20px 18px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+            <div style={{ padding: '0 20px 18px', borderTop: '1px solid #E8E4D8' }}>
               <div style={{ height: '12px' }} />
-              <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'rgba(255,255,255,0.55)', fontFamily: 'Inter, sans-serif' }}>{answer}</p>
+              <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A7A', fontFamily: "'DM Sans', sans-serif" }}>{answer}</p>
             </div>
           </motion.div>
         )}

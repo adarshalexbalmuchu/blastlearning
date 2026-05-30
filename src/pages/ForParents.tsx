@@ -1,63 +1,67 @@
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import {
-  ArrowRight, AlertCircle, CheckCircle, BarChart3, Bell, MessageSquare, FileText
-} from 'lucide-react';
-import DashboardMockup from '../components/DashboardMockup';
-import TestimonialCard from '../components/TestimonialCard';
-import FAQItem from '../components/FAQItem';
+import { Shield, TrendingUp, Clock, Heart, BarChart3, Bell, ArrowRight, CheckCircle, Quote } from 'lucide-react';
 
-const concerns = [
-  { concern: 'My child forgets everything within days of studying', solution: 'Spaced repetition schedules content exactly when your child needs to review for maximum retention — up to 90%.' },
-  { concern: 'Coaching fees keep increasing but results don\'t improve', solution: 'Our AI ensures every rupee spent on coaching becomes long-term knowledge, not forgotten lessons.' },
-  { concern: 'I can\'t tell if my child is actually studying productively', solution: 'Live dashboard shows study time, topics covered, quiz scores, and retention percentage every day.' },
-  { concern: 'My child is stressed, anxious, and losing confidence', solution: 'Personalized pace, progress celebrations, and human mentors build confidence as students see real results.' },
-  { concern: 'Different teachers explain things differently and it confuses my child', solution: 'AI synthesizes all sources into one consistent, personalised learning path with no contradictions.' },
-  { concern: 'I don\'t know which topics my child is weak in', solution: 'Weekly diagnostic reports show exact weak topics with actionable recommendations you can share with tutors.' },
-  { concern: 'My child spends hours "studying" with no real output', solution: 'Active recall and timed focus sessions replace passive reading, making every study hour measurably productive.' },
-];
-
-const howParentsUse = [
+const benefits = [
   {
-    num: '01',
-    title: 'Set Up Your Child\'s Profile',
-    desc: 'Create your child\'s account, select their class and subjects, and link any existing coaching schedule. Setup takes under 10 minutes.',
-    icon: FileText,
-  },
-  {
-    num: '02',
-    title: 'Receive Daily Updates',
-    desc: 'Get a daily digest on WhatsApp and email showing what your child studied, retention scores, and any areas needing attention.',
-    icon: Bell,
-  },
-  {
-    num: '03',
-    title: 'Track and Support Progress',
-    desc: 'Use the parent dashboard to see trends over time, share reports with tutors, and celebrate your child\'s achievements together.',
     icon: BarChart3,
+    title: 'Real-Time Progress Dashboard',
+    description: 'See exactly what your child is learning, their strengths, and areas needing attention — updated live.',
+  },
+  {
+    icon: Bell,
+    title: 'Weekly Progress Reports',
+    description: 'Receive detailed weekly summaries via WhatsApp and email. No surprises, just clear insights.',
+  },
+  {
+    icon: Shield,
+    title: 'Safe Learning Environment',
+    description: 'No ads, no distractions, no inappropriate content. A focused, secure space built for learning.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Measurable Improvement',
+    description: 'Track grade improvements over time with data-driven insights and retention analytics.',
+  },
+  {
+    icon: Clock,
+    title: 'Flexible Learning Schedule',
+    description: 'Your child learns at their own pace, anytime. Perfect for balancing school and other activities.',
+  },
+  {
+    icon: Heart,
+    title: 'Reduced Exam Stress',
+    description: 'Confidence-building approach with steady preparation means less anxiety at exam time.',
   },
 ];
 
-const parentFaqs = [
+const trustPoints = [
+  'No hidden fees — transparent monthly pricing',
+  'Cancel anytime, no lock-in contracts',
+  'Data privacy guaranteed — your child\'s information is secure',
+  'Aligned with CBSE & NCERT curriculum',
+  'Created by IIT & NIT alumni educators',
+  'Trusted by 10,000+ Indian families',
+];
+
+const testimonials = [
   {
-    question: 'Do I need to monitor my child\'s study sessions?',
-    answer: 'No — Blast Learning is designed for independent learning. Your child follows their AI-generated study plan, while you receive daily progress summaries. You stay informed without being a constant presence.',
+    quote: 'My daughter\'s confidence in maths has completely transformed. The weekly reports help me stay involved without being intrusive.',
+    name: 'Priya Sharma',
+    role: 'Mother of Class 10 student',
+    location: 'Delhi',
   },
   {
-    question: 'How do I know if Blast Learning is actually working?',
-    answer: 'You\'ll see it in the numbers within 2-3 weeks. The parent dashboard shows retention percentages, quiz scores, and subject mastery trends over time. Most parents see a measurable improvement in their child\'s test scores within one month.',
+    quote: 'Finally an app that shows me real progress. I can see exactly where my son needs help and the AI actually adapts to him.',
+    name: 'Rajesh Kumar',
+    role: 'Father of Class 9 student',
+    location: 'Bangalore',
   },
   {
-    question: 'Can I communicate with a human tutor if my child needs help?',
-    answer: 'Yes. Our Tutor Mom Support team includes qualified educators who are available for weekly check-ins and doubt resolution. You can also message them directly through the parent portal.',
-  },
-  {
-    question: 'What if my child is already attending coaching classes?',
-    answer: 'Blast Learning works alongside coaching, not against it. Your child can upload coaching recordings and notes, and our AI converts them into revision material — making coaching more effective.',
-  },
-  {
-    question: 'Is there a trial period before I commit to a subscription?',
-    answer: 'Absolutely. We offer a 7-day free trial with full feature access. No credit card is required to start. You\'ll have enough data to see real retention improvement before making a decision.',
+    quote: 'Worth every rupee. The retention tracking is genius — my daughter actually remembers what she learned months ago.',
+    name: 'Anita Desai',
+    role: 'Mother of Class 8 student',
+    location: 'Mumbai',
   },
 ];
 
@@ -72,150 +76,41 @@ const stagger: Variants = {
 
 export default function ForParents() {
   return (
-    <div style={{ background: '#07111F' }}>
+    <div style={{ background: '#FAFAF7' }}>
       {/* Hero */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: '#07111F', paddingTop: '120px', paddingBottom: '100px' }}>
-        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
-        <div style={{ position: 'absolute', bottom: '-5%', left: '-5%', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
+      <section style={{ position: 'relative', overflow: 'hidden', background: '#FAFAF7', paddingTop: '120px', paddingBottom: '100px' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '24px', background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', marginBottom: '24px', background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B' }}>
               For Parents
             </span>
-            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.03em', marginBottom: '24px', lineHeight: 1.15 }}>
-              <span style={{ background: 'linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.85) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                From Constant Worry to{' '}
-              </span>
-              <span style={{ background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                Complete Confidence
-              </span>
+            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.03em', marginBottom: '24px', color: '#1A1A2E' }}>
+              Peace of Mind for Parents
             </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', maxWidth: '600px', margin: '0 auto 40px' }}>
-              Know exactly what your child is learning, how well they retain it, and where they need help — every single day. No more guessing, no more surprises at exam time.
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', maxWidth: '640px', margin: '0 auto' }}>
+              Stay informed and involved in your child's education journey. Track progress, celebrate wins, and support their growth — all backed by transparent data.
             </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
-              <Link
-                to="/programs"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%)', color: 'white' }}
-              >
-                Start 7-Day Free Trial <ArrowRight size={16} />
-              </Link>
-              <Link
-                to="/contact"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.85)' }}
-              >
-                Speak to an Advisor
-              </Link>
-            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Pain / Solution */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#0a1628' }}>
+      {/* Benefits Grid */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.h2
+          <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)', textAlign: 'center', marginBottom: '56px' }}
+            style={{ textAlign: 'center', marginBottom: '64px' }}
           >
-            We Understand Your Concerns
-          </motion.h2>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '32px' }}
-            className="grid-cols-2-lg"
-          >
-            <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
-              <h3 style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,100,100,0.8)', fontFamily: 'Inter, sans-serif', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
-                <AlertCircle size={14} /> What Parents Tell Us
-              </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {concerns.map(({ concern }) => (
-                  <div key={concern} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '16px', borderRadius: '14px', borderLeft: '3px solid rgba(255,100,100,0.4)', background: 'rgba(255,100,100,0.04)' }}>
-                    <AlertCircle size={14} style={{ color: 'rgba(255,100,100,0.7)', flexShrink: 0, marginTop: '2px' }} />
-                    <p style={{ fontSize: '14px', lineHeight: 1.6, color: 'rgba(255,255,255,0.65)', fontFamily: 'Inter, sans-serif' }}>{concern}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-            <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
-              <h3 style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#06B6D4', fontFamily: 'Inter, sans-serif', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
-                <CheckCircle size={14} /> How Blast Learning Solves It
-              </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {concerns.map(({ solution }) => (
-                  <div key={solution} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '16px', borderRadius: '14px', borderLeft: '3px solid rgba(6,182,212,0.4)', background: 'rgba(6,182,212,0.04)' }}>
-                    <CheckCircle size={14} style={{ color: '#06B6D4', flexShrink: 0, marginTop: '2px' }} />
-                    <p style={{ fontSize: '14px', lineHeight: 1.6, color: 'rgba(255,255,255,0.65)', fontFamily: 'Inter, sans-serif' }}>{solution}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: 'white', marginBottom: '16px' }}>
+              Everything You Need to Stay Involved
+            </h2>
+            <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Sans, sans-serif', maxWidth: '600px', margin: '0 auto' }}>
+              Powerful tools designed to keep you connected to your child's learning journey.
+            </p>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Dashboard Showcase */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }}
-            className="grid-cols-2-lg"
-          >
-            <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)', marginBottom: '20px' }}>
-                The Parent Dashboard —{' '}
-                <span style={{ background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Your Window Into Learning</span>
-              </h2>
-              <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.55)', fontFamily: 'Inter, sans-serif', marginBottom: '32px' }}>
-                A beautifully simple interface that gives you all the information you need without overwhelming you. Check it in 2 minutes each morning and you'll always know exactly where your child stands.
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
-                {[
-                  { icon: BarChart3, label: 'Retention Score', desc: 'Daily retention percentage across all subjects' },
-                  { icon: Bell, label: 'Smart Alerts', desc: 'Notified when child misses a session or drops in a subject' },
-                  { icon: MessageSquare, label: 'Weekly Reports', desc: 'Detailed PDF reports to share with tutors and teachers' },
-                  { icon: FileText, label: 'Exam Readiness', desc: 'Pre-exam readiness score so there are no surprises' },
-                ].map(({ icon: Icon, label, desc }) => (
-                  <div key={label} style={{ padding: '16px', borderRadius: '16px', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                    <div style={{ width: '36px', height: '36px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '12px', background: 'linear-gradient(135deg, rgba(6,182,212,0.2), rgba(139,92,246,0.2))', color: '#06B6D4' }}>
-                      <Icon size={16} />
-                    </div>
-                    <p style={{ fontSize: '13px', fontWeight: 600, marginBottom: '4px', fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.85)' }}>{label}</p>
-                    <p style={{ fontSize: '12px', lineHeight: 1.5, color: 'rgba(255,255,255,0.4)', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-            <motion.div variants={fadeUp} style={{ minWidth: 0, width: '100%' }}>
-              <DashboardMockup />
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* How Parents Use */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#0a1628' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)', textAlign: 'center', marginBottom: '56px' }}
-          >
-            Getting Started Takes 10 Minutes
-          </motion.h2>
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -224,37 +119,94 @@ export default function ForParents() {
             style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
             className="grid-cols-3-md"
           >
-            {howParentsUse.map(({ num, title, desc, icon: Icon }) => (
-              <motion.div
-                key={num}
-                variants={fadeUp}
-                style={{ padding: '32px', borderRadius: '20px', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.07)' }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
-                  <span style={{ fontSize: '40px', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', background: 'linear-gradient(135deg, rgba(6,182,212,0.2), rgba(139,92,246,0.2))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', lineHeight: 1 }}>{num}</span>
-                  <div style={{ width: '44px', height: '44px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg, rgba(6,182,212,0.2), rgba(139,92,246,0.2))', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
-                    <Icon size={20} />
+            {benefits.map((benefit) => {
+              const Icon = benefit.icon;
+              return (
+                <motion.div
+                  key={benefit.title}
+                  variants={fadeUp}
+                  whileHover={{ y: -6 }}
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    borderRadius: '20px',
+                    padding: '32px',
+                  }}
+                >
+                  <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: 'rgba(232,51,107,0.15)', border: '1px solid rgba(232,51,107,0.3)', color: '#E8336B' }}>
+                    <Icon size={24} />
                   </div>
-                </div>
-                <h3 style={{ fontSize: '16px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)', marginBottom: '10px' }}>{title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
-              </motion.div>
-            ))}
+                  <h3 style={{ fontSize: '18px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: 'white', marginBottom: '10px' }}>{benefit.title}</h3>
+                  <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Sans, sans-serif' }}>{benefit.description}</p>
+                </motion.div>
+              );
+            })}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Trust Section */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F5F2EC' }}>
+        <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }} className="grid-cols-2-md">
+            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: '#1A1A2E', marginBottom: '24px' }}>
+                Built on Trust & Transparency
+              </h2>
+              <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '32px' }}>
+                We believe parents deserve complete clarity. No hidden costs, no confusing contracts — just honest, effective education.
+              </p>
+              <div style={{ display: 'grid', gap: '16px' }}>
+                {trustPoints.map((point) => (
+                  <div key={point} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <CheckCircle size={20} style={{ color: '#00B89C', flexShrink: 0 }} />
+                    <span style={{ fontSize: '15px', color: '#1A1A2E', fontFamily: 'DM Sans, sans-serif' }}>{point}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              style={{
+                background: '#FFFFFF',
+                border: '1px solid #E8E4D8',
+                borderRadius: '24px',
+                padding: '40px',
+                boxShadow: '0 4px 24px rgba(26,26,46,0.06)',
+              }}
+            >
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px' }}>
+                {[
+                  { value: '10,000+', label: 'Active Families' },
+                  { value: '92%', label: 'Grade Improvement' },
+                  { value: '4.8/5', label: 'Parent Rating' },
+                  { value: '50,000+', label: 'Lessons Done' },
+                ].map((stat) => (
+                  <div key={stat.label} style={{ textAlign: 'center' }}>
+                    <div style={{ fontSize: '32px', fontWeight: 800, fontFamily: 'Playfair Display, serif', color: '#00B4D8', marginBottom: '8px' }}>{stat.value}</div>
+                    <div style={{ fontSize: '13px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FAFAF7' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)', textAlign: 'center', marginBottom: '48px' }}
+            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: '#1A1A2E', textAlign: 'center', marginBottom: '56px' }}
           >
-            What Parents Are Saying
+            What Parents Say
           </motion.h2>
           <motion.div
             variants={stagger}
@@ -264,41 +216,24 @@ export default function ForParents() {
             style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
             className="grid-cols-3-md"
           >
-            {[
-              { name: 'Sunita Reddy', role: 'Parent of Class 10 student, Pune', content: 'We were spending ₹15,000 a month on coaching and my daughter was still forgetting everything. Blast Learning at ₹1,299 has done more for her retention than all that coaching combined.' },
-              { name: 'Deepak Sharma', role: 'Parent of Class 11 student, Delhi', content: 'The parent dashboard is a game changer. I can see exactly what my son studied, for how long, and his retention scores. No more guessing if he\'s actually studying or just watching YouTube.' },
-              { name: 'Meena Iyer', role: 'Parent of Class 9 student, Bangalore', content: 'My daughter\'s confidence has improved dramatically. She used to dread exams, now she actually looks forward to revision sessions. The AI makes it feel manageable, not overwhelming.' },
-            ].map((t) => (
-              <motion.div key={t.name} variants={fadeUp}>
-                <TestimonialCard name={t.name} role={t.role} content={t.content} rating={5} />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#0a1628' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)', textAlign: 'center', marginBottom: '48px' }}
-          >
-            Common Parent Questions
-          </motion.h2>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}
-          >
-            {parentFaqs.map((faq) => (
-              <motion.div key={faq.question} variants={fadeUp}>
-                <FAQItem question={faq.question} answer={faq.answer} />
+            {testimonials.map((t) => (
+              <motion.div
+                key={t.name}
+                variants={fadeUp}
+                style={{
+                  background: '#FFFFFF',
+                  border: '1px solid #E8E4D8',
+                  borderRadius: '20px',
+                  padding: '32px',
+                  boxShadow: '0 4px 24px rgba(26,26,46,0.06)',
+                }}
+              >
+                <Quote size={32} style={{ color: '#F5C0D4', marginBottom: '16px' }} />
+                <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#1A1A2E', fontFamily: 'DM Sans, sans-serif', marginBottom: '24px', fontStyle: 'italic' }}>"{t.quote}"</p>
+                <div>
+                  <div style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: '#1A1A2E' }}>{t.name}</div>
+                  <div style={{ fontSize: '13px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{t.role} · {t.location}</div>
+                </div>
               </motion.div>
             ))}
           </motion.div>
@@ -306,9 +241,7 @@ export default function ForParents() {
       </section>
 
       {/* CTA */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(6,182,212,0.07), rgba(59,130,246,0.05), rgba(139,92,246,0.07))', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '800px', height: '400px', borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(6,182,212,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -316,18 +249,24 @@ export default function ForParents() {
           viewport={{ once: true }}
           style={{ position: 'relative', maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
         >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', background: 'linear-gradient(135deg, #ffffff, rgba(255,255,255,0.8))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-            Give Your Child the Retention Advantage
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: 'white', marginBottom: '16px' }}>
+            Give Your Child the <span style={{ background: 'linear-gradient(135deg, #E8336B 0%, #00B4D8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Best</span>
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-            Start with a 7-day free trial. No credit card required. See real retention data for your child within the first week.
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Sans, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
+            Join thousands of parents who trust Blast Learning with their child's education.
           </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
-            <Link to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%)', color: 'white' }}>
+          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link
+              to="/contact"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: '#E8336B', color: 'white', border: 'none' }}
+            >
               Start Free Trial <ArrowRight size={16} />
             </Link>
-            <Link to="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.85)' }}>
-              Speak to an Advisor
+            <Link
+              to="/programs"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: 'transparent', border: '1px solid rgba(255,255,255,0.2)', color: 'white' }}
+            >
+              View Programs
             </Link>
           </div>
         </motion.div>

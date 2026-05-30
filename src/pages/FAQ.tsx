@@ -15,7 +15,7 @@ const faqs: FAQEntry[] = [
   {
     category: 'General',
     question: 'What is the best online CBSE course for Class 10 students?',
-    answer: 'Blast Learning\'s CBSE Plan at ₹1,299/month is specifically designed for Class 10 students. It covers the complete NCERT syllabus, provides AI-powered revision scheduling, and helps students retain 90% of what they learn — critical for board exam performance.',
+    answer: "Blast Learning's CBSE Plan at ₹1,299/month is specifically designed for Class 10 students. It covers the complete NCERT syllabus, provides AI-powered revision scheduling, and helps students retain 90% of what they learn — critical for board exam performance.",
   },
   {
     category: 'General',
@@ -35,7 +35,7 @@ const faqs: FAQEntry[] = [
   {
     category: 'General',
     question: 'Is Blast Learning affordable compared to traditional CBSE coaching?',
-    answer: 'Traditional coaching in metro cities costs ₹5,000–₹20,000 per month per subject. Blast Learning starts at ₹999/month for complete AI-powered learning with parent dashboard, retention tracking, and human support. It\'s designed to complement coaching, not replace it — making your existing coaching spend more effective.',
+    answer: "Traditional coaching in metro cities costs ₹5,000–₹20,000 per month per subject. Blast Learning starts at ₹999/month for complete AI-powered learning with parent dashboard, retention tracking, and human support. It's designed to complement coaching, not replace it — making your existing coaching spend more effective.",
   },
   {
     category: 'General',
@@ -60,7 +60,7 @@ const faqs: FAQEntry[] = [
   {
     category: 'Programs',
     question: 'Can I switch between programs?',
-    answer: 'Yes — you can upgrade, downgrade, or switch programs at any time. If your needs change (for example, your child moves from Class 10 to 11 and needs SAT prep), we\'ll help you transition smoothly with no data loss.',
+    answer: "Yes — you can upgrade, downgrade, or switch programs at any time. If your needs change (for example, your child moves from Class 10 to 11 and needs SAT prep), we'll help you transition smoothly with no data loss.",
   },
   {
     category: 'Programs',
@@ -74,8 +74,8 @@ const faqs: FAQEntry[] = [
   },
   {
     category: 'Parents',
-    question: 'How often will I receive updates about my child\'s progress?',
-    answer: 'You\'ll receive a daily digest summarizing what your child studied and their retention scores. Weekly detailed reports include subject-wise performance trends. You can also check the parent dashboard anytime for real-time information.',
+    question: "How often will I receive updates about my child's progress?",
+    answer: "You'll receive a daily digest summarizing what your child studied and their retention scores. Weekly detailed reports include subject-wise performance trends. You can also check the parent dashboard anytime for real-time information.",
   },
   {
     category: 'Parents',
@@ -85,7 +85,7 @@ const faqs: FAQEntry[] = [
   {
     category: 'Parents',
     question: 'What happens if my child misses study sessions?',
-    answer: 'You\'ll receive an alert when your child misses a scheduled session. The AI automatically adjusts the study plan to catch up without overwhelming the student. Our Tutor Mom team can also reach out directly to check in with your child.',
+    answer: "You'll receive an alert when your child misses a scheduled session. The AI automatically adjusts the study plan to catch up without overwhelming the student. Our Tutor Mom team can also reach out directly to check in with your child.",
   },
   {
     category: 'Parents',
@@ -104,24 +104,17 @@ const faqs: FAQEntry[] = [
   },
   {
     category: 'Students',
-    question: 'What if I don\'t understand a concept explained by the AI?',
-    answer: 'Our AI Study Buddy can explain any concept in multiple ways — with different examples, simpler language, or in your regional language. If you\'re still stuck, you can post in the community forums where peer students or our tutors will answer within a few hours.',
+    question: "What if I don't understand a concept explained by the AI?",
+    answer: "Our AI Study Buddy can explain any concept in multiple ways — with different examples, simpler language, or in your regional language. If you're still stuck, you can post in the community forums where peer students or our tutors will answer within a few hours.",
   },
   {
     category: 'Students',
-    question: 'Will Blast Learning help me if I\'m already a good student?',
+    question: "Will Blast Learning help me if I'm already a good student?",
     answer: 'Absolutely. High-performing students benefit from retention optimization too — maintaining top scores in boards requires systematic revision, not just intelligence. Blast Learning helps top students consolidate their advantage and free up time by making their study sessions more efficient.',
   },
 ];
 
 const categories: Category[] = ['General', 'Programs', 'Parents', 'Students'];
-
-const categoryColors: Record<Category, string> = {
-  General: '#06B6D4',
-  Programs: '#8B5CF6',
-  Parents: '#3B82F6',
-  Students: '#22C55E',
-};
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -134,20 +127,18 @@ const stagger: Variants = {
 
 export default function FAQ() {
   return (
-    <div style={{ background: '#07111F' }}>
+    <div style={{ background: '#FAFAF7' }}>
       {/* Hero */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: '#07111F', paddingTop: '120px', paddingBottom: '80px' }}>
-        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
-        <div style={{ position: 'absolute', bottom: '-5%', left: '-5%', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
+      <section style={{ background: '#FAFAF7', paddingTop: '120px', paddingBottom: '80px', borderBottom: '1px solid #E8E4D8' }}>
+        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px', background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', marginBottom: '20px', background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B' }}>
               FAQ
             </span>
-            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', background: 'linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.75) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', marginBottom: '20px', color: '#1A1A2E' }}>
               Frequently Asked Questions
             </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif' }}>
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>
               Everything you need to know about Blast Learning. Can't find your answer? Contact our team.
             </p>
           </motion.div>
@@ -155,7 +146,7 @@ export default function FAQ() {
       </section>
 
       {/* FAQ Content */}
-      <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#0a1628' }}>
+      <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#F5F2EC' }}>
         <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
           {categories.map((category, ci) => (
             <motion.div
@@ -167,10 +158,10 @@ export default function FAQ() {
               style={{ marginBottom: ci < categories.length - 1 ? '56px' : 0 }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                <span style={{ width: '32px', height: '32px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 700, color: 'white', background: `linear-gradient(135deg, ${categoryColors[category]}, rgba(0,0,0,0.2))`, fontFamily: 'Inter, sans-serif', flexShrink: 0 }}>
+                <span style={{ width: '32px', height: '32px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: 700, color: 'white', background: '#E8336B', fontFamily: 'DM Sans, sans-serif', flexShrink: 0 }}>
                   {category.charAt(0)}
                 </span>
-                <h2 style={{ fontSize: '20px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)' }}>
+                <h2 style={{ fontSize: '20px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: '#1A1A2E' }}>
                   {category}
                 </h2>
               </div>
@@ -195,32 +186,30 @@ export default function FAQ() {
       </section>
 
       {/* Still Have Questions */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(6,182,212,0.07), rgba(59,130,246,0.05), rgba(139,92,246,0.07))', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '700px', height: '350px', borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(6,182,212,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          style={{ position: 'relative', maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
+          style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
         >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', background: 'linear-gradient(135deg, #ffffff, rgba(255,255,255,0.8))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', marginBottom: '16px', color: 'white' }}>
             Still Have Questions?
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
             Our team is available Monday to Saturday, 9 AM to 9 PM. We typically respond within 2 hours.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
             <Link
               to="/contact"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%)', color: 'white' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: '#E8336B', color: 'white', boxShadow: '0 4px 16px rgba(232,51,107,0.2)' }}
             >
               Contact Us <ArrowRight size={16} />
             </Link>
             <a
               href="mailto:hello@blastlearning.in"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.85)' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.85)' }}
             >
               Email hello@blastlearning.in
             </a>

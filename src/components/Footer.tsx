@@ -1,223 +1,316 @@
 import { Link } from 'react-router-dom';
-import { Globe, MessageCircle, Share2, Rss, Play, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
-import blastLogo from '../assets/blast-logo.webp';
+import { motion } from 'framer-motion';
 
-const quickLinks = [
-  { label: 'Home', path: '/' },
-  { label: 'Programs', path: '/programs' },
-  { label: 'For Parents', path: '/for-parents' },
-  { label: 'For Students', path: '/for-students' },
-  { label: 'About Us', path: '/about' },
-  { label: 'Library', path: '/library' },
-  { label: 'FAQ', path: '/faq' },
-  { label: 'Contact', path: '/contact' },
-];
+const Footer = () => {
+  const footerLinks = {
+    product: [
+      { label: 'Courses', path: '/courses' },
+      { label: 'Pricing', path: '/pricing' },
+      { label: 'For Teams', path: '/teams' },
+      { label: 'Enterprise', path: '/enterprise' },
+    ],
+    company: [
+      { label: 'About', path: '/about' },
+      { label: 'Blog', path: '/blog' },
+      { label: 'Careers', path: '/careers' },
+      { label: 'Contact', path: '/contact' },
+    ],
+    resources: [
+      { label: 'Help Center', path: '/help' },
+      { label: 'Community', path: '/community' },
+      { label: 'Guides', path: '/guides' },
+      { label: 'API Docs', path: '/api-docs' },
+    ],
+    legal: [
+      { label: 'Privacy', path: '/privacy' },
+      { label: 'Terms', path: '/terms' },
+      { label: 'Security', path: '/security' },
+      { label: 'Cookies', path: '/cookies' },
+    ],
+  };
 
-const programs = ['CBSE Plan', 'Math Genius Maker Pass', 'English Mastery Pass', 'SAT Prep Pass'];
+  const socialLinks = [
+    { name: 'Twitter', icon: 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z', url: 'https://twitter.com' },
+    { name: 'LinkedIn', icon: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z M4 2a2 2 0 11-.001 4.001A2 2 0 014 2z', url: 'https://linkedin.com' },
+    { name: 'GitHub', icon: 'M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22', url: 'https://github.com' },
+    { name: 'YouTube', icon: 'M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z M9.75 15.02l5.75-3.27-5.75-3.27z', url: 'https://youtube.com' },
+  ];
 
-const socialLinks = [
-  { icon: Globe, label: 'Facebook' },
-  { icon: MessageCircle, label: 'Twitter' },
-  { icon: Share2, label: 'Instagram' },
-  { icon: Rss, label: 'LinkedIn' },
-  { icon: Play, label: 'YouTube' },
-];
-
-export default function Footer() {
   return (
-    <footer className="footer-root" style={{ background: '#07111F', color: 'white' }}>
-
-      {/* CTA Strip */}
-      <div style={{ background: 'linear-gradient(135deg, rgba(6,182,212,0.15) 0%, rgba(59,130,246,0.12) 50%, rgba(139,92,246,0.15) 100%)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '40px 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '24px' }}>
-          <div>
-            <h3 style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700, fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)', color: 'white', marginBottom: '6px' }}>
-              Ready to transform your child's learning?
-            </h3>
-            <p style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif', fontSize: '14px' }}>
-              Start with a free 7-day trial. No credit card required.
-            </p>
-          </div>
-          <Link
-            to="/programs"
+    <footer
+      style={{
+        background: '#1A1A2E',
+        borderTop: '1px solid #2A2A3E',
+        paddingTop: '5rem',
+      }}
+    >
+      <div
+        style={{
+          maxWidth: '1280px',
+          margin: '0 auto',
+          padding: '0 2rem',
+        }}
+      >
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          style={{
+            background: 'rgba(232, 51, 107, 0.08)',
+            border: '1px solid rgba(232, 51, 107, 0.15)',
+            borderRadius: '24px',
+            padding: '3rem',
+            marginBottom: '5rem',
+            textAlign: 'center',
+          }}
+        >
+          <h2
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '12px 28px',
-              borderRadius: '9999px',
-              background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%)',
-              color: 'white',
-              fontSize: '15px',
+              fontFamily: 'Playfair Display, serif',
+              fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
               fontWeight: 700,
-              fontFamily: 'Inter, sans-serif',
-              textDecoration: 'none',
-              boxShadow: '0 0 28px rgba(6,182,212,0.3)',
-              whiteSpace: 'nowrap',
+              color: 'white',
+              marginBottom: '1rem',
             }}
           >
-            Start Free Trial <ArrowRight size={16} />
+            Ready to Transform Your Career?
+          </h2>
+          <p
+            style={{
+              fontFamily: 'DM Sans, sans-serif',
+              fontSize: '1.1rem',
+              color: 'rgba(255, 255, 255, 0.7)',
+              marginBottom: '2rem',
+              maxWidth: '600px',
+              margin: '0 auto 2rem',
+            }}
+          >
+            Join thousands of learners advancing their careers with BlastLearning.
+          </p>
+          <Link
+            to="/signup"
+            style={{
+              display: 'inline-block',
+              fontFamily: 'DM Sans, sans-serif',
+              fontSize: '1rem',
+              fontWeight: 600,
+              color: 'white',
+              textDecoration: 'none',
+              padding: '0.875rem 2rem',
+              borderRadius: '10px',
+              background: '#E8336B',
+            }}
+          >
+            Start Free Trial
           </Link>
-        </div>
-      </div>
+        </motion.div>
 
-      {/* Gradient divider */}
-      <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, rgba(6,182,212,0.4), rgba(139,92,246,0.4), transparent)' }} />
-
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '64px 24px 48px' }}>
+        {/* Main Footer Content */}
         <div
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '40px', marginBottom: '48px' }}
-          className="grid-cols-2-md grid-cols-4-lg"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr',
+            gap: '3rem',
+            marginBottom: '4rem',
+          }}
         >
-          {/* Brand */}
+          {/* Brand Column */}
           <div>
-            <Link to="/" className="flex items-center mb-4" style={{ textDecoration: 'none' }}>
-              <div style={{ background: 'rgba(255,255,255,0.06)', borderRadius: '10px', padding: '6px 10px', display: 'inline-flex', border: '1px solid rgba(255,255,255,0.1)' }}>
-                <img src={blastLogo} alt="Blast Learning" style={{ height: '34px', width: 'auto' }} />
+            <Link
+              to="/"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                textDecoration: 'none',
+                marginBottom: '1.5rem',
+              }}
+            >
+              <div
+                style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '10px',
+                  background: '#E8336B',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontFamily: 'Playfair Display, serif',
+                  fontWeight: 700,
+                  fontSize: '1.25rem',
+                  color: 'white',
+                }}
+              >
+                B
               </div>
+              <span
+                style={{
+                  fontFamily: 'Playfair Display, serif',
+                  fontWeight: 700,
+                  fontSize: '1.5rem',
+                  color: 'white',
+                }}
+              >
+                BlastLearning
+              </span>
             </Link>
-            <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Inter, sans-serif' }}>
-              AI-powered retention platform for Indian students in Classes 8–12.
+            <p
+              style={{
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: '0.95rem',
+                color: 'rgba(255, 255, 255, 0.6)',
+                lineHeight: 1.7,
+                marginBottom: '1.5rem',
+                maxWidth: '300px',
+              }}
+            >
+              Empowering learners worldwide with cutting-edge courses and expert-led training.
             </p>
-            <div className="flex items-center gap-2 mb-6" style={{ flexWrap: 'wrap' }}>
-              {socialLinks.map(({ icon: Icon, label }) => (
-                <a
-                  key={label}
-                  href="#"
-                  aria-label={label}
-                  className="flex items-center justify-center transition-all duration-200"
-                  style={{
-                    width: '36px',
-                    height: '36px',
-                    borderRadius: '50%',
-                    background: 'rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    color: 'rgba(255,255,255,0.5)',
-                  }}
+
+            {/* Social Links */}
+            <div
+              style={{
+                display: 'flex',
+                gap: '1rem',
+              }}
+            >
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  aria-label={social.name}
                   onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = 'rgba(6,182,212,0.15)';
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(6,182,212,0.3)';
-                    (e.currentTarget as HTMLElement).style.color = '#06B6D4';
-                    (e.currentTarget as HTMLElement).style.boxShadow = '0 0 16px rgba(6,182,212,0.2)';
+                    e.currentTarget.style.color = '#E8336B';
+                    e.currentTarget.style.borderColor = 'rgba(232, 51, 107, 0.4)';
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.05)';
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
-                    (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.5)';
-                    (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                    e.currentTarget.style.color = 'rgba(255, 255, 255, 0.6)';
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                  }}
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '10px',
+                    background: 'rgba(255, 255, 255, 0.05)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'rgba(255, 255, 255, 0.6)',
+                    cursor: 'pointer',
                   }}
                 >
-                  <Icon size={15} />
-                </a>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d={social.icon} />
+                  </svg>
+                </motion.a>
               ))}
             </div>
-            <div className="text-xs mb-2" style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'Inter, sans-serif' }}>App Coming Soon</div>
-            <div className="flex gap-2">
-              {['App Store', 'Google Play'].map((s) => (
-                <div key={s} className="px-3 py-1.5 rounded-lg text-xs" style={{ border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.22)', fontFamily: 'Inter, sans-serif' }}>{s}</div>
-              ))}
+          </div>
+
+          {/* Links Columns */}
+          {Object.entries(footerLinks).map(([category, links]) => (
+            <div key={category}>
+              <h3
+                style={{
+                  fontFamily: 'Playfair Display, serif',
+                  fontSize: '1rem',
+                  fontWeight: 600,
+                  color: 'white',
+                  marginBottom: '1.25rem',
+                  textTransform: 'capitalize',
+                }}
+              >
+                {category}
+              </h3>
+              <ul
+                style={{
+                  listStyle: 'none',
+                  padding: 0,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.75rem',
+                }}
+              >
+                {links.map((link) => (
+                  <li key={link.path}>
+                    <Link
+                      to={link.path}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = '#E8336B';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'rgba(255, 255, 255, 0.6)';
+                      }}
+                      style={{
+                        fontFamily: 'DM Sans, sans-serif',
+                        fontSize: '0.95rem',
+                        color: 'rgba(255, 255, 255, 0.6)',
+                        textDecoration: 'none',
+                        transition: 'color 0.2s ease',
+                      }}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider mb-5" style={{ fontFamily: 'Space Grotesk, sans-serif', background: 'linear-gradient(90deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Quick Links
-            </h4>
-            <ul className="flex flex-col gap-2.5">
-              {quickLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="text-sm transition-colors duration-200"
-                    style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = '#06B6D4')}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.45)')}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Programs */}
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider mb-5" style={{ fontFamily: 'Space Grotesk, sans-serif', background: 'linear-gradient(90deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Programs
-            </h4>
-            <ul className="flex flex-col gap-2.5">
-              {programs.map((prog) => (
-                <li key={prog}>
-                  <Link
-                    to="/programs"
-                    className="text-sm transition-colors duration-200"
-                    style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = '#06B6D4')}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.45)')}
-                  >
-                    {prog}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider mb-5" style={{ fontFamily: 'Space Grotesk, sans-serif', background: 'linear-gradient(90deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Contact
-            </h4>
-            <ul className="flex flex-col gap-4">
-              <li className="flex items-start gap-3">
-                <Mail size={15} className="mt-0.5 flex-shrink-0" style={{ color: '#06B6D4' }} />
-                <a href="mailto:hello@blastlearning.in" className="text-sm transition-colors" style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Inter, sans-serif' }}
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = '#06B6D4')}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.45)')}>
-                  hello@blastlearning.in
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Phone size={15} className="mt-0.5 flex-shrink-0" style={{ color: '#06B6D4' }} />
-                <a href="tel:+911234567890" className="text-sm transition-colors" style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Inter, sans-serif' }}
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = '#06B6D4')}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.45)')}>
-                  +91 123 456 7890
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin size={15} className="mt-0.5 flex-shrink-0" style={{ color: '#06B6D4' }} />
-                <span className="text-sm" style={{ color: 'rgba(255,255,255,0.45)', fontFamily: 'Inter, sans-serif' }}>Bangalore, Karnataka</span>
-              </li>
-            </ul>
-          </div>
+          ))}
         </div>
 
-        {/* Gradient divider */}
-        <div style={{ height: '1px', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)', marginBottom: '28px' }} />
-
+        {/* Bottom Bar */}
         <div
-          className="flex items-center justify-between gap-4 row-sm"
+          style={{
+            borderTop: '1px solid #2A2A3E',
+            padding: '2rem 0',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '1rem',
+          }}
         >
-          <p className="text-xs" style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'Inter, sans-serif' }}>
-            © {new Date().getFullYear()} Blast Learning. All rights reserved.
+          <p
+            style={{
+              fontFamily: 'DM Sans, sans-serif',
+              fontSize: '0.875rem',
+              color: 'rgba(255, 255, 255, 0.5)',
+            }}
+          >
+            © 2025 BlastLearning. All rights reserved.
           </p>
-          <div className="flex items-center gap-6" style={{ flexWrap: 'wrap' }}>
-            {['Privacy Policy', 'Terms of Service', 'Refund Policy'].map((t) => (
-              <a
-                key={t}
-                href="#"
-                className="text-xs transition-colors"
-                style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.6)')}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.25)')}
-              >
-                {t}
-              </a>
-            ))}
+          <div
+            style={{
+              display: 'flex',
+              gap: '2rem',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: 'DM Sans, sans-serif',
+                fontSize: '0.875rem',
+                color: 'rgba(255, 255, 255, 0.5)',
+              }}
+            >
+              Made with passion for learning
+            </span>
           </div>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

@@ -11,25 +11,24 @@ export default function FeatureCard({ icon, title, description, large }: Feature
   return (
     <div
       style={{
-        background: 'rgba(255,255,255,0.04)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        border: '1px solid rgba(255,255,255,0.08)',
+        background: '#FFFFFF',
+        border: '1px solid #E8E4D8',
         borderRadius: '20px',
         padding: large ? '32px' : '24px',
         height: '100%',
+        boxShadow: '0 4px 24px rgba(26,26,46,0.06)',
         transition: 'transform 0.3s, box-shadow 0.3s, border-color 0.3s',
         cursor: 'default',
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.transform = 'translateY(-6px)';
-        (e.currentTarget as HTMLElement).style.boxShadow = '0 0 40px rgba(6,182,212,0.15)';
-        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(6,182,212,0.3)';
+        (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(232,51,107,0.08)';
+        (e.currentTarget as HTMLElement).style.borderColor = '#E8336B';
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLElement).style.transform = 'none';
-        (e.currentTarget as HTMLElement).style.boxShadow = 'none';
-        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.08)';
+        (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 24px rgba(26,26,46,0.06)';
+        (e.currentTarget as HTMLElement).style.borderColor = '#E8E4D8';
       }}
     >
       <div style={{
@@ -40,14 +39,14 @@ export default function FeatureCard({ icon, title, description, large }: Feature
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: '16px',
-        background: 'linear-gradient(135deg, rgba(6,182,212,0.2), rgba(139,92,246,0.2))',
-        border: '1px solid rgba(6,182,212,0.2)',
-        color: '#06B6D4',
+        background: '#FFF0F5',
+        border: '1px solid #F5C0D4',
+        color: '#E8336B',
       }}>
         {icon}
       </div>
-      <h3 style={{ fontSize: large ? '1.125rem' : '1rem', fontWeight: 700, color: 'rgba(255,255,255,0.9)', fontFamily: 'Space Grotesk, sans-serif', marginBottom: '8px' }}>{title}</h3>
-      <p style={{ fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>{description}</p>
+      <h3 style={{ fontSize: large ? '1.125rem' : '1rem', fontWeight: 700, color: '#1A1A2E', fontFamily: "'Playfair Display', serif", marginBottom: '8px' }}>{title}</h3>
+      <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A5A7A', fontFamily: "'DM Sans', sans-serif" }}>{description}</p>
     </div>
   );
 }
