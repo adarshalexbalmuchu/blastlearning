@@ -30,9 +30,9 @@ const resources: Resource[] = [
 ];
 
 const typeStyles: Record<string, { bg: string; text: string }> = {
-  Video: { bg: '#FFF0F5', text: '#E8336B' },
-  Notes: { bg: 'rgba(0,180,216,0.08)', text: '#00B4D8' },
-  Quiz: { bg: '#F5F2EC', text: '#5A5A7A' },
+  Video: { bg: '#FCEEF1', text: '#5C56E8' },
+  Notes: { bg: '#E7F6FB', text: '#5C56E8' },
+  Quiz: { bg: '#F0EDFC', text: '#5C56E8' },
 };
 
 const TypeIcon = ({ type }: { type: Resource['type'] }) => {
@@ -61,9 +61,9 @@ export default function Library() {
   });
 
   return (
-    <div style={{ background: '#FAFAF7' }}>
+    <div style={{ background: '#FFFFFF' }}>
       {/* Hero + Filters */}
-      <section style={{ background: '#FAFAF7', borderBottom: '1px solid #E8E4D8', paddingTop: '120px', paddingBottom: '80px' }}>
+      <section style={{ background: '#FFFFFF', borderBottom: '1px solid #ECECF1', paddingTop: '120px', paddingBottom: '80px' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -71,23 +71,25 @@ export default function Library() {
             transition={{ duration: 0.6 }}
             style={{ textAlign: 'center', marginBottom: '40px' }}
           >
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', marginBottom: '20px', background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B' }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px', background: '#EEEDFC', color: '#5C56E8' }}>
               Resource Library
             </span>
-            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.03em', marginBottom: '20px', color: '#1A1A2E' }}>
+            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', color: '#1C1C28' }}>
               Learning Resources
             </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', maxWidth: '560px', margin: '0 auto 32px' }}>
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '560px', margin: '0 auto 32px' }}>
               Videos, notes, and practice quizzes for CBSE Classes 8-12, SAT Prep, and competitive exams. Some resources are free — subscribe for full access.
             </p>
             <div style={{ position: 'relative', maxWidth: '520px', margin: '0 auto' }}>
-              <Search size={17} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#9A9AAA' }} />
+              <Search size={17} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#8E8EA0' }} />
               <input
                 type="text"
                 placeholder="Search resources, topics, subjects..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                style={{ width: '100%', paddingLeft: '48px', paddingRight: '16px', paddingTop: '14px', paddingBottom: '14px', borderRadius: '14px', border: '1px solid #E8E4D8', background: '#FFFFFF', fontSize: '14px', color: '#1A1A2E', fontFamily: 'DM Sans, sans-serif', outline: 'none', boxSizing: 'border-box' }}
+                style={{ width: '100%', paddingLeft: '48px', paddingRight: '16px', paddingTop: '14px', paddingBottom: '14px', borderRadius: '10px', border: '1px solid #ECECF1', background: '#FFFFFF', fontSize: '14px', color: '#1C1C28', fontFamily: 'Inter, sans-serif', outline: 'none', boxSizing: 'border-box' }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = '#5C56E8'; }}
+                onBlur={(e) => { e.currentTarget.style.borderColor = '#ECECF1'; }}
               />
             </div>
           </motion.div>
@@ -106,11 +108,11 @@ export default function Library() {
                   borderRadius: '9999px',
                   fontSize: '13px',
                   fontWeight: 600,
-                  fontFamily: 'DM Sans, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   cursor: 'pointer',
-                  border: activeFilter === tab ? 'none' : '1px solid #E8E4D8',
-                  background: activeFilter === tab ? '#E8336B' : 'white',
-                  color: activeFilter === tab ? 'white' : '#5A5A7A',
+                  border: activeFilter === tab ? 'none' : '1px solid #ECECF1',
+                  background: activeFilter === tab ? '#5C56E8' : 'white',
+                  color: activeFilter === tab ? 'white' : '#5A5A6E',
                   transition: 'all 0.2s',
                 }}
               >
@@ -122,7 +124,7 @@ export default function Library() {
       </section>
 
       {/* Resources Grid */}
-      <section style={{ paddingTop: '64px', paddingBottom: '96px', background: '#F5F2EC' }}>
+      <section style={{ paddingTop: '64px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           {filtered.length === 0 ? (
             <motion.div
@@ -130,7 +132,7 @@ export default function Library() {
               animate={{ opacity: 1 }}
               style={{ textAlign: 'center', padding: '80px 0' }}
             >
-              <p style={{ fontSize: '15px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>No resources found for your search.</p>
+              <p style={{ fontSize: '15px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>No resources found for your search.</p>
             </motion.div>
           ) : (
             <motion.div
@@ -144,37 +146,37 @@ export default function Library() {
                 <motion.div
                   key={resource.id}
                   variants={fadeUp}
-                  style={{ position: 'relative', padding: '24px', borderRadius: '20px', background: '#FFFFFF', border: '1px solid #E8E4D8', boxShadow: '0 4px 24px rgba(26,26,46,0.06)', opacity: resource.locked ? 0.65 : 1, display: 'flex', flexDirection: 'column' }}
+                  style={{ position: 'relative', padding: '24px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)', opacity: resource.locked ? 0.65 : 1, display: 'flex', flexDirection: 'column' }}
                 >
                   {resource.locked && (
                     <div style={{ position: 'absolute', top: '16px', right: '16px' }}>
-                      <Lock size={13} style={{ color: '#9A9AAA' }} />
+                      <Lock size={13} style={{ color: '#8E8EA0' }} />
                     </div>
                   )}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
-                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '4px 10px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', background: typeStyles[resource.type].bg, color: typeStyles[resource.type].text }}>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', padding: '4px 10px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif', background: typeStyles[resource.type].bg, color: typeStyles[resource.type].text }}>
                       <TypeIcon type={resource.type} />
                       {resource.type}
                     </span>
-                    <span style={{ padding: '4px 10px', borderRadius: '9999px', fontSize: '11px', fontWeight: 500, background: '#F5F2EC', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', border: '1px solid #E8E4D8' }}>
+                    <span style={{ padding: '4px 10px', borderRadius: '9999px', fontSize: '11px', fontWeight: 500, background: '#F7F7F8', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', border: '1px solid #ECECF1' }}>
                       {resource.subject}
                     </span>
                     {resource.duration && (
-                      <span style={{ fontSize: '11px', color: '#9A9AAA', fontFamily: 'DM Sans, sans-serif' }}>{resource.duration}</span>
+                      <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{resource.duration}</span>
                     )}
                   </div>
-                  <h3 style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: '#1A1A2E', marginBottom: '10px' }}>{resource.title}</h3>
-                  <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '20px', flex: 1 }}>{resource.description}</p>
+                  <h3 style={{ fontSize: '15px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '10px' }}>{resource.title}</h3>
+                  <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '20px', flex: 1 }}>{resource.description}</p>
                   {resource.locked ? (
                     <Link
                       to="/programs"
-                      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '10px', borderRadius: '9999px', fontSize: '13px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: '#F5F2EC', border: '1px solid #E8E4D8', color: '#5A5A7A' }}
+                      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '10px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'white', border: '1.5px solid #DCDCE5', color: '#1C1C28' }}
                     >
                       <Lock size={13} /> Unlock with Subscription
                     </Link>
                   ) : (
                     <button
-                      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', width: '100%', padding: '10px', borderRadius: '9999px', fontSize: '13px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', cursor: 'pointer', background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B' }}
+                      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', width: '100%', padding: '10px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', cursor: 'pointer', background: '#EEEDFC', border: 'none', color: '#5C56E8' }}
                     >
                       <TypeIcon type={resource.type} /> Access {resource.type}
                     </button>
@@ -187,7 +189,7 @@ export default function Library() {
       </section>
 
       {/* CTA */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -195,15 +197,15 @@ export default function Library() {
           viewport={{ once: true }}
           style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
         >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', marginBottom: '16px', color: 'white' }}>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', color: '#1C1C28' }}>
             Unlock 500+ Resources with a Subscription
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
+          <p style={{ color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
             Get full access to all videos, notes, and quizzes — plus your personalized AI study plan and parent dashboard — starting from ₹999/month.
           </p>
           <Link
             to="/programs"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: '#E8336B', color: 'white', boxShadow: '0 4px 16px rgba(232,51,107,0.2)' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#5C56E8', color: 'white' }}
           >
             View Plans &amp; Pricing <ArrowRight size={16} />
           </Link>

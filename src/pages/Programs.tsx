@@ -82,6 +82,9 @@ const comparisonRows = [
   { feature: 'Affordable Price', blast: true, coaching: false, apps: true },
 ];
 
+// Pastel fills rotated across program icon tiles
+const pastels = ['#FDF3E7', '#FCEEF1', '#E7F6FB', '#F0EDFC'];
+
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -93,18 +96,18 @@ const stagger: Variants = {
 
 export default function Programs() {
   return (
-    <div style={{ background: '#FAFAF7' }}>
+    <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: '#FAFAF7', paddingTop: '120px', paddingBottom: '100px' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: '#F7F7F8', paddingTop: '120px', paddingBottom: '100px' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', marginBottom: '24px', background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B' }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: "'Inter', sans-serif", marginBottom: '24px', background: '#EEEDFC', color: '#5C56E8' }}>
               Learning Programs
             </span>
-            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.03em', marginBottom: '24px', color: '#1A1A2E' }}>
+            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', marginBottom: '24px', color: '#1C1C28' }}>
               Our Programs
             </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', maxWidth: '640px', margin: '0 auto' }}>
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
               Carefully designed for Indian students in Classes 8–12. Each program uses our Metacognition Engine to ensure lasting retention — not just short-term cramming.
             </p>
           </motion.div>
@@ -112,7 +115,7 @@ export default function Programs() {
       </section>
 
       {/* Program Cards */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F5F2EC' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
@@ -122,8 +125,9 @@ export default function Programs() {
             style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '32px' }}
             className="grid-cols-2-md"
           >
-            {programs.map((prog) => {
+            {programs.map((prog, idx) => {
               const Icon = prog.icon;
+              const tile = pastels[idx % pastels.length];
               return (
                 <motion.div
                   key={prog.name}
@@ -131,57 +135,57 @@ export default function Programs() {
                   style={{
                     position: 'relative',
                     background: '#FFFFFF',
-                    border: prog.featured ? '1px solid #F5C0D4' : '1px solid #E8E4D8',
-                    borderRadius: '24px',
+                    border: prog.featured ? '2px solid #5C56E8' : '1px solid #ECECF1',
+                    borderRadius: '16px',
                     overflow: 'hidden',
-                    boxShadow: '0 4px 24px rgba(26,26,46,0.06)',
+                    boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
                   }}
                 >
                   {prog.featured && (
-                    <div style={{ padding: '10px', textAlign: 'center', fontSize: '11px', fontWeight: 700, color: 'white', background: '#E8336B', fontFamily: 'DM Sans, sans-serif', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                    <div style={{ padding: '10px', textAlign: 'center', fontSize: '11px', fontWeight: 600, color: 'white', background: '#5C56E8', fontFamily: "'Inter', sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                       Most Popular
                     </div>
                   )}
                   <div style={{ padding: '32px' }}>
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', marginBottom: '24px' }}>
-                      <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B' }}>
+                      <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: tile, color: '#5C56E8' }}>
                         <Icon size={22} />
                       </div>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
-                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '9999px', fontSize: '10px', fontWeight: 700, color: '#00B4D8', background: 'rgba(0,180,216,0.1)', border: '1px solid rgba(0,180,216,0.25)', fontFamily: 'DM Sans, sans-serif' }}>
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '9999px', fontSize: '10px', fontWeight: 600, color: '#5C56E8', background: '#EEEDFC', fontFamily: "'Inter', sans-serif" }}>
                             <Zap size={10} /> AI Powered
                           </span>
-                          <span style={{ padding: '3px 10px', fontSize: '11px', fontWeight: 500, borderRadius: '9999px', background: '#F5F2EC', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>
+                          <span style={{ padding: '3px 10px', fontSize: '11px', fontWeight: 500, borderRadius: '9999px', background: '#F7F7F8', color: '#5A5A6E', border: '1px solid #ECECF1', fontFamily: "'Inter', sans-serif" }}>
                             {prog.classes}
                           </span>
                         </div>
-                        <h2 style={{ fontSize: '20px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: '#1A1A2E', marginBottom: '4px' }}>{prog.name}</h2>
+                        <h2 style={{ fontSize: '20px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '4px' }}>{prog.name}</h2>
                         <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                          <span style={{ fontSize: '26px', fontWeight: 800, fontFamily: 'Playfair Display, serif', color: '#00B4D8' }}>{prog.price}</span>
-                          <span style={{ fontSize: '13px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>/month</span>
+                          <span style={{ fontSize: '26px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{prog.price}</span>
+                          <span style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>/month</span>
                         </div>
                       </div>
                     </div>
 
-                    <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A7A', marginBottom: '24px', fontFamily: 'DM Sans, sans-serif' }}>{prog.description}</p>
+                    <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', marginBottom: '24px', fontFamily: "'Inter', sans-serif" }}>{prog.description}</p>
 
                     <div style={{ marginBottom: '24px' }}>
-                      <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#5A5A7A', marginBottom: '10px', fontFamily: 'DM Sans, sans-serif' }}>Key Outcomes</p>
+                      <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#8E8EA0', marginBottom: '10px', fontFamily: "'Inter', sans-serif" }}>Key Outcomes</p>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                         {prog.outcomes.map((o) => (
-                          <span key={o} style={{ padding: '4px 12px', fontSize: '12px', fontWeight: 500, borderRadius: '9999px', border: '1px solid #F5C0D4', color: '#E8336B', background: '#FFF0F5', fontFamily: 'DM Sans, sans-serif' }}>{o}</span>
+                          <span key={o} style={{ padding: '4px 12px', fontSize: '12px', fontWeight: 500, borderRadius: '9999px', color: '#5C56E8', background: '#EEEDFC', fontFamily: "'Inter', sans-serif" }}>{o}</span>
                         ))}
                       </div>
                     </div>
 
                     <div style={{ marginBottom: '28px' }}>
-                      <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#5A5A7A', marginBottom: '12px', fontFamily: 'DM Sans, sans-serif' }}>What's Included</p>
+                      <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#8E8EA0', marginBottom: '12px', fontFamily: "'Inter', sans-serif" }}>What's Included</p>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '8px' }} className="grid-cols-2-sm">
                         {prog.features.map((f) => (
                           <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                            <CheckCircle size={14} style={{ color: '#00B89C', flexShrink: 0, marginTop: '2px' }} />
-                            <span style={{ fontSize: '13px', lineHeight: 1.5, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{f}</span>
+                            <CheckCircle size={14} style={{ color: '#5C56E8', flexShrink: 0, marginTop: '2px' }} />
+                            <span style={{ fontSize: '13px', lineHeight: 1.5, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{f}</span>
                           </div>
                         ))}
                       </div>
@@ -195,14 +199,14 @@ export default function Programs() {
                         justifyContent: 'center',
                         gap: '8px',
                         padding: '13px',
-                        borderRadius: '9999px',
+                        borderRadius: '10px',
                         fontSize: '14px',
-                        fontWeight: 700,
-                        fontFamily: 'DM Sans, sans-serif',
+                        fontWeight: 600,
+                        fontFamily: "'Inter', sans-serif",
                         textDecoration: 'none',
-                        background: '#E8336B',
-                        color: 'white',
-                        border: 'none',
+                        background: prog.featured ? '#5C56E8' : '#FFFFFF',
+                        color: prog.featured ? 'white' : '#1C1C28',
+                        border: prog.featured ? 'none' : '1.5px solid #DCDCE5',
                       }}
                     >
                       Start 7-Day Free Trial <ArrowRight size={16} />
@@ -216,14 +220,14 @@ export default function Programs() {
       </section>
 
       {/* Comparison Table */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FAFAF7' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.h2
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: '#1A1A2E', textAlign: 'center', marginBottom: '56px' }}
+            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', textAlign: 'center', marginBottom: '56px' }}
           >
             How We Compare
           </motion.h2>
@@ -232,10 +236,10 @@ export default function Programs() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ background: '#FFFFFF', border: '1px solid #E8E4D8', borderRadius: '20px', overflow: 'hidden', boxShadow: '0 4px 24px rgba(26,26,46,0.06)' }}
+            style={{ background: '#FFFFFF', border: '1px solid #ECECF1', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
           >
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
-              <div style={{ padding: '16px', borderBottom: '1px solid #E8E4D8' }} />
+              <div style={{ padding: '16px', borderBottom: '1px solid #ECECF1' }} />
               {['Blast Learning', 'Coaching Classes', 'Other Apps'].map((h, i) => (
                 <div
                   key={h}
@@ -243,11 +247,11 @@ export default function Programs() {
                     padding: '16px',
                     textAlign: 'center',
                     fontSize: '14px',
-                    fontWeight: 700,
-                    fontFamily: 'Playfair Display, serif',
-                    background: i === 0 ? '#FFF0F5' : 'transparent',
-                    color: i === 0 ? '#E8336B' : '#5A5A7A',
-                    borderBottom: '1px solid #E8E4D8',
+                    fontWeight: 600,
+                    fontFamily: "'Poppins', sans-serif",
+                    background: i === 0 ? '#EEEDFC' : 'transparent',
+                    color: i === 0 ? '#5C56E8' : '#5A5A6E',
+                    borderBottom: '1px solid #ECECF1',
                   }}
                 >
                   {h}
@@ -260,17 +264,17 @@ export default function Programs() {
                 style={{
                   display: 'grid',
                   gridTemplateColumns: 'repeat(4, 1fr)',
-                  borderTop: '1px solid #E8E4D8',
-                  background: i % 2 === 0 ? 'transparent' : '#FAFAF7',
+                  borderTop: '1px solid #ECECF1',
+                  background: i % 2 === 0 ? 'transparent' : '#F7F7F8',
                 }}
               >
-                <div style={{ padding: '14px 16px', fontSize: '14px', fontWeight: 500, color: '#1A1A2E', fontFamily: 'DM Sans, sans-serif' }}>{row.feature}</div>
+                <div style={{ padding: '14px 16px', fontSize: '14px', fontWeight: 500, color: '#1C1C28', fontFamily: "'Inter', sans-serif" }}>{row.feature}</div>
                 {[row.blast, row.coaching, row.apps].map((val, j) => (
                   <div key={j} style={{ padding: '14px 16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {val ? (
-                      <CheckCircle size={18} style={{ color: j === 0 ? '#00B89C' : '#C8C4B8' }} />
+                      <CheckCircle size={18} style={{ color: j === 0 ? '#5C56E8' : '#8E8EA0' }} />
                     ) : (
-                      <span style={{ fontSize: '18px', color: '#C8C4B8' }}>×</span>
+                      <span style={{ fontSize: '18px', color: '#8E8EA0' }}>×</span>
                     )}
                   </div>
                 ))}
@@ -281,7 +285,7 @@ export default function Programs() {
       </section>
 
       {/* Bottom CTA */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -289,15 +293,15 @@ export default function Programs() {
           viewport={{ once: true }}
           style={{ position: 'relative', maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
         >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', marginBottom: '16px', color: 'white' }}>
-            Not sure which plan is <span style={{ background: 'linear-gradient(135deg, #E8336B 0%, #00B4D8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>right?</span>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', marginBottom: '16px', color: '#1C1C28' }}>
+            Not sure which plan is right?
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Sans, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
+          <p style={{ color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
             Our learning advisors will assess your child's needs and recommend the perfect program — completely free.
           </p>
           <Link
             to="/contact"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: '#E8336B', border: 'none', color: 'white' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#5C56E8', border: 'none', color: 'white' }}
           >
             <Phone size={16} /> Talk to an Advisor
           </Link>

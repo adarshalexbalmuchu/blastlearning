@@ -41,6 +41,9 @@ const values = [
   },
 ];
 
+const statPastels = ['#FDF3E7', '#FCEEF1', '#E7F6FB', '#F0EDFC'];
+const teamPastels = ['#5C56E8', '#FCEEF1', '#E7F6FB', '#F0EDFC', '#E9F7EF', '#FDF3E7'];
+
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -52,18 +55,18 @@ const stagger: Variants = {
 
 export default function About() {
   return (
-    <div style={{ background: '#FAFAF7' }}>
+    <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}
-      <section style={{ background: '#FAFAF7', paddingTop: '120px', paddingBottom: '100px', borderBottom: '1px solid #E8E4D8' }}>
+      <section style={{ background: '#FFFFFF', paddingTop: '120px', paddingBottom: '100px', borderBottom: '1px solid #ECECF1' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', marginBottom: '24px', background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B' }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '24px', background: '#EEEDFC', color: '#5C56E8' }}>
               Our Mission
             </span>
-            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', marginBottom: '24px', lineHeight: 1.15, color: '#1A1A2E' }}>
+            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '24px', lineHeight: 1.15, color: '#1C1C28' }}>
               Making Learning Stick for Every Indian Student
             </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', maxWidth: '640px', margin: '0 auto' }}>
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px', margin: '0 auto' }}>
               India spends billions on education every year, yet most students forget 90% of what they learn within a week. We built Blast Learning to fix that — to make every hour of study count, permanently.
             </p>
           </motion.div>
@@ -71,7 +74,7 @@ export default function About() {
       </section>
 
       {/* Why We Built Blast */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F5F2EC' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
@@ -82,7 +85,7 @@ export default function About() {
             className="grid-cols-2-lg"
           >
             <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: '#1A1A2E', marginBottom: '28px' }}>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '28px' }}>
                 Why We Built Blast Learning
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
@@ -92,7 +95,7 @@ export default function About() {
                   'Blast Learning was built to bridge that gap. We take the science of how memory actually works and translate it into a daily experience that any student can follow — regardless of their school, city, or coaching setup.',
                   "Our Metacognition Engine doesn't just deliver content. It tracks how well you remember, identifies what's at risk of being forgotten, and schedules review at the exact right time. The result: 90% retention instead of 10%.",
                 ].map((text, i) => (
-                  <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>
+                  <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                     {text}
                   </p>
                 ))}
@@ -107,14 +110,14 @@ export default function About() {
                 { val: '₹1,299', desc: 'Starting price — a fraction of the cost of coaching, with far better retention outcomes' },
                 { val: '30 days', desc: 'Average time for students to see measurable improvement in exam scores' },
                 { val: '4.0/5', desc: 'Average parent satisfaction rating across all enrolled families' },
-              ].map((item) => (
+              ].map((item, i) => (
                 <motion.div
                   key={item.val}
                   variants={fadeUp}
-                  style={{ borderRadius: '20px', padding: '24px', background: '#FFFFFF', border: '1px solid #E8E4D8', boxShadow: '0 4px 24px rgba(26,26,46,0.06)' }}
+                  style={{ borderRadius: '16px', padding: '24px', background: statPastels[i % statPastels.length], border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
                 >
-                  <div style={{ fontSize: '1.875rem', fontWeight: 800, marginBottom: '12px', fontFamily: 'Playfair Display, serif', background: 'linear-gradient(135deg, #E8336B 0%, #00B4D8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{item.val}</div>
-                  <p style={{ fontSize: '13px', lineHeight: 1.6, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{item.desc}</p>
+                  <div style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '12px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>{item.val}</div>
+                  <p style={{ fontSize: '13px', lineHeight: 1.6, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{item.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -123,7 +126,7 @@ export default function About() {
       </section>
 
       {/* Company Stats */}
-      <section style={{ paddingTop: '72px', paddingBottom: '72px', background: '#1A1A2E' }}>
+      <section style={{ paddingTop: '72px', paddingBottom: '72px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
@@ -135,8 +138,8 @@ export default function About() {
           >
             {companyStats.map((s) => (
               <motion.div key={s.label} variants={fadeUp} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '8px', fontFamily: 'Playfair Display, serif', color: '#00B4D8' }}>{s.value}</div>
-                <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Sans, sans-serif' }}>{s.label}</div>
+                <div style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '8px', fontFamily: 'Poppins, sans-serif', color: '#5C56E8' }}>{s.value}</div>
+                <div style={{ fontSize: '14px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{s.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -144,7 +147,7 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FAFAF7' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={fadeUp}
@@ -153,7 +156,7 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: '#1A1A2E' }}>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#1C1C28' }}>
               The Team Behind Blast Learning
             </h2>
           </motion.div>
@@ -165,28 +168,32 @@ export default function About() {
             style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
             className="grid-cols-2-sm grid-cols-3-lg"
           >
-            {team.map((member) => (
-              <motion.div
-                key={member.name}
-                variants={fadeUp}
-                whileHover={{ boxShadow: '0 8px 32px rgba(232,51,107,0.08)' }}
-                style={{ padding: '28px', borderRadius: '20px', textAlign: 'center', background: '#FFFFFF', border: '1px solid #E8E4D8', boxShadow: '0 4px 24px rgba(26,26,46,0.06)' }}
-              >
-                <div
-                  style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 700, color: 'white', margin: '0 auto 16px', fontFamily: 'DM Sans, sans-serif', background: '#E8336B' }}
+            {team.map((member, i) => {
+              const fill = teamPastels[i % teamPastels.length];
+              const isIndigo = fill === '#5C56E8';
+              return (
+                <motion.div
+                  key={member.name}
+                  variants={fadeUp}
+                  whileHover={{ boxShadow: '0 8px 28px rgba(92,86,232,0.12)' }}
+                  style={{ padding: '28px', borderRadius: '16px', textAlign: 'center', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
                 >
-                  {member.name.split(' ').map((n) => n[0]).join('')}
-                </div>
-                <h3 style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', color: '#1A1A2E', marginBottom: '4px' }}>{member.name}</h3>
-                <p style={{ fontSize: '13px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{member.role}</p>
-              </motion.div>
-            ))}
+                  <div
+                    style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 600, color: isIndigo ? 'white' : '#5C56E8', margin: '0 auto 16px', fontFamily: 'Poppins, sans-serif', background: fill }}
+                  >
+                    {member.name.split(' ').map((n) => n[0]).join('')}
+                  </div>
+                  <h3 style={{ fontSize: '15px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '4px' }}>{member.name}</h3>
+                  <p style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{member.role}</p>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
 
       {/* Values */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F5F2EC' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={fadeUp}
@@ -195,7 +202,7 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: '#1A1A2E' }}>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#1C1C28' }}>
               What We Stand For
             </h2>
           </motion.div>
@@ -211,14 +218,14 @@ export default function About() {
               <motion.div
                 key={title}
                 variants={fadeUp}
-                whileHover={{ boxShadow: '0 8px 32px rgba(232,51,107,0.08)' }}
-                style={{ padding: '32px', borderRadius: '20px', background: '#FFFFFF', border: '1px solid #E8E4D8', boxShadow: '0 4px 24px rgba(26,26,46,0.06)' }}
+                whileHover={{ boxShadow: '0 8px 28px rgba(92,86,232,0.12)' }}
+                style={{ padding: '32px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
               >
-                <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: '#EEEDFC', color: '#5C56E8' }}>
                   <Icon size={22} />
                 </div>
-                <h3 style={{ fontSize: '18px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: '#1A1A2E', marginBottom: '12px' }}>{title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{desc}</p>
+                <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>{title}</h3>
+                <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -226,7 +233,7 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -234,15 +241,15 @@ export default function About() {
           viewport={{ once: true }}
           style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
         >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', marginBottom: '16px', color: 'white' }}>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', color: '#1C1C28' }}>
             Join Us in Building a Better Way to Learn
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
+          <p style={{ color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
             Whether you're a parent, student, tutor, or educator — we'd love to have you in the Blast Learning community.
           </p>
           <Link
             to="/contact"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: '#E8336B', color: 'white', boxShadow: '0 4px 16px rgba(232,51,107,0.2)' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#5C56E8', color: 'white' }}
           >
             Get in Touch <ArrowRight size={16} />
           </Link>

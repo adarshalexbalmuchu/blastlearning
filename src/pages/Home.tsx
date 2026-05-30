@@ -129,43 +129,40 @@ const banners: BannerDef[] = [
   },
 ];
 
-// ─── Per-banner visual (light-themed) ─────────────────────────────────────────
+// ─── Per-banner visual ─────────────────────────────────────────────────────────
 function HeroVisual({ index }: { index: number }) {
   const cardStyle: React.CSSProperties = {
-    background: '#FAFAF7',
+    background: '#F7F7F8',
     borderRadius: '14px',
     padding: '20px',
-    border: '1px solid #E8E4D8',
+    border: '1px solid #ECECF1',
     width: '100%',
     boxSizing: 'border-box',
   };
 
-  const gradText = (_v: string) => ({
+  const valStyle = (): React.CSSProperties => ({
     fontSize: '18px',
     fontWeight: 700,
-    fontFamily: 'Playfair Display, serif',
-    background: 'linear-gradient(135deg, #E8336B 0%, #00B4D8 100%)',
-    WebkitBackgroundClip: 'text' as const,
-    WebkitTextFillColor: 'transparent' as const,
-    backgroundClip: 'text' as const,
-    display: 'block' as const,
-  } as React.CSSProperties);
+    fontFamily: 'Poppins, sans-serif',
+    color: '#5C56E8',
+    display: 'block',
+  });
 
   if (index === 0) {
     return (
       <div style={{ padding: '4px' }}>
         <div style={{ marginBottom: '10px' }}>
-          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#E8336B', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif' }}>
+          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#5C56E8', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
             90% Retention Rate
           </span>
         </div>
         <div style={cardStyle}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', flexWrap: 'wrap', gap: '8px' }}>
             <div>
-              <p style={{ fontSize: '11px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '3px' }}>Today's Learning Session</p>
-              <p style={{ fontSize: '16px', fontWeight: 600, color: '#1A1A2E', fontFamily: 'Playfair Display, serif' }}>Arjun's Progress</p>
+              <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '3px' }}>Today's Learning Session</p>
+              <p style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif' }}>Arjun's Progress</p>
             </div>
-            <span style={{ padding: '4px 11px', borderRadius: '9999px', background: '#E8336B', color: 'white', fontSize: '11px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif' }}>
+            <span style={{ padding: '4px 11px', borderRadius: '9999px', background: '#5C56E8', color: 'white', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
               Today: 87%
             </span>
           </div>
@@ -176,20 +173,20 @@ function HeroVisual({ index }: { index: number }) {
               { label: 'Study Streak', val: '14 days' },
               { label: 'Quiz Score', val: '92%' },
             ].map((item) => (
-              <div key={item.label} style={{ background: '#FFFFFF', borderRadius: '10px', padding: '12px', border: '1px solid #E8E4D8' }}>
-                <span style={gradText(item.val)}>{item.val}</span>
-                <p style={{ fontSize: '11px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginTop: '3px' }}>{item.label}</p>
+              <div key={item.label} style={{ background: '#FFFFFF', borderRadius: '10px', padding: '12px', border: '1px solid #ECECF1' }}>
+                <span style={valStyle()}>{item.val}</span>
+                <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '3px' }}>{item.label}</p>
               </div>
             ))}
           </div>
-          <div style={{ background: '#FFFFFF', borderRadius: '10px', padding: '14px', border: '1px solid #E8E4D8' }}>
-            <p style={{ fontSize: '11px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '10px' }}>Today's Revision Queue</p>
+          <div style={{ background: '#FFFFFF', borderRadius: '10px', padding: '14px', border: '1px solid #ECECF1' }}>
+            <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '10px' }}>Today's Revision Queue</p>
             {['Chapter 4 — Quadratic Equations', 'Photosynthesis Process', 'English Grammar — Tenses'].map((topic, i) => (
               <div key={topic} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: i < 2 ? '7px' : 0 }}>
-                <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: i === 0 ? '#E8336B' : '#E8E4D8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <span style={{ color: i === 0 ? 'white' : '#5A5A7A', fontSize: '10px', fontWeight: 700 }}>{i + 1}</span>
+                <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: i === 0 ? '#5C56E8' : '#ECECF1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  <span style={{ color: i === 0 ? 'white' : '#8E8EA0', fontSize: '10px', fontWeight: 700 }}>{i + 1}</span>
                 </div>
-                <span style={{ color: '#1A1A2E', fontSize: '12px', fontFamily: 'DM Sans, sans-serif' }}>{topic}</span>
+                <span style={{ color: '#1C1C28', fontSize: '12px', fontFamily: 'Inter, sans-serif' }}>{topic}</span>
               </div>
             ))}
           </div>
@@ -200,47 +197,47 @@ function HeroVisual({ index }: { index: number }) {
 
   if (index === 1) {
     const subjects = [
-      { name: 'Mathematics', pct: 92, color: '#E8336B' },
-      { name: 'Science', pct: 85, color: '#00B4D8' },
-      { name: 'English', pct: 78, color: '#E8336B' },
-      { name: 'Social Studies', pct: 88, color: '#00B4D8' },
+      { name: 'Mathematics', pct: 92 },
+      { name: 'Science', pct: 85 },
+      { name: 'English', pct: 78 },
+      { name: 'Social Studies', pct: 88 },
     ];
     return (
       <div style={{ padding: '4px' }}>
         <div style={{ marginBottom: '10px' }}>
-          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#E8336B', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif' }}>
+          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#5C56E8', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
             CBSE Class 10 — On Track
           </span>
         </div>
         <div style={cardStyle}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
             <div>
-              <p style={{ fontSize: '11px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '3px' }}>Subject Retention Overview</p>
-              <p style={{ fontSize: '16px', fontWeight: 600, color: '#1A1A2E', fontFamily: 'Playfair Display, serif' }}>Priya's Board Prep</p>
+              <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '3px' }}>Subject Retention Overview</p>
+              <p style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif' }}>Priya's Board Prep</p>
             </div>
-            <span style={{ padding: '4px 10px', borderRadius: '9999px', background: '#FFF0F5', color: '#E8336B', fontSize: '11px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', border: '1px solid #F5C0D4' }}>
+            <span style={{ padding: '4px 10px', borderRadius: '9999px', background: '#EEEDFC', color: '#5C56E8', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif', border: '1px solid #DDD9FA' }}>
               24/32 chapters
             </span>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '16px' }}>
-            {subjects.map(({ name, pct, color }) => (
+            {subjects.map(({ name, pct }) => (
               <div key={name}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
-                  <span style={{ fontSize: '12px', fontWeight: 500, color: '#1A1A2E', fontFamily: 'DM Sans, sans-serif' }}>{name}</span>
-                  <span style={{ fontSize: '12px', fontWeight: 600, color, fontFamily: 'DM Sans, sans-serif' }}>{pct}%</span>
+                  <span style={{ fontSize: '12px', fontWeight: 500, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>{name}</span>
+                  <span style={{ fontSize: '12px', fontWeight: 600, color: '#5C56E8', fontFamily: 'Inter, sans-serif' }}>{pct}%</span>
                 </div>
-                <div style={{ height: '5px', background: '#E8E4D8', borderRadius: '3px', overflow: 'hidden' }}>
-                  <div style={{ width: `${pct}%`, height: '100%', background: color, borderRadius: '3px' }} />
+                <div style={{ height: '5px', background: '#ECECF1', borderRadius: '3px', overflow: 'hidden' }}>
+                  <div style={{ width: `${pct}%`, height: '100%', background: '#5C56E8', borderRadius: '3px' }} />
                 </div>
               </div>
             ))}
           </div>
-          <div style={{ background: '#FFFFFF', borderRadius: '10px', padding: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid #E8E4D8' }}>
+          <div style={{ background: '#FFFFFF', borderRadius: '10px', padding: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid #ECECF1' }}>
             <div>
-              <p style={{ fontSize: '10px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '3px' }}>Board Exam Date</p>
-              <p style={{ fontSize: '14px', fontWeight: 600, color: '#1A1A2E', fontFamily: 'Playfair Display, serif' }}>March 2025</p>
+              <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '3px' }}>Board Exam Date</p>
+              <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif' }}>March 2025</p>
             </div>
-            <span style={{ padding: '4px 12px', borderRadius: '9999px', background: '#E8336B', color: 'white', fontSize: '11px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif' }}>
+            <span style={{ padding: '4px 12px', borderRadius: '9999px', background: '#5C56E8', color: 'white', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
               On Track
             </span>
           </div>
@@ -251,21 +248,21 @@ function HeroVisual({ index }: { index: number }) {
 
   if (index === 2) {
     const alerts = [
-      { Icon: CheckCircle, color: '#E8336B', text: 'Session completed — 1h 42m (3:45 PM)' },
-      { Icon: BarChart2, color: '#00B4D8', text: 'Math retention up 8% this week' },
-      { Icon: Award, color: '#00B89C', text: 'Weekly goal 85% — achieved today' },
+      { Icon: CheckCircle, color: '#5C56E8', text: 'Session completed — 1h 42m (3:45 PM)' },
+      { Icon: BarChart2, color: '#5C56E8', text: 'Math retention up 8% this week' },
+      { Icon: Award, color: '#1C8A5B', text: 'Weekly goal 85% — achieved today' },
     ];
     return (
       <div style={{ padding: '4px' }}>
         <div style={{ marginBottom: '10px' }}>
-          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#E8336B', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif' }}>
+          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#5C56E8', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
             Live Parent Dashboard
           </span>
         </div>
         <div style={cardStyle}>
           <div style={{ marginBottom: '14px' }}>
-            <p style={{ fontSize: '11px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '3px' }}>Today's Summary</p>
-            <p style={{ fontSize: '16px', fontWeight: 600, color: '#1A1A2E', fontFamily: 'Playfair Display, serif' }}>Kavitha's Dashboard</p>
+            <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '3px' }}>Today's Summary</p>
+            <p style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif' }}>Kavitha's Dashboard</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px', marginBottom: '14px' }}>
             {[
@@ -273,25 +270,25 @@ function HeroVisual({ index }: { index: number }) {
               { label: 'Retention', val: '89%' },
               { label: 'Chapters', val: '3 done' },
             ].map((item) => (
-              <div key={item.label} style={{ background: '#FFFFFF', borderRadius: '8px', padding: '10px', textAlign: 'center', border: '1px solid #E8E4D8' }}>
-                <p style={{ fontSize: '13px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: '#E8336B' }}>{item.val}</p>
-                <p style={{ fontSize: '9px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginTop: '2px' }}>{item.label}</p>
+              <div key={item.label} style={{ background: '#FFFFFF', borderRadius: '8px', padding: '10px', textAlign: 'center', border: '1px solid #ECECF1' }}>
+                <p style={{ fontSize: '13px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#5C56E8' }}>{item.val}</p>
+                <p style={{ fontSize: '9px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '2px' }}>{item.label}</p>
               </div>
             ))}
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginBottom: '10px' }}>
             {alerts.map(({ Icon, color, text }) => (
-              <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '9px', padding: '8px 10px', borderRadius: '8px', background: '#FFFFFF', border: '1px solid #E8E4D8' }}>
+              <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '9px', padding: '8px 10px', borderRadius: '8px', background: '#FFFFFF', border: '1px solid #ECECF1' }}>
                 <div style={{ width: '20px', height: '20px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: color, flexShrink: 0 }}>
                   <Icon size={10} style={{ color: 'white' }} />
                 </div>
-                <span style={{ fontSize: '11px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{text}</span>
+                <span style={{ fontSize: '11px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{text}</span>
               </div>
             ))}
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '9px 12px', borderRadius: '8px', background: '#25D366' }}>
             <Bell size={13} style={{ color: 'white' }} />
-            <span style={{ fontSize: '11px', color: 'white', fontWeight: 600, fontFamily: 'DM Sans, sans-serif' }}>WhatsApp report sent to parent</span>
+            <span style={{ fontSize: '11px', color: 'white', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>WhatsApp report sent to parent</span>
           </div>
         </div>
       </div>
@@ -307,43 +304,43 @@ function HeroVisual({ index }: { index: number }) {
   return (
     <div style={{ padding: '4px' }}>
       <div style={{ marginBottom: '10px' }}>
-        <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#E8336B', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif' }}>
+        <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#5C56E8', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
           Real Student Results — 30 Days
         </span>
       </div>
       <div style={cardStyle}>
         <div style={{ marginBottom: '14px' }}>
-          <p style={{ fontSize: '11px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '3px' }}>Before vs After Blast Learning</p>
-          <p style={{ fontSize: '16px', fontWeight: 600, color: '#1A1A2E', fontFamily: 'Playfair Display, serif' }}>Score Improvements</p>
+          <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '3px' }}>Before vs After Blast Learning</p>
+          <p style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif' }}>Score Improvements</p>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '14px' }}>
           {results.map(({ name, subject, before, after }) => (
-            <div key={name} style={{ background: '#FFFFFF', borderRadius: '10px', padding: '10px 12px', border: '1px solid #E8E4D8' }}>
+            <div key={name} style={{ background: '#FFFFFF', borderRadius: '10px', padding: '10px 12px', border: '1px solid #ECECF1' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <span style={{ fontSize: '12px', fontWeight: 500, color: '#1A1A2E', fontFamily: 'DM Sans, sans-serif' }}>{name}</span>
-                <span style={{ fontSize: '10px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{subject}</span>
+                <span style={{ fontSize: '12px', fontWeight: 500, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>{name}</span>
+                <span style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{subject}</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '16px', fontWeight: 600, color: '#9A9AAA', fontFamily: 'Playfair Display, serif' }}>{before}%</span>
-                <ArrowRight size={13} style={{ color: '#E8336B', flexShrink: 0 }} />
-                <span style={{ fontSize: '16px', fontWeight: 700, color: '#00B4D8', fontFamily: 'Playfair Display, serif' }}>{after}%</span>
-                <span style={{ marginLeft: 'auto', fontSize: '11px', fontWeight: 600, padding: '2px 7px', borderRadius: '5px', background: '#E8F9F3', color: '#0A8A6A', fontFamily: 'DM Sans, sans-serif' }}>
+                <span style={{ fontSize: '16px', fontWeight: 600, color: '#8E8EA0', fontFamily: 'Poppins, sans-serif' }}>{before}%</span>
+                <ArrowRight size={13} style={{ color: '#5C56E8', flexShrink: 0 }} />
+                <span style={{ fontSize: '16px', fontWeight: 700, color: '#5C56E8', fontFamily: 'Poppins, sans-serif' }}>{after}%</span>
+                <span style={{ marginLeft: 'auto', fontSize: '11px', fontWeight: 600, padding: '2px 7px', borderRadius: '5px', background: '#E9F7EF', color: '#1C8A5B', fontFamily: 'Inter, sans-serif' }}>
                   +{after - before}%
                 </span>
               </div>
             </div>
           ))}
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px', background: '#FFFFFF', borderRadius: '10px', border: '1px solid #E8E4D8' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px', background: '#FFFFFF', borderRadius: '10px', border: '1px solid #ECECF1' }}>
           <div>
-            <p style={{ fontSize: '10px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '2px' }}>Average improvement</p>
-            <p style={{ fontSize: '22px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: '#E8336B' }}>+27%</p>
+            <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '2px' }}>Average improvement</p>
+            <p style={{ fontSize: '22px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#5C56E8' }}>+27%</p>
           </div>
           <div style={{ textAlign: 'right' }}>
             <div style={{ display: 'flex', gap: '2px', justifyContent: 'flex-end', marginBottom: '4px' }}>
-              {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={11} fill={s <= 4 ? '#E8336B' : 'none'} style={{ color: '#E8336B' }} />)}
+              {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={11} fill={s <= 4 ? '#5C56E8' : 'none'} style={{ color: '#5C56E8' }} />)}
             </div>
-            <p style={{ fontSize: '10px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>4.0/5 parent rating</p>
+            <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>4.0/5 parent rating</p>
           </div>
         </div>
       </div>
@@ -352,7 +349,7 @@ function HeroVisual({ index }: { index: number }) {
 }
 
 // ─── GSAP-powered stat counter ─────────────────────────────────────────────────
-function StatCounter({ num, displayFn, label, dark = false }: { num: number; displayFn: (v: number) => string; label: string; dark?: boolean }) {
+function StatCounter({ num, displayFn, label }: { num: number; displayFn: (v: number) => string; label: string }) {
   const [value, setValue] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -386,12 +383,12 @@ function StatCounter({ num, displayFn, label, dark = false }: { num: number; dis
         fontSize: 'clamp(1.75rem, 4vw, 3rem)',
         fontWeight: 700,
         marginBottom: '6px',
-        fontFamily: 'Playfair Display, serif',
-        color: '#00B4D8',
+        fontFamily: 'Poppins, sans-serif',
+        color: '#1C1C28',
       }}>
         {displayFn(value)}
       </div>
-      <div style={{ fontSize: '13px', color: dark ? 'rgba(255,255,255,0.5)' : '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{label}</div>
+      <div style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{label}</div>
     </div>
   );
 }
@@ -406,7 +403,35 @@ const stagger: Variants = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
+// ─── Reusable section heading ───────────────────────────────────────────────────
+function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title: React.ReactNode; subtitle?: string }) {
+  return (
+    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '56px' }}>
+      {eyebrow && (
+        <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#EEEDFC', color: '#5C56E8', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
+          {eyebrow}
+        </span>
+      )}
+      <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+        {title}
+      </h2>
+      {subtitle && (
+        <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', maxWidth: '600px', margin: '14px auto 0', lineHeight: 1.6 }}>
+          {subtitle}
+        </p>
+      )}
+    </motion.div>
+  );
+}
+
 // ─── Home page ─────────────────────────────────────────────────────────────────
+const statCards = [
+  { num: 4999, displayFn: (v: number) => `${v.toLocaleString()}+`, label: 'Students Enrolled', bg: '#FDF3E7' },
+  { num: 40, displayFn: (v: number) => `${(v / 10).toFixed(1)}/5`, label: 'Parent Satisfaction', bg: '#FCEEF1' },
+  { num: 91, displayFn: (v: number) => `${v}%`, label: 'Academic Improvement', bg: '#E7F6FB' },
+  { num: 49, displayFn: (v: number) => `${v}+`, label: 'Cities Across India', bg: '#F0EDFC' },
+];
+
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeBanner, setActiveBanner] = useState(0);
@@ -435,9 +460,9 @@ export default function Home() {
   return (
     <div>
       {/* ── Hero Banner Carousel ── */}
-      <section style={{ position: 'relative', paddingTop: '80px', paddingBottom: '80px', background: '#FAFAF7', overflow: 'hidden', borderBottom: '1px solid #E8E4D8' }}>
+      <section style={{ position: 'relative', paddingTop: '104px', paddingBottom: '80px', background: '#FFFFFF', overflow: 'hidden', borderBottom: '1px solid #ECECF1' }}>
         {/* Ambient illustration */}
-        <div style={{ position: 'absolute', bottom: 0, right: 0, width: '420px', height: '350px', opacity: 0.05, pointerEvents: 'none', zIndex: 0 }}>
+        <div style={{ position: 'absolute', bottom: 0, right: 0, width: '420px', height: '350px', opacity: 0.04, pointerEvents: 'none', zIndex: 0 }}>
           <HeroIllustration width="100%" height="100%" />
         </div>
 
@@ -457,22 +482,22 @@ export default function Home() {
                   transition={{ duration: 0.4, ease: 'easeOut' }}
                 >
                   {/* Badge pill */}
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '7px 14px', borderRadius: '9999px', background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B', fontSize: '13px', fontWeight: 500, fontFamily: 'DM Sans, sans-serif', marginBottom: '24px' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '7px 14px', borderRadius: '9999px', background: '#EEEDFC', color: '#5C56E8', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '24px' }}>
                     <BadgeIcon size={13} />
                     {banner.badge}
                   </div>
 
                   {/* Headline */}
-                  <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)', fontFamily: 'Playfair Display, serif', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.1, color: '#1A1A2E', marginBottom: '24px' }}>
+                  <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.75rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.12, color: '#1C1C28', marginBottom: '24px' }}>
                     {banner.headline}
                     <br />
-                    <span style={{ background: 'linear-gradient(135deg, #E8336B 0%, #00B4D8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                    <span style={{ color: '#5C56E8' }}>
                       {banner.highlight}
                     </span>
                   </h1>
 
                   {/* Subtext */}
-                  <p style={{ fontSize: '17px', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '32px', maxWidth: '520px' }}>
+                  <p style={{ fontSize: '17px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '32px', maxWidth: '520px' }}>
                     {banner.subtext}
                   </p>
 
@@ -481,7 +506,7 @@ export default function Home() {
                     <motion.div whileHover={{ scale: 1.03, y: -2 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
                       <Link
                         to={banner.primaryCta.to}
-                        style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', background: '#E8336B', color: 'white', fontSize: '14px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', boxShadow: '0 4px 16px rgba(232,51,107,0.2)' }}
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', background: '#5C56E8', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(92,86,232,0.25)' }}
                       >
                         {banner.primaryCta.label} <ArrowRight size={16} />
                       </Link>
@@ -489,7 +514,7 @@ export default function Home() {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                      style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', border: '1.5px solid #D8D4C8', background: 'white', color: '#1A1A2E', fontSize: '14px', fontWeight: 500, fontFamily: 'DM Sans, sans-serif', cursor: 'pointer' }}
+                      style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', border: '1.5px solid #DCDCE5', background: 'white', color: '#1C1C28', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', cursor: 'pointer' }}
                     >
                       <Play size={15} /> {banner.secondaryCta}
                     </motion.button>
@@ -498,8 +523,8 @@ export default function Home() {
                   {/* Trust signals */}
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
                     {banner.trust.map((t) => (
-                      <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>
-                        <CheckCircle size={13} style={{ color: '#E8336B' }} />
+                      <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                        <CheckCircle size={13} style={{ color: '#5C56E8' }} />
                         {t}
                       </div>
                     ))}
@@ -523,9 +548,9 @@ export default function Home() {
                     transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                     style={{
                       background: '#FFFFFF',
-                      border: '1px solid #E8E4D8',
+                      border: '1px solid #ECECF1',
                       borderRadius: '24px',
-                      boxShadow: '0 4px 24px rgba(26,26,46,0.06)',
+                      boxShadow: '0 8px 28px rgba(28,28,40,0.08)',
                     }}
                   >
                     <HeroVisual index={activeBanner} />
@@ -537,11 +562,13 @@ export default function Home() {
 
           {/* Banner controls */}
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', marginTop: '48px' }}>
-            <div style={{ width: '220px', height: '3px', background: '#E8E4D8', borderRadius: '999px', overflow: 'hidden' }}>
-              <div
+            <div style={{ width: '220px', height: '3px', background: '#ECECF1', borderRadius: '999px', overflow: 'hidden' }}>
+              <motion.div
                 key={progressKey}
-                className="banner-progress-bar"
-                style={{ height: '100%', background: 'linear-gradient(90deg, #E8336B, #00B4D8)', borderRadius: '999px' }}
+                initial={{ width: '0%' }}
+                animate={{ width: '100%' }}
+                transition={{ duration: BANNER_INTERVAL / 1000, ease: 'linear' }}
+                style={{ height: '100%', background: '#5C56E8', borderRadius: '999px' }}
               />
             </div>
             <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
@@ -552,7 +579,7 @@ export default function Home() {
                   title={b.badge}
                   animate={{
                     width: activeBanner === i ? '32px' : '8px',
-                    background: activeBanner === i ? '#E8336B' : '#E8E4D8',
+                    background: activeBanner === i ? '#5C56E8' : '#DCDCE5',
                   }}
                   transition={{ duration: 0.3 }}
                   style={{ height: '8px', borderRadius: '4px', border: 'none', cursor: 'pointer', padding: 0 }}
@@ -563,18 +590,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Stats Strip (dark) ── */}
-      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#1A1A2E' }}>
+      {/* ── Stats Strip (pastel cards) ── */}
+      <section style={{ paddingTop: '88px', paddingBottom: '88px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <p style={{ textAlign: 'center', color: 'rgba(255,255,255,0.35)', fontFamily: 'DM Sans, sans-serif', marginBottom: '48px', fontSize: '12px', letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 500 }}>
-            Trusted by thousands of families across India
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px', marginBottom: '48px' }} className="grid-cols-4-lg">
-            <StatCounter dark num={4999} displayFn={(v) => `${v.toLocaleString()}+`} label="Students Enrolled" />
-            <StatCounter dark num={40} displayFn={(v) => `${(v / 10).toFixed(1)}/5`} label="Parent Satisfaction" />
-            <StatCounter dark num={91} displayFn={(v) => `${v}%`} label="Academic Improvement" />
-            <StatCounter dark num={49} displayFn={(v) => `${v}+`} label="Cities Across India" />
-          </div>
+          <SectionHeading
+            title="A Platform Trusted by Families Across India"
+            subtitle="Don't just take our word for it — here's the impact, in numbers."
+          />
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginBottom: '56px' }} className="grid-cols-4-lg">
+            {statCards.map((s) => (
+              <motion.div key={s.label} variants={fadeUp} style={{ background: s.bg, borderRadius: '20px', padding: '36px 24px' }}>
+                <StatCounter num={s.num} displayFn={s.displayFn} label={s.label} />
+              </motion.div>
+            ))}
+          </motion.div>
           <div style={{ maxWidth: '680px', margin: '0 auto' }}>
             <TestimonialCard
               name="Priya Nair"
@@ -586,23 +615,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Science of Retention (warm cream) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F5F2EC' }}>
+      {/* ── Science of Retention (white) ── */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ minWidth: 0 }}>
-              <div style={{ background: '#FFFFFF', border: '1px solid #E8E4D8', borderRadius: '20px', padding: '24px', boxShadow: '0 4px 24px rgba(26,26,46,0.06)' }}>
+              <div style={{ background: '#F7F7F8', border: '1px solid #ECECF1', borderRadius: '20px', padding: '24px' }}>
                 <ForgettingCurveIllustration animated width="100%" />
               </div>
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ minWidth: 0 }}>
-              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#FFF0F5', color: '#E8336B', fontSize: '13px', fontWeight: 500, fontFamily: 'DM Sans, sans-serif', marginBottom: '20px', border: '1px solid #F5C0D4' }}>
+              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#EEEDFC', color: '#5C56E8', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>
                 The Science
               </span>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Playfair Display, serif', fontWeight: 700, color: '#1A1A2E', marginBottom: '20px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
                 Why Students Forget — and How We Fix It
               </h2>
-              <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '28px' }}>
+              <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px' }}>
                 Ebbinghaus's Forgetting Curve shows students lose 80% of what they learn within 24 hours. Blast Learning's spaced repetition system fights this directly — scheduling reviews at the exact moment your child is about to forget.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -612,12 +641,12 @@ export default function Home() {
                   { label: 'Metacognition Tracking', desc: 'AI maps exactly where knowledge gaps exist and fills them before exams.' },
                 ].map(({ label, desc }) => (
                   <div key={label} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                    <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#E8336B', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+                    <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#5C56E8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
                       <CheckCircle size={11} style={{ color: 'white' }} />
                     </div>
                     <div>
-                      <span style={{ fontSize: '14px', fontWeight: 600, color: '#1A1A2E', fontFamily: 'DM Sans, sans-serif' }}>{label}</span>
-                      <span style={{ fontSize: '14px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}> — {desc}</span>
+                      <span style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>{label}</span>
+                      <span style={{ fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}> — {desc}</span>
                     </div>
                   </div>
                 ))}
@@ -627,17 +656,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── How It Works (white) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FAFAF7' }}>
+      {/* ── How It Works (light gray) ── */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '64px' }}>
-            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#FFF0F5', color: '#E8336B', fontSize: '13px', fontWeight: 500, fontFamily: 'DM Sans, sans-serif', marginBottom: '16px', border: '1px solid #F5C0D4' }}>
-              Simple Process
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontFamily: 'Playfair Display, serif', fontWeight: 700, color: '#1A1A2E', letterSpacing: '-0.01em' }}>
-              How Blast Learning Works
-            </h2>
-          </motion.div>
+          <SectionHeading
+            eyebrow="Simple Process"
+            title="How Blast Learning Works"
+            subtitle="Three simple steps to turn everyday study into lasting retention."
+          />
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '48px' }} className="grid-cols-3-md">
             {howItWorks.map(({ num, title, desc, icon: Icon, Illustration }) => (
               <motion.div
@@ -645,39 +671,39 @@ export default function Home() {
                 variants={fadeUp}
                 whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                style={{ background: 'white', borderRadius: '20px', padding: '32px', position: 'relative', overflow: 'hidden', border: '1px solid #E8E4D8', boxShadow: '0 4px 24px rgba(26,26,46,0.06)' }}
+                style={{ background: 'white', borderRadius: '20px', padding: '32px', position: 'relative', overflow: 'hidden', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
               >
-                <span style={{ position: 'absolute', top: '-8px', right: '16px', fontSize: '96px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: 'rgba(26,26,46,0.04)', lineHeight: 1, userSelect: 'none' }}>
+                <span style={{ position: 'absolute', top: '-8px', right: '16px', fontSize: '96px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: 'rgba(92,86,232,0.06)', lineHeight: 1, userSelect: 'none' }}>
                   {num}
                 </span>
-                <div style={{ width: '44px', height: '44px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', background: '#E8336B' }}>
+                <div style={{ width: '44px', height: '44px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', background: '#5C56E8' }}>
                   <Icon size={20} style={{ color: 'white' }} />
                 </div>
-                <h3 style={{ fontSize: '17px', fontWeight: 600, marginBottom: '10px', fontFamily: 'Playfair Display, serif', color: '#1A1A2E' }}>{title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '20px' }}>{desc}</p>
-                <div style={{ opacity: 0.9 }}>
+                <h3 style={{ fontSize: '17px', fontWeight: 600, marginBottom: '10px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>{title}</h3>
+                <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>{desc}</p>
+                <div>
                   <Illustration width="100%" height="140" />
                 </div>
               </motion.div>
             ))}
           </motion.div>
           <div style={{ textAlign: 'center' }}>
-            <Link to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', background: '#E8336B', color: 'white', fontSize: '14px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', boxShadow: '0 4px 16px rgba(232,51,107,0.2)' }}>
+            <Link to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#5C56E8', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(92,86,232,0.25)' }}>
               Start Your 7-Day Free Trial <ArrowRight size={16} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── Programs Preview (dark) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
+      {/* ── Programs Preview (white) ── */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="flex items-end justify-between" style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontFamily: 'Playfair Display, serif', fontWeight: 700, color: 'white', letterSpacing: '-0.01em' }}>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em' }}>
               Our Programs
             </h2>
-            <Link to="/programs" style={{ fontSize: '13px', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '4px', color: '#E8336B', fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', flexShrink: 0 }}>
-              View All <ChevronDown size={14} style={{ color: '#E8336B' }} className="-rotate-90" />
+            <Link to="/programs" style={{ fontSize: '14px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px', color: '#5C56E8', fontFamily: 'Inter, sans-serif', textDecoration: 'none', flexShrink: 0 }}>
+              View All <ChevronDown size={14} style={{ color: '#5C56E8' }} className="-rotate-90" />
             </Link>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }} className="grid-cols-2-md grid-cols-4-lg">
@@ -696,38 +722,39 @@ export default function Home() {
                   transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                   style={{
                     position: 'relative',
-                    background: prog.featured ? 'rgba(232,51,107,0.06)' : 'rgba(255,255,255,0.04)',
-                    border: prog.featured ? '1.5px solid #E8336B' : '1px solid rgba(255,255,255,0.1)',
+                    background: '#FFFFFF',
+                    border: prog.featured ? '2px solid #5C56E8' : '1px solid #ECECF1',
                     borderRadius: '20px',
                     padding: '24px',
+                    boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
                   }}
                 >
                   {prog.featured && (
-                    <span style={{ position: 'absolute', top: '-12px', left: '20px', padding: '4px 14px', fontSize: '11px', fontWeight: 600, color: 'white', background: '#E8336B', borderRadius: '9999px', fontFamily: 'DM Sans, sans-serif' }}>
+                    <span style={{ position: 'absolute', top: '-12px', left: '20px', padding: '4px 14px', fontSize: '11px', fontWeight: 600, color: 'white', background: '#5C56E8', borderRadius: '9999px', fontFamily: 'Inter, sans-serif' }}>
                       Most Popular
                     </span>
                   )}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: prog.featured ? '#E8336B' : 'rgba(255,255,255,0.08)', color: prog.featured ? 'white' : '#00B4D8' }}>
+                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: prog.featured ? '#5C56E8' : '#EEEDFC', color: prog.featured ? 'white' : '#5C56E8' }}>
                       <Icon size={18} />
                     </div>
                     <div style={{ textAlign: 'right' }}>
-                      <span style={{ fontSize: '20px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: 'white' }}>{prog.price}</span>
-                      <span style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)', fontFamily: 'DM Sans, sans-serif', marginLeft: '2px' }}>/mo</span>
+                      <span style={{ fontSize: '20px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>{prog.price}</span>
+                      <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginLeft: '2px' }}>/mo</span>
                     </div>
                   </div>
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', marginBottom: '6px', padding: '2px 8px', borderRadius: '9999px', background: '#FFF0F5', fontSize: '10px', fontWeight: 600, color: '#E8336B', fontFamily: 'DM Sans, sans-serif', border: '1px solid #F5C0D4' }}>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', marginBottom: '6px', padding: '2px 8px', borderRadius: '9999px', background: '#EEEDFC', fontSize: '10px', fontWeight: 600, color: '#5C56E8', fontFamily: 'Inter, sans-serif' }}>
                     <Zap size={9} /> AI Powered
                   </div>
-                  <h3 style={{ fontSize: '16px', fontWeight: 600, color: 'white', marginBottom: '4px', fontFamily: 'Playfair Display, serif' }}>{prog.name}</h3>
-                  <span style={{ display: 'inline-block', marginBottom: '10px', padding: '2px 9px', fontSize: '11px', fontWeight: 400, borderRadius: '9999px', background: 'rgba(255,255,255,0.06)', color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans, sans-serif' }}>{prog.classes}</span>
-                  <p style={{ fontSize: '13px', lineHeight: 1.6, color: 'rgba(255,255,255,0.5)', marginBottom: '14px', fontFamily: 'DM Sans, sans-serif' }}>{prog.desc}</p>
+                  <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', marginBottom: '4px', fontFamily: 'Poppins, sans-serif' }}>{prog.name}</h3>
+                  <span style={{ display: 'inline-block', marginBottom: '10px', padding: '2px 9px', fontSize: '11px', fontWeight: 500, borderRadius: '9999px', background: '#F7F7F8', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{prog.classes}</span>
+                  <p style={{ fontSize: '13px', lineHeight: 1.6, color: '#5A5A6E', marginBottom: '14px', fontFamily: 'Inter, sans-serif' }}>{prog.desc}</p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '16px' }}>
                     {prog.outcomes.map((o) => (
-                      <span key={o} style={{ padding: '2px 9px', fontSize: '11px', fontWeight: 400, borderRadius: '9999px', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.55)', fontFamily: 'DM Sans, sans-serif' }}>{o}</span>
+                      <span key={o} style={{ padding: '2px 9px', fontSize: '11px', fontWeight: 500, borderRadius: '9999px', border: '1px solid #ECECF1', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{o}</span>
                     ))}
                   </div>
-                  <Link to="/programs" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '10px', borderRadius: '9999px', fontSize: '13px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: prog.featured ? '#E8336B' : '#1A1A2E', color: 'white', border: prog.featured ? 'none' : '1px solid rgba(255,255,255,0.15)' }}>
+                  <Link to="/programs" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '11px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: prog.featured ? '#5C56E8' : 'white', color: prog.featured ? 'white' : '#1C1C28', border: prog.featured ? 'none' : '1.5px solid #DCDCE5' }}>
                     Learn More <ArrowRight size={13} />
                   </Link>
                 </motion.div>
@@ -737,15 +764,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Features Bento Grid (warm cream) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F5F2EC' }}>
+      {/* ── Features Bento Grid (light gray) ── */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '56px' }}>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontFamily: 'Playfair Display, serif', fontWeight: 700, color: '#1A1A2E', letterSpacing: '-0.01em' }}>
-              What Makes Us{' '}
-              <span style={{ background: 'linear-gradient(135deg, #E8336B 0%, #00B4D8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Different</span>
-            </h2>
-          </motion.div>
+          <SectionHeading
+            title="What Makes Us Different"
+            subtitle="Built around the science of memory — not just another content library."
+          />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px' }} className="grid-cols-2-md bento-grid">
             {features.map((f, i) => {
               const Icon = f.icon;
@@ -760,73 +785,68 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Results Banner (dark) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
+      {/* ── Results Banner (white) ── */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontFamily: 'Playfair Display, serif', fontWeight: 700, color: 'white', marginBottom: '16px', letterSpacing: '-0.01em' }}>
-              See Results Within{' '}
-              <span style={{ background: 'linear-gradient(135deg, #E8336B 0%, #00B4D8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>One Month</span>
-            </h2>
-            <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.55)', fontFamily: 'DM Sans, sans-serif', maxWidth: '580px', margin: '0 auto 48px', lineHeight: 1.7 }}>
-              Our students consistently report higher retention scores, improved exam performance, and greater confidence within their first 30 days on Blast Learning.
-            </p>
-          </motion.div>
+          <SectionHeading
+            title="See Results Within One Month"
+            subtitle="Our students consistently report higher retention, improved exam performance, and greater confidence within their first 30 days."
+          />
 
           {/* Score transformation arcs */}
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ maxWidth: '520px', margin: '0 auto 48px' }}>
-            <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '20px', padding: '24px 16px 8px' }}>
+            <div style={{ background: '#F7F7F8', border: '1px solid #ECECF1', borderRadius: '20px', padding: '24px 16px 8px' }}>
               <ScoreTransformIllustration width="100%" />
             </div>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px', maxWidth: '680px', margin: '0 auto 48px' }}>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', maxWidth: '720px', margin: '0 auto 48px' }}>
             {[
-              { num: 3, displayFn: (v: number) => `${v}x`, label: 'More retention than traditional study' },
-              { num: 91, displayFn: (v: number) => `${v}%`, label: 'Students improve their grades' },
-              { num: 30, displayFn: (v: number) => `${v} days`, label: 'Average time to see results' },
+              { num: 3, displayFn: (v: number) => `${v}x`, label: 'More retention than traditional study', bg: '#F0EDFC' },
+              { num: 91, displayFn: (v: number) => `${v}%`, label: 'Students improve their grades', bg: '#E7F6FB' },
+              { num: 30, displayFn: (v: number) => `${v} days`, label: 'Average time to see results', bg: '#E9F7EF' },
             ].map((s) => (
-              <motion.div key={s.label} variants={fadeUp}>
-                <StatCounter dark num={s.num} displayFn={s.displayFn} label={s.label} />
+              <motion.div key={s.label} variants={fadeUp} style={{ background: s.bg, borderRadius: '20px', padding: '32px 20px' }}>
+                <StatCounter num={s.num} displayFn={s.displayFn} label={s.label} />
               </motion.div>
             ))}
           </motion.div>
 
-          <Link to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', background: '#E8336B', color: 'white', fontSize: '14px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', boxShadow: '0 4px 16px rgba(232,51,107,0.25)' }}>
+          <Link to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#5C56E8', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(92,86,232,0.25)' }}>
             Start Your Free Trial Today <ArrowRight size={16} />
           </Link>
         </div>
       </section>
 
-      {/* ── Parent Concerns / Solutions (white) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FAFAF7' }}>
+      {/* ── Parent Concerns / Solutions (light gray) ── */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontFamily: 'Playfair Display, serif', fontWeight: 700, textAlign: 'center', marginBottom: '56px', color: '#1A1A2E', letterSpacing: '-0.01em' }}>
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, textAlign: 'center', marginBottom: '56px', color: '#1C1C28', letterSpacing: '-0.01em' }}>
             From Parent Worries to Real Results
           </motion.h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '32px' }} className="grid-cols-2-lg">
             <div style={{ minWidth: 0 }}>
-              <h3 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'DM Sans, sans-serif', color: '#E8336B' }}>
+              <h3 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Poppins, sans-serif', color: '#8E8EA0' }}>
                 <AlertCircle size={18} /> Common Parent Concerns
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {parentConcerns.map(({ concern }) => (
-                  <div key={concern} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '14px 16px', borderRadius: '12px', background: 'rgba(232,51,107,0.03)', border: '1px solid rgba(232,51,107,0.1)', borderLeft: '3px solid #E8336B' }}>
-                    <AlertCircle size={15} style={{ color: '#E8336B', flexShrink: 0, marginTop: '1px' }} />
-                    <p style={{ fontSize: '14px', color: '#1A1A2E', fontFamily: 'DM Sans, sans-serif', lineHeight: 1.5 }}>{concern}</p>
+                  <div key={concern} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '14px 16px', borderRadius: '12px', background: '#FFFFFF', border: '1px solid #ECECF1', borderLeft: '3px solid #DCDCE5' }}>
+                    <AlertCircle size={15} style={{ color: '#8E8EA0', flexShrink: 0, marginTop: '1px' }} />
+                    <p style={{ fontSize: '14px', color: '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.5 }}>{concern}</p>
                   </div>
                 ))}
               </div>
             </div>
             <div style={{ minWidth: 0 }}>
-              <h3 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'DM Sans, sans-serif', color: '#00B89C' }}>
+              <h3 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Poppins, sans-serif', color: '#5C56E8' }}>
                 <CheckCircle size={18} /> Blast Learning Solutions
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {parentConcerns.map(({ solution }) => (
-                  <div key={solution} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '14px 16px', borderRadius: '12px', background: 'rgba(0,184,156,0.03)', border: '1px solid rgba(0,184,156,0.12)', borderLeft: '3px solid #00B89C' }}>
-                    <CheckCircle size={15} style={{ color: '#00B89C', flexShrink: 0, marginTop: '1px' }} />
-                    <p style={{ fontSize: '14px', color: '#1A1A2E', fontFamily: 'DM Sans, sans-serif', lineHeight: 1.5 }}>{solution}</p>
+                  <div key={solution} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '14px 16px', borderRadius: '12px', background: '#FFFFFF', border: '1px solid #ECECF1', borderLeft: '3px solid #5C56E8' }}>
+                    <CheckCircle size={15} style={{ color: '#5C56E8', flexShrink: 0, marginTop: '1px' }} />
+                    <p style={{ fontSize: '14px', color: '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.5 }}>{solution}</p>
                   </div>
                 ))}
               </div>
@@ -835,32 +855,31 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Parent Dashboard Showcase (warm cream) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F5F2EC' }}>
+      {/* ── Parent Dashboard Showcase (white) ── */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ minWidth: 0 }}>
-              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#FFF0F5', color: '#E8336B', fontSize: '13px', fontWeight: 500, fontFamily: 'DM Sans, sans-serif', marginBottom: '20px', border: '1px solid #F5C0D4' }}>
+              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#EEEDFC', color: '#5C56E8', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>
                 For Parents
               </span>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Playfair Display, serif', fontWeight: 700, color: '#1A1A2E', marginBottom: '20px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
-                Parent Dashboard —{' '}
-                <span style={{ background: 'linear-gradient(135deg, #E8336B 0%, #00B4D8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Stay Informed Every Day</span>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+                Parent Dashboard — <span style={{ color: '#5C56E8' }}>Stay Informed Every Day</span>
               </h2>
-              <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', marginBottom: '28px' }}>
+              <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px' }}>
                 Know exactly what your child is studying, how long they study, and how well they retain it. Our parent dashboard gives you real-time visibility without hovering over their shoulder.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
                 {['Real-time retention score tracking', 'Subject-wise performance breakdown', 'Weekly progress reports via WhatsApp', 'Alerts when your child misses study sessions'].map((item) => (
                   <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#E8336B', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#5C56E8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <CheckCircle size={11} style={{ color: 'white' }} />
                     </div>
-                    <span style={{ fontSize: '14px', color: '#1A1A2E', fontFamily: 'DM Sans, sans-serif' }}>{item}</span>
+                    <span style={{ fontSize: '14px', color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>{item}</span>
                   </div>
                 ))}
               </div>
-              <Link to="/for-parents" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '9999px', background: '#E8336B', color: 'white', fontSize: '14px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', boxShadow: '0 4px 16px rgba(232,51,107,0.2)' }}>
+              <Link to="/for-parents" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '10px', background: '#5C56E8', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(92,86,232,0.25)' }}>
                 Learn More for Parents <ArrowRight size={16} />
               </Link>
             </motion.div>
@@ -871,27 +890,26 @@ export default function Home() {
                   <DashboardMockup />
                 </div>
               </motion.div>
-              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} style={{ position: 'absolute', top: '-16px', right: '-16px', background: '#FFFFFF', borderRadius: '12px', padding: '10px 14px', boxShadow: '0 4px 24px rgba(26,26,46,0.1)', border: '1px solid #E8E4D8' }}>
-                <p style={{ fontSize: '12px', fontWeight: 600, color: '#1A1A2E', fontFamily: 'DM Sans, sans-serif', whiteSpace: 'nowrap' }}>Study session complete</p>
-                <p style={{ fontSize: '10px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>1h 42m — just now</p>
+              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} style={{ position: 'absolute', top: '-16px', right: '-16px', background: '#FFFFFF', borderRadius: '12px', padding: '10px 14px', boxShadow: '0 8px 28px rgba(28,28,40,0.1)', border: '1px solid #ECECF1' }}>
+                <p style={{ fontSize: '12px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>Study session complete</p>
+                <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>1h 42m — just now</p>
               </motion.div>
-              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }} style={{ position: 'absolute', bottom: '-16px', left: '-16px', background: '#1A1A2E', borderRadius: '12px', padding: '10px 14px', boxShadow: '0 4px 24px rgba(26,26,46,0.15)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                <p style={{ fontSize: '12px', fontWeight: 600, color: '#00B4D8', fontFamily: 'DM Sans, sans-serif', whiteSpace: 'nowrap' }}>Math retention +8%</p>
-                <p style={{ fontSize: '10px', color: 'rgba(255,255,255,0.4)', fontFamily: 'DM Sans, sans-serif' }}>This week</p>
+              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }} style={{ position: 'absolute', bottom: '-16px', left: '-16px', background: '#5C56E8', borderRadius: '12px', padding: '10px 14px', boxShadow: '0 8px 28px rgba(92,86,232,0.25)' }}>
+                <p style={{ fontSize: '12px', fontWeight: 600, color: 'white', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>Math retention +8%</p>
+                <p style={{ fontSize: '10px', color: 'rgba(255,255,255,0.7)', fontFamily: 'Inter, sans-serif' }}>This week</p>
               </motion.div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Testimonials (white) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FAFAF7' }}>
+      {/* ── Testimonials (light gray) ── */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '56px' }}>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontFamily: 'Playfair Display, serif', fontWeight: 700, color: '#1A1A2E', letterSpacing: '-0.01em' }}>
-              Real Results from Real Students
-            </h2>
-          </motion.div>
+          <SectionHeading
+            title="Real Results from Real Students"
+            subtitle="Hear from the families who turned forgotten lessons into lasting marks."
+          />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', marginBottom: '20px' }} className="grid-cols-3-md">
             <TestimonialCard name="Ananya Krishnan" role="Class 10 student, Bangalore" content="I used to forget everything after coaching. Now I actually remember what I studied a month ago. My maths score jumped from 65 to 89 in one term." rating={5} before="65%" after="89%" metric="Math Score" improvement="24%" />
             <TestimonialCard name="Rahul Mehta" role="Class 12 student, Mumbai" content="The AI study planner is incredible. It knows exactly which topics I'm weak in and schedules revision before I forget. My Physics retention is now consistently above 80%." rating={5} before="52%" after="81%" metric="Physics Score" improvement="29%" />
@@ -904,42 +922,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FAQ Preview (warm cream) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F5F2EC' }}>
+      {/* ── FAQ Preview (white) ── */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.75rem)', fontFamily: 'Playfair Display, serif', fontWeight: 700, color: '#1A1A2E', letterSpacing: '-0.01em' }}>
-              Frequently Asked Questions
-            </h2>
-          </motion.div>
+          <SectionHeading
+            title="Frequently Asked Questions"
+            subtitle="Everything you need to know before you start your free trial."
+          />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '32px' }}>
             {homeFaqs.map((faq, i) => (
               <div
                 key={i}
                 style={{
                   background: '#FFFFFF',
-                  border: openFaq === i ? '1px solid #E8336B' : '1px solid #E8E4D8',
+                  border: openFaq === i ? '1px solid #5C56E8' : '1px solid #ECECF1',
                   borderRadius: '14px',
                   overflow: 'hidden',
                   transition: 'border-color 0.25s',
-                  boxShadow: '0 4px 24px rgba(26,26,46,0.04)',
+                  boxShadow: '0 2px 12px rgba(28,28,40,0.04)',
                 }}
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', padding: '18px 20px', textAlign: 'left', cursor: 'pointer', background: 'transparent', border: 'none' }}
                 >
-                  <span style={{ fontSize: '14px', fontWeight: 500, color: openFaq === i ? '#E8336B' : '#1A1A2E', fontFamily: 'DM Sans, sans-serif', transition: 'color 0.25s' }}>{faq.q}</span>
-                  <motion.div animate={{ rotate: openFaq === i ? 180 : 0 }} transition={{ duration: 0.25 }} style={{ flexShrink: 0, color: '#E8336B' }}>
+                  <span style={{ fontSize: '14px', fontWeight: 600, color: openFaq === i ? '#5C56E8' : '#1C1C28', fontFamily: 'Inter, sans-serif', transition: 'color 0.25s' }}>{faq.q}</span>
+                  <motion.div animate={{ rotate: openFaq === i ? 180 : 0 }} transition={{ duration: 0.25 }} style={{ flexShrink: 0, color: '#5C56E8' }}>
                     <ChevronDown size={18} />
                   </motion.div>
                 </button>
                 <AnimatePresence initial={false}>
                   {openFaq === i && (
                     <motion.div key="faq-answer" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.28, ease: 'easeInOut' }} style={{ overflow: 'hidden' }}>
-                      <div style={{ padding: '0 20px 18px', borderTop: '1px solid #E8E4D8' }}>
+                      <div style={{ padding: '0 20px 18px', borderTop: '1px solid #ECECF1' }}>
                         <div style={{ height: '12px' }} />
-                        <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{faq.a}</p>
+                        <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{faq.a}</p>
                       </div>
                     </motion.div>
                   )}
@@ -948,45 +965,48 @@ export default function Home() {
             ))}
           </div>
           <div style={{ textAlign: 'center' }}>
-            <Link to="/faq" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 500, color: '#E8336B', fontFamily: 'DM Sans, sans-serif', textDecoration: 'none' }}>
-              View All FAQs <ArrowRight size={15} style={{ color: '#E8336B' }} />
+            <Link to="/faq" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 600, color: '#5C56E8', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
+              View All FAQs <ArrowRight size={15} style={{ color: '#5C56E8' }} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── Final CTA (dark) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontFamily: 'Playfair Display, serif', fontWeight: 700, color: 'white', marginBottom: '20px', letterSpacing: '-0.02em', lineHeight: 1.1 }}>
-              Help Your Child{' '}
-              <span style={{ background: 'linear-gradient(135deg, #E8336B 0%, #00B4D8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                Learn Independently
-              </span>
+      {/* ── Final CTA (indigo card on light) ── */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
+        <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '0 24px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            style={{ background: '#5C56E8', borderRadius: '28px', padding: '64px 32px', textAlign: 'center', boxShadow: '0 16px 40px rgba(92,86,232,0.25)' }}
+          >
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: 'white', marginBottom: '20px', letterSpacing: '-0.02em', lineHeight: 1.15 }}>
+              Help Your Child Learn Independently
             </h2>
-            <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.55)', fontFamily: 'DM Sans, sans-serif', marginBottom: '40px', lineHeight: 1.7 }}>
+            <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.85)', fontFamily: 'Inter, sans-serif', marginBottom: '40px', lineHeight: 1.7, maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
               Join thousands of families who have transformed their child's academic performance with science-backed retention technology.
             </p>
-          </motion.div>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '16px', marginBottom: '32px' }}>
-            <motion.div whileHover={{ scale: 1.04, y: -2 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-              <Link to="/programs" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', background: '#E8336B', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', boxShadow: '0 4px 20px rgba(232,51,107,0.3)' }}>
-                Start 7-Day Trial <ArrowRight size={16} />
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '16px', marginBottom: '32px' }}>
+              <motion.div whileHover={{ scale: 1.04, y: -2 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
+                <Link to="/programs" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: 'white', color: '#5C56E8', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(0,0,0,0.12)' }}>
+                  Start 7-Day Trial <ArrowRight size={16} />
+                </Link>
+              </motion.div>
+              <Link to="/contact" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', border: '1.5px solid rgba(255,255,255,0.5)', background: 'transparent', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
+                Speak to a Learning Advisor
               </Link>
-            </motion.div>
-            <Link to="/contact" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', border: '1px solid rgba(255,255,255,0.2)', background: 'transparent', color: 'rgba(255,255,255,0.85)', fontSize: '15px', fontWeight: 500, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none' }}>
-              Speak to a Learning Advisor
-            </Link>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '24px' }}>
+              {['No credit card required', 'Free 7-day trial', 'Cancel anytime'].map((t) => (
+                <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'rgba(255,255,255,0.75)', fontFamily: 'Inter, sans-serif' }}>
+                  <Star size={11} fill="currentColor" />
+                  {t}
+                </div>
+              ))}
+            </div>
           </motion.div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '24px' }}>
-            {['No credit card required', 'Free 7-day trial', 'Cancel anytime'].map((t) => (
-              <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'rgba(255,255,255,0.35)', fontFamily: 'DM Sans, sans-serif' }}>
-                <Star size={11} fill="currentColor" />
-                {t}
-              </div>
-            ))}
-          </div>
         </div>
       </section>
     </div>

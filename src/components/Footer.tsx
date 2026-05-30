@@ -39,8 +39,8 @@ const Footer = () => {
   return (
     <footer
       style={{
-        background: '#1A1A2E',
-        borderTop: '1px solid #2A2A3E',
+        background: '#F7F7F8',
+        borderTop: '1px solid #ECECF1',
         paddingTop: '5rem',
       }}
     >
@@ -57,20 +57,21 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           style={{
-            background: 'rgba(232, 51, 107, 0.08)',
-            border: '1px solid rgba(232, 51, 107, 0.15)',
+            background: '#FFFFFF',
+            border: '1px solid #ECECF1',
             borderRadius: '24px',
             padding: '3rem',
             marginBottom: '5rem',
             textAlign: 'center',
+            boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
           }}
         >
           <h2
             style={{
-              fontFamily: 'Playfair Display, serif',
+              fontFamily: 'Poppins, sans-serif',
               fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
               fontWeight: 700,
-              color: 'white',
+              color: '#1C1C28',
               marginBottom: '1rem',
             }}
           >
@@ -78,9 +79,9 @@ const Footer = () => {
           </h2>
           <p
             style={{
-              fontFamily: 'DM Sans, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: '1.1rem',
-              color: 'rgba(255, 255, 255, 0.7)',
+              color: '#5A5A6E',
               marginBottom: '2rem',
               maxWidth: '600px',
               margin: '0 auto 2rem',
@@ -92,15 +93,17 @@ const Footer = () => {
             to="/signup"
             style={{
               display: 'inline-block',
-              fontFamily: 'DM Sans, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: '1rem',
               fontWeight: 600,
               color: 'white',
               textDecoration: 'none',
               padding: '0.875rem 2rem',
               borderRadius: '10px',
-              background: '#E8336B',
+              background: '#5C56E8',
             }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = '#4A43C9'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = '#5C56E8'; }}
           >
             Start Free Trial
           </Link>
@@ -132,11 +135,11 @@ const Footer = () => {
                   width: '40px',
                   height: '40px',
                   borderRadius: '10px',
-                  background: '#E8336B',
+                  background: '#5C56E8',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontFamily: 'Playfair Display, serif',
+                  fontFamily: 'Poppins, sans-serif',
                   fontWeight: 700,
                   fontSize: '1.25rem',
                   color: 'white',
@@ -146,10 +149,10 @@ const Footer = () => {
               </div>
               <span
                 style={{
-                  fontFamily: 'Playfair Display, serif',
+                  fontFamily: 'Poppins, sans-serif',
                   fontWeight: 700,
                   fontSize: '1.5rem',
-                  color: 'white',
+                  color: '#1C1C28',
                 }}
               >
                 BlastLearning
@@ -157,9 +160,9 @@ const Footer = () => {
             </Link>
             <p
               style={{
-                fontFamily: 'DM Sans, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: '0.95rem',
-                color: 'rgba(255, 255, 255, 0.6)',
+                color: '#5A5A6E',
                 lineHeight: 1.7,
                 marginBottom: '1.5rem',
                 maxWidth: '300px',
@@ -184,23 +187,23 @@ const Footer = () => {
                   whileHover={{ scale: 1.1, y: -2 }}
                   aria-label={social.name}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.color = '#E8336B';
-                    e.currentTarget.style.borderColor = 'rgba(232, 51, 107, 0.4)';
+                    e.currentTarget.style.color = '#5C56E8';
+                    e.currentTarget.style.borderColor = '#DDD9FA';
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.color = 'rgba(255, 255, 255, 0.6)';
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    e.currentTarget.style.color = '#5A5A6E';
+                    e.currentTarget.style.borderColor = '#ECECF1';
                   }}
                   style={{
                     width: '40px',
                     height: '40px',
                     borderRadius: '10px',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    background: '#FFFFFF',
+                    border: '1px solid #ECECF1',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: 'rgba(255, 255, 255, 0.6)',
+                    color: '#5A5A6E',
                     cursor: 'pointer',
                   }}
                 >
@@ -224,10 +227,10 @@ const Footer = () => {
             <div key={category}>
               <h3
                 style={{
-                  fontFamily: 'Playfair Display, serif',
+                  fontFamily: 'Poppins, sans-serif',
                   fontSize: '1rem',
                   fontWeight: 600,
-                  color: 'white',
+                  color: '#1C1C28',
                   marginBottom: '1.25rem',
                   textTransform: 'capitalize',
                 }}
@@ -248,15 +251,15 @@ const Footer = () => {
                     <Link
                       to={link.path}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.color = '#E8336B';
+                        e.currentTarget.style.color = '#5C56E8';
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.color = 'rgba(255, 255, 255, 0.6)';
+                        e.currentTarget.style.color = '#5A5A6E';
                       }}
                       style={{
-                        fontFamily: 'DM Sans, sans-serif',
+                        fontFamily: 'Inter, sans-serif',
                         fontSize: '0.95rem',
-                        color: 'rgba(255, 255, 255, 0.6)',
+                        color: '#5A5A6E',
                         textDecoration: 'none',
                         transition: 'color 0.2s ease',
                       }}
@@ -273,7 +276,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div
           style={{
-            borderTop: '1px solid #2A2A3E',
+            borderTop: '1px solid #ECECF1',
             padding: '2rem 0',
             display: 'flex',
             justifyContent: 'space-between',
@@ -284,9 +287,9 @@ const Footer = () => {
         >
           <p
             style={{
-              fontFamily: 'DM Sans, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: '0.875rem',
-              color: 'rgba(255, 255, 255, 0.5)',
+              color: '#8E8EA0',
             }}
           >
             © 2025 BlastLearning. All rights reserved.
@@ -299,9 +302,9 @@ const Footer = () => {
           >
             <span
               style={{
-                fontFamily: 'DM Sans, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: '0.875rem',
-                color: 'rgba(255, 255, 255, 0.5)',
+                color: '#8E8EA0',
               }}
             >
               Made with passion for learning
