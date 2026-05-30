@@ -1,69 +1,58 @@
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import {
-  ArrowRight, Brain, Target, CheckCircle, Zap, BookOpen, Users, MessageSquare, Shield,
-  Calendar, BarChart3, Award, TrendingUp, Repeat
-} from 'lucide-react';
-import TestimonialCard from '../components/TestimonialCard';
+import { Gamepad2, Trophy, Brain, Target, Sparkles, ArrowRight, Star, Flame, Award } from 'lucide-react';
 
-const benefits = [
-  { icon: Brain, title: 'Smart Revision', desc: 'AI knows exactly when you need to revise each topic so you never forget anything before an exam.' },
-  { icon: Target, title: 'Clear Goals', desc: 'Daily targets break overwhelming syllabi into manageable steps you can actually complete.' },
-  { icon: Zap, title: 'Less Stress', desc: 'No more last-minute panic. Consistent, structured study removes exam anxiety permanently.' },
-  { icon: BarChart3, title: 'Track Progress', desc: 'See your retention scores improve week by week. Progress you can actually see is seriously motivating.' },
-];
-
-const aiTools = [
+const features = [
   {
-    icon: Calendar,
-    title: 'AI Study Planner',
-    desc: 'Your personal AI creates a daily study schedule based on your syllabus, weak areas, and upcoming exams. It adjusts automatically as your performance changes.',
+    icon: Gamepad2,
+    title: 'Learn Like a Game',
+    description: 'Earn XP, unlock levels, and collect badges as you master concepts. Learning has never been this addictive.',
+    color: '#E8336B',
   },
   {
-    icon: Repeat,
-    title: 'Smart Revision',
-    desc: 'Spaced repetition technology schedules your reviews at scientifically optimal intervals — the exact moment before you would have forgotten.',
-  },
-  {
-    icon: MessageSquare,
-    title: 'Study Buddy',
-    desc: 'An AI companion that answers your doubts 24/7, explains concepts in multiple ways, and supports learning in your native language.',
+    icon: Flame,
+    title: 'Build Streaks',
+    description: 'Keep your daily streak alive! Consistency is the secret to retention, and streaks make it fun.',
+    color: '#00B4D8',
   },
   {
     icon: Brain,
-    title: 'Practice Engine',
-    desc: 'Adaptive quizzes that get harder when you\'re doing well and easier when you\'re struggling — keeping you in the perfect learning zone.',
+    title: 'AI Study Buddy',
+    description: 'Stuck on a problem? Your AI tutor explains concepts in a way that actually makes sense to you.',
+    color: '#E8336B',
   },
   {
-    icon: TrendingUp,
-    title: 'Neural Weaving',
-    desc: 'Our proprietary technique that connects new concepts to things you already know, making learning faster and memories more durable.',
+    icon: Target,
+    title: 'Personalized Path',
+    description: 'No two students are the same. Your learning path adapts to your pace, strengths, and goals.',
+    color: '#00B4D8',
   },
   {
-    icon: BookOpen,
-    title: 'Class Notes Converter',
-    desc: 'Upload any class note, screenshot, or coaching material and our AI converts it into a structured study guide with key points and practice questions.',
+    icon: Trophy,
+    title: 'Compete & Win',
+    description: 'Climb leaderboards, challenge friends, and earn rewards. A little competition goes a long way.',
+    color: '#E8336B',
+  },
+  {
+    icon: Sparkles,
+    title: 'Instant Feedback',
+    description: 'Know right away if you got it right. Immediate feedback helps you learn faster and better.',
+    color: '#00B4D8',
   },
 ];
 
-const collaborativeFeatures = [
-  { icon: Users, title: 'Group Study Sessions', desc: 'Join scheduled group study rooms with students from your class and city. Stay focused together with shared timers and goals.' },
-  { icon: MessageSquare, title: 'Peer Discussion Forums', desc: 'Ask questions, share answers, and discuss tricky topics with thousands of students facing the same syllabus.' },
-  { icon: BarChart3, title: 'Shared Progress Tracking', desc: 'See how your friends are progressing and motivate each other to hit daily and weekly study goals.' },
-  { icon: Shield, title: 'Safe & Moderated', desc: 'All communities are moderated by our team to ensure a respectful, distraction-free learning environment.' },
+const steps = [
+  { number: '01', title: 'Take a Quick Assessment', description: 'We figure out exactly where you are and what you need to work on.' },
+  { number: '02', title: 'Get Your Custom Plan', description: 'Receive a personalized learning path designed just for you.' },
+  { number: '03', title: 'Learn & Earn Rewards', description: 'Complete lessons, earn XP, and watch your skills grow every day.' },
+  { number: '04', title: 'Track Your Progress', description: 'See your improvement with detailed stats and celebrate milestones.' },
 ];
 
-const communityStats = [
-  { value: '5,000+', label: 'Study Buddies' },
-  { value: '200+', label: 'Study Groups Daily' },
-  { value: '50,000+', label: 'Questions Answered' },
-];
-
-const todayTasks = [
-  { subject: 'Maths', topic: 'Quadratic Equations — Revision', time: '25 min', status: 'done' },
-  { subject: 'Science', topic: 'Photosynthesis — New Lesson', time: '30 min', status: 'active' },
-  { subject: 'English', topic: 'Tenses — Practice Quiz', time: '15 min', status: 'pending' },
-  { subject: 'Maths', topic: 'Trigonometry — Quiz', time: '20 min', status: 'pending' },
+const achievements = [
+  { icon: Star, label: 'First Lesson', color: '#E8336B' },
+  { icon: Flame, label: '7-Day Streak', color: '#00B4D8' },
+  { icon: Award, label: 'Quiz Master', color: '#E8336B' },
+  { icon: Trophy, label: 'Top 10', color: '#00B4D8' },
 ];
 
 const fadeUp: Variants = {
@@ -77,250 +66,41 @@ const stagger: Variants = {
 
 export default function ForStudents() {
   return (
-    <div style={{ background: '#07111F' }}>
+    <div style={{ background: '#FAFAF7' }}>
       {/* Hero */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: '#07111F', paddingTop: '120px', paddingBottom: '100px' }}>
-        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
-        <div style={{ position: 'absolute', bottom: '-5%', left: '-5%', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }}
-            className="grid-cols-2-lg"
-          >
-            <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
-              <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '24px', background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
-                For Students
-              </span>
-              <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', lineHeight: 1.15 }}>
-                <span style={{ background: 'linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.85) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                  Learning That{' '}
-                </span>
-                <span style={{ background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                  Adapts to You
-                </span>
-              </h1>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', marginBottom: '32px', maxWidth: '480px' }}>
-                Stop studying harder. Start studying smarter. Blast Learning's AI builds a personalized study plan that fits your pace, your style, and your exam schedule.
-              </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginBottom: '28px' }}>
-                <Link
-                  to="/programs"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', borderRadius: '9999px', fontSize: '14px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%)', color: 'white' }}
-                >
-                  Start Free Trial <ArrowRight size={15} />
-                </Link>
-                <Link
-                  to="/library"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 24px', borderRadius: '9999px', fontSize: '14px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.85)' }}
-                >
-                  Explore Library
-                </Link>
-              </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
-                {['Free 7-day trial', 'No credit card needed', 'Works alongside coaching'].map((t) => (
-                  <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>
-                    <CheckCircle size={13} style={{ color: '#06B6D4', flexShrink: 0 }} /> {t}
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Student Dashboard Mockup */}
-            <motion.div variants={fadeUp} style={{ minWidth: 0, width: '100%' }}>
-              <div style={{ background: 'rgba(7,17,31,0.85)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '24px', overflow: 'hidden' }}>
-                <div style={{ padding: '16px 24px', borderBottom: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <div>
-                    <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.4)', fontFamily: 'Inter, sans-serif' }}>Today's Learning</p>
-                    <p style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)' }}>Arjun's Study Plan</p>
-                  </div>
-                  <div style={{ fontSize: '12px', fontWeight: 700, padding: '6px 14px', borderRadius: '9999px', background: 'linear-gradient(135deg, rgba(232,53,122,0.25), rgba(232,53,122,0.1))', color: '#ff6b9d', border: '1px solid rgba(232,53,122,0.3)', fontFamily: 'Inter, sans-serif' }}>
-                    🔥 14-Day Streak
-                  </div>
-                </div>
-                <div style={{ padding: '24px' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', marginBottom: '24px' }}>
-                    {[
-                      { label: 'Topics Today', val: '4' },
-                      { label: 'Study Time', val: '1h 30m' },
-                      { label: 'Score', val: '87%' },
-                    ].map((s) => (
-                      <div key={s.label} style={{ borderRadius: '12px', padding: '12px', textAlign: 'center', background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                        <p style={{ fontSize: '18px', fontWeight: 800, marginBottom: '4px', fontFamily: 'Space Grotesk, sans-serif', background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{s.val}</p>
-                        <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontFamily: 'Inter, sans-serif' }}>{s.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgba(255,255,255,0.35)', fontFamily: 'Inter, sans-serif', marginBottom: '10px' }}>Today's Tasks</p>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    {todayTasks.map((task) => (
-                      <div key={task.topic} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', borderRadius: '10px', background: task.status === 'active' ? 'rgba(6,182,212,0.08)' : 'rgba(255,255,255,0.03)', border: task.status === 'active' ? '1px solid rgba(6,182,212,0.2)' : '1px solid rgba(255,255,255,0.05)' }}>
-                        <div style={{ width: '20px', height: '20px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: task.status === 'done' ? 'linear-gradient(135deg, #06B6D4, #8B5CF6)' : task.status === 'active' ? 'rgba(6,182,212,0.2)' : 'rgba(255,255,255,0.06)' }}>
-                          {task.status === 'done' && <CheckCircle size={12} style={{ color: 'white' }} />}
-                          {task.status === 'active' && <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#06B6D4' }} />}
-                        </div>
-                        <div style={{ flex: 1, minWidth: 0 }}>
-                          <p style={{ fontSize: '12px', fontWeight: 500, color: 'rgba(255,255,255,0.8)', fontFamily: 'Inter, sans-serif', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{task.topic}</p>
-                          <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', fontFamily: 'Inter, sans-serif' }}>{task.subject} · {task.time}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                    <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgba(255,255,255,0.35)', fontFamily: 'Inter, sans-serif', marginBottom: '10px' }}>Recent Achievements</p>
-                    <div style={{ display: 'flex', gap: '8px' }}>
-                      {[{ icon: Award, label: '7-Day Streak', color: '#ff6b9d' }, { icon: Zap, label: 'Speed Learner', color: '#06B6D4' }, { icon: Target, label: 'Math Master', color: '#8B5CF6' }].map(({ icon: Icon, label, color }) => (
-                        <div key={label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', padding: '10px 6px', borderRadius: '10px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
-                          <Icon size={13} style={{ color }} />
-                          <p style={{ fontSize: '10px', textAlign: 'center', lineHeight: 1.3, color: 'rgba(255,255,255,0.4)', fontFamily: 'Inter, sans-serif' }}>{label}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Benefit Cards */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#0a1628' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
-            className="grid-cols-2-sm grid-cols-4-lg"
-          >
-            {benefits.map(({ icon: Icon, title, desc }) => (
-              <motion.div
-                key={title}
-                variants={fadeUp}
-                style={{ padding: '24px', borderRadius: '20px', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.07)' }}
-              >
-                <div style={{ width: '44px', height: '44px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', background: 'linear-gradient(135deg, rgba(6,182,212,0.2), rgba(139,92,246,0.2))', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
-                  <Icon size={20} />
-                </div>
-                <h3 style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)', marginBottom: '8px' }}>{title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* AI Tools */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ textAlign: 'center', marginBottom: '56px' }}
-          >
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)' }}>
-              AI-Powered Study Tools Built for You
-            </h2>
-          </motion.div>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
-            className="grid-cols-2-md grid-cols-3-lg"
-          >
-            {aiTools.map(({ icon: Icon, title, desc }) => (
-              <motion.div
-                key={title}
-                variants={fadeUp}
-                style={{ padding: '24px', borderRadius: '20px', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.07)' }}
-              >
-                <div style={{ width: '44px', height: '44px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', background: 'linear-gradient(135deg, rgba(6,182,212,0.2), rgba(139,92,246,0.2))', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
-                  <Icon size={20} />
-                </div>
-                <h3 style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)', marginBottom: '8px' }}>{title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.65, color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Collaborative Learning */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#0a1628' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ textAlign: 'center', marginBottom: '56px' }}
-          >
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)', marginBottom: '16px' }}>
-              Learn Better, Together
-            </h2>
-            <p style={{ fontSize: '1rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.55)', fontFamily: 'Inter, sans-serif', maxWidth: '560px', margin: '0 auto' }}>
-              Join a community of thousands of Indian students who are all working toward the same goal. Studying doesn't have to be a lonely grind.
+      <section style={{ position: 'relative', overflow: 'hidden', background: '#FAFAF7', paddingTop: '120px', paddingBottom: '100px' }}>
+        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', marginBottom: '24px', background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B' }}>
+              For Students
+            </span>
+            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.03em', marginBottom: '24px', color: '#1A1A2E' }}>
+              Learning That Feels Like Play
+            </h1>
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', maxWidth: '640px', margin: '0 auto' }}>
+              Say goodbye to boring study sessions. Blast Learning turns education into an adventure with games, rewards, and an AI buddy that gets you.
             </p>
           </motion.div>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '40px' }}
-            className="grid-cols-2-md grid-cols-4-lg"
-          >
-            {collaborativeFeatures.map(({ icon: Icon, title, desc }) => (
-              <motion.div
-                key={title}
-                variants={fadeUp}
-                style={{ padding: '24px', borderRadius: '20px', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.07)' }}
-              >
-                <div style={{ width: '44px', height: '44px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px', background: 'linear-gradient(135deg, rgba(6,182,212,0.2), rgba(139,92,246,0.2))', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
-                  <Icon size={20} />
-                </div>
-                <h3 style={{ fontSize: '14px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)', marginBottom: '8px' }}>{title}</h3>
-                <p style={{ fontSize: '13px', lineHeight: 1.65, color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px', padding: '32px', borderRadius: '20px', background: 'rgba(6,182,212,0.05)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(6,182,212,0.15)' }}
-          >
-            {communityStats.map((s) => (
-              <div key={s.label} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '6px', fontFamily: 'Space Grotesk, sans-serif', background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{s.value}</div>
-                <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>{s.label}</div>
-              </div>
-            ))}
-          </motion.div>
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
+      {/* Features Grid */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F5F2EC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.h2
+          <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)', textAlign: 'center', marginBottom: '48px' }}
+            style={{ textAlign: 'center', marginBottom: '64px' }}
           >
-            What Students Are Saying
-          </motion.h2>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: '#1A1A2E', marginBottom: '16px' }}>
+              Why Students Love Us
+            </h2>
+            <p style={{ fontSize: '1.05rem', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', maxWidth: '600px', margin: '0 auto' }}>
+              We built Blast Learning with one goal — make learning so fun you'll forget you're studying.
+            </p>
+          </motion.div>
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -329,23 +109,131 @@ export default function ForStudents() {
             style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
             className="grid-cols-3-md"
           >
-            <motion.div variants={fadeUp}>
-              <TestimonialCard name="Ananya Krishnan" role="Class 10, Bangalore" content="I used to forget everything after coaching. Now I actually remember what I studied a month ago. My maths score jumped from 65 to 89 in one term." rating={5} before="65%" after="89%" metric="Math Score" improvement="24%" />
-            </motion.div>
-            <motion.div variants={fadeUp}>
-              <TestimonialCard name="Rahul Mehta" role="Class 12, Mumbai" content="The AI study planner is incredible. It knows exactly which topics I'm weak in and schedules revision before I forget. My Physics retention is now consistently above 80%." rating={5} before="52%" after="81%" metric="Physics Score" improvement="29%" />
-            </motion.div>
-            <motion.div variants={fadeUp}>
-              <TestimonialCard name="Kavitha Suresh" role="Class 9, Hyderabad" content="English was my weakest subject. After two months on Blast Learning, I got my first A in a grammar test. The structured approach really works for me." rating={5} before="58%" after="84%" metric="English Score" improvement="26%" />
-            </motion.div>
+            {features.map((feature) => {
+              const Icon = feature.icon;
+              return (
+                <motion.div
+                  key={feature.title}
+                  variants={fadeUp}
+                  whileHover={{ y: -6 }}
+                  style={{
+                    background: '#FFFFFF',
+                    border: '1px solid #E8E4D8',
+                    borderRadius: '20px',
+                    padding: '32px',
+                    boxShadow: '0 4px 24px rgba(26,26,46,0.06)',
+                  }}
+                >
+                  <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: `${feature.color}1a`, border: `1px solid ${feature.color}33`, color: feature.color }}>
+                    <Icon size={24} />
+                  </div>
+                  <h3 style={{ fontSize: '18px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: '#1A1A2E', marginBottom: '10px' }}>{feature.title}</h3>
+                  <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{feature.description}</p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FAFAF7' }}>
+        <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 24px' }}>
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: '#1A1A2E', textAlign: 'center', marginBottom: '56px' }}
+          >
+            How It Works
+          </motion.h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-2-md">
+            {steps.map((step) => (
+              <motion.div
+                key={step.number}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                style={{
+                  display: 'flex',
+                  gap: '20px',
+                  alignItems: 'flex-start',
+                  background: '#FFFFFF',
+                  border: '1px solid #E8E4D8',
+                  borderRadius: '20px',
+                  padding: '28px',
+                  boxShadow: '0 4px 24px rgba(26,26,46,0.06)',
+                }}
+              >
+                <div style={{ fontSize: '40px', fontWeight: 800, fontFamily: 'Playfair Display, serif', background: 'linear-gradient(135deg, #E8336B 0%, #00B4D8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', flexShrink: 0, lineHeight: 1 }}>{step.number}</div>
+                <div>
+                  <h3 style={{ fontSize: '17px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: '#1A1A2E', marginBottom: '8px' }}>{step.title}</h3>
+                  <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{step.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Achievements */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
+        <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: 'white', marginBottom: '16px' }}
+          >
+            Collect Achievements
+          </motion.h2>
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Sans, sans-serif', marginBottom: '56px', maxWidth: '600px', margin: '0 auto 56px' }}
+          >
+            Every milestone earns you a badge. How many can you collect?
+          </motion.p>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}
+            className="grid-cols-4-md"
+          >
+            {achievements.map((ach) => {
+              const Icon = ach.icon;
+              return (
+                <motion.div
+                  key={ach.label}
+                  variants={fadeUp}
+                  whileHover={{ scale: 1.05, y: -4 }}
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    borderRadius: '20px',
+                    padding: '32px 20px',
+                  }}
+                >
+                  <div style={{ width: '64px', height: '64px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', background: `${ach.color}26`, border: `2px solid ${ach.color}4d`, color: ach.color }}>
+                    <Icon size={28} />
+                  </div>
+                  <div style={{ fontSize: '14px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', color: 'rgba(255,255,255,0.9)' }}>{ach.label}</div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
 
       {/* CTA */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(6,182,212,0.07), rgba(59,130,246,0.05), rgba(139,92,246,0.07))', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '800px', height: '400px', borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(6,182,212,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -353,20 +241,18 @@ export default function ForStudents() {
           viewport={{ once: true }}
           style={{ position: 'relative', maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
         >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', background: 'linear-gradient(135deg, #ffffff, rgba(255,255,255,0.8))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-            Ready to Actually Remember What You Study?
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: 'white', marginBottom: '16px' }}>
+            Ready to <span style={{ background: 'linear-gradient(135deg, #E8336B 0%, #00B4D8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Level Up?</span>
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-            Start your 7-day free trial today. No credit card. No pressure. Just smarter studying.
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontFamily: 'DM Sans, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
+            Join thousands of students who are already learning smarter, not harder.
           </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
-            <Link to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%)', color: 'white' }}>
-              Start Free Trial <ArrowRight size={16} />
-            </Link>
-            <Link to="/library" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.85)' }}>
-              Browse the Library
-            </Link>
-          </div>
+          <Link
+            to="/contact"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '16px 36px', borderRadius: '9999px', fontSize: '16px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: '#E8336B', color: 'white', border: 'none' }}
+          >
+            Start Your Adventure <ArrowRight size={18} />
+          </Link>
         </motion.div>
       </section>
     </div>

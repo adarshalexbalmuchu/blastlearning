@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Heart, Lightbulb, Users, Shield } from 'lucide-react';
 
 const team = [
-  { name: 'Arjun Mehta', role: 'Co-founder & CEO', color: '#06B6D4' },
-  { name: 'Priya Sharma', role: 'Co-founder & CTO', color: '#8B5CF6' },
-  { name: 'Kiran Reddy', role: 'Head of Curriculum', color: '#3B82F6' },
-  { name: 'Sunita Nair', role: 'Head of Product', color: '#06B6D4' },
-  { name: 'Rahul Kumar', role: 'Head of Engineering', color: '#8B5CF6' },
-  { name: 'Deepa Iyer', role: 'Head of Learning Science', color: '#3B82F6' },
+  { name: 'Arjun Mehta', role: 'Co-founder & CEO' },
+  { name: 'Priya Sharma', role: 'Co-founder & CTO' },
+  { name: 'Kiran Reddy', role: 'Head of Curriculum' },
+  { name: 'Sunita Nair', role: 'Head of Product' },
+  { name: 'Rahul Kumar', role: 'Head of Engineering' },
+  { name: 'Deepa Iyer', role: 'Head of Learning Science' },
 ];
 
 const companyStats = [
@@ -37,7 +37,7 @@ const values = [
   {
     icon: Shield,
     title: 'Science-Backed Only',
-    desc: 'We don\'t ship features based on what looks impressive. Every technique in Blast Learning — spaced repetition, active recall, metacognition — is backed by peer-reviewed cognitive science.',
+    desc: "We don't ship features based on what looks impressive. Every technique in Blast Learning — spaced repetition, active recall, metacognition — is backed by peer-reviewed cognitive science.",
   },
 ];
 
@@ -52,25 +52,18 @@ const stagger: Variants = {
 
 export default function About() {
   return (
-    <div style={{ background: '#07111F' }}>
+    <div style={{ background: '#FAFAF7' }}>
       {/* Hero */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: '#07111F', paddingTop: '120px', paddingBottom: '100px' }}>
-        <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(6,182,212,0.12) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
-        <div style={{ position: 'absolute', bottom: '-5%', left: '-5%', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)', pointerEvents: 'none', willChange: 'transform' }} />
-        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
+      <section style={{ background: '#FAFAF7', paddingTop: '120px', paddingBottom: '100px', borderBottom: '1px solid #E8E4D8' }}>
+        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '24px', background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'DM Sans, sans-serif', marginBottom: '24px', background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B' }}>
               Our Mission
             </span>
-            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.03em', marginBottom: '24px', lineHeight: 1.15 }}>
-              <span style={{ background: 'linear-gradient(135deg, #ffffff 0%, rgba(255,255,255,0.85) 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                Making Learning{' '}
-              </span>
-              <span style={{ background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                Stick for Every Indian Student
-              </span>
+            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', marginBottom: '24px', lineHeight: 1.15, color: '#1A1A2E' }}>
+              Making Learning Stick for Every Indian Student
             </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', maxWidth: '640px', margin: '0 auto' }}>
+            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif', maxWidth: '640px', margin: '0 auto' }}>
               India spends billions on education every year, yet most students forget 90% of what they learn within a week. We built Blast Learning to fix that — to make every hour of study count, permanently.
             </p>
           </motion.div>
@@ -78,7 +71,7 @@ export default function About() {
       </section>
 
       {/* Why We Built Blast */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#0a1628' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F5F2EC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
@@ -89,17 +82,17 @@ export default function About() {
             className="grid-cols-2-lg"
           >
             <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)', marginBottom: '28px' }}>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: '#1A1A2E', marginBottom: '28px' }}>
                 Why We Built Blast Learning
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 {[
-                  'It started with a frustration. Our founders watched their younger siblings spend hours at coaching classes, only to draw blanks on exam papers weeks later. The problem wasn\'t intelligence or effort — it was that nobody had taught them how to make learning stick.',
+                  "It started with a frustration. Our founders watched their younger siblings spend hours at coaching classes, only to draw blanks on exam papers weeks later. The problem wasn't intelligence or effort — it was that nobody had taught them how to make learning stick.",
                   'Cognitive science has known for decades that spaced repetition and active recall are the most effective learning techniques available. Yet the Indian education system — coaching classes, textbooks, tutors — delivers content without retention strategy.',
                   'Blast Learning was built to bridge that gap. We take the science of how memory actually works and translate it into a daily experience that any student can follow — regardless of their school, city, or coaching setup.',
-                  'Our Metacognition Engine doesn\'t just deliver content. It tracks how well you remember, identifies what\'s at risk of being forgotten, and schedules review at the exact right time. The result: 90% retention instead of 10%.',
+                  "Our Metacognition Engine doesn't just deliver content. It tracks how well you remember, identifies what's at risk of being forgotten, and schedules review at the exact right time. The result: 90% retention instead of 10%.",
                 ].map((text, i) => (
-                  <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: 'rgba(255,255,255,0.55)', fontFamily: 'Inter, sans-serif' }}>
+                  <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>
                     {text}
                   </p>
                 ))}
@@ -118,10 +111,10 @@ export default function About() {
                 <motion.div
                   key={item.val}
                   variants={fadeUp}
-                  style={{ borderRadius: '20px', padding: '24px', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.07)' }}
+                  style={{ borderRadius: '20px', padding: '24px', background: '#FFFFFF', border: '1px solid #E8E4D8', boxShadow: '0 4px 24px rgba(26,26,46,0.06)' }}
                 >
-                  <div style={{ fontSize: '1.875rem', fontWeight: 800, marginBottom: '12px', fontFamily: 'Space Grotesk, sans-serif', background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{item.val}</div>
-                  <p style={{ fontSize: '13px', lineHeight: 1.6, color: 'rgba(255,255,255,0.45)', fontFamily: 'Inter, sans-serif' }}>{item.desc}</p>
+                  <div style={{ fontSize: '1.875rem', fontWeight: 800, marginBottom: '12px', fontFamily: 'Playfair Display, serif', background: 'linear-gradient(135deg, #E8336B 0%, #00B4D8 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{item.val}</div>
+                  <p style={{ fontSize: '13px', lineHeight: 1.6, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{item.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -130,7 +123,7 @@ export default function About() {
       </section>
 
       {/* Company Stats */}
-      <section style={{ paddingTop: '72px', paddingBottom: '72px', background: '#07111F' }}>
+      <section style={{ paddingTop: '72px', paddingBottom: '72px', background: '#1A1A2E' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
@@ -142,8 +135,8 @@ export default function About() {
           >
             {companyStats.map((s) => (
               <motion.div key={s.label} variants={fadeUp} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '8px', fontFamily: 'Space Grotesk, sans-serif', background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{s.value}</div>
-                <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>{s.label}</div>
+                <div style={{ fontSize: '2.5rem', fontWeight: 800, marginBottom: '8px', fontFamily: 'Playfair Display, serif', color: '#00B4D8' }}>{s.value}</div>
+                <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.5)', fontFamily: 'DM Sans, sans-serif' }}>{s.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -151,7 +144,7 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#0a1628' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FAFAF7' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={fadeUp}
@@ -160,7 +153,7 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)' }}>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: '#1A1A2E' }}>
               The Team Behind Blast Learning
             </h2>
           </motion.div>
@@ -176,15 +169,16 @@ export default function About() {
               <motion.div
                 key={member.name}
                 variants={fadeUp}
-                style={{ padding: '28px', borderRadius: '20px', textAlign: 'center', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.07)' }}
+                whileHover={{ boxShadow: '0 8px 32px rgba(232,51,107,0.08)' }}
+                style={{ padding: '28px', borderRadius: '20px', textAlign: 'center', background: '#FFFFFF', border: '1px solid #E8E4D8', boxShadow: '0 4px 24px rgba(26,26,46,0.06)' }}
               >
                 <div
-                  style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 800, color: 'white', margin: '0 auto 16px', fontFamily: 'Space Grotesk, sans-serif', background: `linear-gradient(135deg, ${member.color}, rgba(${member.color === '#06B6D4' ? '6,182,212' : member.color === '#8B5CF6' ? '139,92,246' : '59,130,246'},0.5))`, boxShadow: `0 0 24px ${member.color}40` }}
+                  style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 700, color: 'white', margin: '0 auto 16px', fontFamily: 'DM Sans, sans-serif', background: '#E8336B' }}
                 >
                   {member.name.split(' ').map((n) => n[0]).join('')}
                 </div>
-                <h3 style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)', marginBottom: '4px' }}>{member.name}</h3>
-                <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', fontFamily: 'Inter, sans-serif' }}>{member.role}</p>
+                <h3 style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', color: '#1A1A2E', marginBottom: '4px' }}>{member.name}</h3>
+                <p style={{ fontSize: '13px', color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{member.role}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -192,7 +186,7 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F5F2EC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={fadeUp}
@@ -201,7 +195,7 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.9)' }}>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', color: '#1A1A2E' }}>
               What We Stand For
             </h2>
           </motion.div>
@@ -217,13 +211,14 @@ export default function About() {
               <motion.div
                 key={title}
                 variants={fadeUp}
-                style={{ padding: '32px', borderRadius: '20px', background: 'rgba(255,255,255,0.04)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.07)' }}
+                whileHover={{ boxShadow: '0 8px 32px rgba(232,51,107,0.08)' }}
+                style={{ padding: '32px', borderRadius: '20px', background: '#FFFFFF', border: '1px solid #E8E4D8', boxShadow: '0 4px 24px rgba(26,26,46,0.06)' }}
               >
-                <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: 'linear-gradient(135deg, rgba(6,182,212,0.2), rgba(139,92,246,0.2))', border: '1px solid rgba(6,182,212,0.2)', color: '#06B6D4' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: '#FFF0F5', border: '1px solid #F5C0D4', color: '#E8336B' }}>
                   <Icon size={22} />
                 </div>
-                <h3 style={{ fontSize: '18px', fontWeight: 700, fontFamily: 'Space Grotesk, sans-serif', color: 'rgba(255,255,255,0.9)', marginBottom: '12px' }}>{title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.7, color: 'rgba(255,255,255,0.5)', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
+                <h3 style={{ fontSize: '18px', fontWeight: 700, fontFamily: 'Playfair Display, serif', color: '#1A1A2E', marginBottom: '12px' }}>{title}</h3>
+                <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A7A', fontFamily: 'DM Sans, sans-serif' }}>{desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -231,25 +226,23 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#07111F' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(6,182,212,0.07), rgba(59,130,246,0.05), rgba(139,92,246,0.07))', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '800px', height: '400px', borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(6,182,212,0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#1A1A2E' }}>
         <motion.div
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          style={{ position: 'relative', maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
+          style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
         >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Space Grotesk, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', background: 'linear-gradient(135deg, #ffffff, rgba(255,255,255,0.8))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 800, fontFamily: 'Playfair Display, serif', letterSpacing: '-0.02em', marginBottom: '16px', color: 'white' }}>
             Join Us in Building a Better Way to Learn
           </h2>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontFamily: 'DM Sans, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
             Whether you're a parent, student, tutor, or educator — we'd love to have you in the Blast Learning community.
           </p>
           <Link
             to="/contact"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%)', color: 'white' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '9999px', fontSize: '15px', fontWeight: 700, fontFamily: 'DM Sans, sans-serif', textDecoration: 'none', background: '#E8336B', color: 'white', boxShadow: '0 4px 16px rgba(232,51,107,0.2)' }}
           >
             Get in Touch <ArrowRight size={16} />
           </Link>
