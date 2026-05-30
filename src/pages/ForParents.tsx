@@ -84,7 +84,7 @@ export default function ForParents() {
       <section style={{ position: 'relative', overflow: 'hidden', background: '#F7F7F8', paddingTop: '120px', paddingBottom: '100px' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: "'Inter', sans-serif", marginBottom: '24px', background: '#EEEDFC', color: '#5C56E8' }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: "'Inter', sans-serif", marginBottom: '24px', background: '#E0F5FC', color: '#0FA8DC' }}>
               For Parents
             </span>
             <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', marginBottom: '24px', color: '#1C1C28' }}>
@@ -138,7 +138,7 @@ export default function ForParents() {
                     boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
                   }}
                 >
-                  <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: tile, color: '#5C56E8' }}>
+                  <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: tile, color: '#0FA8DC' }}>
                     <Icon size={24} />
                   </div>
                   <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{benefit.title}</h3>
@@ -164,7 +164,7 @@ export default function ForParents() {
               <div style={{ display: 'grid', gap: '16px' }}>
                 {trustPoints.map((point) => (
                   <div key={point} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                    <CheckCircle size={20} style={{ color: '#5C56E8', flexShrink: 0 }} />
+                    <CheckCircle size={20} style={{ color: '#0FA8DC', flexShrink: 0 }} />
                     <span style={{ fontSize: '15px', color: '#1C1C28', fontFamily: "'Inter', sans-serif" }}>{point}</span>
                   </div>
                 ))}
@@ -233,7 +233,7 @@ export default function ForParents() {
                   boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
                 }}
               >
-                <Quote size={32} style={{ color: '#5C56E8', marginBottom: '16px' }} />
+                <Quote size={32} style={{ color: '#0FA8DC', marginBottom: '16px' }} />
                 <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#1C1C28', fontFamily: "'Inter', sans-serif", marginBottom: '24px', fontStyle: 'italic' }}>"{t.quote}"</p>
                 <div>
                   <div style={{ fontSize: '15px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{t.name}</div>
@@ -263,7 +263,7 @@ export default function ForParents() {
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link
               to="/contact"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#5C56E8', color: 'white', border: 'none' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white', border: 'none' }}
             >
               Start Free Trial <ArrowRight size={16} />
             </Link>

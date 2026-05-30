@@ -19,7 +19,7 @@ export const HowItWorksStep1: FC<IllustrationProps> = ({ className, width = '100
   >
     <defs>
       <linearGradient id="s1g1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#5C56E8" />
+        <stop offset="0%" stopColor="#0FA8DC" />
         <stop offset="100%" stopColor="#8B86F0" />
       </linearGradient>
     </defs>
@@ -28,8 +28,8 @@ export const HowItWorksStep1: FC<IllustrationProps> = ({ className, width = '100
     <circle cx="150" cy="120" r="62" stroke="rgba(28,28,40,0.04)" strokeWidth="1" />
 
     <rect x="88" y="48" width="124" height="148" rx="10" fill="#FFFFFF" stroke="#ECECF1" strokeWidth="1.5" />
-    <rect x="114" y="40" width="72" height="20" rx="8" fill="#EEEDFC" stroke="#DDD9FA" strokeWidth="1" />
-    <rect x="128" y="46" width="44" height="8" rx="4" fill="#5C56E8" />
+    <rect x="114" y="40" width="72" height="20" rx="8" fill="#E0F5FC" stroke="#B5E3F4" strokeWidth="1" />
+    <rect x="128" y="46" width="44" height="8" rx="4" fill="#0FA8DC" />
 
     {[0, 1, 2, 3].map((i) => (
       <g key={i}>
@@ -63,7 +63,7 @@ export const HowItWorksStep1: FC<IllustrationProps> = ({ className, width = '100
     <rect x="98" y="190" width="104" height="5" rx="2.5" fill="#ECECF1" />
     <rect x="98" y="190" width="58" height="5" rx="2.5" fill="url(#s1g1)" />
 
-    <circle cx="224" cy="66" r="5" fill="#5C56E8" opacity="0.5" />
+    <circle cx="224" cy="66" r="5" fill="#0FA8DC" opacity="0.5" />
     <circle cx="76" cy="178" r="4" fill="#8B86F0" opacity="0.4" />
   </svg>
 );

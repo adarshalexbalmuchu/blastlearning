@@ -19,7 +19,7 @@ export const HowItWorksStep2: FC<IllustrationProps> = ({ className, width = '100
   >
     <defs>
       <linearGradient id="s2g1" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stopColor="#5C56E8" />
+        <stop offset="0%" stopColor="#0FA8DC" />
         <stop offset="100%" stopColor="#8B86F0" />
       </linearGradient>
     </defs>
@@ -60,7 +60,7 @@ export const HowItWorksStep2: FC<IllustrationProps> = ({ className, width = '100
                 textAnchor="middle"
                 fontFamily="Inter, sans-serif"
                 fontSize="9"
-                fill={active ? (today ? 'white' : '#5C56E8') : 'rgba(28,28,40,0.25)'}
+                fill={active ? (today ? 'white' : '#0FA8DC') : 'rgba(28,28,40,0.25)'}
               >
                 {day}
               </text>
@@ -70,10 +70,10 @@ export const HowItWorksStep2: FC<IllustrationProps> = ({ className, width = '100
       })
     )}
 
-    <rect x="93" y="196" width="114" height="20" rx="10" fill="#EEEDFC" stroke="#DDD9FA" strokeWidth="1" />
-    <text x="150" y="210" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="10" fontWeight="600" fill="#5C56E8">AI Generated</text>
+    <rect x="93" y="196" width="114" height="20" rx="10" fill="#E0F5FC" stroke="#B5E3F4" strokeWidth="1" />
+    <text x="150" y="210" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="10" fontWeight="600" fill="#0FA8DC">AI Generated</text>
 
-    <circle cx="232" cy="58" r="5" fill="#5C56E8" opacity="0.45" />
+    <circle cx="232" cy="58" r="5" fill="#0FA8DC" opacity="0.45" />
     <circle cx="68" cy="222" r="4" fill="#8B86F0" opacity="0.35" />
   </svg>
 );

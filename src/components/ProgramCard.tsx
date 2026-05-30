@@ -18,7 +18,7 @@ export default function ProgramCard({ icon, name, price, classRange, description
       style={{
         position: 'relative',
         background: '#FFFFFF',
-        border: featured ? '2px solid #5C56E8' : '1px solid #ECECF1',
+        border: featured ? '2px solid #0FA8DC' : '1px solid #ECECF1',
         borderRadius: '16px',
         padding: '24px',
         display: 'flex',
@@ -28,8 +28,8 @@ export default function ProgramCard({ icon, name, price, classRange, description
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.transform = 'translateY(-6px)';
-        (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 28px rgba(92,86,232,0.12)';
-        if (!featured) (e.currentTarget as HTMLElement).style.borderColor = '#5C56E8';
+        (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 28px rgba(15,168,220,0.12)';
+        if (!featured) (e.currentTarget as HTMLElement).style.borderColor = '#0FA8DC';
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLElement).style.transform = 'none';
@@ -46,7 +46,7 @@ export default function ProgramCard({ icon, name, price, classRange, description
           fontSize: '11px',
           fontWeight: 600,
           color: 'white',
-          background: '#5C56E8',
+          background: '#0FA8DC',
           borderRadius: '9999px',
           fontFamily: "'Inter', sans-serif",
         }}>
@@ -63,8 +63,8 @@ export default function ProgramCard({ icon, name, price, classRange, description
           alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0,
-          background: '#EEEDFC',
-          color: '#5C56E8',
+          background: '#E0F5FC',
+          color: '#0FA8DC',
         }}>
           {icon}
         </div>
@@ -76,7 +76,7 @@ export default function ProgramCard({ icon, name, price, classRange, description
 
       {/* AI Powered badge */}
       <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', marginBottom: '8px' }}>
-        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '9999px', fontSize: '10px', fontWeight: 600, color: '#5C56E8', background: '#EEEDFC', fontFamily: "'Inter', sans-serif" }}>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '9999px', fontSize: '10px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif" }}>
           <Zap size={10} /> AI Powered
         </span>
       </div>
@@ -93,7 +93,7 @@ export default function ProgramCard({ icon, name, price, classRange, description
         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
           {outcomes.map((outcome) => (
             <span key={outcome} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: 500, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
-              <Check size={14} style={{ color: '#5C56E8', flexShrink: 0 }} />
+              <Check size={14} style={{ color: '#0FA8DC', flexShrink: 0 }} />
               {outcome}
             </span>
           ))}
@@ -113,17 +113,17 @@ export default function ProgramCard({ icon, name, price, classRange, description
           fontWeight: 600,
           fontFamily: "'Inter', sans-serif",
           textDecoration: 'none',
-          background: featured ? '#5C56E8' : '#FFFFFF',
+          background: featured ? '#0FA8DC' : '#FFFFFF',
           color: featured ? 'white' : '#1C1C28',
           border: featured ? 'none' : '1.5px solid #DCDCE5',
           transition: 'background 0.2s, border-color 0.2s',
         }}
         onMouseEnter={(e) => {
-          if (featured) (e.currentTarget as HTMLElement).style.background = '#4A43C9';
-          else (e.currentTarget as HTMLElement).style.borderColor = '#5C56E8';
+          if (featured) (e.currentTarget as HTMLElement).style.background = '#0D8BB5';
+          else (e.currentTarget as HTMLElement).style.borderColor = '#0FA8DC';
         }}
         onMouseLeave={(e) => {
-          if (featured) (e.currentTarget as HTMLElement).style.background = '#5C56E8';
+          if (featured) (e.currentTarget as HTMLElement).style.background = '#0FA8DC';
           else (e.currentTarget as HTMLElement).style.borderColor = '#DCDCE5';
         }}
       >

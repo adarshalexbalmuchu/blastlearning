@@ -7,9 +7,9 @@ interface SubjectBar {
 }
 
 const subjects: SubjectBar[] = [
-  { subject: 'Mathematics', percent: 85, color: '#5C56E8' },
-  { subject: 'Science', percent: 92, color: '#5C56E8' },
-  { subject: 'English', percent: 78, color: '#5C56E8' },
+  { subject: 'Mathematics', percent: 85, color: '#0FA8DC' },
+  { subject: 'Science', percent: 92, color: '#0FA8DC' },
+  { subject: 'English', percent: 78, color: '#0FA8DC' },
 ];
 
 const weeklyActivity = [
@@ -58,7 +58,7 @@ export default function DashboardMockup() {
           fontSize: '11px',
           fontWeight: 600,
           fontFamily: "'Inter', sans-serif",
-          background: '#5C56E8',
+          background: '#0FA8DC',
           color: 'white',
         }}>
           7-Day Streak 🔥
@@ -106,7 +106,7 @@ export default function DashboardMockup() {
                     borderRadius: '3px 3px 0 0',
                     height: `${(d.hours / maxHours) * 42}px`,
                     background: d.day === 'Thu'
-                      ? '#5C56E8'
+                      ? '#0FA8DC'
                       : '#E0DEF7',
                   }}
                 />
@@ -121,7 +121,7 @@ export default function DashboardMockup() {
           {miniFeatures.map(({ icon: Icon, label, bg }) => (
             <div key={label} style={{ borderRadius: '10px', padding: '10px 6px', textAlign: 'center', background: bg, border: '1px solid #ECECF1' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '5px' }}>
-                <Icon size={14} style={{ color: '#5C56E8' }} />
+                <Icon size={14} style={{ color: '#0FA8DC' }} />
               </div>
               <p style={{ fontSize: '9px', color: '#5A5A6E', fontFamily: "'Inter', sans-serif", lineHeight: 1.3 }}>{label}</p>
             </div>

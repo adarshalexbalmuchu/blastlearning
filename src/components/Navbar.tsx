@@ -160,7 +160,7 @@ export default function Navbar() {
                               position: 'absolute',
                               inset: 0,
                               borderRadius: '99px',
-                              background: 'rgba(92,86,232,0.08)',
+                              background: 'rgba(15,168,220,0.08)',
                             }}
                           />
                         )}
@@ -187,7 +187,7 @@ export default function Navbar() {
                           fontSize: '14px',
                           fontWeight: 500,
                           fontFamily: 'Inter, sans-serif',
-                          color: location.pathname === item.path ? '#5C56E8' : '#5A5A6E',
+                          color: location.pathname === item.path ? '#0FA8DC' : '#5A5A6E',
                           textDecoration: 'none',
                         }}
                       >
@@ -198,7 +198,7 @@ export default function Navbar() {
                               position: 'absolute',
                               inset: 0,
                               borderRadius: '99px',
-                              background: 'rgba(92,86,232,0.08)',
+                              background: 'rgba(15,168,220,0.08)',
                             }}
                           />
                         )}
@@ -256,11 +256,11 @@ export default function Navbar() {
                                               width: '36px',
                                               height: '36px',
                                               borderRadius: '8px',
-                                              border: '1px solid #DDD9FA',
-                                              background: '#EEEDFC',
+                                              border: '1px solid #B5E3F4',
+                                              background: '#E0F5FC',
                                             }}
                                           >
-                                            <Icon size={16} style={{ color: '#5C56E8' }} />
+                                            <Icon size={16} style={{ color: '#0FA8DC' }} />
                                           </div>
                                           <div>
                                             <p
@@ -301,6 +301,15 @@ export default function Navbar() {
               </ul>
             </div>
 
+            {/* Desktop CTA */}
+            <Link
+              to="/programs"
+              className="show-lg-blk"
+              style={{ padding: '9px 20px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '14px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', whiteSpace: 'nowrap', boxShadow: '0 4px 14px rgba(240,60,111,0.25)' }}
+            >
+              Start Free Trial
+            </Link>
+
             {/* Login Dropdown */}
             <div className="show-lg-blk" style={{ position: 'relative' }}>
               <button
@@ -316,7 +325,7 @@ export default function Navbar() {
                   fontFamily: 'Inter, sans-serif',
                   transition: 'border-color 0.2s, color 0.2s',
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#5C56E8'; (e.currentTarget as HTMLElement).style.color = '#5C56E8'; }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#0FA8DC'; (e.currentTarget as HTMLElement).style.color = '#0FA8DC'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#DCDCE5'; (e.currentTarget as HTMLElement).style.color = '#1C1C28'; }}
               >
                 <User size={14} />
@@ -361,7 +370,7 @@ export default function Navbar() {
                           fontFamily: 'Inter, sans-serif',
                           transition: 'background 0.15s, color 0.15s',
                         }}
-                        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F7F7F8'; (e.currentTarget as HTMLElement).style.color = '#5C56E8'; }}
+                        onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F7F7F8'; (e.currentTarget as HTMLElement).style.color = '#0FA8DC'; }}
                         onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = '#1C1C28'; }}
                         onClick={() => setLoginOpen(false)}
                       >
@@ -400,7 +409,7 @@ export default function Navbar() {
                   className="px-3 py-3 text-sm font-medium"
                   style={{
                     fontFamily: 'Inter, sans-serif',
-                    color: active ? '#5C56E8' : '#1C1C28',
+                    color: active ? '#0FA8DC' : '#1C1C28',
                     textDecoration: 'none',
                     borderBottom: '1px solid #ECECF1',
                   }}
@@ -433,7 +442,7 @@ export default function Navbar() {
         <Link
           to="/programs"
           className="flex-1 text-center py-2.5 rounded-lg text-white text-sm font-semibold"
-          style={{ background: '#5C56E8', fontFamily: 'Inter, sans-serif', textDecoration: 'none', borderRadius: '10px' }}
+          style={{ background: '#F03C6F', fontFamily: 'Inter, sans-serif', textDecoration: 'none', borderRadius: '10px' }}
         >
           Start Free Trial
         </Link>

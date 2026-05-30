@@ -101,7 +101,7 @@ export default function Programs() {
       <section style={{ position: 'relative', overflow: 'hidden', background: '#F7F7F8', paddingTop: '120px', paddingBottom: '100px' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: "'Inter', sans-serif", marginBottom: '24px', background: '#EEEDFC', color: '#5C56E8' }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: "'Inter', sans-serif", marginBottom: '24px', background: '#E0F5FC', color: '#0FA8DC' }}>
               Learning Programs
             </span>
             <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', marginBottom: '24px', color: '#1C1C28' }}>
@@ -135,25 +135,25 @@ export default function Programs() {
                   style={{
                     position: 'relative',
                     background: '#FFFFFF',
-                    border: prog.featured ? '2px solid #5C56E8' : '1px solid #ECECF1',
+                    border: prog.featured ? '2px solid #0FA8DC' : '1px solid #ECECF1',
                     borderRadius: '16px',
                     overflow: 'hidden',
                     boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
                   }}
                 >
                   {prog.featured && (
-                    <div style={{ padding: '10px', textAlign: 'center', fontSize: '11px', fontWeight: 600, color: 'white', background: '#5C56E8', fontFamily: "'Inter', sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                    <div style={{ padding: '10px', textAlign: 'center', fontSize: '11px', fontWeight: 600, color: 'white', background: '#0FA8DC', fontFamily: "'Inter', sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                       Most Popular
                     </div>
                   )}
                   <div style={{ padding: '32px' }}>
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', marginBottom: '24px' }}>
-                      <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: tile, color: '#5C56E8' }}>
+                      <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: tile, color: '#0FA8DC' }}>
                         <Icon size={22} />
                       </div>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
-                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '9999px', fontSize: '10px', fontWeight: 600, color: '#5C56E8', background: '#EEEDFC', fontFamily: "'Inter', sans-serif" }}>
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '9999px', fontSize: '10px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif" }}>
                             <Zap size={10} /> AI Powered
                           </span>
                           <span style={{ padding: '3px 10px', fontSize: '11px', fontWeight: 500, borderRadius: '9999px', background: '#F7F7F8', color: '#5A5A6E', border: '1px solid #ECECF1', fontFamily: "'Inter', sans-serif" }}>
@@ -174,7 +174,7 @@ export default function Programs() {
                       <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#8E8EA0', marginBottom: '10px', fontFamily: "'Inter', sans-serif" }}>Key Outcomes</p>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                         {prog.outcomes.map((o) => (
-                          <span key={o} style={{ padding: '4px 12px', fontSize: '12px', fontWeight: 500, borderRadius: '9999px', color: '#5C56E8', background: '#EEEDFC', fontFamily: "'Inter', sans-serif" }}>{o}</span>
+                          <span key={o} style={{ padding: '4px 12px', fontSize: '12px', fontWeight: 500, borderRadius: '9999px', color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif" }}>{o}</span>
                         ))}
                       </div>
                     </div>
@@ -184,7 +184,7 @@ export default function Programs() {
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '8px' }} className="grid-cols-2-sm">
                         {prog.features.map((f) => (
                           <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                            <CheckCircle size={14} style={{ color: '#5C56E8', flexShrink: 0, marginTop: '2px' }} />
+                            <CheckCircle size={14} style={{ color: '#0FA8DC', flexShrink: 0, marginTop: '2px' }} />
                             <span style={{ fontSize: '13px', lineHeight: 1.5, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{f}</span>
                           </div>
                         ))}
@@ -204,7 +204,7 @@ export default function Programs() {
                         fontWeight: 600,
                         fontFamily: "'Inter', sans-serif",
                         textDecoration: 'none',
-                        background: prog.featured ? '#5C56E8' : '#FFFFFF',
+                        background: prog.featured ? '#0FA8DC' : '#FFFFFF',
                         color: prog.featured ? 'white' : '#1C1C28',
                         border: prog.featured ? 'none' : '1.5px solid #DCDCE5',
                       }}
@@ -249,8 +249,8 @@ export default function Programs() {
                     fontSize: '14px',
                     fontWeight: 600,
                     fontFamily: "'Poppins', sans-serif",
-                    background: i === 0 ? '#EEEDFC' : 'transparent',
-                    color: i === 0 ? '#5C56E8' : '#5A5A6E',
+                    background: i === 0 ? '#E0F5FC' : 'transparent',
+                    color: i === 0 ? '#0FA8DC' : '#5A5A6E',
                     borderBottom: '1px solid #ECECF1',
                   }}
                 >
@@ -272,7 +272,7 @@ export default function Programs() {
                 {[row.blast, row.coaching, row.apps].map((val, j) => (
                   <div key={j} style={{ padding: '14px 16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {val ? (
-                      <CheckCircle size={18} style={{ color: j === 0 ? '#5C56E8' : '#8E8EA0' }} />
+                      <CheckCircle size={18} style={{ color: j === 0 ? '#0FA8DC' : '#8E8EA0' }} />
                     ) : (
                       <span style={{ fontSize: '18px', color: '#8E8EA0' }}>×</span>
                     )}
@@ -301,7 +301,7 @@ export default function Programs() {
           </p>
           <Link
             to="/contact"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#5C56E8', border: 'none', color: 'white' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', border: 'none', color: 'white' }}
           >
             <Phone size={16} /> Talk to an Advisor
           </Link>

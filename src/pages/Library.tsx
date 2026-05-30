@@ -30,9 +30,9 @@ const resources: Resource[] = [
 ];
 
 const typeStyles: Record<string, { bg: string; text: string }> = {
-  Video: { bg: '#FCEEF1', text: '#5C56E8' },
-  Notes: { bg: '#E7F6FB', text: '#5C56E8' },
-  Quiz: { bg: '#F0EDFC', text: '#5C56E8' },
+  Video: { bg: '#FCEEF1', text: '#0FA8DC' },
+  Notes: { bg: '#E7F6FB', text: '#0FA8DC' },
+  Quiz: { bg: '#F0EDFC', text: '#0FA8DC' },
 };
 
 const TypeIcon = ({ type }: { type: Resource['type'] }) => {
@@ -71,7 +71,7 @@ export default function Library() {
             transition={{ duration: 0.6 }}
             style={{ textAlign: 'center', marginBottom: '40px' }}
           >
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px', background: '#EEEDFC', color: '#5C56E8' }}>
+            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px', background: '#E0F5FC', color: '#0FA8DC' }}>
               Resource Library
             </span>
             <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', color: '#1C1C28' }}>
@@ -88,7 +88,7 @@ export default function Library() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 style={{ width: '100%', paddingLeft: '48px', paddingRight: '16px', paddingTop: '14px', paddingBottom: '14px', borderRadius: '10px', border: '1px solid #ECECF1', background: '#FFFFFF', fontSize: '14px', color: '#1C1C28', fontFamily: 'Inter, sans-serif', outline: 'none', boxSizing: 'border-box' }}
-                onFocus={(e) => { e.currentTarget.style.borderColor = '#5C56E8'; }}
+                onFocus={(e) => { e.currentTarget.style.borderColor = '#0FA8DC'; }}
                 onBlur={(e) => { e.currentTarget.style.borderColor = '#ECECF1'; }}
               />
             </div>
@@ -111,7 +111,7 @@ export default function Library() {
                   fontFamily: 'Inter, sans-serif',
                   cursor: 'pointer',
                   border: activeFilter === tab ? 'none' : '1px solid #ECECF1',
-                  background: activeFilter === tab ? '#5C56E8' : 'white',
+                  background: activeFilter === tab ? '#0FA8DC' : 'white',
                   color: activeFilter === tab ? 'white' : '#5A5A6E',
                   transition: 'all 0.2s',
                 }}
@@ -176,7 +176,7 @@ export default function Library() {
                     </Link>
                   ) : (
                     <button
-                      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', width: '100%', padding: '10px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', cursor: 'pointer', background: '#EEEDFC', border: 'none', color: '#5C56E8' }}
+                      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', width: '100%', padding: '10px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', cursor: 'pointer', background: '#E0F5FC', border: 'none', color: '#0FA8DC' }}
                     >
                       <TypeIcon type={resource.type} /> Access {resource.type}
                     </button>
@@ -205,7 +205,7 @@ export default function Library() {
           </p>
           <Link
             to="/programs"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#5C56E8', color: 'white' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
           >
             View Plans &amp; Pricing <ArrowRight size={16} />
           </Link>
