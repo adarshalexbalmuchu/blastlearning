@@ -56,7 +56,7 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
         </div>
       )}
 
-      {/* Stars — amber to look authentic */}
+      {/* Stars, amber to look authentic */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '2px', marginBottom: '12px' }}>
         {Array.from({ length: rating }).map((_, i) => (
           <span key={i} style={{ fontSize: '13px', color: '#F59E0B' }}>★</span>

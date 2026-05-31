@@ -7,7 +7,7 @@ const benefits = [
   {
     icon: BarChart3,
     title: 'Real-Time Progress Dashboard',
-    description: 'See exactly what your child is learning, their strengths, and areas needing attention — updated live.',
+    description: 'See exactly what your child is learning, their strengths, and areas needing attention, updated live.',
   },
   {
     icon: Bell,
@@ -37,17 +37,17 @@ const benefits = [
 ];
 
 const trustPoints = [
-  'No hidden fees — transparent monthly pricing',
+  'No hidden fees: transparent monthly pricing',
   'Cancel anytime, no lock-in contracts',
-  'Data privacy guaranteed — your child\'s information is secure',
+  'Data privacy guaranteed: your child\'s information is secure',
   'Aligned with CBSE & NCERT curriculum',
   'Created by IIT & NIT alumni educators',
-  'Trusted by 10,000+ Indian families',
+  'Trusted by 4,999+ Indian families',
 ];
 
 const testimonials = [
   {
-    quote: 'My daughter\'s confidence in maths has completely transformed. The weekly reports help me stay involved without being intrusive.',
+    quote: 'My daughter\'s confidence in maths has completely turned around. The weekly reports help me stay involved without being intrusive.',
     name: 'Priya Sharma',
     role: 'Mother of Class 10 student',
     location: 'Delhi',
@@ -59,7 +59,7 @@ const testimonials = [
     location: 'Bangalore',
   },
   {
-    quote: 'Worth every rupee. The retention tracking is genius — my daughter actually remembers what she learned months ago.',
+    quote: 'Worth every rupee. The retention tracking is brilliant. My daughter actually remembers what she learned months ago.',
     name: 'Anita Desai',
     role: 'Mother of Class 8 student',
     location: 'Mumbai',
@@ -80,7 +80,7 @@ const stagger: Variants = {
 
 export default function ForParents() {
   useEffect(() => {
-    document.title = "For Parents | Track Your Child's Progress — Blast Learning";
+    document.title = "For Parents | Track Your Child's Progress · Blast Learning";
     return () => { document.title = 'Blast Learning'; };
   }, []);
 
@@ -97,7 +97,7 @@ export default function ForParents() {
               Peace of Mind for Parents
             </h1>
             <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
-              Stay informed and involved in your child's education journey. Track progress, celebrate wins, and support their growth — all backed by transparent data.
+              Stay informed and involved in your child's education journey. Track progress, celebrate wins, and support their growth, all backed by transparent data.
             </p>
           </motion.div>
         </div>
@@ -165,7 +165,7 @@ export default function ForParents() {
                 Built on Trust & Transparency
               </h2>
               <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '32px' }}>
-                We believe parents deserve complete clarity. No hidden costs, no confusing contracts — just honest, effective education.
+                We believe parents deserve complete clarity. No hidden costs, no confusing contracts, just honest, effective education.
               </p>
               <div style={{ display: 'grid', gap: '16px' }}>
                 {trustPoints.map((point) => (
@@ -191,8 +191,8 @@ export default function ForParents() {
             >
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px' }}>
                 {[
-                  { value: '10,000+', label: 'Active Families' },
-                  { value: '92%', label: 'Grade Improvement' },
+                  { value: '4,999+', label: 'Active Families' },
+                  { value: '91%', label: 'Grade Improvement' },
                   { value: '4.8/5', label: 'Parent Rating' },
                   { value: '50,000+', label: 'Lessons Done' },
                 ].map((stat) => (
@@ -269,12 +269,14 @@ export default function ForParents() {
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link
               to="/contact"
+              className="cta cta-blue"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white', border: 'none' }}
             >
               Start Free Trial <ArrowRight size={16} />
             </Link>
             <Link
               to="/programs"
+              className="cta cta-outline"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#FFFFFF', border: '1.5px solid #DCDCE5', color: '#1C1C28' }}
             >
               View Programs

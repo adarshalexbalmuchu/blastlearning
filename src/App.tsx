@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
 
-// Code-split all pages — only Home ships in the initial bundle
+// Code-split all pages - only Home ships in the initial bundle
 import Home from './pages/Home';
 
 const Programs      = lazy(() => import('./pages/Programs'));

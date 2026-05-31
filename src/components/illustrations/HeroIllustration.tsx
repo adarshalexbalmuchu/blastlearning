@@ -61,7 +61,7 @@ export const HeroIllustration: FC<IllustrationProps> = ({ className, width = '10
     {/* Student: shoulders */}
     <path d="M196 196 Q240 182 284 196 L284 258 L196 258 Z" fill="#E0F5FC" stroke="#B5E3F4" strokeWidth="1" />
 
-    {/* Floating card — Math */}
+    {/* Floating card, Math */}
     <g style={{ animation: 'float 4s ease-in-out infinite' }}>
       <rect x="18" y="76" width="112" height="66" rx="12" fill="#FFFFFF" stroke="#ECECF1" strokeWidth="1" />
       <rect x="26" y="88" width="42" height="4" rx="2" fill="url(#hi-grad1)" />
@@ -69,7 +69,7 @@ export const HeroIllustration: FC<IllustrationProps> = ({ className, width = '10
       <text x="26" y="132" fontFamily="Poppins, sans-serif" fontSize="16" fontWeight="700" fill="url(#hi-grad1)">89%</text>
     </g>
 
-    {/* Floating card — Physics */}
+    {/* Floating card, Physics */}
     <g style={{ animation: 'float 5s ease-in-out infinite', animationDelay: '1s' }}>
       <rect x="350" y="56" width="112" height="66" rx="12" fill="#FFFFFF" stroke="#ECECF1" strokeWidth="1" />
       <rect x="358" y="68" width="42" height="4" rx="2" fill="#E9F7EF" />
@@ -77,7 +77,7 @@ export const HeroIllustration: FC<IllustrationProps> = ({ className, width = '10
       <text x="358" y="112" fontFamily="Poppins, sans-serif" fontSize="16" fontWeight="700" fill="#1C8A5B">+27%</text>
     </g>
 
-    {/* Floating card — Session */}
+    {/* Floating card, Session */}
     <g style={{ animation: 'float 6s ease-in-out infinite', animationDelay: '2s' }}>
       <rect x="340" y="218" width="122" height="56" rx="12" fill="#FFFFFF" stroke="#ECECF1" strokeWidth="1" />
       <text x="350" y="240" fontFamily="Inter, sans-serif" fontSize="10" fill="#8E8EA0">Today's Session</text>

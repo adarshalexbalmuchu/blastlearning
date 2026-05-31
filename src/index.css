@@ -46,7 +46,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Global focus-visible ring — keyboard navigation */
+/* Global focus-visible ring for keyboard navigation */
 :focus-visible {
   outline: 2px solid #0FA8DC;
   outline-offset: 3px;
@@ -65,6 +65,42 @@ h1, h2, h3, h4, h5, h6 {
 
 #root {
   min-height: 100vh;
+}
+
+/* ── CTA buttons: one consistent, premium hover/active across the whole site ── */
+.cta {
+  transition: box-shadow 0.2s ease, filter 0.2s ease, transform 0.15s ease,
+              background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  will-change: transform;
+}
+.cta:hover { transform: translateY(-2px); }
+.cta:active { transform: translateY(0); filter: brightness(0.97); }
+
+/* Pink primary action */
+.cta-pink:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 12px 30px rgba(240, 60, 111, 0.42) !important;
+}
+/* Blue / brand action */
+.cta-blue:hover {
+  filter: brightness(1.05);
+  box-shadow: 0 12px 30px rgba(15, 168, 220, 0.38) !important;
+}
+/* Outlined / ghost action */
+.cta-outline:hover {
+  border-color: #0FA8DC !important;
+  color: #0FA8DC !important;
+  background: #F5FCFE !important;
+}
+/* Light button sitting on a colored surface */
+.cta-onfill:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta:hover, .cta:active { transform: none; }
 }
 
 /* ── Reduced-motion: respect user OS preference ───────────────────────────── */
