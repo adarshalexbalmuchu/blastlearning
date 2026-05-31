@@ -3,14 +3,13 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
-  ArrowRight, Play, Brain, Crosshair, FileVideo, LayoutDashboard,
-  HeartHandshake, Languages, BookOpen, Users,
+  ArrowRight, Play, Brain, Crosshair, BookOpen, Users,
   ChevronDown, CheckCircle, AlertCircle, TrendingUp, Zap, Star,
   Bell, Award, BarChart2, MapPin,
 } from 'lucide-react';
 import TestimonialCard from '../components/TestimonialCard';
 import DashboardMockup from '../components/DashboardMockup';
-import FeatureCard from '../components/FeatureCard';
+import FeatureExplorer from '../components/FeatureExplorer';
 import {
   HeroIllustration,
   ForgettingCurveIllustration,
@@ -47,24 +46,6 @@ const howItWorks = [
     icon: Crosshair,
     Illustration: HowItWorksStep3,
   },
-];
-
-const features = [
-  { icon: Brain, title: 'Metacognition Engine', desc: 'Our proprietary AI maps how your child actually learns and adapts the study plan in real-time for maximum retention.' },
-  { icon: Crosshair, title: 'Focus Trainer', desc: 'Guided study sessions with focus techniques that reduce distraction and build lasting concentration habits.' },
-  { icon: FileVideo, title: 'Class Recording Integration', desc: 'Connect any coaching or school recording. Our AI converts lectures into interactive revision material instantly.' },
-  { icon: LayoutDashboard, title: 'Parent Dashboard', desc: "Real-time visibility into your child's study habits, retention scores, and academic progress, all in one place." },
-  { icon: HeartHandshake, title: 'Tutor Mom Support', desc: 'Dedicated human mentors who check in weekly, answer doubts, and keep students accountable and motivated.' },
-  { icon: Languages, title: 'Multilingual Support', desc: 'Learn in your comfort language: English, Hindi, Kannada, Tamil, Telugu, and more regional languages are supported.' },
-];
-
-const featureAccents = [
-  { color: '#0FA8DC', bg: '#E0F5FC' },
-  { color: '#F03C6F', bg: '#FFF0F4' },
-  { color: '#7C3AED', bg: '#F0EDFC' },
-  { color: '#059669', bg: '#E9F7EF' },
-  { color: '#D97706', bg: '#FDF3E7' },
-  { color: '#0FA8DC', bg: '#E0F5FC' },
 ];
 
 const parentConcerns = [
@@ -815,25 +796,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Features Bento Grid (light gray) ── */}
+      {/* ── Features: expandable explorer (light gray) ── */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             title="What Makes Us Different"
-            subtitle="Built around the science of memory, not just another content library."
+            subtitle="Built around the science of memory, not just another content library. Tap any feature to see how it works."
           />
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px' }} className="grid-cols-2-md bento-grid">
-            {features.map((f, i) => {
-              const Icon = f.icon;
-              const isSpan = i === 0 || i === 5;
-              const accent = featureAccents[i];
-              return (
-                <div key={f.title} className={isSpan ? 'bento-span-2' : ''}>
-                  <FeatureCard icon={<Icon size={20} />} title={f.title} description={f.desc} large={isSpan} accentColor={accent.color} accentBg={accent.bg} />
-                </div>
-              );
-            })}
-          </div>
+          <FeatureExplorer />
         </div>
       </section>
 
