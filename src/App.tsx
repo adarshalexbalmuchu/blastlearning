@@ -7,8 +7,9 @@ import ErrorBoundary from './components/ErrorBoundary';
 // Code-split all pages — only Home ships in the initial bundle
 import Home from './pages/Home';
 
-const Programs    = lazy(() => import('./pages/Programs'));
-const ForParents  = lazy(() => import('./pages/ForParents'));
+const Programs      = lazy(() => import('./pages/Programs'));
+const ProgramDetail = lazy(() => import('./pages/programs/ProgramDetail'));
+const ForParents    = lazy(() => import('./pages/ForParents'));
 const ForStudents = lazy(() => import('./pages/ForStudents'));
 const About       = lazy(() => import('./pages/About'));
 const Library     = lazy(() => import('./pages/Library'));
@@ -63,7 +64,8 @@ function AppLayout() {
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/"             element={<Home />} />
-              <Route path="/programs"     element={<Programs />} />
+              <Route path="/programs"          element={<Programs />} />
+              <Route path="/programs/:slug"    element={<ProgramDetail />} />
               <Route path="/for-parents"  element={<ForParents />} />
               <Route path="/for-students" element={<ForStudents />} />
               <Route path="/about"        element={<About />} />

@@ -6,6 +6,7 @@ import { BookOpen, Target, Brain, TrendingUp, ArrowRight, CheckCircle, Phone, Za
 const programs = [
   {
     icon: BookOpen,
+    slug: 'cbse-plan',
     name: 'CBSE Plan',
     price: '₹1,299',
     classes: 'Classes 8-10',
@@ -23,6 +24,7 @@ const programs = [
   },
   {
     icon: Target,
+    slug: 'math-genius',
     name: 'Math Genius Maker Pass',
     price: '₹999',
     classes: 'Classes 8-12',
@@ -40,6 +42,7 @@ const programs = [
   },
   {
     icon: Brain,
+    slug: 'english-mastery',
     name: 'English Mastery Pass',
     price: '₹999',
     classes: 'All Classes',
@@ -57,6 +60,7 @@ const programs = [
   },
   {
     icon: TrendingUp,
+    slug: 'sat-prep',
     name: 'SAT Prep Pass',
     price: '₹999',
     classes: 'Classes 10-12',
@@ -198,7 +202,7 @@ export default function Programs() {
                     </div>
 
                     <Link
-                      to="/contact"
+                      to={`/programs/${prog.slug}`}
                       style={{
                         display: 'flex',
                         alignItems: 'center',
@@ -215,7 +219,7 @@ export default function Programs() {
                         border: prog.featured ? 'none' : '1.5px solid #DCDCE5',
                       }}
                     >
-                      Start 7-Day Free Trial <ArrowRight size={16} />
+                      Learn More <ArrowRight size={16} />
                     </Link>
                   </div>
                 </motion.div>
