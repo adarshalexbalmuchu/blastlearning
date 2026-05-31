@@ -125,16 +125,6 @@ h1, h2, h3, h4, h5, h6 {
   66%  { transform: translate(-10px, 15px) scale(0.97); }
 }
 
-/* ── Bento grid ─────────────────────────────────────────────────────────────── */
-@media (min-width: 1024px) {
-  .bento-grid {
-    grid-template-columns: repeat(4, 1fr) !important;
-  }
-  .bento-span-2 {
-    grid-column: span 2 !important;
-  }
-}
-
 /* ── Responsive grid helpers ────────────────────────────────────────────────── */
 @media (min-width: 640px) {
   .grid-cols-2-sm {
