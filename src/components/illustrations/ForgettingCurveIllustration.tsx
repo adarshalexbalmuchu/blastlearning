@@ -94,7 +94,7 @@ export const ForgettingCurveIllustration: FC<IllustrationProps> = ({
       {/* Y-axis title */}
       <text x="18" y="175" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="10" fill="#5A5A6E" transform="rotate(-90, 18, 175)">Retention</text>
 
-      {/* Forgetting curve — exponential decay (muted) */}
+      {/* Forgetting curve, exponential decay (muted) */}
       <path
         className="forgetting-curve-line"
         d="M 60 62 C 105 80, 155 128, 210 168 C 255 198, 318 228, 430 248"
@@ -104,7 +104,7 @@ export const ForgettingCurveIllustration: FC<IllustrationProps> = ({
         fill="none"
       />
 
-      {/* Blast Learning curve — spaced repetition stays high (brand) */}
+      {/* Blast Learning curve, spaced repetition stays high (brand) */}
       <path
         className="blast-curve-line"
         d="M 60 62 C 92 60, 132 58, 172 60 C 218 63, 268 66, 310 63 C 355 60, 398 62, 430 64"

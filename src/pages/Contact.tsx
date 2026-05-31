@@ -42,7 +42,7 @@ export default function Contact() {
   const [errors, setErrors] = useState<FormErrors>({});
 
   useEffect(() => {
-    document.title = 'Contact Us | Speak to a Learning Advisor — Blast Learning';
+    document.title = 'Contact Us | Speak to a Learning Advisor · Blast Learning';
     return () => { document.title = 'Blast Learning'; };
   }, []);
 
@@ -149,7 +149,7 @@ export default function Contact() {
                     {
                       icon: Clock,
                       label: 'Support Hours',
-                      content: <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>Mon–Sat, 9 AM – 9 PM IST</p>,
+                      content: <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>Mon-Sat, 9 AM - 9 PM IST</p>,
                     },
                   ].map(({ icon: Icon, label, content }) => (
                     <div key={label} style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
@@ -341,11 +341,12 @@ export default function Contact() {
           </p>
           <a
             href="tel:+911234567890"
+            className="cta cta-blue"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', padding: '16px 36px', borderRadius: '10px', fontSize: '18px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
           >
             <Phone size={20} /> +91 123 456 7890
           </a>
-          <p style={{ marginTop: '16px', fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>Available Mon–Sat, 9 AM – 9 PM IST</p>
+          <p style={{ marginTop: '16px', fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>Available Mon-Sat, 9 AM - 9 PM IST</p>
         </motion.div>
       </section>
     </div>

@@ -18,15 +18,15 @@ interface Resource {
 }
 
 const resources: Resource[] = [
-  { id: 1, title: 'Quadratic Equations — Complete Chapter', subject: 'Maths', type: 'Video', description: 'Master quadratic equations with step-by-step video explanations covering all CBSE Class 10 patterns.', locked: false, duration: '42 min' },
+  { id: 1, title: 'Quadratic Equations: Complete Chapter', subject: 'Maths', type: 'Video', description: 'Master quadratic equations with step-by-step video explanations covering all CBSE Class 10 patterns.', locked: false, duration: '42 min' },
   { id: 2, title: 'Photosynthesis & Respiration Notes', subject: 'Science', type: 'Notes', description: 'Comprehensive chapter notes with diagrams and memory cues for Class 9 and 10 Biology.', locked: false },
-  { id: 3, title: 'English Grammar — Complete Tenses Guide', subject: 'English', type: 'Notes', description: 'All 12 tenses explained with examples, rules, and common mistakes to avoid.', locked: true },
-  { id: 4, title: 'Trigonometry Practice Quiz — 50 Questions', subject: 'Maths', type: 'Quiz', description: 'Timed practice quiz covering all trigonometry ratios, identities, and applications for Classes 10-11.', locked: true },
-  { id: 5, title: 'SAT Math — Algebra & Functions', subject: 'SAT', type: 'Video', description: 'Foundation SAT Math video covering algebra, linear functions, and problem-solving strategies.', locked: true, duration: '58 min' },
+  { id: 3, title: 'English Grammar: Complete Tenses Guide', subject: 'English', type: 'Notes', description: 'All 12 tenses explained with examples, rules, and common mistakes to avoid.', locked: true },
+  { id: 4, title: 'Trigonometry Practice Quiz: 50 Questions', subject: 'Maths', type: 'Quiz', description: 'Timed practice quiz covering all trigonometry ratios, identities, and applications for Classes 10-11.', locked: true },
+  { id: 5, title: 'SAT Math: Algebra & Functions', subject: 'SAT', type: 'Video', description: 'Foundation SAT Math video covering algebra, linear functions, and problem-solving strategies.', locked: true, duration: '58 min' },
   { id: 6, title: 'CBSE Science Chapter 1-5 Revision', subject: 'CBSE', type: 'Notes', description: 'Condensed revision notes for the first five chapters of Class 10 Science with exam tips.', locked: false },
   { id: 7, title: 'Chemical Reactions & Equations Quiz', subject: 'Science', type: 'Quiz', description: 'Practice quiz covering all types of chemical reactions from NCERT Class 10 Chemistry.', locked: true },
   { id: 8, title: 'Reading Comprehension Strategies', subject: 'English', type: 'Video', description: 'Proven techniques for tackling unseen passages in CBSE and SAT exams with speed and accuracy.', locked: false, duration: '28 min' },
-  { id: 9, title: 'CBSE Maths Board Paper — 2023 Analysis', subject: 'CBSE', type: 'Notes', description: 'Detailed analysis of the 2023 board exam with pattern breakdown and high-weightage topics.', locked: true },
+  { id: 9, title: 'CBSE Maths Board Paper: 2023 Analysis', subject: 'CBSE', type: 'Notes', description: 'Detailed analysis of the 2023 board exam with pattern breakdown and high-weightage topics.', locked: true },
 ];
 
 const typeStyles: Record<string, { bg: string; text: string }> = {
@@ -55,7 +55,7 @@ export default function Library() {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    document.title = 'Study Library | Free Resources — Blast Learning';
+    document.title = 'Study Library | Free Resources · Blast Learning';
     return () => { document.title = 'Blast Learning'; };
   }, []);
 
@@ -83,7 +83,7 @@ export default function Library() {
               Learning Resources
             </h1>
             <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '560px', margin: '0 auto 32px' }}>
-              Videos, notes, and practice quizzes for CBSE Classes 8-12, SAT Prep, and competitive exams. Some resources are free — subscribe for full access.
+              Videos, notes, and practice quizzes for CBSE Classes 8-12, SAT Prep, and competitive exams. Many are free to start, and a subscription unlocks the full library.
             </p>
             <div style={{ position: 'relative', maxWidth: '520px', margin: '0 auto' }}>
               <Search size={17} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#8E8EA0' }} />
@@ -175,6 +175,7 @@ export default function Library() {
                   {resource.locked ? (
                     <Link
                       to="/programs"
+                      className="cta cta-outline"
                       style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '10px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'white', border: '1.5px solid #DCDCE5', color: '#1C1C28' }}
                     >
                       <Lock size={13} /> Unlock with Subscription
@@ -206,10 +207,11 @@ export default function Library() {
             Unlock 500+ Resources with a Subscription
           </h2>
           <p style={{ color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-            Get full access to all videos, notes, and quizzes — plus your personalized AI study plan and parent dashboard — starting from ₹999/month.
+            Get full access to all videos, notes, and quizzes, plus your personalized AI study plan and parent dashboard, starting from ₹999/month.
           </p>
           <Link
             to="/programs"
+            className="cta cta-blue"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
           >
             View Plans &amp; Pricing <ArrowRight size={16} />

@@ -28,7 +28,7 @@ const values = [
   {
     icon: Heart,
     title: 'Student Empathy',
-    desc: 'We remember what it felt like to be an Indian student — the pressure, the expectations, the fear of exams. Every decision we make starts with empathy for that experience.',
+    desc: 'We remember what it felt like to be an Indian student, the pressure, the expectations, the fear of exams. Every decision we make starts with empathy for that experience.',
   },
   {
     icon: Users,
@@ -38,7 +38,7 @@ const values = [
   {
     icon: Shield,
     title: 'Science-Backed Only',
-    desc: "We don't ship features based on what looks impressive. Every technique in Blast Learning — spaced repetition, active recall, metacognition — is backed by peer-reviewed cognitive science.",
+    desc: "We don't ship features based on what looks impressive. Every technique in Blast Learning (spaced repetition, active recall, metacognition) is backed by peer-reviewed cognitive science.",
   },
 ];
 
@@ -56,7 +56,7 @@ const stagger: Variants = {
 
 export default function About() {
   useEffect(() => {
-    document.title = 'About Us | Our Mission — Blast Learning';
+    document.title = 'About Us | Our Mission · Blast Learning';
     return () => { document.title = 'Blast Learning'; };
   }, []);
 
@@ -73,7 +73,7 @@ export default function About() {
               Making Learning Stick for Every Indian Student
             </h1>
             <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px', margin: '0 auto' }}>
-              India spends billions on education every year, yet most students forget 90% of what they learn within a week. We built Blast Learning to fix that — to make every hour of study count, permanently.
+              India spends billions on education every year, yet most students forget 90% of what they learn within a week. We built Blast Learning to fix that, to make every hour of study count, permanently.
             </p>
           </motion.div>
         </div>
@@ -96,9 +96,9 @@ export default function About() {
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 {[
-                  "It started with a frustration. Our founders watched their younger siblings spend hours at coaching classes, only to draw blanks on exam papers weeks later. The problem wasn't intelligence or effort — it was that nobody had taught them how to make learning stick.",
-                  'Cognitive science has known for decades that spaced repetition and active recall are the most effective learning techniques available. Yet the Indian education system — coaching classes, textbooks, tutors — delivers content without retention strategy.',
-                  'Blast Learning was built to bridge that gap. We take the science of how memory actually works and translate it into a daily experience that any student can follow — regardless of their school, city, or coaching setup.',
+                  "It started with a frustration. Our founders watched their younger siblings spend hours at coaching classes, only to draw blanks on exam papers weeks later. The problem wasn't intelligence or effort. Nobody had taught them how to make learning stick.",
+                  'Cognitive science has known for decades that spaced repetition and active recall are the most effective learning techniques available. Yet the Indian education system (coaching classes, textbooks, tutors) delivers content without any retention strategy.',
+                  'Blast Learning was built to bridge that gap. We take the science of how memory actually works and translate it into a daily experience that any student can follow, regardless of their school, city, or coaching setup.',
                   "Our Metacognition Engine doesn't just deliver content. It tracks how well you remember, identifies what's at risk of being forgotten, and schedules review at the exact right time. The result: 90% retention instead of 10%.",
                 ].map((text, i) => (
                   <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
@@ -113,9 +113,9 @@ export default function About() {
             >
               {[
                 { val: '90%', desc: 'Average retention achieved by Blast students vs 10% without structured revision' },
-                { val: '₹1,299', desc: 'Starting price — a fraction of the cost of coaching, with far better retention outcomes' },
+                { val: '₹1,299', desc: 'Starting price, a fraction of the cost of coaching, with far better retention outcomes' },
                 { val: '30 days', desc: 'Average time for students to see measurable improvement in exam scores' },
-                { val: '4.0/5', desc: 'Average parent satisfaction rating across all enrolled families' },
+                { val: '4.8/5', desc: 'Average parent satisfaction rating across all enrolled families' },
               ].map((item, i) => (
                 <motion.div
                   key={item.val}
@@ -251,10 +251,11 @@ export default function About() {
             Join Us in Building a Better Way to Learn
           </h2>
           <p style={{ color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-            Whether you're a parent, student, tutor, or educator — we'd love to have you in the Blast Learning community.
+            Parents, students, tutors, educators: there is a place for you in the Blast Learning community.
           </p>
           <Link
             to="/contact"
+            className="cta cta-blue"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
           >
             Get in Touch <ArrowRight size={16} />

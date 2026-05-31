@@ -53,9 +53,9 @@ const features = [
   { icon: Brain, title: 'Metacognition Engine', desc: 'Our proprietary AI maps how your child actually learns and adapts the study plan in real-time for maximum retention.' },
   { icon: Crosshair, title: 'Focus Trainer', desc: 'Guided study sessions with focus techniques that reduce distraction and build lasting concentration habits.' },
   { icon: FileVideo, title: 'Class Recording Integration', desc: 'Connect any coaching or school recording. Our AI converts lectures into interactive revision material instantly.' },
-  { icon: LayoutDashboard, title: 'Parent Dashboard', desc: "Real-time visibility into your child's study habits, retention scores, and academic progress — all in one place." },
+  { icon: LayoutDashboard, title: 'Parent Dashboard', desc: "Real-time visibility into your child's study habits, retention scores, and academic progress, all in one place." },
   { icon: HeartHandshake, title: 'Tutor Mom Support', desc: 'Dedicated human mentors who check in weekly, answer doubts, and keep students accountable and motivated.' },
-  { icon: Languages, title: 'Multilingual Support', desc: 'Learn in your comfort language — English, Hindi, Kannada, Tamil, Telugu, and more regional languages supported.' },
+  { icon: Languages, title: 'Multilingual Support', desc: 'Learn in your comfort language: English, Hindi, Kannada, Tamil, Telugu, and more regional languages are supported.' },
 ];
 
 const featureAccents = [
@@ -76,9 +76,9 @@ const parentConcerns = [
 ];
 
 const homeFaqs = [
-  { q: 'What is Blast Learning and how does it work?', a: 'Blast Learning is an AI-powered learning retention platform. Students upload their coaching notes or recordings, and our Metacognition Engine creates a spaced repetition study plan that helps them retain 90% of what they learn — compared to the 10% most students retain without structured revision.' },
+  { q: 'What is Blast Learning and how does it work?', a: 'Blast Learning is an AI-powered learning retention platform. Students upload their coaching notes or recordings, and our Metacognition Engine creates a spaced repetition study plan that helps them retain 90% of what they learn, compared to the 10% most students retain without structured revision.' },
   { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Plan is specifically designed for Classes 8-10, with full syllabus coverage, NCERT alignment, and board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
-  { q: 'How is Blast Learning different from other coaching apps?', a: "Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn't just teach — it tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams." },
+  { q: 'How is Blast Learning different from other coaching apps?', a: "Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn't just teach. It tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams." },
   { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 7-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first week." },
 ];
 
@@ -93,6 +93,7 @@ interface BannerDef {
   subtext: string;
   primaryCta: { label: string; to: string };
   secondaryCta: string;
+  scrollTo: string;
   trust: string[];
 }
 
@@ -105,6 +106,7 @@ const banners: BannerDef[] = [
     subtext: 'Stop wasting money on coaching your child forgets. Our Metacognition Engine uses scientifically-proven spaced repetition to convert expensive tuition into lasting retention.',
     primaryCta: { label: 'Start 7-Day Trial', to: '/programs' },
     secondaryCta: 'See How It Works',
+    scrollTo: 'how-it-works',
     trust: ['No credit card required', 'Free 7-day trial', 'Cancel anytime'],
   },
   {
@@ -112,10 +114,11 @@ const banners: BannerDef[] = [
     BadgeIcon: BookOpen,
     headline: 'Ace Your CBSE Board Exams',
     highlight: 'With AI-Powered Revision',
-    subtext: 'Our CBSE Plan covers the complete NCERT syllabus for Classes 8–10. AI-powered spaced revision schedules every chapter so nothing slips through the cracks before your board exams.',
+    subtext: 'Our CBSE Plan covers the complete NCERT syllabus for Classes 8-10. AI-powered spaced revision schedules every chapter so nothing slips through the cracks before your board exams.',
     primaryCta: { label: 'Explore CBSE Plan', to: '/programs' },
     secondaryCta: 'View Syllabus Coverage',
-    trust: ['Full NCERT coverage', '4,999+ students enrolled', 'Classes 8–10'],
+    scrollTo: 'programs-preview',
+    trust: ['Full NCERT coverage', '4,999+ students enrolled', 'Classes 8-10'],
   },
   {
     badge: 'Real-Time Parent Visibility',
@@ -125,6 +128,7 @@ const banners: BannerDef[] = [
     subtext: 'Real-time parent dashboard shows daily study time, retention scores, and subject-wise progress. Get instant WhatsApp alerts when your child misses a study session.',
     primaryCta: { label: 'Explore Parent Features', to: '/for-parents' },
     secondaryCta: 'View Dashboard Demo',
+    scrollTo: 'parent-dashboard',
     trust: ['Daily progress reports', 'WhatsApp alerts', '100% transparency'],
   },
   {
@@ -132,10 +136,11 @@ const banners: BannerDef[] = [
     BadgeIcon: TrendingUp,
     headline: '91% of Students',
     highlight: 'Improve Their Grades',
-    subtext: "Science-backed spaced repetition and active recall techniques trusted by top students worldwide. Join 4,999+ Indian families who've transformed academic performance in just 30 days.",
+    subtext: "The same spaced repetition and active recall methods top rankers rely on, now built for the CBSE syllabus. Join 4,999+ Indian families who saw real grade improvement within 30 days.",
     primaryCta: { label: 'Start Free Trial', to: '/programs' },
     secondaryCta: 'See Success Stories',
-    trust: ['Results in 30 days', '91% improvement rate', '4.0/5 parent rating'],
+    scrollTo: 'testimonials',
+    trust: ['Results in 30 days', '91% improvement rate', '4.8/5 parent rating'],
   },
 ];
 
@@ -191,7 +196,7 @@ function HeroVisual({ index }: { index: number }) {
           </div>
           <div style={{ background: '#FFFFFF', borderRadius: '10px', padding: '14px', border: '1px solid #ECECF1' }}>
             <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '10px' }}>Today's Revision Queue</p>
-            {['Chapter 4 — Quadratic Equations', 'Photosynthesis Process', 'English Grammar — Tenses'].map((topic, i) => (
+            {['Chapter 4: Quadratic Equations', 'Photosynthesis Process', 'English Grammar: Tenses'].map((topic, i) => (
               <div key={topic} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: i < 2 ? '7px' : 0 }}>
                 <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: i === 0 ? '#0FA8DC' : '#ECECF1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                   <span style={{ color: i === 0 ? 'white' : '#8E8EA0', fontSize: '10px', fontWeight: 700 }}>{i + 1}</span>
@@ -216,7 +221,7 @@ function HeroVisual({ index }: { index: number }) {
       <div style={{ padding: '4px' }}>
         <div style={{ marginBottom: '10px' }}>
           <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#0FA8DC', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
-            CBSE Class 10 — On Track
+            CBSE Class 10 · On Track
           </span>
         </div>
         <div style={cardStyle}>
@@ -258,9 +263,9 @@ function HeroVisual({ index }: { index: number }) {
 
   if (index === 2) {
     const alerts = [
-      { Icon: CheckCircle, color: '#0FA8DC', text: 'Session completed — 1h 42m (3:45 PM)' },
+      { Icon: CheckCircle, color: '#0FA8DC', text: 'Session completed: 1h 42m (3:45 PM)' },
       { Icon: BarChart2, color: '#0FA8DC', text: 'Math retention up 8% this week' },
-      { Icon: Award, color: '#1C8A5B', text: 'Weekly goal 85% — achieved today' },
+      { Icon: Award, color: '#1C8A5B', text: 'Weekly goal: 85% achieved today' },
     ];
     return (
       <div style={{ padding: '4px' }}>
@@ -315,7 +320,7 @@ function HeroVisual({ index }: { index: number }) {
     <div style={{ padding: '4px' }}>
       <div style={{ marginBottom: '10px' }}>
         <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#0FA8DC', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
-          Real Student Results — 30 Days
+          Real Student Results in 30 Days
         </span>
       </div>
       <div style={cardStyle}>
@@ -348,9 +353,9 @@ function HeroVisual({ index }: { index: number }) {
           </div>
           <div style={{ textAlign: 'right' }}>
             <div style={{ display: 'flex', gap: '2px', justifyContent: 'flex-end', marginBottom: '4px' }}>
-              {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={11} fill={s <= 4 ? '#0FA8DC' : 'none'} style={{ color: '#0FA8DC' }} />)}
+              {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={11} fill={s <= 5 ? '#0FA8DC' : 'none'} style={{ color: '#0FA8DC' }} />)}
             </div>
-            <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>4.0/5 parent rating</p>
+            <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>4.8/5 parent rating</p>
           </div>
         </div>
       </div>
@@ -437,7 +442,7 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title:
 // ─── Home page ─────────────────────────────────────────────────────────────────
 const statCards = [
   { num: 4999, displayFn: (v: number) => `${v.toLocaleString()}+`, label: 'Students Enrolled', bg: '#FDF3E7', Icon: Users, iconColor: '#D97706' },
-  { num: 40, displayFn: (v: number) => `${(v / 10).toFixed(1)}/5`, label: 'Parent Satisfaction', bg: '#FCEEF1', Icon: Star, iconColor: '#F03C6F' },
+  { num: 48, displayFn: (v: number) => `${(v / 10).toFixed(1)}/5`, label: 'Parent Satisfaction', bg: '#FCEEF1', Icon: Star, iconColor: '#F03C6F' },
   { num: 91, displayFn: (v: number) => `${v}%`, label: 'Academic Improvement', bg: '#E7F6FB', Icon: TrendingUp, iconColor: '#0FA8DC' },
   { num: 49, displayFn: (v: number) => `${v}+`, label: 'Cities Across India', bg: '#F0EDFC', Icon: MapPin, iconColor: '#7C3AED' },
 ];
@@ -469,6 +474,10 @@ export default function Home() {
     setProgressKey((k) => k + 1);
   };
 
+  const scrollToId = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const banner = banners[activeBanner];
   const { BadgeIcon } = banner;
 
@@ -476,7 +485,7 @@ export default function Home() {
     <div>
       {/* Screen reader announcement for carousel changes */}
       <div aria-live="polite" aria-atomic="true" style={{ position: 'absolute', width: '1px', height: '1px', padding: 0, margin: '-1px', overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
-        {banner.badge} — {banner.headline} {banner.highlight}
+        {banner.badge}, {banner.headline} {banner.highlight}
       </div>
 
       {/* ── Hero Banner Carousel ── */}
@@ -526,12 +535,15 @@ export default function Home() {
                     <motion.div whileHover={{ scale: 1.03, y: -2 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
                       <Link
                         to={banner.primaryCta.to}
+                        className="cta-pink"
                         style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 20px rgba(240,60,111,0.30)' }}
                       >
                         {banner.primaryCta.label} <ArrowRight size={16} />
                       </Link>
                     </motion.div>
                     <motion.button
+                      onClick={() => scrollToId(banner.scrollTo)}
+                      className="cta-outline"
                       whileHover={{ scale: 1.02 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                       style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', border: '1.5px solid #DCDCE5', background: 'white', color: '#1C1C28', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', cursor: 'pointer' }}
@@ -629,7 +641,7 @@ export default function Home() {
               A Platform Trusted by<br />Families Across India
             </h2>
             <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6 }}>
-              Don't just take our word for it — here's the impact, in numbers.
+              The numbers speak for themselves.
             </p>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginBottom: '56px' }} className="grid-cols-4-lg">
@@ -646,7 +658,7 @@ export default function Home() {
             <TestimonialCard
               name="Priya Nair"
               role="Parent of Class 10 student, Chennai"
-              content="Blast Learning transformed how my daughter studies. Her board exam preparation used to be chaotic, but now she has a clear plan and her retention scores are remarkable. I can see her progress every day on the parent dashboard."
+              content="Blast Learning completely changed how my daughter studies. Her board exam preparation used to be chaotic, but now she has a clear plan and her retention scores are remarkable. I can see her progress every day on the parent dashboard."
               rating={5}
             />
           </div>
@@ -667,14 +679,14 @@ export default function Home() {
                 The Science
               </span>
               <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
-                Why Students Forget — and How We Fix It
+                Why Students Forget, and How We Fix It
               </h2>
               <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px' }}>
-                Ebbinghaus's Forgetting Curve shows students lose 80% of what they learn within 24 hours. Blast Learning's spaced repetition system fights this directly — scheduling reviews at the exact moment your child is about to forget.
+                Ebbinghaus's Forgetting Curve shows students lose 80% of what they learn within 24 hours. Blast Learning's spaced repetition system fights this directly, scheduling reviews at the exact moment your child is about to forget.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 {[
-                  { label: 'Spaced Repetition', desc: 'Reviews scheduled at optimal intervals — not random, not cramming.' },
+                  { label: 'Spaced Repetition', desc: 'Reviews scheduled at optimal intervals, not random, not cramming.' },
                   { label: 'Active Recall', desc: 'Smart quizzes that make your brain work harder, creating stronger memories.' },
                   { label: 'Metacognition Tracking', desc: 'AI maps exactly where knowledge gaps exist and fills them before exams.' },
                 ].map(({ label, desc }) => (
@@ -684,7 +696,7 @@ export default function Home() {
                     </div>
                     <div>
                       <span style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>{label}</span>
-                      <span style={{ fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}> — {desc}</span>
+                      <span style={{ fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>: {desc}</span>
                     </div>
                   </div>
                 ))}
@@ -695,7 +707,7 @@ export default function Home() {
       </section>
 
       {/* ── How It Works (light gray) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
+      <section id="how-it-works" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             eyebrow="Simple Process"
@@ -727,7 +739,7 @@ export default function Home() {
             ))}
           </motion.div>
           <div style={{ textAlign: 'center' }}>
-            <Link to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}>
+            <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}>
               Start Your 7-Day Free Trial <ArrowRight size={16} />
             </Link>
           </div>
@@ -735,7 +747,7 @@ export default function Home() {
       </section>
 
       {/* ── Programs Preview (white) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section id="programs-preview" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="flex items-end justify-between" style={{ marginBottom: '48px' }}>
             <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em' }}>
@@ -808,7 +820,7 @@ export default function Home() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             title="What Makes Us Different"
-            subtitle="Built around the science of memory — not just another content library."
+            subtitle="Built around the science of memory, not just another content library."
           />
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px' }} className="grid-cols-2-md bento-grid">
             {features.map((f, i) => {
@@ -852,7 +864,7 @@ export default function Home() {
             ))}
           </motion.div>
 
-          <Link to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}>
+          <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}>
             Start Your Free Trial Today <ArrowRight size={16} />
           </Link>
         </div>
@@ -896,7 +908,7 @@ export default function Home() {
       </section>
 
       {/* ── Parent Dashboard Showcase (white) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section id="parent-dashboard" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ minWidth: 0 }}>
@@ -904,7 +916,7 @@ export default function Home() {
                 For Parents
               </span>
               <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
-                Parent Dashboard — <span style={{ color: '#0FA8DC' }}>Stay Informed Every Day</span>
+                The Parent Dashboard: <span style={{ color: '#0FA8DC' }}>Stay Informed Every Day</span>
               </h2>
               <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px' }}>
                 Know exactly what your child is studying, how long they study, and how well they retain it. Our parent dashboard gives you real-time visibility without hovering over their shoulder.
@@ -919,7 +931,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <Link to="/for-parents" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}>
+              <Link className="cta cta-blue" to="/for-parents" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}>
                 Learn More for Parents <ArrowRight size={16} />
               </Link>
             </motion.div>
@@ -932,7 +944,7 @@ export default function Home() {
               </motion.div>
               <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} style={{ position: 'absolute', top: '-16px', right: '-16px', background: '#FFFFFF', borderRadius: '12px', padding: '10px 14px', boxShadow: '0 8px 28px rgba(28,28,40,0.1)', border: '1px solid #ECECF1' }}>
                 <p style={{ fontSize: '12px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>Study session complete</p>
-                <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>1h 42m — just now</p>
+                <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>1h 42m · just now</p>
               </motion.div>
               <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }} style={{ position: 'absolute', bottom: '-16px', left: '-16px', background: '#0FA8DC', borderRadius: '12px', padding: '10px 14px', boxShadow: '0 8px 28px rgba(15,168,220,0.25)' }}>
                 <p style={{ fontSize: '12px', fontWeight: 600, color: 'white', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>Math retention +8%</p>
@@ -944,7 +956,7 @@ export default function Home() {
       </section>
 
       {/* ── Testimonials (light gray) ── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
+      <section id="testimonials" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '16px', marginBottom: '48px' }}>
             <div>
@@ -968,7 +980,7 @@ export default function Home() {
             <TestimonialCard name="Kavitha Suresh" role="Class 9 student, Hyderabad" content="English was my weakest subject. After two months on Blast Learning, I got my first A in a grammar test. The structured approach really works." rating={5} before="58%" after="84%" metric="English Score" improvement="26%" />
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }} className="grid-cols-2-md">
-            <TestimonialCard name="Deepak Sharma" role="Parent of Class 11 student, Delhi" content="The parent dashboard is a game changer. I can see exactly what my son studied, for how long, and his retention scores. No more guessing if he's actually studying or just watching YouTube." rating={5} />
+            <TestimonialCard name="Deepak Sharma" role="Parent of Class 11 student, Delhi" content="The parent dashboard settled every argument at home. I can see exactly what my son studied, for how long, and his retention scores. No more guessing if he's actually studying or just watching YouTube." rating={5} />
             <TestimonialCard name="Sunita Reddy" role="Parent of Class 10 student, Pune" content="We were spending ₹15,000 a month on coaching and my daughter was still forgetting everything. Blast Learning at ₹1,299 has done more for her retention than all that coaching combined." rating={5} />
           </div>
         </div>
@@ -1038,15 +1050,15 @@ export default function Home() {
               Help Your Child Learn Independently
             </h2>
             <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.85)', fontFamily: 'Inter, sans-serif', marginBottom: '40px', lineHeight: 1.7, maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-              Join thousands of families who have transformed their child's academic performance with science-backed retention technology.
+              Join 4,999+ families who have raised their child's grades with retention methods proven by cognitive science.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '16px', marginBottom: '32px' }}>
               <motion.div whileHover={{ scale: 1.04, y: -2 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-                <Link to="/programs" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 22px rgba(240,60,111,0.40)' }}>
+                <Link className="cta-pink" to="/programs" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 22px rgba(240,60,111,0.40)' }}>
                   Start 7-Day Free Trial <ArrowRight size={16} />
                 </Link>
               </motion.div>
-              <Link to="/contact" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', border: '1.5px solid rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.1)', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
+              <Link className="cta cta-onfill" to="/contact" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', border: '1.5px solid rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.1)', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
                 Speak to a Learning Advisor
               </Link>
             </div>

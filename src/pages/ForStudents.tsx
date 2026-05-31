@@ -7,7 +7,7 @@ const features = [
   {
     icon: Gamepad2,
     title: 'Learn Like a Game',
-    description: 'Earn XP, unlock levels, and collect badges as you master concepts. Learning has never been this addictive.',
+    description: 'Earn XP, unlock levels, and collect badges as you master each concept. It turns revision into something you actually want to come back to.',
     tile: '#FDF3E7',
   },
   {
@@ -31,7 +31,7 @@ const features = [
   {
     icon: Trophy,
     title: 'Compete & Win',
-    description: 'Climb leaderboards, challenge friends, and earn rewards. A little competition goes a long way.',
+    description: 'Climb leaderboards, challenge friends, and earn rewards. A bit of friendly rivalry keeps you coming back.',
     tile: '#E9F7EF',
   },
   {
@@ -67,7 +67,7 @@ const stagger: Variants = {
 
 export default function ForStudents() {
   useEffect(() => {
-    document.title = 'For Students | Study Smarter, Not Harder — Blast Learning';
+    document.title = 'For Students | Study Smarter, Not Harder · Blast Learning';
     return () => { document.title = 'Blast Learning'; };
   }, []);
 
@@ -84,7 +84,7 @@ export default function ForStudents() {
               Learning That Feels Like Play
             </h1>
             <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
-              Say goodbye to boring study sessions. Blast Learning turns education into an adventure with games, rewards, and an AI buddy that gets you.
+              Studying does not have to feel like a chore. Blast Learning adds games, rewards, and an AI study buddy that explains things in a way that finally clicks.
             </p>
           </motion.div>
         </div>
@@ -104,7 +104,7 @@ export default function ForStudents() {
               Why Students Love Us
             </h2>
             <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
-              We built Blast Learning with one goal — make learning so fun you'll forget you're studying.
+              We built Blast Learning with one goal: make studying so engaging your child forgets it is work.
             </p>
           </motion.div>
           <motion.div
@@ -256,6 +256,7 @@ export default function ForStudents() {
           </p>
           <Link
             to="/contact"
+            className="cta cta-blue"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '16px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white', border: 'none' }}
           >
             Start Your Adventure <ArrowRight size={18} />

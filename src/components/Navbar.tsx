@@ -37,10 +37,10 @@ const navItems: NavItem[] = [
       {
         title: 'Our Programs',
         items: [
-          { label: 'CBSE Plan', description: 'Full NCERT curriculum for Classes 8–10', icon: BookOpen, path: '/programs' },
-          { label: 'Math Genius Maker', description: 'Gap assessment & targeted math practice', icon: Calculator, path: '/programs' },
-          { label: 'English Mastery', description: 'Grammar, comprehension & writing skills', icon: Edit, path: '/programs' },
-          { label: 'SAT Prep Pass', description: 'US college admission test preparation', icon: Target, path: '/programs' },
+          { label: 'CBSE Plan', description: 'Full NCERT curriculum for Classes 8-10', icon: BookOpen, path: '/programs/cbse-plan' },
+          { label: 'Math Genius Maker', description: 'Gap assessment & targeted math practice', icon: Calculator, path: '/programs/math-genius' },
+          { label: 'English Mastery', description: 'Grammar, comprehension & writing skills', icon: Edit, path: '/programs/english-mastery' },
+          { label: 'SAT Prep Pass', description: 'US college admission test preparation', icon: Target, path: '/programs/sat-prep' },
         ],
       },
     ],
@@ -54,7 +54,7 @@ const navItems: NavItem[] = [
         title: 'For Parents',
         items: [
           { label: 'Parent Dashboard', description: 'Real-time progress & retention tracking', icon: LayoutDashboard, path: '/for-parents' },
-          { label: 'Tutor Mom Support', description: 'Expert human support Mon–Sat 9am–9pm', icon: MessageSquare, path: '/for-parents' },
+          { label: 'Tutor Mom Support', description: 'Expert human support Mon-Sat 9am-9pm', icon: MessageSquare, path: '/for-parents' },
           { label: 'Daily Reports', description: 'Daily digest, alerts & weekly trends', icon: BarChart2, path: '/for-parents' },
         ],
       },
@@ -304,7 +304,7 @@ export default function Navbar() {
             {/* Desktop CTA */}
             <Link
               to="/programs"
-              className="show-lg-blk"
+              className="show-lg-blk cta cta-pink"
               style={{ padding: '9px 20px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '14px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', whiteSpace: 'nowrap', boxShadow: '0 4px 14px rgba(240,60,111,0.25)' }}
             >
               Start Free Trial
@@ -441,7 +441,7 @@ export default function Navbar() {
       >
         <Link
           to="/programs"
-          className="flex-1 text-center py-2.5 rounded-lg text-white text-sm font-semibold"
+          className="flex-1 text-center py-2.5 rounded-lg text-white text-sm font-semibold cta cta-pink"
           style={{ background: '#F03C6F', fontFamily: 'Inter, sans-serif', textDecoration: 'none', borderRadius: '10px' }}
         >
           Start Free Trial

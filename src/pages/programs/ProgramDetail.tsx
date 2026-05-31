@@ -66,7 +66,7 @@ export default function ProgramDetail() {
           </motion.nav>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'start' }} className="lg:grid-cols-hero">
-            {/* Left — text */}
+            {/* Left, text */}
             <motion.div initial="hidden" animate="visible" variants={stagger}>
               <motion.div variants={fadeUp}>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '20px' }}>
@@ -98,12 +98,14 @@ export default function ProgramDetail() {
               <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                 <Link
                   to="/contact"
+                  className="cta cta-pink"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 28px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#F03C6F', color: 'white' }}
                 >
                   Start 7-Day Free Trial <ArrowRight size={15} />
                 </Link>
                 <Link
                   to="/contact"
+                  className="cta cta-outline"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 28px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: 'white', color: '#1C1C28', border: '1.5px solid #DCDCE5' }}
                 >
                   Talk to an Advisor
@@ -111,7 +113,7 @@ export default function ProgramDetail() {
               </motion.div>
             </motion.div>
 
-            {/* Right — stats card */}
+            {/* Right, stats card */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -139,9 +141,10 @@ export default function ProgramDetail() {
 
               <Link
                 to="/contact"
+                className="cta cta-blue"
                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white', width: '100%' }}
               >
-                Enrol Now — 7-Day Free Trial <ArrowRight size={15} />
+                Enrol Now, 7-Day Free Trial <ArrowRight size={15} />
               </Link>
               <p style={{ textAlign: 'center', fontSize: '11px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
                 No credit card required · Cancel anytime
@@ -306,6 +309,7 @@ export default function ProgramDetail() {
 
               <Link
                 to="/contact"
+                className="cta cta-pink"
                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#F03C6F', color: 'white' }}
               >
                 Start 7-Day Free Trial <ArrowRight size={16} />
@@ -449,12 +453,14 @@ export default function ProgramDetail() {
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link
                 to="/contact"
+                className="cta cta-pink"
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#F03C6F', color: 'white' }}
               >
                 Start Free Trial <ArrowRight size={16} />
               </Link>
               <Link
                 to="/programs"
+                className="cta cta-outline"
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: 'white', color: '#1C1C28', border: '1.5px solid #DCDCE5' }}
               >
                 View All Programs

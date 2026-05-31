@@ -50,7 +50,7 @@ const programs = [
     outcomes: ['Grammar excellence', 'Writing fluency', 'Reading comprehension'],
     features: [
       'Complete grammar coverage from Class 8 to 12',
-      'Structured writing program — letters, essays, stories',
+      'Structured writing program: letters, essays, stories',
       'Reading comprehension practice with varied passages',
       'Vocabulary building through spaced repetition',
       'Speaking and pronunciation guidance (audio-based)',
@@ -101,7 +101,7 @@ const stagger: Variants = {
 
 export default function Programs() {
   useEffect(() => {
-    document.title = 'Programs | CBSE, Maths, English & SAT Prep — Blast Learning';
+    document.title = 'Programs | CBSE, Maths, English & SAT Prep · Blast Learning';
     return () => { document.title = 'Blast Learning'; };
   }, []);
 
@@ -118,7 +118,7 @@ export default function Programs() {
               Our Programs
             </h1>
             <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
-              Carefully designed for Indian students in Classes 8–12. Each program uses our Metacognition Engine to ensure lasting retention — not just short-term cramming.
+              Carefully designed for Indian students in Classes 8-12. Each program uses our Metacognition Engine to ensure lasting retention, not just short-term cramming.
             </p>
           </motion.div>
         </div>
@@ -142,6 +142,8 @@ export default function Programs() {
                 <motion.div
                   key={prog.name}
                   variants={fadeUp}
+                  whileHover={{ y: -6 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                   style={{
                     position: 'relative',
                     background: '#FFFFFF',
@@ -307,10 +309,11 @@ export default function Programs() {
             Not sure which plan is right?
           </h2>
           <p style={{ color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-            Our learning advisors will assess your child's needs and recommend the perfect program — completely free.
+            Our learning advisors will assess your child's needs and recommend the perfect program, completely free.
           </p>
           <Link
             to="/contact"
+            className="cta cta-blue"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', border: 'none', color: 'white' }}
           >
             <Phone size={16} /> Talk to an Advisor

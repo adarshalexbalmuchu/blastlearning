@@ -16,12 +16,12 @@ const faqs: FAQEntry[] = [
   {
     category: 'General',
     question: 'What is the best online CBSE course for Class 10 students?',
-    answer: "Blast Learning's CBSE Plan at ₹1,299/month is specifically designed for Class 10 students. It covers the complete NCERT syllabus, provides AI-powered revision scheduling, and helps students retain 90% of what they learn — critical for board exam performance.",
+    answer: "Blast Learning's CBSE Plan at ₹1,299/month is specifically designed for Class 10 students. It covers the complete NCERT syllabus, provides AI-powered revision scheduling, and helps students retain 90% of what they learn, critical for board exam performance.",
   },
   {
     category: 'General',
     question: 'Can my child prepare for CBSE boards without coaching?',
-    answer: 'Yes — and many Blast Learning students do exactly that. Our AI creates a complete study plan based on the CBSE syllabus, identifies gaps, and ensures systematic coverage of every topic. For students already attending coaching, Blast Learning amplifies their coaching by making it stick.',
+    answer: 'Yes, and many Blast Learning students do exactly that. Our AI creates a complete study plan based on the CBSE syllabus, identifies gaps, and ensures systematic coverage of every topic. For students already attending coaching, Blast Learning amplifies their coaching by making it stick.',
   },
   {
     category: 'General',
@@ -31,12 +31,12 @@ const faqs: FAQEntry[] = [
   {
     category: 'General',
     question: 'How can my child improve CBSE Math marks quickly?',
-    answer: 'The Math Genius Maker Pass begins with a comprehensive gap assessment to find exactly which concepts are holding your child back. Then it builds a personalized practice plan targeting those gaps. Most students see measurable improvement in their math scores within 4–6 weeks.',
+    answer: 'The Math Genius Maker Pass begins with a comprehensive gap assessment to find exactly which concepts are holding your child back. Then it builds a personalized practice plan targeting those gaps. Most students see measurable improvement in their math scores within 4-6 weeks.',
   },
   {
     category: 'General',
     question: 'Is Blast Learning affordable compared to traditional CBSE coaching?',
-    answer: "Traditional coaching in metro cities costs ₹5,000–₹20,000 per month per subject. Blast Learning starts at ₹999/month for complete AI-powered learning with parent dashboard, retention tracking, and human support. It's designed to complement coaching, not replace it — making your existing coaching spend more effective.",
+    answer: "Traditional coaching in metro cities costs ₹5,000-₹20,000 per month per subject. Blast Learning starts at ₹999/month for complete AI-powered learning with parent dashboard, retention tracking, and human support. It's designed to complement coaching, not replace it, making your existing coaching spend more effective.",
   },
   {
     category: 'General',
@@ -46,7 +46,7 @@ const faqs: FAQEntry[] = [
   {
     category: 'General',
     question: 'Can online coaching actually replace traditional tuition?',
-    answer: 'Blast Learning is most powerful when used alongside coaching — it makes coaching content stick through structured revision. However, many students use it as their primary learning tool and achieve excellent results. The AI provides personalized instruction that often exceeds what a single tutor can offer.',
+    answer: 'Blast Learning is most powerful when used alongside coaching. It makes coaching content stick through structured revision. However, many students use it as their primary learning tool and achieve excellent results. The AI provides personalized instruction that often exceeds what a single tutor can offer.',
   },
   {
     category: 'General',
@@ -61,7 +61,7 @@ const faqs: FAQEntry[] = [
   {
     category: 'Programs',
     question: 'Can I switch between programs?',
-    answer: "Yes — you can upgrade, downgrade, or switch programs at any time. If your needs change (for example, your child moves from Class 10 to 11 and needs SAT prep), we'll help you transition smoothly with no data loss.",
+    answer: "Yes, you can upgrade, downgrade, or switch programs at any time. If your needs change (for example, your child moves from Class 10 to 11 and needs SAT prep), we'll help you transition smoothly with no data loss.",
   },
   {
     category: 'Programs',
@@ -91,7 +91,7 @@ const faqs: FAQEntry[] = [
   {
     category: 'Parents',
     question: 'Is there a family discount for multiple children?',
-    answer: 'Yes — families enrolling two or more children receive a 20% discount on the second subscription and beyond. Contact us to set up a family account.',
+    answer: 'Yes, families enrolling two or more children receive a 20% discount on the second subscription and beyond. Contact us to set up a family account.',
   },
   {
     category: 'Students',
@@ -101,17 +101,17 @@ const faqs: FAQEntry[] = [
   {
     category: 'Students',
     question: 'Can I use Blast Learning on my phone?',
-    answer: 'Yes — Blast Learning is fully responsive and works on any smartphone, tablet, or computer. Our mobile app is currently in development (launching soon). Until then, the web app works seamlessly on mobile browsers.',
+    answer: 'Yes. Blast Learning is fully responsive and works on any smartphone, tablet, or computer. Our mobile app is currently in development (launching soon). Until then, the web app runs smoothly in any mobile browser.',
   },
   {
     category: 'Students',
     question: "What if I don't understand a concept explained by the AI?",
-    answer: "Our AI Study Buddy can explain any concept in multiple ways — with different examples, simpler language, or in your regional language. If you're still stuck, you can post in the community forums where peer students or our tutors will answer within a few hours.",
+    answer: "Our AI Study Buddy can explain any concept in multiple ways, with different examples, simpler language, or in your regional language. If you're still stuck, you can post in the community forums where peer students or our tutors will answer within a few hours.",
   },
   {
     category: 'Students',
     question: "Will Blast Learning help me if I'm already a good student?",
-    answer: 'Absolutely. High-performing students benefit from retention optimization too — maintaining top scores in boards requires systematic revision, not just intelligence. Blast Learning helps top students consolidate their advantage and free up time by making their study sessions more efficient.',
+    answer: 'Absolutely. High-performing students benefit from retention optimization too. Maintaining top scores in boards takes systematic revision, not just raw ability. Blast Learning helps top students consolidate their advantage and free up time by making their study sessions more efficient.',
   },
 ];
 
@@ -128,7 +128,7 @@ const stagger: Variants = {
 
 export default function FAQ() {
   useEffect(() => {
-    document.title = 'FAQ | Frequently Asked Questions — Blast Learning';
+    document.title = 'FAQ | Frequently Asked Questions · Blast Learning';
     return () => { document.title = 'Blast Learning'; };
   }, []);
 
@@ -209,12 +209,14 @@ export default function FAQ() {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center' }}>
             <Link
               to="/contact"
+              className="cta cta-blue"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
             >
               Contact Us <ArrowRight size={16} />
             </Link>
             <a
               href="mailto:hello@blastlearning.in"
+              className="cta cta-outline"
               style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'white', border: '1.5px solid #DCDCE5', color: '#1C1C28' }}
             >
               Email hello@blastlearning.in

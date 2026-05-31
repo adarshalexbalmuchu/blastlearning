@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import blastLogo from '../assets/blast-logo.webp';
 
 const programs = [
-  { label: 'CBSE Plan', path: '/programs' },
-  { label: 'Math Genius Maker', path: '/programs' },
-  { label: 'English Mastery', path: '/programs' },
-  { label: 'SAT Prep Pass', path: '/programs' },
+  { label: 'CBSE Plan', path: '/programs/cbse-plan' },
+  { label: 'Math Genius Maker', path: '/programs/math-genius' },
+  { label: 'English Mastery', path: '/programs/english-mastery' },
+  { label: 'SAT Prep Pass', path: '/programs/sat-prep' },
 ];
 
 const company = [
@@ -197,7 +197,7 @@ const Footer = () => {
                 maxWidth: '280px',
               }}
             >
-              AI-powered learning retention platform. We help Indian students in Classes 8–12 retain 90% of what they study — so coaching fees become lasting knowledge.
+              AI-powered learning retention platform. We help Indian students in Classes 8-12 retain 90% of what they study, so coaching fees become lasting knowledge.
             </p>
 
             {/* Social Icons */}
