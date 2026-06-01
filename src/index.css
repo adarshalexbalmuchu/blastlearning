@@ -181,3 +181,34 @@ h1, h2, h3, h4, h5, h6 {
   .show-lg-blk  { display: block !important; }
   .hide-lg      { display: none !important; }
 }
+
+/* ── Mobile responsive improvements (≤767px) ─────────────────────────────────── */
+@media (max-width: 767px) {
+  .section-pad {
+    padding-top: 52px !important;
+    padding-bottom: 52px !important;
+  }
+  .hero-section {
+    padding-top: 84px !important;
+    padding-bottom: 52px !important;
+  }
+  .banner-controls { margin-top: 28px !important; }
+  .float-card { display: none !important; }
+  .stat-card  { min-height: 190px !important; }
+  .char-wrap svg { width: 110px !important; height: 110px !important; }
+}
+
+/* ── Tablet (768–1023px): medium section padding ─────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .section-pad {
+    padding-top: 72px !important;
+    padding-bottom: 72px !important;
+  }
+}
+
+/* ── Grid: 3 columns from 640px ─────────────────────────────────────────────── */
+@media (min-width: 640px) {
+  .grid-cols-3-sm {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}

@@ -154,6 +154,7 @@ function StatCard({ stat, index, inView, reduce }: { stat: StatItem; index: numb
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: reduce ? 0 : index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="stat-card"
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       style={{
@@ -191,6 +192,7 @@ function StatCard({ stat, index, inView, reduce }: { stat: StatItem; index: numb
         initial={false}
         animate={active ? { y: 0, opacity: 1 } : { y: 150, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 260, damping: 18 }}
+        className="char-wrap"
         style={{ position: 'absolute', bottom: '-6px', left: 0, right: 0, display: 'flex', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}
       >
         <Char color={stat.accent} />
@@ -207,7 +209,7 @@ export default function TrustStats() {
   const reduce = useReducedMotion() ?? false;
 
   return (
-    <section ref={ref} style={{ paddingTop: '88px', paddingBottom: '88px', background: '#F7F7F8' }}>
+    <section ref={ref} className="section-pad" style={{ paddingTop: '88px', paddingBottom: '88px', background: '#F7F7F8' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
