@@ -212,3 +212,35 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(3, 1fr) !important;
   }
 }
+
+/* ── Hero: single full-width primary CTA on mobile ───────────────────────────── */
+.hero-cta-wrap { flex-direction: column !important; gap: 8px !important; }
+@media (max-width: 639px) { .hero-cta-wrap { margin-bottom: 24px !important; } }
+@media (min-width: 640px) {
+  .hero-cta-wrap { flex-direction: row !important; flex-wrap: wrap !important; gap: 14px !important; }
+}
+.hero-cta-motion { width: 100% !important; }
+@media (min-width: 640px) { .hero-cta-motion { width: auto !important; } }
+.hero-cta-primary { width: 100% !important; justify-content: center !important; }
+@media (min-width: 640px) {
+  .hero-cta-primary { width: auto !important; justify-content: flex-start !important; }
+}
+
+/* ── Hero: secondary CTA → minimal text-link on mobile ──────────────────────── */
+@media (max-width: 639px) {
+  .hero-ghost-btn {
+    padding: 6px 0 !important;
+    border: none !important;
+    background: transparent !important;
+    color: #5A5A6E !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+  }
+}
+
+/* ── City chips: horizontal scroll on mobile, wrap on desktop ────────────────── */
+.city-chips-row { overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+.city-chips-row::-webkit-scrollbar { display: none; }
+@media (max-width: 767px) { .city-chips-row { flex-wrap: nowrap !important; padding-bottom: 4px; } }

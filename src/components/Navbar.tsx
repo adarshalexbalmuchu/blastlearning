@@ -501,24 +501,62 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* Mobile sticky bottom bar */}
+      {/* Mobile sticky bottom CTA — compact single action with glassmorphism */}
       <div
-        className="hide-md fixed bottom-0 left-0 right-0 z-50 p-4 gap-3"
-        style={{ display: 'flex', background: '#FFFFFF', borderTop: '1px solid #ECECF1' }}
+        className="hide-md"
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          padding: '10px 16px 20px',
+          background: 'rgba(255,255,255,0.88)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)' as string,
+          borderTop: '1px solid rgba(236,236,241,0.7)',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0',
+        }}
       >
         <Link
           to="/programs"
-          className="flex-1 text-center cta cta-pink"
-          style={{ background: '#F03C6F', fontFamily: 'Inter, sans-serif', textDecoration: 'none', borderRadius: '10px', color: 'white', fontSize: '14px', fontWeight: 600, padding: '13px 12px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '48px' }}
+          className="cta cta-pink"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px',
+            width: '100%',
+            padding: '15px 20px',
+            borderRadius: '12px',
+            background: '#F03C6F',
+            color: 'white',
+            fontSize: '15px',
+            fontWeight: 700,
+            fontFamily: 'Inter, sans-serif',
+            textDecoration: 'none',
+            boxShadow: '0 4px 16px rgba(240,60,111,0.32)',
+          }}
         >
-          Start Free Trial
+          Start 7-Day Free Trial
         </Link>
         <Link
           to="/login"
-          className="flex-1 text-center"
-          style={{ border: '1.5px solid #DCDCE5', background: 'white', color: '#1C1C28', textDecoration: 'none', fontFamily: 'Inter, sans-serif', borderRadius: '10px', fontSize: '14px', fontWeight: 600, padding: '13px 12px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '48px' }}
+          style={{
+            display: 'block',
+            textAlign: 'center',
+            padding: '10px 16px 0',
+            fontSize: '13px',
+            color: '#8E8EA0',
+            textDecoration: 'none',
+            fontFamily: 'Inter, sans-serif',
+            fontWeight: 500,
+          }}
         >
-          Login
+          Already have an account?{' '}
+          <span style={{ color: '#0FA8DC', fontWeight: 600 }}>Login</span>
         </Link>
       </div>
     </>

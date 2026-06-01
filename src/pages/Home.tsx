@@ -485,20 +485,20 @@ export default function Home() {
                     {banner.subtext}
                   </p>
 
-                  {/* CTAs */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginBottom: '32px' }}>
-                    <motion.div whileHover={{ scale: 1.03, y: -2 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
+                  {/* CTAs — mobile: single full-width primary + text-link secondary */}
+                  <div className="hero-cta-wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginBottom: '32px' }}>
+                    <motion.div className="hero-cta-motion" whileHover={{ scale: 1.03, y: -2 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
                       <Link
                         to={banner.primaryCta.to}
-                        className="cta-pink"
-                        style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 20px rgba(240,60,111,0.30)' }}
+                        className="cta-pink hero-cta-primary"
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 28px', borderRadius: '12px', background: '#F03C6F', color: 'white', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 20px rgba(240,60,111,0.32)' }}
                       >
                         {banner.primaryCta.label} <ArrowRight size={16} />
                       </Link>
                     </motion.div>
                     <motion.button
                       onClick={() => scrollToId(banner.scrollTo)}
-                      className="cta-outline"
+                      className="cta-outline hero-ghost-btn"
                       whileHover={{ scale: 1.02 }}
                       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                       style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', border: '1.5px solid #DCDCE5', background: 'white', color: '#1C1C28', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', cursor: 'pointer' }}
@@ -517,12 +517,14 @@ export default function Home() {
                     ))}
                   </div>
 
-                  {/* City trust strip */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center', paddingTop: '16px', borderTop: '1px solid #ECECF1' }}>
-                    <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', fontWeight: 500, marginRight: '2px' }}>Students from:</span>
-                    {['Delhi', 'Mumbai', 'Bengaluru', 'Hyderabad', 'Chennai', 'Pune', '+43 more cities'].map((city) => (
-                      <span key={city} style={{ padding: '2px 8px', borderRadius: '6px', background: '#F7F7F8', border: '1px solid #ECECF1', fontSize: '11px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{city}</span>
-                    ))}
+                  {/* City trust strip — label above, chips scroll horizontally on mobile */}
+                  <div style={{ paddingTop: '16px', borderTop: '1px solid #ECECF1' }}>
+                    <span style={{ display: 'block', fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', fontWeight: 500, marginBottom: '8px' }}>Students from:</span>
+                    <div className="city-chips-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
+                      {['Delhi', 'Mumbai', 'Bengaluru', 'Hyderabad', 'Chennai', 'Pune', '+43 more cities'].map((city) => (
+                        <span key={city} style={{ padding: '2px 8px', borderRadius: '6px', background: '#F7F7F8', border: '1px solid #ECECF1', fontSize: '11px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', flexShrink: 0 }}>{city}</span>
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
