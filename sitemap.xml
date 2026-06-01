@@ -2,6 +2,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://adarshalexbalmuchu.github.io/blastlearning/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
   <url><loc>https://adarshalexbalmuchu.github.io/blastlearning/programs</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://adarshalexbalmuchu.github.io/blastlearning/programs/cbse-plan</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://adarshalexbalmuchu.github.io/blastlearning/programs/math-genius</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://adarshalexbalmuchu.github.io/blastlearning/programs/english-mastery</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://adarshalexbalmuchu.github.io/blastlearning/programs/sat-prep</loc><priority>0.9</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://adarshalexbalmuchu.github.io/blastlearning/for-parents</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://adarshalexbalmuchu.github.io/blastlearning/for-students</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://adarshalexbalmuchu.github.io/blastlearning/about</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
