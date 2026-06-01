@@ -8,6 +8,7 @@ import {
 import TestimonialCard from '../components/TestimonialCard';
 import DashboardMockup from '../components/DashboardMockup';
 import FeatureExplorer from '../components/FeatureExplorer';
+import TrustStats from '../components/TrustStats';
 import {
   HeroIllustration,
   ForgettingCurveIllustration,
@@ -786,6 +787,9 @@ export default function Home() {
           <FeatureExplorer />
         </div>
       </section>
+
+      {/* ── Trust stats: animated number cards ── */}
+      <TrustStats />
 
       {/* ── Results Banner (white) ── */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
