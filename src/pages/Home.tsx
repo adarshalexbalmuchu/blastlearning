@@ -948,39 +948,115 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Final CTA (indigo card on light) ── */}
-      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
-        <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '0 24px' }}>
+      {/* ── Final CTA (premium deep indigo) ── */}
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F8FAFC' }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            style={{ background: '#0FA8DC', borderRadius: '28px', padding: '64px 32px', textAlign: 'center', boxShadow: '0 16px 40px rgba(15,168,220,0.25)' }}
+            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              position: 'relative',
+              overflow: 'hidden',
+              background: 'linear-gradient(145deg, #0C1445 0%, #1e3a8a 52%, #2563EB 100%)',
+              borderRadius: '32px',
+              padding: 'clamp(48px, 8vw, 76px) clamp(24px, 6vw, 64px)',
+              textAlign: 'center',
+              boxShadow: '0 32px 80px rgba(12,20,69,0.42), inset 0 1px 0 rgba(255,255,255,0.09)',
+              border: '1px solid rgba(255,255,255,0.07)',
+            }}
           >
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: 'white', marginBottom: '20px', letterSpacing: '-0.02em', lineHeight: 1.15 }}>
-              Help Your Child Learn Independently
-            </h2>
-            <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.85)', fontFamily: 'Inter, sans-serif', marginBottom: '40px', lineHeight: 1.7, maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}>
-              Join 4,999+ families who have raised their child's grades with retention methods proven by cognitive science.
-            </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '16px', marginBottom: '32px' }}>
-              <motion.div whileHover={{ scale: 1.04, y: -2 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-                <Link className="cta-pink" to="/programs" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 22px rgba(240,60,111,0.40)' }}>
-                  Start 7-Day Free Trial <ArrowRight size={16} />
+            {/* Ambient glow blobs — indigo top-left, brand pink bottom-right */}
+            <div aria-hidden="true" style={{ position: 'absolute', top: '-96px', left: '5%', width: '340px', height: '340px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 68%)', pointerEvents: 'none' }} />
+            <div aria-hidden="true" style={{ position: 'absolute', bottom: '-96px', right: '5%', width: '300px', height: '300px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,63,126,0.18) 0%, transparent 68%)', pointerEvents: 'none' }} />
+
+            {/* Content */}
+            <div style={{ position: 'relative', zIndex: 1 }}>
+
+              {/* Eyebrow pill */}
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '6px 16px', borderRadius: '9999px', background: 'rgba(255,255,255,0.09)', border: '1px solid rgba(255,255,255,0.16)', marginBottom: '32px' }}>
+                <Star size={11} fill="rgba(255,255,255,0.75)" style={{ color: 'rgba(255,255,255,0.75)' }} />
+                <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgba(255,255,255,0.82)', fontFamily: 'Inter, sans-serif', letterSpacing: '0.07em', textTransform: 'uppercase' }}>
+                  Trusted by 4,999+ Families
+                </span>
+              </div>
+
+              {/* Headline */}
+              <h2 style={{ fontSize: 'clamp(1.875rem, 4vw, 3.25rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#FFFFFF', marginBottom: '20px', letterSpacing: '-0.025em', lineHeight: 1.1 }}>
+                Help Your Child Learn<br />Independently
+              </h2>
+
+              {/* Subtext */}
+              <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.62)', fontFamily: 'Inter, sans-serif', marginBottom: '48px', lineHeight: 1.75, maxWidth: '520px', marginLeft: 'auto', marginRight: 'auto' }}>
+                Join 4,999+ families who have raised their child's grades with retention methods proven by cognitive science.
+              </p>
+
+              {/* CTA buttons */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '36px' }}>
+                <motion.div
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  transition={{ type: 'spring', stiffness: 320, damping: 22 }}
+                >
+                  <Link
+                    to="/programs"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      padding: '15px 36px',
+                      borderRadius: '12px',
+                      background: 'linear-gradient(135deg, #F43F7E 0%, #EC4899 100%)',
+                      color: 'white',
+                      fontSize: '15px',
+                      fontWeight: 700,
+                      fontFamily: 'Inter, sans-serif',
+                      textDecoration: 'none',
+                      boxShadow: '0 4px 18px rgba(244,63,126,0.40), 0 1px 4px rgba(244,63,126,0.22)',
+                      transition: 'box-shadow 0.2s ease, filter 0.2s ease',
+                      whiteSpace: 'nowrap',
+                    }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(244,63,126,0.56), 0 2px 8px rgba(244,63,126,0.30)'; (e.currentTarget as HTMLElement).style.filter = 'brightness(1.06)'; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 18px rgba(244,63,126,0.40), 0 1px 4px rgba(244,63,126,0.22)'; (e.currentTarget as HTMLElement).style.filter = 'none'; }}
+                  >
+                    Start 7-Day Free Trial <ArrowRight size={16} />
+                  </Link>
+                </motion.div>
+                <Link
+                  to="/contact"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '15px 32px',
+                    borderRadius: '12px',
+                    border: '1.5px solid rgba(255,255,255,0.22)',
+                    background: 'rgba(255,255,255,0.07)',
+                    color: 'rgba(255,255,255,0.88)',
+                    fontSize: '15px',
+                    fontWeight: 600,
+                    fontFamily: 'Inter, sans-serif',
+                    textDecoration: 'none',
+                    transition: 'background 0.2s ease, border-color 0.2s ease',
+                    whiteSpace: 'nowrap',
+                  }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.13)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.42)'; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.07)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.22)'; }}
+                >
+                  Speak to a Learning Advisor
                 </Link>
-              </motion.div>
-              <Link className="cta cta-onfill" to="/contact" style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', border: '1.5px solid rgba(255,255,255,0.45)', background: 'rgba(255,255,255,0.1)', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
-                Speak to a Learning Advisor
-              </Link>
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '24px' }}>
-              {['No credit card required', 'Free 7-day trial', 'Cancel anytime'].map((t) => (
-                <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'rgba(255,255,255,0.75)', fontFamily: 'Inter, sans-serif' }}>
-                  <Star size={11} fill="currentColor" />
-                  {t}
-                </div>
-              ))}
+              </div>
+
+              {/* Trust signals */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '24px' }}>
+                {['No credit card required', 'Free 7-day trial', 'Cancel anytime'].map((t) => (
+                  <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'rgba(255,255,255,0.48)', fontFamily: 'Inter, sans-serif' }}>
+                    <CheckCircle size={12} style={{ color: 'rgba(255,255,255,0.48)' }} />
+                    {t}
+                  </div>
+                ))}
+              </div>
+
             </div>
           </motion.div>
         </div>
