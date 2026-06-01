@@ -106,6 +106,12 @@ export default function Navbar() {
     setOpenMenu(null);
   }, [location]);
 
+  useEffect(() => {
+    const onResize = () => { if (window.innerWidth >= 1024) setMobileOpen(false); };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
   return (
     <>
       <nav
@@ -384,8 +390,8 @@ export default function Navbar() {
 
             {/* Mobile hamburger */}
             <button
-              className="hide-lg p-2 rounded-lg"
-              style={{ color: '#1C1C28', background: 'transparent', border: 'none', cursor: 'pointer' }}
+              className="hide-lg"
+              style={{ color: '#1C1C28', background: 'transparent', border: 'none', cursor: 'pointer', padding: '10px', borderRadius: '8px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Toggle menu"
             >
@@ -394,45 +400,106 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile drawer */}
-        <div
-          className={`hide-lg overflow-hidden transition-all duration-300 ${mobileOpen ? 'max-h-screen' : 'max-h-0'}`}
-          style={{ background: '#FFFFFF', borderTop: mobileOpen ? '1px solid #ECECF1' : 'none' }}
-        >
-          <div className="px-4 py-3 flex flex-col">
-            {navItems.map((item) => {
-              const active = location.pathname === item.path;
-              return (
-                <Link
-                  key={item.id}
-                  to={item.path || '/'}
-                  className="px-3 py-3 text-sm font-medium"
-                  style={{
-                    fontFamily: 'Inter, sans-serif',
-                    color: active ? '#0FA8DC' : '#1C1C28',
-                    textDecoration: 'none',
-                    borderBottom: '1px solid #ECECF1',
-                  }}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-            <div className="pt-3 flex flex-col gap-1">
-              {loginOptions.map((opt) => (
-                <Link
-                  key={opt.label}
-                  to={opt.to}
-                  className="px-3 py-2.5 text-sm"
-                  style={{ color: '#5A5A6E', textDecoration: 'none', fontFamily: 'Inter, sans-serif' }}
-                >
-                  {opt.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
       </nav>
+
+      {/* Full-screen mobile drawer (slide from right) */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.22 }}
+              onClick={() => setMobileOpen(false)}
+              style={{
+                position: 'fixed',
+                inset: 0,
+                top: '64px',
+                background: 'rgba(28,28,40,0.42)',
+                zIndex: 47,
+              }}
+            />
+            {/* Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', stiffness: 300, damping: 32 }}
+              style={{
+                position: 'fixed',
+                top: '64px',
+                right: 0,
+                bottom: 0,
+                width: 'min(85vw, 340px)',
+                background: '#FFFFFF',
+                zIndex: 48,
+                overflowY: 'auto',
+                display: 'flex',
+                flexDirection: 'column',
+                boxShadow: '-8px 0 32px rgba(28,28,40,0.12)',
+              }}
+            >
+              {/* Nav links */}
+              <div style={{ flex: 1, padding: '8px 0' }}>
+                {navItems.map((item) => {
+                  const active = location.pathname === item.path;
+                  const to = item.path ?? (item.subMenus?.[0]?.items?.[0]?.path ?? '/');
+                  return (
+                    <Link
+                      key={item.id}
+                      to={to}
+                      onClick={() => setMobileOpen(false)}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '10px',
+                        padding: '14px 20px',
+                        fontSize: '15px',
+                        fontWeight: active ? 600 : 500,
+                        fontFamily: 'Inter, sans-serif',
+                        color: active ? '#0FA8DC' : '#1C1C28',
+                        textDecoration: 'none',
+                        borderBottom: '1px solid #F7F7F8',
+                        minHeight: '50px',
+                      }}
+                    >
+                      {active && (
+                        <div style={{ width: '3px', height: '18px', borderRadius: '2px', background: '#0FA8DC', flexShrink: 0 }} />
+                      )}
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+              {/* Login options */}
+              <div style={{ borderTop: '1px solid #ECECF1', padding: '16px 20px 88px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {loginOptions.map((opt) => (
+                  <Link
+                    key={opt.label}
+                    to={opt.to}
+                    onClick={() => setMobileOpen(false)}
+                    style={{
+                      display: 'block',
+                      padding: '11px 16px',
+                      borderRadius: '8px',
+                      fontSize: '14px',
+                      fontFamily: 'Inter, sans-serif',
+                      color: '#5A5A6E',
+                      textDecoration: 'none',
+                      background: '#F7F7F8',
+                      textAlign: 'center',
+                    }}
+                  >
+                    {opt.label}
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       {/* Mobile sticky bottom bar */}
       <div
@@ -441,15 +508,15 @@ export default function Navbar() {
       >
         <Link
           to="/programs"
-          className="flex-1 text-center py-2.5 rounded-lg text-white text-sm font-semibold cta cta-pink"
-          style={{ background: '#F03C6F', fontFamily: 'Inter, sans-serif', textDecoration: 'none', borderRadius: '10px' }}
+          className="flex-1 text-center cta cta-pink"
+          style={{ background: '#F03C6F', fontFamily: 'Inter, sans-serif', textDecoration: 'none', borderRadius: '10px', color: 'white', fontSize: '14px', fontWeight: 600, padding: '13px 12px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '48px' }}
         >
           Start Free Trial
         </Link>
         <Link
           to="/login"
-          className="flex-1 text-center py-2.5 rounded-lg text-sm font-semibold"
-          style={{ border: '1.5px solid #DCDCE5', background: 'white', color: '#1C1C28', textDecoration: 'none', fontFamily: 'Inter, sans-serif', borderRadius: '10px' }}
+          className="flex-1 text-center"
+          style={{ border: '1.5px solid #DCDCE5', background: 'white', color: '#1C1C28', textDecoration: 'none', fontFamily: 'Inter, sans-serif', borderRadius: '10px', fontSize: '14px', fontWeight: 600, padding: '13px 12px', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '48px' }}
         >
           Login
         </Link>
