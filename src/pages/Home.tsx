@@ -3,7 +3,7 @@ import { motion, AnimatePresence, type Variants, useInView, useMotionValue, useT
 import {
   ArrowRight, Play, Brain, Crosshair, BookOpen, Users,
   ChevronDown, CheckCircle, AlertCircle, TrendingUp, Zap, Star,
-  Bell, Award, BarChart2, MapPin,
+  Bell, Award, BarChart2,
 } from 'lucide-react';
 import TestimonialCard from '../components/TestimonialCard';
 import DashboardMockup from '../components/DashboardMockup';
@@ -402,13 +402,6 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title:
 }
 
 // ─── Home page ─────────────────────────────────────────────────────────────────
-const statCards = [
-  { num: 4999, displayFn: (v: number) => `${v.toLocaleString()}+`, label: 'Students Enrolled', bg: '#FDF3E7', Icon: Users, iconColor: '#D97706' },
-  { num: 48, displayFn: (v: number) => `${(v / 10).toFixed(1)}/5`, label: 'Parent Satisfaction', bg: '#FCEEF1', Icon: Star, iconColor: '#F03C6F' },
-  { num: 91, displayFn: (v: number) => `${v}%`, label: 'Academic Improvement', bg: '#E7F6FB', Icon: TrendingUp, iconColor: '#0FA8DC' },
-  { num: 49, displayFn: (v: number) => `${v}+`, label: 'Cities Across India', bg: '#F0EDFC', Icon: MapPin, iconColor: '#7C3AED' },
-];
-
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeBanner, setActiveBanner] = useState(0);
@@ -592,40 +585,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Stats Strip (pastel cards) ── */}
-      <section style={{ paddingTop: '88px', paddingBottom: '88px', background: '#F7F7F8' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ marginBottom: '48px' }}>
-            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
-              By the numbers
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
-              A Platform Trusted by<br />Families Across India
-            </h2>
-            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6 }}>
-              The numbers speak for themselves.
-            </p>
-          </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginBottom: '56px' }} className="grid-cols-4-lg">
-            {statCards.map((s) => (
-              <motion.div key={s.label} variants={fadeUp} style={{ background: s.bg, borderRadius: '20px', padding: '32px 24px' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(255,255,255,0.75)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
-                  <s.Icon size={20} style={{ color: s.iconColor }} />
-                </div>
-                <StatCounter num={s.num} displayFn={s.displayFn} label={s.label} />
-              </motion.div>
-            ))}
-          </motion.div>
-          <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-            <TestimonialCard
-              name="Priya Nair"
-              role="Parent of Class 10 student, Chennai"
-              content="Blast Learning completely changed how my daughter studies. Her board exam preparation used to be chaotic, but now she has a clear plan and her retention scores are remarkable. I can see her progress every day on the parent dashboard."
-              rating={5}
-            />
-          </div>
-        </div>
-      </section>
+      {/* ── Trust stats: PW-style pastel cards (slot-machine counters + hover characters) ── */}
+      <TrustStats />
 
       {/* ── Science of Retention (white) ── */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
@@ -787,9 +748,6 @@ export default function Home() {
           <FeatureExplorer />
         </div>
       </section>
-
-      {/* ── Trust stats: animated number cards ── */}
-      <TrustStats />
 
       {/* ── Results Banner (white) ── */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
