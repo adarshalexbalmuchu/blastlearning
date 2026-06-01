@@ -456,7 +456,7 @@ export default function Home() {
             className="lg:grid-cols-hero"
           >
             {/* LEFT */}
-            <div style={{ minWidth: 0 }}>
+            <div className="hero-left-col" style={{ minWidth: 0 }}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`text-${activeBanner}`}
@@ -508,7 +508,7 @@ export default function Home() {
                   </div>
 
                   {/* Trust signals */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
+                  <div className="hero-trust-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
                     {banner.trust.map((t) => (
                       <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                         <CheckCircle size={13} style={{ color: '#0FA8DC' }} />
@@ -518,7 +518,7 @@ export default function Home() {
                   </div>
 
                   {/* City trust strip — label above, chips scroll horizontally on mobile */}
-                  <div style={{ paddingTop: '16px', borderTop: '1px solid #ECECF1' }}>
+                  <div className="hide-mobile" style={{ paddingTop: '16px', borderTop: '1px solid #ECECF1' }}>
                     <span style={{ display: 'block', fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', fontWeight: 500, marginBottom: '8px' }}>Students from:</span>
                     <div className="city-chips-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
                       {['Delhi', 'Mumbai', 'Bengaluru', 'Hyderabad', 'Chennai', 'Pune', '+43 more cities'].map((city) => (
@@ -531,7 +531,7 @@ export default function Home() {
             </div>
 
             {/* RIGHT: visual card */}
-            <div style={{ minWidth: 0, width: '100%' }}>
+            <div className="show-md" style={{ minWidth: 0, width: '100%' }}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={`visual-${activeBanner}`}

@@ -388,15 +388,34 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            {/* Mobile hamburger */}
-            <button
-              className="hide-lg"
-              style={{ color: '#1C1C28', background: 'transparent', border: 'none', cursor: 'pointer', padding: '10px', borderRadius: '8px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-              onClick={() => setMobileOpen((v) => !v)}
-              aria-label="Toggle menu"
-            >
-              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
+            {/* Mobile: Login button + hamburger */}
+            <div className="hide-lg" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Link
+                to="/login"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '8px 16px',
+                  borderRadius: '8px',
+                  background: '#F03C6F',
+                  color: 'white',
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  fontFamily: 'Inter, sans-serif',
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Login / Register
+              </Link>
+              <button
+                style={{ color: '#1C1C28', background: 'transparent', border: 'none', cursor: 'pointer', padding: '10px', borderRadius: '8px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                onClick={() => setMobileOpen((v) => !v)}
+                aria-label="Toggle menu"
+              >
+                {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -474,7 +493,7 @@ export default function Navbar() {
                 })}
               </div>
               {/* Login options */}
-              <div style={{ borderTop: '1px solid #ECECF1', padding: '16px 20px 88px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <div style={{ borderTop: '1px solid #ECECF1', padding: '16px 20px 24px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {loginOptions.map((opt) => (
                   <Link
                     key={opt.label}
@@ -501,64 +520,6 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* Mobile sticky bottom CTA — compact single action with glassmorphism */}
-      <div
-        className="hide-md"
-        style={{
-          position: 'fixed',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: 50,
-          padding: '10px 16px 20px',
-          background: 'rgba(255,255,255,0.88)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)' as string,
-          borderTop: '1px solid rgba(236,236,241,0.7)',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0',
-        }}
-      >
-        <Link
-          to="/programs"
-          className="cta cta-pink"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            width: '100%',
-            padding: '15px 20px',
-            borderRadius: '12px',
-            background: '#F03C6F',
-            color: 'white',
-            fontSize: '15px',
-            fontWeight: 700,
-            fontFamily: 'Inter, sans-serif',
-            textDecoration: 'none',
-            boxShadow: '0 4px 16px rgba(240,60,111,0.32)',
-          }}
-        >
-          Start 7-Day Free Trial
-        </Link>
-        <Link
-          to="/login"
-          style={{
-            display: 'block',
-            textAlign: 'center',
-            padding: '10px 16px 0',
-            fontSize: '13px',
-            color: '#8E8EA0',
-            textDecoration: 'none',
-            fontFamily: 'Inter, sans-serif',
-            fontWeight: 500,
-          }}
-        >
-          Already have an account?{' '}
-          <span style={{ color: '#0FA8DC', fontWeight: 600 }}>Login</span>
-        </Link>
-      </div>
     </>
   );
 }

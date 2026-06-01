@@ -163,8 +163,9 @@ h1, h2, h3, h4, h5, h6 {
 .show-sm-blk  { display: none; }
 .show-lg-flex { display: none; }
 .show-lg-blk  { display: none; }
+.show-md      { display: none; }
 .row-sm       { flex-direction: column; }
-.footer-root  { padding-bottom: 96px; }
+.footer-root  { padding-bottom: 0; }
 
 @media (min-width: 640px) {
   .show-sm-blk { display: block !important; }
@@ -174,6 +175,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (min-width: 768px) {
   .hide-md { display: none !important; }
   .footer-root { padding-bottom: 0 !important; }
+  .show-md { display: block !important; }
 }
 
 @media (min-width: 1024px) {
@@ -196,6 +198,11 @@ h1, h2, h3, h4, h5, h6 {
   .float-card { display: none !important; }
   .stat-card  { min-height: 190px !important; }
   .char-wrap svg { width: 110px !important; height: 110px !important; }
+  .hide-mobile { display: none !important; }
+  .hero-left-col { text-align: center !important; }
+  .hero-left-col h1 { text-align: center !important; }
+  .hero-left-col p { max-width: 100% !important; margin-left: auto !important; margin-right: auto !important; }
+  .hero-trust-row { justify-content: center !important; }
 }
 
 /* ── Tablet (768–1023px): medium section padding ─────────────────────────────── */
