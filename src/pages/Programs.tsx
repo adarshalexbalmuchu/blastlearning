@@ -183,7 +183,7 @@ export default function Programs() {
                     <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', marginBottom: '24px', fontFamily: "'Inter', sans-serif" }}>{prog.description}</p>
 
                     <div style={{ marginBottom: '24px' }}>
-                      <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#8E8EA0', marginBottom: '10px', fontFamily: "'Inter', sans-serif" }}>Key Outcomes</p>
+                      <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', marginBottom: '10px', fontFamily: "'Inter', sans-serif" }}>Key Outcomes</p>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                         {prog.outcomes.map((o) => (
                           <span key={o} style={{ padding: '4px 12px', fontSize: '12px', fontWeight: 500, borderRadius: '9999px', color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif" }}>{o}</span>
@@ -192,7 +192,7 @@ export default function Programs() {
                     </div>
 
                     <div style={{ marginBottom: '28px' }}>
-                      <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#8E8EA0', marginBottom: '12px', fontFamily: "'Inter', sans-serif" }}>What's Included</p>
+                      <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', marginBottom: '12px', fontFamily: "'Inter', sans-serif" }}>What's Included</p>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '8px' }} className="grid-cols-2-sm">
                         {prog.features.map((f) => (
                           <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
@@ -284,9 +284,9 @@ export default function Programs() {
                 {[row.blast, row.coaching, row.apps].map((val, j) => (
                   <div key={j} style={{ padding: '14px 16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {val ? (
-                      <CheckCircle size={18} style={{ color: j === 0 ? '#0FA8DC' : '#8E8EA0' }} />
+                      <CheckCircle size={18} style={{ color: j === 0 ? '#0FA8DC' : '#6B6B7B' }} />
                     ) : (
-                      <span style={{ fontSize: '18px', color: '#8E8EA0' }}>×</span>
+                      <span style={{ fontSize: '18px', color: '#6B6B7B' }}>×</span>
                     )}
                   </div>
                 ))}

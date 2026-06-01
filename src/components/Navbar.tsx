@@ -82,9 +82,9 @@ const navItems: NavItem[] = [
 ];
 
 const loginOptions = [
-  { label: 'Parent Login', href: '#' },
-  { label: 'Student Login', href: '#' },
-  { label: 'Tutor Login', href: '#' },
+  { label: 'Parent Login', to: '/login?role=parent' },
+  { label: 'Student Login', to: '/login?role=student' },
+  { label: 'Tutor Login', to: '/login?role=tutor' },
 ];
 
 export default function Navbar() {
@@ -359,9 +359,9 @@ export default function Navbar() {
                     }}
                   >
                     {loginOptions.map((opt) => (
-                      <a
+                      <Link
                         key={opt.label}
-                        href={opt.href}
+                        to={opt.to}
                         className="block text-sm"
                         style={{
                           padding: '12px 16px',
@@ -375,7 +375,7 @@ export default function Navbar() {
                         onClick={() => setLoginOpen(false)}
                       >
                         {opt.label}
-                      </a>
+                      </Link>
                     ))}
                   </motion.div>
                 )}
@@ -420,14 +420,14 @@ export default function Navbar() {
             })}
             <div className="pt-3 flex flex-col gap-1">
               {loginOptions.map((opt) => (
-                <a
+                <Link
                   key={opt.label}
-                  href={opt.href}
+                  to={opt.to}
                   className="px-3 py-2.5 text-sm"
                   style={{ color: '#5A5A6E', textDecoration: 'none', fontFamily: 'Inter, sans-serif' }}
                 >
                   {opt.label}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -446,13 +446,13 @@ export default function Navbar() {
         >
           Start Free Trial
         </Link>
-        <a
-          href="#"
+        <Link
+          to="/login"
           className="flex-1 text-center py-2.5 rounded-lg text-sm font-semibold"
           style={{ border: '1.5px solid #DCDCE5', background: 'white', color: '#1C1C28', textDecoration: 'none', fontFamily: 'Inter, sans-serif', borderRadius: '10px' }}
         >
           Login
-        </a>
+        </Link>
       </div>
     </>
   );

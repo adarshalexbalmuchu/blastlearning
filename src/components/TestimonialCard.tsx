@@ -42,7 +42,7 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
       {metric && improvement && before && after && (
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px', padding: '12px', borderRadius: '12px', background: '#E9F7EF', border: '1px solid #D1FAE5' }}>
           <div style={{ textAlign: 'center', flex: 1 }}>
-            <div style={{ fontSize: '10px', fontWeight: 500, marginBottom: '2px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif" }}>Before</div>
+            <div style={{ fontSize: '10px', fontWeight: 500, marginBottom: '2px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>Before</div>
             <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#5A5A6E' }}>{before}</div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
@@ -50,7 +50,7 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
             <div style={{ fontSize: '15px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#059669' }}>+{improvement}</div>
           </div>
           <div style={{ textAlign: 'center', flex: 1 }}>
-            <div style={{ fontSize: '10px', fontWeight: 500, marginBottom: '2px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif" }}>After</div>
+            <div style={{ fontSize: '10px', fontWeight: 500, marginBottom: '2px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>After</div>
             <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{after}</div>
           </div>
         </div>
@@ -84,7 +84,7 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
         </div>
         <div>
           <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: "'Poppins', sans-serif" }}>{name}</p>
-          <p style={{ fontSize: '12px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif" }}>{role}</p>
+          <p style={{ fontSize: '12px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>{role}</p>
         </div>
       </div>
     </div>

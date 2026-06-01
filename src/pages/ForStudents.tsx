@@ -103,7 +103,7 @@ export default function ForStudents() {
             <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '16px' }}>
               Why Students Love Us
             </h2>
-            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
+            <p style={{ fontSize: '1.05rem', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
               We built Blast Learning with one goal: make studying so engaging your child forgets it is work.
             </p>
           </motion.div>
@@ -201,7 +201,7 @@ export default function ForStudents() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", marginBottom: '56px', maxWidth: '600px', margin: '0 auto 56px' }}
+            style={{ fontSize: '1.05rem', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginBottom: '56px', maxWidth: '600px', margin: '0 auto 56px' }}
           >
             Every milestone earns you a badge. How many can you collect?
           </motion.p>

@@ -268,7 +268,7 @@ const Footer = () => {
             style={{
               fontFamily: 'Inter, sans-serif',
               fontSize: '0.875rem',
-              color: '#8E8EA0',
+              color: '#6B6B7B',
               margin: 0,
             }}
           >
@@ -278,7 +278,7 @@ const Footer = () => {
             style={{
               fontFamily: 'Inter, sans-serif',
               fontSize: '0.875rem',
-              color: '#8E8EA0',
+              color: '#6B6B7B',
               margin: 0,
             }}
           >

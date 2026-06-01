@@ -58,9 +58,9 @@ export default function ProgramDetail() {
             aria-label="Breadcrumb"
             style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '32px', flexWrap: 'wrap' }}
           >
-            <Link to="/" style={{ fontSize: '13px', color: '#8E8EA0', textDecoration: 'none', fontFamily: "'Inter', sans-serif" }}>Home</Link>
+            <Link to="/" style={{ fontSize: '13px', color: '#6B6B7B', textDecoration: 'none', fontFamily: "'Inter', sans-serif" }}>Home</Link>
             <ChevronRight size={12} style={{ color: '#C4C4D0' }} />
-            <Link to="/programs" style={{ fontSize: '13px', color: '#8E8EA0', textDecoration: 'none', fontFamily: "'Inter', sans-serif" }}>Programs</Link>
+            <Link to="/programs" style={{ fontSize: '13px', color: '#6B6B7B', textDecoration: 'none', fontFamily: "'Inter', sans-serif" }}>Programs</Link>
             <ChevronRight size={12} style={{ color: '#C4C4D0' }} />
             <span style={{ fontSize: '13px', color: '#1C1C28', fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>{program.name}</span>
           </motion.nav>
@@ -123,7 +123,7 @@ export default function ProgramDetail() {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '28px' }}>
                 <div>
                   <div style={{ fontSize: '30px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{program.price}</div>
-                  <div style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif" }}>per month</div>
+                  <div style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>per month</div>
                 </div>
                 <span style={{ padding: '6px 14px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif" }}>
                   {program.classes}
@@ -134,7 +134,7 @@ export default function ProgramDetail() {
                 {program.heroStats.map((stat) => (
                   <div key={stat.label} style={{ padding: '16px', background: '#F7F7F8', borderRadius: '12px', textAlign: 'center' }}>
                     <div style={{ fontSize: '22px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1.2 }}>{stat.value}</div>
-                    <div style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", marginTop: '4px' }}>{stat.label}</div>
+                    <div style={{ fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '4px' }}>{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -146,7 +146,7 @@ export default function ProgramDetail() {
               >
                 Enrol Now, 7-Day Free Trial <ArrowRight size={15} />
               </Link>
-              <p style={{ textAlign: 'center', fontSize: '11px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
+              <p style={{ textAlign: 'center', fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
                 No credit card required · Cancel anytime
               </p>
             </motion.div>
@@ -216,7 +216,7 @@ export default function ProgramDetail() {
                   </div>
                   <ChevronDown
                     size={18}
-                    style={{ color: '#8E8EA0', flexShrink: 0, transition: 'transform 0.25s', transform: openCurriculum === i ? 'rotate(180deg)' : 'rotate(0)' }}
+                    style={{ color: '#6B6B7B', flexShrink: 0, transition: 'transform 0.25s', transform: openCurriculum === i ? 'rotate(180deg)' : 'rotate(0)' }}
                   />
                 </button>
 
@@ -289,7 +289,7 @@ export default function ProgramDetail() {
               </div>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', marginBottom: '6px' }}>
                 <span style={{ fontSize: '42px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1 }}>{program.price}</span>
-                <span style={{ fontSize: '14px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif" }}>/month</span>
+                <span style={{ fontSize: '14px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>/month</span>
               </div>
               <p style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '28px' }}>{program.classes}</p>
 
@@ -301,7 +301,7 @@ export default function ProgramDetail() {
                     <span style={{ fontSize: '14px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{outcome.label}</span>
                     <span style={{ fontSize: '18px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#0FA8DC' }}>{outcome.value}</span>
                   </div>
-                  <p style={{ fontSize: '12px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}>{outcome.desc}</p>
+                  <p style={{ fontSize: '12px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}>{outcome.desc}</p>
                 </div>
               ))}
 
@@ -314,7 +314,7 @@ export default function ProgramDetail() {
               >
                 Start 7-Day Free Trial <ArrowRight size={16} />
               </Link>
-              <p style={{ textAlign: 'center', fontSize: '11px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
+              <p style={{ textAlign: 'center', fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
                 No credit card · Cancel any time
               </p>
             </motion.div>
@@ -356,17 +356,17 @@ export default function ProgramDetail() {
                   {/* Before / After */}
                   <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', padding: '16px', background: '#F7F7F8', borderRadius: '12px' }}>
                     <div style={{ flex: 1, textAlign: 'center' }}>
-                      <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>Before</div>
+                      <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>Before</div>
                       <div style={{ fontSize: '22px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{t.before}</div>
                     </div>
                     <div style={{ width: '1px', background: '#ECECF1' }} />
                     <div style={{ flex: 1, textAlign: 'center' }}>
-                      <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>After</div>
+                      <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>After</div>
                       <div style={{ fontSize: '22px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#059669' }}>{t.after}</div>
                     </div>
                     <div style={{ width: '1px', background: '#ECECF1' }} />
                     <div style={{ flex: 1, textAlign: 'center' }}>
-                      <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>Improvement</div>
+                      <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>Improvement</div>
                       <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#F03C6F' }}>{t.improvement}</div>
                     </div>
                   </div>
@@ -377,7 +377,7 @@ export default function ProgramDetail() {
                     </div>
                     <div>
                       <div style={{ fontSize: '14px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{t.name}</div>
-                      <div style={{ fontSize: '12px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif" }}>{t.role}</div>
+                      <div style={{ fontSize: '12px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>{t.role}</div>
                     </div>
                   </div>
                 </motion.div>
@@ -414,7 +414,7 @@ export default function ProgramDetail() {
                   <span style={{ fontSize: '15px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{faq.q}</span>
                   <ChevronDown
                     size={18}
-                    style={{ color: '#8E8EA0', flexShrink: 0, transition: 'transform 0.25s', transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0)' }}
+                    style={{ color: '#6B6B7B', flexShrink: 0, transition: 'transform 0.25s', transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0)' }}
                   />
                 </button>
 
