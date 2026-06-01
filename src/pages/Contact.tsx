@@ -36,9 +36,15 @@ const socialLinks = [
   { label: 'WhatsApp', href: 'https://wa.me/911234567890', path: 'M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.418A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z' },
 ];
 
+// Web3Forms access key, set as VITE_WEB3FORMS_KEY at build time. When absent
+// (local/demo builds) the form validates and shows success without sending.
+const ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_KEY as string | undefined;
+
 export default function Contact() {
   const [form, setForm] = useState<FormState>({ name: '', email: '', phone: '', role: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<FormErrors>({});
 
   useEffect(() => {
@@ -62,9 +68,27 @@ export default function Contact() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) setSubmitted(true);
+    if (!validate()) return;
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      if (ACCESS_KEY) {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ access_key: ACCESS_KEY, ...form }),
+        });
+        const data = await res.json() as { success: boolean };
+        if (!data.success) throw new Error('submission failed');
+      }
+      setSubmitted(true);
+    } catch {
+      setSubmitError('Something went wrong. Please email us directly at hello@blastlearning.in');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputStyle: React.CSSProperties = {
@@ -157,14 +181,14 @@ export default function Contact() {
                         <Icon size={17} />
                       </div>
                       <div>
-                        <p style={{ fontSize: '11px', fontWeight: 500, marginBottom: '4px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{label}</p>
+                        <p style={{ fontSize: '11px', fontWeight: 500, marginBottom: '4px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{label}</p>
                         {content}
                       </div>
                     </div>
                   ))}
                 </div>
                 <div style={{ marginTop: '28px', paddingTop: '24px', borderTop: '1px solid #ECECF1' }}>
-                  <p style={{ fontSize: '11px', fontWeight: 600, marginBottom: '14px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Follow Us</p>
+                  <p style={{ fontSize: '11px', fontWeight: 600, marginBottom: '14px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Follow Us</p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     {socialLinks.map((social) => (
                       <a
@@ -173,9 +197,9 @@ export default function Contact() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={social.label}
-                        style={{ width: '38px', height: '38px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#FFFFFF', border: '1px solid #ECECF1', color: '#8E8EA0', textDecoration: 'none', transition: 'all 0.2s' }}
+                        style={{ width: '38px', height: '38px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#FFFFFF', border: '1px solid #ECECF1', color: '#6B6B7B', textDecoration: 'none', transition: 'all 0.2s' }}
                         onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#0FA8DC'; (e.currentTarget as HTMLElement).style.borderColor = '#0FA8DC'; }}
-                        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#8E8EA0'; (e.currentTarget as HTMLElement).style.borderColor = '#ECECF1'; }}
+                        onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#6B6B7B'; (e.currentTarget as HTMLElement).style.borderColor = '#ECECF1'; }}
                       >
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                           <path d={social.path} />
@@ -193,7 +217,7 @@ export default function Contact() {
                 </div>
                 <div style={{ textAlign: 'center' }}>
                   <p style={{ fontSize: '14px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>Blast Learning HQ</p>
-                  <p style={{ fontSize: '12px', marginTop: '4px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>Bangalore, Karnataka, India</p>
+                  <p style={{ fontSize: '12px', marginTop: '4px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>Bangalore, Karnataka, India</p>
                 </div>
               </div>
             </motion.div>
@@ -217,7 +241,7 @@ export default function Contact() {
                     <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px' }} className="grid-cols-2-sm">
                         <div>
-                          <label htmlFor="contact-name" style={{ display: 'block', fontSize: '11px', fontWeight: 600, marginBottom: '6px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Full Name *</label>
+                          <label htmlFor="contact-name" style={{ display: 'block', fontSize: '11px', fontWeight: 600, marginBottom: '6px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Full Name *</label>
                           <input
                             id="contact-name"
                             type="text"
@@ -225,6 +249,7 @@ export default function Contact() {
                             required
                             aria-required="true"
                             aria-invalid={!!errors.name}
+                            aria-describedby={errors.name ? 'err-name' : undefined}
                             value={form.name}
                             onChange={handleChange}
                             placeholder="Your full name"
@@ -232,10 +257,10 @@ export default function Contact() {
                             onFocus={(e) => { e.currentTarget.style.borderColor = errors.name ? '#F03C6F' : '#0FA8DC'; }}
                             onBlur={(e) => { e.currentTarget.style.borderColor = errors.name ? '#F03C6F' : '#ECECF1'; }}
                           />
-                          {errors.name && <p style={errorMsgStyle}>{errors.name}</p>}
+                          {errors.name && <p id="err-name" role="alert" style={errorMsgStyle}>{errors.name}</p>}
                         </div>
                         <div>
-                          <label htmlFor="contact-email" style={{ display: 'block', fontSize: '11px', fontWeight: 600, marginBottom: '6px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Email *</label>
+                          <label htmlFor="contact-email" style={{ display: 'block', fontSize: '11px', fontWeight: 600, marginBottom: '6px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Email *</label>
                           <input
                             id="contact-email"
                             type="email"
@@ -243,6 +268,7 @@ export default function Contact() {
                             required
                             aria-required="true"
                             aria-invalid={!!errors.email}
+                            aria-describedby={errors.email ? 'err-email' : undefined}
                             value={form.email}
                             onChange={handleChange}
                             placeholder="your@email.com"
@@ -250,12 +276,12 @@ export default function Contact() {
                             onFocus={(e) => { e.currentTarget.style.borderColor = errors.email ? '#F03C6F' : '#0FA8DC'; }}
                             onBlur={(e) => { e.currentTarget.style.borderColor = errors.email ? '#F03C6F' : '#ECECF1'; }}
                           />
-                          {errors.email && <p style={errorMsgStyle}>{errors.email}</p>}
+                          {errors.email && <p id="err-email" role="alert" style={errorMsgStyle}>{errors.email}</p>}
                         </div>
                       </div>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px' }} className="grid-cols-2-sm">
                         <div>
-                          <label htmlFor="contact-phone" style={{ display: 'block', fontSize: '11px', fontWeight: 600, marginBottom: '6px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Phone Number</label>
+                          <label htmlFor="contact-phone" style={{ display: 'block', fontSize: '11px', fontWeight: 600, marginBottom: '6px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Phone Number</label>
                           <input
                             id="contact-phone"
                             type="tel"
@@ -269,13 +295,14 @@ export default function Contact() {
                           />
                         </div>
                         <div>
-                          <label htmlFor="contact-role" style={{ display: 'block', fontSize: '11px', fontWeight: 600, marginBottom: '6px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>I am a *</label>
+                          <label htmlFor="contact-role" style={{ display: 'block', fontSize: '11px', fontWeight: 600, marginBottom: '6px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>I am a *</label>
                           <select
                             id="contact-role"
                             name="role"
                             required
                             aria-required="true"
                             aria-invalid={!!errors.role}
+                            aria-describedby={errors.role ? 'err-role' : undefined}
                             value={form.role}
                             onChange={handleChange}
                             style={{ ...inputStyle, appearance: 'none', borderColor: errors.role ? '#F03C6F' : '#ECECF1' }}
@@ -288,17 +315,18 @@ export default function Contact() {
                             <option value="tutor" style={{ background: '#FFFFFF' }}>Tutor</option>
                             <option value="school" style={{ background: '#FFFFFF' }}>School / Institution</option>
                           </select>
-                          {errors.role && <p style={errorMsgStyle}>{errors.role}</p>}
+                          {errors.role && <p id="err-role" role="alert" style={errorMsgStyle}>{errors.role}</p>}
                         </div>
                       </div>
                       <div>
-                        <label htmlFor="contact-message" style={{ display: 'block', fontSize: '11px', fontWeight: 600, marginBottom: '6px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Message *</label>
+                        <label htmlFor="contact-message" style={{ display: 'block', fontSize: '11px', fontWeight: 600, marginBottom: '6px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Message *</label>
                         <textarea
                           id="contact-message"
                           name="message"
                           required
                           aria-required="true"
                           aria-invalid={!!errors.message}
+                          aria-describedby={errors.message ? 'err-message' : undefined}
                           rows={5}
                           value={form.message}
                           onChange={handleChange}
@@ -307,13 +335,15 @@ export default function Contact() {
                           onFocus={(e) => { e.currentTarget.style.borderColor = errors.message ? '#F03C6F' : '#0FA8DC'; }}
                           onBlur={(e) => { e.currentTarget.style.borderColor = errors.message ? '#F03C6F' : '#ECECF1'; }}
                         />
-                        {errors.message && <p style={errorMsgStyle}>{errors.message}</p>}
+                        {errors.message && <p id="err-message" role="alert" style={errorMsgStyle}>{errors.message}</p>}
                       </div>
+                      {submitError && <p role="alert" style={{ ...errorMsgStyle, textAlign: 'center' }}>{submitError}</p>}
                       <button
                         type="submit"
-                        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', cursor: 'pointer', background: '#0FA8DC', color: 'white', border: 'none', marginTop: '8px' }}
+                        disabled={submitting}
+                        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', cursor: submitting ? 'not-allowed' : 'pointer', background: '#0FA8DC', color: 'white', border: 'none', marginTop: '8px', opacity: submitting ? 0.7 : 1 }}
                       >
-                        <Send size={16} /> Send Message
+                        <Send size={16} /> {submitting ? 'Sending...' : 'Send Message'}
                       </button>
                     </form>
                   </>
@@ -346,7 +376,7 @@ export default function Contact() {
           >
             <Phone size={20} /> +91 123 456 7890
           </a>
-          <p style={{ marginTop: '16px', fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>Available Mon-Sat, 9 AM - 9 PM IST</p>
+          <p style={{ marginTop: '16px', fontSize: '13px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>Available Mon-Sat, 9 AM - 9 PM IST</p>
         </motion.div>
       </section>
     </div>

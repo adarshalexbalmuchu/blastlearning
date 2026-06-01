@@ -86,7 +86,7 @@ export default function Library() {
               Videos, notes, and practice quizzes for CBSE Classes 8-12, SAT Prep, and competitive exams. Many are free to start, and a subscription unlocks the full library.
             </p>
             <div style={{ position: 'relative', maxWidth: '520px', margin: '0 auto' }}>
-              <Search size={17} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#8E8EA0' }} />
+              <Search size={17} style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', color: '#6B6B7B' }} />
               <input
                 type="text"
                 placeholder="Search resources, topics, subjects..."
@@ -155,7 +155,7 @@ export default function Library() {
                 >
                   {resource.locked && (
                     <div style={{ position: 'absolute', top: '16px', right: '16px' }}>
-                      <Lock size={13} style={{ color: '#8E8EA0' }} />
+                      <Lock size={13} style={{ color: '#6B6B7B' }} />
                     </div>
                   )}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px', flexWrap: 'wrap' }}>
@@ -167,7 +167,7 @@ export default function Library() {
                       {resource.subject}
                     </span>
                     {resource.duration && (
-                      <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{resource.duration}</span>
+                      <span style={{ fontSize: '11px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>{resource.duration}</span>
                     )}
                   </div>
                   <h3 style={{ fontSize: '15px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '10px' }}>{resource.title}</h3>

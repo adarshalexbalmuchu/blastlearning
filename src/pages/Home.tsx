@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion, AnimatePresence, type Variants, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import {
   ArrowRight, Play, Brain, Crosshair, BookOpen, Users,
   ChevronDown, CheckCircle, AlertCircle, TrendingUp, Zap, Star,
@@ -18,9 +16,7 @@ import {
   HowItWorksStep3,
   ScoreTransformIllustration,
 } from '../components/illustrations';
-import { useState, useEffect, useLayoutEffect, useRef } from 'react';
-
-gsap.registerPlugin(ScrollTrigger);
+import { useState, useEffect, useRef } from 'react';
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
 
@@ -344,47 +340,31 @@ function HeroVisual({ index }: { index: number }) {
   );
 }
 
-// ─── GSAP-powered stat counter ─────────────────────────────────────────────────
+// ─── Framer Motion stat counter (no GSAP) ──────────────────────────────────────
 function StatCounter({ num, displayFn, label }: { num: number; displayFn: (v: number) => string; label: string }) {
-  const [value, setValue] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-10% 0px' });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (v) => displayFn(Math.round(v)));
 
-  useLayoutEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    const counterObj = { val: 0 };
-    let tween: gsap.core.Tween | null = null;
-    const trigger = ScrollTrigger.create({
-      trigger: node,
-      start: 'top 82%',
-      once: true,
-      onEnter: () => {
-        tween = gsap.to(counterObj, {
-          val: num,
-          duration: 1.8,
-          ease: 'power2.out',
-          onUpdate: () => setValue(Math.round(counterObj.val)),
-        });
-      },
-    });
-    return () => {
-      trigger.kill();
-      tween?.kill();
-    };
-  }, [num]);
+  useEffect(() => {
+    if (!inView) return;
+    const ctrl = animate(count, num, { duration: 1.8, ease: [0.16, 1, 0.3, 1] });
+    return () => ctrl.stop();
+  }, [inView, num, count]);
 
   return (
     <div ref={ref} className="text-center">
-      <div style={{
+      <motion.div style={{
         fontSize: 'clamp(1.75rem, 4vw, 3rem)',
         fontWeight: 700,
         marginBottom: '6px',
         fontFamily: 'Poppins, sans-serif',
         color: '#1C1C28',
       }}>
-        {displayFn(value)}
-      </div>
-      <div style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{label}</div>
+        {rounded}
+      </motion.div>
+      <div style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>{label}</div>
     </div>
   );
 }

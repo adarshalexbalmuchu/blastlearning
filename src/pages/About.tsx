@@ -145,7 +145,7 @@ export default function About() {
             {companyStats.map((s) => (
               <motion.div key={s.label} variants={fadeUp} style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '8px', fontFamily: 'Poppins, sans-serif', color: '#0FA8DC' }}>{s.value}</div>
-                <div style={{ fontSize: '14px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{s.label}</div>
+                <div style={{ fontSize: '14px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>{s.label}</div>
               </motion.div>
             ))}
           </motion.div>

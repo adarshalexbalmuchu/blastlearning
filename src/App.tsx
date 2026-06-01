@@ -15,6 +15,7 @@ const About       = lazy(() => import('./pages/About'));
 const Library     = lazy(() => import('./pages/Library'));
 const FAQ         = lazy(() => import('./pages/FAQ'));
 const Contact     = lazy(() => import('./pages/Contact'));
+const Login       = lazy(() => import('./pages/Login'));
 const NotFound    = lazy(() => import('./pages/NotFound'));
 
 function PageLoader() {
@@ -72,6 +73,7 @@ function AppLayout() {
               <Route path="/library"      element={<Library />} />
               <Route path="/faq"          element={<FAQ />} />
               <Route path="/contact"      element={<Contact />} />
+              <Route path="/login"        element={<Login />} />
               <Route path="*"             element={<NotFound />} />
             </Routes>
           </Suspense>

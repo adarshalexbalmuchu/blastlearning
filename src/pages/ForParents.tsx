@@ -116,7 +116,7 @@ export default function ForParents() {
             <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '16px' }}>
               Everything You Need to Stay Involved
             </h2>
-            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
+            <p style={{ fontSize: '1.05rem', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
               Powerful tools designed to keep you connected to your child's learning journey.
             </p>
           </motion.div>
@@ -198,7 +198,7 @@ export default function ForParents() {
                 ].map((stat) => (
                   <div key={stat.label} style={{ textAlign: 'center' }}>
                     <div style={{ fontSize: '32px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '8px' }}>{stat.value}</div>
-                    <div style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif" }}>{stat.label}</div>
+                    <div style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>{stat.label}</div>
                   </div>
                 ))}
               </div>
@@ -243,7 +243,7 @@ export default function ForParents() {
                 <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#1C1C28', fontFamily: "'Inter', sans-serif", marginBottom: '24px', fontStyle: 'italic' }}>"{t.quote}"</p>
                 <div>
                   <div style={{ fontSize: '15px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{t.name}</div>
-                  <div style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif" }}>{t.role} · {t.location}</div>
+                  <div style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>{t.role} · {t.location}</div>
                 </div>
               </motion.div>
             ))}
