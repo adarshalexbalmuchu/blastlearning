@@ -47,7 +47,7 @@ function AppLayout() {
         href="#main-content"
         style={{
           position: 'absolute', left: '-9999px', top: '8px', zIndex: 9999,
-          padding: '8px 16px', background: '#F03C6F', color: 'white',
+          padding: '8px 16px', background: '#0FA8DC', color: 'white',
           fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '14px',
           borderRadius: '8px', textDecoration: 'none',
         }}

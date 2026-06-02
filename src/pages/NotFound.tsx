@@ -62,13 +62,13 @@ const NotFound = () => {
             fontFamily: 'Inter, sans-serif',
             fontWeight: 600,
             fontSize: '15px',
-            background: '#F03C6F',
+            background: '#0FA8DC',
             color: 'white',
             textDecoration: 'none',
             display: 'inline-block',
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.background = '#c42f59'; }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = '#F03C6F'; }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = '#0D8BB5'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = '#0FA8DC'; }}
         >
           Go to Home
         </Link>

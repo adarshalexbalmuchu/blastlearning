@@ -76,8 +76,8 @@ export default function Login() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <Link
                 to="/programs"
-                className="cta cta-pink"
-                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', background: '#F03C6F', color: '#FFFFFF', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(240,60,111,0.25)' }}
+                className="cta cta-blue"
+                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', background: '#0FA8DC', color: '#FFFFFF', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}
               >
                 Start your free trial <ArrowRight size={16} />
               </Link>
