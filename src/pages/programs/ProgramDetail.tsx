@@ -13,7 +13,7 @@ const stagger: Variants = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-const AVATAR_PALETTE = ['#0FA8DC', '#F03C6F', '#22C55E', '#F59E0B', '#8B5CF6', '#06B6D4', '#EC4899'];
+const AVATAR_PALETTE = ['#0FA8DC', '#0FA8DC', '#22C55E', '#F59E0B', '#8B5CF6', '#06B6D4', '#EC4899'];
 function avatarColor(name: string) {
   return AVATAR_PALETTE[name.charCodeAt(0) % AVATAR_PALETTE.length];
 }
@@ -98,8 +98,8 @@ export default function ProgramDetail() {
               <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                 <Link
                   to="/contact"
-                  className="cta cta-pink"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 28px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#F03C6F', color: 'white' }}
+                  className="cta cta-blue"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 28px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
                 >
                   Start 7-Day Free Trial <ArrowRight size={15} />
                 </Link>
@@ -309,8 +309,8 @@ export default function ProgramDetail() {
 
               <Link
                 to="/contact"
-                className="cta cta-pink"
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#F03C6F', color: 'white' }}
+                className="cta cta-blue"
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
               >
                 Start 7-Day Free Trial <ArrowRight size={16} />
               </Link>
@@ -367,7 +367,7 @@ export default function ProgramDetail() {
                     <div style={{ width: '1px', background: '#ECECF1' }} />
                     <div style={{ flex: 1, textAlign: 'center' }}>
                       <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>Improvement</div>
-                      <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#F03C6F' }}>{t.improvement}</div>
+                      <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#0FA8DC' }}>{t.improvement}</div>
                     </div>
                   </div>
 
@@ -453,8 +453,8 @@ export default function ProgramDetail() {
             <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link
                 to="/contact"
-                className="cta cta-pink"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#F03C6F', color: 'white' }}
+                className="cta cta-blue"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
               >
                 Start Free Trial <ArrowRight size={16} />
               </Link>

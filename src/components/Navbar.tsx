@@ -310,8 +310,8 @@ export default function Navbar() {
             {/* Desktop CTA */}
             <Link
               to="/programs"
-              className="show-lg-blk cta cta-pink"
-              style={{ padding: '9px 20px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '14px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', whiteSpace: 'nowrap', boxShadow: '0 4px 14px rgba(240,60,111,0.25)' }}
+              className="show-lg-blk cta cta-blue"
+              style={{ padding: '9px 20px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '14px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', whiteSpace: 'nowrap', boxShadow: '0 4px 14px rgba(15,168,220,0.25)' }}
             >
               Start Free Trial
             </Link>
@@ -397,7 +397,7 @@ export default function Navbar() {
                   alignItems: 'center',
                   padding: '8px 16px',
                   borderRadius: '8px',
-                  background: '#F03C6F',
+                  background: '#0FA8DC',
                   color: 'white',
                   fontSize: '13px',
                   fontWeight: 700,

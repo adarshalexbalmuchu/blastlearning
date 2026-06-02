@@ -27,7 +27,7 @@ export default class ErrorBoundary extends Component<Props, State> {
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
             <button
               onClick={() => window.location.reload()}
-              style={{ padding: '11px 24px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '14px', border: 'none', cursor: 'pointer' }}
+              style={{ padding: '11px 24px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '14px', border: 'none', cursor: 'pointer' }}
             >
               Refresh Page
             </button>

@@ -147,11 +147,11 @@ const Footer = () => {
           </div>
           <Link
             to="/programs"
-            onMouseEnter={(e) => { e.currentTarget.style.background = '#c42f59'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = '#F03C6F'; }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = '#0D8BB5'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = '#0FA8DC'; }}
             style={{
               display: 'inline-block',
-              background: '#F03C6F',
+              background: '#0FA8DC',
               color: 'white',
               fontFamily: 'Inter, sans-serif',
               fontWeight: 600,
