@@ -193,7 +193,7 @@ const banners: BannerDef[] = [
 const heroBanners = [heroBanner1, heroBanner2, heroBanner3, heroBanner4];
 
 // ─── Framer Motion stat counter (no GSAP) ──────────────────────────────────────
-function StatCounter({ num, displayFn, label }: { num: number; displayFn: (v: number) => string; label: string }) {
+function StatCounter({ num, displayFn, label, color = '#1C1C28' }: { num: number; displayFn: (v: number) => string; label: string; color?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-10% 0px' });
   const count = useMotionValue(0);
@@ -208,15 +208,17 @@ function StatCounter({ num, displayFn, label }: { num: number; displayFn: (v: nu
   return (
     <div ref={ref} className="text-center">
       <motion.div style={{
-        fontSize: 'clamp(1.75rem, 4vw, 3rem)',
-        fontWeight: 700,
+        fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
+        fontWeight: 800,
         marginBottom: '6px',
         fontFamily: 'Poppins, sans-serif',
-        color: '#1C1C28',
+        color,
+        letterSpacing: '-0.03em',
+        lineHeight: 1,
       }}>
         {rounded}
       </motion.div>
-      <div style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>{label}</div>
+      <div style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', lineHeight: 1.5, marginTop: '8px' }}>{label}</div>
     </div>
   );
 }
@@ -624,12 +626,30 @@ export default function Home() {
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid-cols-3-sm" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', maxWidth: '720px', margin: '0 auto 48px' }}>
             {[
-              { num: 3, displayFn: (v: number) => `${v}x`, label: 'More retention than traditional study', bg: '#F0EDFC' },
-              { num: 91, displayFn: (v: number) => `${v}%`, label: 'Students improve their grades', bg: '#E7F6FB' },
-              { num: 30, displayFn: (v: number) => `${v} days`, label: 'Average time to see results', bg: '#E9F7EF' },
+              { num: 3, displayFn: (v: number) => `${v}x`, label: 'More retention than traditional study', color: '#7C3AED', bg: '#F5F3FF', icon: <TrendingUp size={20} /> },
+              { num: 91, displayFn: (v: number) => `${v}%`, label: 'Students improve their grades', color: '#0FA8DC', bg: '#F0F9FF', icon: <Users size={20} /> },
+              { num: 30, displayFn: (v: number) => `${v}`, label: 'Days average to see results', color: '#059669', bg: '#F0FDF4', icon: <Zap size={20} /> },
             ].map((s) => (
-              <motion.div key={s.label} variants={fadeUp} style={{ background: s.bg, borderRadius: '20px', padding: '32px 20px' }}>
-                <StatCounter num={s.num} displayFn={s.displayFn} label={s.label} />
+              <motion.div key={s.label} variants={fadeUp} style={{
+                background: s.bg,
+                borderRadius: '20px',
+                padding: '28px 20px 24px',
+                borderTop: `3px solid ${s.color}`,
+                borderLeft: `1px solid ${s.color}20`,
+                borderRight: `1px solid ${s.color}20`,
+                borderBottom: `1px solid ${s.color}20`,
+                display: 'flex', flexDirection: 'column', alignItems: 'center',
+              }}>
+                <div style={{
+                  width: '42px', height: '42px', borderRadius: '12px',
+                  background: `${s.color}15`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  marginBottom: '16px',
+                  color: s.color,
+                }}>
+                  {s.icon}
+                </div>
+                <StatCounter num={s.num} displayFn={s.displayFn} label={s.label} color={s.color} />
               </motion.div>
             ))}
           </motion.div>
