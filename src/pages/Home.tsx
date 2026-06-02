@@ -15,11 +15,9 @@ import heroBanner4 from '../assets/hero-banner-4.png';
 import ctaBanner from '../assets/cta-banner.png';
 import {
   ForgettingCurveIllustration,
-  HowItWorksStep1,
-  HowItWorksStep2,
-  HowItWorksStep3,
   ScoreTransformIllustration,
 } from '../components/illustrations';
+import HowItWorksCard, { UploadVisual, AIVisual, MasteryVisual } from '../components/HowItWorksCard';
 import { useState, useEffect, useRef } from 'react';
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
@@ -29,22 +27,22 @@ const howItWorks = [
     num: '01',
     title: 'Record or Upload Content',
     desc: 'Upload your class notes, recordings, or textbook chapters. Our AI processes and structures everything for optimal learning.',
-    icon: BookOpen,
-    Illustration: HowItWorksStep1,
+    accent: '#0FA8DC',
+    Visual: UploadVisual,
   },
   {
     num: '02',
     title: 'AI Creates Your Study Plan',
     desc: 'Our Metacognition Engine analyzes your learning patterns and creates a personalized study schedule using spaced repetition science.',
-    icon: Brain,
-    Illustration: HowItWorksStep2,
+    accent: '#8B5CF6',
+    Visual: AIVisual,
   },
   {
     num: '03',
     title: 'Learn, Practice, Master',
     desc: 'Follow your adaptive plan, practice with smart quizzes, and track your retention scores. Master every concept before your exams.',
-    icon: Crosshair,
-    Illustration: HowItWorksStep3,
+    accent: '#10B981',
+    Visual: MasteryVisual,
   },
 ];
 
@@ -364,27 +362,15 @@ export default function Home() {
             title="How Blast Learning Works"
             subtitle="Three simple steps to turn everyday study into lasting retention."
           />
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '48px', position: 'relative' }} className="grid-cols-3-md">
-            {howItWorks.map(({ num, title, desc, icon: Icon, Illustration }, idx) => (
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '48px' }} className="grid-cols-3-md">
+            {howItWorks.map(({ num, title, desc, accent, Visual }) => (
               <motion.div
                 key={num}
                 variants={fadeUp}
                 whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                style={{ background: 'white', borderRadius: '20px', padding: '32px', position: 'relative', overflow: 'hidden', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
               >
-                {/* Step badge */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                  <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: idx === 0 ? '#0FA8DC' : idx === 1 ? '#F03C6F' : '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                    <Icon size={17} style={{ color: 'white' }} />
-                  </div>
-                  <span style={{ fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', color: '#8E8EA0', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Step {num}</span>
-                </div>
-                <h3 style={{ fontSize: '17px', fontWeight: 600, marginBottom: '10px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>{title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>{desc}</p>
-                <div>
-                  <Illustration width="100%" height="140" />
-                </div>
+                <HowItWorksCard num={num} title={title} desc={desc} accent={accent} Visual={Visual} />
               </motion.div>
             ))}
           </motion.div>
