@@ -20,71 +20,84 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
 
   return (
     <div
+      className="hover:-translate-y-0.5 transition duration-300 shadow-[0_2px_16px_rgba(28,28,40,0.05)] hover:shadow-[0_10px_32px_rgba(28,28,40,0.10)]"
       style={{
         background: '#FFFFFF',
-        border: '1px solid #ECECF1',
-        borderRadius: '16px',
-        padding: '24px',
+        border: '1px solid #ECEDF2',
+        borderRadius: '20px',
+        padding: '22px',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-        transition: 'transform 0.3s, box-shadow 0.3s',
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
-        (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 28px rgba(28,28,40,0.10)';
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.transform = 'none';
-        (e.currentTarget as HTMLElement).style.boxShadow = '0 2px 12px rgba(28,28,40,0.05)';
       }}
     >
+      {/* Before / After inline stat strip */}
       {metric && improvement && before && after && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px', padding: '12px', borderRadius: '12px', background: '#E9F7EF', border: '1px solid #D1FAE5' }}>
-          <div style={{ textAlign: 'center', flex: 1 }}>
-            <div style={{ fontSize: '10px', fontWeight: 500, marginBottom: '2px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>Before</div>
-            <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#5A5A6E' }}>{before}</div>
+        <div style={{
+          display: 'flex', alignItems: 'stretch', marginBottom: '18px',
+          borderRadius: '12px', overflow: 'hidden',
+          border: `1px solid ${accent}22`,
+        }}>
+          {/* Before column */}
+          <div style={{ flex: 1, textAlign: 'center', padding: '10px 8px', background: '#F8F9FB' }}>
+            <div style={{ fontSize: '9px', fontWeight: 600, color: '#B0B8C4', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '4px' }}>
+              Before
+            </div>
+            <div style={{ fontSize: '19px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#C8CDD6', lineHeight: 1, letterSpacing: '-0.02em' }}>
+              {before}
+            </div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1 }}>
-            <div style={{ fontSize: '10px', fontWeight: 600, color: '#059669', fontFamily: "'Inter', sans-serif", marginBottom: '2px', textTransform: 'uppercase', letterSpacing: '0.04em' }}>{metric}</div>
-            <div style={{ fontSize: '15px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#059669' }}>+{improvement}</div>
+
+          {/* Metric center column */}
+          <div style={{ flex: 1.3, textAlign: 'center', padding: '10px 8px', background: `${accent}12` }}>
+            <div style={{ fontSize: '9px', fontWeight: 700, color: accent, fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '4px' }}>
+              {metric}
+            </div>
+            <div style={{ fontSize: '17px', fontWeight: 800, fontFamily: 'Poppins, sans-serif', color: accent, lineHeight: 1, letterSpacing: '-0.01em' }}>
+              +{improvement}
+            </div>
           </div>
-          <div style={{ textAlign: 'center', flex: 1 }}>
-            <div style={{ fontSize: '10px', fontWeight: 500, marginBottom: '2px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>After</div>
-            <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{after}</div>
+
+          {/* After column */}
+          <div style={{ flex: 1, textAlign: 'center', padding: '10px 8px', background: '#F8F9FB' }}>
+            <div style={{ fontSize: '9px', fontWeight: 600, color: `${accent}CC`, fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '4px' }}>
+              After
+            </div>
+            <div style={{ fontSize: '19px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: accent, lineHeight: 1, letterSpacing: '-0.02em' }}>
+              {after}
+            </div>
           </div>
         </div>
       )}
 
-      {/* Stars, amber to look authentic */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '2px', marginBottom: '12px' }}>
+      {/* Stars */}
+      <div style={{ display: 'flex', gap: '2px', marginBottom: '12px' }}>
         {Array.from({ length: rating }).map((_, i) => (
           <span key={i} style={{ fontSize: '13px', color: '#F59E0B' }}>★</span>
         ))}
       </div>
 
-      <p style={{ fontSize: '14px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '20px', flex: 1 }}>{content}</p>
+      {/* Quote */}
+      <p style={{
+        fontSize: '14px', lineHeight: 1.75, color: '#5A5A6E',
+        fontFamily: 'Inter, sans-serif', marginBottom: '20px', flex: 1,
+      }}>
+        {content}
+      </p>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid #F4F4F6' }}>
+      {/* Attribution */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingTop: '16px', borderTop: '1px solid #F3F4F6' }}>
         <div style={{
-          width: '38px',
-          height: '38px',
-          borderRadius: '50%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontSize: '15px',
-          fontWeight: 700,
-          color: 'white',
-          fontFamily: "'Poppins', sans-serif",
-          flexShrink: 0,
+          width: '38px', height: '38px', borderRadius: '50%',
           background: accent,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          fontSize: '15px', fontWeight: 700, color: 'white',
+          fontFamily: 'Poppins, sans-serif', flexShrink: 0,
         }}>
           {name.charAt(0)}
         </div>
         <div>
-          <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: "'Poppins', sans-serif" }}>{name}</p>
-          <p style={{ fontSize: '12px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>{role}</p>
+          <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif', margin: 0 }}>{name}</p>
+          <p style={{ fontSize: '12px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: 0 }}>{role}</p>
         </div>
       </div>
     </div>
