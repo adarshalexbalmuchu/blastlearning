@@ -318,7 +318,7 @@ export default function HowItWorksCard({ num, title, desc, accent, Visual }: How
         background: 'white',
         borderRadius: '20px',
         overflow: 'hidden',
-        border: '1.5px solid #ECEDF2',
+        border: '1.5px solid #ECECF1',
         boxShadow: '0 4px 24px rgba(28,28,40,0.07)',
         cursor: 'default',
       }}

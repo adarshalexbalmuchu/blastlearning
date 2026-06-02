@@ -41,10 +41,10 @@ export default function DashboardMockup() {
   return (
     <div style={{
       background: '#FFFFFF',
-      borderRadius: '16px',
+      borderRadius: '20px',
       overflow: 'hidden',
-      border: '1px solid #ECECF1',
-      boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
+      border: '1.5px solid #ECECF1',
+      boxShadow: '0 2px 16px rgba(28,28,40,0.05)',
     }}>
       {/* Header bar */}
       <div style={{ padding: '16px 20px', borderBottom: '1px solid #ECECF1', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>

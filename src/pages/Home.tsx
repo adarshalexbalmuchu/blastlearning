@@ -122,7 +122,7 @@ const parentConcerns = [
 ];
 
 const homeFaqs = [
-  { q: 'What is Blast Learning and how does it work?', a: 'Blast Learning is an AI-powered learning retention platform. Students upload their coaching notes or recordings, and our Metacognition Engine creates a spaced repetition study plan that helps them retain 90% of what they learn, compared to the 10% most students retain without structured revision.' },
+  { q: 'What is Blast Learning and how does it work?', a: 'Blast Learning is an AI-powered learning retention platform. Students upload their coaching notes or recordings, and our Metacognition Engine creates a spaced repetition study plan that helps 91% of students improve what they retain, compared to the 10% most students remember without structured revision.' },
   { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Plan is specifically designed for Classes 8-10, with full syllabus coverage, NCERT alignment, and board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
   { q: 'How is Blast Learning different from other coaching apps?', a: "Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn't just teach. It tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams." },
   { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 7-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first week." },
@@ -148,7 +148,7 @@ const banners: BannerDef[] = [
     badge: 'AI-Powered Retention System',
     BadgeIcon: Zap,
     headline: 'Your Child Retains Only 10% of Coaching',
-    highlight: 'We Make It 90%',
+    highlight: 'We Lift Retention to 91%',
     subtext: 'Stop wasting money on coaching your child forgets. Our Metacognition Engine uses scientifically-proven spaced repetition to convert expensive tuition into lasting retention.',
     primaryCta: { label: 'Start 7-Day Trial', to: '/programs' },
     secondaryCta: 'See How It Works',
@@ -183,7 +183,7 @@ const banners: BannerDef[] = [
     headline: '91% of Students',
     highlight: 'Improve Their Grades',
     subtext: "The same spaced repetition and active recall methods top rankers rely on, now built for the CBSE syllabus. Join 4,999+ Indian families who saw real grade improvement within 30 days.",
-    primaryCta: { label: 'Start Free Trial', to: '/programs' },
+    primaryCta: { label: 'Start Your 7-Day Free Trial', to: '/programs' },
     secondaryCta: 'See Success Stories',
     scrollTo: 'testimonials',
     trust: ['Results in 30 days', '91% improvement rate', '4.8/5 parent rating'],
@@ -458,9 +458,9 @@ export default function Home() {
 
           {/* Centered header + toggle */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '52px' }}>
-            <p style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#0FA8DC', fontFamily: 'Inter, sans-serif', marginBottom: '10px' }}>
+            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
               Pricing
-            </p>
+            </span>
             <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em', marginBottom: '12px' }}>
               Simple, Transparent Pricing
             </h2>
@@ -583,7 +583,7 @@ export default function Home() {
                       boxShadow: plan.featured ? '0 4px 14px rgba(15,168,220,0.28)' : 'none',
                     }}
                   >
-                    Start Free Trial <ArrowRight size={14} />
+                    Start Your 7-Day Free Trial <ArrowRight size={14} />
                   </Link>
                 </motion.div>
               );
@@ -655,7 +655,7 @@ export default function Home() {
           </motion.div>
 
           <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}>
-            Start Your Free Trial Today <ArrowRight size={16} />
+            Start Your 7-Day Free Trial <ArrowRight size={16} />
           </Link>
         </div>
       </section>
@@ -750,7 +750,7 @@ export default function Home() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '16px', marginBottom: '48px' }}>
             <div>
-              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E9F7EF', color: '#059669', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
+              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
                 Student Stories
               </span>
               <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em', lineHeight: 1.2 }}>

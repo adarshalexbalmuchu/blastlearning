@@ -75,7 +75,7 @@ const features: Feature[] = [
       'Switch languages any time without losing progress',
       'Regional language coverage that keeps expanding',
     ],
-    accent: '#0FA8DC',
+    accent: '#06B6D4',
   },
 ];
 
@@ -97,13 +97,13 @@ export default function FeatureExplorer() {
             key={f.title}
             style={{
               background: '#FFFFFF',
-              border: `1px solid ${isOpen ? f.accent : '#ECECF1'}`,
-              borderRadius: '16px',
+              border: `1.5px solid ${isOpen ? f.accent : '#ECECF1'}`,
+              borderRadius: '20px',
               overflow: 'hidden',
               transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
               boxShadow: isOpen
                 ? `inset 3px 0 0 ${f.accent}, 0 14px 38px ${f.accent}1F`
-                : '0 2px 12px rgba(28,28,40,0.05)',
+                : '0 2px 16px rgba(28,28,40,0.05)',
             }}
             onMouseEnter={(e) => {
               if (!isOpen) {
@@ -114,7 +114,7 @@ export default function FeatureExplorer() {
             onMouseLeave={(e) => {
               if (!isOpen) {
                 e.currentTarget.style.borderColor = '#ECECF1';
-                e.currentTarget.style.boxShadow = '0 2px 12px rgba(28,28,40,0.05)';
+                e.currentTarget.style.boxShadow = '0 2px 16px rgba(28,28,40,0.05)';
               }
             }}
           >
