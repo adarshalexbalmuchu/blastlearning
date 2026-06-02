@@ -15,8 +15,8 @@ import heroBanner4 from '../assets/hero-banner-4.png';
 import ctaBanner from '../assets/cta-banner.png';
 import {
   ForgettingCurveIllustration,
-  ScoreTransformIllustration,
 } from '../components/illustrations';
+import ResultsScoreCards from '../components/ResultsScoreCards';
 import HowItWorksCard, { UploadVisual, AIVisual, MasteryVisual } from '../components/HowItWorksCard';
 import { useState, useEffect, useRef } from 'react';
 
@@ -617,12 +617,10 @@ export default function Home() {
             subtitle="Our students consistently report higher retention, improved exam performance, and greater confidence within their first 30 days."
           />
 
-          {/* Score transformation arcs */}
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ maxWidth: '520px', margin: '0 auto 48px' }}>
-            <div style={{ background: '#F7F7F8', border: '1px solid #ECECF1', borderRadius: '20px', padding: '24px 16px 8px' }}>
-              <ScoreTransformIllustration width="100%" />
-            </div>
-          </motion.div>
+          {/* Animated score gauge cards */}
+          <div style={{ marginBottom: '48px', textAlign: 'left' }}>
+            <ResultsScoreCards />
+          </div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid-cols-3-sm" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', maxWidth: '720px', margin: '0 auto 48px' }}>
             {[
