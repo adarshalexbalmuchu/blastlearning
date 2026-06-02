@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import {
-  ArrowRight, Brain, Crosshair, BookOpen, Users,
+  ArrowRight, BookOpen, Users,
   ChevronDown, CheckCircle, AlertCircle, TrendingUp, Zap,
 } from 'lucide-react';
 import TestimonialCard from '../components/TestimonialCard';
@@ -43,6 +43,73 @@ const howItWorks = [
     desc: 'Follow your adaptive plan, practice with smart quizzes, and track your retention scores. Master every concept before your exams.',
     accent: '#10B981',
     Visual: MasteryVisual,
+  },
+];
+
+const pricingPlans = [
+  {
+    id: 'cbse',
+    name: 'CBSE Plan',
+    classes: 'Classes 8–10',
+    desc: 'Complete board prep with AI-powered retention tracking.',
+    monthlyPrice: 1299,
+    yearlyMonthly: 1039,
+    features: [
+      'Full NCERT syllabus coverage',
+      'AI spaced repetition study plans',
+      'Parent dashboard & WhatsApp alerts',
+      'Board exam mock tests',
+      'Live retention score tracking',
+    ],
+    featured: true,
+  },
+  {
+    id: 'math',
+    name: 'Math Genius',
+    classes: 'Classes 8–12',
+    desc: 'Gap-fill and master every math concept from foundation up.',
+    monthlyPrice: 999,
+    yearlyMonthly: 799,
+    features: [
+      'Personalised gap analysis',
+      'Foundation to advanced topics',
+      'Speed & accuracy drills',
+      'AI-generated practice sets',
+      'Visual concept explainers',
+    ],
+    featured: false,
+  },
+  {
+    id: 'english',
+    name: 'English Mastery',
+    classes: 'All Classes',
+    desc: 'Grammar, writing, and reading — built systematically.',
+    monthlyPrice: 999,
+    yearlyMonthly: 799,
+    features: [
+      'Grammar & writing modules',
+      'Reading comprehension tools',
+      'Vocabulary builder',
+      'AI essay feedback',
+      'Exam-style practice sets',
+    ],
+    featured: false,
+  },
+  {
+    id: 'sat',
+    name: 'SAT Prep Pass',
+    classes: 'Classes 10–12',
+    desc: 'Adaptive SAT prep designed for top college scores.',
+    monthlyPrice: 999,
+    yearlyMonthly: 799,
+    features: [
+      'Complete SAT syllabus',
+      'Adaptive timed mock tests',
+      'Score improvement tracking',
+      'Verbal & math sections',
+      'College-ready benchmarks',
+    ],
+    featured: false,
   },
 ];
 
@@ -188,6 +255,7 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title:
 // ─── Home page ─────────────────────────────────────────────────────────────────
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [isYearly, setIsYearly] = useState(false);
   const [activeBanner, setActiveBanner] = useState(0);
   const [direction, setDirection] = useState(1);
   const [progressKey, setProgressKey] = useState(0);
@@ -382,72 +450,151 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Programs Preview (white) ── */}
+      {/* ── Pricing / Programs (white) ── */}
       <section id="programs-preview" className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="flex items-end justify-between" style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em' }}>
-              Our Programs
+
+          {/* Centered header + toggle */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '52px' }}>
+            <p style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#0FA8DC', fontFamily: 'Inter, sans-serif', marginBottom: '10px' }}>
+              Pricing
+            </p>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em', marginBottom: '12px' }}>
+              Simple, Transparent Pricing
             </h2>
-            <Link to="/programs" style={{ fontSize: '14px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px', color: '#0FA8DC', fontFamily: 'Inter, sans-serif', textDecoration: 'none', flexShrink: 0 }}>
-              View All <ChevronDown size={14} style={{ color: '#0FA8DC' }} className="-rotate-90" />
-            </Link>
+            <p style={{ fontSize: '16px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px', maxWidth: '440px', margin: '0 auto 28px' }}>
+              All plans include a 7-day free trial. No credit card required.
+            </p>
+            {/* Monthly / Yearly toggle */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontSize: '14px', fontWeight: 500, fontFamily: 'Inter, sans-serif', color: '#1C1C28' }}>
+              <span style={{ opacity: isYearly ? 0.45 : 1, transition: 'opacity 0.2s' }}>Monthly</span>
+              <button
+                onClick={() => setIsYearly(!isYearly)}
+                aria-label="Toggle billing period"
+                style={{ width: '44px', height: '24px', borderRadius: '999px', background: isYearly ? '#0FA8DC' : '#D1D5DB', border: 'none', cursor: 'pointer', position: 'relative', transition: 'background 0.25s', padding: 0, flexShrink: 0 }}
+              >
+                <span style={{ position: 'absolute', top: '3px', left: isYearly ? '23px' : '3px', width: '18px', height: '18px', borderRadius: '50%', background: 'white', boxShadow: '0 1px 4px rgba(0,0,0,0.2)', transition: 'left 0.25s' }} />
+              </button>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', opacity: isYearly ? 1 : 0.45, transition: 'opacity 0.2s' }}>
+                Yearly
+                <span style={{ padding: '2px 8px', borderRadius: '9999px', background: '#ECFDF5', color: '#059669', fontSize: '11px', fontWeight: 700, fontFamily: 'Inter, sans-serif' }}>
+                  Save 20%
+                </span>
+              </span>
+            </div>
           </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }} className="grid-cols-2-md grid-cols-4-lg">
-            {[
-              { name: 'CBSE Plan', price: '₹1,299', classes: 'Classes 8-10', desc: 'Full CBSE syllabus coverage with AI study buddy and board exam preparation.', outcomes: ['Board Mastery', 'NCERT Clarity', 'Retention'], icon: BookOpen, featured: true },
-              { name: 'Math Genius Maker', price: '₹999', classes: 'Classes 8-12', desc: 'Gap assessment and personalized math lessons from foundation to advanced.', outcomes: ['Gap Filling', 'Speed & Accuracy', 'Mastery'], icon: Crosshair },
-              { name: 'English Mastery', price: '₹999', classes: 'All Classes', desc: 'Grammar, writing, reading, and comprehension skills built systematically.', outcomes: ['Grammar', 'Writing', 'Reading'], icon: Brain },
-              { name: 'SAT Prep Pass', price: '₹999', classes: 'Classes 10-12', desc: 'Foundation-level SAT preparation with adaptive tests and complete score optimization.', outcomes: ['High Scores', 'Test Strategy', 'College Ready'], icon: TrendingUp },
-            ].map((prog) => {
-              const Icon = prog.icon;
+
+          {/* Pricing cards */}
+          <motion.div
+            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}
+            className="grid-cols-2-md grid-cols-4-lg"
+          >
+            {pricingPlans.map((plan) => {
+              const price = isYearly ? plan.yearlyMonthly : plan.monthlyPrice;
+              const annualYearly = plan.yearlyMonthly * 12;
+              const annualMonthly = plan.monthlyPrice * 12;
               return (
                 <motion.div
-                  key={prog.name}
+                  key={plan.id}
                   variants={fadeUp}
-                  whileHover={{ y: -6 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  whileHover={{ y: -4 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 22 }}
                   style={{
                     position: 'relative',
                     background: '#FFFFFF',
-                    border: prog.featured ? '2px solid #0FA8DC' : '1px solid #ECECF1',
+                    border: plan.featured ? '2px solid #0FA8DC' : '1.5px solid #ECECF1',
                     borderRadius: '20px',
-                    padding: '24px',
-                    boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
+                    padding: '28px 24px',
+                    boxShadow: plan.featured
+                      ? '0 8px 32px rgba(15,168,220,0.14)'
+                      : '0 2px 12px rgba(28,28,40,0.04)',
+                    display: 'flex',
+                    flexDirection: 'column',
                   }}
                 >
-                  {prog.featured && (
-                    <span style={{ position: 'absolute', top: '-12px', left: '20px', padding: '4px 14px', fontSize: '11px', fontWeight: 600, color: 'white', background: '#0FA8DC', borderRadius: '9999px', fontFamily: 'Inter, sans-serif' }}>
+                  {/* Most Popular badge */}
+                  {plan.featured && (
+                    <span style={{
+                      position: 'absolute', top: '-13px', left: '50%', transform: 'translateX(-50%)',
+                      padding: '4px 14px', fontSize: '11px', fontWeight: 700, color: 'white',
+                      background: '#0FA8DC', borderRadius: '9999px', fontFamily: 'Inter, sans-serif',
+                      whiteSpace: 'nowrap', boxShadow: '0 2px 8px rgba(15,168,220,0.35)',
+                    }}>
                       Most Popular
                     </span>
                   )}
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: prog.featured ? '#0FA8DC' : '#E0F5FC', color: prog.featured ? 'white' : '#0FA8DC' }}>
-                      <Icon size={18} />
-                    </div>
-                    <div style={{ textAlign: 'right' }}>
-                      <span style={{ fontSize: '20px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>{prog.price}</span>
-                      <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginLeft: '2px' }}>/mo</span>
-                    </div>
+
+                  {/* Plan name + classes */}
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '8px', marginBottom: '6px' }}>
+                    <h3 style={{ fontSize: '17px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', margin: 0 }}>
+                      {plan.name}
+                    </h3>
+                    <span style={{ padding: '2px 9px', fontSize: '11px', fontWeight: 600, borderRadius: '9999px', background: '#F0F9FF', color: '#0FA8DC', fontFamily: 'Inter, sans-serif', flexShrink: 0, marginTop: '2px' }}>
+                      {plan.classes}
+                    </span>
                   </div>
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', marginBottom: '6px', padding: '2px 8px', borderRadius: '9999px', background: '#E0F5FC', fontSize: '10px', fontWeight: 600, color: '#0FA8DC', fontFamily: 'Inter, sans-serif' }}>
-                    <Zap size={9} /> AI Powered
+                  <p style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: '0 0 20px', lineHeight: 1.5 }}>
+                    {plan.desc}
+                  </p>
+
+                  {/* Price */}
+                  <div style={{ marginBottom: '20px' }}>
+                    <div style={{ display: 'flex', alignItems: 'flex-end', gap: '2px' }}>
+                      <span style={{ fontSize: '15px', fontWeight: 600, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', paddingBottom: '6px' }}>₹</span>
+                      <span style={{ fontSize: '40px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', lineHeight: 1 }}>
+                        {price.toLocaleString('en-IN')}
+                      </span>
+                      <span style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', paddingBottom: '5px', marginLeft: '2px' }}>/mo</span>
+                    </div>
+                    <p style={{ fontSize: '12px', color: '#A0A0B0', fontFamily: 'Inter, sans-serif', marginTop: '4px' }}>
+                      {isYearly
+                        ? `Billed ₹${annualYearly.toLocaleString('en-IN')}/yr · saves ₹${(annualMonthly - annualYearly).toLocaleString('en-IN')}`
+                        : `₹${plan.yearlyMonthly.toLocaleString('en-IN')}/mo when billed yearly`}
+                    </p>
                   </div>
-                  <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', marginBottom: '4px', fontFamily: 'Poppins, sans-serif' }}>{prog.name}</h3>
-                  <span style={{ display: 'inline-block', marginBottom: '10px', padding: '2px 9px', fontSize: '11px', fontWeight: 500, borderRadius: '9999px', background: '#F7F7F8', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{prog.classes}</span>
-                  <p style={{ fontSize: '13px', lineHeight: 1.6, color: '#5A5A6E', marginBottom: '14px', fontFamily: 'Inter, sans-serif' }}>{prog.desc}</p>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '16px' }}>
-                    {prog.outcomes.map((o) => (
-                      <span key={o} style={{ padding: '2px 9px', fontSize: '11px', fontWeight: 500, borderRadius: '9999px', border: '1px solid #ECECF1', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{o}</span>
+
+                  {/* Separator */}
+                  <div style={{ height: '1px', background: '#F0F0F5', marginBottom: '20px' }} />
+
+                  {/* Features */}
+                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'flex', flexDirection: 'column', gap: '11px', flex: 1 }}>
+                    {plan.features.map((f) => (
+                      <li key={f} style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
+                        <CheckCircle size={15} style={{ color: '#0FA8DC', flexShrink: 0 }} />
+                        <span style={{ fontSize: '13px', color: '#3D3D4E', fontFamily: 'Inter, sans-serif', lineHeight: 1.4 }}>{f}</span>
+                      </li>
                     ))}
-                  </div>
-                  <Link to="/programs" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '11px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: prog.featured ? '#0FA8DC' : 'white', color: prog.featured ? 'white' : '#1C1C28', border: prog.featured ? 'none' : '1.5px solid #DCDCE5' }}>
-                    Learn More <ArrowRight size={13} />
+                  </ul>
+
+                  {/* CTA */}
+                  <Link
+                    to="/programs"
+                    style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
+                      padding: '12px 20px', borderRadius: '10px',
+                      fontSize: '14px', fontWeight: 600, fontFamily: 'Inter, sans-serif',
+                      textDecoration: 'none', marginTop: 'auto',
+                      background: plan.featured ? '#0FA8DC' : 'transparent',
+                      color: plan.featured ? 'white' : '#1C1C28',
+                      border: plan.featured ? 'none' : '1.5px solid #DCDCE5',
+                      boxShadow: plan.featured ? '0 4px 14px rgba(15,168,220,0.28)' : 'none',
+                    }}
+                  >
+                    Start Free Trial <ArrowRight size={14} />
                   </Link>
                 </motion.div>
               );
             })}
           </motion.div>
+
+          {/* Footer link */}
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} style={{ textAlign: 'center', marginTop: '32px', fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>
+            Not sure which plan is right?{' '}
+            <Link to="/programs" style={{ color: '#0FA8DC', fontWeight: 600, textDecoration: 'none' }}>
+              Compare all programs →
+            </Link>
+          </motion.p>
         </div>
       </section>
 
