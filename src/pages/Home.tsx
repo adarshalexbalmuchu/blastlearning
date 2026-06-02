@@ -783,35 +783,27 @@ export default function Home() {
             title="Frequently Asked Questions"
             subtitle="Everything you need to know before you start your free trial."
           />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '32px' }}>
+          <div style={{ borderTop: '1px solid #E5E7EB', marginBottom: '32px' }}>
             {homeFaqs.map((faq, i) => (
-              <div
-                key={i}
-                style={{
-                  background: '#FFFFFF',
-                  border: openFaq === i ? '1px solid #0FA8DC' : '1px solid #ECECF1',
-                  borderRadius: '14px',
-                  overflow: 'hidden',
-                  transition: 'border-color 0.25s',
-                  boxShadow: '0 2px 12px rgba(28,28,40,0.04)',
-                }}
-              >
+              <div key={i} style={{ borderBottom: '1px solid #E5E7EB' }}>
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', padding: '18px 20px', textAlign: 'left', cursor: 'pointer', background: 'transparent', border: 'none' }}
+                  className="hover:underline"
+                  style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', padding: '16px 0', textAlign: 'left', cursor: 'pointer', background: 'transparent', border: 'none' }}
                 >
-                  <span style={{ fontSize: '14px', fontWeight: 600, color: openFaq === i ? '#0FA8DC' : '#1C1C28', fontFamily: 'Inter, sans-serif', transition: 'color 0.25s' }}>{faq.q}</span>
-                  <motion.div animate={{ rotate: openFaq === i ? 180 : 0 }} transition={{ duration: 0.25 }} style={{ flexShrink: 0, color: '#0FA8DC' }}>
-                    <ChevronDown size={18} />
+                  <span style={{ fontSize: '15px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.45 }}>
+                    {faq.q}
+                  </span>
+                  <motion.div animate={{ rotate: openFaq === i ? 180 : 0 }} transition={{ duration: 0.2 }} style={{ flexShrink: 0, opacity: 0.6, color: '#1C1C28' }}>
+                    <ChevronDown size={16} strokeWidth={2} />
                   </motion.div>
                 </button>
                 <AnimatePresence initial={false}>
                   {openFaq === i && (
-                    <motion.div key="faq-answer" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.28, ease: 'easeInOut' }} style={{ overflow: 'hidden' }}>
-                      <div style={{ padding: '0 20px 18px', borderTop: '1px solid #ECECF1' }}>
-                        <div style={{ height: '12px' }} />
-                        <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{faq.a}</p>
-                      </div>
+                    <motion.div key="faq-answer" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.22, ease: 'easeInOut' }} style={{ overflow: 'hidden' }}>
+                      <p style={{ fontSize: '14px', lineHeight: 1.72, color: '#6B7280', fontFamily: 'Inter, sans-serif', margin: 0, paddingBottom: '16px' }}>
+                        {faq.a}
+                      </p>
                     </motion.div>
                   )}
                 </AnimatePresence>

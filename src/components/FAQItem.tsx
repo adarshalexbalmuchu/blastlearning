@@ -11,40 +11,35 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div
-      style={{
-        background: '#FFFFFF',
-        border: open ? '1px solid #0FA8DC' : '1px solid #ECECF1',
-        borderRadius: '16px',
-        overflow: 'hidden',
-        boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-        transition: 'border-color 0.25s',
-      }}
-    >
+    <div style={{ borderBottom: '1px solid #E5E7EB' }}>
       <button
         onClick={() => setOpen((v) => !v)}
+        className="hover:underline"
         style={{
           width: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: '16px',
-          padding: '18px 20px',
+          padding: '16px 0',
           textAlign: 'left',
           cursor: 'pointer',
           background: 'transparent',
           border: 'none',
         }}
       >
-        <span style={{ fontSize: '14px', fontWeight: 600, color: open ? '#0FA8DC' : '#1C1C28', fontFamily: "'Poppins', sans-serif", transition: 'color 0.25s' }}>
+        <span style={{
+          fontSize: '15px', fontWeight: 600,
+          color: '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.45,
+        }}>
           {question}
         </span>
         <motion.div
           animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.25 }}
-          style={{ flexShrink: 0, color: '#0FA8DC' }}
+          transition={{ duration: 0.2 }}
+          style={{ flexShrink: 0, opacity: 0.6, color: '#1C1C28' }}
         >
-          <ChevronDown size={18} />
+          <ChevronDown size={16} strokeWidth={2} />
         </motion.div>
       </button>
 
@@ -55,13 +50,16 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            transition={{ duration: 0.22, ease: 'easeInOut' }}
             style={{ overflow: 'hidden' }}
           >
-            <div style={{ padding: '0 20px 18px', borderTop: '1px solid #ECECF1' }}>
-              <div style={{ height: '12px' }} />
-              <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{answer}</p>
-            </div>
+            <p style={{
+              fontSize: '14px', lineHeight: 1.72,
+              color: '#6B7280', fontFamily: 'Inter, sans-serif',
+              margin: 0, paddingBottom: '16px',
+            }}>
+              {answer}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
