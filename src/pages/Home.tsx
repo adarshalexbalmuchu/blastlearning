@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import {
   ArrowRight, Brain, Crosshair, BookOpen, Users,
-  ChevronDown, CheckCircle, AlertCircle, TrendingUp, Zap, Star,
+  ChevronDown, CheckCircle, AlertCircle, TrendingUp, Zap,
 } from 'lucide-react';
 import TestimonialCard from '../components/TestimonialCard';
 import DashboardMockup from '../components/DashboardMockup';
@@ -12,6 +12,7 @@ import heroBanner1 from '../assets/hero-banner-1.png';
 import heroBanner2 from '../assets/hero-banner-2.png';
 import heroBanner3 from '../assets/hero-banner-3.png';
 import heroBanner4 from '../assets/hero-banner-4.png';
+import ctaBanner from '../assets/cta-banner.png';
 import {
   ForgettingCurveIllustration,
   HowItWorksStep1,
@@ -674,116 +675,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Final CTA (premium deep indigo) ── */}
-      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F8FAFC' }}>
-        <div style={{ maxWidth: '960px', margin: '0 auto', padding: '0 24px' }}>
+      {/* ── Final CTA Banner ── */}
+      <section style={{ background: '#F8FAFC', paddingTop: '48px', paddingBottom: '48px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
-            initial={{ opacity: 0, y: 32 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            style={{
-              position: 'relative',
-              overflow: 'hidden',
-              background: 'linear-gradient(145deg, #0C1445 0%, #1e3a8a 52%, #2563EB 100%)',
-              borderRadius: '32px',
-              padding: 'clamp(48px, 8vw, 76px) clamp(24px, 6vw, 64px)',
-              textAlign: 'center',
-              boxShadow: '0 32px 80px rgba(12,20,69,0.42), inset 0 1px 0 rgba(255,255,255,0.09)',
-              border: '1px solid rgba(255,255,255,0.07)',
-            }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 8px 40px rgba(28,28,40,0.12)' }}
           >
-            {/* Ambient glow blobs — indigo top-left, brand pink bottom-right */}
-            <div aria-hidden="true" style={{ position: 'absolute', top: '-96px', left: '5%', width: '340px', height: '340px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 68%)', pointerEvents: 'none' }} />
-            <div aria-hidden="true" style={{ position: 'absolute', bottom: '-96px', right: '5%', width: '300px', height: '300px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(244,63,126,0.18) 0%, transparent 68%)', pointerEvents: 'none' }} />
-
-            {/* Content */}
-            <div style={{ position: 'relative', zIndex: 1 }}>
-
-              {/* Eyebrow pill */}
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', padding: '6px 16px', borderRadius: '9999px', background: 'rgba(255,255,255,0.09)', border: '1px solid rgba(255,255,255,0.16)', marginBottom: '32px' }}>
-                <Star size={11} fill="rgba(255,255,255,0.75)" style={{ color: 'rgba(255,255,255,0.75)' }} />
-                <span style={{ fontSize: '12px', fontWeight: 600, color: 'rgba(255,255,255,0.82)', fontFamily: 'Inter, sans-serif', letterSpacing: '0.07em', textTransform: 'uppercase' }}>
-                  Trusted by 4,999+ Families
-                </span>
-              </div>
-
-              {/* Headline */}
-              <h2 style={{ fontSize: 'clamp(1.875rem, 4vw, 3.25rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#FFFFFF', marginBottom: '20px', letterSpacing: '-0.025em', lineHeight: 1.1 }}>
-                Help Your Child Learn<br />Independently
-              </h2>
-
-              {/* Subtext */}
-              <p style={{ fontSize: '17px', color: 'rgba(255,255,255,0.62)', fontFamily: 'Inter, sans-serif', marginBottom: '48px', lineHeight: 1.75, maxWidth: '520px', marginLeft: 'auto', marginRight: 'auto' }}>
-                Join 4,999+ families who have raised their child's grades with retention methods proven by cognitive science.
-              </p>
-
-              {/* CTA buttons */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '12px', marginBottom: '36px' }}>
-                <motion.div
-                  whileHover={{ scale: 1.03, y: -2 }}
-                  transition={{ type: 'spring', stiffness: 320, damping: 22 }}
-                >
-                  <Link
-                    to="/programs"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '8px',
-                      padding: '15px 36px',
-                      borderRadius: '12px',
-                      background: 'linear-gradient(135deg, #F43F7E 0%, #EC4899 100%)',
-                      color: 'white',
-                      fontSize: '15px',
-                      fontWeight: 700,
-                      fontFamily: 'Inter, sans-serif',
-                      textDecoration: 'none',
-                      boxShadow: '0 4px 18px rgba(244,63,126,0.40), 0 1px 4px rgba(244,63,126,0.22)',
-                      transition: 'box-shadow 0.2s ease, filter 0.2s ease',
-                      whiteSpace: 'nowrap',
-                    }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(244,63,126,0.56), 0 2px 8px rgba(244,63,126,0.30)'; (e.currentTarget as HTMLElement).style.filter = 'brightness(1.06)'; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = '0 4px 18px rgba(244,63,126,0.40), 0 1px 4px rgba(244,63,126,0.22)'; (e.currentTarget as HTMLElement).style.filter = 'none'; }}
-                  >
-                    Start 7-Day Free Trial <ArrowRight size={16} />
-                  </Link>
-                </motion.div>
-                <Link
-                  to="/contact"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '15px 32px',
-                    borderRadius: '12px',
-                    border: '1.5px solid rgba(255,255,255,0.22)',
-                    background: 'rgba(255,255,255,0.07)',
-                    color: 'rgba(255,255,255,0.88)',
-                    fontSize: '15px',
-                    fontWeight: 600,
-                    fontFamily: 'Inter, sans-serif',
-                    textDecoration: 'none',
-                    transition: 'background 0.2s ease, border-color 0.2s ease',
-                    whiteSpace: 'nowrap',
-                  }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.13)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.42)'; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.07)'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.22)'; }}
-                >
-                  Speak to a Learning Advisor
-                </Link>
-              </div>
-
-              {/* Trust signals */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: '24px' }}>
-                {['No credit card required', 'Free 7-day trial', 'Cancel anytime'].map((t) => (
-                  <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'rgba(255,255,255,0.48)', fontFamily: 'Inter, sans-serif' }}>
-                    <CheckCircle size={12} style={{ color: 'rgba(255,255,255,0.48)' }} />
-                    {t}
-                  </div>
-                ))}
-              </div>
-
-            </div>
+            <Link to="/programs" style={{ display: 'block', textDecoration: 'none' }}>
+              <img
+                src={ctaBanner}
+                alt="Smart Learning Today. Stronger Tomorrow. — Start Your Journey with Blast Learning"
+                className="cta-banner-img"
+              />
+            </Link>
           </motion.div>
         </div>
       </section>
