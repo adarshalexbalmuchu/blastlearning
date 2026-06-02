@@ -77,7 +77,7 @@ function ScoreGaugeCard({ data, index }: { data: ScoreData; index: number }) {
         background: 'white',
         borderRadius: '20px',
         padding: '22px 20px 20px',
-        border: '1.5px solid #ECEDF2',
+        border: '1.5px solid #ECECF1',
         boxShadow: '0 2px 16px rgba(28,28,40,0.05)',
         display: 'flex',
         flexDirection: 'column',

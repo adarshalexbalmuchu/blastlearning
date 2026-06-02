@@ -18,12 +18,12 @@ export default function ProgramCard({ icon, name, price, classRange, description
       style={{
         position: 'relative',
         background: '#FFFFFF',
-        border: featured ? '2px solid #0FA8DC' : '1px solid #ECECF1',
-        borderRadius: '16px',
+        border: featured ? '2px solid #0FA8DC' : '1.5px solid #ECECF1',
+        borderRadius: '20px',
         padding: '24px',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
+        boxShadow: '0 2px 16px rgba(28,28,40,0.05)',
         transition: 'transform 0.3s, box-shadow 0.3s, border-color 0.3s',
       }}
       onMouseEnter={(e) => {
