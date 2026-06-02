@@ -49,6 +49,7 @@ const howItWorks = [
 const pricingPlans = [
   {
     id: 'cbse',
+    slug: 'cbse-plan',
     name: 'CBSE Plan',
     classes: 'Classes 8–10',
     desc: 'Complete board prep with AI-powered retention tracking.',
@@ -65,6 +66,7 @@ const pricingPlans = [
   },
   {
     id: 'math',
+    slug: 'math-genius',
     name: 'Math Genius',
     classes: 'Classes 8–12',
     desc: 'Gap-fill and master every math concept from foundation up.',
@@ -81,6 +83,7 @@ const pricingPlans = [
   },
   {
     id: 'english',
+    slug: 'english-mastery',
     name: 'English Mastery',
     classes: 'All Classes',
     desc: 'Grammar, writing, and reading — built systematically.',
@@ -97,6 +100,7 @@ const pricingPlans = [
   },
   {
     id: 'sat',
+    slug: 'sat-prep',
     name: 'SAT Prep Pass',
     classes: 'Classes 10–12',
     desc: 'Adaptive SAT prep designed for top college scores.',
@@ -571,7 +575,7 @@ export default function Home() {
 
                   {/* CTA */}
                   <Link
-                    to="/programs"
+                    to={`/programs/${plan.slug}`}
                     style={{
                       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
                       padding: '12px 20px', borderRadius: '10px',
