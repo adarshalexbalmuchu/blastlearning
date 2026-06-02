@@ -252,6 +252,18 @@ h1, h2, h3, h4, h5, h6 {
 .city-chips-row::-webkit-scrollbar { display: none; }
 @media (max-width: 767px) { .city-chips-row { flex-wrap: nowrap !important; padding-bottom: 4px; } }
 
+/* ── CTA banner (before footer) ─────────────────────────────────────────────── */
+.cta-banner-img {
+  width: 100%;
+  display: block;
+  height: 180px;
+  object-fit: cover;
+  object-position: left center;
+}
+@media (min-width: 480px) { .cta-banner-img { height: 220px; } }
+@media (min-width: 640px) { .cta-banner-img { height: 280px; } }
+@media (min-width: 768px) { .cta-banner-img { height: auto; object-position: center; } }
+
 /* ── Hero banner image carousel — responsive heights ─────────────────────────── */
 .hero-banner-img {
   width: 100%;

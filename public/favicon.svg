@@ -9,8 +9,6 @@
       <stop offset="100%" stop-color="#E8357A" stop-opacity="0.85"/>
     </linearGradient>
   </defs>
-  <!-- Dark rounded background -->
-  <rect width="64" height="64" rx="13" fill="#07111F"/>
   <!-- Speed / motion lines (brand element) -->
   <rect x="7" y="17" width="12" height="3.5" rx="1.75" fill="url(#ln)"/>
   <rect x="5" y="24" width="16" height="3.5" rx="1.75" fill="url(#ln)"/>
