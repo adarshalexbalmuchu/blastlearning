@@ -1,16 +1,18 @@
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import {
-  ArrowRight, Play, Brain, Crosshair, BookOpen, Users,
+  ArrowRight, Brain, Crosshair, BookOpen, Users,
   ChevronDown, CheckCircle, AlertCircle, TrendingUp, Zap, Star,
-  Bell, Award, BarChart2,
 } from 'lucide-react';
 import TestimonialCard from '../components/TestimonialCard';
 import DashboardMockup from '../components/DashboardMockup';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
+import heroBanner1 from '../assets/hero-banner-1.png';
+import heroBanner2 from '../assets/hero-banner-2.png';
+import heroBanner3 from '../assets/hero-banner-3.png';
+import heroBanner4 from '../assets/hero-banner-4.png';
 import {
-  HeroIllustration,
   ForgettingCurveIllustration,
   HowItWorksStep1,
   HowItWorksStep2,
@@ -122,224 +124,7 @@ const banners: BannerDef[] = [
   },
 ];
 
-// ─── Per-banner visual ─────────────────────────────────────────────────────────
-function HeroVisual({ index }: { index: number }) {
-  const cardStyle: React.CSSProperties = {
-    background: '#F7F7F8',
-    borderRadius: '14px',
-    padding: '20px',
-    border: '1px solid #ECECF1',
-    width: '100%',
-    boxSizing: 'border-box',
-  };
-
-  const valStyle = (): React.CSSProperties => ({
-    fontSize: '18px',
-    fontWeight: 700,
-    fontFamily: 'Poppins, sans-serif',
-    color: '#0FA8DC',
-    display: 'block',
-  });
-
-  if (index === 0) {
-    return (
-      <div style={{ padding: '4px' }}>
-        <div style={{ marginBottom: '10px' }}>
-          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#0FA8DC', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
-            90% Retention Rate
-          </span>
-        </div>
-        <div style={cardStyle}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', flexWrap: 'wrap', gap: '8px' }}>
-            <div>
-              <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '3px' }}>Today's Learning Session</p>
-              <p style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif' }}>Arjun's Progress</p>
-            </div>
-            <span style={{ padding: '4px 11px', borderRadius: '9999px', background: '#0FA8DC', color: 'white', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
-              Today: 87%
-            </span>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginBottom: '16px' }}>
-            {[
-              { label: 'Retention Score', val: '87%' },
-              { label: 'Topics Covered', val: '12/15' },
-              { label: 'Study Streak', val: '14 days' },
-              { label: 'Quiz Score', val: '92%' },
-            ].map((item) => (
-              <div key={item.label} style={{ background: '#FFFFFF', borderRadius: '10px', padding: '12px', border: '1px solid #ECECF1' }}>
-                <span style={valStyle()}>{item.val}</span>
-                <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '3px' }}>{item.label}</p>
-              </div>
-            ))}
-          </div>
-          <div style={{ background: '#FFFFFF', borderRadius: '10px', padding: '14px', border: '1px solid #ECECF1' }}>
-            <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '10px' }}>Today's Revision Queue</p>
-            {['Chapter 4: Quadratic Equations', 'Photosynthesis Process', 'English Grammar: Tenses'].map((topic, i) => (
-              <div key={topic} style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: i < 2 ? '7px' : 0 }}>
-                <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: i === 0 ? '#0FA8DC' : '#ECECF1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                  <span style={{ color: i === 0 ? 'white' : '#8E8EA0', fontSize: '10px', fontWeight: 700 }}>{i + 1}</span>
-                </div>
-                <span style={{ color: '#1C1C28', fontSize: '12px', fontFamily: 'Inter, sans-serif' }}>{topic}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (index === 1) {
-    const subjects = [
-      { name: 'Mathematics', pct: 92 },
-      { name: 'Science', pct: 85 },
-      { name: 'English', pct: 78 },
-      { name: 'Social Studies', pct: 88 },
-    ];
-    return (
-      <div style={{ padding: '4px' }}>
-        <div style={{ marginBottom: '10px' }}>
-          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#0FA8DC', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
-            CBSE Class 10 · On Track
-          </span>
-        </div>
-        <div style={cardStyle}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
-            <div>
-              <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '3px' }}>Subject Retention Overview</p>
-              <p style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif' }}>Priya's Board Prep</p>
-            </div>
-            <span style={{ padding: '4px 10px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif', border: '1px solid #B5E3F4' }}>
-              24/32 chapters
-            </span>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '16px' }}>
-            {subjects.map(({ name, pct }) => (
-              <div key={name}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
-                  <span style={{ fontSize: '12px', fontWeight: 500, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>{name}</span>
-                  <span style={{ fontSize: '12px', fontWeight: 600, color: '#0FA8DC', fontFamily: 'Inter, sans-serif' }}>{pct}%</span>
-                </div>
-                <div style={{ height: '5px', background: '#ECECF1', borderRadius: '3px', overflow: 'hidden' }}>
-                  <div style={{ width: `${pct}%`, height: '100%', background: '#0FA8DC', borderRadius: '3px' }} />
-                </div>
-              </div>
-            ))}
-          </div>
-          <div style={{ background: '#FFFFFF', borderRadius: '10px', padding: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid #ECECF1' }}>
-            <div>
-              <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '3px' }}>Board Exam Date</p>
-              <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif' }}>March 2025</p>
-            </div>
-            <span style={{ padding: '4px 12px', borderRadius: '9999px', background: '#0FA8DC', color: 'white', fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
-              On Track
-            </span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (index === 2) {
-    const alerts = [
-      { Icon: CheckCircle, color: '#0FA8DC', text: 'Session completed: 1h 42m (3:45 PM)' },
-      { Icon: BarChart2, color: '#0FA8DC', text: 'Math retention up 8% this week' },
-      { Icon: Award, color: '#1C8A5B', text: 'Weekly goal: 85% achieved today' },
-    ];
-    return (
-      <div style={{ padding: '4px' }}>
-        <div style={{ marginBottom: '10px' }}>
-          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#0FA8DC', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
-            Live Parent Dashboard
-          </span>
-        </div>
-        <div style={cardStyle}>
-          <div style={{ marginBottom: '14px' }}>
-            <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '3px' }}>Today's Summary</p>
-            <p style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif' }}>Kavitha's Dashboard</p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '8px', marginBottom: '14px' }}>
-            {[
-              { label: 'Study Time', val: '1h 42m' },
-              { label: 'Retention', val: '89%' },
-              { label: 'Chapters', val: '3 done' },
-            ].map((item) => (
-              <div key={item.label} style={{ background: '#FFFFFF', borderRadius: '8px', padding: '10px', textAlign: 'center', border: '1px solid #ECECF1' }}>
-                <p style={{ fontSize: '13px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#0FA8DC' }}>{item.val}</p>
-                <p style={{ fontSize: '9px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '2px' }}>{item.label}</p>
-              </div>
-            ))}
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginBottom: '10px' }}>
-            {alerts.map(({ Icon, color, text }) => (
-              <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '9px', padding: '8px 10px', borderRadius: '8px', background: '#FFFFFF', border: '1px solid #ECECF1' }}>
-                <div style={{ width: '20px', height: '20px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: color, flexShrink: 0 }}>
-                  <Icon size={10} style={{ color: 'white' }} />
-                </div>
-                <span style={{ fontSize: '11px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{text}</span>
-              </div>
-            ))}
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '9px 12px', borderRadius: '8px', background: '#25D366' }}>
-            <Bell size={13} style={{ color: 'white' }} />
-            <span style={{ fontSize: '11px', color: 'white', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>WhatsApp report sent to parent</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // index === 3: Results card
-  const results = [
-    { name: 'Ananya K.', subject: 'Mathematics', before: 65, after: 89 },
-    { name: 'Rahul M.', subject: 'Physics', before: 52, after: 81 },
-    { name: 'Priya S.', subject: 'English', before: 58, after: 84 },
-  ];
-  return (
-    <div style={{ padding: '4px' }}>
-      <div style={{ marginBottom: '10px' }}>
-        <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '8px', background: '#0FA8DC', color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
-          Real Student Results in 30 Days
-        </span>
-      </div>
-      <div style={cardStyle}>
-        <div style={{ marginBottom: '14px' }}>
-          <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '3px' }}>Before vs After Blast Learning</p>
-          <p style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif' }}>Score Improvements</p>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '14px' }}>
-          {results.map(({ name, subject, before, after }) => (
-            <div key={name} style={{ background: '#FFFFFF', borderRadius: '10px', padding: '10px 12px', border: '1px solid #ECECF1' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                <span style={{ fontSize: '12px', fontWeight: 500, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>{name}</span>
-                <span style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{subject}</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '16px', fontWeight: 600, color: '#8E8EA0', fontFamily: 'Poppins, sans-serif' }}>{before}%</span>
-                <ArrowRight size={13} style={{ color: '#0FA8DC', flexShrink: 0 }} />
-                <span style={{ fontSize: '16px', fontWeight: 700, color: '#0FA8DC', fontFamily: 'Poppins, sans-serif' }}>{after}%</span>
-                <span style={{ marginLeft: 'auto', fontSize: '11px', fontWeight: 600, padding: '2px 7px', borderRadius: '5px', background: '#E9F7EF', color: '#1C8A5B', fontFamily: 'Inter, sans-serif' }}>
-                  +{after - before}%
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px', background: '#FFFFFF', borderRadius: '10px', border: '1px solid #ECECF1' }}>
-          <div>
-            <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '2px' }}>Average improvement</p>
-            <p style={{ fontSize: '22px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#0FA8DC' }}>+27%</p>
-          </div>
-          <div style={{ textAlign: 'right' }}>
-            <div style={{ display: 'flex', gap: '2px', justifyContent: 'flex-end', marginBottom: '4px' }}>
-              {[1, 2, 3, 4, 5].map((s) => <Star key={s} size={11} fill={s <= 5 ? '#0FA8DC' : 'none'} style={{ color: '#0FA8DC' }} />)}
-            </div>
-            <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>4.8/5 parent rating</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+const heroBanners = [heroBanner1, heroBanner2, heroBanner3, heroBanner4];
 
 // ─── Framer Motion stat counter (no GSAP) ──────────────────────────────────────
 function StatCounter({ num, displayFn, label }: { num: number; displayFn: (v: number) => string; label: string }) {
@@ -429,12 +214,7 @@ export default function Home() {
     setProgressKey((k) => k + 1);
   };
 
-  const scrollToId = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   const banner = banners[activeBanner];
-  const { BadgeIcon } = banner;
 
   return (
     <div>
@@ -444,145 +224,89 @@ export default function Home() {
       </div>
 
       {/* ── Hero Banner Carousel ── */}
-      <section aria-label="Featured highlights" className="hero-section" style={{ position: 'relative', paddingTop: '104px', paddingBottom: '80px', background: '#FFFFFF', overflow: 'hidden', borderBottom: '1px solid #ECECF1' }}>
-        {/* Ambient illustration */}
-        <div style={{ position: 'absolute', bottom: 0, right: 0, width: '420px', height: '350px', opacity: 0.04, pointerEvents: 'none', zIndex: 0 }}>
-          <HeroIllustration width="100%" height="100%" />
+      <section
+        aria-label="Featured highlights"
+        style={{ paddingTop: '64px', background: '#FFFFFF', borderBottom: '1px solid #ECECF1', overflow: 'hidden' }}
+      >
+        {/* Full-width image slide */}
+        <div style={{ position: 'relative', lineHeight: 0 }}>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={`banner-img-${activeBanner}`}
+              initial={{ opacity: 0, x: direction * 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction * -60 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              style={{ lineHeight: 0 }}
+            >
+              <img
+                src={heroBanners[activeBanner]}
+                alt={`${banner.badge} — ${banner.headline} ${banner.highlight}`}
+                className="hero-banner-img"
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Prev arrow */}
+          <button
+            onClick={() => { setDirection(-1); setActiveBanner((v) => (v - 1 + banners.length) % banners.length); setProgressKey((k) => k + 1); }}
+            aria-label="Previous banner"
+            style={{
+              position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)',
+              background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(236,236,241,0.9)', borderRadius: '50%',
+              width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', zIndex: 2, boxShadow: '0 2px 12px rgba(28,28,40,0.15)', padding: 0,
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M11 14L7 9l4-5" stroke="#1C1C28" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+
+          {/* Next arrow */}
+          <button
+            onClick={() => { setDirection(1); setActiveBanner((v) => (v + 1) % banners.length); setProgressKey((k) => k + 1); }}
+            aria-label="Next banner"
+            style={{
+              position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)',
+              background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(236,236,241,0.9)', borderRadius: '50%',
+              width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', zIndex: 2, boxShadow: '0 2px 12px rgba(28,28,40,0.15)', padding: 0,
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M7 4l4 5-4 5" stroke="#1C1C28" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
         </div>
 
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
-          <div
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }}
-            className="lg:grid-cols-hero"
-          >
-            {/* LEFT */}
-            <div className="hero-left-col" style={{ minWidth: 0 }}>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`text-${activeBanner}`}
-                  initial={{ opacity: 0, x: direction * 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: direction * -50 }}
-                  transition={{ duration: 0.4, ease: 'easeOut' }}
-                >
-                  {/* Badge pill */}
-                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '7px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '24px' }}>
-                    <BadgeIcon size={13} />
-                    {banner.badge}
-                  </div>
-
-                  {/* Headline */}
-                  <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.75rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, letterSpacing: '-0.02em', lineHeight: 1.12, color: '#1C1C28', marginBottom: '24px' }}>
-                    {banner.headline}
-                    <br />
-                    <span style={{ color: '#0FA8DC' }}>
-                      {banner.highlight}
-                    </span>
-                  </h1>
-
-                  {/* Subtext */}
-                  <p style={{ fontSize: '17px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '32px', maxWidth: '520px' }}>
-                    {banner.subtext}
-                  </p>
-
-                  {/* CTAs — mobile: single full-width primary + text-link secondary */}
-                  <div className="hero-cta-wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginBottom: '32px' }}>
-                    <motion.div className="hero-cta-motion" whileHover={{ scale: 1.03, y: -2 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-                      <Link
-                        to={banner.primaryCta.to}
-                        className="cta-pink hero-cta-primary"
-                        style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 28px', borderRadius: '12px', background: '#F03C6F', color: 'white', fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 20px rgba(240,60,111,0.32)' }}
-                      >
-                        {banner.primaryCta.label} <ArrowRight size={16} />
-                      </Link>
-                    </motion.div>
-                    <motion.button
-                      onClick={() => scrollToId(banner.scrollTo)}
-                      className="cta-outline hero-ghost-btn"
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                      style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', border: '1.5px solid #DCDCE5', background: 'white', color: '#1C1C28', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', cursor: 'pointer' }}
-                    >
-                      <Play size={15} /> {banner.secondaryCta}
-                    </motion.button>
-                  </div>
-
-                  {/* Trust signals */}
-                  <div className="hero-trust-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
-                    {banner.trust.map((t) => (
-                      <div key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                        <CheckCircle size={13} style={{ color: '#0FA8DC' }} />
-                        {t}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* City trust strip — label above, chips scroll horizontally on mobile */}
-                  <div className="hide-mobile" style={{ paddingTop: '16px', borderTop: '1px solid #ECECF1' }}>
-                    <span style={{ display: 'block', fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', fontWeight: 500, marginBottom: '8px' }}>Students from:</span>
-                    <div className="city-chips-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
-                      {['Delhi', 'Mumbai', 'Bengaluru', 'Hyderabad', 'Chennai', 'Pune', '+43 more cities'].map((city) => (
-                        <span key={city} style={{ padding: '2px 8px', borderRadius: '6px', background: '#F7F7F8', border: '1px solid #ECECF1', fontSize: '11px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', flexShrink: 0 }}>{city}</span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* RIGHT: visual card */}
-            <div className="show-md" style={{ minWidth: 0, width: '100%' }}>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`visual-${activeBanner}`}
-                  initial={{ opacity: 0, x: direction * 60 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: direction * -60 }}
-                  transition={{ duration: 0.45, ease: 'easeOut' }}
-                >
-                  <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                    style={{
-                      background: '#FFFFFF',
-                      border: '1px solid #ECECF1',
-                      borderRadius: '24px',
-                      boxShadow: '0 8px 28px rgba(28,28,40,0.08)',
-                    }}
-                  >
-                    <HeroVisual index={activeBanner} />
-                  </motion.div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
+        {/* Progress bar + dot controls */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', padding: '16px 24px 20px' }}>
+          <div style={{ width: '220px', height: '3px', background: '#ECECF1', borderRadius: '999px', overflow: 'hidden' }}>
+            <motion.div
+              key={progressKey}
+              initial={{ width: '0%' }}
+              animate={{ width: '100%' }}
+              transition={{ duration: BANNER_INTERVAL / 1000, ease: 'linear' }}
+              style={{ height: '100%', background: '#0FA8DC', borderRadius: '999px' }}
+            />
           </div>
-
-          {/* Banner controls */}
-          <div className="banner-controls" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', marginTop: '48px' }}>
-            <div style={{ width: '220px', height: '3px', background: '#ECECF1', borderRadius: '999px', overflow: 'hidden' }}>
-              <motion.div
-                key={progressKey}
-                initial={{ width: '0%' }}
-                animate={{ width: '100%' }}
-                transition={{ duration: BANNER_INTERVAL / 1000, ease: 'linear' }}
-                style={{ height: '100%', background: '#0FA8DC', borderRadius: '999px' }}
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            {banners.map((b, i) => (
+              <motion.button
+                key={i}
+                onClick={() => handleDotClick(i)}
+                title={b.badge}
+                animate={{
+                  width: activeBanner === i ? '32px' : '8px',
+                  background: activeBanner === i ? '#0FA8DC' : '#DCDCE5',
+                }}
+                transition={{ duration: 0.3 }}
+                style={{ height: '8px', borderRadius: '4px', border: 'none', cursor: 'pointer', padding: 0 }}
               />
-            </div>
-            <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-              {banners.map((b, i) => (
-                <motion.button
-                  key={i}
-                  onClick={() => handleDotClick(i)}
-                  title={b.badge}
-                  animate={{
-                    width: activeBanner === i ? '32px' : '8px',
-                    background: activeBanner === i ? '#0FA8DC' : '#DCDCE5',
-                  }}
-                  transition={{ duration: 0.3 }}
-                  style={{ height: '8px', borderRadius: '4px', border: 'none', cursor: 'pointer', padding: 0 }}
-                />
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>
