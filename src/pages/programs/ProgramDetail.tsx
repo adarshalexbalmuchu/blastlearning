@@ -114,13 +114,6 @@ export default function ProgramDetail() {
                 >
                   Start 7-Day Free Trial <ArrowRight size={15} />
                 </Link>
-                <Link
-                  to="/contact"
-                  className="cta cta-outline"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 28px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: 'white', color: '#1C1C28', border: '1.5px solid #DCDCE5' }}
-                >
-                  Talk to an Advisor
-                </Link>
               </motion.div>
             </motion.div>
 
