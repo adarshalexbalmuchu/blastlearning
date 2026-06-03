@@ -24,6 +24,8 @@ export default function ProgramDetail() {
 
   const [openCurriculum, setOpenCurriculum] = useState<number>(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [form, setForm] = useState({ name: '', phone: '', cls: '' });
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     if (program) {
@@ -90,10 +92,19 @@ export default function ProgramDetail() {
 
               <motion.p
                 variants={fadeUp}
-                style={{ fontSize: '0.9375rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '36px', maxWidth: '560px' }}
+                style={{ fontSize: '0.9375rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '24px', maxWidth: '560px' }}
               >
                 {program.description}
               </motion.p>
+
+              <motion.div variants={fadeUp} style={{ display: 'flex', gap: '28px', flexWrap: 'wrap', marginBottom: '28px', paddingTop: '20px', borderTop: '1px solid #F0F0F4' }}>
+                {program.heroStats.map((stat) => (
+                  <div key={stat.label}>
+                    <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1.2 }}>{stat.value}</div>
+                    <div style={{ fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '2px' }}>{stat.label}</div>
+                  </div>
+                ))}
+              </motion.div>
 
               <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                 <Link
@@ -113,42 +124,95 @@ export default function ProgramDetail() {
               </motion.div>
             </motion.div>
 
-            {/* Right, stats card */}
+            {/* Right, lead form */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              style={{ background: '#FFFFFF', border: '1px solid #ECECF1', borderRadius: '20px', padding: '36px', boxShadow: '0 4px 24px rgba(28,28,40,0.07)' }}
+              style={{ background: '#FFFFFF', border: '1.5px solid #ECECF1', borderRadius: '20px', padding: '32px', boxShadow: '0 4px 24px rgba(28,28,40,0.07)' }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '28px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
                 <div>
-                  <div style={{ fontSize: '30px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{program.price}</div>
-                  <div style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>per month</div>
+                  <div style={{ fontSize: '28px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1.1 }}>{program.price}</div>
+                  <div style={{ fontSize: '12px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '2px' }}>per month</div>
                 </div>
-                <span style={{ padding: '6px 14px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif" }}>
+                <span style={{ padding: '5px 12px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif" }}>
                   {program.classes}
                 </span>
               </div>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginBottom: '28px' }}>
-                {program.heroStats.map((stat) => (
-                  <div key={stat.label} style={{ padding: '16px', background: '#F7F7F8', borderRadius: '12px', textAlign: 'center' }}>
-                    <div style={{ fontSize: '22px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1.2 }}>{stat.value}</div>
-                    <div style={{ fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '4px' }}>{stat.label}</div>
-                  </div>
-                ))}
-              </div>
+              <div style={{ height: '1px', background: '#F0F0F4', marginBottom: '20px' }} />
 
-              <Link
-                to="/contact"
-                className="cta cta-blue"
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white', width: '100%' }}
-              >
-                Enrol Now, 7-Day Free Trial <ArrowRight size={15} />
-              </Link>
-              <p style={{ textAlign: 'center', fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
-                No credit card required · Cancel anytime
-              </p>
+              {!submitted ? (
+                <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
+                  <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: "'Poppins', sans-serif", marginBottom: '16px' }}>
+                    Start your free 7-day trial
+                  </p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '16px' }}>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '5px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Child's Name</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. Arjun Sharma"
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1.5px solid #DCDCE5', fontSize: '14px', fontFamily: "'Inter', sans-serif", color: '#1C1C28', outline: 'none', boxSizing: 'border-box', background: '#FAFAFA' }}
+                        onFocus={(e) => (e.currentTarget.style.borderColor = '#0FA8DC')}
+                        onBlur={(e) => (e.currentTarget.style.borderColor = '#DCDCE5')}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '5px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Parent's Mobile</label>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="+91 98765 43210"
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1.5px solid #DCDCE5', fontSize: '14px', fontFamily: "'Inter', sans-serif", color: '#1C1C28', outline: 'none', boxSizing: 'border-box', background: '#FAFAFA' }}
+                        onFocus={(e) => (e.currentTarget.style.borderColor = '#0FA8DC')}
+                        onBlur={(e) => (e.currentTarget.style.borderColor = '#DCDCE5')}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '5px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Child's Class</label>
+                      <select
+                        required
+                        value={form.cls}
+                        onChange={(e) => setForm({ ...form, cls: e.target.value })}
+                        style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1.5px solid #DCDCE5', fontSize: '14px', fontFamily: "'Inter', sans-serif", color: form.cls ? '#1C1C28' : '#9CA3AF', outline: 'none', background: '#FAFAFA', boxSizing: 'border-box' }}
+                        onFocus={(e) => (e.currentTarget.style.borderColor = '#0FA8DC')}
+                        onBlur={(e) => (e.currentTarget.style.borderColor = '#DCDCE5')}
+                      >
+                        <option value="" disabled>Select class</option>
+                        {['8', '9', '10', '11', '12'].map((c) => (
+                          <option key={c} value={c}>Class {c}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '13px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", background: '#0FA8DC', color: 'white', border: 'none', cursor: 'pointer' }}
+                  >
+                    Enrol Now, 7-Day Free Trial <ArrowRight size={15} />
+                  </button>
+                  <p style={{ textAlign: 'center', fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
+                    No credit card required · Cancel anytime
+                  </p>
+                </form>
+              ) : (
+                <div style={{ textAlign: 'center', padding: '16px 0' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#E0F5FC', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                    <CheckCircle size={22} style={{ color: '#0FA8DC' }} />
+                  </div>
+                  <p style={{ fontSize: '16px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '8px' }}>You're all set!</p>
+                  <p style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", lineHeight: 1.6 }}>
+                    We'll contact {form.name || 'you'} within 24 hours to begin your free trial.
+                  </p>
+                </div>
+              )}
             </motion.div>
           </div>
         </div>
