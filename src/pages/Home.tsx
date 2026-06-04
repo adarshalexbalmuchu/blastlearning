@@ -236,38 +236,46 @@ export default function Home() {
         aria-label="Featured highlights"
         style={{ paddingTop: '64px', background: '#FFFFFF', borderBottom: '1px solid #ECECF1', overflow: 'hidden' }}
       >
-        <div style={{ position: 'relative', lineHeight: 0 }}>
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={`banner-img-${activeBanner}`}
-              initial={{ opacity: 0, x: direction * 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction * -60 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.08}
-              onDragEnd={(_, info) => {
-                if (info.offset.x < -50) {
-                  setDirection(1);
-                  setActiveBanner((v) => (v + 1) % BANNER_COUNT);
-                  setProgressKey((k) => k + 1);
-                } else if (info.offset.x > 50) {
-                  setDirection(-1);
-                  setActiveBanner((v) => (v - 1 + BANNER_COUNT) % BANNER_COUNT);
-                  setProgressKey((k) => k + 1);
-                }
+        {/* Stacked cross-fade: first image is relative (holds height), rest are absolute */}
+        <div style={{ position: 'relative', lineHeight: 0, overflow: 'hidden' }}>
+          {heroBanners.map((src, i) => (
+            <motion.img
+              key={i}
+              src={src}
+              alt={`Banner ${i + 1}`}
+              aria-hidden={i !== activeBanner}
+              className="hero-banner-img"
+              draggable={false}
+              animate={{ opacity: i === activeBanner ? 1 : 0 }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+              style={{
+                position: i === 0 ? 'relative' : 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                pointerEvents: 'none',
               }}
-              style={{ lineHeight: 0, cursor: 'grab' }}
-            >
-              <img
-                src={heroBanners[activeBanner]}
-                alt={`Banner ${activeBanner + 1}`}
-                className="hero-banner-img"
-                draggable={false}
-              />
-            </motion.div>
-          </AnimatePresence>
+            />
+          ))}
+
+          {/* Transparent swipe overlay */}
+          <motion.div
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.08}
+            onDragEnd={(_, info) => {
+              if (info.offset.x < -50) {
+                setDirection(1);
+                setActiveBanner((v) => (v + 1) % BANNER_COUNT);
+                setProgressKey((k) => k + 1);
+              } else if (info.offset.x > 50) {
+                setDirection(-1);
+                setActiveBanner((v) => (v - 1 + BANNER_COUNT) % BANNER_COUNT);
+                setProgressKey((k) => k + 1);
+              }
+            }}
+            style={{ position: 'absolute', inset: 0, zIndex: 1, cursor: 'grab' }}
+          />
 
           {/* Prev arrow */}
           <button
