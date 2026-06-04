@@ -8,6 +8,10 @@ import TestimonialCard from '../components/TestimonialCard';
 import DashboardMockup from '../components/DashboardMockup';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
+import heroBanner1 from '../assets/hero-banner-1.png';
+import heroBanner2 from '../assets/hero-banner-2.png';
+import heroBanner3 from '../assets/hero-banner-3.png';
+import heroBanner4 from '../assets/hero-banner-4.png';
 import ctaBanner from '../assets/cta-banner.png';
 import {
   ForgettingCurveIllustration,
@@ -129,6 +133,11 @@ const homeFaqs = [
 ];
 
 
+// ─── Banner carousel ──────────────────────────────────────────────────────────
+const BANNER_INTERVAL = 7500;
+const heroBanners = [heroBanner1, heroBanner2, heroBanner3, heroBanner4];
+const BANNER_COUNT = heroBanners.length;
+
 // ─── Framer Motion stat counter (no GSAP) ──────────────────────────────────────
 function StatCounter({ num, displayFn, label, color = '#1C1C28' }: { num: number; displayFn: (v: number) => string; label: string; color?: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -195,13 +204,120 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title:
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isYearly, setIsYearly] = useState(false);
+  const [activeBanner, setActiveBanner] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [progressKey, setProgressKey] = useState(0);
+
   useEffect(() => {
     document.title = 'Blast Learning | AI-Powered Study Retention for Indian Students';
     return () => { document.title = 'Blast Learning'; };
   }, []);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setActiveBanner((prev) => (prev + 1) % BANNER_COUNT);
+      setProgressKey((k) => k + 1);
+    }, BANNER_INTERVAL);
+    return () => clearInterval(timer);
+  }, [activeBanner]);
+
+  const handleDotClick = (idx: number) => {
+    if (idx === activeBanner) return;
+    setDirection(idx > activeBanner ? 1 : -1);
+    setActiveBanner(idx);
+    setProgressKey((k) => k + 1);
+  };
+
   return (
     <div>
+      {/* ── Hero Banner Carousel ── */}
+      <section
+        aria-label="Featured highlights"
+        style={{ paddingTop: '64px', background: '#FFFFFF', borderBottom: '1px solid #ECECF1', overflow: 'hidden' }}
+      >
+        <div style={{ position: 'relative', lineHeight: 0 }}>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={`banner-img-${activeBanner}`}
+              initial={{ opacity: 0, x: direction * 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction * -60 }}
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              style={{ lineHeight: 0 }}
+            >
+              <img
+                src={heroBanners[activeBanner]}
+                alt={`Banner ${activeBanner + 1}`}
+                className="hero-banner-img"
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Prev arrow */}
+          <button
+            onClick={() => { setDirection(-1); setActiveBanner((v) => (v - 1 + BANNER_COUNT) % BANNER_COUNT); setProgressKey((k) => k + 1); }}
+            aria-label="Previous banner"
+            style={{
+              position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)',
+              background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(236,236,241,0.9)', borderRadius: '50%',
+              width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', zIndex: 2, boxShadow: '0 2px 12px rgba(28,28,40,0.15)', padding: 0,
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M11 14L7 9l4-5" stroke="#1C1C28" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+
+          {/* Next arrow */}
+          <button
+            onClick={() => { setDirection(1); setActiveBanner((v) => (v + 1) % BANNER_COUNT); setProgressKey((k) => k + 1); }}
+            aria-label="Next banner"
+            style={{
+              position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)',
+              background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)',
+              border: '1px solid rgba(236,236,241,0.9)', borderRadius: '50%',
+              width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              cursor: 'pointer', zIndex: 2, boxShadow: '0 2px 12px rgba(28,28,40,0.15)', padding: 0,
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M7 4l4 5-4 5" stroke="#1C1C28" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+        {/* Progress bar + dot controls */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', padding: '16px 24px 20px' }}>
+          <div style={{ width: '220px', height: '3px', background: '#ECECF1', borderRadius: '999px', overflow: 'hidden' }}>
+            <motion.div
+              key={progressKey}
+              initial={{ width: '0%' }}
+              animate={{ width: '100%' }}
+              transition={{ duration: BANNER_INTERVAL / 1000, ease: 'linear' }}
+              style={{ height: '100%', background: '#0FA8DC', borderRadius: '999px' }}
+            />
+          </div>
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            {heroBanners.map((_, i) => (
+              <motion.button
+                key={i}
+                onClick={() => handleDotClick(i)}
+                aria-label={`Go to banner ${i + 1}`}
+                animate={{
+                  width: activeBanner === i ? '32px' : '8px',
+                  background: activeBanner === i ? '#0FA8DC' : '#DCDCE5',
+                }}
+                transition={{ duration: 0.3 }}
+                style={{ height: '8px', borderRadius: '4px', border: 'none', cursor: 'pointer', padding: 0 }}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Trust stats: PW-style pastel cards (slot-machine counters + hover characters) ── */}
       <TrustStats />
 
