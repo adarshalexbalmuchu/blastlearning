@@ -205,7 +205,6 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isYearly, setIsYearly] = useState(false);
   const [activeBanner, setActiveBanner] = useState(0);
-  const [direction, setDirection] = useState(1);
   const [progressKey, setProgressKey] = useState(0);
 
   useEffect(() => {
@@ -215,7 +214,6 @@ export default function Home() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setDirection(1);
       setActiveBanner((prev) => (prev + 1) % BANNER_COUNT);
       setProgressKey((k) => k + 1);
     }, BANNER_INTERVAL);
@@ -224,7 +222,6 @@ export default function Home() {
 
   const handleDotClick = (idx: number) => {
     if (idx === activeBanner) return;
-    setDirection(idx > activeBanner ? 1 : -1);
     setActiveBanner(idx);
     setProgressKey((k) => k + 1);
   };
@@ -265,11 +262,9 @@ export default function Home() {
             dragElastic={0.08}
             onDragEnd={(_, info) => {
               if (info.offset.x < -50) {
-                setDirection(1);
                 setActiveBanner((v) => (v + 1) % BANNER_COUNT);
                 setProgressKey((k) => k + 1);
               } else if (info.offset.x > 50) {
-                setDirection(-1);
                 setActiveBanner((v) => (v - 1 + BANNER_COUNT) % BANNER_COUNT);
                 setProgressKey((k) => k + 1);
               }
@@ -279,7 +274,7 @@ export default function Home() {
 
           {/* Prev arrow */}
           <button
-            onClick={() => { setDirection(-1); setActiveBanner((v) => (v - 1 + BANNER_COUNT) % BANNER_COUNT); setProgressKey((k) => k + 1); }}
+            onClick={() => { setActiveBanner((v) => (v - 1 + BANNER_COUNT) % BANNER_COUNT); setProgressKey((k) => k + 1); }}
             aria-label="Previous banner"
             style={{
               position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)',
@@ -296,7 +291,7 @@ export default function Home() {
 
           {/* Next arrow */}
           <button
-            onClick={() => { setDirection(1); setActiveBanner((v) => (v + 1) % BANNER_COUNT); setProgressKey((k) => k + 1); }}
+            onClick={() => { setActiveBanner((v) => (v + 1) % BANNER_COUNT); setProgressKey((k) => k + 1); }}
             aria-label="Next banner"
             style={{
               position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)',
