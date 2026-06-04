@@ -244,12 +244,27 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: direction * -60 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
-              style={{ lineHeight: 0 }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.08}
+              onDragEnd={(_, info) => {
+                if (info.offset.x < -50) {
+                  setDirection(1);
+                  setActiveBanner((v) => (v + 1) % BANNER_COUNT);
+                  setProgressKey((k) => k + 1);
+                } else if (info.offset.x > 50) {
+                  setDirection(-1);
+                  setActiveBanner((v) => (v - 1 + BANNER_COUNT) % BANNER_COUNT);
+                  setProgressKey((k) => k + 1);
+                }
+              }}
+              style={{ lineHeight: 0, cursor: 'grab' }}
             >
               <img
                 src={heroBanners[activeBanner]}
                 alt={`Banner ${activeBanner + 1}`}
                 className="hero-banner-img"
+                draggable={false}
               />
             </motion.div>
           </AnimatePresence>
