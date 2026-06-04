@@ -1,17 +1,13 @@
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import {
-  ArrowRight, BookOpen, Users,
+  ArrowRight, Users,
   ChevronDown, CheckCircle, AlertCircle, TrendingUp, Zap,
 } from 'lucide-react';
 import TestimonialCard from '../components/TestimonialCard';
 import DashboardMockup from '../components/DashboardMockup';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
-import heroBanner1 from '../assets/hero-banner-1.png';
-import heroBanner2 from '../assets/hero-banner-2.png';
-import heroBanner3 from '../assets/hero-banner-3.png';
-import heroBanner4 from '../assets/hero-banner-4.png';
 import ctaBanner from '../assets/cta-banner.png';
 import {
   ForgettingCurveIllustration,
@@ -132,69 +128,6 @@ const homeFaqs = [
   { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 7-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first week." },
 ];
 
-// ─── Banner definitions ────────────────────────────────────────────────────────
-const BANNER_INTERVAL = 4500;
-
-interface BannerDef {
-  badge: string;
-  BadgeIcon: React.ElementType;
-  headline: string;
-  highlight: string;
-  subtext: string;
-  primaryCta: { label: string; to: string };
-  secondaryCta: string;
-  scrollTo: string;
-  trust: string[];
-}
-
-const banners: BannerDef[] = [
-  {
-    badge: 'AI-Powered Retention System',
-    BadgeIcon: Zap,
-    headline: 'Your Child Retains Only 10% of Coaching',
-    highlight: 'We Lift Retention to 91%',
-    subtext: 'Stop wasting money on coaching your child forgets. Our Metacognition Engine uses scientifically-proven spaced repetition to convert expensive tuition into lasting retention.',
-    primaryCta: { label: 'Start 7-Day Trial', to: '/programs' },
-    secondaryCta: 'See How It Works',
-    scrollTo: 'how-it-works',
-    trust: ['No credit card required', 'Free 7-day trial', 'Cancel anytime'],
-  },
-  {
-    badge: 'CBSE Specialist Platform',
-    BadgeIcon: BookOpen,
-    headline: 'Ace Your CBSE Board Exams',
-    highlight: 'With AI-Powered Revision',
-    subtext: 'Our CBSE Plan covers the complete NCERT syllabus for Classes 8-10. AI-powered spaced revision schedules every chapter so nothing slips through the cracks before your board exams.',
-    primaryCta: { label: 'Explore CBSE Plan', to: '/programs' },
-    secondaryCta: 'View Syllabus Coverage',
-    scrollTo: 'programs-preview',
-    trust: ['Full NCERT coverage', '4,999+ students enrolled', 'Classes 8-10'],
-  },
-  {
-    badge: 'Real-Time Parent Visibility',
-    BadgeIcon: Users,
-    headline: 'Know Exactly How Your Child Is Learning',
-    highlight: 'Every Single Day',
-    subtext: 'Real-time parent dashboard shows daily study time, retention scores, and subject-wise progress. Get instant WhatsApp alerts when your child misses a study session.',
-    primaryCta: { label: 'Explore Parent Features', to: '/for-parents' },
-    secondaryCta: 'View Dashboard Demo',
-    scrollTo: 'parent-dashboard',
-    trust: ['Daily progress reports', 'WhatsApp alerts', '100% transparency'],
-  },
-  {
-    badge: 'Proven Academic Results',
-    BadgeIcon: TrendingUp,
-    headline: '91% of Students',
-    highlight: 'Improve Their Grades',
-    subtext: "The same spaced repetition and active recall methods top rankers rely on, now built for the CBSE syllabus. Join 4,999+ Indian families who saw real grade improvement within 30 days.",
-    primaryCta: { label: 'Start Your 7-Day Free Trial', to: '/programs' },
-    secondaryCta: 'See Success Stories',
-    scrollTo: 'testimonials',
-    trust: ['Results in 30 days', '91% improvement rate', '4.8/5 parent rating'],
-  },
-];
-
-const heroBanners = [heroBanner1, heroBanner2, heroBanner3, heroBanner4];
 
 // ─── Framer Motion stat counter (no GSAP) ──────────────────────────────────────
 function StatCounter({ num, displayFn, label, color = '#1C1C28' }: { num: number; displayFn: (v: number) => string; label: string; color?: string }) {
@@ -262,128 +195,13 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title:
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isYearly, setIsYearly] = useState(false);
-  const [activeBanner, setActiveBanner] = useState(0);
-  const [direction, setDirection] = useState(1);
-  const [progressKey, setProgressKey] = useState(0);
-
   useEffect(() => {
     document.title = 'Blast Learning | AI-Powered Study Retention for Indian Students';
     return () => { document.title = 'Blast Learning'; };
   }, []);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setDirection(1);
-      setActiveBanner((prev) => (prev + 1) % banners.length);
-      setProgressKey((k) => k + 1);
-    }, BANNER_INTERVAL);
-    return () => clearInterval(timer);
-  }, [activeBanner]);
-
-  const handleDotClick = (idx: number) => {
-    if (idx === activeBanner) return;
-    setDirection(idx > activeBanner ? 1 : -1);
-    setActiveBanner(idx);
-    setProgressKey((k) => k + 1);
-  };
-
-  const banner = banners[activeBanner];
-
   return (
     <div>
-      {/* Screen reader announcement for carousel changes */}
-      <div aria-live="polite" aria-atomic="true" style={{ position: 'absolute', width: '1px', height: '1px', padding: 0, margin: '-1px', overflow: 'hidden', clip: 'rect(0,0,0,0)', whiteSpace: 'nowrap', border: 0 }}>
-        {banner.badge}, {banner.headline} {banner.highlight}
-      </div>
-
-      {/* ── Hero Banner Carousel ── */}
-      <section
-        aria-label="Featured highlights"
-        style={{ paddingTop: '64px', background: '#FFFFFF', borderBottom: '1px solid #ECECF1', overflow: 'hidden' }}
-      >
-        {/* Full-width image slide */}
-        <div style={{ position: 'relative', lineHeight: 0 }}>
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={`banner-img-${activeBanner}`}
-              initial={{ opacity: 0, x: direction * 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction * -60 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
-              style={{ lineHeight: 0 }}
-            >
-              <img
-                src={heroBanners[activeBanner]}
-                alt={`${banner.badge} — ${banner.headline} ${banner.highlight}`}
-                className="hero-banner-img"
-              />
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Prev arrow */}
-          <button
-            onClick={() => { setDirection(-1); setActiveBanner((v) => (v - 1 + banners.length) % banners.length); setProgressKey((k) => k + 1); }}
-            aria-label="Previous banner"
-            style={{
-              position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)',
-              background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(236,236,241,0.9)', borderRadius: '50%',
-              width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center',
-              cursor: 'pointer', zIndex: 2, boxShadow: '0 2px 12px rgba(28,28,40,0.15)', padding: 0,
-            }}
-          >
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M11 14L7 9l4-5" stroke="#1C1C28" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-
-          {/* Next arrow */}
-          <button
-            onClick={() => { setDirection(1); setActiveBanner((v) => (v + 1) % banners.length); setProgressKey((k) => k + 1); }}
-            aria-label="Next banner"
-            style={{
-              position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)',
-              background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(236,236,241,0.9)', borderRadius: '50%',
-              width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center',
-              cursor: 'pointer', zIndex: 2, boxShadow: '0 2px 12px rgba(28,28,40,0.15)', padding: 0,
-            }}
-          >
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-              <path d="M7 4l4 5-4 5" stroke="#1C1C28" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
-        </div>
-
-        {/* Progress bar + dot controls */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', padding: '16px 24px 20px' }}>
-          <div style={{ width: '220px', height: '3px', background: '#ECECF1', borderRadius: '999px', overflow: 'hidden' }}>
-            <motion.div
-              key={progressKey}
-              initial={{ width: '0%' }}
-              animate={{ width: '100%' }}
-              transition={{ duration: BANNER_INTERVAL / 1000, ease: 'linear' }}
-              style={{ height: '100%', background: '#0FA8DC', borderRadius: '999px' }}
-            />
-          </div>
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-            {banners.map((b, i) => (
-              <motion.button
-                key={i}
-                onClick={() => handleDotClick(i)}
-                title={b.badge}
-                animate={{
-                  width: activeBanner === i ? '32px' : '8px',
-                  background: activeBanner === i ? '#0FA8DC' : '#DCDCE5',
-                }}
-                transition={{ duration: 0.3 }}
-                style={{ height: '8px', borderRadius: '4px', border: 'none', cursor: 'pointer', padding: 0 }}
-              />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── Trust stats: PW-style pastel cards (slot-machine counters + hover characters) ── */}
       <TrustStats />
 
