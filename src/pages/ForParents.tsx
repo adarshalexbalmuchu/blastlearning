@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Shield, TrendingUp, Clock, Heart, BarChart3, Bell, ArrowRight, CheckCircle, Quote } from 'lucide-react';
@@ -80,10 +80,10 @@ const stagger: Variants = {
 };
 
 export default function ForParents() {
-  useEffect(() => {
-    document.title = "For Parents | Track Your Child's Progress · Blast Learning";
-    return () => { document.title = 'Blast Learning'; };
-  }, []);
+  useSEO({
+    title: "For Parents | Track Your Child's Progress · Blast Learning",
+    description: 'Stay in control of your child\'s education with real-time dashboards, WhatsApp alerts, and weekly progress reports. Blast Learning keeps parents informed.',
+  });
 
   return (
     <div style={{ background: '#FFFFFF' }}>

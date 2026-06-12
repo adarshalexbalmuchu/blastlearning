@@ -3,6 +3,8 @@ import { useEffect, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
+import WhatsAppFloat from './components/WhatsAppFloat';
+import ScrollToTopBtn from './components/ScrollToTopBtn';
 
 // Code-split all pages - only Home ships in the initial bundle
 import Home from './pages/Home';
@@ -81,6 +83,8 @@ function AppLayout() {
       </main>
 
       <Footer />
+      <WhatsAppFloat />
+      <ScrollToTopBtn />
     </>
   );
 }

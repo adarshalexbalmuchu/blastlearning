@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
@@ -128,10 +128,10 @@ const stagger: Variants = {
 };
 
 export default function FAQ() {
-  useEffect(() => {
-    document.title = 'FAQ | Frequently Asked Questions · Blast Learning';
-    return () => { document.title = 'Blast Learning'; };
-  }, []);
+  useSEO({
+    title: 'FAQ | Frequently Asked Questions · Blast Learning',
+    description: 'Answers to the most common questions about Blast Learning — programs, pricing, how the AI works, and what results to expect.',
+  });
 
   return (
     <div style={{ background: '#FFFFFF' }}>

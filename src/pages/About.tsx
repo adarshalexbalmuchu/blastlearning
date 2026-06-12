@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Heart, Lightbulb, Users, Shield } from 'lucide-react';
@@ -56,10 +56,10 @@ const stagger: Variants = {
 };
 
 export default function About() {
-  useEffect(() => {
-    document.title = 'About Us | Our Mission · Blast Learning';
-    return () => { document.title = 'Blast Learning'; };
-  }, []);
+  useSEO({
+    title: 'About Us | Our Mission · Blast Learning',
+    description: "Learn about Blast Learning's mission to fix India's education retention crisis. Our AI-powered platform helps students retain 91% of what they learn.",
+  });
 
   return (
     <div style={{ background: '#FFFFFF' }}>

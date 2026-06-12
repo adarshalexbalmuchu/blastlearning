@@ -20,6 +20,7 @@ import ResultsScoreCards from '../components/ResultsScoreCards';
 import HowItWorksCard, { UploadVisual, AIVisual, MasteryVisual } from '../components/HowItWorksCard';
 import BrandArc from '../components/BrandArc';
 import { useState, useEffect, useRef } from 'react';
+import { useSEO } from '../hooks/useSEO';
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
 
@@ -208,10 +209,10 @@ export default function Home() {
   const [activeBanner, setActiveBanner] = useState(0);
   const [progressKey, setProgressKey] = useState(0);
 
-  useEffect(() => {
-    document.title = 'Blast Learning | AI-Powered Study Retention for Indian Students';
-    return () => { document.title = 'Blast Learning'; };
-  }, []);
+  useSEO({
+    title: 'Blast Learning | AI-Powered Study Retention for Indian Students',
+    description: "India's #1 AI-powered study retention platform. Convert expensive coaching into permanent memory with spaced repetition. 4,999+ students, 91% retention rate. Start your free 7-day trial.",
+  });
 
   useEffect(() => {
     const timer = setInterval(() => {

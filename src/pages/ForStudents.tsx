@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Gamepad2, Trophy, Brain, Target, Sparkles, ArrowRight, Star, Flame, Award } from 'lucide-react';
@@ -67,10 +67,10 @@ const stagger: Variants = {
 };
 
 export default function ForStudents() {
-  useEffect(() => {
-    document.title = 'For Students | Study Smarter, Not Harder · Blast Learning';
-    return () => { document.title = 'Blast Learning'; };
-  }, []);
+  useSEO({
+    title: 'For Students | Study Smarter, Not Harder · Blast Learning',
+    description: 'Learning that feels like play. Earn XP, build streaks, and master concepts with an AI study buddy that adapts to your pace. Free 7-day trial.',
+  });
 
   return (
     <div style={{ background: '#FFFFFF' }}>
