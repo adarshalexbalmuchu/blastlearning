@@ -296,29 +296,12 @@ export default function Home() {
                 variants={fadeUp}
                 style={{
                   fontSize: '1.0625rem', lineHeight: 1.75, color: '#5A5A6E',
-                  fontFamily: 'Inter, sans-serif', maxWidth: '520px', marginBottom: '28px',
+                  fontFamily: 'Inter, sans-serif', maxWidth: '480px', marginBottom: '36px',
                 }}
               >
-                Stop wasting money on coaching your child forgets. Our Metacognition Engine uses scientifically-proven spaced repetition to convert expensive tuition into lasting retention.
+                Most students forget what they learn within a week.<br />
+                Blast uses proven retention science to help students remember more and perform better.
               </motion.p>
-
-              {/* Inline stats */}
-              <motion.div
-                variants={fadeUp}
-                style={{ display: 'flex', gap: '28px', flexWrap: 'wrap', marginBottom: '32px', paddingTop: '20px', borderTop: '1px solid #F0F0F4' }}
-              >
-                {[
-                  { value: '4,999+', label: 'Students' },
-                  { value: '91%', label: 'Retention rate' },
-                  { value: '4.8/5', label: 'Parent rating' },
-                  { value: '30 days', label: 'To see results' },
-                ].map((s) => (
-                  <div key={s.label}>
-                    <div style={{ fontSize: '1.25rem', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', lineHeight: 1.1 }}>{s.value}</div>
-                    <div style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '3px' }}>{s.label}</div>
-                  </div>
-                ))}
-              </motion.div>
 
               {/* CTAs */}
               <motion.div variants={fadeUp} className="hero-cta-wrap" style={{ display: 'flex', marginBottom: '20px' }}>
@@ -355,66 +338,72 @@ export default function Home() {
                 </div>
               </motion.div>
 
-              {/* Trust */}
-              <motion.div variants={fadeUp} className="hero-trust-row" style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-                {['No credit card required', 'Free 7-day trial', 'Cancel anytime'].map((t) => (
-                  <span key={t} style={{ display: 'flex', alignItems: 'center', gap: '5px', fontSize: '12px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>
-                    <CheckCircle size={11} style={{ color: '#0FA8DC', flexShrink: 0 }} />
-                    {t}
-                  </span>
-                ))}
-              </motion.div>
+              {/* Trust line */}
+              <motion.p variants={fadeUp} style={{ fontSize: '12px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: 0 }}>
+                Trusted by 5,000+ students and families across India.
+              </motion.p>
             </motion.div>
 
-            {/* Right: Visual — only on large screens */}
-            <div style={{ position: 'relative', minWidth: 0 }} className="show-lg-blk">
+            {/* Right: Outcome card — only on large screens */}
+            <div style={{ minWidth: 0 }} className="show-lg-blk">
               <motion.div
                 initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                style={{ transform: 'translateX(28px)' }}
+                style={{ transform: 'translateX(28px) rotate(-1deg)', transformOrigin: 'center bottom' }}
               >
                 <div style={{
-                  borderRadius: '22px', overflow: 'hidden',
+                  background: '#FFFFFF', borderRadius: '24px',
                   border: '1.5px solid #ECECF1',
                   boxShadow: '0 24px 56px rgba(28,28,40,0.10), 0 4px 16px rgba(28,28,40,0.06)',
-                  transform: 'rotate(-1deg)', transformOrigin: 'center bottom',
+                  padding: '28px',
                 }}>
-                  <img
-                    src={heroBanner1}
-                    alt="Blast Learning AI study dashboard showing retention scores and personalised study plans"
-                    style={{ width: '100%', display: 'block' }}
-                  />
+                  {/* Live indicator */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '22px' }}>
+                    <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 0 3px rgba(34,197,94,0.2)' }} />
+                    <span style={{ fontSize: '11px', fontWeight: 600, color: '#8E8EA0', fontFamily: 'Inter, sans-serif', letterSpacing: '0.07em', textTransform: 'uppercase' }}>Live Dashboard</span>
+                  </div>
+
+                  {/* Big retention stat */}
+                  <div style={{ marginBottom: '24px' }}>
+                    <div style={{ fontSize: '3.25rem', fontWeight: 800, fontFamily: 'Poppins, sans-serif', color: '#0FA8DC', lineHeight: 1, letterSpacing: '-0.03em' }}>91%</div>
+                    <div style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginTop: '5px' }}>Retention Rate · This Week</div>
+                    <div style={{ marginTop: '10px', height: '6px', background: '#E0F5FC', borderRadius: '3px', overflow: 'hidden' }}>
+                      <div style={{ width: '91%', height: '100%', background: '#0FA8DC', borderRadius: '3px' }} />
+                    </div>
+                  </div>
+
+                  {/* Today's Recall Score */}
+                  <div style={{ marginBottom: '16px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                      <span style={{ fontSize: '12px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>Today's Recall Score</span>
+                      <span style={{ fontSize: '12px', fontWeight: 700, color: '#0FA8DC', fontFamily: 'Inter, sans-serif' }}>83%</span>
+                    </div>
+                    <div style={{ height: '5px', background: '#F0F0F4', borderRadius: '3px', overflow: 'hidden' }}>
+                      <div style={{ width: '83%', height: '100%', background: 'linear-gradient(90deg, #0FA8DC, #8B5CF6)', borderRadius: '3px' }} />
+                    </div>
+                  </div>
+
+                  {/* Revision Progress */}
+                  <div style={{ marginBottom: '20px' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+                      <span style={{ fontSize: '12px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>Revision Progress</span>
+                      <span style={{ fontSize: '12px', fontWeight: 500, color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>12 / 14 chapters</span>
+                    </div>
+                    <div style={{ height: '5px', background: '#F0F0F4', borderRadius: '3px', overflow: 'hidden' }}>
+                      <div style={{ width: '86%', height: '100%', background: '#22C55E', borderRadius: '3px' }} />
+                    </div>
+                  </div>
+
+                  {/* Learning Streak */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 14px', background: '#FDF3E7', borderRadius: '12px' }}>
+                    <span style={{ fontSize: '20px', lineHeight: 1 }}>🔥</span>
+                    <div>
+                      <div style={{ fontSize: '13px', fontWeight: 700, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>14-Day Learning Streak</div>
+                      <div style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '1px' }}>Keep it going!</div>
+                    </div>
+                  </div>
                 </div>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, -7, 0] }}
-                transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-                className="float-card"
-                style={{
-                  position: 'absolute', top: '28px', left: '-8px', zIndex: 2,
-                  background: '#FFFFFF', borderRadius: '14px',
-                  padding: '11px 14px', boxShadow: '0 8px 28px rgba(28,28,40,0.13)',
-                  border: '1.5px solid #ECECF1',
-                }}
-              >
-                <p style={{ fontSize: '12px', fontWeight: 700, color: '#1C1C28', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap', margin: 0 }}>🔥 91% retention this week</p>
-                <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: 0 }}>Arjun · Maths</p>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [0, -7, 0] }}
-                transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut', delay: 1.6 }}
-                className="float-card"
-                style={{
-                  position: 'absolute', bottom: '32px', left: '-24px', zIndex: 2,
-                  background: '#0FA8DC', borderRadius: '14px',
-                  padding: '11px 14px', boxShadow: '0 8px 28px rgba(15,168,220,0.32)',
-                }}
-              >
-                <p style={{ fontSize: '12px', fontWeight: 700, color: 'white', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap', margin: 0 }}>⚡ Study plan updated</p>
-                <p style={{ fontSize: '10px', color: 'rgba(255,255,255,0.75)', fontFamily: 'Inter, sans-serif', margin: 0 }}>3 chapters scheduled for today</p>
               </motion.div>
             </div>
 
