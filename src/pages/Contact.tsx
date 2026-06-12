@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
 import BrandArc from '../components/BrandArc';
@@ -48,10 +49,10 @@ export default function Contact() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<FormErrors>({});
 
-  useEffect(() => {
-    document.title = 'Contact Us | Speak to a Learning Advisor · Blast Learning';
-    return () => { document.title = 'Blast Learning'; };
-  }, []);
+  useSEO({
+    title: 'Contact Us | Speak to a Learning Advisor · Blast Learning',
+    description: 'Get in touch with the Blast Learning team. Have questions about our programs? Reach us via form, phone, or email — we reply within 24 hours.',
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));

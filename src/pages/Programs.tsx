@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { BookOpen, Target, Brain, TrendingUp, ArrowRight, CheckCircle, Phone, Zap } from 'lucide-react';
@@ -101,10 +101,10 @@ const stagger: Variants = {
 };
 
 export default function Programs() {
-  useEffect(() => {
-    document.title = 'Programs | CBSE, Maths, English & SAT Prep · Blast Learning';
-    return () => { document.title = 'Blast Learning'; };
-  }, []);
+  useSEO({
+    title: 'Programs | CBSE, Maths, English & SAT Prep · Blast Learning',
+    description: 'Explore CBSE, Maths Genius, English Edge, and SAT Prep programs designed for Classes 8-12. AI-powered spaced repetition. Start from ₹999/month.',
+  });
 
   return (
     <div style={{ background: '#FFFFFF' }}>

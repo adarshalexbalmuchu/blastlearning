@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useSEO } from '../hooks/useSEO';
+import BrandArc from '../components/BrandArc';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, Play, FileText, HelpCircle, Lock, ArrowRight } from 'lucide-react';
@@ -54,10 +56,10 @@ export default function Library() {
   const [activeFilter, setActiveFilter] = useState<FilterTab>('All');
   const [search, setSearch] = useState('');
 
-  useEffect(() => {
-    document.title = 'Study Library | Free Resources · Blast Learning';
-    return () => { document.title = 'Blast Learning'; };
-  }, []);
+  useSEO({
+    title: 'Study Library | Free Resources · Blast Learning',
+    description: 'Free study resources for CBSE Classes 8-12 and SAT prep. Videos, notes, and practice quizzes to boost retention and exam performance.',
+  });
 
   const filtered = resources.filter((r) => {
     const matchFilter = activeFilter === 'All' || r.subject === activeFilter;
@@ -68,7 +70,14 @@ export default function Library() {
   return (
     <div style={{ background: '#FFFFFF' }}>
       {/* Hero + Filters */}
-      <section style={{ background: '#FFFFFF', borderBottom: '1px solid #ECECF1', paddingTop: '120px', paddingBottom: '80px' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: '#FFFFFF', borderBottom: '1px solid #ECECF1', paddingTop: '120px', paddingBottom: '80px' }}>
+        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+          <div style={{ position: 'absolute', top: '-100px', right: '-160px', width: '520px', height: '520px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(15,168,220,0.07) 0%, transparent 70%)', willChange: 'transform', animation: 'blob-float 14s ease-in-out infinite' }} />
+          <div style={{ position: 'absolute', bottom: '-80px', left: '-120px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%)', willChange: 'transform', animation: 'blob-float 18s ease-in-out infinite reverse' }} />
+        </div>
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
+          <BrandArc width="100%" opacity={0.04} />
+        </div>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
