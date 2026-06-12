@@ -78,8 +78,9 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
 
       {/* Quote */}
       <p style={{
-        fontSize: '14px', lineHeight: 1.75, color: '#5A5A6E',
-        fontFamily: 'Inter, sans-serif', marginBottom: '20px', flex: 1,
+        fontSize: '15px', lineHeight: 1.8, color: '#5A5A6E',
+        fontFamily: 'Fraunces, serif', fontStyle: 'italic',
+        fontWeight: 400, marginBottom: '20px', flex: 1,
       }}>
         {content}
       </p>
