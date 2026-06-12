@@ -76,9 +76,10 @@ const navItems: NavItem[] = [
     ],
   },
   { id: 5, label: 'About', path: '/about' },
-  { id: 6, label: 'Library', path: '/library' },
-  { id: 7, label: 'FAQ', path: '/faq' },
-  { id: 8, label: 'Contact', path: '/contact' },
+  { id: 6, label: 'Blog', path: '/blog' },
+  { id: 7, label: 'Library', path: '/library' },
+  { id: 8, label: 'FAQ', path: '/faq' },
+  { id: 9, label: 'Contact', path: '/contact' },
 ];
 
 const loginOptions = [
