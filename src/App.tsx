@@ -17,6 +17,8 @@ const About       = lazy(() => import('./pages/About'));
 const Library     = lazy(() => import('./pages/Library'));
 const FAQ         = lazy(() => import('./pages/FAQ'));
 const Contact     = lazy(() => import('./pages/Contact'));
+const Blog        = lazy(() => import('./pages/Blog'));
+const BlogPost    = lazy(() => import('./pages/BlogPost'));
 const Login       = lazy(() => import('./pages/Login'));
 const NotFound    = lazy(() => import('./pages/NotFound'));
 
@@ -73,6 +75,8 @@ function AppLayout() {
               <Route path="/for-students" element={<ForStudents />} />
               <Route path="/about"        element={<About />} />
               <Route path="/library"      element={<Library />} />
+              <Route path="/blog"         element={<Blog />} />
+              <Route path="/blog/:slug"   element={<BlogPost />} />
               <Route path="/faq"          element={<FAQ />} />
               <Route path="/contact"      element={<Contact />} />
               <Route path="/login"        element={<Login />} />
