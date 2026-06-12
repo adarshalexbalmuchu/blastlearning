@@ -421,8 +421,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Platform Highlights (image carousel) ── */}
-      <section
+      {/* ── Platform Highlights (image carousel) — temporarily hidden ── */}
+      {false && <section
         aria-label="Platform highlights"
         style={{ background: '#F7F7F8', borderTop: '1px solid #ECECF1', borderBottom: '1px solid #ECECF1', overflow: 'hidden' }}
       >
@@ -530,7 +530,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* ── Trust stats: PW-style pastel cards (slot-machine counters + hover characters) ── */}
       <TrustStats />
