@@ -61,6 +61,20 @@ function AppLayout() {
         Skip to main content
       </a>
 
+      {/* Fixed brand canvas — logo B-pink (top-left) ↔ logo L-cyan (bottom-right).
+          Sits at z-index:-1, visible only where page content has no background
+          (i.e. the SpeedStreaks gap elements between sections). */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'fixed', inset: 0, zIndex: -1, pointerEvents: 'none',
+          background: [
+            'radial-gradient(ellipse 70% 60% at -6% 0%, rgba(233,30,140,0.07) 0%, transparent 60%)',
+            'radial-gradient(ellipse 70% 60% at 106% 100%, rgba(15,168,220,0.08) 0%, transparent 60%)',
+          ].join(', '),
+        }}
+      />
+
       <ScrollToTop />
       <Navbar />
 
