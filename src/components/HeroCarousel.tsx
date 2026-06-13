@@ -87,7 +87,7 @@ export default function HeroCarousel() {
   return (
     <section
       aria-label="Hero"
-      style={{ position: 'relative', overflow: 'hidden', minHeight: '88vh', display: 'flex', flexDirection: 'column' }}
+      style={{ position: 'relative', overflow: 'hidden' }}
     >
       {/* Per-slide background — cross-fade */}
       {SLIDES.map((s, i) => (
@@ -100,8 +100,8 @@ export default function HeroCarousel() {
       ))}
 
       {/* Main content */}
-      <div style={{ position: 'relative', zIndex: 1, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '88px 24px 40px', width: '100%' }}>
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '80px 48px 48px', width: '100%' }}>
           <div
             style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }}
           >
@@ -144,7 +144,7 @@ export default function HeroCarousel() {
 
                 <p style={{
                   fontSize: '1.0625rem', lineHeight: 1.75, color: '#5A5A6E',
-                  fontFamily: 'Inter, sans-serif', maxWidth: '480px', marginBottom: '32px',
+                  fontFamily: 'Inter, sans-serif', maxWidth: '600px', marginBottom: '28px',
                 }}>
                   {slide.sub}
                 </p>
@@ -222,7 +222,7 @@ export default function HeroCarousel() {
       </button>
 
       {/* Progress bar + dot controls */}
-      <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', padding: '8px 24px 24px' }}>
+      <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', padding: '4px 24px 16px' }}>
         <div style={{ width: '220px', height: '3px', background: 'rgba(28,28,40,0.08)', borderRadius: '999px', overflow: 'hidden' }}>
           <motion.div
             key={progressKey}

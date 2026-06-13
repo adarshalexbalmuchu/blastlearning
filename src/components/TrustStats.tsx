@@ -363,7 +363,7 @@ export default function TrustStats() {
   const reduce = useReducedMotion() ?? false;
 
   return (
-    <section ref={ref} className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
+    <section ref={ref} className="section-pad" style={{ paddingTop: '56px', paddingBottom: '64px', background: '#F7F7F8' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
