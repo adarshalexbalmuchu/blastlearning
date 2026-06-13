@@ -213,8 +213,8 @@ h1, h2, h3, h4, h5, h6 {
 /* ── Tablet (768–1023px): medium section padding ─────────────────────────────── */
 @media (min-width: 768px) and (max-width: 1023px) {
   .section-pad {
-    padding-top: 72px !important;
-    padding-bottom: 72px !important;
+    padding-top: 52px !important;
+    padding-bottom: 52px !important;
   }
 }
 

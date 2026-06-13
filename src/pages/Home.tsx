@@ -32,14 +32,14 @@ const howItWorks = [
     num: '02',
     title: 'AI Creates Your Study Plan',
     desc: 'Our Metacognition Engine analyzes your learning patterns and creates a personalized study schedule using spaced repetition science.',
-    accent: '#8B5CF6',
+    accent: '#0FA8DC',
     Visual: AIVisual,
   },
   {
     num: '03',
     title: 'Learn, Practice, Master',
     desc: 'Follow your adaptive plan, practice with smart quizzes, and track your retention scores. Master every concept before your exams.',
-    accent: '#10B981',
+    accent: '#0FA8DC',
     Visual: MasteryVisual,
   },
 ];
@@ -218,7 +218,7 @@ export default function Home() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ minWidth: 0 }}>
-              <div style={{ background: '#F7F7F8', border: '1px solid #ECECF1', borderRadius: '20px', padding: '24px' }}>
+              <div style={{ background: '#F8F9FA', border: '1px solid #ECECF1', borderRadius: '20px', padding: '24px' }}>
                 <ForgettingCurveIllustration animated width="100%" />
               </div>
             </motion.div>
@@ -255,7 +255,7 @@ export default function Home() {
       </section>
 
       {/* ── How It Works (light gray) ── */}
-      <section id="how-it-works" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#EDF8FF' }}>
+      <section id="how-it-works" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#F8F9FA' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             eyebrow="Simple Process"
@@ -275,7 +275,7 @@ export default function Home() {
             ))}
           </motion.div>
           <div style={{ textAlign: 'center' }}>
-            <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}>
+            <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
               Start Your 7-Day Free Trial <ArrowRight size={16} />
             </Link>
           </div>
@@ -412,7 +412,7 @@ export default function Home() {
                       background: plan.featured ? '#0FA8DC' : 'transparent',
                       color: plan.featured ? 'white' : '#1C1C28',
                       border: plan.featured ? 'none' : '1.5px solid #DCDCE5',
-                      boxShadow: plan.featured ? '0 4px 14px rgba(15,168,220,0.28)' : 'none',
+                      boxShadow: 'none',
                     }}
                   >
                     Start Your 7-Day Free Trial <ArrowRight size={14} />
@@ -433,7 +433,7 @@ export default function Home() {
       </section>
 
       {/* ── Features: expandable explorer (light gray) ── */}
-      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#F7F7F8' }}>
+      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#F8F9FA' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             title="What Makes Us Different"
@@ -460,9 +460,9 @@ export default function Home() {
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid-cols-3-sm" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', maxWidth: '720px', margin: '0 auto 48px' }}>
             {[
-              { num: 3, displayFn: (v: number) => `${v}x`, label: 'More retention than traditional study', color: '#7C3AED', bg: '#F5F3FF', icon: <TrendingUp size={20} /> },
+              { num: 3, displayFn: (v: number) => `${v}x`, label: 'More retention than traditional study', color: '#0FA8DC', bg: '#F0F9FF', icon: <TrendingUp size={20} /> },
               { num: 91, displayFn: (v: number) => `${v}%`, label: 'Students improve their grades', color: '#0FA8DC', bg: '#F0F9FF', icon: <Users size={20} /> },
-              { num: 30, displayFn: (v: number) => `${v}`, label: 'Days average to see results', color: '#059669', bg: '#F0FDF4', icon: <Zap size={20} /> },
+              { num: 30, displayFn: (v: number) => `${v}`, label: 'Days average to see results', color: '#0FA8DC', bg: '#F0F9FF', icon: <Zap size={20} /> },
             ].map((s) => (
               <motion.div key={s.label} variants={fadeUp} style={{
                 background: s.bg,
@@ -488,14 +488,14 @@ export default function Home() {
             ))}
           </motion.div>
 
-          <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}>
+          <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
             Start Your 7-Day Free Trial <ArrowRight size={16} />
           </Link>
         </div>
       </section>
 
       {/* ── Parent Concerns / Solutions ── */}
-      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFF0F8' }}>
+      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#F8F9FA' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, textAlign: 'center', marginBottom: '32px', color: '#1C1C28', letterSpacing: '-0.01em' }}>
             From Parent Worries to Real Results
@@ -555,7 +555,7 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <Link className="cta cta-blue" to="/for-parents" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}>
+              <Link className="cta cta-blue" to="/for-parents" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
                 Learn More for Parents <ArrowRight size={16} />
               </Link>
             </motion.div>
@@ -580,7 +580,7 @@ export default function Home() {
       </section>
 
       {/* ── Testimonials (light gray) ── */}
-      <section id="testimonials" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#EDF8FF' }}>
+      <section id="testimonials" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#F8F9FA' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '16px', marginBottom: '28px' }}>
             <div>

@@ -26,7 +26,7 @@ const SLIDES: SlideData[] = [
     sub: 'Most students forget what they learn within a week. Blast uses proven retention science to help students remember more and perform better.',
     accent: '#0FA8DC',
     accentRgb: '15,168,220',
-    bg: 'linear-gradient(135deg, #EDF8FF 0%, #FFFFFF 55%, #F0EDFC 100%)',
+    bg: '#FFFFFF',
   },
   {
     id: 'science',
@@ -34,9 +34,9 @@ const SLIDES: SlideData[] = [
     headlinePlain: 'The Forgetting Curve Is Real.',
     headlineAccent: 'We Fight It Every Day.',
     sub: "Ebbinghaus showed 80% of knowledge fades within 24 hours. Blast's spaced repetition schedules reviews at exactly the right moment — so nothing is lost.",
-    accent: '#8B5CF6',
-    accentRgb: '139,92,246',
-    bg: 'linear-gradient(135deg, #F5F0FF 0%, #FFFFFF 55%, #EDF8FF 100%)',
+    accent: '#0FA8DC',
+    accentRgb: '15,168,220',
+    bg: '#FFFFFF',
   },
   {
     id: 'process',
@@ -44,9 +44,9 @@ const SLIDES: SlideData[] = [
     headlinePlain: 'Upload Notes. Get a Study Plan.',
     headlineAccent: 'Master Every Topic.',
     sub: "Upload coaching notes or recordings. Our AI builds a personalised spaced repetition schedule so every chapter stays in memory before exams.",
-    accent: '#10B981',
-    accentRgb: '16,185,129',
-    bg: 'linear-gradient(135deg, #EDFFF8 0%, #FFFFFF 55%, #EDF8FF 100%)',
+    accent: '#0FA8DC',
+    accentRgb: '15,168,220',
+    bg: '#FFFFFF',
   },
   {
     id: 'parent',
@@ -54,9 +54,9 @@ const SLIDES: SlideData[] = [
     headlinePlain: 'Know Exactly How Your Child Is Learning.',
     headlineAccent: 'Every Single Day.',
     sub: "Live dashboard shows study time, retention scores, and topic progress. WhatsApp alerts when your child completes a milestone — no guessing.",
-    accent: '#E91E8C',
-    accentRgb: '233,30,140',
-    bg: 'linear-gradient(135deg, #FFF0F8 0%, #FFFFFF 55%, #F5F0FF 100%)',
+    accent: '#0FA8DC',
+    accentRgb: '15,168,220',
+    bg: '#FFFFFF',
   },
 ];
 
@@ -129,14 +129,13 @@ export default function HeroCarousel() {
                 <h1 style={{
                   fontFamily: 'Poppins, sans-serif', fontWeight: 700,
                   fontSize: 'clamp(1.9rem, 4.5vw, 3.4rem)',
-                  lineHeight: 1.1, letterSpacing: '-0.025em',
+                  lineHeight: 1.15, letterSpacing: '-0.025em',
                   color: '#1C1C28', marginBottom: '20px',
                 }}>
                   {slide.headlinePlain}
                   <span style={{
                     display: 'block',
-                    fontFamily: 'Fraunces, serif', fontStyle: 'italic', fontWeight: 400,
-                    color: slide.accent, marginTop: '6px',
+                    color: slide.accent,
                   }}>
                     {slide.headlineAccent}
                   </span>
@@ -158,7 +157,6 @@ export default function HeroCarousel() {
                       padding: '13px 28px', borderRadius: '10px',
                       fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif',
                       background: slide.accent, color: 'white', border: 'none', cursor: 'pointer',
-                      boxShadow: `0 6px 20px rgba(${slide.accentRgb},0.30)`,
                     }}
                   >
                     See Plans <ArrowRight size={16} />
