@@ -69,8 +69,8 @@ function AppLayout() {
         style={{
           position: 'fixed', inset: 0, zIndex: -1, pointerEvents: 'none',
           background: [
-            'radial-gradient(ellipse 70% 60% at -6% 0%, rgba(233,30,140,0.07) 0%, transparent 60%)',
-            'radial-gradient(ellipse 70% 60% at 106% 100%, rgba(15,168,220,0.08) 0%, transparent 60%)',
+            'radial-gradient(ellipse 70% 60% at -6% 0%, rgba(233,30,140,0.12) 0%, transparent 60%)',
+            'radial-gradient(ellipse 70% 60% at 106% 100%, rgba(15,168,220,0.13) 0%, transparent 60%)',
           ].join(', '),
         }}
       />
