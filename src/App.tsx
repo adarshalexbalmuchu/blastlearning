@@ -61,17 +61,6 @@ function AppLayout() {
         Skip to main content
       </a>
 
-      {/* Left brand stripe — always-visible 4px gradient derived from logo:
-          B-pink → logo-purple → L-cyan, top to bottom, full page height. */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'fixed', left: 0, top: 0, bottom: 0,
-          width: '4px', zIndex: 9998, pointerEvents: 'none',
-          background: 'linear-gradient(180deg, #E91E8C 0%, #8B5CF6 48%, #0FA8DC 100%)',
-        }}
-      />
-
       <ScrollToTop />
       <Navbar />
 
