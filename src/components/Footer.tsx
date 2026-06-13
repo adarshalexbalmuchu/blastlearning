@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import blastLogo from '../assets/blast-logo.webp';
 
 const programs = [
@@ -102,70 +101,6 @@ const Footer = () => {
       }}
     >
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 2rem' }}>
-
-        {/* CTA Strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          style={{
-            background: '#FFFFFF',
-            border: '1px solid #ECECF1',
-            borderRadius: '20px',
-            padding: '40px',
-            marginBottom: '4rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '1.5rem',
-          }}
-        >
-          <div>
-            <h2
-              style={{
-                fontFamily: 'Poppins, sans-serif',
-                fontSize: 'clamp(1.4rem, 3vw, 1.875rem)',
-                fontWeight: 700,
-                color: '#1C1C28',
-                margin: '0 0 0.5rem',
-              }}
-            >
-              Start Learning Smarter Today
-            </h2>
-            <p
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                fontSize: '1rem',
-                color: '#5A5A6E',
-                margin: 0,
-                lineHeight: 1.6,
-              }}
-            >
-              Join 4,999+ Indian families. 7-day free trial, no credit card required.
-            </p>
-          </div>
-          <Link
-            to="/programs"
-            onMouseEnter={(e) => { e.currentTarget.style.background = '#0D8BB5'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = '#0FA8DC'; }}
-            style={{
-              display: 'inline-block',
-              background: '#0FA8DC',
-              color: 'white',
-              fontFamily: 'Inter, sans-serif',
-              fontWeight: 600,
-              fontSize: '1rem',
-              textDecoration: 'none',
-              borderRadius: '10px',
-              padding: '12px 28px',
-              whiteSpace: 'nowrap',
-              transition: 'background 0.2s ease',
-            }}
-          >
-            Start Free Trial →
-          </Link>
-        </motion.div>
 
         {/* Main Columns */}
         <div
