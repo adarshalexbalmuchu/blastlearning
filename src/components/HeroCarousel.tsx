@@ -1,70 +1,62 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
-const INTERVAL = 7500;
+// Replace these with your actual WebP exports from Figma when ready
+import banner1 from '../assets/banner 1.webp';
+import banner2 from '../assets/banner 2.webp';
+import banner3 from '../assets/banner 3.webp';
+import banner4 from '../assets/banner 4.webp';
 
-// ─── Slide data ─────────────────────────────────────────────────────────────────
+const INTERVAL = 6000;
+const ACCENT   = '#0FA8DC';
 
-interface SlideData {
-  id: string;
-  eyebrow: string;
-  headlinePlain: string;
-  headlineAccent: string;
-  sub: string;
-  accent: string;
-  accentRgb: string;
-  bg: string;
+const SLIDES = [
+  { id: 'b1', src: banner1, w: 1774, h: 887, alt: '4 Programs. Endless Possibilities. — Blast Learning' },
+  { id: 'b2', src: banner2, w: 1774, h: 887, alt: 'Better Learning. Brighter Tomorrow. — Blast Learning' },
+  { id: 'b3', src: banner3, w: 1774, h: 887, alt: 'CBSE Success, Confident Future. — Blast Learning' },
+  { id: 'b4', src: banner4, w: 1774, h: 887, alt: 'Learn Smarter. Achieve More. — Blast Learning' },
+] as const;
+
+// ─── Arrow ───────────────────────────────────────────────────────────────────────
+function Arrow({ side, onClick, label }: { side: 'left' | 'right'; onClick: () => void; label: string }) {
+  return (
+    <button
+      onClick={onClick}
+      aria-label={label}
+      style={{
+        position: 'absolute',
+        [side]: 12,
+        top: '50%',
+        transform: 'translateY(-50%)',
+        zIndex: 3,
+        width: 40, height: 40,
+        borderRadius: '50%',
+        border: '1px solid rgba(236,236,241,0.85)',
+        background: 'rgba(255,255,255,0.92)',
+        backdropFilter: 'blur(8px)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        cursor: 'pointer', padding: 0,
+        boxShadow: '0 2px 12px rgba(28,28,40,0.14)',
+      }}
+    >
+      {side === 'left' ? (
+        <svg width={18} height={18} viewBox="0 0 18 18" fill="none">
+          <path d="M11 14L7 9l4-5" stroke="#1C1C28" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ) : (
+        <svg width={18} height={18} viewBox="0 0 18 18" fill="none">
+          <path d="M7 4l4 5-4 5" stroke="#1C1C28" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )}
+    </button>
+  );
 }
 
-const SLIDES: SlideData[] = [
-  {
-    id: 'retention',
-    eyebrow: 'AI-Powered Retention',
-    headlinePlain: 'Your Child Retains Only 10% of Coaching.',
-    headlineAccent: 'We Lift It to 91%.',
-    sub: 'Most students forget what they learn within a week. Blast uses proven retention science to help students remember more and perform better.',
-    accent: '#0FA8DC',
-    accentRgb: '15,168,220',
-    bg: '#FFFFFF',
-  },
-  {
-    id: 'science',
-    eyebrow: 'Backed by Cognitive Science',
-    headlinePlain: 'The Forgetting Curve Is Real.',
-    headlineAccent: 'We Fight It Every Day.',
-    sub: "Ebbinghaus showed 80% of knowledge fades within 24 hours. Blast's spaced repetition schedules reviews at exactly the right moment — so nothing is lost.",
-    accent: '#0FA8DC',
-    accentRgb: '15,168,220',
-    bg: '#FFFFFF',
-  },
-  {
-    id: 'process',
-    eyebrow: 'Simple 3-Step Process',
-    headlinePlain: 'Upload Notes. Get a Study Plan.',
-    headlineAccent: 'Master Every Topic.',
-    sub: "Upload coaching notes or recordings. Our AI builds a personalised spaced repetition schedule so every chapter stays in memory before exams.",
-    accent: '#0FA8DC',
-    accentRgb: '15,168,220',
-    bg: '#FFFFFF',
-  },
-  {
-    id: 'parent',
-    eyebrow: 'For Parents',
-    headlinePlain: 'Know Exactly How Your Child Is Learning.',
-    headlineAccent: 'Every Single Day.',
-    sub: "Live dashboard shows study time, retention scores, and topic progress. WhatsApp alerts when your child completes a milestone — no guessing.",
-    accent: '#0FA8DC',
-    accentRgb: '15,168,220',
-    bg: '#FFFFFF',
-  },
-];
-
-// ─── Carousel ───────────────────────────────────────────────────────────────────
-
+// ─── Carousel ────────────────────────────────────────────────────────────────────
 export default function HeroCarousel() {
-  const [active, setActive] = useState(0);
+  const [active, setActive]         = useState(0);
   const [progressKey, setProgressKey] = useState(0);
+  const ptrX = useRef(0);
 
   useEffect(() => {
     const t = setInterval(() => {
@@ -74,177 +66,67 @@ export default function HeroCarousel() {
     return () => clearInterval(t);
   }, [active]);
 
-  const go = (idx: number) => {
-    if (idx === active) return;
-    setActive(idx);
-    setProgressKey((k) => k + 1);
-  };
+  const go   = (i: number) => { if (i !== active) { setActive(i); setProgressKey((k) => k + 1); } };
   const prev = () => go((active - 1 + SLIDES.length) % SLIDES.length);
   const next = () => go((active + 1) % SLIDES.length);
 
-  const slide = SLIDES[active];
-
   return (
     <section
-      aria-label="Hero"
-      style={{ position: 'relative', overflow: 'hidden' }}
+      aria-label="Hero banners"
+      style={{ position: 'relative', width: '100%', overflow: 'hidden', userSelect: 'none' }}
+      onPointerDown={(e) => { ptrX.current = e.clientX; }}
+      onPointerUp={(e)   => { const dx = e.clientX - ptrX.current; if (dx < -50) next(); else if (dx > 50) prev(); }}
     >
-      {/* Per-slide background — cross-fade */}
-      {SLIDES.map((s, i) => (
-        <motion.div
-          key={s.id}
-          animate={{ opacity: i === active ? 1 : 0 }}
-          transition={{ duration: 0.7, ease: 'easeInOut' }}
-          style={{ position: 'absolute', inset: 0, background: s.bg, zIndex: 0 }}
-        />
-      ))}
-
-      {/* Main content */}
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '80px 48px 48px', width: '100%' }}>
-          <div
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }}
+      {/* ── Image stack — fixed 2:1 aspect-ratio container prevents CLS ── */}
+      <div style={{ position: 'relative', width: '100%', aspectRatio: '2 / 1', overflow: 'hidden', background: '#f0f4f8' }}>
+        {SLIDES.map((slide, i) => (
+          <motion.div
+            key={slide.id}
+            aria-hidden={i !== active}
+            animate={{ opacity: i === active ? 1 : 0 }}
+            transition={{ duration: 0.55, ease: 'easeInOut' }}
+            style={{ position: 'absolute', inset: 0 }}
           >
-
-            {/* Left: text content */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={slide.id + '-text'}
-                initial={{ opacity: 0, y: 22 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -16 }}
-                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              >
-                <span style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '6px',
-                  padding: '5px 14px', borderRadius: '9999px',
-                  background: `rgba(${slide.accentRgb},0.12)`,
-                  color: slide.accent,
-                  fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif',
-                  marginBottom: '20px', letterSpacing: '0.025em',
-                }}>
-                  {slide.eyebrow}
-                </span>
-
-                <h1 style={{
-                  fontFamily: 'Poppins, sans-serif', fontWeight: 800,
-                  fontSize: 'clamp(1.9rem, 4.5vw, 3.4rem)',
-                  lineHeight: 1.12, letterSpacing: '-0.03em',
-                  color: '#1C1C28', marginBottom: '20px',
-                }}>
-                  {slide.headlinePlain}
-                  <span style={{
-                    display: 'block',
-                    color: slide.accent,
-                  }}>
-                    {slide.headlineAccent}
-                  </span>
-                </h1>
-
-                <p style={{
-                  fontSize: '1.0625rem', lineHeight: 1.75, color: '#5A5A6E',
-                  fontFamily: 'Inter, sans-serif', maxWidth: '600px', marginBottom: '28px',
-                }}>
-                  {slide.sub}
-                </p>
-
-                <div style={{ marginBottom: '18px' }}>
-                  <button
-                    type="button"
-                    onClick={() => document.getElementById('programs-preview')?.scrollIntoView({ behavior: 'smooth' })}
-                    style={{
-                      display: 'inline-flex', alignItems: 'center', gap: '8px',
-                      padding: '13px 28px', borderRadius: '10px',
-                      fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif',
-                      background: slide.accent, color: 'white', border: 'none', cursor: 'pointer',
-                    }}
-                  >
-                    See Plans <ArrowRight size={16} />
-                  </button>
-                </div>
-
-                <p style={{ fontSize: '12px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: 0 }}>
-                  Trusted by 5,000+ students and families across India.
-                </p>
-              </motion.div>
-            </AnimatePresence>
-
-          </div>
-        </div>
+            <img
+              src={slide.src}
+              alt={slide.alt}
+              width={slide.w}
+              height={slide.h}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding={i === 0 ? 'sync' : 'async'}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </motion.div>
+        ))}
       </div>
 
-      {/* Drag-to-swipe overlay */}
-      <motion.div
-        drag="x"
-        dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.08}
-        onDragEnd={(_, info) => {
-          if (info.offset.x < -50) next();
-          else if (info.offset.x > 50) prev();
-        }}
-        style={{ position: 'absolute', inset: 0, zIndex: 2, cursor: 'grab' }}
-      />
+      <Arrow side="left"  onClick={prev} label="Previous banner" />
+      <Arrow side="right" onClick={next} label="Next banner" />
 
-      {/* Prev arrow */}
-      <button
-        onClick={prev}
-        aria-label="Previous slide"
-        style={{
-          position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)',
-          background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)',
-          border: '1px solid rgba(236,236,241,0.9)', borderRadius: '50%',
-          width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center',
-          cursor: 'pointer', zIndex: 3, boxShadow: '0 2px 12px rgba(28,28,40,0.15)', padding: 0,
-        }}
-      >
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M11 14L7 9l4-5" stroke="#1C1C28" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </button>
-
-      {/* Next arrow */}
-      <button
-        onClick={next}
-        aria-label="Next slide"
-        style={{
-          position: 'absolute', right: '12px', top: '50%', transform: 'translateY(-50%)',
-          background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)',
-          border: '1px solid rgba(236,236,241,0.9)', borderRadius: '50%',
-          width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center',
-          cursor: 'pointer', zIndex: 3, boxShadow: '0 2px 12px rgba(28,28,40,0.15)', padding: 0,
-        }}
-      >
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M7 4l4 5-4 5" stroke="#1C1C28" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </button>
-
-      {/* Progress bar + dot controls */}
-      <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', padding: '4px 24px 16px' }}>
-        <div style={{ width: '220px', height: '3px', background: 'rgba(28,28,40,0.08)', borderRadius: '999px', overflow: 'hidden' }}>
+      {/* ── Dot pills + auto-progress bar ── */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, padding: '12px 24px 16px' }}>
+        <div style={{ width: 220, height: 3, background: 'rgba(28,28,40,0.1)', borderRadius: 999, overflow: 'hidden' }}>
           <motion.div
             key={progressKey}
             initial={{ width: '0%' }}
             animate={{ width: '100%' }}
             transition={{ duration: INTERVAL / 1000, ease: 'linear' }}
-            style={{ height: '100%', background: slide.accent, borderRadius: '999px' }}
+            style={{ height: '100%', background: ACCENT, borderRadius: 999 }}
           />
         </div>
-        <div style={{ display: 'flex', gap: '8px' }}>
+        <div style={{ display: 'flex', gap: 8 }}>
           {SLIDES.map((_, i) => (
             <motion.button
               key={i}
               onClick={() => go(i)}
-              aria-label={`Go to slide ${i + 1}`}
-              animate={{ width: active === i ? '32px' : '8px', background: active === i ? slide.accent : '#DCDCE5' }}
+              aria-label={`Slide ${i + 1}`}
+              animate={{ width: active === i ? 32 : 8, background: active === i ? ACCENT : '#DCDCE5' }}
               transition={{ duration: 0.3 }}
-              style={{ height: '8px', borderRadius: '4px', border: 'none', cursor: 'pointer', padding: 0 }}
+              style={{ height: 8, borderRadius: 4, border: 'none', cursor: 'pointer', padding: 0 }}
             />
           ))}
         </div>
       </div>
-      {/* Spacer so TrustStats can overlap without covering the dot controls */}
-      <div aria-hidden="true" style={{ height: '56px' }} />
     </section>
   );
 }
