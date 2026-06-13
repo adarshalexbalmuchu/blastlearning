@@ -10,7 +10,6 @@ import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
 import SpeedStreaks from '../components/SpeedStreaks';
 import HeroCarousel from '../components/HeroCarousel';
-import ctaBanner from '../assets/cta-banner.png';
 import {
   ForgettingCurveIllustration,
 } from '../components/illustrations';
@@ -656,15 +655,46 @@ export default function Home() {
       </section>
 
       {/* ── Final CTA Banner ── */}
-      <section style={{ lineHeight: 0, overflow: 'hidden' }}>
-        <Link to="/programs" style={{ display: 'block', textDecoration: 'none' }}>
-          <img
-            src={ctaBanner}
-            alt="Smart Learning Today. Stronger Tomorrow. — Start Your Journey with Blast Learning"
-            className="cta-banner-img"
-            style={{ width: '100%', display: 'block' }}
-          />
-        </Link>
+      <section style={{
+        background: 'linear-gradient(135deg, #07111F 0%, #0F1E3A 50%, #0C1A30 100%)',
+        padding: '80px 24px',
+        textAlign: 'center',
+      }}>
+        <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+          <h2 style={{
+            fontFamily: 'Poppins, sans-serif', fontWeight: 700,
+            fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
+            letterSpacing: '-0.02em', lineHeight: 1.2,
+            marginBottom: '16px',
+            background: 'linear-gradient(135deg, #E91E8C 0%, #8B5CF6 50%, #0FA8DC 100%)',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}>
+            Smart Learning Today.<br />Stronger Tomorrow.
+          </h2>
+          <p style={{
+            fontFamily: 'Inter, sans-serif', fontSize: '1.0625rem',
+            color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, marginBottom: '36px',
+          }}>
+            Join 5,000+ Indian students already retaining more with Blast Learning.
+          </p>
+          <button
+            type="button"
+            onClick={() => document.getElementById('programs-preview')?.scrollIntoView({ behavior: 'smooth' })}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '8px',
+              padding: '14px 32px', borderRadius: '10px', border: 'none', cursor: 'pointer',
+              fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif',
+              background: 'linear-gradient(135deg, #E91E8C, #8B5CF6)',
+              color: 'white', boxShadow: '0 8px 24px rgba(233,30,140,0.35)',
+            }}
+          >
+            See Plans <ArrowRight size={16} />
+          </button>
+          <p style={{ marginTop: '16px', fontFamily: 'Inter, sans-serif', fontSize: '13px', color: 'rgba(255,255,255,0.35)' }}>
+            7-day free trial · No credit card required
+          </p>
+        </div>
       </section>
     </div>
   );
