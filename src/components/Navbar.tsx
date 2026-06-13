@@ -90,6 +90,7 @@ const loginOptions = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<number | null>(null);
   const [hoveredId, setHoveredId] = useState<number | null>(null);
@@ -97,7 +98,11 @@ export default function Navbar() {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+      const totalHeight = document.body.scrollHeight - window.innerHeight;
+      setScrollProgress(totalHeight > 0 ? window.scrollY / totalHeight : 0);
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -421,6 +426,23 @@ export default function Navbar() {
         </div>
 
       </nav>
+
+      {/* Scroll progress bar */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          top: '64px',
+          left: 0,
+          height: '2px',
+          width: `${scrollProgress * 100}%`,
+          background: '#0FA8DC',
+          zIndex: 51,
+          borderRadius: '0 1px 1px 0',
+          pointerEvents: 'none',
+          transition: 'width 0.08s linear',
+        }}
+      />
 
       {/* Full-screen mobile drawer (slide from right) */}
       <AnimatePresence>
