@@ -189,11 +189,41 @@ h1, h2, h3, h4, h5, h6 {
   .hide-lg      { display: none !important; }
 }
 
+/* ── Programs: horizontal scroll on mobile, grid on tablet/desktop ───────────── */
+.programs-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.programs-scroll::-webkit-scrollbar { display: none; }
+.programs-scroll > * {
+  flex: 0 0 min(280px, 80vw);
+  scroll-snap-align: start;
+  min-width: 0;
+}
+@media (min-width: 768px) {
+  .programs-scroll {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow-x: visible;
+    padding-bottom: 0;
+    gap: 20px;
+  }
+  .programs-scroll > * { flex: none; }
+}
+@media (min-width: 1024px) {
+  .programs-scroll { grid-template-columns: repeat(4, 1fr); }
+}
+
 /* ── Mobile responsive improvements (≤767px) ─────────────────────────────────── */
 @media (max-width: 767px) {
   .section-pad {
-    padding-top: 52px !important;
-    padding-bottom: 52px !important;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
   }
   .hero-section {
     padding-top: 84px !important;
@@ -213,8 +243,8 @@ h1, h2, h3, h4, h5, h6 {
 /* ── Tablet (768–1023px): medium section padding ─────────────────────────────── */
 @media (min-width: 768px) and (max-width: 1023px) {
   .section-pad {
-    padding-top: 52px !important;
-    padding-bottom: 52px !important;
+    padding-top: 44px !important;
+    padding-bottom: 44px !important;
   }
 }
 

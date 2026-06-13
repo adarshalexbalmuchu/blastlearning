@@ -8,7 +8,6 @@ import TestimonialCard from '../components/TestimonialCard';
 import DashboardMockup from '../components/DashboardMockup';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
-import SpeedStreaks from '../components/SpeedStreaks';
 import HeroCarousel from '../components/HeroCarousel';
 import {
   ForgettingCurveIllustration,
@@ -208,13 +207,13 @@ export default function Home() {
       {/* ── Hero Banner Carousel ── */}
       <HeroCarousel />
 
-      {/* ── Trust stats: PW-style pastel cards (slot-machine counters + hover characters) ── */}
-      <TrustStats />
-
-      <SpeedStreaks side="left" />
+      {/* ── Trust stats: overlap hero bottom ── */}
+      <div style={{ position: 'relative', zIndex: 2, marginTop: '-56px' }}>
+        <TrustStats />
+      </div>
 
       {/* ── Science of Retention (white) ── */}
-      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ minWidth: 0 }}>
@@ -255,7 +254,7 @@ export default function Home() {
       </section>
 
       {/* ── How It Works (light gray) ── */}
-      <section id="how-it-works" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#F8F9FA' }}>
+      <section id="how-it-works" className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#F8F9FA' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             eyebrow="Simple Process"
@@ -282,10 +281,8 @@ export default function Home() {
         </div>
       </section>
 
-      <SpeedStreaks side="right" />
-
       {/* ── Pricing / Programs (white) ── */}
-      <section id="programs-preview" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFFFFF' }}>
+      <section id="programs-preview" className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           {/* Centered header + toggle */}
@@ -321,8 +318,7 @@ export default function Home() {
           {/* Pricing cards */}
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}
-            className="grid-cols-2-md grid-cols-4-lg"
+            className="programs-scroll"
           >
             {pricingPlans.map((plan) => {
               const price = isYearly ? plan.yearlyMonthly : plan.monthlyPrice;
@@ -433,7 +429,7 @@ export default function Home() {
       </section>
 
       {/* ── Features: expandable explorer (light gray) ── */}
-      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#F8F9FA' }}>
+      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#F8F9FA' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             title="What Makes Us Different"
@@ -443,10 +439,8 @@ export default function Home() {
         </div>
       </section>
 
-      <SpeedStreaks side="left" />
-
       {/* ── Results Banner (white) ── */}
-      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <SectionHeading
             title="See Results Within One Month"
@@ -495,7 +489,7 @@ export default function Home() {
       </section>
 
       {/* ── Parent Concerns / Solutions ── */}
-      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#F8F9FA' }}>
+      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#F8F9FA' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, textAlign: 'center', marginBottom: '32px', color: '#1C1C28', letterSpacing: '-0.01em' }}>
             From Parent Worries to Real Results
@@ -532,7 +526,7 @@ export default function Home() {
       </section>
 
       {/* ── Parent Dashboard Showcase (white) ── */}
-      <section id="parent-dashboard" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFFFFF' }}>
+      <section id="parent-dashboard" className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ minWidth: 0 }}>
@@ -580,7 +574,7 @@ export default function Home() {
       </section>
 
       {/* ── Testimonials (light gray) ── */}
-      <section id="testimonials" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#F8F9FA' }}>
+      <section id="testimonials" className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#F8F9FA' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '16px', marginBottom: '28px' }}>
             <div>
@@ -610,10 +604,8 @@ export default function Home() {
         </div>
       </section>
 
-      <SpeedStreaks side="right" />
-
       {/* ── FAQ Preview (white) ── */}
-      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             title="Frequently Asked Questions"

@@ -243,6 +243,8 @@ export default function HeroCarousel() {
           ))}
         </div>
       </div>
+      {/* Spacer so TrustStats can overlap without covering the dot controls */}
+      <div aria-hidden="true" style={{ height: '56px' }} />
     </section>
   );
 }
