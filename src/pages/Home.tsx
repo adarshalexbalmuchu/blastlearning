@@ -385,7 +385,7 @@ export default function Home() {
       </section>
 
       {/* ── How It Works (light gray) ── */}
-      <section id="how-it-works" className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
+      <section id="how-it-works" className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#EDF8FF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             eyebrow="Simple Process"
@@ -624,8 +624,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Parent Concerns / Solutions (light gray) ── */}
-      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
+      {/* ── Parent Concerns / Solutions ── */}
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFF0F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, textAlign: 'center', marginBottom: '56px', color: '#1C1C28', letterSpacing: '-0.01em' }}>
             From Parent Worries to Real Results
@@ -710,7 +710,7 @@ export default function Home() {
       </section>
 
       {/* ── Testimonials (light gray) ── */}
-      <section id="testimonials" className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
+      <section id="testimonials" className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#EDF8FF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '16px', marginBottom: '48px' }}>
             <div>

@@ -61,17 +61,14 @@ function AppLayout() {
         Skip to main content
       </a>
 
-      {/* Fixed brand canvas — logo B-pink (top-left) ↔ logo L-cyan (bottom-right).
-          Sits at z-index:-1, visible only where page content has no background
-          (i.e. the SpeedStreaks gap elements between sections). */}
+      {/* Left brand stripe — always-visible 4px gradient derived from logo:
+          B-pink → logo-purple → L-cyan, top to bottom, full page height. */}
       <div
         aria-hidden="true"
         style={{
-          position: 'fixed', inset: 0, zIndex: -1, pointerEvents: 'none',
-          background: [
-            'radial-gradient(ellipse 70% 60% at -6% 0%, rgba(233,30,140,0.12) 0%, transparent 60%)',
-            'radial-gradient(ellipse 70% 60% at 106% 100%, rgba(15,168,220,0.13) 0%, transparent 60%)',
-          ].join(', '),
+          position: 'fixed', left: 0, top: 0, bottom: 0,
+          width: '4px', zIndex: 9998, pointerEvents: 'none',
+          background: 'linear-gradient(180deg, #E91E8C 0%, #8B5CF6 48%, #0FA8DC 100%)',
         }}
       />
 
