@@ -127,9 +127,9 @@ export default function HeroCarousel() {
                 </span>
 
                 <h1 style={{
-                  fontFamily: 'Poppins, sans-serif', fontWeight: 700,
+                  fontFamily: 'Poppins, sans-serif', fontWeight: 800,
                   fontSize: 'clamp(1.9rem, 4.5vw, 3.4rem)',
-                  lineHeight: 1.15, letterSpacing: '-0.025em',
+                  lineHeight: 1.12, letterSpacing: '-0.03em',
                   color: '#1C1C28', marginBottom: '20px',
                 }}>
                   {slide.headlinePlain}
