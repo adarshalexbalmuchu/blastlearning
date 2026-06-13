@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
@@ -247,10 +246,6 @@ interface SlideData {
   headlinePlain: string;
   headlineAccent: string;
   sub: string;
-  primaryCta: string;
-  primaryTo: string;
-  secondaryCta: string;
-  secondaryScrollTo?: string;
   accent: string;
   accentRgb: string;
   bg: string;
@@ -264,10 +259,6 @@ const SLIDES: SlideData[] = [
     headlinePlain: 'Your Child Retains Only 10% of Coaching.',
     headlineAccent: 'We Lift It to 91%.',
     sub: 'Most students forget what they learn within a week. Blast uses proven retention science to help students remember more and perform better.',
-    primaryCta: 'Start 7-Day Free Trial',
-    primaryTo: '/programs',
-    secondaryCta: 'See How It Works',
-    secondaryScrollTo: 'how-it-works',
     accent: '#0FA8DC',
     accentRgb: '15,168,220',
     bg: 'linear-gradient(135deg, #EDF8FF 0%, #FFFFFF 55%, #F0EDFC 100%)',
@@ -279,10 +270,6 @@ const SLIDES: SlideData[] = [
     headlinePlain: 'The Forgetting Curve Is Real.',
     headlineAccent: 'We Fight It Every Day.',
     sub: "Ebbinghaus showed 80% of knowledge fades within 24 hours. Blast's spaced repetition schedules reviews at exactly the right moment — so nothing is lost.",
-    primaryCta: 'Start Free Trial',
-    primaryTo: '/programs',
-    secondaryCta: 'Learn the Science',
-    secondaryScrollTo: undefined,
     accent: '#8B5CF6',
     accentRgb: '139,92,246',
     bg: 'linear-gradient(135deg, #F5F0FF 0%, #FFFFFF 55%, #EDF8FF 100%)',
@@ -294,10 +281,6 @@ const SLIDES: SlideData[] = [
     headlinePlain: 'Upload Notes. Get a Study Plan.',
     headlineAccent: 'Master Every Topic.',
     sub: "Upload coaching notes or recordings. Our AI builds a personalised spaced repetition schedule so every chapter stays in memory before exams.",
-    primaryCta: 'Start Free Trial',
-    primaryTo: '/programs',
-    secondaryCta: 'How It Works',
-    secondaryScrollTo: 'how-it-works',
     accent: '#10B981',
     accentRgb: '16,185,129',
     bg: 'linear-gradient(135deg, #EDFFF8 0%, #FFFFFF 55%, #EDF8FF 100%)',
@@ -309,10 +292,6 @@ const SLIDES: SlideData[] = [
     headlinePlain: 'Know Exactly How Your Child Is Learning.',
     headlineAccent: 'Every Single Day.',
     sub: "Live dashboard shows study time, retention scores, and topic progress. WhatsApp alerts when your child completes a milestone — no guessing.",
-    primaryCta: 'Start Free Trial',
-    primaryTo: '/programs',
-    secondaryCta: 'Parent Dashboard',
-    secondaryScrollTo: 'parent-dashboard',
     accent: '#E91E8C',
     accentRgb: '233,30,140',
     bg: 'linear-gradient(135deg, #FFF0F8 0%, #FFFFFF 55%, #F5F0FF 100%)',
@@ -411,38 +390,19 @@ export default function HeroCarousel() {
                   {slide.sub}
                 </p>
 
-                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '18px' }}>
-                  <Link
-                    to={slide.primaryTo}
-                    className="cta cta-blue"
+                <div style={{ marginBottom: '18px' }}>
+                  <button
+                    type="button"
+                    onClick={() => document.getElementById('programs-preview')?.scrollIntoView({ behavior: 'smooth' })}
                     style={{
                       display: 'inline-flex', alignItems: 'center', gap: '8px',
                       padding: '13px 28px', borderRadius: '10px',
                       fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif',
-                      textDecoration: 'none', background: slide.accent, color: 'white',
+                      background: slide.accent, color: 'white', border: 'none', cursor: 'pointer',
                       boxShadow: `0 6px 20px rgba(${slide.accentRgb},0.30)`,
                     }}
                   >
-                    {slide.primaryCta} <ArrowRight size={16} />
-                  </Link>
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      slide.secondaryScrollTo
-                        ? document.getElementById(slide.secondaryScrollTo)?.scrollIntoView({ behavior: 'smooth' })
-                        : undefined
-                    }
-                    className="cta cta-outline"
-                    style={{
-                      display: 'inline-flex', alignItems: 'center', gap: '8px',
-                      padding: '13px 24px', borderRadius: '10px',
-                      fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif',
-                      background: 'transparent', color: '#1C1C28',
-                      border: '1.5px solid #DCDCE5', cursor: 'pointer',
-                    }}
-                  >
-                    {slide.secondaryCta}
+                    See Plans <ArrowRight size={16} />
                   </button>
                 </div>
 
