@@ -4,17 +4,16 @@ interface SpeedStreaksProps {
   side?: 'left' | 'right';
 }
 
-// Each entry: pct = line width as % of container, h = height px, edge/mid opacity
+// Mirrors the logo's horizontal speed marks — lengths and weights match the B letterform
 const STREAKS: { pct: number; h: number; edge: number; mid: number }[] = [
-  { pct: 22, h: 1.0, edge: 0.30, mid: 0.14 },
-  { pct: 42, h: 1.5, edge: 0.25, mid: 0.12 },
-  { pct: 58, h: 2.5, edge: 0.22, mid: 0.10 }, // thickest / longest
-  { pct: 36, h: 1.5, edge: 0.28, mid: 0.13 },
-  { pct: 18, h: 1.0, edge: 0.32, mid: 0.15 },
+  { pct: 22, h: 1.5, edge: 0.45, mid: 0.20 },
+  { pct: 40, h: 2.0, edge: 0.38, mid: 0.17 },
+  { pct: 55, h: 3.0, edge: 0.32, mid: 0.14 }, // thickest / longest
+  { pct: 35, h: 2.0, edge: 0.40, mid: 0.18 },
+  { pct: 18, h: 1.5, edge: 0.48, mid: 0.22 },
 ];
 
 export default function SpeedStreaks({ side = 'left' }: SpeedStreaksProps) {
-  // Left = logo B-pink, Right = logo L-cyan
   const rgb   = side === 'left' ? '233,30,140' : '15,168,220';
   const bgDir = side === 'left' ? '90deg' : '270deg';
 
@@ -23,14 +22,13 @@ export default function SpeedStreaks({ side = 'left' }: SpeedStreaksProps) {
       aria-hidden="true"
       style={{
         position: 'relative',
-        height: '80px',
+        height: '88px',
         overflow: 'hidden',
         pointerEvents: 'none',
-        // Self-contained colour wash — does not depend on canvas showing through
         background:
           side === 'left'
-            ? `linear-gradient(90deg, rgba(${rgb},0.05) 0%, transparent 65%)`
-            : `linear-gradient(270deg, rgba(${rgb},0.06) 0%, transparent 65%)`,
+            ? `linear-gradient(90deg, rgba(${rgb},0.10) 0%, transparent 60%)`
+            : `linear-gradient(270deg, rgba(${rgb},0.10) 0%, transparent 60%)`,
       }}
     >
       {STREAKS.map((s, i) => (
@@ -42,7 +40,7 @@ export default function SpeedStreaks({ side = 'left' }: SpeedStreaksProps) {
           transition={{ duration: 0.9, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
           style={{
             position: 'absolute',
-            top: `${10 + i * 13}px`,
+            top: `${10 + i * 14}px`,
             ...(side === 'left' ? { left: 0 } : { right: 0 }),
             width: `${s.pct}%`,
             height: `${s.h}px`,
