@@ -233,7 +233,7 @@ export default function Home() {
       {/* ── Hero Banner Carousel ── */}
       <section
         aria-label="Hero banner"
-        style={{ background: '#FFFFFF', paddingTop: '64px', overflow: 'hidden' }}
+        style={{ background: '#FFFFFF', overflow: 'hidden' }}
       >
         {/* Stacked cross-fade: first image is relative (holds height), rest are absolute */}
         <div style={{ position: 'relative', lineHeight: 0, overflow: 'hidden' }}>
@@ -785,24 +785,15 @@ export default function Home() {
       </section>
 
       {/* ── Final CTA Banner ── */}
-      <section style={{ background: '#F8FAFC', paddingTop: '48px', paddingBottom: '48px' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 8px 40px rgba(28,28,40,0.12)' }}
-          >
-            <Link to="/programs" style={{ display: 'block', textDecoration: 'none' }}>
-              <img
-                src={ctaBanner}
-                alt="Smart Learning Today. Stronger Tomorrow. — Start Your Journey with Blast Learning"
-                className="cta-banner-img"
-              />
-            </Link>
-          </motion.div>
-        </div>
+      <section style={{ lineHeight: 0, overflow: 'hidden' }}>
+        <Link to="/programs" style={{ display: 'block', textDecoration: 'none' }}>
+          <img
+            src={ctaBanner}
+            alt="Smart Learning Today. Stronger Tomorrow. — Start Your Journey with Blast Learning"
+            className="cta-banner-img"
+            style={{ width: '100%', display: 'block' }}
+          />
+        </Link>
       </section>
     </div>
   );
