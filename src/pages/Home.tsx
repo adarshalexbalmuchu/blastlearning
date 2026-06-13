@@ -175,7 +175,7 @@ const stagger: Variants = {
 // ─── Reusable section heading ───────────────────────────────────────────────────
 function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title: React.ReactNode; subtitle?: string }) {
   return (
-    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '56px' }}>
+    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '32px' }}>
       {eyebrow && (
         <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
           {eyebrow}
@@ -214,7 +214,7 @@ export default function Home() {
       <SpeedStreaks side="left" />
 
       {/* ── Science of Retention (white) ── */}
-      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ minWidth: 0 }}>
@@ -255,14 +255,14 @@ export default function Home() {
       </section>
 
       {/* ── How It Works (light gray) ── */}
-      <section id="how-it-works" className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#EDF8FF' }}>
+      <section id="how-it-works" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#EDF8FF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             eyebrow="Simple Process"
             title="How Blast Learning Works"
             subtitle="Three simple steps to turn everyday study into lasting retention."
           />
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '48px' }} className="grid-cols-3-md">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '28px' }} className="grid-cols-3-md">
             {howItWorks.map(({ num, title, desc, accent, Visual }) => (
               <motion.div
                 key={num}
@@ -285,11 +285,11 @@ export default function Home() {
       <SpeedStreaks side="right" />
 
       {/* ── Pricing / Programs (white) ── */}
-      <section id="programs-preview" className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section id="programs-preview" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           {/* Centered header + toggle */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '52px' }}>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '28px' }}>
             <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
               Pricing
             </span>
@@ -433,7 +433,7 @@ export default function Home() {
       </section>
 
       {/* ── Features: expandable explorer (light gray) ── */}
-      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7F7F8' }}>
+      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#F7F7F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             title="What Makes Us Different"
@@ -446,7 +446,7 @@ export default function Home() {
       <SpeedStreaks side="left" />
 
       {/* ── Results Banner (white) ── */}
-      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <SectionHeading
             title="See Results Within One Month"
@@ -454,7 +454,7 @@ export default function Home() {
           />
 
           {/* Animated score gauge cards */}
-          <div style={{ marginBottom: '48px', textAlign: 'left' }}>
+          <div style={{ marginBottom: '28px', textAlign: 'left' }}>
             <ResultsScoreCards />
           </div>
 
@@ -495,9 +495,9 @@ export default function Home() {
       </section>
 
       {/* ── Parent Concerns / Solutions ── */}
-      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFF0F8' }}>
+      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFF0F8' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, textAlign: 'center', marginBottom: '56px', color: '#1C1C28', letterSpacing: '-0.01em' }}>
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, textAlign: 'center', marginBottom: '32px', color: '#1C1C28', letterSpacing: '-0.01em' }}>
             From Parent Worries to Real Results
           </motion.h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '32px' }} className="grid-cols-2-lg">
@@ -532,7 +532,7 @@ export default function Home() {
       </section>
 
       {/* ── Parent Dashboard Showcase (white) ── */}
-      <section id="parent-dashboard" className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section id="parent-dashboard" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ minWidth: 0 }}>
@@ -580,9 +580,9 @@ export default function Home() {
       </section>
 
       {/* ── Testimonials (light gray) ── */}
-      <section id="testimonials" className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#EDF8FF' }}>
+      <section id="testimonials" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#EDF8FF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '16px', marginBottom: '48px' }}>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '16px', marginBottom: '28px' }}>
             <div>
               <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
                 Student Stories
@@ -613,7 +613,7 @@ export default function Home() {
       <SpeedStreaks side="right" />
 
       {/* ── FAQ Preview (white) ── */}
-      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             title="Frequently Asked Questions"

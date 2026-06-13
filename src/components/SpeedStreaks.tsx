@@ -22,7 +22,7 @@ export default function SpeedStreaks({ side = 'left' }: SpeedStreaksProps) {
       aria-hidden="true"
       style={{
         position: 'relative',
-        height: '88px',
+        height: '40px',
         overflow: 'hidden',
         pointerEvents: 'none',
         background:
