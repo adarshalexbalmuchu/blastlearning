@@ -655,8 +655,8 @@ export default function Home() {
         <img
           src={ctaBanner}
           alt="Learn Smarter. Achieve More. — Start your Blast Learning journey today."
-          width={1774}
-          height={887}
+          width={4095}
+          height={774}
           loading="lazy"
           decoding="async"
           style={{ width: '100%', height: 'auto', display: 'block' }}
