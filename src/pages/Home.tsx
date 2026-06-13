@@ -8,6 +8,7 @@ import TestimonialCard from '../components/TestimonialCard';
 import DashboardMockup from '../components/DashboardMockup';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
+import SpeedStreaks from '../components/SpeedStreaks';
 import heroBanner1 from '../assets/hero-banner-1.png';
 import heroBanner2 from '../assets/hero-banner-2.png';
 import heroBanner3 from '../assets/hero-banner-3.png';
@@ -340,6 +341,8 @@ export default function Home() {
       {/* ── Trust stats: PW-style pastel cards (slot-machine counters + hover characters) ── */}
       <TrustStats />
 
+      <SpeedStreaks side="left" />
+
       {/* ── Science of Retention (white) ── */}
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
@@ -408,6 +411,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <SpeedStreaks side="right" />
 
       {/* ── Pricing / Programs (white) ── */}
       <section id="programs-preview" className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
@@ -567,6 +572,8 @@ export default function Home() {
           <FeatureExplorer />
         </div>
       </section>
+
+      <SpeedStreaks side="left" />
 
       {/* ── Results Banner (white) ── */}
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
@@ -732,6 +739,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <SpeedStreaks side="right" />
 
       {/* ── FAQ Preview (white) ── */}
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
