@@ -180,7 +180,7 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title:
           {eyebrow}
         </span>
       )}
-      <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+      <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
         {title}
       </h2>
       {subtitle && (
@@ -225,7 +225,7 @@ export default function Home() {
               <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>
                 The Science
               </span>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
                 Why Students Forget, and How We Fix It
               </h2>
               <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px' }}>
@@ -290,7 +290,7 @@ export default function Home() {
             <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
               Pricing
             </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em', marginBottom: '12px' }}>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', marginBottom: '12px' }}>
               Simple, Transparent Pricing
             </h2>
             <p style={{ fontSize: '16px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px', maxWidth: '440px', margin: '0 auto 28px' }}>
@@ -491,7 +491,7 @@ export default function Home() {
       {/* ── Parent Concerns / Solutions ── */}
       <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#F8F9FA' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, textAlign: 'center', marginBottom: '32px', color: '#1C1C28', letterSpacing: '-0.01em' }}>
+          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, textAlign: 'center', marginBottom: '32px', color: '#1C1C28', letterSpacing: '-0.025em' }}>
             From Parent Worries to Real Results
           </motion.h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '32px' }} className="grid-cols-2-lg">
@@ -533,7 +533,7 @@ export default function Home() {
               <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>
                 For Parents
               </span>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
                 The Parent Dashboard: <span style={{ color: '#0FA8DC' }}>Stay Informed Every Day</span>
               </h2>
               <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px' }}>
@@ -581,7 +581,7 @@ export default function Home() {
               <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
                 Student Stories
               </span>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 700, color: '#1C1C28', letterSpacing: '-0.01em', lineHeight: 1.2 }}>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
                 Real Results from Real Students
               </h2>
               <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6 }}>
@@ -654,9 +654,9 @@ export default function Home() {
       }}>
         <div style={{ maxWidth: '640px', margin: '0 auto' }}>
           <h2 style={{
-            fontFamily: 'Poppins, sans-serif', fontWeight: 700,
+            fontFamily: 'Poppins, sans-serif', fontWeight: 800,
             fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
-            letterSpacing: '-0.02em', lineHeight: 1.2,
+            letterSpacing: '-0.03em', lineHeight: 1.15,
             marginBottom: '16px',
             background: 'linear-gradient(135deg, #E91E8C 0%, #8B5CF6 50%, #0FA8DC 100%)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',

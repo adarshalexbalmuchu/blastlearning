@@ -189,6 +189,18 @@ h1, h2, h3, h4, h5, h6 {
   .hide-lg      { display: none !important; }
 }
 
+/* ── Stat strip: 2-col mobile, 4-col desktop, border dividers ────────────────── */
+.stat-strip { display: grid; grid-template-columns: repeat(2, 1fr); }
+.stat-strip > * { border-right: 1px solid #ECECF1; border-bottom: 1px solid #ECECF1; }
+.stat-strip > *:nth-child(2n) { border-right: none; }
+.stat-strip > *:nth-last-child(-n+2) { border-bottom: none; }
+@media (min-width: 1024px) {
+  .stat-strip { grid-template-columns: repeat(4, 1fr); }
+  .stat-strip > *:nth-child(2n) { border-right: 1px solid #ECECF1; }
+  .stat-strip > *:nth-child(4n) { border-right: none; }
+  .stat-strip > *:nth-last-child(-n+4) { border-bottom: none; }
+}
+
 /* ── Programs: horizontal scroll on mobile, grid on tablet/desktop ───────────── */
 .programs-scroll {
   display: flex;
