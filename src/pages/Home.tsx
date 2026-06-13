@@ -18,7 +18,6 @@ import {
 } from '../components/illustrations';
 import ResultsScoreCards from '../components/ResultsScoreCards';
 import HowItWorksCard, { UploadVisual, AIVisual, MasteryVisual } from '../components/HowItWorksCard';
-import BrandArc from '../components/BrandArc';
 import { useState, useEffect, useRef } from 'react';
 import { useSEO } from '../hooks/useSEO';
 
@@ -230,195 +229,11 @@ export default function Home() {
 
   return (
     <div>
-      {/* ── Asymmetric Hero ── */}
+      {/* ── Hero Banner Carousel ── */}
       <section
-        className="hero-section"
-        style={{ position: 'relative', background: '#FFFFFF', paddingTop: '128px', paddingBottom: '80px' }}
+        aria-label="Hero banner"
+        style={{ background: '#FFFFFF', paddingTop: '64px', overflow: 'hidden' }}
       >
-        {/* Blob wrapper — clips blobs only, allows right column to bleed */}
-        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
-          <div style={{
-            position: 'absolute', top: '-120px', right: '-180px',
-            width: '640px', height: '640px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(15,168,220,0.09) 0%, transparent 70%)',
-            willChange: 'transform', animation: 'blob-float 14s ease-in-out infinite',
-          }} />
-          <div style={{
-            position: 'absolute', bottom: '-100px', left: '-160px',
-            width: '500px', height: '500px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%)',
-            willChange: 'transform', animation: 'blob-float 18s ease-in-out infinite reverse',
-          }} />
-        </div>
-
-        {/* Brand Arc motif — bottom of hero */}
-        <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1400px', pointerEvents: 'none' }}>
-          <BrandArc width="100%" opacity={0.055} />
-        </div>
-
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-hero-asym">
-
-            {/* Left: Text */}
-            <motion.div initial="hidden" animate="visible" variants={stagger} className="hero-left-col">
-              <motion.div variants={fadeUp}>
-                <span style={{
-                  display: 'inline-flex', alignItems: 'center', gap: '6px',
-                  padding: '6px 14px', borderRadius: '9999px',
-                  background: '#E0F5FC', color: '#0FA8DC',
-                  fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif',
-                  marginBottom: '24px', letterSpacing: '0.025em',
-                }}>
-                  <Zap size={11} /> AI-Powered Retention System
-                </span>
-              </motion.div>
-
-              <motion.h1
-                variants={fadeUp}
-                style={{
-                  fontFamily: 'Poppins, sans-serif', fontWeight: 700,
-                  fontSize: 'clamp(2.1rem, 4.8vw, 3.75rem)',
-                  lineHeight: 1.08, letterSpacing: '-0.025em',
-                  color: '#1C1C28', marginBottom: '22px',
-                }}
-              >
-                Your Child Retains Only 10% of Coaching.
-                <span style={{
-                  display: 'block', fontFamily: 'Fraunces, serif',
-                  fontStyle: 'italic', fontWeight: 400,
-                  color: '#0FA8DC', marginTop: '8px',
-                }}>
-                  We Lift It to 91%.
-                </span>
-              </motion.h1>
-
-              <motion.p
-                variants={fadeUp}
-                style={{
-                  fontSize: '1.0625rem', lineHeight: 1.75, color: '#5A5A6E',
-                  fontFamily: 'Inter, sans-serif', maxWidth: '480px', marginBottom: '36px',
-                }}
-              >
-                Most students forget what they learn within a week.<br />
-                Blast uses proven retention science to help students remember more and perform better.
-              </motion.p>
-
-              {/* CTAs */}
-              <motion.div variants={fadeUp} className="hero-cta-wrap" style={{ display: 'flex', marginBottom: '20px' }}>
-                <div className="hero-cta-motion">
-                  <Link
-                    to="/programs"
-                    className="cta cta-blue hero-cta-primary"
-                    style={{
-                      display: 'inline-flex', alignItems: 'center', gap: '8px',
-                      padding: '13px 28px', borderRadius: '10px',
-                      fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif',
-                      textDecoration: 'none', background: '#0FA8DC', color: 'white',
-                      boxShadow: '0 6px 20px rgba(15,168,220,0.28)',
-                    }}
-                  >
-                    Start 7-Day Free Trial <ArrowRight size={16} />
-                  </Link>
-                </div>
-                <div className="hero-cta-motion">
-                  <button
-                    type="button"
-                    onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="cta hero-ghost-btn"
-                    style={{
-                      display: 'inline-flex', alignItems: 'center', gap: '8px',
-                      padding: '13px 24px', borderRadius: '10px',
-                      fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif',
-                      background: 'transparent', color: '#1C1C28',
-                      border: '1.5px solid #DCDCE5', cursor: 'pointer',
-                    }}
-                  >
-                    See How It Works
-                  </button>
-                </div>
-              </motion.div>
-
-              {/* Trust line */}
-              <motion.p variants={fadeUp} style={{ fontSize: '12px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: 0 }}>
-                Trusted by 5,000+ students and families across India.
-              </motion.p>
-            </motion.div>
-
-            {/* Right: Outcome card — only on large screens */}
-            <div style={{ minWidth: 0 }} className="show-lg-blk">
-              <motion.div
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                style={{ transform: 'translateX(28px) rotate(-1deg)', transformOrigin: 'center bottom' }}
-              >
-                <div style={{
-                  background: '#FFFFFF', borderRadius: '24px',
-                  border: '1.5px solid #ECECF1',
-                  boxShadow: '0 24px 56px rgba(28,28,40,0.10), 0 4px 16px rgba(28,28,40,0.06)',
-                  padding: '28px',
-                }}>
-                  {/* Live indicator */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '22px' }}>
-                    <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 0 3px rgba(34,197,94,0.2)' }} />
-                    <span style={{ fontSize: '11px', fontWeight: 600, color: '#8E8EA0', fontFamily: 'Inter, sans-serif', letterSpacing: '0.07em', textTransform: 'uppercase' }}>Live Dashboard</span>
-                  </div>
-
-                  {/* Big retention stat */}
-                  <div style={{ marginBottom: '24px' }}>
-                    <div style={{ fontSize: '3.25rem', fontWeight: 800, fontFamily: 'Poppins, sans-serif', color: '#0FA8DC', lineHeight: 1, letterSpacing: '-0.03em' }}>91%</div>
-                    <div style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginTop: '5px' }}>Retention Rate · This Week</div>
-                    <div style={{ marginTop: '10px', height: '6px', background: '#E0F5FC', borderRadius: '3px', overflow: 'hidden' }}>
-                      <div style={{ width: '91%', height: '100%', background: '#0FA8DC', borderRadius: '3px' }} />
-                    </div>
-                  </div>
-
-                  {/* Today's Recall Score */}
-                  <div style={{ marginBottom: '16px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                      <span style={{ fontSize: '12px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>Today's Recall Score</span>
-                      <span style={{ fontSize: '12px', fontWeight: 700, color: '#0FA8DC', fontFamily: 'Inter, sans-serif' }}>83%</span>
-                    </div>
-                    <div style={{ height: '5px', background: '#F0F0F4', borderRadius: '3px', overflow: 'hidden' }}>
-                      <div style={{ width: '83%', height: '100%', background: 'linear-gradient(90deg, #0FA8DC, #8B5CF6)', borderRadius: '3px' }} />
-                    </div>
-                  </div>
-
-                  {/* Revision Progress */}
-                  <div style={{ marginBottom: '20px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                      <span style={{ fontSize: '12px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>Revision Progress</span>
-                      <span style={{ fontSize: '12px', fontWeight: 500, color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>12 / 14 chapters</span>
-                    </div>
-                    <div style={{ height: '5px', background: '#F0F0F4', borderRadius: '3px', overflow: 'hidden' }}>
-                      <div style={{ width: '86%', height: '100%', background: '#22C55E', borderRadius: '3px' }} />
-                    </div>
-                  </div>
-
-                  {/* Learning Streak */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '12px 14px', background: '#FDF3E7', borderRadius: '12px' }}>
-                    <span style={{ fontSize: '20px', lineHeight: 1 }}>🔥</span>
-                    <div>
-                      <div style={{ fontSize: '13px', fontWeight: 700, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>14-Day Learning Streak</div>
-                      <div style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '1px' }}>Keep it going!</div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* ── Platform Highlights (image carousel) — temporarily hidden ── */}
-      {false && <section
-        aria-label="Platform highlights"
-        style={{ background: '#F7F7F8', borderTop: '1px solid #ECECF1', borderBottom: '1px solid #ECECF1', overflow: 'hidden' }}
-      >
-        <div style={{ padding: '20px 24px 8px', textAlign: 'center' }}>
-          <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: 0 }}>Platform Highlights</p>
-        </div>
         {/* Stacked cross-fade: first image is relative (holds height), rest are absolute */}
         <div style={{ position: 'relative', lineHeight: 0, overflow: 'hidden' }}>
           {heroBanners.map((src, i) => (
@@ -520,7 +335,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>}
+      </section>
 
       {/* ── Trust stats: PW-style pastel cards (slot-machine counters + hover characters) ── */}
       <TrustStats />
