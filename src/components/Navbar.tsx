@@ -1,20 +1,128 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Menu, X, ChevronDown, User,
-  BookOpen, Calculator, Edit, Target,
-  LayoutDashboard, MessageSquare, BarChart2,
-  Brain, Layers, Zap,
-} from 'lucide-react';
+import { Menu, X, ChevronDown, User } from 'lucide-react';
 import blastLogo from '../assets/blast-logo.webp';
 
 interface SubItem {
   label: string;
   description: string;
-  icon: React.ElementType;
+  icon: React.ReactNode;
+  iconBg: string;
+  iconBorder: string;
   path: string;
 }
+
+/* ── Premium inline SVG icons ─────────────────────────────────────────────── */
+const IconBook = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path d="M4 5C4 4.45 4.45 4 5 4H11V18.5C8.5 18 6 18 4 19V5Z" fill="#818CF8"/>
+    <path d="M20 5C20 4.45 19.55 4 19 4H13V18.5C15.5 18 18 18 20 19V5Z" fill="#6366F1"/>
+    <rect x="11" y="4" width="2" height="14.5" fill="#4338CA"/>
+    <line x1="6" y1="8" x2="10" y2="8" stroke="#EEF2FF" strokeWidth="1" strokeLinecap="round"/>
+    <line x1="6" y1="11" x2="9" y2="11" stroke="#EEF2FF" strokeWidth="1" strokeLinecap="round"/>
+    <line x1="6" y1="14" x2="10" y2="14" stroke="#EEF2FF" strokeWidth="1" strokeLinecap="round"/>
+    <line x1="14" y1="8" x2="18" y2="8" stroke="white" strokeWidth="1" strokeLinecap="round"/>
+    <line x1="14" y1="11" x2="17" y2="11" stroke="white" strokeWidth="1" strokeLinecap="round"/>
+    <line x1="14" y1="14" x2="18" y2="14" stroke="white" strokeWidth="1" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconBulb = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path d="M12 2C9.24 2 7 4.24 7 7C7 9.05 8.23 10.82 10 11.73V14C10 14.55 10.45 15 11 15H13C13.55 15 14 14.55 14 14V11.73C15.77 10.82 17 9.05 17 7C17 4.24 14.76 2 12 2Z" fill="#FCD34D"/>
+    <rect x="10.5" y="15" width="3" height="1.5" rx="0.75" fill="#F59E0B"/>
+    <rect x="11" y="17" width="2" height="1.5" rx="0.75" fill="#F59E0B"/>
+    <line x1="9.5" y1="7" x2="11" y2="7" stroke="#92400E" strokeWidth="1.2" strokeLinecap="round"/>
+    <line x1="10.25" y1="6.25" x2="10.25" y2="7.75" stroke="#92400E" strokeWidth="1.2" strokeLinecap="round"/>
+    <line x1="13" y1="6.25" x2="14" y2="7.25" stroke="#92400E" strokeWidth="1.1" strokeLinecap="round"/>
+    <line x1="14" y1="6.25" x2="13" y2="7.25" stroke="#92400E" strokeWidth="1.1" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconPen = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path d="M17.5 3L21 6.5L10.5 17L6 17.5L6.5 13L17.5 3Z" fill="#34D399"/>
+    <path d="M17.5 3L21 6.5L19 8.5L15.5 5L17.5 3Z" fill="#059669"/>
+    <path d="M6 17.5L6.5 13L10.5 17L6 17.5Z" fill="#047857"/>
+    <line x1="15.5" y1="5" x2="19" y2="8.5" stroke="#065F46" strokeWidth="0.8"/>
+    <line x1="4" y1="20.5" x2="12" y2="20.5" stroke="#34D399" strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconTrophy = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path d="M7 3H17V12C17 14.76 14.76 17 12 17C9.24 17 7 14.76 7 12V3Z" fill="#A78BFA"/>
+    <path d="M4 3H7V8C5.5 8 4 6.5 4 5V3Z" fill="#7C3AED"/>
+    <path d="M17 3H20V5C20 6.5 18.5 8 17 8V3Z" fill="#7C3AED"/>
+    <rect x="11" y="17" width="2" height="2" rx="0.5" fill="#8B5CF6"/>
+    <rect x="8.5" y="19" width="7" height="2" rx="1" fill="#7C3AED"/>
+    <path d="M9.5 9.5L11 11L14.5 7.5" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const IconChart = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <rect x="3" y="13" width="4.5" height="8" rx="1" fill="#93C5FD"/>
+    <rect x="9.75" y="8" width="4.5" height="13" rx="1" fill="#3B82F6"/>
+    <rect x="16.5" y="4" width="4.5" height="17" rx="1" fill="#1D4ED8"/>
+    <line x1="2" y1="21.5" x2="22" y2="21.5" stroke="#BFDBFE" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M5.25 17L12 11.5L18.75 6" stroke="#60A5FA" strokeWidth="1" strokeLinecap="round" strokeDasharray="1.5 1.5"/>
+  </svg>
+);
+
+const IconChat = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path d="M20 4H4C2.9 4 2 4.9 2 6V16C2 17.1 2.9 18 4 18H8L12 22L16 18H20C21.1 18 22 17.1 22 16V6C22 4.9 21.1 4 20 4Z" fill="#FDA4AF"/>
+    <path d="M12 14.5C12 14.5 8.5 12 8.5 9.5C8.5 8.12 9.62 7 11 7C11.7 7 12 7.4 12 7.4C12 7.4 12.3 7 13 7C14.38 7 15.5 8.12 15.5 9.5C15.5 12 12 14.5 12 14.5Z" fill="#F43F5E"/>
+  </svg>
+);
+
+const IconClipboard = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <rect x="4" y="4" width="16" height="17" rx="2" fill="#5EEAD4"/>
+    <rect x="9" y="2" width="6" height="4" rx="1" fill="#0D9488"/>
+    <line x1="7" y1="10" x2="13" y2="10" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+    <line x1="7" y1="13.5" x2="13" y2="13.5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+    <line x1="7" y1="17" x2="11" y2="17" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M15 9L16.5 10.5L19 7.5" stroke="#0D9488" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const IconRobot = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <rect x="4" y="7" width="16" height="13" rx="3" fill="#C4B5FD"/>
+    <rect x="7" y="10" width="10" height="7" rx="1.5" fill="#7C3AED"/>
+    <circle cx="9.5" cy="12" r="1.2" fill="#DDD6FE"/>
+    <circle cx="14.5" cy="12" r="1.2" fill="#DDD6FE"/>
+    <circle cx="9.5" cy="12" r="0.5" fill="#5B21B6"/>
+    <circle cx="14.5" cy="12" r="0.5" fill="#5B21B6"/>
+    <path d="M9.5 14.5C9.5 14.5 10.5 15.5 12 15.5C13.5 15.5 14.5 14.5 14.5 14.5" stroke="#DDD6FE" strokeWidth="1.2" strokeLinecap="round"/>
+    <rect x="11" y="4" width="2" height="3" rx="1" fill="#8B5CF6"/>
+    <circle cx="12" cy="3.5" r="1.5" fill="#A78BFA"/>
+    <circle cx="2.5" cy="11" r="1.5" fill="#8B5CF6"/>
+    <circle cx="21.5" cy="11" r="1.5" fill="#8B5CF6"/>
+  </svg>
+);
+
+const IconBooks = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <rect x="3" y="16" width="18" height="4" rx="1" fill="#FB923C"/>
+    <rect x="3" y="16" width="2.5" height="4" rx="0.5" fill="#C2410C"/>
+    <rect x="5" y="11" width="14" height="4" rx="1" fill="#F97316"/>
+    <rect x="5" y="11" width="2.5" height="4" rx="0.5" fill="#C2410C"/>
+    <rect x="7" y="6" width="10" height="4" rx="1" fill="#EA580C"/>
+    <rect x="7" y="6" width="2.5" height="4" rx="0.5" fill="#9A3412"/>
+  </svg>
+);
+
+const IconBolt = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path d="M13 2L4 14H12L10 22L21 9H13L13 2Z" fill="#FCD34D"/>
+    <path d="M13 2L13 9H21" stroke="#F59E0B" strokeWidth="0.8" fill="none" strokeLinejoin="round"/>
+    <path d="M12 14L10 22" stroke="#F59E0B" strokeWidth="0.8" fill="none"/>
+  </svg>
+);
 
 interface SubMenu {
   title: string;
@@ -37,10 +145,10 @@ const navItems: NavItem[] = [
       {
         title: 'Our Programs',
         items: [
-          { label: 'CBSE Plan', description: 'Full NCERT curriculum for Classes 8-10', icon: BookOpen, path: '/programs/cbse-plan' },
-          { label: 'Math Genius Maker', description: 'Gap assessment & targeted math practice', icon: Calculator, path: '/programs/math-genius' },
-          { label: 'English Mastery', description: 'Grammar, comprehension & writing skills', icon: Edit, path: '/programs/english-mastery' },
-          { label: 'SAT Prep Pass', description: 'US college admission test preparation', icon: Target, path: '/programs/sat-prep' },
+          { label: 'CBSE Plan', description: 'Full NCERT curriculum for Classes 8-10', icon: IconBook, iconBg: 'linear-gradient(135deg,#EEF2FF 0%,#E0E7FF 100%)', iconBorder: '#C7D2FE', path: '/programs/cbse-plan' },
+          { label: 'Math Genius Maker', description: 'Gap assessment & targeted math practice', icon: IconBulb, iconBg: 'linear-gradient(135deg,#FFFBEB 0%,#FEF3C7 100%)', iconBorder: '#FDE68A', path: '/programs/math-genius' },
+          { label: 'English Mastery', description: 'Grammar, comprehension & writing skills', icon: IconPen, iconBg: 'linear-gradient(135deg,#F0FDF4 0%,#DCFCE7 100%)', iconBorder: '#BBF7D0', path: '/programs/english-mastery' },
+          { label: 'SAT Prep Pass', description: 'US college admission test preparation', icon: IconTrophy, iconBg: 'linear-gradient(135deg,#F5F3FF 0%,#EDE9FE 100%)', iconBorder: '#DDD6FE', path: '/programs/sat-prep' },
         ],
       },
     ],
@@ -53,9 +161,9 @@ const navItems: NavItem[] = [
       {
         title: 'For Parents',
         items: [
-          { label: 'Parent Dashboard', description: 'Real-time progress & retention tracking', icon: LayoutDashboard, path: '/for-parents' },
-          { label: 'Tutor Mom Support', description: 'Expert human support Mon-Sat 9am-9pm', icon: MessageSquare, path: '/for-parents' },
-          { label: 'Daily Reports', description: 'Daily digest, alerts & weekly trends', icon: BarChart2, path: '/for-parents' },
+          { label: 'Parent Dashboard', description: 'Real-time progress & retention tracking', icon: IconChart, iconBg: 'linear-gradient(135deg,#EFF6FF 0%,#DBEAFE 100%)', iconBorder: '#BFDBFE', path: '/for-parents' },
+          { label: 'Tutor Mom Support', description: 'Expert human support Mon-Sat 9am-9pm', icon: IconChat, iconBg: 'linear-gradient(135deg,#FFF1F2 0%,#FFE4E6 100%)', iconBorder: '#FECDD3', path: '/for-parents' },
+          { label: 'Daily Reports', description: 'Daily digest, alerts & weekly trends', icon: IconClipboard, iconBg: 'linear-gradient(135deg,#F0FDFA 0%,#CCFBF1 100%)', iconBorder: '#99F6E4', path: '/for-parents' },
         ],
       },
     ],
@@ -68,9 +176,9 @@ const navItems: NavItem[] = [
       {
         title: 'For Students',
         items: [
-          { label: 'AI Study Planner', description: 'Personalized daily study schedule', icon: Brain, path: '/for-students' },
-          { label: 'Resource Library', description: 'Videos, notes & practice quizzes', icon: Layers, path: '/for-students' },
-          { label: 'Focus Trainer', description: 'Proven focus & retention techniques', icon: Zap, path: '/for-students' },
+          { label: 'AI Study Planner', description: 'Personalized daily study schedule', icon: IconRobot, iconBg: 'linear-gradient(135deg,#FAF5FF 0%,#F3E8FF 100%)', iconBorder: '#E9D5FF', path: '/for-students' },
+          { label: 'Resource Library', description: 'Videos, notes & practice quizzes', icon: IconBooks, iconBg: 'linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%)', iconBorder: '#FED7AA', path: '/for-students' },
+          { label: 'Focus Trainer', description: 'Proven focus & retention techniques', icon: IconBolt, iconBg: 'linear-gradient(135deg,#FEFCE8 0%,#FEF9C3 100%)', iconBorder: '#FEF08A', path: '/for-students' },
         ],
       },
     ],
@@ -251,9 +359,7 @@ export default function Navbar() {
                                   {sub.title}
                                 </h3>
                                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                                  {sub.items.map((subItem) => {
-                                    const Icon = subItem.icon;
-                                    return (
+                                  {sub.items.map((subItem) => (
                                       <li key={subItem.label}>
                                         <Link
                                           to={subItem.path}
@@ -265,14 +371,14 @@ export default function Navbar() {
                                           <div
                                             className="flex items-center justify-center flex-shrink-0"
                                             style={{
-                                              width: '36px',
-                                              height: '36px',
-                                              borderRadius: '8px',
-                                              border: '1px solid #B5E3F4',
-                                              background: '#E0F5FC',
+                                              width: '38px',
+                                              height: '38px',
+                                              borderRadius: '10px',
+                                              border: `1px solid ${subItem.iconBorder}`,
+                                              background: subItem.iconBg,
                                             }}
                                           >
-                                            <Icon size={16} style={{ color: '#0FA8DC' }} />
+                                            {subItem.icon}
                                           </div>
                                           <div>
                                             <p
@@ -299,8 +405,7 @@ export default function Navbar() {
                                           </div>
                                         </Link>
                                       </li>
-                                    );
-                                  })}
+                                  ))}
                                 </ul>
                               </div>
                             ))}
