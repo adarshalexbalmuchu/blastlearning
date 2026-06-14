@@ -6,7 +6,7 @@ import {
 } from 'lucide-react';
 import ctaBanner from '../assets/banner 4.webp';
 import DashboardMockup from '../components/DashboardMockup';
-import { TestimonialsColumn, testimonials } from '../components/ui/testimonials-columns-1';
+import TestimonialsMarquee from '../components/ui/testimonials-marquee';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
 import HeroCarousel from '../components/HeroCarousel';
@@ -576,33 +576,42 @@ export default function Home() {
 
       {/* ── Testimonials (light gray) ── */}
       <section id="testimonials" className="section-pad" style={{ paddingTop: '64px', paddingBottom: '64px', background: '#F8F9FA' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-10"
-          >
-            <div className="flex justify-center mb-4">
-              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
-                Student Stories
-              </span>
-            </div>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15, textAlign: 'center' }}>
-              Real Results from Real Students
-            </h2>
-            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6, textAlign: 'center' }}>
-              Hear from families who turned forgotten lessons into lasting marks.
-            </p>
-          </motion.div>
-
-          <div className="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
-            <TestimonialsColumn testimonials={testimonials.slice(0, 3)} duration={15} />
-            <TestimonialsColumn testimonials={testimonials.slice(3, 6)} className="hidden md:block" duration={19} />
-            <TestimonialsColumn testimonials={testimonials.slice(6, 9)} className="hidden lg:block" duration={17} />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-10 px-6"
+        >
+          <div className="flex justify-center mb-4">
+            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif' }}>
+              Student Stories
+            </span>
           </div>
-        </div>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15, textAlign: 'center' }}>
+            Real Results from Real Students
+          </h2>
+          <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6, textAlign: 'center' }}>
+            Hear from families who turned forgotten lessons into lasting marks.
+          </p>
+        </motion.div>
+
+        <TestimonialsMarquee
+          row1={[
+            { image: 'https://randomuser.me/api/portraits/women/44.jpg', name: 'Ananya Krishnan', role: 'Class 10 student, Bangalore', text: 'I used to forget everything after coaching. Now I actually remember what I studied a month ago. My maths score jumped from 65 to 89 in one term.' },
+            { image: 'https://randomuser.me/api/portraits/men/32.jpg', name: 'Rahul Mehta', role: 'Class 12 student, Mumbai', text: 'The AI study planner knows exactly which topics I\'m weak in and schedules revision before I forget. Physics retention now consistently above 80%.' },
+            { image: 'https://randomuser.me/api/portraits/women/65.jpg', name: 'Kavitha Suresh', role: 'Class 9 student, Hyderabad', text: 'English was my weakest subject. After two months on Blast Learning I got my first A in a grammar test. The structured approach really works.' },
+            { image: 'https://randomuser.me/api/portraits/men/77.jpg', name: 'Arjun Nair', role: 'Class 11 student, Chennai', text: 'Spaced repetition changed how I study completely. I no longer cram the night before — I actually know the material weeks later.' },
+            { image: 'https://randomuser.me/api/portraits/men/11.jpg', name: 'Karan Malhotra', role: 'Class 12 student, Gurgaon', text: 'SAT prep felt impossible until I found Blast Learning. The adaptive tests and retention tracking took me from 1100 to 1390 in three months.' },
+          ]}
+          row2={[
+            { image: 'https://randomuser.me/api/portraits/men/54.jpg', name: 'Deepak Sharma', role: 'Parent of Class 11 student, Delhi', text: 'The parent dashboard settled every argument at home. I can see exactly what my son studied and his retention scores. No more guessing.' },
+            { image: 'https://randomuser.me/api/portraits/women/21.jpg', name: 'Sunita Reddy', role: 'Parent of Class 10 student, Pune', text: 'We were spending ₹15,000 a month on coaching. Blast Learning at ₹1,299 has done more for her retention than all that coaching combined.' },
+            { image: 'https://randomuser.me/api/portraits/women/31.jpg', name: 'Priya Iyer', role: 'Parent of Class 10 student, Kochi', text: 'My daughter went from failing mock tests to scoring 88% in her boards. The AI-personalized plan made all the difference.' },
+            { image: 'https://randomuser.me/api/portraits/women/57.jpg', name: 'Meena Patel', role: 'Parent of Class 9 student, Ahmedabad', text: 'Every rupee of our coaching fee was being forgotten in 48 hours. Now my son retains 90% of what he studies. Worth every rupee.' },
+            { image: 'https://randomuser.me/api/portraits/men/22.jpg', name: 'Vikram Gupta', role: 'Parent of Class 12 student, Jaipur', text: 'I was sceptical at first but the weekly WhatsApp reports convinced me. My daughter\'s confidence has visibly improved alongside her marks.' },
+          ]}
+        />
       </section>
 
       {/* ── FAQ Preview (white) ── */}
