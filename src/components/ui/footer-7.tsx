@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -70,13 +71,13 @@ export const Footer7 = ({
           {/* Brand column */}
           <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             {logo.src && (
-              <a href={logo.url}>
+              <Link to={logo.url}>
                 <img
                   src={logo.src}
                   alt={logo.alt}
                   style={{ height: "36px", width: "auto" }}
                 />
-              </a>
+              </Link>
             )}
             <p
               style={{
@@ -147,8 +148,8 @@ export const Footer7 = ({
               <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
                 {section.links.map((link, linkIdx) => (
                   <li key={linkIdx}>
-                    <a
-                      href={link.href}
+                    <Link
+                      to={link.href}
                       style={{
                         fontSize: "14px",
                         color: "#3D3D4E",
@@ -160,7 +161,7 @@ export const Footer7 = ({
                       onMouseLeave={(e) => { e.currentTarget.style.color = "#3D3D4E"; }}
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
