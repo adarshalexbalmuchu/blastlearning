@@ -597,18 +597,68 @@ export default function Home() {
 
         <TestimonialsMarquee
           row1={[
-            { image: 'https://randomuser.me/api/portraits/women/44.jpg', name: 'Ananya Krishnan', role: 'Class 10 student, Bangalore', text: 'I used to forget everything after coaching. Now I actually remember what I studied a month ago. My maths score jumped from 65 to 89 in one term.' },
-            { image: 'https://randomuser.me/api/portraits/men/32.jpg', name: 'Rahul Mehta', role: 'Class 12 student, Mumbai', text: 'The AI study planner knows exactly which topics I\'m weak in and schedules revision before I forget. Physics retention now consistently above 80%.' },
-            { image: 'https://randomuser.me/api/portraits/women/65.jpg', name: 'Kavitha Suresh', role: 'Class 9 student, Hyderabad', text: 'English was my weakest subject. After two months on Blast Learning I got my first A in a grammar test. The structured approach really works.' },
-            { image: 'https://randomuser.me/api/portraits/men/77.jpg', name: 'Arjun Nair', role: 'Class 11 student, Chennai', text: 'Spaced repetition changed how I study completely. I no longer cram the night before — I actually know the material weeks later.' },
-            { image: 'https://randomuser.me/api/portraits/men/11.jpg', name: 'Karan Malhotra', role: 'Class 12 student, Gurgaon', text: 'SAT prep felt impossible until I found Blast Learning. The adaptive tests and retention tracking took me from 1100 to 1390 in three months.' },
+            {
+              image: 'https://randomuser.me/api/portraits/women/44.jpg',
+              name: 'Ananya Krishnan',
+              role: 'Class 10, CBSE Plan · Bangalore',
+              text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/men/32.jpg',
+              name: 'Rahul Mehta',
+              role: 'Class 12, CBSE Plan · Mumbai',
+              text: 'I was scoring 55 in Physics mock tests. Blast\'s Metacognition Engine identified my weak chapters within the first week and built a custom plan. Ended up with 81 in boards.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/women/65.jpg',
+              name: 'Kavitha Suresh',
+              role: 'Class 9, English Mastery · Hyderabad',
+              text: 'Grammar used to be a nightmare. The AI broke it into tiny daily chunks and quizzed me at exactly the right time. I went from D grades to consistently getting As.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/men/77.jpg',
+              name: 'Arjun Nair',
+              role: 'Class 11, Math Genius · Chennai',
+              text: 'Trigonometry and integration used to vanish from my head overnight. After two months with the Math Genius plan, I actually remember the concepts a week later without re-reading.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/men/11.jpg',
+              name: 'Karan Malhotra',
+              role: 'Class 12, SAT Prep Pass · Gurgaon',
+              text: 'Blast\'s SAT plan is ruthlessly efficient. It tracked which question types I kept getting wrong and drilled those specifically. Went from 1090 to 1380 across three months.',
+            },
           ]}
           row2={[
-            { image: 'https://randomuser.me/api/portraits/men/54.jpg', name: 'Deepak Sharma', role: 'Parent of Class 11 student, Delhi', text: 'The parent dashboard settled every argument at home. I can see exactly what my son studied and his retention scores. No more guessing.' },
-            { image: 'https://randomuser.me/api/portraits/women/21.jpg', name: 'Sunita Reddy', role: 'Parent of Class 10 student, Pune', text: 'We were spending ₹15,000 a month on coaching. Blast Learning at ₹1,299 has done more for her retention than all that coaching combined.' },
-            { image: 'https://randomuser.me/api/portraits/women/31.jpg', name: 'Priya Iyer', role: 'Parent of Class 10 student, Kochi', text: 'My daughter went from failing mock tests to scoring 88% in her boards. The AI-personalized plan made all the difference.' },
-            { image: 'https://randomuser.me/api/portraits/women/57.jpg', name: 'Meena Patel', role: 'Parent of Class 9 student, Ahmedabad', text: 'Every rupee of our coaching fee was being forgotten in 48 hours. Now my son retains 90% of what he studies. Worth every rupee.' },
-            { image: 'https://randomuser.me/api/portraits/men/22.jpg', name: 'Vikram Gupta', role: 'Parent of Class 12 student, Jaipur', text: 'I was sceptical at first but the weekly WhatsApp reports convinced me. My daughter\'s confidence has visibly improved alongside her marks.' },
+            {
+              image: 'https://randomuser.me/api/portraits/men/54.jpg',
+              name: 'Deepak Sharma',
+              role: 'Parent · Class 11 CBSE, Delhi',
+              text: 'The WhatsApp summary every evening tells me exactly what my son studied, for how long, and his retention score. I haven\'t had to nag him about studying in two months.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/women/21.jpg',
+              name: 'Sunita Reddy',
+              role: 'Parent · Class 10 CBSE, Pune',
+              text: 'We were paying ₹18,000 a month for coaching and she still blanked in tests. Blast Learning at ₹1,299 helped her retain the same coaching content. The difference is night and day.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/women/31.jpg',
+              name: 'Priya Iyer',
+              role: 'Parent · Class 10 CBSE, Kochi',
+              text: 'My daughter\'s board result improved by 22 marks overall. The parent dashboard showed me exactly which subjects needed attention, and the AI adjusted her plan automatically.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/women/57.jpg',
+              name: 'Meena Patel',
+              role: 'Parent · Class 9 CBSE, Ahmedabad',
+              text: 'My son used to study for hours and still forget everything the next day. Now after just 45 minutes on Blast, he retains it for weeks. The spaced revision system genuinely works.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/men/22.jpg',
+              name: 'Vikram Gupta',
+              role: 'Parent · Class 12 CBSE, Jaipur',
+              text: 'I was sceptical of another EdTech app. But the Focus Trainer kept my daughter off her phone during study hours, and her prelim scores jumped 18 marks across all subjects.',
+            },
           ]}
         />
       </section>
