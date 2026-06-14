@@ -49,15 +49,15 @@ export const Footer7 = ({
   return (
     <footer
       style={{
-        background: "#1C1C28",
-        borderTop: "1px solid rgba(255,255,255,0.08)",
+        background: "#EFF6FB",
+        borderTop: "1px solid #D0E8F5",
         paddingTop: "64px",
         paddingBottom: "0",
       }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
 
-        {/* Main grid: brand (1/3) + link columns (2/3) */}
+        {/* Main grid: 4 equal columns */}
         <div
           style={{
             display: "grid",
@@ -67,21 +67,21 @@ export const Footer7 = ({
           }}
           className="footer-grid"
         >
-          {/* Brand column — spans 1 column */}
+          {/* Brand column */}
           <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             {logo.src && (
               <a href={logo.url}>
                 <img
                   src={logo.src}
                   alt={logo.alt}
-                  style={{ height: "36px", width: "auto", filter: "brightness(0) invert(1)", opacity: 0.9 }}
+                  style={{ height: "36px", width: "auto" }}
                 />
               </a>
             )}
             <p
               style={{
                 fontSize: "14px",
-                color: "rgba(255,255,255,0.55)",
+                color: "#5A5A6E",
                 lineHeight: 1.8,
                 fontFamily: "Inter, sans-serif",
                 margin: 0,
@@ -89,7 +89,7 @@ export const Footer7 = ({
             >
               {description}
             </p>
-            <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
+            <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
               {socialLinks.map((social, idx) => (
                 <a
                   key={idx}
@@ -101,14 +101,14 @@ export const Footer7 = ({
                     width: "36px",
                     height: "36px",
                     borderRadius: "8px",
-                    background: "rgba(255,255,255,0.08)",
-                    border: "1px solid rgba(255,255,255,0.1)",
+                    background: "#FFFFFF",
+                    border: "1px solid #C8E0EF",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    color: "rgba(255,255,255,0.55)",
+                    color: "#5A5A6E",
                     textDecoration: "none",
-                    transition: "background 0.2s, color 0.2s",
+                    transition: "background 0.2s, color 0.2s, border-color 0.2s",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = "#0FA8DC";
@@ -116,9 +116,9 @@ export const Footer7 = ({
                     e.currentTarget.style.borderColor = "#0FA8DC";
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.08)";
-                    e.currentTarget.style.color = "rgba(255,255,255,0.55)";
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
+                    e.currentTarget.style.background = "#FFFFFF";
+                    e.currentTarget.style.color = "#5A5A6E";
+                    e.currentTarget.style.borderColor = "#C8E0EF";
                   }}
                 >
                   {social.icon}
@@ -132,9 +132,9 @@ export const Footer7 = ({
             <div key={idx}>
               <h3
                 style={{
-                  fontSize: "13px",
+                  fontSize: "12px",
                   fontWeight: 700,
-                  color: "rgba(255,255,255,0.35)",
+                  color: "#8E8EA0",
                   fontFamily: "Inter, sans-serif",
                   textTransform: "uppercase",
                   letterSpacing: "0.09em",
@@ -151,13 +151,13 @@ export const Footer7 = ({
                       href={link.href}
                       style={{
                         fontSize: "14px",
-                        color: "rgba(255,255,255,0.6)",
+                        color: "#3D3D4E",
                         fontFamily: "Inter, sans-serif",
                         textDecoration: "none",
                         transition: "color 0.2s",
                       }}
                       onMouseEnter={(e) => { e.currentTarget.style.color = "#0FA8DC"; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.6)"; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.color = "#3D3D4E"; }}
                     >
                       {link.name}
                     </a>
@@ -171,7 +171,7 @@ export const Footer7 = ({
         {/* Bottom bar */}
         <div
           style={{
-            borderTop: "1px solid rgba(255,255,255,0.08)",
+            borderTop: "1px solid #C8E0EF",
             padding: "20px 0",
             display: "flex",
             justifyContent: "space-between",
@@ -183,7 +183,7 @@ export const Footer7 = ({
           <p
             style={{
               fontSize: "13px",
-              color: "rgba(255,255,255,0.3)",
+              color: "#8E8EA0",
               fontFamily: "Inter, sans-serif",
               margin: 0,
             }}
@@ -197,13 +197,13 @@ export const Footer7 = ({
                 href={link.href}
                 style={{
                   fontSize: "13px",
-                  color: "rgba(255,255,255,0.3)",
+                  color: "#8E8EA0",
                   fontFamily: "Inter, sans-serif",
                   textDecoration: "none",
                   transition: "color 0.2s",
                 }}
                 onMouseEnter={(e) => { e.currentTarget.style.color = "#0FA8DC"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.3)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = "#8E8EA0"; }}
               >
                 {link.name}
               </a>
