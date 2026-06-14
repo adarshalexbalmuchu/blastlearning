@@ -39,12 +39,7 @@ const defaultLegalLinks = [
 ];
 
 export const Footer7 = ({
-  logo = {
-    url: "/",
-    src: "",
-    alt: "logo",
-    title: "",
-  },
+  logo = { url: "/", src: "", alt: "logo", title: "" },
   sections = [],
   description = "",
   socialLinks = defaultSocialLinks,
@@ -52,63 +47,183 @@ export const Footer7 = ({
   legalLinks = defaultLegalLinks,
 }: Footer7Props) => {
   return (
-    <section className="py-20 bg-[#F7F7F8] border-t border-[#ECECF1]">
-      <div className="max-w-7xl mx-auto px-8">
-        <div className="flex w-full flex-col justify-between gap-10 lg:flex-row lg:items-start lg:text-left">
+    <footer
+      style={{
+        background: "#1C1C28",
+        borderTop: "1px solid rgba(255,255,255,0.08)",
+        paddingTop: "64px",
+        paddingBottom: "0",
+      }}
+    >
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
 
-          {/* Brand column */}
-          <div className="flex w-full flex-col justify-between gap-6 lg:items-start">
-            <div className="flex items-center gap-2 lg:justify-start">
+        {/* Main grid: brand (1/3) + link columns (2/3) */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr 1fr 1fr",
+            gap: "48px",
+            marginBottom: "48px",
+          }}
+          className="footer-grid"
+        >
+          {/* Brand column — spans 1 column */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            {logo.src && (
               <a href={logo.url}>
-                {logo.src && (
-                  <img src={logo.src} alt={logo.alt} title={logo.title} className="h-8 w-auto" />
-                )}
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  style={{ height: "36px", width: "auto", filter: "brightness(0) invert(1)", opacity: 0.9 }}
+                />
               </a>
-              {logo.title && <h2 className="text-xl font-semibold text-[#1C1C28]">{logo.title}</h2>}
-            </div>
-            <p className="max-w-[70%] text-sm text-[#5A5A6E] leading-relaxed">
+            )}
+            <p
+              style={{
+                fontSize: "14px",
+                color: "rgba(255,255,255,0.55)",
+                lineHeight: 1.8,
+                fontFamily: "Inter, sans-serif",
+                margin: 0,
+              }}
+            >
               {description}
             </p>
-            <ul className="flex items-center gap-5 text-[#5A5A6E]">
+            <div style={{ display: "flex", gap: "16px", alignItems: "center" }}>
               {socialLinks.map((social, idx) => (
-                <li key={idx} className="font-medium hover:text-[#0FA8DC] transition-colors">
-                  <a href={social.href} aria-label={social.label} target="_blank" rel="noopener noreferrer">
-                    {social.icon}
-                  </a>
-                </li>
+                <a
+                  key={idx}
+                  href={social.href}
+                  aria-label={social.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    width: "36px",
+                    height: "36px",
+                    borderRadius: "8px",
+                    background: "rgba(255,255,255,0.08)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "rgba(255,255,255,0.55)",
+                    textDecoration: "none",
+                    transition: "background 0.2s, color 0.2s",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "#0FA8DC";
+                    e.currentTarget.style.color = "white";
+                    e.currentTarget.style.borderColor = "#0FA8DC";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "rgba(255,255,255,0.08)";
+                    e.currentTarget.style.color = "rgba(255,255,255,0.55)";
+                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)";
+                  }}
+                >
+                  {social.icon}
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
 
-          {/* Link columns */}
-          <div className="grid w-full gap-6 md:grid-cols-3 lg:gap-20">
-            {sections.map((section, sectionIdx) => (
-              <div key={sectionIdx}>
-                <h3 className="mb-4 font-bold text-[#1C1C28] font-[Poppins,sans-serif]">{section.title}</h3>
-                <ul className="space-y-3 text-sm text-[#5A5A6E]">
-                  {section.links.map((link, linkIdx) => (
-                    <li key={linkIdx} className="font-medium hover:text-[#0FA8DC] transition-colors">
-                      <a href={link.href}>{link.name}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          {/* Link sections */}
+          {sections.map((section, idx) => (
+            <div key={idx}>
+              <h3
+                style={{
+                  fontSize: "13px",
+                  fontWeight: 700,
+                  color: "rgba(255,255,255,0.35)",
+                  fontFamily: "Inter, sans-serif",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.09em",
+                  marginBottom: "20px",
+                  marginTop: 0,
+                }}
+              >
+                {section.title}
+              </h3>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
+                {section.links.map((link, linkIdx) => (
+                  <li key={linkIdx}>
+                    <a
+                      href={link.href}
+                      style={{
+                        fontSize: "14px",
+                        color: "rgba(255,255,255,0.6)",
+                        fontFamily: "Inter, sans-serif",
+                        textDecoration: "none",
+                        transition: "color 0.2s",
+                      }}
+                      onMouseEnter={(e) => { e.currentTarget.style.color = "#0FA8DC"; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.6)"; }}
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-8 flex flex-col justify-between gap-4 border-t border-[#ECECF1] py-8 text-xs font-medium text-[#6B6B7B] md:flex-row md:items-center md:text-left">
-          <p className="order-2 lg:order-1">{copyright}</p>
-          <ul className="order-1 flex flex-col gap-2 md:order-2 md:flex-row md:gap-6">
+        <div
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.08)",
+            padding: "20px 0",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "12px",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "13px",
+              color: "rgba(255,255,255,0.3)",
+              fontFamily: "Inter, sans-serif",
+              margin: 0,
+            }}
+          >
+            {copyright}
+          </p>
+          <div style={{ display: "flex", gap: "24px" }}>
             {legalLinks.map((link, idx) => (
-              <li key={idx} className="hover:text-[#0FA8DC] transition-colors">
-                <a href={link.href}>{link.name}</a>
-              </li>
+              <a
+                key={idx}
+                href={link.href}
+                style={{
+                  fontSize: "13px",
+                  color: "rgba(255,255,255,0.3)",
+                  fontFamily: "Inter, sans-serif",
+                  textDecoration: "none",
+                  transition: "color 0.2s",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = "#0FA8DC"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = "rgba(255,255,255,0.3)"; }}
+              >
+                {link.name}
+              </a>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
-    </section>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .footer-grid {
+            grid-template-columns: 1fr 1fr !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .footer-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
+    </footer>
   );
 };
