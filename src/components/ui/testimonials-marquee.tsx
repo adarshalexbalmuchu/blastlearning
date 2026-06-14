@@ -3,7 +3,7 @@
 import React from "react";
 
 type CardT = {
-  image: string;
+  image?: string;
   name: string;
   role: string;
   text: string;
@@ -52,11 +52,13 @@ const Card = ({ card }: { card: CardT }) => (
 
     {/* Author */}
     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', paddingTop: '10px', borderTop: '1px solid #F3F4F6' }}>
-      <img
-        src={card.image}
-        alt={card.name}
-        style={{ width: '36px', height: '36px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
-      />
+      <div style={{
+        width: '36px', height: '36px', borderRadius: '50%', flexShrink: 0,
+        background: '#E0F5FC', display: 'flex', alignItems: 'center', justifyContent: 'center',
+        fontSize: '14px', fontWeight: 700, color: '#0FA8DC', fontFamily: 'Poppins, sans-serif',
+      }}>
+        {card.name.charAt(0)}
+      </div>
       <div>
         <p style={{ fontSize: '13px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif', margin: 0, lineHeight: 1.3 }}>
           {card.name}
