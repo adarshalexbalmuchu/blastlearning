@@ -300,7 +300,7 @@ export default function TrustStats() {
             A Platform Trusted by<br />Families Across India
           </h2>
           <p style={{ fontSize: '1.05rem', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6 }}>
-            The numbers speak for themselves — hover a card to meet the story behind it.
+            The numbers speak for themselves hover a card to meet the story behind it.
           </p>
         </motion.div>
 
