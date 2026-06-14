@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import type { ReactElement } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import TestimonialCard from './TestimonialCard';
 
 const COLUMN = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -310,14 +309,6 @@ export default function TrustStats() {
           ))}
         </div>
 
-        <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-          <TestimonialCard
-            name="Priya Nair"
-            role="Parent of Class 10 student, Chennai"
-            content="Blast Learning completely changed how my daughter studies. Her board exam preparation used to be chaotic, but now she has a clear plan and her retention scores are remarkable. I can see her progress every day on the parent dashboard."
-            rating={5}
-          />
-        </div>
       </div>
     </section>
   );
