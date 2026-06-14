@@ -51,7 +51,7 @@ export default function Contact() {
 
   useSEO({
     title: 'Contact Us | Speak to a Learning Advisor · Blast Learning',
-    description: 'Get in touch with the Blast Learning team. Have questions about our programs? Reach us via form, phone, or email — we reply within 24 hours.',
+    description: 'Get in touch with the Blast Learning team. Have questions about our programs? Reach us via form, phone, or email we reply within 24 hours.',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

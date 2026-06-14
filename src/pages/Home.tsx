@@ -84,7 +84,7 @@ const pricingPlans = [
     slug: 'english-mastery',
     name: 'English Mastery',
     classes: 'All Classes',
-    desc: 'Grammar, writing, and reading — built systematically.',
+    desc: 'Grammar, writing, and reading built systematically.',
     monthlyPrice: 999,
     yearlyMonthly: 799,
     features: [
@@ -647,14 +647,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Final CTA Banner (image) — replace banner 4.webp later with a custom design ── */}
+      {/* ── Final CTA Banner (image) replace banner 4.webp later with a custom design ── */}
       <section
         aria-label="Call to action"
         style={{ width: '100%', display: 'block', lineHeight: 0 }}
       >
         <img
           src={ctaBanner}
-          alt="Learn Smarter. Achieve More. — Start your Blast Learning journey today."
+          alt="Learn Smarter. Achieve More. Start your Blast Learning journey today."
           width={4095}
           height={774}
           loading="lazy"

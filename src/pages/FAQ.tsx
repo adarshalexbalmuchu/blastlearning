@@ -130,7 +130,7 @@ const stagger: Variants = {
 export default function FAQ() {
   useSEO({
     title: 'FAQ | Frequently Asked Questions · Blast Learning',
-    description: 'Answers to the most common questions about Blast Learning — programs, pricing, how the AI works, and what results to expect.',
+    description: 'Answers to the most common questions about Blast Learning programs, pricing, how the AI works, and what results to expect.',
   });
 
   return (

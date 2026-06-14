@@ -11,10 +11,10 @@ const INTERVAL = 6000;
 const ACCENT   = '#0FA8DC';
 
 const SLIDES = [
-  { id: 'b1', src: banner1, w: 4095, h: 774, alt: '4 Programs. Endless Possibilities. — Blast Learning' },
-  { id: 'b2', src: banner2, w: 4095, h: 774, alt: 'Better Learning. Brighter Tomorrow. — Blast Learning' },
-  { id: 'b3', src: banner3, w: 4095, h: 774, alt: 'CBSE Success, Confident Future. — Blast Learning' },
-  { id: 'b4', src: banner4, w: 4095, h: 774, alt: 'Learn Smarter. Achieve More. — Blast Learning' },
+  { id: 'b1', src: banner1, w: 4095, h: 774, alt: '4 Programs. Endless Possibilities. Blast Learning' },
+  { id: 'b2', src: banner2, w: 4095, h: 774, alt: 'Better Learning. Brighter Tomorrow. Blast Learning' },
+  { id: 'b3', src: banner3, w: 4095, h: 774, alt: 'CBSE Success, Confident Future. Blast Learning' },
+  { id: 'b4', src: banner4, w: 4095, h: 774, alt: 'Learn Smarter. Achieve More. Blast Learning' },
 ] as const;
 
 // ─── Arrow ───────────────────────────────────────────────────────────────────────
@@ -77,7 +77,7 @@ export default function HeroCarousel() {
       onPointerDown={(e) => { ptrX.current = e.clientX; }}
       onPointerUp={(e)   => { const dx = e.clientX - ptrX.current; if (dx < -50) next(); else if (dx > 50) prev(); }}
     >
-      {/* ── Image stack — aspect ratio matches actual export: 4095×774 ── */}
+      {/* ── Image stack aspect ratio matches actual export: 4095×774 ── */}
       <div style={{ position: 'relative', width: '100%', aspectRatio: '4095 / 774', overflow: 'hidden', background: '#f0f4f8' }}>
         {SLIDES.map((slide, i) => (
           <motion.div
