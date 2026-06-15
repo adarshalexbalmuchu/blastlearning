@@ -124,6 +124,57 @@ const IconBolt = (
   </svg>
 );
 
+const IconBuilding = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <rect x="3" y="7" width="18" height="14" rx="1.5" fill="#67E8F9"/>
+    <rect x="3" y="7" width="18" height="4" rx="1.5" fill="#06B6D4"/>
+    <rect x="7" y="12" width="3" height="3" rx="0.5" fill="white" fillOpacity="0.8"/>
+    <rect x="11" y="12" width="3" height="3" rx="0.5" fill="white" fillOpacity="0.8"/>
+    <rect x="15" y="12" width="3" height="3" rx="0.5" fill="white" fillOpacity="0.8"/>
+    <rect x="9" y="17" width="6" height="4" rx="0.5" fill="#0891B2"/>
+    <rect x="10" y="3" width="4" height="4" rx="0.5" fill="#0EA5E9"/>
+    <line x1="12" y1="3" x2="12" y2="7" stroke="#0284C7" strokeWidth="1"/>
+  </svg>
+);
+
+const IconGradCap = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path d="M12 3L2 8.5L12 14L22 8.5L12 3Z" fill="#4ADE80"/>
+    <path d="M2 8.5L2 8.5" stroke="#16A34A" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M18 10.5V16.5C18 16.5 15.5 19 12 19C8.5 19 6 16.5 6 16.5V10.5L12 14L18 10.5Z" fill="#22C55E"/>
+    <line x1="22" y1="8.5" x2="22" y2="14" stroke="#16A34A" strokeWidth="1.5" strokeLinecap="round"/>
+    <circle cx="22" cy="14.5" r="1.5" fill="#16A34A"/>
+  </svg>
+);
+
+const IconHandshake = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <path d="M2 9L7 6.5L10 9H14L17 6.5L22 9" stroke="#F97316" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M7 6.5V17.5C7 17.5 9.5 19 12 19C14.5 19 17 17.5 17 17.5V6.5" stroke="#F97316" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M10 9V14M14 9V14" stroke="#FB923C" strokeWidth="1.2" strokeLinecap="round"/>
+    <path d="M8 13.5C8 13.5 9.5 15.5 12 15.5C14.5 15.5 16 13.5 16 13.5" stroke="#FED7AA" strokeWidth="1.2" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconNewspaper = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <rect x="3" y="4" width="18" height="16" rx="2" fill="#E0F2FE"/>
+    <rect x="3" y="4" width="18" height="5" rx="2" fill="#38BDF8"/>
+    <rect x="3" y="4" width="18" height="2.5" rx="2" fill="#0284C7"/>
+    <line x1="6" y1="13" x2="18" y2="13" stroke="#7DD3FC" strokeWidth="1.2" strokeLinecap="round"/>
+    <line x1="6" y1="16" x2="18" y2="16" stroke="#7DD3FC" strokeWidth="1.2" strokeLinecap="round"/>
+    <line x1="6" y1="19" x2="13" y2="19" stroke="#7DD3FC" strokeWidth="1.2" strokeLinecap="round"/>
+  </svg>
+);
+
+const IconFAQ = (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+    <circle cx="12" cy="12" r="9" fill="#DDD6FE"/>
+    <circle cx="12" cy="12" r="9" stroke="#8B5CF6" strokeWidth="1"/>
+    <text x="12" y="17" textAnchor="middle" fontSize="13" fontWeight="700" fill="#6D28D9" fontFamily="serif">?</text>
+  </svg>
+);
+
 interface SubMenu {
   title: string;
   items: SubItem[];
@@ -183,16 +234,42 @@ const navItems: NavItem[] = [
       },
     ],
   },
-  { id: 5, label: 'About', path: '/about' },
-  { id: 6, label: 'Blog', path: '/blog' },
-  { id: 7, label: 'Library', path: '/library' },
-  { id: 8, label: 'FAQ', path: '/faq' },
-  { id: 9, label: 'Contact', path: '/contact' },
+  {
+    id: 5,
+    label: 'Institutions',
+    subMenus: [
+      {
+        title: 'For Institutions',
+        items: [
+          { label: 'School Partnerships', description: 'Bulk enrollment & custom programs for schools', icon: IconBuilding, iconBg: 'linear-gradient(135deg,#ECFEFF 0%,#CFFAFE 100%)', iconBorder: '#A5F3FC', path: '/contact' },
+          { label: 'Batch Programs', description: 'Group learning plans for student cohorts', icon: IconGradCap, iconBg: 'linear-gradient(135deg,#F0FDF4 0%,#DCFCE7 100%)', iconBorder: '#BBF7D0', path: '/programs' },
+          { label: 'Partnership Enquiry', description: 'Talk to our institution success team', icon: IconHandshake, iconBg: 'linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%)', iconBorder: '#FED7AA', path: '/contact' },
+        ],
+      },
+    ],
+  },
+  { id: 6, label: 'About', path: '/about' },
+  {
+    id: 7,
+    label: 'Resources',
+    subMenus: [
+      {
+        title: 'Resources',
+        items: [
+          { label: 'Blog', description: 'Articles, tips & learning insights', icon: IconNewspaper, iconBg: 'linear-gradient(135deg,#E0F2FE 0%,#BAE6FD 100%)', iconBorder: '#7DD3FC', path: '/blog' },
+          { label: 'Resource Library', description: 'Videos, notes & practice quizzes', icon: IconBooks, iconBg: 'linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%)', iconBorder: '#FED7AA', path: '/library' },
+          { label: 'FAQs', description: 'Common questions answered', icon: IconFAQ, iconBg: 'linear-gradient(135deg,#F5F3FF 0%,#EDE9FE 100%)', iconBorder: '#DDD6FE', path: '/faq' },
+        ],
+      },
+    ],
+  },
+  { id: 8, label: 'Contact', path: '/contact' },
 ];
 
 const loginOptions = [
-  { label: 'Parent Login', to: '/login?role=parent' },
   { label: 'Student Login', to: '/login?role=student' },
+  { label: 'Parent Login', to: '/login?role=parent' },
+  { label: 'Institution Login', to: '/login?role=institution' },
   { label: 'Tutor Login', to: '/login?role=tutor' },
 ];
 
