@@ -218,7 +218,7 @@ export default function Home() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ minWidth: 0 }}>
-              <div style={{ background: '#F8F9FA', border: '1px solid #ECECF1', borderRadius: '20px', padding: '24px' }}>
+              <div style={{ background: '#FFFFFF', border: '1px solid #ECECF1', borderRadius: '20px', padding: '24px' }}>
                 <ForgettingCurveIllustration animated width="100%" />
               </div>
             </motion.div>
@@ -255,7 +255,7 @@ export default function Home() {
       </section>
 
       {/* ── How It Works (light gray) ── */}
-      <section id="how-it-works" className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#F8F9FA' }}>
+      <section id="how-it-works" className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#D6F2FA' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             eyebrow="Simple Process"
@@ -430,7 +430,7 @@ export default function Home() {
       </section>
 
       {/* ── Features: expandable explorer (light gray) ── */}
-      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#F8F9FA' }}>
+      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#D6F2FA' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             title="What Makes Us Different"
@@ -490,7 +490,7 @@ export default function Home() {
       </section>
 
       {/* ── Parent Concerns / Solutions ── */}
-      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#F8F9FA' }}>
+      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#D6F2FA' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, textAlign: 'center', marginBottom: '32px', color: '#1C1C28', letterSpacing: '-0.025em' }}>
             From Parent Worries to Real Results
@@ -575,7 +575,7 @@ export default function Home() {
       </section>
 
       {/* ── Testimonials (light gray) ── */}
-      <section id="testimonials" className="section-pad" style={{ paddingTop: '64px', paddingBottom: '64px', background: '#F8F9FA' }}>
+      <section id="testimonials" className="section-pad" style={{ paddingTop: '64px', paddingBottom: '64px', background: '#D6F2FA' }}>
         <div style={{ textAlign: 'center', padding: '0 24px', marginBottom: '40px' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
