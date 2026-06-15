@@ -114,8 +114,7 @@ export default function ForParents() {
       </section>
 
       {/* Benefits Grid */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <BrandWhoosh opacity={0.11} style={{ width: '400px', height: '400px', bottom: '-50px', right: '-50px' }} />
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={fadeUp}
@@ -168,8 +167,7 @@ export default function ForParents() {
       </section>
 
       {/* Trust Section */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
-        <BrandWhoosh opacity={0.10} style={{ width: '380px', height: '380px', top: '-30px', left: '-40px', transform: 'scaleX(-1)' }} />
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }} className="grid-cols-2-md">
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
@@ -220,8 +218,7 @@ export default function ForParents() {
       </section>
 
       {/* Testimonials */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <BrandWhoosh opacity={0.11} style={{ width: '400px', height: '400px', bottom: '-50px', right: '-50px' }} />
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.h2
             variants={fadeUp}
@@ -266,7 +263,6 @@ export default function ForParents() {
 
       {/* CTA */}
       <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
-        <BrandWhoosh opacity={0.12} style={{ width: '380px', height: '380px', top: '-30px', left: '-40px', transform: 'scaleX(-1)' }} />
         <motion.div
           variants={fadeUp}
           initial="hidden"
