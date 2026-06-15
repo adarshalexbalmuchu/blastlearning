@@ -135,8 +135,7 @@ export default function Programs() {
       </section>
 
       {/* Program Cards */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <BrandWhoosh opacity={0.11} style={{ width: '420px', height: '420px', bottom: '-50px', right: '-50px' }} />
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
@@ -243,8 +242,7 @@ export default function Programs() {
       </section>
 
       {/* Comparison Table */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
-        <BrandWhoosh opacity={0.10} style={{ width: '380px', height: '380px', top: '-30px', left: '-40px', transform: 'scaleX(-1)' }} />
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.h2
             variants={fadeUp}
@@ -310,7 +308,6 @@ export default function Programs() {
 
       {/* Bottom CTA */}
       <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <BrandWhoosh opacity={0.12} style={{ width: '380px', height: '380px', bottom: '-50px', right: '-50px' }} />
         <motion.div
           variants={fadeUp}
           initial="hidden"

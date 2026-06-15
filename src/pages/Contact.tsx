@@ -142,8 +142,7 @@ export default function Contact() {
       </section>
 
       {/* Main Content */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '80px', paddingBottom: '96px', background: '#F9FAFB' }}>
-        <BrandWhoosh opacity={0.10} style={{ width: '400px', height: '400px', bottom: '-50px', right: '-50px' }} />
+      <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
@@ -367,8 +366,7 @@ export default function Contact() {
       </section>
 
       {/* Phone CTA */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <BrandWhoosh opacity={0.12} style={{ width: '380px', height: '380px', top: '-30px', left: '-40px', transform: 'scaleX(-1)' }} />
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <motion.div
           variants={fadeUp}
           initial="hidden"
