@@ -34,7 +34,7 @@ export const testimonials = [
     role: "Parent of Class 10 student, Pune",
   },
   {
-    text: "Spaced repetition changed how I study completely. I no longer cram the night before — I actually know the material weeks later.",
+    text: "Spaced repetition changed how I study completely. I no longer cram the night before. I actually know the material weeks later.",
     image: "https://randomuser.me/api/portraits/men/77.jpg",
     name: "Arjun Nair",
     role: "Class 11 student, Chennai",
