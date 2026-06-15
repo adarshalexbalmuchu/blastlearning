@@ -3,6 +3,7 @@ import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Gamepad2, Trophy, Brain, Target, Sparkles, ArrowRight, Star, Flame, Award } from 'lucide-react';
 import BrandArc from '../components/BrandArc';
+import BrandWhoosh from '../components/BrandWhoosh';
 
 const features = [
   {
@@ -83,6 +84,7 @@ export default function ForStudents() {
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
+        <BrandWhoosh opacity={0.11} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: "'Inter', sans-serif", marginBottom: '24px', background: '#E0F5FC', color: '#0FA8DC' }}>
