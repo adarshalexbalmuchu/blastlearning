@@ -90,7 +90,8 @@ export default function About() {
       </section>
 
       {/* Why We Built Blast */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+        <BrandWhoosh opacity={0.11} style={{ width: '420px', height: '420px', bottom: '-50px', right: '-50px' }} />
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
@@ -142,7 +143,8 @@ export default function About() {
       </section>
 
       {/* Company Stats */}
-      <section style={{ paddingTop: '72px', paddingBottom: '72px', background: '#FFFFFF' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '72px', paddingBottom: '72px', background: '#FFFFFF' }}>
+        <BrandWhoosh opacity={0.10} style={{ width: '380px', height: '380px', top: '-30px', left: '-40px', transform: 'scaleX(-1)' }} />
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
@@ -163,7 +165,8 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+        <BrandWhoosh opacity={0.11} style={{ width: '400px', height: '400px', bottom: '-50px', right: '-50px' }} />
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={fadeUp}
@@ -209,7 +212,8 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+        <BrandWhoosh opacity={0.10} style={{ width: '380px', height: '380px', top: '-30px', left: '-40px', transform: 'scaleX(-1)' }} />
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={fadeUp}
@@ -249,7 +253,8 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+        <BrandWhoosh opacity={0.12} style={{ width: '380px', height: '380px', bottom: '-50px', right: '-50px' }} />
         <motion.div
           variants={fadeUp}
           initial="hidden"
