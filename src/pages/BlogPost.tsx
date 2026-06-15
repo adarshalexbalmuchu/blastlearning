@@ -8,6 +8,7 @@ import {
   stripHtml, formatDate, readingTime,
 } from '../lib/wordpress';
 import BrandArc from '../components/BrandArc';
+import BrandWhoosh from '../components/BrandWhoosh';
 
 function PostSkeleton() {
   return (
@@ -68,6 +69,7 @@ export default function BlogPost() {
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
+        <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
 
         <div style={{ maxWidth: '760px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           <button

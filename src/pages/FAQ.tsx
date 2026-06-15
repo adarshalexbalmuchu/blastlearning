@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Search, X } from 'lucide-react';
 import FAQItem from '../components/FAQItem';
 import BrandArc from '../components/BrandArc';
+import BrandWhoosh from '../components/BrandWhoosh';
 import { useState, useEffect, useMemo } from 'react';
 
 type Category = 'General' | 'Programs' | 'Parents' | 'Students';
@@ -198,6 +199,7 @@ export default function FAQ() {
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
+        <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <span style={{ display: 'inline-block', padding: '5px 16px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px', background: '#E0F5FC', color: '#0FA8DC' }}>

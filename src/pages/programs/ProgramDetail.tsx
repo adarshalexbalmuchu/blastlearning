@@ -3,6 +3,7 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { ChevronDown, CheckCircle, ArrowRight, ChevronRight, Zap, Users, Star } from 'lucide-react';
 import { getProgramBySlug } from '../../data/programs';
+import BrandWhoosh from '../../components/BrandWhoosh';
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -51,6 +52,7 @@ export default function ProgramDetail() {
           }}
         />
 
+        <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           {/* Breadcrumb */}
           <motion.nav
