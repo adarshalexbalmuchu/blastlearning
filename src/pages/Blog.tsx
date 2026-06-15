@@ -65,7 +65,7 @@ export default function Blog() {
       `}</style>
 
       {/* Hero */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: '#FFFFFF', borderBottom: '1px solid #ECECF1', paddingTop: '120px', paddingBottom: '72px' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F5FC 0%, #F5FBFF 35%, #FFFFFF 100%)', borderBottom: '1px solid #DAEEF6', paddingTop: '120px', paddingBottom: '72px' }}>
         <div aria-hidden="true" style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
           <div style={{ position: 'absolute', top: '-100px', right: '-160px', width: '520px', height: '520px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(15,168,220,0.07) 0%, transparent 70%)', willChange: 'transform', animation: 'blob-float 14s ease-in-out infinite' }} />
           <div style={{ position: 'absolute', bottom: '-80px', left: '-120px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%)', willChange: 'transform', animation: 'blob-float 18s ease-in-out infinite reverse' }} />
@@ -123,7 +123,7 @@ export default function Blog() {
       )}
 
       {/* Posts grid */}
-      <section style={{ paddingTop: '56px', paddingBottom: '96px', background: '#F7F7F8' }}>
+      <section style={{ paddingTop: '56px', paddingBottom: '96px', background: '#EEF9FD' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           {error && (
