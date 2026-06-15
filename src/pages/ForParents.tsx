@@ -88,7 +88,7 @@ export default function ForParents() {
   return (
     <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #D8F3FC 0%, #EEF9FD 50%, #FFFFFF 100%)', paddingTop: '120px', paddingBottom: '100px' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #B8E4F5 0%, #D6F2FA 50%, #FFFFFF 100%)', paddingTop: '120px', paddingBottom: '100px' }}>
         <div aria-hidden="true" style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
           <div style={{ position: 'absolute', top: '-100px', right: '-160px', width: '520px', height: '520px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(15,168,220,0.07) 0%, transparent 70%)', willChange: 'transform', animation: 'blob-float 14s ease-in-out infinite' }} />
           <div style={{ position: 'absolute', bottom: '-80px', left: '-120px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%)', willChange: 'transform', animation: 'blob-float 18s ease-in-out infinite reverse' }} />
@@ -165,7 +165,7 @@ export default function ForParents() {
       </section>
 
       {/* Trust Section */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#EEF9FD' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#D6F2FA' }}>
         <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }} className="grid-cols-2-md">
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
@@ -260,7 +260,7 @@ export default function ForParents() {
       </section>
 
       {/* CTA */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#EEF9FD' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#D6F2FA' }}>
         <motion.div
           variants={fadeUp}
           initial="hidden"
