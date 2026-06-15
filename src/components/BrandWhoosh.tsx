@@ -17,7 +17,7 @@ const BrandWhoosh = ({ style, opacity = 0.12 }: BrandWhooshProps) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
-      style={{ position: 'absolute', pointerEvents: 'none', zIndex: 0, opacity, ...style }}
+      style={{ position: 'absolute', pointerEvents: 'none', zIndex: 0, opacity, overflow: 'visible', ...style }}
     >
       <defs>
         <linearGradient id={gId} gradientUnits="userSpaceOnUse" x1="0" y1="500" x2="500" y2="0">
