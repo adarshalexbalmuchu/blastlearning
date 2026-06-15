@@ -39,7 +39,7 @@ export default function ProgramDetail() {
   return (
     <div style={{ background: '#FFFFFF' }}>
       {/* ─── Hero ─────────────────────────────────────────────────── */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #D8F3FC 0%, #EEF9FD 50%, #FFFFFF 100%)', paddingTop: '120px', paddingBottom: '80px' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #B8E4F5 0%, #D6F2FA 50%, #FFFFFF 100%)', paddingTop: '120px', paddingBottom: '80px' }}>
         {/* Background blob */}
         <div
           aria-hidden="true"
@@ -228,7 +228,7 @@ export default function ProgramDetail() {
               <motion.div
                 key={i}
                 variants={fadeUp}
-                style={{ padding: '28px', background: '#EEF9FD', borderRadius: '16px', border: '1px solid #ECECF1' }}
+                style={{ padding: '28px', background: '#D6F2FA', borderRadius: '16px', border: '1px solid #ECECF1' }}
               >
                 <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: program.accentBg, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
                   <Users size={18} style={{ color: '#0FA8DC' }} />
@@ -242,7 +242,7 @@ export default function ProgramDetail() {
       </section>
 
       {/* ─── Curriculum ───────────────────────────────────────────── */}
-      <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#EEF9FD' }}>
+      <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#D6F2FA' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
             <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
@@ -337,7 +337,7 @@ export default function ProgramDetail() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              style={{ background: '#EEF9FD', border: '2px solid #0FA8DC', borderRadius: '20px', padding: '40px', boxShadow: '0 8px 32px rgba(15,168,220,0.10)' }}
+              style={{ background: '#D6F2FA', border: '2px solid #0FA8DC', borderRadius: '20px', padding: '40px', boxShadow: '0 8px 32px rgba(15,168,220,0.10)' }}
             >
               <div style={{ marginBottom: '8px' }}>
                 <span style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#0FA8DC', fontFamily: "'Inter', sans-serif" }}>
@@ -380,7 +380,7 @@ export default function ProgramDetail() {
       </section>
 
       {/* ─── Student Results / Testimonials ───────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#EEF9FD' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#D6F2FA' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '56px' }}>
             <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
@@ -411,7 +411,7 @@ export default function ProgramDetail() {
                   </p>
 
                   {/* Before / After */}
-                  <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', padding: '16px', background: '#EEF9FD', borderRadius: '12px' }}>
+                  <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', padding: '16px', background: '#D6F2FA', borderRadius: '12px' }}>
                     <div style={{ flex: 1, textAlign: 'center' }}>
                       <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>Before</div>
                       <div style={{ fontSize: '22px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{t.before}</div>
@@ -498,7 +498,7 @@ export default function ProgramDetail() {
       </section>
 
       {/* ─── Final CTA ────────────────────────────────────────────── */}
-      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#EEF9FD' }}>
+      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#D6F2FA' }}>
         <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <h2 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '16px' }}>
