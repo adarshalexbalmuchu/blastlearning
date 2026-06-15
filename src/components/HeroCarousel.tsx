@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 // Replace these with your actual WebP exports from Figma when ready
@@ -77,29 +78,32 @@ export default function HeroCarousel() {
       onPointerDown={(e) => { ptrX.current = e.clientX; }}
       onPointerUp={(e)   => { const dx = e.clientX - ptrX.current; if (dx < -50) next(); else if (dx > 50) prev(); }}
     >
-      {/* ── Image stack aspect ratio matches actual export: 4095×774 ── */}
-      <div style={{ position: 'relative', width: '100%', aspectRatio: '4095 / 774', overflow: 'hidden', background: '#f0f4f8' }}>
-        {SLIDES.map((slide, i) => (
-          <motion.div
-            key={slide.id}
-            aria-hidden={i !== active}
-            animate={{ opacity: i === active ? 1 : 0 }}
-            transition={{ duration: 0.55, ease: 'easeInOut' }}
-            style={{ position: 'absolute', inset: 0 }}
-          >
-            <img
-              src={slide.src}
-              alt={slide.alt}
-              width={slide.w}
-              height={slide.h}
-              loading={i === 0 ? 'eager' : 'lazy'}
-              decoding={i === 0 ? 'sync' : 'async'}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-            />
-          </motion.div>
-        ))}
-      </div>
+      {/* ── Image stack — clicking navigates to /programs ── */}
+      <Link to="/programs" aria-label="View all programs" style={{ display: 'block', cursor: 'pointer' }}>
+        <div style={{ position: 'relative', width: '100%', aspectRatio: '4095 / 774', overflow: 'hidden', background: '#f0f4f8' }}>
+          {SLIDES.map((slide, i) => (
+            <motion.div
+              key={slide.id}
+              aria-hidden={i !== active}
+              animate={{ opacity: i === active ? 1 : 0 }}
+              transition={{ duration: 0.55, ease: 'easeInOut' }}
+              style={{ position: 'absolute', inset: 0 }}
+            >
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                width={slide.w}
+                height={slide.h}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding={i === 0 ? 'sync' : 'async'}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+            </motion.div>
+          ))}
+        </div>
+      </Link>
 
+      {/* Arrows sit outside the Link so they don't trigger navigation */}
       <Arrow side="left"  onClick={prev} label="Previous banner" />
       <Arrow side="right" onClick={next} label="Next banner" />
 
