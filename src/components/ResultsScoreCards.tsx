@@ -99,7 +99,7 @@ function ScoreGaugeCard({ data, index }: { data: ScoreData; index: number }) {
         </span>
       </div>
 
-      {/* Arc gauge — clean, no endpoint clutter */}
+      {/* Arc gauge clean, no endpoint clutter */}
       <svg viewBox="0 0 220 106" width="100%" aria-hidden="true">
         <defs>
           {/* Arc gradient */}
@@ -117,7 +117,7 @@ function ScoreGaugeCard({ data, index }: { data: ScoreData; index: number }) {
         {/* Background track */}
         <path d={ARC_PATH} stroke="#EBEBF2" strokeWidth={11} fill="none" strokeLinecap="round" />
 
-        {/* Before score — ghost arc */}
+        {/* Before score ghost arc */}
         <motion.path
           d={ARC_PATH}
           stroke={data.color1}
@@ -132,7 +132,7 @@ function ScoreGaugeCard({ data, index }: { data: ScoreData; index: number }) {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 + index * 0.13 }}
         />
 
-        {/* After score — gradient, animated */}
+        {/* After score gradient, animated */}
         <motion.path
           d={ARC_PATH}
           stroke={`url(#${gradId})`}
@@ -145,7 +145,7 @@ function ScoreGaugeCard({ data, index }: { data: ScoreData; index: number }) {
           transition={{ duration: 1.9, ease: [0.16, 1, 0.3, 1], delay: 0.28 + index * 0.13 }}
         />
 
-        {/* Center score — gradient text */}
+        {/* Center score gradient text */}
         <text
           x={CX} y={CY - 14}
           textAnchor="middle"

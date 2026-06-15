@@ -5,8 +5,8 @@ import {
   ChevronDown, CheckCircle, AlertCircle, TrendingUp, Zap,
 } from 'lucide-react';
 import ctaBanner from '../assets/banner 4.webp';
-import TestimonialCard from '../components/TestimonialCard';
 import DashboardMockup from '../components/DashboardMockup';
+import TestimonialsMarquee from '../components/ui/testimonials-marquee';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
 import HeroCarousel from '../components/HeroCarousel';
@@ -84,7 +84,7 @@ const pricingPlans = [
     slug: 'english-mastery',
     name: 'English Mastery',
     classes: 'All Classes',
-    desc: 'Grammar, writing, and reading — built systematically.',
+    desc: 'Grammar, writing, and reading built systematically.',
     monthlyPrice: 999,
     yearlyMonthly: 799,
     features: [
@@ -575,34 +575,92 @@ export default function Home() {
       </section>
 
       {/* ── Testimonials (light gray) ── */}
-      <section id="testimonials" className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#F8F9FA' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: '16px', marginBottom: '28px' }}>
-            <div>
-              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
-                Student Stories
-              </span>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
-                Real Results from Real Students
-              </h2>
-              <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6 }}>
-                Hear from families who turned forgotten lessons into lasting marks.
-              </p>
-            </div>
-            <Link to="/programs" style={{ fontSize: '14px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px', color: '#0FA8DC', fontFamily: 'Inter, sans-serif', textDecoration: 'none', flexShrink: 0 }}>
-              Read all stories <ArrowRight size={14} />
-            </Link>
+      <section id="testimonials" className="section-pad" style={{ paddingTop: '64px', paddingBottom: '64px', background: '#F8F9FA' }}>
+        <div style={{ textAlign: 'center', padding: '0 24px', marginBottom: '40px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
+              Student Stories
+            </span>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15, margin: '0 0 14px' }}>
+              Real Results from Real Students
+            </h2>
+            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', lineHeight: 1.6, maxWidth: '540px', margin: '0 auto' }}>
+              Hear from families who turned forgotten lessons into lasting marks.
+            </p>
           </motion.div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', marginBottom: '20px' }} className="grid-cols-3-md">
-            <TestimonialCard name="Ananya Krishnan" role="Class 10 student, Bangalore" content="I used to forget everything after coaching. Now I actually remember what I studied a month ago. My maths score jumped from 65 to 89 in one term." rating={5} before="65%" after="89%" metric="Math Score" improvement="24%" />
-            <TestimonialCard name="Rahul Mehta" role="Class 12 student, Mumbai" content="The AI study planner is incredible. It knows exactly which topics I'm weak in and schedules revision before I forget. My Physics retention is now consistently above 80%." rating={5} before="52%" after="81%" metric="Physics Score" improvement="29%" />
-            <TestimonialCard name="Kavitha Suresh" role="Class 9 student, Hyderabad" content="English was my weakest subject. After two months on Blast Learning, I got my first A in a grammar test. The structured approach really works." rating={5} before="58%" after="84%" metric="English Score" improvement="26%" />
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }} className="grid-cols-2-md">
-            <TestimonialCard name="Deepak Sharma" role="Parent of Class 11 student, Delhi" content="The parent dashboard settled every argument at home. I can see exactly what my son studied, for how long, and his retention scores. No more guessing if he's actually studying or just watching YouTube." rating={5} />
-            <TestimonialCard name="Sunita Reddy" role="Parent of Class 10 student, Pune" content="We were spending ₹15,000 a month on coaching and my daughter was still forgetting everything. Blast Learning at ₹1,299 has done more for her retention than all that coaching combined." rating={5} />
-          </div>
         </div>
+
+        <TestimonialsMarquee
+          row1={[
+            {
+              image: 'https://randomuser.me/api/portraits/women/44.jpg',
+              name: 'Ananya Krishnan',
+              role: 'Class 10, CBSE Plan · Bangalore',
+              text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/men/32.jpg',
+              name: 'Rahul Mehta',
+              role: 'Class 12, CBSE Plan · Mumbai',
+              text: 'I was scoring 55 in Physics mock tests. Blast\'s Metacognition Engine identified my weak chapters within the first week and built a custom plan. Ended up with 81 in boards.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/women/65.jpg',
+              name: 'Kavitha Suresh',
+              role: 'Class 9, English Mastery · Hyderabad',
+              text: 'Grammar used to be a nightmare. The AI broke it into tiny daily chunks and quizzed me at exactly the right time. I went from D grades to consistently getting As.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/men/77.jpg',
+              name: 'Arjun Nair',
+              role: 'Class 11, Math Genius · Chennai',
+              text: 'Trigonometry and integration used to vanish from my head overnight. After two months with the Math Genius plan, I actually remember the concepts a week later without re-reading.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/men/11.jpg',
+              name: 'Karan Malhotra',
+              role: 'Class 12, SAT Prep Pass · Gurgaon',
+              text: 'Blast\'s SAT plan is ruthlessly efficient. It tracked which question types I kept getting wrong and drilled those specifically. Went from 1090 to 1380 across three months.',
+            },
+          ]}
+          row2={[
+            {
+              image: 'https://randomuser.me/api/portraits/men/54.jpg',
+              name: 'Deepak Sharma',
+              role: 'Parent · Class 11 CBSE, Delhi',
+              text: 'The WhatsApp summary every evening tells me exactly what my son studied, for how long, and his retention score. I haven\'t had to nag him about studying in two months.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/women/21.jpg',
+              name: 'Sunita Reddy',
+              role: 'Parent · Class 10 CBSE, Pune',
+              text: 'We were paying ₹18,000 a month for coaching and she still blanked in tests. Blast Learning at ₹1,299 helped her retain the same coaching content. The difference is night and day.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/women/31.jpg',
+              name: 'Priya Iyer',
+              role: 'Parent · Class 10 CBSE, Kochi',
+              text: 'My daughter\'s board result improved by 22 marks overall. The parent dashboard showed me exactly which subjects needed attention, and the AI adjusted her plan automatically.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/women/57.jpg',
+              name: 'Meena Patel',
+              role: 'Parent · Class 9 CBSE, Ahmedabad',
+              text: 'My son used to study for hours and still forget everything the next day. Now after just 45 minutes on Blast, he retains it for weeks. The spaced revision system genuinely works.',
+            },
+            {
+              image: 'https://randomuser.me/api/portraits/men/22.jpg',
+              name: 'Vikram Gupta',
+              role: 'Parent · Class 12 CBSE, Jaipur',
+              text: 'I was sceptical of another EdTech app. But the Focus Trainer kept my daughter off her phone during study hours, and her prelim scores jumped 18 marks across all subjects.',
+            },
+          ]}
+        />
       </section>
 
       {/* ── FAQ Preview (white) ── */}
@@ -647,14 +705,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Final CTA Banner (image) — replace banner 4.webp later with a custom design ── */}
+      {/* ── Final CTA Banner (image) replace banner 4.webp later with a custom design ── */}
       <section
         aria-label="Call to action"
         style={{ width: '100%', display: 'block', lineHeight: 0 }}
       >
         <img
           src={ctaBanner}
-          alt="Learn Smarter. Achieve More. — Start your Blast Learning journey today."
+          alt="Learn Smarter. Achieve More. Start your Blast Learning journey today."
           width={4095}
           height={774}
           loading="lazy"

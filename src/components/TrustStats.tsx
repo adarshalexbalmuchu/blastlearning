@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import type { ReactElement } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import TestimonialCard from './TestimonialCard';
 
 const COLUMN = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
@@ -291,15 +290,15 @@ export default function TrustStats() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ marginBottom: '48px' }}
+          style={{ marginBottom: '48px', textAlign: 'center' }}
         >
           <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
             By the numbers
           </span>
           <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
-            A Platform Trusted by<br />Families Across India
+            A Platform Trusted by Families Across India
           </h2>
-          <p style={{ fontSize: '1.05rem', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6 }}>
+          <p style={{ fontSize: '1.05rem', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6, maxWidth: '520px', margin: '14px auto 0' }}>
             The numbers speak for themselves — hover a card to meet the story behind it.
           </p>
         </motion.div>
@@ -310,14 +309,6 @@ export default function TrustStats() {
           ))}
         </div>
 
-        <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-          <TestimonialCard
-            name="Priya Nair"
-            role="Parent of Class 10 student, Chennai"
-            content="Blast Learning completely changed how my daughter studies. Her board exam preparation used to be chaotic, but now she has a clear plan and her retention scores are remarkable. I can see her progress every day on the parent dashboard."
-            rating={5}
-          />
-        </div>
       </div>
     </section>
   );

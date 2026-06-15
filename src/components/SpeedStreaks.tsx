@@ -4,7 +4,7 @@ interface SpeedStreaksProps {
   side?: 'left' | 'right';
 }
 
-// Mirrors the logo's horizontal speed marks — lengths and weights match the B letterform
+// Mirrors the logo's horizontal speed marks lengths and weights match the B letterform
 const STREAKS: { pct: number; h: number; edge: number; mid: number }[] = [
   { pct: 22, h: 1.5, edge: 0.45, mid: 0.20 },
   { pct: 40, h: 2.0, edge: 0.38, mid: 0.17 },
