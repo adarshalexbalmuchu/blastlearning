@@ -6,6 +6,8 @@ import {
   BookOpen, Calculator, Edit, Target,
   LayoutDashboard, MessageSquare, BarChart2,
   Brain, Layers, Zap,
+  Building2, GraduationCap, Handshake,
+  Newspaper, HelpCircle,
 } from 'lucide-react';
 import blastLogo from '../assets/blast-logo.webp';
 
@@ -75,16 +77,42 @@ const navItems: NavItem[] = [
       },
     ],
   },
-  { id: 5, label: 'About', path: '/about' },
-  { id: 6, label: 'Blog', path: '/blog' },
-  { id: 7, label: 'Library', path: '/library' },
-  { id: 8, label: 'FAQ', path: '/faq' },
-  { id: 9, label: 'Contact', path: '/contact' },
+  {
+    id: 5,
+    label: 'Institutions',
+    subMenus: [
+      {
+        title: 'For Institutions',
+        items: [
+          { label: 'School Partnerships', description: 'Bulk enrollment & custom programs for schools', icon: Building2, path: '/contact' },
+          { label: 'Batch Programs', description: 'Group learning plans for student cohorts', icon: GraduationCap, path: '/programs' },
+          { label: 'Partnership Enquiry', description: 'Talk to our institution success team', icon: Handshake, path: '/contact' },
+        ],
+      },
+    ],
+  },
+  { id: 6, label: 'About', path: '/about' },
+  {
+    id: 7,
+    label: 'Resources',
+    subMenus: [
+      {
+        title: 'Resources',
+        items: [
+          { label: 'Blog', description: 'Articles, tips & learning insights', icon: Newspaper, path: '/blog' },
+          { label: 'Resource Library', description: 'Videos, notes & practice quizzes', icon: Layers, path: '/library' },
+          { label: 'FAQs', description: 'Common questions answered', icon: HelpCircle, path: '/faq' },
+        ],
+      },
+    ],
+  },
+  { id: 8, label: 'Contact', path: '/contact' },
 ];
 
 const loginOptions = [
-  { label: 'Parent Login', to: '/login?role=parent' },
   { label: 'Student Login', to: '/login?role=student' },
+  { label: 'Parent Login', to: '/login?role=parent' },
+  { label: 'Institution Login', to: '/login?role=institution' },
   { label: 'Tutor Login', to: '/login?role=tutor' },
 ];
 
