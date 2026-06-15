@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSEO } from '../hooks/useSEO';
 import BrandArc from '../components/BrandArc';
+import BrandWhoosh from '../components/BrandWhoosh';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, Play, FileText, HelpCircle, Lock, ArrowRight } from 'lucide-react';
@@ -78,6 +79,7 @@ export default function Library() {
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
+        <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

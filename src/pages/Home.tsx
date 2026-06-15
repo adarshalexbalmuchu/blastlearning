@@ -10,6 +10,7 @@ import TestimonialsMarquee from '../components/ui/testimonials-marquee';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
 import HeroCarousel from '../components/HeroCarousel';
+import BrandWhoosh from '../components/BrandWhoosh';
 import {
   ForgettingCurveIllustration,
 } from '../components/illustrations';
@@ -214,7 +215,8 @@ export default function Home() {
       </div>
 
       {/* ── Science of Retention (white) ── */}
-      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ position: 'relative', overflow: 'hidden', paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
+        <BrandWhoosh opacity={0.18} style={{ width: '420px', height: '420px', bottom: '-40px', right: '-40px' }} />
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ minWidth: 0 }}>
@@ -527,7 +529,8 @@ export default function Home() {
       </section>
 
       {/* ── Parent Dashboard Showcase (white) ── */}
-      <section id="parent-dashboard" className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
+      <section id="parent-dashboard" className="section-pad" style={{ position: 'relative', overflow: 'hidden', paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
+        <BrandWhoosh opacity={0.15} style={{ width: '400px', height: '400px', top: '-30px', left: '-40px', transform: 'scaleX(-1)' }} />
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ minWidth: 0 }}>
