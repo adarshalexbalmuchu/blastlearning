@@ -39,7 +39,7 @@ export default function ProgramDetail() {
   return (
     <div style={{ background: '#FFFFFF' }}>
       {/* ─── Hero ─────────────────────────────────────────────────── */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #B8E4F5 0%, #D6F2FA 50%, #FFFFFF 100%)', paddingTop: '120px', paddingBottom: '80px' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', paddingTop: '120px', paddingBottom: '80px' }}>
         {/* Background blob */}
         <div
           aria-hidden="true"
@@ -242,7 +242,7 @@ export default function ProgramDetail() {
       </section>
 
       {/* ─── Curriculum ───────────────────────────────────────────── */}
-      <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#D6F2FA' }}>
+      <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
             <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
@@ -380,7 +380,7 @@ export default function ProgramDetail() {
       </section>
 
       {/* ─── Student Results / Testimonials ───────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#D6F2FA' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '56px' }}>
             <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
@@ -498,7 +498,7 @@ export default function ProgramDetail() {
       </section>
 
       {/* ─── Final CTA ────────────────────────────────────────────── */}
-      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#D6F2FA' }}>
+      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <h2 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '16px' }}>
