@@ -15,178 +15,43 @@ function parseRole(role: string): { rank: string; location: string } {
   return { rank: parts[0] ?? role, location: parts[1] ?? '' };
 }
 
-function Avatar({ name }: { name: string }) {
-  return (
-    <div
-      style={{
-        width: '44px',
-        height: '44px',
-        borderRadius: '50%',
-        flexShrink: 0,
-        background: '#E0F5FC',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontSize: '16px',
-        fontWeight: 700,
-        color: '#0FA8DC',
-        fontFamily: 'Poppins, sans-serif',
-      }}
-    >
-      {name.charAt(0)}
-    </div>
-  );
-}
-
-function AuthorLine({ name, role }: { name: string; role: string }) {
-  const { rank, location } = parseRole(role);
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-      <Avatar name={name} />
-      <div>
-        <p
-          style={{
-            fontFamily: 'Poppins, sans-serif',
-            fontWeight: 700,
-            fontSize: '14px',
-            color: '#1C1C28',
-            margin: 0,
-            lineHeight: 1.3,
-          }}
-        >
-          {name}
-        </p>
-        <p
-          style={{
-            fontSize: '12px',
-            color: '#0FA8DC',
-            fontFamily: 'Inter, sans-serif',
-            margin: 0,
-            lineHeight: 1.5,
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            flexWrap: 'wrap',
-          }}
-        >
-          <span>{rank}</span>
-          {location && (
-            <>
-              <span style={{ color: '#D1D5DB', fontWeight: 400 }}>|</span>
-              <span>{location}</span>
-            </>
-          )}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function FeaturedCard({ card }: { card: CardT }) {
-  return (
-    <div
-      style={{
-        background: '#FFFFFF',
-        borderRadius: '20px',
-        border: '1.5px solid #E5E7EB',
-        boxShadow: '0 4px 24px rgba(28,28,40,0.07)',
-        padding: '40px 44px',
-        position: 'relative',
-        overflow: 'hidden',
-      }}
-    >
-      {/* Background quote watermark */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          top: '12px',
-          right: '28px',
-          fontSize: '140px',
-          lineHeight: 1,
-          color: '#F0F7FB',
-          fontFamily: 'Georgia, serif',
-          fontWeight: 700,
-          userSelect: 'none',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      >
-        "
-      </div>
-
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        {/* Stars */}
-        <div style={{ display: 'flex', gap: '3px', marginBottom: '20px' }}>
-          {Array.from({ length: 5 }).map((_, i) => (
-            <span key={i} style={{ color: '#F59E0B', fontSize: '16px' }}>
-              ★
-            </span>
-          ))}
-        </div>
-
-        {/* Quote text */}
-        <p
-          style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '16px',
-            color: '#374151',
-            lineHeight: 1.8,
-            margin: '0 0 28px',
-            maxWidth: '700px',
-          }}
-        >
-          "{card.text}"
-        </p>
-
-        {/* Author */}
-        <div style={{ borderTop: '1px solid #F3F4F6', paddingTop: '20px' }}>
-          <AuthorLine name={card.name} role={card.role} />
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function TestimonialCard({ card }: { card: CardT }) {
+  const { rank, location } = parseRole(card.role);
   return (
     <div
       style={{
         background: '#FFFFFF',
         borderRadius: '16px',
-        border: '1.5px solid #E5E7EB',
-        boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-        padding: '24px',
+        border: '1.5px solid #E8ECF0',
+        boxShadow: '0 2px 16px rgba(28,28,40,0.06)',
+        padding: '28px 26px 24px',
         display: 'flex',
         flexDirection: 'column',
-        gap: '0',
-        position: 'relative',
         height: '100%',
         boxSizing: 'border-box',
       }}
     >
-      {/* Cyan quote icon */}
+      {/* Decorative large quote */}
       <div
         aria-hidden="true"
         style={{
-          fontSize: '64px',
-          lineHeight: 1,
+          fontSize: '88px',
+          lineHeight: 0.75,
           color: '#0FA8DC',
           fontFamily: 'Georgia, serif',
-          fontWeight: 700,
+          fontWeight: 900,
+          marginBottom: '14px',
+          opacity: 0.12,
           userSelect: 'none',
-          pointerEvents: 'none',
-          marginBottom: '4px',
-          opacity: 0.18,
         }}
       >
         "
       </div>
 
       {/* Stars */}
-      <div style={{ display: 'flex', gap: '2px', marginBottom: '12px' }}>
+      <div style={{ display: 'flex', gap: '3px', marginBottom: '14px' }}>
         {Array.from({ length: 5 }).map((_, i) => (
-          <span key={i} style={{ color: '#F59E0B', fontSize: '13px' }}>
+          <span key={i} style={{ color: '#F59E0B', fontSize: '15px' }}>
             ★
           </span>
         ))}
@@ -195,24 +60,98 @@ function TestimonialCard({ card }: { card: CardT }) {
       {/* Quote text */}
       <p
         style={{
-          fontSize: '13.5px',
-          color: '#5A5A6E',
-          lineHeight: 1.75,
+          fontSize: '14px',
+          color: '#374151',
+          lineHeight: 1.8,
           fontFamily: 'Inter, sans-serif',
-          margin: '0 0 16px',
+          margin: '0 0 22px',
           flex: 1,
           display: '-webkit-box',
-          WebkitLineClamp: 5,
+          WebkitLineClamp: 6,
           WebkitBoxOrient: 'vertical' as const,
           overflow: 'hidden',
         }}
       >
-        "{card.text}"
+        {card.text}
       </p>
 
       {/* Author */}
-      <div style={{ borderTop: '1px solid #F3F4F6', paddingTop: '14px', marginTop: 'auto' }}>
-        <AuthorLine name={card.name} role={card.role} />
+      <div
+        style={{
+          borderTop: '1px solid #F3F4F6',
+          paddingTop: '16px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          marginTop: 'auto',
+        }}
+      >
+        <div
+          style={{
+            width: '44px',
+            height: '44px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #0FA8DC 0%, #0891B2 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '17px',
+            fontWeight: 700,
+            color: 'white',
+            fontFamily: 'Poppins, sans-serif',
+            flexShrink: 0,
+          }}
+        >
+          {card.name.charAt(0)}
+        </div>
+        <div>
+          <p
+            style={{
+              fontFamily: 'Poppins, sans-serif',
+              fontWeight: 700,
+              fontSize: '14px',
+              color: '#111827',
+              margin: '0 0 3px',
+              lineHeight: 1.3,
+            }}
+          >
+            {card.name}
+          </p>
+          <p
+            style={{
+              fontSize: '12px',
+              margin: 0,
+              lineHeight: 1.4,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              flexWrap: 'wrap',
+            }}
+          >
+            <span
+              style={{
+                color: '#0FA8DC',
+                fontWeight: 600,
+                fontFamily: 'Inter, sans-serif',
+              }}
+            >
+              {rank}
+            </span>
+            {location && (
+              <>
+                <span style={{ color: '#D1D5DB', fontWeight: 400 }}>|</span>
+                <span
+                  style={{
+                    color: '#0FA8DC',
+                    fontFamily: 'Inter, sans-serif',
+                  }}
+                >
+                  {location}
+                </span>
+              </>
+            )}
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -228,27 +167,20 @@ export default function TestimonialsMarquee({
   row2: CardT[];
 }) {
   const all = React.useMemo(() => [...row1, ...row2], [row1, row2]);
-  const featured = all[0];
-  const rest = all.slice(1);
-  const totalPages = Math.ceil(rest.length / PAGE_SIZE);
+  const totalPages = Math.ceil(all.length / PAGE_SIZE);
   const [page, setPage] = useState(0);
 
-  const pageCards = rest.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
+  const pageCards = all.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
 
   return (
     <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
-      {/* Featured hero card */}
-      <div style={{ marginBottom: '24px' }}>
-        <FeaturedCard card={featured} />
-      </div>
-
       {/* 3-per-page grid */}
       <div
         style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
           gap: '20px',
-          marginBottom: '20px',
+          marginBottom: '24px',
           alignItems: 'stretch',
         }}
       >
