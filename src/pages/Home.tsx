@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence, type Variants, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
+import { motion, type Variants, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import {
   ArrowRight,
-  ChevronDown, CheckCircle, AlertCircle,
+  CheckCircle, AlertCircle,
 } from 'lucide-react';
 import ctaBanner from '../assets/banner 4.webp';
 import DashboardMockup from '../components/DashboardMockup';
@@ -16,6 +16,7 @@ import {
 } from '../components/illustrations';
 import ResultsScoreCards from '../components/ResultsScoreCards';
 import HowItWorksCard, { UploadVisual, AIVisual, MasteryVisual } from '../components/HowItWorksCard';
+import FAQItem from '../components/FAQItem';
 import { useState, useEffect, useRef } from 'react';
 import { useSEO } from '../hooks/useSEO';
 
@@ -431,7 +432,6 @@ function ProgramCard({ prog }: { prog: ProgramCardData }) {
 
 // ─── Home page ─────────────────────────────────────────────────────────────────
 export default function Home() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [isYearly, setIsYearly] = useState(false);
 
   useSEO({
@@ -980,29 +980,7 @@ export default function Home() {
           />
           <div style={{ borderTop: '1px solid #E5E7EB', marginBottom: '32px' }}>
             {homeFaqs.map((faq, i) => (
-              <div key={i} style={{ borderBottom: '1px solid #E5E7EB' }}>
-                <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="hover:underline"
-                  style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', padding: '16px 0', textAlign: 'left', cursor: 'pointer', background: 'transparent', border: 'none' }}
-                >
-                  <span style={{ fontSize: '15px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.45 }}>
-                    {faq.q}
-                  </span>
-                  <motion.div animate={{ rotate: openFaq === i ? 180 : 0 }} transition={{ duration: 0.2 }} style={{ flexShrink: 0, opacity: 0.6, color: '#1C1C28' }}>
-                    <ChevronDown size={16} strokeWidth={2} />
-                  </motion.div>
-                </button>
-                <AnimatePresence initial={false}>
-                  {openFaq === i && (
-                    <motion.div key="faq-answer" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.22, ease: 'easeInOut' }} style={{ overflow: 'hidden' }}>
-                      <p style={{ fontSize: '14px', lineHeight: 1.72, color: '#6B7280', fontFamily: 'Inter, sans-serif', margin: 0, paddingBottom: '16px' }}>
-                        {faq.a}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+              <FAQItem key={i} question={faq.q} answer={faq.a} />
             ))}
           </div>
           <div style={{ textAlign: 'center' }}>
