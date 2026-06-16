@@ -419,87 +419,175 @@ export default function Home() {
       </section>
 
       {/* ── Programs Showcase (white) ── */}
-      <section id="programs" className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <SectionHeading
-            eyebrow="Our Programs"
-            title="Find the Right Program for Your Child"
-            subtitle="Specialized curricula for every learning goal, from board exams to international tests."
-          />
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="programs-scroll">
-            {[
+      <section id="programs" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFFFFF' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.25rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', margin: '0 0 10px' }}>
+              Our Programs
+            </h2>
+            <p style={{ fontSize: '15px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '520px', margin: '0 auto', lineHeight: 1.65 }}>
+              Blast Learning is preparing students for every exam and learning goal. Find the one you are preparing for.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
+            {([
               {
-                id: 'cbse', slug: 'cbse-plan', name: 'CBSE Plan', classes: 'Classes 8–10',
-                desc: 'AI-powered board prep with full NCERT curriculum and retention tracking.',
-                price: 1299, accent: '#0FA8DC', bg: '#E7F6FB',
-                features: ['Full NCERT syllabus coverage', 'AI spaced repetition plans', 'Board exam mock tests', 'Parent dashboard'],
+                id: 'cbse', slug: 'cbse-plan', name: 'CBSE Plan',
+                tags: ['Class 8', 'Class 9', 'Class 10'],
+                blobBg: '#E0F5FC',
+                illus: (
+                  <svg width="76" height="76" viewBox="0 0 76 76" fill="none" aria-hidden="true">
+                    <rect x="10" y="20" width="24" height="34" rx="3" fill="#0FA8DC" opacity="0.65" />
+                    <rect x="38" y="20" width="24" height="34" rx="3" fill="#0FA8DC" />
+                    <rect x="34" y="18" width="4" height="38" rx="2" fill="#0891B2" />
+                    <rect x="14" y="27" width="15" height="2" rx="1" fill="white" opacity="0.55" />
+                    <rect x="14" y="32" width="12" height="2" rx="1" fill="white" opacity="0.55" />
+                    <rect x="14" y="37" width="15" height="2" rx="1" fill="white" opacity="0.55" />
+                    <rect x="42" y="27" width="15" height="2" rx="1" fill="white" opacity="0.55" />
+                    <rect x="42" y="32" width="12" height="2" rx="1" fill="white" opacity="0.55" />
+                    <rect x="42" y="37" width="15" height="2" rx="1" fill="white" opacity="0.55" />
+                  </svg>
+                ),
               },
               {
-                id: 'math', slug: 'math-genius', name: 'Math Genius', classes: 'Classes 8–12',
-                desc: 'Gap-fill and master every math concept from foundation to advanced.',
-                price: 999, accent: '#F59E0B', bg: '#FDF3E7',
-                features: ['Personalized gap analysis', 'Speed and accuracy drills', 'Visual concept explainers', 'AI-generated practice sets'],
+                id: 'math', slug: 'math-genius', name: 'Math Genius',
+                tags: ['Class 8', 'Class 9', 'Class 10', 'Class 11', 'Class 12'],
+                blobBg: '#FEF3C7',
+                illus: (
+                  <svg width="76" height="76" viewBox="0 0 76 76" fill="none" aria-hidden="true">
+                    <rect x="16" y="10" width="44" height="56" rx="6" fill="#F59E0B" />
+                    <rect x="22" y="16" width="32" height="14" rx="3" fill="white" opacity="0.9" />
+                    <circle cx="28" cy="42" r="4.5" fill="white" opacity="0.75" />
+                    <circle cx="38" cy="42" r="4.5" fill="white" opacity="0.75" />
+                    <circle cx="48" cy="42" r="4.5" fill="white" opacity="0.75" />
+                    <circle cx="28" cy="55" r="4.5" fill="white" opacity="0.75" />
+                    <circle cx="38" cy="55" r="4.5" fill="white" opacity="0.75" />
+                    <circle cx="48" cy="55" r="4.5" fill="#D97706" opacity="0.85" />
+                  </svg>
+                ),
               },
               {
-                id: 'english', slug: 'english-mastery', name: 'English Mastery', classes: 'All Classes',
-                desc: 'Grammar, writing, and reading comprehension built systematically.',
-                price: 999, accent: '#22C55E', bg: '#ECFDF5',
-                features: ['Grammar and writing modules', 'Reading comprehension tools', 'AI essay feedback', 'Vocabulary builder'],
+                id: 'english', slug: 'english-mastery', name: 'English Mastery',
+                tags: ['All Classes'],
+                blobBg: '#D1FAE5',
+                illus: (
+                  <svg width="76" height="76" viewBox="0 0 76 76" fill="none" aria-hidden="true">
+                    <g transform="rotate(15 38 38)">
+                      <rect x="29" y="8" width="18" height="46" rx="5" fill="#22C55E" />
+                      <rect x="29" y="8" width="18" height="10" rx="5" fill="#86EFAC" />
+                      <rect x="33" y="10" width="10" height="5" rx="2.5" fill="#FDE68A" />
+                      <polygon points="29,54 47,54 38,68" fill="#15803D" />
+                    </g>
+                    <path d="M57 18 L59 13 L61 18 L66 20 L61 22 L59 27 L57 22 L52 20 Z" fill="#22C55E" opacity="0.45" />
+                  </svg>
+                ),
               },
               {
-                id: 'sat', slug: 'sat-prep', name: 'SAT Prep Pass', classes: 'Classes 10–12',
-                desc: 'Adaptive SAT prep designed for top college admissions scores.',
-                price: 999, accent: '#8B5CF6', bg: '#F0EDFC',
-                features: ['Complete SAT syllabus', 'Adaptive timed mock tests', 'Score improvement tracking', 'Verbal and math sections'],
+                id: 'sat', slug: 'sat-prep', name: 'SAT Prep Pass',
+                tags: ['Class 10', 'Class 11', 'Class 12'],
+                blobBg: '#EDE9FE',
+                illus: (
+                  <svg width="76" height="76" viewBox="0 0 76 76" fill="none" aria-hidden="true">
+                    <polygon points="10,32 38,18 66,32 38,46" fill="#8B5CF6" />
+                    <ellipse cx="38" cy="32" rx="28" ry="8" fill="#7C3AED" opacity="0.4" />
+                    <rect x="35" y="44" width="6" height="18" rx="3" fill="#8B5CF6" />
+                    <ellipse cx="38" cy="62" rx="9" ry="4" fill="#7C3AED" opacity="0.6" />
+                    <circle cx="62" cy="30" r="4" fill="#A78BFA" />
+                    <line x1="62" y1="34" x2="62" y2="50" stroke="#A78BFA" strokeWidth="2.5" strokeLinecap="round" />
+                    <circle cx="62" cy="53" r="3.5" fill="#A78BFA" />
+                  </svg>
+                ),
               },
-            ].map((prog) => (
-              <motion.div key={prog.id} variants={fadeUp} whileHover={{ y: -6 }} transition={{ type: 'spring', stiffness: 300, damping: 22 }}>
-                <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: '#FFFFFF', borderRadius: '20px', border: '1.5px solid #ECECF1', overflow: 'hidden', boxShadow: '0 2px 12px rgba(28,28,40,0.04)' }}>
-                  <div style={{ height: '5px', background: prog.accent }} />
-                  <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                    <div style={{ marginBottom: '14px' }}>
-                      <span style={{ display: 'inline-block', padding: '3px 10px', borderRadius: '9999px', background: prog.bg, color: prog.accent, fontSize: '11px', fontWeight: 700, fontFamily: 'Inter, sans-serif' }}>
-                        {prog.classes}
-                      </span>
-                    </div>
-                    <h3 style={{ fontSize: '18px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '8px', margin: '0 0 8px' }}>
-                      {prog.name}
-                    </h3>
-                    <p style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', lineHeight: 1.6, marginBottom: '16px', flex: 1, margin: '0 0 16px' }}>
-                      {prog.desc}
-                    </p>
-                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 20px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                      {prog.features.map((f) => (
-                        <li key={f} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: prog.accent, flexShrink: 0 }} />
-                          <span style={{ fontSize: '12.5px', color: '#3D3D4E', fontFamily: 'Inter, sans-serif' }}>{f}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div style={{ borderTop: '1px solid #F0F0F5', paddingTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                      <div>
-                        <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', display: 'block' }}>From</span>
-                        <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: prog.accent, lineHeight: 1.2 }}>
-                          {'₹'}{prog.price.toLocaleString('en-IN')}<span style={{ fontSize: '12px', fontWeight: 500, color: '#8E8EA0' }}>/mo</span>
-                        </div>
-                      </div>
-                      <Link
-                        to={`/programs/${prog.slug}`}
-                        style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '8px 16px', borderRadius: '8px', background: prog.accent, color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}
-                      >
-                        Explore <ArrowRight size={13} />
-                      </Link>
-                    </div>
-                  </div>
+            ] as Array<{ id: string; slug: string; name: string; tags: string[]; blobBg: string; illus: React.ReactElement }>).map((prog) => (
+              <div
+                key={prog.id}
+                style={{
+                  position: 'relative',
+                  background: '#FFFFFF',
+                  border: '1.5px solid #E5E7EB',
+                  borderRadius: '16px',
+                  padding: '32px 32px 28px',
+                  overflow: 'hidden',
+                }}
+              >
+                {/* Corner blob + illustration */}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    right: 0,
+                    width: '148px',
+                    height: '148px',
+                    borderRadius: '0 16px 0 100%',
+                    background: prog.blobBg,
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    justifyContent: 'flex-end',
+                    padding: '20px 20px 0 0',
+                    pointerEvents: 'none',
+                  }}
+                >
+                  {prog.illus}
                 </div>
-              </motion.div>
+
+                {/* Name */}
+                <h3 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: '22px', color: '#1C1C28', margin: '0 0 18px', position: 'relative', zIndex: 1 }}>
+                  {prog.name}
+                </h3>
+
+                {/* Tag pills */}
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '26px', position: 'relative', zIndex: 1 }}>
+                  {prog.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      style={{
+                        padding: '5px 14px',
+                        borderRadius: '9999px',
+                        border: '1.5px solid #E5E7EB',
+                        fontSize: '13px',
+                        color: '#374151',
+                        fontFamily: 'Inter, sans-serif',
+                        fontWeight: 500,
+                        background: '#FFFFFF',
+                      }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Explore link */}
+                <Link
+                  to={`/programs/${prog.slug}`}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: '14px',
+                    fontWeight: 600,
+                    color: '#1C1C28',
+                    fontFamily: 'Inter, sans-serif',
+                    textDecoration: 'none',
+                    position: 'relative',
+                    zIndex: 1,
+                  }}
+                >
+                  Explore Program
+                  <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '28px', height: '28px', borderRadius: '50%', border: '1.5px solid #E5E7EB', background: '#F9FAFB', flexShrink: 0 }}>
+                    <ArrowRight size={13} />
+                  </span>
+                </Link>
+              </div>
             ))}
-          </motion.div>
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} style={{ textAlign: 'center', marginTop: '32px', fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>
+          </div>
+
+          <p style={{ textAlign: 'center', marginTop: '28px', fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>
             <Link to="/programs" style={{ color: '#0FA8DC', fontWeight: 600, textDecoration: 'none' }}>
               See all programs with full pricing and features {'→'}
             </Link>
-          </motion.p>
+          </p>
         </div>
       </section>
 
