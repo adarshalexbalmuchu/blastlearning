@@ -1,9 +1,10 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Shield, TrendingUp, Clock, Heart, BarChart3, Bell, ArrowRight, CheckCircle, Quote } from 'lucide-react';
+import { Shield, TrendingUp, Clock, Heart, BarChart3, Bell, ArrowRight, CheckCircle } from 'lucide-react';
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
+import TestimonialsMarquee from '../components/ui/testimonials-marquee';
 
 const benefits = [
   {
@@ -47,24 +48,36 @@ const trustPoints = [
   'Trusted by 4,999+ Indian families',
 ];
 
-const testimonials = [
+const parentTestimonials = [
   {
-    quote: 'My daughter\'s confidence in maths has completely turned around. The weekly reports help me stay involved without being intrusive.',
     name: 'Priya Sharma',
-    role: 'Mother of Class 10 student',
-    location: 'Delhi',
+    role: 'Parent · Class 10 CBSE, Delhi',
+    text: "My daughter's confidence in maths has completely turned around. The weekly reports help me stay involved without being intrusive.",
   },
   {
-    quote: 'Finally an app that shows me real progress. I can see exactly where my son needs help and the AI actually adapts to him.',
     name: 'Rajesh Kumar',
-    role: 'Father of Class 9 student',
-    location: 'Bangalore',
+    role: 'Parent · Class 9 CBSE, Bangalore',
+    text: "Finally an app that shows me real progress. I can see exactly where my son needs help and the AI actually adapts to him.",
   },
   {
-    quote: 'Worth every rupee. The retention tracking is brilliant. My daughter actually remembers what she learned months ago.',
     name: 'Anita Desai',
-    role: 'Mother of Class 8 student',
-    location: 'Mumbai',
+    role: 'Parent · Class 8 CBSE, Mumbai',
+    text: 'Worth every rupee. The retention tracking is brilliant. My daughter actually remembers what she learned months ago.',
+  },
+  {
+    name: 'Deepak Sharma',
+    role: 'Parent · Class 11 CBSE, Delhi',
+    text: "The WhatsApp summary every evening tells me exactly what my son studied, for how long, and his retention score. I haven't had to nag him about studying in two months.",
+  },
+  {
+    name: 'Sunita Reddy',
+    role: 'Parent · Class 10 CBSE, Pune',
+    text: 'We were paying ₹18,000 a month for coaching and she still blanked in tests. Blast Learning at ₹1,299 helped her retain the same coaching content. The difference is night and day.',
+  },
+  {
+    name: 'Meena Patel',
+    role: 'Parent · Class 9 CBSE, Ahmedabad',
+    text: 'My son used to study for hours and still forget everything the next day. Now after just 45 minutes on Blast, he retains it for weeks. The spaced revision system genuinely works.',
   },
 ];
 
@@ -187,78 +200,54 @@ export default function ForParents() {
               </div>
             </motion.div>
             <motion.div
-              variants={fadeUp}
+              variants={stagger}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              style={{
-                background: '#FFFFFF',
-                border: '1px solid #ECECF1',
-                borderRadius: '16px',
-                padding: '40px',
-                boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-              }}
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}
             >
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px' }}>
-                {[
-                  { value: '4,999+', label: 'Active Families' },
-                  { value: '91%', label: 'Grade Improvement' },
-                  { value: '4.8/5', label: 'Parent Rating' },
-                  { value: '50,000+', label: 'Lessons Done' },
-                ].map((stat) => (
-                  <div key={stat.label} style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: '32px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '8px' }}>{stat.value}</div>
-                    <div style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>{stat.label}</div>
-                  </div>
-                ))}
-              </div>
+              {[
+                { value: '4,999+', label: 'Active Families', bg: '#FDF3E7', color: '#F59E0B' },
+                { value: '91%', label: 'Grade Improvement', bg: '#E7F6FB', color: '#0FA8DC' },
+                { value: '4.8/5', label: 'Parent Rating', bg: '#FCEEF1', color: '#F03C6F' },
+                { value: '50,000+', label: 'Lessons Done', bg: '#F0EDFC', color: '#8B5CF6' },
+              ].map((stat) => (
+                <motion.div
+                  key={stat.label}
+                  variants={fadeUp}
+                  style={{
+                    background: stat.bg,
+                    borderRadius: '16px',
+                    padding: '28px 20px',
+                    textAlign: 'center',
+                    border: '1px solid #ECECF1',
+                  }}
+                >
+                  <div style={{ fontSize: '28px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: stat.color, marginBottom: '6px' }}>{stat.value}</div>
+                  <div style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>{stat.label}</div>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', textAlign: 'center', marginBottom: '56px' }}
-          >
-            What Parents Say
-          </motion.h2>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
-            className="grid-cols-3-md"
-          >
-            {testimonials.map((t) => (
-              <motion.div
-                key={t.name}
-                variants={fadeUp}
-                style={{
-                  background: '#FFFFFF',
-                  border: '1px solid #ECECF1',
-                  borderRadius: '16px',
-                  padding: '32px',
-                  boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-                }}
-              >
-                <Quote size={32} style={{ color: '#0FA8DC', marginBottom: '16px' }} />
-                <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#1C1C28', fontFamily: "'Inter', sans-serif", marginBottom: '24px', fontStyle: 'italic' }}>"{t.quote}"</p>
-                <div>
-                  <div style={{ fontSize: '15px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{t.name}</div>
-                  <div style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>{t.role} · {t.location}</div>
-                </div>
-              </motion.div>
-            ))}
+      <section style={{ paddingTop: '64px', paddingBottom: '64px', background: '#F9FAFB' }}>
+        <div style={{ textAlign: 'center', padding: '0 24px', marginBottom: '40px' }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
+            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
+              Parent Stories
+            </span>
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15, margin: '0 0 14px' }}>
+              What Parents Say
+            </h2>
+            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', lineHeight: 1.6, maxWidth: '540px', margin: '0 auto' }}>
+              Thousands of families trust Blast Learning to keep their children on track.
+            </p>
           </motion.div>
         </div>
+        <TestimonialsMarquee row1={parentTestimonials.slice(0, 3)} row2={parentTestimonials.slice(3)} />
       </section>
 
       {/* CTA */}
