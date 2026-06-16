@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
 import {
-  ArrowRight, Users,
-  ChevronDown, CheckCircle, AlertCircle, TrendingUp, Zap,
+  ArrowRight,
+  ChevronDown, CheckCircle, AlertCircle,
 } from 'lucide-react';
 import ctaBanner from '../assets/banner 4.webp';
 import DashboardMockup from '../components/DashboardMockup';
@@ -194,6 +194,140 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title:
   );
 }
 
+// ─── Result Stat Illustrations ──────────────────────────────────────────────────
+
+function RetentionMultiplierIllus({ color }: { color: string }) {
+  return (
+    <svg width="150" height="150" viewBox="0 0 150 150" fill="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="rm-bar" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor={color} />
+          <stop offset="100%" stopColor={color} stopOpacity="0.52" />
+        </linearGradient>
+      </defs>
+      <ellipse cx="75" cy="144" rx="46" ry="7" fill={color} opacity="0.13" />
+      <rect x="18" y="96" width="28" height="36" rx="8" fill={color} opacity="0.22" />
+      <rect x="61" y="68" width="28" height="64" rx="8" fill={color} opacity="0.52" />
+      <rect x="104" y="36" width="28" height="96" rx="8" fill="url(#rm-bar)" />
+      <rect x="107" y="39" width="9" height="24" rx="4.5" fill="white" opacity="0.28" />
+      <path d="M32 84 L65 58 L108 34" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="3 2" opacity="0.55" />
+      <rect x="90" y="18" width="44" height="26" rx="10" fill={color} />
+      <text x="112" y="34" textAnchor="middle" fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="14" fill="white">3×</text>
+      <path d="M18 28 L20 22 L22 28 L28 30 L22 32 L20 38 L18 32 L12 30 Z" fill={color} opacity="0.58" />
+      <circle cx="50" cy="118" r="3" fill={color} opacity="0.25" />
+      <circle cx="140" cy="80" r="2.5" fill={color} opacity="0.28" />
+    </svg>
+  );
+}
+
+function GradeImprovementIllus({ color }: { color: string }) {
+  return (
+    <svg width="150" height="150" viewBox="0 0 150 150" fill="none" aria-hidden="true">
+      <ellipse cx="75" cy="144" rx="46" ry="7" fill={color} opacity="0.13" />
+      <rect x="35" y="46" width="80" height="86" rx="12" fill="white" opacity="0.95" />
+      <rect x="35" y="46" width="80" height="26" rx="12" fill={color} opacity="0.85" />
+      <rect x="35" y="60" width="80" height="12" fill={color} opacity="0.85" />
+      <rect x="47" y="80" width="38" height="4" rx="2" fill={color} opacity="0.2" />
+      <rect x="47" y="90" width="30" height="4" rx="2" fill={color} opacity="0.15" />
+      <rect x="47" y="100" width="34" height="4" rx="2" fill={color} opacity="0.18" />
+      <rect x="90" y="74" width="30" height="30" rx="8" fill={color} />
+      <rect x="90" y="74" width="30" height="30" rx="8" fill="white" opacity="0.12" />
+      <text x="105" y="93" textAnchor="middle" fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="14" fill="white">A+</text>
+      <path d="M75 38 L75 16 M68 24 L75 16 L82 24" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M18 42 L20 36 L22 42 L28 44 L22 46 L20 52 L18 46 L12 44 Z" fill={color} opacity="0.6" />
+      <path d="M124 22 L125.5 18 L127 22 L131 23.5 L127 25 L125.5 29 L124 25 L120 23.5 Z" fill={color} opacity="0.5" />
+      <circle cx="136" cy="56" r="3.5" fill={color} opacity="0.3" />
+      <circle cx="18" cy="72" r="2.5" fill={color} opacity="0.28" />
+    </svg>
+  );
+}
+
+function CalendarResultIllus({ color }: { color: string }) {
+  return (
+    <svg width="150" height="150" viewBox="0 0 150 150" fill="none" aria-hidden="true">
+      <ellipse cx="75" cy="144" rx="46" ry="7" fill={color} opacity="0.13" />
+      <rect x="28" y="42" width="94" height="86" rx="14" fill="white" opacity="0.95" />
+      <rect x="28" y="42" width="94" height="28" rx="14" fill={color} opacity="0.88" />
+      <rect x="28" y="56" width="94" height="14" fill={color} opacity="0.88" />
+      <rect x="46" y="30" width="10" height="18" rx="5" fill={color} opacity="0.7" />
+      <rect x="94" y="30" width="10" height="18" rx="5" fill={color} opacity="0.7" />
+      <text x="75" y="62" textAnchor="middle" fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="17" fill="white">30</text>
+      {Array.from({ length: 18 }, (_, i) => (
+        <rect key={i} x={38 + (i % 6) * 14} y={82 + Math.floor(i / 6) * 12} width="9" height="8" rx="2.5" fill={color} opacity={i < 12 ? 0.28 : 0.1} />
+      ))}
+      <circle cx="75" cy="107" r="20" fill={color} opacity="0.9" />
+      <path d="M65 107 L71 114 L87 99" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M18 34 L20 28 L22 34 L28 36 L22 38 L20 44 L18 38 L12 36 Z" fill={color} opacity="0.56" />
+      <path d="M126 16 L127.5 12 L129 16 L133 17.5 L129 19 L127.5 23 L126 19 L122 17.5 Z" fill={color} opacity="0.52" />
+      <circle cx="136" cy="60" r="3" fill={color} opacity="0.3" />
+      <circle cx="14" cy="68" r="2.5" fill={color} opacity="0.28" />
+    </svg>
+  );
+}
+
+type IllusFC = (props: { color: string }) => React.ReactElement;
+
+interface ResultStat {
+  num: number;
+  displayFn: (v: number) => string;
+  label: string;
+  accent: string;
+  bg: string;
+  Illus: IllusFC;
+}
+
+const RESULT_STATS: ResultStat[] = [
+  { num: 3, displayFn: (v) => `${v}x`, label: 'More retention than traditional study', accent: '#0FA8DC', bg: '#E7F6FB', Illus: RetentionMultiplierIllus },
+  { num: 91, displayFn: (v) => `${v}%`, label: 'Students improve their grades', accent: '#F59E0B', bg: '#FDF3E7', Illus: GradeImprovementIllus },
+  { num: 30, displayFn: (v) => `${v}`, label: 'Days average to see results', accent: '#8B5CF6', bg: '#F0EDFC', Illus: CalendarResultIllus },
+];
+
+function ResultStatCard({ stat, index }: { stat: ResultStat; index: number }) {
+  const [hovered, setHovered] = useState(false);
+  const { Illus } = stat;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
+      style={{
+        position: 'relative',
+        overflow: 'hidden',
+        background: stat.bg,
+        borderRadius: '20px',
+        minHeight: '248px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        textAlign: 'center',
+        cursor: 'default',
+        boxShadow: hovered ? '0 20px 46px rgba(28,28,40,0.12)' : '0 2px 10px rgba(28,28,40,0.04)',
+        transition: 'box-shadow 0.35s ease',
+      }}
+    >
+      <motion.div
+        animate={hovered ? { y: -36 } : { y: 0 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 26 }}
+        style={{ position: 'relative', zIndex: 2 }}
+      >
+        <StatCounter num={stat.num} displayFn={stat.displayFn} label={stat.label} color={stat.accent} />
+      </motion.div>
+      <motion.div
+        initial={false}
+        animate={hovered ? { y: 0, opacity: 1 } : { y: 160, opacity: 0 }}
+        transition={{ type: 'spring', stiffness: 240, damping: 20 }}
+        style={{ position: 'absolute', bottom: '-8px', left: 0, right: 0, display: 'flex', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}
+      >
+        <Illus color={stat.accent} />
+      </motion.div>
+    </motion.div>
+  );
+}
+
 // ─── Home page ─────────────────────────────────────────────────────────────────
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -281,6 +415,91 @@ export default function Home() {
               Start Your 7-Day Free Trial <ArrowRight size={16} />
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ── Programs Showcase (white) ── */}
+      <section id="programs" className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <SectionHeading
+            eyebrow="Our Programs"
+            title="Find the Right Program for Your Child"
+            subtitle="Specialized curricula for every learning goal, from board exams to international tests."
+          />
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="programs-scroll">
+            {[
+              {
+                id: 'cbse', slug: 'cbse-plan', name: 'CBSE Plan', classes: 'Classes 8–10',
+                desc: 'AI-powered board prep with full NCERT curriculum and retention tracking.',
+                price: 1299, accent: '#0FA8DC', bg: '#E7F6FB',
+                features: ['Full NCERT syllabus coverage', 'AI spaced repetition plans', 'Board exam mock tests', 'Parent dashboard'],
+              },
+              {
+                id: 'math', slug: 'math-genius', name: 'Math Genius', classes: 'Classes 8–12',
+                desc: 'Gap-fill and master every math concept from foundation to advanced.',
+                price: 999, accent: '#F59E0B', bg: '#FDF3E7',
+                features: ['Personalized gap analysis', 'Speed and accuracy drills', 'Visual concept explainers', 'AI-generated practice sets'],
+              },
+              {
+                id: 'english', slug: 'english-mastery', name: 'English Mastery', classes: 'All Classes',
+                desc: 'Grammar, writing, and reading comprehension built systematically.',
+                price: 999, accent: '#22C55E', bg: '#ECFDF5',
+                features: ['Grammar and writing modules', 'Reading comprehension tools', 'AI essay feedback', 'Vocabulary builder'],
+              },
+              {
+                id: 'sat', slug: 'sat-prep', name: 'SAT Prep Pass', classes: 'Classes 10–12',
+                desc: 'Adaptive SAT prep designed for top college admissions scores.',
+                price: 999, accent: '#8B5CF6', bg: '#F0EDFC',
+                features: ['Complete SAT syllabus', 'Adaptive timed mock tests', 'Score improvement tracking', 'Verbal and math sections'],
+              },
+            ].map((prog) => (
+              <motion.div key={prog.id} variants={fadeUp} whileHover={{ y: -6 }} transition={{ type: 'spring', stiffness: 300, damping: 22 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', height: '100%', background: '#FFFFFF', borderRadius: '20px', border: '1.5px solid #ECECF1', overflow: 'hidden', boxShadow: '0 2px 12px rgba(28,28,40,0.04)' }}>
+                  <div style={{ height: '5px', background: prog.accent }} />
+                  <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <div style={{ marginBottom: '14px' }}>
+                      <span style={{ display: 'inline-block', padding: '3px 10px', borderRadius: '9999px', background: prog.bg, color: prog.accent, fontSize: '11px', fontWeight: 700, fontFamily: 'Inter, sans-serif' }}>
+                        {prog.classes}
+                      </span>
+                    </div>
+                    <h3 style={{ fontSize: '18px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '8px', margin: '0 0 8px' }}>
+                      {prog.name}
+                    </h3>
+                    <p style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', lineHeight: 1.6, marginBottom: '16px', flex: 1, margin: '0 0 16px' }}>
+                      {prog.desc}
+                    </p>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 20px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {prog.features.map((f) => (
+                        <li key={f} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: prog.accent, flexShrink: 0 }} />
+                          <span style={{ fontSize: '12.5px', color: '#3D3D4E', fontFamily: 'Inter, sans-serif' }}>{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div style={{ borderTop: '1px solid #F0F0F5', paddingTop: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <div>
+                        <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', display: 'block' }}>From</span>
+                        <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: prog.accent, lineHeight: 1.2 }}>
+                          {'₹'}{prog.price.toLocaleString('en-IN')}<span style={{ fontSize: '12px', fontWeight: 500, color: '#8E8EA0' }}>/mo</span>
+                        </div>
+                      </div>
+                      <Link
+                        to={`/programs/${prog.slug}`}
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '8px 16px', borderRadius: '8px', background: prog.accent, color: 'white', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}
+                      >
+                        Explore <ArrowRight size={13} />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} style={{ textAlign: 'center', marginTop: '32px', fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>
+            <Link to="/programs" style={{ color: '#0FA8DC', fontWeight: 600, textDecoration: 'none' }}>
+              See all programs with full pricing and features {'→'}
+            </Link>
+          </motion.p>
         </div>
       </section>
 
@@ -455,35 +674,11 @@ export default function Home() {
             <ResultsScoreCards />
           </div>
 
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid-cols-3-sm" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', maxWidth: '720px', margin: '0 auto 48px' }}>
-            {[
-              { num: 3, displayFn: (v: number) => `${v}x`, label: 'More retention than traditional study', color: '#0FA8DC', bg: '#F0F9FF', icon: <TrendingUp size={20} /> },
-              { num: 91, displayFn: (v: number) => `${v}%`, label: 'Students improve their grades', color: '#0FA8DC', bg: '#F0F9FF', icon: <Users size={20} /> },
-              { num: 30, displayFn: (v: number) => `${v}`, label: 'Days average to see results', color: '#0FA8DC', bg: '#F0F9FF', icon: <Zap size={20} /> },
-            ].map((s) => (
-              <motion.div key={s.label} variants={fadeUp} style={{
-                background: s.bg,
-                borderRadius: '20px',
-                padding: '28px 20px 24px',
-                borderTop: `3px solid ${s.color}`,
-                borderLeft: `1px solid ${s.color}20`,
-                borderRight: `1px solid ${s.color}20`,
-                borderBottom: `1px solid ${s.color}20`,
-                display: 'flex', flexDirection: 'column', alignItems: 'center',
-              }}>
-                <div style={{
-                  width: '42px', height: '42px', borderRadius: '12px',
-                  background: `${s.color}15`,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  marginBottom: '16px',
-                  color: s.color,
-                }}>
-                  {s.icon}
-                </div>
-                <StatCounter num={s.num} displayFn={s.displayFn} label={s.label} color={s.color} />
-              </motion.div>
+          <div className="grid-cols-3-sm" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', maxWidth: '720px', margin: '0 auto 48px' }}>
+            {RESULT_STATS.map((s, i) => (
+              <ResultStatCard key={s.label} stat={s} index={i} />
             ))}
-          </motion.div>
+          </div>
 
           <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
             Start Your 7-Day Free Trial <ArrowRight size={16} />
