@@ -84,7 +84,7 @@ function MarqueeRow({
   return (
     <div style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
       {/* Left fade */}
-      <div style={{ pointerEvents: 'none', position: 'absolute', left: 0, top: 0, height: '100%', width: '120px', zIndex: 10, background: 'linear-gradient(to right, #F8F9FA, transparent)' }} />
+      <div style={{ pointerEvents: 'none', position: 'absolute', left: 0, top: 0, height: '100%', width: '120px', zIndex: 10, background: 'linear-gradient(to right, #F9FAFB, transparent)' }} />
       {/* Scrolling track */}
       <div
         style={{
@@ -100,7 +100,7 @@ function MarqueeRow({
         ))}
       </div>
       {/* Right fade */}
-      <div style={{ pointerEvents: 'none', position: 'absolute', right: 0, top: 0, height: '100%', width: '120px', zIndex: 10, background: 'linear-gradient(to left, #F8F9FA, transparent)' }} />
+      <div style={{ pointerEvents: 'none', position: 'absolute', right: 0, top: 0, height: '100%', width: '120px', zIndex: 10, background: 'linear-gradient(to left, #F9FAFB, transparent)' }} />
     </div>
   );
 }
@@ -112,6 +112,7 @@ export default function TestimonialsMarquee({
   row1: CardT[];
   row2: CardT[];
 }) {
+  const combined = React.useMemo(() => [...row1, ...row2], [row1, row2]);
   return (
     <>
       <style>{`
@@ -120,10 +121,7 @@ export default function TestimonialsMarquee({
           100% { transform: translateX(-50%); }
         }
       `}</style>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <MarqueeRow data={row1} reverse={false} speed={32} />
-        <MarqueeRow data={row2} reverse={true} speed={28} />
-      </div>
+      <MarqueeRow data={combined} reverse={false} speed={65} />
     </>
   );
 }
