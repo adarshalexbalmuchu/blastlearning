@@ -189,7 +189,6 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { id: 1, label: 'Home', path: '/' },
-  { id: 6, label: 'About', path: '/about' },
   {
     id: 2,
     label: 'Programs',
