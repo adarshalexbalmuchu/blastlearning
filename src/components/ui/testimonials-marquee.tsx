@@ -176,13 +176,8 @@ export default function TestimonialsMarquee({
     <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
       {/* 3-per-page grid */}
       <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '20px',
-          marginBottom: '24px',
-          alignItems: 'stretch',
-        }}
+        className="testimonials-grid"
+        style={{ marginBottom: '24px' }}
       >
         {pageCards.map((card, i) => (
           <TestimonialCard key={`${page}-${i}`} card={card} />

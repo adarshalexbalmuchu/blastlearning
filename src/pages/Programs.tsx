@@ -253,6 +253,7 @@ export default function Programs() {
           >
             How We Compare
           </motion.h2>
+          <div className="comparison-table-wrap">
           <motion.div
             variants={fadeUp}
             initial="hidden"
@@ -303,6 +304,7 @@ export default function Programs() {
               </div>
             ))}
           </motion.div>
+          </div>
         </div>
       </section>
 
