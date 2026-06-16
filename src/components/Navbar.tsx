@@ -189,6 +189,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { id: 1, label: 'Home', path: '/' },
+  { id: 6, label: 'About', path: '/about' },
   {
     id: 2,
     label: 'Programs',
@@ -248,7 +249,6 @@ const navItems: NavItem[] = [
       },
     ],
   },
-  { id: 6, label: 'About', path: '/about' },
   {
     id: 7,
     label: 'Resources',
@@ -269,7 +269,6 @@ const navItems: NavItem[] = [
 const loginOptions = [
   { label: 'Student Login', to: '/login?role=student' },
   { label: 'Parent Login', to: '/login?role=parent' },
-  { label: 'Institution Login', to: '/login?role=institution' },
   { label: 'Tutor Login', to: '/login?role=tutor' },
 ];
 
