@@ -1,257 +1,108 @@
+import { useId } from 'react';
 import { type FC } from 'react';
 
-const cn = (...c: (string | false | undefined | null)[]): string =>
-  c.filter(Boolean).join(' ');
-
-// ── Grid Layer ────────────────────────────────────────────────────────────────
-
-function GridLayer({ main }: { main: string }) {
-  return (
-    <div style={{
-      position: 'absolute', inset: 0,
-      backgroundImage: `linear-gradient(${main}18 1px, transparent 1px), linear-gradient(90deg, ${main}18 1px, transparent 1px)`,
-      backgroundSize: '32px 32px',
-    }} />
-  );
+// ── Keyframe injected once per card render (deduped by browser) ───────────────
+const KEYFRAMES = `
+@keyframes hwDrift {
+  0%   { transform: translate(0px,   0px); }
+  50%  { transform: translate(50px, 50px); }
+  100% { transform: translate(0px,   0px); }
 }
-
-// ── Ellipse Gradient ──────────────────────────────────────────────────────────
-
-function EllipseGradient({ main }: { main: string }) {
-  return (
-    <div style={{
-      position: 'absolute', inset: 0, zIndex: 1,
-      background: `radial-gradient(ellipse 90% 65% at 50% 115%, ${main}32, transparent)`,
-      pointerEvents: 'none',
-    }} />
-  );
+@keyframes hwGlow {
+  0%, 100% { opacity: 0.42; }
+  50%       { opacity: 0.65; }
 }
+`;
 
-// ── Bar Layer ─────────────────────────────────────────────────────────────────
+// ── Speed-line visual header ───────────────────────────────────────────────────
+// SVG is square (480×480) so x/y scales are equal → 45° lines are exact.
+// Lines spaced 100 SVG-units apart. The drift animation moves (50,50) and
+// reverses, so there is no loop seam — it oscillates smoothly.
 
-interface BarLayerProps {
-  before: number[];
-  after: number[];
-  main: string;
-  sec: string;
-}
+function SpeedLinesVisual({ color, step }: { color: string; step: string }) {
+  const uid = useId().replace(/:/g, 'x');
+  const gId = `hw-g-${uid}`;
+  const bId = `hw-b-${uid}`;
+  const bsId = `hw-bs-${uid}`;
 
-function BarLayer({ before, after, main, sec }: BarLayerProps) {
-  const xL = [8, 32, 67, 91, 126, 150, 187, 211, 248, 272, 307, 331];
-  const xR = [363, 387, 423, 447, 483, 507, 543, 567, 603, 627, 661, 685];
-  const W = 18;
-  const H = 152;
+  // Lines: y = -x + c, c spaced 100 units apart. Range covers 480px card + 50px drift
+  const cValues = [-100, 0, 100, 200, 300, 400, 500, 600];
+  const widths =   [ 28,  14,  22,  10,  26,  12,  20,  16];
+  const blurred =  [true, false, true, false, true, false, true, false];
 
   return (
     <div
-      className={cn(
-        'absolute transition-transform duration-700 ease-in-out',
-        'group-hover/animated-card:-translate-x-1/2',
-      )}
-      style={{ top: 0, left: 0, height: '100%', width: '200%', zIndex: 2 }}
+      style={{
+        height: '180px',
+        background: `linear-gradient(150deg, ${color}09 0%, ${color}1C 100%)`,
+        position: 'relative',
+        overflow: 'hidden',
+        borderRadius: '18px 18px 0 0',
+      }}
     >
-      <svg viewBox="0 0 712 180" width="100%" height="100%" preserveAspectRatio="none">
-        {xL.map((x, i) => {
-          const h = Math.round((before[i] / 100) * H);
-          return (
-            <rect
-              key={`b${i}`}
-              x={x} y={H - h + 20} width={W} height={h}
-              rx={4} fill={i % 2 === 0 ? main : sec} opacity={0.78}
-            />
-          );
-        })}
-        {xR.map((x, i) => {
-          const h = Math.round((after[i] / 100) * H);
-          return (
-            <rect
-              key={`a${i}`}
-              x={x} y={H - h + 20} width={W} height={h}
-              rx={4} fill={i % 2 === 0 ? main : sec}
-            />
-          );
-        })}
-      </svg>
-    </div>
-  );
-}
+      <style>{KEYFRAMES}</style>
 
-// ── Line Layer ────────────────────────────────────────────────────────────────
-
-interface LineLayerProps {
-  bg: string;
-  main: string;
-  gradId: string;
-}
-
-function LineLayer({ bg, main, gradId }: LineLayerProps) {
-  const linePoints = '0,158 44,120 89,100 133,132 178,75 222,54 267,90 311,46 356,32';
-  const areaPoints = `${linePoints} 356,180 0,180`;
-
-  return (
-    <div className="absolute inset-0" style={{ zIndex: 3 }}>
-      <svg viewBox="0 0 356 180" width="100%" height="100%" preserveAspectRatio="none">
+      {/* Animated speed lines */}
+      <svg
+        viewBox="0 0 480 480"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          width: '480px',
+          height: '480px',
+          top: '-150px',
+          left: '-40px',
+          pointerEvents: 'none',
+          willChange: 'transform, opacity',
+          animation: 'hwDrift 5s ease-in-out infinite, hwGlow 5s ease-in-out infinite',
+        }}
+      >
         <defs>
-          <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor={main} stopOpacity={0.48} />
-            <stop offset="100%" stopColor={main} stopOpacity={0.02} />
+          <linearGradient id={gId} gradientUnits="userSpaceOnUse" x1="0" y1="480" x2="480" y2="0">
+            <stop offset="0%"   stopColor={color} stopOpacity="0" />
+            <stop offset="22%"  stopColor={color} />
+            <stop offset="78%"  stopColor={color} />
+            <stop offset="100%" stopColor={color} stopOpacity="0" />
           </linearGradient>
+          <filter id={bId}><feGaussianBlur stdDeviation="5" /></filter>
+          <filter id={bsId}><feGaussianBlur stdDeviation="2.5" /></filter>
         </defs>
-        <polygon points={areaPoints} fill={`url(#${gradId})`} />
-        <polyline
-          points={linePoints}
-          fill="none"
-          stroke={main}
-          strokeWidth={2.8}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        {/* Pulsing endpoint dot */}
-        <circle cx={356} cy={32} r={9} fill={main} opacity={0.18} />
-        <circle cx={356} cy={32} r={5} fill={main} />
+
+        {cValues.map((c, i) => (
+          <line
+            key={i}
+            x1={c - 480} y1="960"
+            x2={c + 480} y2="0"
+            stroke={`url(#${gId})`}
+            strokeWidth={widths[i]}
+            filter={blurred[i] ? `url(#${bId})` : `url(#${bsId})`}
+          />
+        ))}
       </svg>
-      {/* Mask slides right on hover to reveal the line chart */}
+
+      {/* Large watermark number */}
       <div
-        className={cn(
-          'absolute inset-0 transition-transform duration-700 ease-in-out',
-          'group-hover/animated-card:translate-x-full',
-        )}
-        style={{ background: bg }}
-      />
-    </div>
-  );
-}
-
-// ── Pill Layer ────────────────────────────────────────────────────────────────
-
-interface PillLayerProps {
-  label1: string;
-  label2: string;
-  dot1: string;
-  dot2: string;
-}
-
-function PillLayer({ label1, label2, dot1, dot2 }: PillLayerProps) {
-  return (
-    <div
-      className={cn(
-        'absolute inset-0 flex items-end justify-between pointer-events-none',
-        'transition-opacity duration-300 group-hover/animated-card:opacity-0',
-      )}
-      style={{ padding: '0 12px 14px', zIndex: 5 }}
-    >
-      <span style={{
-        display: 'flex', alignItems: 'center', gap: '5px',
-        background: 'rgba(255,255,255,0.88)',
-        backdropFilter: 'blur(10px)',
-        borderRadius: '999px',
-        padding: '4px 10px 4px 7px',
-        fontSize: '11px', fontWeight: 600,
-        fontFamily: 'Inter, sans-serif',
-        color: '#4A4A5E',
-        border: '1px solid rgba(255,255,255,0.65)',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.07)',
-      }}>
-        <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: dot1, flexShrink: 0 }} />
-        {label1}
-      </span>
-      <span style={{
-        display: 'flex', alignItems: 'center', gap: '5px',
-        background: 'rgba(255,255,255,0.88)',
-        backdropFilter: 'blur(10px)',
-        borderRadius: '999px',
-        padding: '4px 10px 4px 7px',
-        fontSize: '11px', fontWeight: 600,
-        fontFamily: 'Inter, sans-serif',
-        color: '#4A4A5E',
-        border: '1px solid rgba(255,255,255,0.65)',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.07)',
-      }}>
-        <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: dot2, flexShrink: 0 }} />
-        {label2}
-      </span>
-    </div>
-  );
-}
-
-// ── Tooltip Layer ─────────────────────────────────────────────────────────────
-
-interface TooltipLayerProps {
-  main: string;
-  value: string;
-  label: string;
-}
-
-function TooltipLayer({ main, value, label }: TooltipLayerProps) {
-  return (
-    <div
-      className={cn(
-        'absolute left-1/2 pointer-events-none',
-        '-translate-x-1/2 -translate-y-full',
-        'transition-transform duration-500 ease-out',
-        'group-hover/animated-card:translate-y-0',
-      )}
-      style={{ top: '22px', zIndex: 10 }}
-    >
-      <div style={{
-        background: 'rgba(255,255,255,0.92)',
-        backdropFilter: 'blur(16px)',
-        borderRadius: '12px',
-        padding: '10px 18px',
-        textAlign: 'center',
-        border: '1px solid rgba(255,255,255,0.6)',
-        boxShadow: `0 12px 40px rgba(0,0,0,0.13), 0 2px 8px ${main}28`,
-        whiteSpace: 'nowrap',
-      }}>
-        <div style={{
-          fontSize: '16px', fontWeight: 800, color: main,
-          fontFamily: 'Inter, sans-serif', lineHeight: 1.2, letterSpacing: '-0.02em',
-        }}>
-          {value}
-        </div>
-        <div style={{
-          fontSize: '10px', color: '#8E8EA0',
-          fontFamily: 'Inter, sans-serif', marginTop: '3px', fontWeight: 500,
-        }}>
-          {label}
-        </div>
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          bottom: '-10px',
+          right: '14px',
+          fontSize: '112px',
+          fontWeight: 900,
+          fontFamily: 'Poppins, sans-serif',
+          lineHeight: 1,
+          letterSpacing: '-0.05em',
+          color: color,
+          opacity: 0.09,
+          userSelect: 'none',
+          pointerEvents: 'none',
+          zIndex: 1,
+        }}
+      >
+        {step}
       </div>
-    </div>
-  );
-}
-
-// ── Card Visual Container ─────────────────────────────────────────────────────
-
-interface CardVisualProps {
-  before: number[];
-  after: number[];
-  main: string;
-  sec: string;
-  bg: string;
-  label1: string;
-  label2: string;
-  dot1: string;
-  dot2: string;
-  tooltipValue: string;
-  tooltipLabel: string;
-  gradId: string;
-}
-
-function CardVisual({ before, after, main, sec, bg, label1, label2, dot1, dot2, tooltipValue, tooltipLabel, gradId }: CardVisualProps) {
-  return (
-    <div style={{
-      height: '192px',
-      borderRadius: '18px 18px 0 0',
-      background: bg,
-      position: 'relative',
-      overflow: 'hidden',
-    }}>
-      <GridLayer main={main} />
-      <EllipseGradient main={main} />
-      <BarLayer before={before} after={after} main={main} sec={sec} />
-      <LineLayer bg={bg} main={main} gradId={gradId} />
-      <PillLayer label1={label1} label2={label2} dot1={dot1} dot2={dot2} />
-      <TooltipLayer main={main} value={tooltipValue} label={tooltipLabel} />
     </div>
   );
 }
@@ -259,45 +110,15 @@ function CardVisual({ before, after, main, sec, bg, label1, label2, dot1, dot2, 
 // ── Exported Visual Variants ──────────────────────────────────────────────────
 
 export function UploadVisual() {
-  return (
-    <CardVisual
-      before={[38, 52, 36, 58, 42, 48, 36, 45, 52, 38, 46, 42]}
-      after={[72, 80, 68, 84, 76, 71, 80, 66, 75, 78, 73, 82]}
-      main="#0FA8DC" sec="#F59E0B" bg="#F0F9FF"
-      label1="Before AI" label2="Raw Notes"
-      dot1="#94A3B8" dot2="#0FA8DC"
-      tooltipValue="+89% Retention" tooltipLabel="after first week"
-      gradId="lineGrad-upload"
-    />
-  );
+  return <SpeedLinesVisual color="#0FA8DC" step="01" />;
 }
 
 export function AIVisual() {
-  return (
-    <CardVisual
-      before={[45, 22, 62, 28, 55, 20, 60, 32, 48, 22, 58, 35]}
-      after={[47, 44, 46, 45, 48, 44, 47, 45, 46, 47, 44, 46]}
-      main="#8B5CF6" sec="#FCD34D" bg="#FAF5FF"
-      label1="Random Study" label2="No Plan"
-      dot1="#94A3B8" dot2="#8B5CF6"
-      tooltipValue="AI Optimized" tooltipLabel="perfect schedule"
-      gradId="lineGrad-ai"
-    />
-  );
+  return <SpeedLinesVisual color="#8B5CF6" step="02" />;
 }
 
 export function MasteryVisual() {
-  return (
-    <CardVisual
-      before={[35, 42, 32, 45, 38, 34, 40, 36, 42, 35, 40, 37]}
-      after={[82, 75, 88, 78, 90, 82, 85, 90, 88, 82, 90, 80]}
-      main="#10B981" sec="#0FA8DC" bg="#F0FDF4"
-      label1="Before" label2="10% retained"
-      dot1="#94A3B8" dot2="#10B981"
-      tooltipValue="90% Mastery" tooltipLabel="guaranteed"
-      gradId="lineGrad-mastery"
-    />
-  );
+  return <SpeedLinesVisual color="#FF3CAC" step="03" />;
 }
 
 // ── Main Export ───────────────────────────────────────────────────────────────
@@ -313,14 +134,12 @@ interface HowItWorksCardProps {
 export default function HowItWorksCard({ num, title, desc, accent, Visual }: HowItWorksCardProps) {
   return (
     <div
-      className="group/animated-card"
       style={{
         background: 'white',
         borderRadius: '20px',
         overflow: 'hidden',
         border: '1.5px solid #ECECF1',
         boxShadow: '0 4px 24px rgba(28,28,40,0.07)',
-        cursor: 'default',
       }}
     >
       <Visual />
@@ -343,7 +162,7 @@ export default function HowItWorksCard({ num, title, desc, accent, Visual }: How
             fontFamily: 'Inter, sans-serif',
             color: accent,
             letterSpacing: '0.08em',
-            textTransform: 'uppercase',
+            textTransform: 'uppercase' as const,
             opacity: 0.75,
           }}>
             Step {num}
