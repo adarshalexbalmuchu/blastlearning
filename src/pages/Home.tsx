@@ -40,7 +40,7 @@ const howItWorks = [
     num: '03',
     title: 'Learn, Practice, Master',
     desc: 'Follow your adaptive plan, practice with smart quizzes, and track your retention scores. Master every concept before your exams.',
-    accent: '#0FA8DC',
+    accent: '#3B82F6',
     Visual: MasteryVisual,
   },
 ];
