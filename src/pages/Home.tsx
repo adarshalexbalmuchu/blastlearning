@@ -328,6 +328,107 @@ function ResultStatCard({ stat, index }: { stat: ResultStat; index: number }) {
   );
 }
 
+// ─── Program card with hover color wash + blob expansion ──────────────────────
+
+interface ProgramCardData {
+  id: string;
+  slug: string;
+  name: string;
+  tags: string[];
+  blobBg: string;
+  illus: React.ReactElement;
+}
+
+function ProgramCard({ prog }: { prog: ProgramCardData }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        position: 'relative',
+        background: hovered ? prog.blobBg : '#FFFFFF',
+        border: '1.5px solid #E5E7EB',
+        borderRadius: '16px',
+        padding: '32px 32px 28px',
+        overflow: 'hidden',
+        transition: 'background 0.35s ease, box-shadow 0.35s ease',
+        boxShadow: hovered ? '0 8px 32px rgba(28,28,40,0.10)' : '0 2px 8px rgba(28,28,40,0.04)',
+      }}
+    >
+      {/* Corner blob — expands on hover */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          width: hovered ? '260px' : '148px',
+          height: hovered ? '260px' : '148px',
+          borderRadius: '0 16px 0 100%',
+          background: prog.blobBg,
+          display: 'flex',
+          alignItems: 'flex-start',
+          justifyContent: 'flex-end',
+          padding: '20px 20px 0 0',
+          pointerEvents: 'none',
+          transition: 'width 0.45s cubic-bezier(0.34,1.56,0.64,1), height 0.45s cubic-bezier(0.34,1.56,0.64,1)',
+        }}
+      >
+        {prog.illus}
+      </div>
+
+      {/* Name */}
+      <h3 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: '22px', color: '#1C1C28', margin: '0 0 18px', position: 'relative', zIndex: 1 }}>
+        {prog.name}
+      </h3>
+
+      {/* Tag pills */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '26px', position: 'relative', zIndex: 1 }}>
+        {prog.tags.map((tag) => (
+          <span
+            key={tag}
+            style={{
+              padding: '5px 14px',
+              borderRadius: '9999px',
+              border: '1.5px solid #E5E7EB',
+              fontSize: '13px',
+              color: '#374151',
+              fontFamily: 'Inter, sans-serif',
+              fontWeight: 500,
+              background: '#FFFFFF',
+            }}
+          >
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      {/* Explore link */}
+      <Link
+        to={`/programs/${prog.slug}`}
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          fontSize: '14px',
+          fontWeight: 600,
+          color: '#1C1C28',
+          fontFamily: 'Inter, sans-serif',
+          textDecoration: 'none',
+          position: 'relative',
+          zIndex: 1,
+        }}
+      >
+        Explore Program
+        <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '28px', height: '28px', borderRadius: '50%', border: '1.5px solid #E5E7EB', background: '#F9FAFB', flexShrink: 0 }}>
+          <ArrowRight size={13} />
+        </span>
+      </Link>
+    </div>
+  );
+}
+
 // ─── Home page ─────────────────────────────────────────────────────────────────
 export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -499,87 +600,8 @@ export default function Home() {
                   </svg>
                 ),
               },
-            ] as Array<{ id: string; slug: string; name: string; tags: string[]; blobBg: string; illus: React.ReactElement }>).map((prog) => (
-              <div
-                key={prog.id}
-                style={{
-                  position: 'relative',
-                  background: '#FFFFFF',
-                  border: '1.5px solid #E5E7EB',
-                  borderRadius: '16px',
-                  padding: '32px 32px 28px',
-                  overflow: 'hidden',
-                }}
-              >
-                {/* Corner blob + illustration */}
-                <div
-                  aria-hidden="true"
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    right: 0,
-                    width: '148px',
-                    height: '148px',
-                    borderRadius: '0 16px 0 100%',
-                    background: prog.blobBg,
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    justifyContent: 'flex-end',
-                    padding: '20px 20px 0 0',
-                    pointerEvents: 'none',
-                  }}
-                >
-                  {prog.illus}
-                </div>
-
-                {/* Name */}
-                <h3 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: '22px', color: '#1C1C28', margin: '0 0 18px', position: 'relative', zIndex: 1 }}>
-                  {prog.name}
-                </h3>
-
-                {/* Tag pills */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '26px', position: 'relative', zIndex: 1 }}>
-                  {prog.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      style={{
-                        padding: '5px 14px',
-                        borderRadius: '9999px',
-                        border: '1.5px solid #E5E7EB',
-                        fontSize: '13px',
-                        color: '#374151',
-                        fontFamily: 'Inter, sans-serif',
-                        fontWeight: 500,
-                        background: '#FFFFFF',
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Explore link */}
-                <Link
-                  to={`/programs/${prog.slug}`}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    color: '#1C1C28',
-                    fontFamily: 'Inter, sans-serif',
-                    textDecoration: 'none',
-                    position: 'relative',
-                    zIndex: 1,
-                  }}
-                >
-                  Explore Program
-                  <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '28px', height: '28px', borderRadius: '50%', border: '1.5px solid #E5E7EB', background: '#F9FAFB', flexShrink: 0 }}>
-                    <ArrowRight size={13} />
-                  </span>
-                </Link>
-              </div>
+            ] as ProgramCardData[]).map((prog) => (
+              <ProgramCard key={prog.id} prog={prog} />
             ))}
           </div>
 
