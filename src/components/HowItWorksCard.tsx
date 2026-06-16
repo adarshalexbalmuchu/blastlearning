@@ -12,14 +12,13 @@ export function UploadVisual() {
       style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(150deg, #C8EFFA 0%, #A6E3F7 55%, #B8ECF8 100%)',
+        background: '#F8FAFC',
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
         paddingTop: '44px',
       }}
     >
-      {/* Ambient glow */}
       <div
         style={{
           position: 'absolute',
@@ -27,7 +26,7 @@ export function UploadVisual() {
           height: '180px',
           top: '24px',
           borderRadius: '50%',
-          background: 'rgba(15,168,220,0.22)',
+          background: 'rgba(15,168,220,0.08)',
           filter: 'blur(36px)',
           pointerEvents: 'none',
         }}
@@ -56,9 +55,6 @@ export function UploadVisual() {
           <path d="M24 30L31 23L38 30" stroke="#0FA8DC" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </div>
-      <div style={{ position: 'absolute', top: '30px', right: '38px', width: '9px', height: '9px', borderRadius: '50%', background: '#0FA8DC', opacity: 0.2, pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: '56px', right: '62px', width: '5px', height: '5px', borderRadius: '50%', background: '#0FA8DC', opacity: 0.15, pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: '78px', left: '32px', width: '7px', height: '7px', borderRadius: '50%', background: '#0FA8DC', opacity: 0.17, pointerEvents: 'none' }} />
     </div>
   );
 }
@@ -69,7 +65,7 @@ export function AIVisual() {
       style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(150deg, #CCE8FF 0%, #B0DAFF 55%, #C2E4FF 100%)',
+        background: '#F8FAFC',
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
@@ -83,7 +79,7 @@ export function AIVisual() {
           height: '180px',
           top: '16px',
           borderRadius: '50%',
-          background: 'rgba(15,168,220,0.18)',
+          background: 'rgba(15,168,220,0.07)',
           filter: 'blur(36px)',
           pointerEvents: 'none',
         }}
@@ -102,9 +98,6 @@ export function AIVisual() {
           <path d="M88 80V96M80 88H96" stroke="white" strokeWidth="4" strokeLinecap="round" />
         </svg>
       </div>
-      <div style={{ position: 'absolute', top: '30px', right: '40px', width: '8px', height: '8px', borderRadius: '50%', background: '#0FA8DC', opacity: 0.2, pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: '58px', left: '26px', width: '5px', height: '5px', borderRadius: '50%', background: '#0FA8DC', opacity: 0.14, pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: '86px', right: '28px', width: '6px', height: '6px', borderRadius: '50%', background: '#0FA8DC', opacity: 0.16, pointerEvents: 'none' }} />
     </div>
   );
 }
@@ -115,7 +108,7 @@ export function MasteryVisual() {
       style={{
         position: 'absolute',
         inset: 0,
-        background: 'linear-gradient(150deg, #DBEAFE 0%, #BFDBFE 55%, #C7E2FF 100%)',
+        background: '#F8FAFC',
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
@@ -129,7 +122,7 @@ export function MasteryVisual() {
           height: '180px',
           top: '10px',
           borderRadius: '50%',
-          background: 'rgba(59,130,246,0.18)',
+          background: 'rgba(59,130,246,0.07)',
           filter: 'blur(36px)',
           pointerEvents: 'none',
         }}
@@ -163,9 +156,6 @@ export function MasteryVisual() {
           <circle cx="114" cy="95" r="11" fill="#BAD8FA" />
         </svg>
       </div>
-      <div style={{ position: 'absolute', top: '26px', right: '34px', width: '9px', height: '9px', borderRadius: '50%', background: '#3B82F6', opacity: 0.2, pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: '52px', left: '22px', width: '6px', height: '6px', borderRadius: '50%', background: '#3B82F6', opacity: 0.15, pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: '82px', right: '24px', width: '5px', height: '5px', borderRadius: '50%', background: '#3B82F6', opacity: 0.14, pointerEvents: 'none' }} />
     </div>
   );
 }
