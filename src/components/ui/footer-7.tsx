@@ -59,7 +59,7 @@ export const Footer7 = ({
         paddingBottom: "0",
       }}
     >
-      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
+      <div className="footer-inner" style={{ maxWidth: "1280px", margin: "0 auto" }}>
 
         {/* Main grid: 4 equal columns */}
         <div

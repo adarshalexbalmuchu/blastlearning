@@ -119,7 +119,7 @@ export default function About() {
             </motion.div>
             <motion.div
               variants={stagger}
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px', minWidth: 0 }}
+              className="stat-cards-2col" style={{ minWidth: 0 }}
             >
               {[
                 { val: '90%', desc: 'Average retention achieved by Blast students vs 10% without structured revision' },

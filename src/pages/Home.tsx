@@ -531,7 +531,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px' }}>
+          <div className="programs-cat-grid">
             {([
               {
                 id: 'cbse', slug: 'cbse-plan', name: 'CBSE Plan',

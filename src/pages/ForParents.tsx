@@ -204,7 +204,7 @@ export default function ForParents() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}
+              className="stat-cards-2col"
             >
               {[
                 { value: '4,999+', label: 'Active Families', bg: '#FDF3E7', color: '#F59E0B' },
