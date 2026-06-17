@@ -1,7 +1,6 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Shield, TrendingUp, Clock, Heart, BarChart3, Bell, ArrowRight, CheckCircle } from 'lucide-react';
+import { Shield, TrendingUp, Clock, Heart, BarChart3, Bell, CheckCircle } from 'lucide-react';
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
 import PageBottomSections from '../components/PageBottomSections';

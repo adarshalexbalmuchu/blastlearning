@@ -1,7 +1,6 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Heart, Lightbulb, Users, Shield } from 'lucide-react';
+import { Heart, Lightbulb, Users, Shield } from 'lucide-react';
 import PageBottomSections from '../components/PageBottomSections';
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';

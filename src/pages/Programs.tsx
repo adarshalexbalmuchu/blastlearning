@@ -1,7 +1,7 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { BookOpen, Target, Brain, TrendingUp, ArrowRight, CheckCircle, Phone, Zap } from 'lucide-react';
+import { BookOpen, Target, Brain, TrendingUp, ArrowRight, CheckCircle, Zap } from 'lucide-react';
 import PageBottomSections from '../components/PageBottomSections';
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
