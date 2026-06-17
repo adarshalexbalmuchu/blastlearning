@@ -2,6 +2,7 @@ import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Heart, Lightbulb, Users, Shield } from 'lucide-react';
+import PageBottomSections from '../components/PageBottomSections';
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
 
@@ -248,30 +249,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
-        >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', color: '#1C1C28' }}>
-            Join Us in Building a Better Way to Learn
-          </h2>
-          <p style={{ color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-            Parents, students, tutors, educators: there is a place for you in the Blast Learning community.
-          </p>
-          <Link
-            to="/contact"
-            className="cta cta-blue"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
-          >
-            Get in Touch <ArrowRight size={16} />
-          </Link>
-        </motion.div>
-      </section>
+      <PageBottomSections />
     </div>
   );
 }

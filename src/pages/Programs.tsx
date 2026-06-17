@@ -2,6 +2,7 @@ import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { BookOpen, Target, Brain, TrendingUp, ArrowRight, CheckCircle, Phone, Zap } from 'lucide-react';
+import PageBottomSections from '../components/PageBottomSections';
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
 
@@ -308,30 +309,7 @@ export default function Programs() {
         </div>
       </section>
 
-      {/* Bottom CTA */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          style={{ position: 'relative', maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
-        >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', marginBottom: '16px', color: '#1C1C28' }}>
-            Not sure which plan is right?
-          </h2>
-          <p style={{ color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-            Our learning advisors will assess your child's needs and recommend the perfect program, completely free.
-          </p>
-          <Link
-            to="/contact"
-            className="cta cta-blue"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', border: 'none', color: 'white' }}
-          >
-            <Phone size={16} /> Talk to an Advisor
-          </Link>
-        </motion.div>
-      </section>
+      <PageBottomSections />
     </div>
   );
 }

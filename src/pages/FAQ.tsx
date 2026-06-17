@@ -3,6 +3,7 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Search, X } from 'lucide-react';
 import FAQItem from '../components/FAQItem';
+import PageBottomSections from '../components/PageBottomSections';
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
 import { useState, useEffect, useMemo } from 'react';
@@ -409,6 +410,7 @@ export default function FAQ() {
           </div>
         </motion.div>
       </section>
+      <PageBottomSections showFAQ={false} />
     </div>
   );
 }

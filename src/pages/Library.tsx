@@ -5,6 +5,7 @@ import BrandWhoosh from '../components/BrandWhoosh';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, Play, FileText, HelpCircle, Lock, ArrowRight } from 'lucide-react';
+import PageBottomSections from '../components/PageBottomSections';
 
 type FilterTab = 'All' | 'CBSE' | 'Maths' | 'English' | 'SAT' | 'Science';
 
@@ -205,30 +206,7 @@ export default function Library() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
-        >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', color: '#1C1C28' }}>
-            Unlock 500+ Resources with a Subscription
-          </h2>
-          <p style={{ color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-            Get full access to all videos, notes, and quizzes, plus your personalized AI study plan and parent dashboard, starting from ₹999/month.
-          </p>
-          <Link
-            to="/programs"
-            className="cta cta-blue"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
-          >
-            View Plans &amp; Pricing <ArrowRight size={16} />
-          </Link>
-        </motion.div>
-      </section>
+      <PageBottomSections />
     </div>
   );
 }
