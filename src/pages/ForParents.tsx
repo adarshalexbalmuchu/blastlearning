@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Shield, TrendingUp, Clock, Heart, BarChart3, Bell, ArrowRight, CheckCircle } from 'lucide-react';
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
-import TestimonialsMarquee from '../components/ui/testimonials-marquee';
+import PageBottomSections from '../components/PageBottomSections';
 
 const benefits = [
   {
@@ -48,38 +48,6 @@ const trustPoints = [
   'Trusted by 4,999+ Indian families',
 ];
 
-const parentTestimonials = [
-  {
-    name: 'Priya Sharma',
-    role: 'Parent · Class 10 CBSE, Delhi',
-    text: "My daughter's confidence in maths has completely turned around. The weekly reports help me stay involved without being intrusive.",
-  },
-  {
-    name: 'Rajesh Kumar',
-    role: 'Parent · Class 9 CBSE, Bangalore',
-    text: "Finally an app that shows me real progress. I can see exactly where my son needs help and the AI actually adapts to him.",
-  },
-  {
-    name: 'Anita Desai',
-    role: 'Parent · Class 8 CBSE, Mumbai',
-    text: 'Worth every rupee. The retention tracking is brilliant. My daughter actually remembers what she learned months ago.',
-  },
-  {
-    name: 'Deepak Sharma',
-    role: 'Parent · Class 11 CBSE, Delhi',
-    text: "The WhatsApp summary every evening tells me exactly what my son studied, for how long, and his retention score. I haven't had to nag him about studying in two months.",
-  },
-  {
-    name: 'Sunita Reddy',
-    role: 'Parent · Class 10 CBSE, Pune',
-    text: 'We were paying ₹18,000 a month for coaching and she still blanked in tests. Blast Learning at ₹1,299 helped her retain the same coaching content. The difference is night and day.',
-  },
-  {
-    name: 'Meena Patel',
-    role: 'Parent · Class 9 CBSE, Ahmedabad',
-    text: 'My son used to study for hours and still forget everything the next day. Now after just 45 minutes on Blast, he retains it for weeks. The spaced revision system genuinely works.',
-  },
-];
 
 // Pastel fills rotated across benefit icon tiles
 const pastels = ['#FDF3E7', '#FCEEF1', '#E7F6FB', '#F0EDFC', '#E9F7EF', '#E9F2FC'];
@@ -232,57 +200,7 @@ export default function ForParents() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section style={{ paddingTop: '64px', paddingBottom: '64px', background: '#F9FAFB' }}>
-        <div style={{ textAlign: 'center', padding: '0 24px', marginBottom: '40px' }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
-              Parent Stories
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15, margin: '0 0 14px' }}>
-              What Parents Say
-            </h2>
-            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', lineHeight: 1.6, maxWidth: '540px', margin: '0 auto' }}>
-              Thousands of families trust Blast Learning to keep their children on track.
-            </p>
-          </motion.div>
-        </div>
-        <TestimonialsMarquee row1={parentTestimonials.slice(0, 3)} row2={parentTestimonials.slice(3)} />
-      </section>
-
-      {/* CTA */}
-      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          style={{ position: 'relative', maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
-        >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '16px' }}>
-            Give Your Child the Best
-          </h2>
-          <p style={{ color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '40px', fontSize: '1.05rem', lineHeight: 1.7 }}>
-            Join thousands of parents who trust Blast Learning with their child's education.
-          </p>
-          <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link
-              to="/contact"
-              className="cta cta-blue"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white', border: 'none' }}
-            >
-              Start Free Trial <ArrowRight size={16} />
-            </Link>
-            <Link
-              to="/programs"
-              className="cta cta-outline"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#FFFFFF', border: '1.5px solid #DCDCE5', color: '#1C1C28' }}
-            >
-              View Programs
-            </Link>
-          </div>
-        </motion.div>
-      </section>
+      <PageBottomSections />
     </div>
   );
 }
