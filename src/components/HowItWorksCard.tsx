@@ -1,161 +1,45 @@
 import { useState } from 'react';
 import { type FC } from 'react';
 import { ArrowUpRight } from 'lucide-react';
-
-// ── Step Visual Illustrations ──────────────────────────────────────────────────
-// Each fills the absolute-inset card background; icon is pushed into the upper
-// portion so it stays clear of the glass overlay at the bottom.
+import uploadImg from '../assets/Upload.png';
+import learnImg from '../assets/Learn.png';
+import masterImg from '../assets/master.png';
 
 export function UploadVisual() {
   return (
-    <div
-      style={{
-        position: 'absolute',
-        inset: 0,
-        background: '#F8FAFC',
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-        paddingTop: '44px',
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          width: '180px',
-          height: '180px',
-          top: '24px',
-          borderRadius: '50%',
-          background: 'rgba(15,168,220,0.08)',
-          filter: 'blur(36px)',
-          pointerEvents: 'none',
-        }}
+    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+      <img
+        src={uploadImg}
+        alt=""
+        aria-hidden="true"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
       />
-      {/* Cyan circle icon */}
-      <div
-        style={{
-          position: 'relative',
-          zIndex: 1,
-          width: '120px',
-          height: '120px',
-          borderRadius: '50%',
-          background: '#0FA8DC',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          boxShadow: '0 20px 56px rgba(15,168,220,0.42), 0 4px 16px rgba(15,168,220,0.22)',
-        }}
-      >
-        <svg width="62" height="62" viewBox="0 0 62 62" fill="none" aria-hidden="true">
-          <path
-            d="M44 28.5C44 28.5 43.8 21 37 21C31.2 21 28.4 26 28.4 26C28.4 26 25 24.6 21.2 26.5C17.4 28.4 17.6 33 17.6 33.4C17.6 37.2 21 39 24.2 39.5H42C45.2 39.5 49 37.2 49 32.5C49 28.5 46 28 44 28.5Z"
-            fill="white"
-          />
-          <line x1="31" y1="50" x2="31" y2="36" stroke="#0FA8DC" strokeWidth="4" strokeLinecap="round" />
-          <path d="M24 30L31 23L38 30" stroke="#0FA8DC" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </div>
     </div>
   );
 }
 
 export function AIVisual() {
   return (
-    <div
-      style={{
-        position: 'absolute',
-        inset: 0,
-        background: '#F8FAFC',
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-        paddingTop: '30px',
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          width: '180px',
-          height: '180px',
-          top: '16px',
-          borderRadius: '50%',
-          background: 'rgba(15,168,220,0.07)',
-          filter: 'blur(36px)',
-          pointerEvents: 'none',
-        }}
+    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+      <img
+        src={learnImg}
+        alt=""
+        aria-hidden="true"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
       />
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <svg width="132" height="130" viewBox="0 0 132 130" fill="none" aria-hidden="true">
-          {/* Pen body */}
-          <path d="M84 14L108 38L54 92L28 99L35 73Z" fill="#0FA8DC" />
-          <path d="M84 14L100 30L94 36L78 20Z" fill="#0891B2" />
-          <path d="M28 99L35 73L46 84Z" fill="#0369A1" />
-          {/* Pen cap */}
-          <path d="M95 6C98 3 104 4 107 7L113 13C116 16 115 22 112 25L105 32L95 22Z" fill="#38BDF8" />
-          {/* Plus circle badge */}
-          <circle cx="88" cy="88" r="22" fill="white" />
-          <circle cx="88" cy="88" r="18" fill="#0FA8DC" />
-          <path d="M88 80V96M80 88H96" stroke="white" strokeWidth="4" strokeLinecap="round" />
-        </svg>
-      </div>
     </div>
   );
 }
 
 export function MasteryVisual() {
   return (
-    <div
-      style={{
-        position: 'absolute',
-        inset: 0,
-        background: '#F8FAFC',
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-        paddingTop: '22px',
-      }}
-    >
-      <div
-        style={{
-          position: 'absolute',
-          width: '180px',
-          height: '180px',
-          top: '10px',
-          borderRadius: '50%',
-          background: 'rgba(59,130,246,0.07)',
-          filter: 'blur(36px)',
-          pointerEvents: 'none',
-        }}
+    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+      <img
+        src={masterImg}
+        alt=""
+        aria-hidden="true"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
       />
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <svg width="132" height="142" viewBox="0 0 132 142" fill="none" aria-hidden="true">
-          <defs>
-            <linearGradient id="hw-head" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#BAD8FA" />
-              <stop offset="100%" stopColor="#93C5FD" />
-            </linearGradient>
-            <linearGradient id="hw-body" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#A4CDFD" />
-              <stop offset="100%" stopColor="#7AB8F8" />
-            </linearGradient>
-            <linearGradient id="hw-book" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#3B82F6" />
-              <stop offset="100%" stopColor="#1D4ED8" />
-            </linearGradient>
-          </defs>
-          {/* Head */}
-          <circle cx="66" cy="28" r="22" fill="url(#hw-head)" />
-          {/* Shoulders */}
-          <ellipse cx="66" cy="66" rx="30" ry="20" fill="url(#hw-body)" />
-          {/* Open book */}
-          <path d="M14 78 Q66 69 66 69 Q66 69 118 78 L118 112 Q66 103 66 103 Q66 103 14 112 Z" fill="url(#hw-book)" />
-          <line x1="66" y1="69" x2="66" y2="103" stroke="white" strokeWidth="2" opacity="0.28" />
-          <path d="M22 81 Q66 72 66 72" stroke="white" strokeWidth="1.2" opacity="0.2" strokeLinecap="round" />
-          {/* Hands */}
-          <circle cx="18" cy="95" r="11" fill="#BAD8FA" />
-          <circle cx="114" cy="95" r="11" fill="#BAD8FA" />
-        </svg>
-      </div>
     </div>
   );
 }
