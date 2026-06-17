@@ -1,19 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import newBanner from '../assets/New banner.png';
-import banner2 from '../assets/banner 2.webp';
-import banner3 from '../assets/banner 3.webp';
-import banner4 from '../assets/banner 4.webp';
+import hero2 from '../assets/Hero 2.png';
+import hero3 from '../assets/Hero 3.png';
+import hero4 from '../assets/Hero 4.png';
 
 const INTERVAL = 6000;
 const ACCENT   = '#0FA8DC';
 
 const SLIDES = [
-  { id: 'b1', src: newBanner, w: 4095, h: 774, alt: 'Boards Are in 90 Days. Every Forgotten Chapter Costs Marks. Blast Learning' },
-  { id: 'b2', src: banner2, w: 4095, h: 774, alt: 'Better Learning. Brighter Tomorrow. Blast Learning' },
-  { id: 'b3', src: banner3, w: 4095, h: 774, alt: 'CBSE Success, Confident Future. Blast Learning' },
-  { id: 'b4', src: banner4, w: 4095, h: 774, alt: 'Learn Smarter. Achieve More. Blast Learning' },
+  { id: 'h1', src: newBanner, alt: 'Boards Are in 90 Days. Every Forgotten Chapter Costs Marks. Blast Learning' },
+  { id: 'h2', src: hero2, alt: 'Upload Notes. Score Higher in Exams — Blast Learning' },
+  { id: 'h3', src: hero3, alt: 'The Forgetting Curve Is Real — Blast Learning' },
+  { id: 'h4', src: hero4, alt: 'Your Child Retains Only 10% of Coaching — Blast Learning' },
 ] as const;
 
 // ─── Arrow ───────────────────────────────────────────────────────────────────────
@@ -76,29 +77,30 @@ export default function HeroCarousel() {
       onPointerDown={(e) => { ptrX.current = e.clientX; }}
       onPointerUp={(e)   => { const dx = e.clientX - ptrX.current; if (dx < -50) next(); else if (dx > 50) prev(); }}
     >
-      {/* ── Image stack aspect ratio matches actual export: 4095×774 ── */}
-      <div style={{ position: 'relative', width: '100%', aspectRatio: '4095 / 774', overflow: 'hidden', background: '#f0f4f8' }}>
-        {SLIDES.map((slide, i) => (
-          <motion.div
-            key={slide.id}
-            aria-hidden={i !== active}
-            animate={{ opacity: i === active ? 1 : 0 }}
-            transition={{ duration: 0.55, ease: 'easeInOut' }}
-            style={{ position: 'absolute', inset: 0 }}
-          >
-            <img
-              src={slide.src}
-              alt={slide.alt}
-              width={slide.w}
-              height={slide.h}
-              loading={i === 0 ? 'eager' : 'lazy'}
-              decoding={i === 0 ? 'sync' : 'async'}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-            />
-          </motion.div>
-        ))}
-      </div>
+      {/* ── Image stack — clicking navigates to /programs ── */}
+      <Link to="/programs" aria-label="View all programs" style={{ display: 'block', cursor: 'pointer' }}>
+        <div style={{ position: 'relative', width: '100%', aspectRatio: '4095 / 774', overflow: 'hidden', background: '#f0f4f8' }}>
+          {SLIDES.map((slide, i) => (
+            <motion.div
+              key={slide.id}
+              aria-hidden={i !== active}
+              animate={{ opacity: i === active ? 1 : 0 }}
+              transition={{ duration: 0.55, ease: 'easeInOut' }}
+              style={{ position: 'absolute', inset: 0 }}
+            >
+              <img
+                src={slide.src}
+                alt={slide.alt}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding={i === 0 ? 'sync' : 'async'}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+            </motion.div>
+          ))}
+        </div>
+      </Link>
 
+      {/* Arrows sit outside the Link so they don't trigger navigation */}
       <Arrow side="left"  onClick={prev} label="Previous banner" />
       <Arrow side="right" onClick={next} label="Next banner" />
 

@@ -4,6 +4,17 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { ChevronDown, CheckCircle, ArrowRight, ChevronRight, Zap, Users, Star } from 'lucide-react';
 import { getProgramBySlug } from '../../data/programs';
 import BrandWhoosh from '../../components/BrandWhoosh';
+import hero1 from '../../assets/Hero 1.png';
+import hero2 from '../../assets/Hero 2.png';
+import hero3 from '../../assets/Hero 3.png';
+import hero4 from '../../assets/Hero 4.png';
+
+const SLUG_BANNER: Record<string, string> = {
+  'cbse-plan': hero1,
+  'math-genius': hero2,
+  'english-mastery': hero3,
+  'sat-prep': hero4,
+};
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -40,7 +51,19 @@ export default function ProgramDetail() {
   return (
     <div style={{ background: '#FFFFFF' }}>
       {/* ─── Hero ─────────────────────────────────────────────────── */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', paddingTop: '120px', paddingBottom: '80px' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', paddingBottom: '80px' }}>
+        {slug && SLUG_BANNER[slug] && (
+          <div style={{ width: '100%', aspectRatio: '4095 / 774', overflow: 'hidden' }}>
+            <img
+              src={SLUG_BANNER[slug]}
+              alt={`${program.name} hero banner`}
+              loading="eager"
+              decoding="sync"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+          </div>
+        )}
+        <div style={{ paddingTop: '60px' }} />
         {/* Background blob */}
         <div
           aria-hidden="true"
