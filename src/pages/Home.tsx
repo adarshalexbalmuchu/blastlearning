@@ -5,11 +5,11 @@ import {
   CheckCircle, AlertCircle,
 } from 'lucide-react';
 import ctaBanner from '../assets/Hero 4.png';
+import heroBanner from '../assets/New banner.png';
 import DashboardMockup from '../components/DashboardMockup';
 import TestimonialsMarquee from '../components/ui/testimonials-marquee';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
-import HeroCarousel from '../components/HeroCarousel';
 import BrandWhoosh from '../components/BrandWhoosh';
 import {
   ForgettingCurveIllustration,
@@ -441,8 +441,18 @@ export default function Home() {
 
   return (
     <div>
-      {/* ── Hero Banner Carousel ── */}
-      <HeroCarousel />
+      {/* ── Hero Banner ── */}
+      <div style={{ marginTop: '-64px' }}>
+        <Link to="/programs" aria-label="View all programs" style={{ display: 'block' }}>
+          <img
+            src={heroBanner}
+            alt="Boards Are in 90 Days. Every Forgotten Chapter Costs Marks. Blast Learning"
+            loading="eager"
+            decoding="sync"
+            style={{ width: '100%', height: 'auto', display: 'block' }}
+          />
+        </Link>
+      </div>
 
       {/* ── Trust stats: overlap hero bottom ── */}
       <div style={{ position: 'relative', zIndex: 2, marginTop: '-56px' }}>

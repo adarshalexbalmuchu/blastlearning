@@ -6,6 +6,7 @@ import BrandArc from '../components/BrandArc';
 import TestimonialsMarquee from '../components/ui/testimonials-marquee';
 import FAQItem from '../components/FAQItem';
 import ctaBanner from '../assets/Hero 4.png';
+import heroBanner from '../assets/Hero 2.png';
 import BrandWhoosh from '../components/BrandWhoosh';
 
 const testimonialsRow1 = [
@@ -133,8 +134,13 @@ export default function Programs() {
 
   return (
     <div style={{ background: '#FFFFFF' }}>
+      {/* ── Hero Banner ── */}
+      <div style={{ marginTop: '-64px', lineHeight: 0 }}>
+        <img src={heroBanner} alt="Upload Notes. Score Higher in Exams — Blast Learning" loading="eager" decoding="sync" style={{ width: '100%', height: 'auto', display: 'block' }} />
+      </div>
+
       {/* Hero */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', paddingTop: '120px', paddingBottom: '100px' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', paddingTop: '80px', paddingBottom: '80px' }}>
         <div aria-hidden="true" style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
           <div style={{ position: 'absolute', top: '-100px', right: '-160px', width: '520px', height: '520px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(15,168,220,0.07) 0%, transparent 70%)', willChange: 'transform', animation: 'blob-float 14s ease-in-out infinite' }} />
           <div style={{ position: 'absolute', bottom: '-80px', left: '-120px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%)', willChange: 'transform', animation: 'blob-float 18s ease-in-out infinite reverse' }} />
