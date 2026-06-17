@@ -4,7 +4,7 @@ import {
   ArrowRight,
   CheckCircle, AlertCircle,
 } from 'lucide-react';
-import ctaBanner from '../assets/banner 4.webp';
+import ctaBanner from '../assets/Hero 4.png';
 import DashboardMockup from '../components/DashboardMockup';
 import TestimonialsMarquee from '../components/ui/testimonials-marquee';
 import FeatureExplorer from '../components/FeatureExplorer';
