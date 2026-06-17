@@ -1,7 +1,6 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Search, X } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import FAQItem from '../components/FAQItem';
 import TestimonialsMarquee from '../components/ui/testimonials-marquee';
 import ctaBanner from '../assets/Hero 4.png';

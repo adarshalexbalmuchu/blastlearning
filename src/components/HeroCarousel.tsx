@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import hero1 from '../assets/Hero 1.png';
+import newBanner from '../assets/New banner.png';
 import hero2 from '../assets/Hero 2.png';
 import hero3 from '../assets/Hero 3.png';
 import hero4 from '../assets/Hero 4.png';
@@ -11,7 +11,7 @@ const INTERVAL = 6000;
 const ACCENT   = '#0FA8DC';
 
 const SLIDES = [
-  { id: 'h1', src: hero1, alt: 'Track Your Child\'s Learning in Real Time — Blast Learning' },
+  { id: 'h1', src: newBanner, alt: 'Boards Are in 90 Days. Every Forgotten Chapter Costs Marks. Blast Learning' },
   { id: 'h2', src: hero2, alt: 'Upload Notes. Score Higher in Exams — Blast Learning' },
   { id: 'h3', src: hero3, alt: 'The Forgetting Curve Is Real — Blast Learning' },
   { id: 'h4', src: hero4, alt: 'Your Child Retains Only 10% of Coaching — Blast Learning' },
