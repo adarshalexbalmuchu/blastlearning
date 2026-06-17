@@ -4,7 +4,7 @@ import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Search, Play, FileText, HelpCircle, Lock, ArrowRight } from 'lucide-react';
+import { Search, Play, FileText, HelpCircle, Lock } from 'lucide-react';
 import PageBottomSections from '../components/PageBottomSections';
 
 type FilterTab = 'All' | 'CBSE' | 'Maths' | 'English' | 'SAT' | 'Science';

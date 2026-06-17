@@ -1,7 +1,6 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Gamepad2, Trophy, Brain, Target, Sparkles, ArrowRight, Star, Flame, Award } from 'lucide-react';
+import { Gamepad2, Trophy, Brain, Target, Sparkles, Star, Flame, Award } from 'lucide-react';
 import PageBottomSections from '../components/PageBottomSections';
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
