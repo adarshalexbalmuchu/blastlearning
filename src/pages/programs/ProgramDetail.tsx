@@ -4,7 +4,6 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { ChevronDown, CheckCircle, ArrowRight, ChevronRight, Zap, Users, Star } from 'lucide-react';
 import { getProgramBySlug } from '../../data/programs';
 import BrandWhoosh from '../../components/BrandWhoosh';
-import PageBottomSections from '../../components/PageBottomSections';
 import hero1 from '../../assets/Hero 1.png';
 import hero2 from '../../assets/Hero 2.png';
 import hero3 from '../../assets/Hero 3.png';
@@ -552,7 +551,6 @@ export default function ProgramDetail() {
           </motion.div>
         </div>
       </section>
-      <PageBottomSections />
     </div>
   );
 }
