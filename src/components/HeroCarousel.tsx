@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
-// Replace these with your actual WebP exports from Figma when ready
-import banner1 from '../assets/banner 1.webp';
+import newBanner from '../assets/New banner.png';
 import banner2 from '../assets/banner 2.webp';
 import banner3 from '../assets/banner 3.webp';
 import banner4 from '../assets/banner 4.webp';
@@ -11,7 +10,7 @@ const INTERVAL = 6000;
 const ACCENT   = '#0FA8DC';
 
 const SLIDES = [
-  { id: 'b1', src: banner1, w: 4095, h: 774, alt: '4 Programs. Endless Possibilities. Blast Learning' },
+  { id: 'b1', src: newBanner, w: 4095, h: 774, alt: 'Boards Are in 90 Days. Every Forgotten Chapter Costs Marks. Blast Learning' },
   { id: 'b2', src: banner2, w: 4095, h: 774, alt: 'Better Learning. Brighter Tomorrow. Blast Learning' },
   { id: 'b3', src: banner3, w: 4095, h: 774, alt: 'CBSE Success, Confident Future. Blast Learning' },
   { id: 'b4', src: banner4, w: 4095, h: 774, alt: 'Learn Smarter. Achieve More. Blast Learning' },
