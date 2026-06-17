@@ -2,20 +2,19 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-// Replace these with your actual WebP exports from Figma when ready
-import banner1 from '../assets/banner 1.webp';
-import banner2 from '../assets/banner 2.webp';
-import banner3 from '../assets/banner 3.webp';
-import banner4 from '../assets/banner 4.webp';
+import hero1 from '../assets/Hero 1.png';
+import hero2 from '../assets/Hero 2.png';
+import hero3 from '../assets/Hero 3.png';
+import hero4 from '../assets/Hero 4.png';
 
 const INTERVAL = 6000;
 const ACCENT   = '#0FA8DC';
 
 const SLIDES = [
-  { id: 'b1', src: banner1, w: 4095, h: 774, alt: '4 Programs. Endless Possibilities. Blast Learning' },
-  { id: 'b2', src: banner2, w: 4095, h: 774, alt: 'Better Learning. Brighter Tomorrow. Blast Learning' },
-  { id: 'b3', src: banner3, w: 4095, h: 774, alt: 'CBSE Success, Confident Future. Blast Learning' },
-  { id: 'b4', src: banner4, w: 4095, h: 774, alt: 'Learn Smarter. Achieve More. Blast Learning' },
+  { id: 'h1', src: hero1, alt: 'Track Your Child\'s Learning in Real Time — Blast Learning' },
+  { id: 'h2', src: hero2, alt: 'Upload Notes. Score Higher in Exams — Blast Learning' },
+  { id: 'h3', src: hero3, alt: 'The Forgetting Curve Is Real — Blast Learning' },
+  { id: 'h4', src: hero4, alt: 'Your Child Retains Only 10% of Coaching — Blast Learning' },
 ] as const;
 
 // ─── Arrow ───────────────────────────────────────────────────────────────────────
@@ -92,8 +91,6 @@ export default function HeroCarousel() {
               <img
                 src={slide.src}
                 alt={slide.alt}
-                width={slide.w}
-                height={slide.h}
                 loading={i === 0 ? 'eager' : 'lazy'}
                 decoding={i === 0 ? 'sync' : 'async'}
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
