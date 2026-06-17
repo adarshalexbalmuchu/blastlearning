@@ -79,21 +79,25 @@ export default function HeroCarousel() {
     >
       {/* ── Image stack — clicking navigates to /programs ── */}
       <Link to="/programs" aria-label="View all programs" style={{ display: 'block', cursor: 'pointer' }}>
-        <div style={{ position: 'relative', width: '100%', aspectRatio: '4095 / 774', overflow: 'hidden', background: '#f0f4f8' }}>
+        <div style={{ position: 'relative', width: '100%', lineHeight: 0 }}>
           {SLIDES.map((slide, i) => (
             <motion.div
               key={slide.id}
               aria-hidden={i !== active}
               animate={{ opacity: i === active ? 1 : 0 }}
               transition={{ duration: 0.55, ease: 'easeInOut' }}
-              style={{ position: 'absolute', inset: 0 }}
+              style={
+                i === active
+                  ? { position: 'relative', width: '100%' }
+                  : { position: 'absolute', top: 0, left: 0, width: '100%' }
+              }
             >
               <img
                 src={slide.src}
                 alt={slide.alt}
                 loading={i === 0 ? 'eager' : 'lazy'}
                 decoding={i === 0 ? 'sync' : 'async'}
-                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
               />
             </motion.div>
           ))}
