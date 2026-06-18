@@ -25,9 +25,9 @@ const testimonialsRow2 = [
 ];
 const pageFaqs = [
   { q: 'What is Blast Learning and how does it work?', a: 'Blast Learning is an AI-powered learning retention platform. Students upload their coaching notes or recordings, and our Metacognition Engine creates a spaced repetition study plan that helps 91% of students improve what they retain, compared to the 10% most students remember without structured revision.' },
-  { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Plan is specifically designed for Classes 8-10, with full syllabus coverage, NCERT alignment, and board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
+  { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Full Syllabus plan is designed for Classes 6-12, with Grade 10 as the primary focus this year, full syllabus coverage, and retention-first board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
   { q: 'How is Blast Learning different from other coaching apps?', a: "Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn't just teach — it tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams." },
-  { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 7-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first week." },
+  { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 14-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first two weeks." },
 ];
 
 const programs = [
@@ -36,14 +36,14 @@ const programs = [
     slug: 'cbse-plan',
     name: 'CBSE Plan',
     price: '₹1,299',
-    classes: 'Classes 8-10',
-    description: 'Full CBSE syllabus coverage with AI study buddy. Designed for grades 8-10 with complete board exam preparation. Our Metacognition Engine maps your child\'s learning gaps and fills them systematically before exams.',
-    outcomes: ['Board exam mastery', 'NCERT clarity', 'Concept retention'],
+    classes: 'Classes 6-12',
+    description: 'Full CBSE syllabus coverage with a retention-first study system. Designed for Classes 6-12 with Grade 10 as the primary focus this year, so the board exam content is taught in a way that actually sticks.',
+    outcomes: ['Board readiness', 'Retention tracking', 'Concept mastery'],
     features: [
-      'Complete NCERT syllabus coverage for Classes 8, 9, 10',
+      'Complete CBSE curriculum coverage across Classes 6-12',
       'AI-powered gap assessment and targeted revision',
-      'Board exam simulation with full-length practice papers',
-      'Subject-wise retention tracking (Science, Maths, SST, English)',
+      'Board-focused practice built around retention, not just coverage',
+      'Subject-wise retention tracking across all core subjects',
       'Weekly performance reports for parents',
       'Live doubt resolution sessions',
     ],

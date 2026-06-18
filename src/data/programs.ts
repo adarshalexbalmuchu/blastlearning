@@ -43,8 +43,8 @@ export const programsData: ProgramData[] = [
     price: '₹1,299',
     classes: 'Classes 6-12',
     description:
-      'A coaching class can teach History, Geography, and Economics on schedule and still leave a student unable to recall most of it by the next test. CBSE Full Syllabus runs the full curriculum, Class 6 through 12, on a study system built around what actually makes a concept stay learned.',
-    accentBg: '#FDF3E7',
+      'A coaching class can teach History, Geography, and Economics on schedule and still leave a student unable to recall most of it by the next test. CBSE Full Syllabus runs the full curriculum, Class 6 through 12, on a study system built around what actually makes a concept stay learned. Grade 10 is the primary focus for this year, but the course runs the full Class 6 to 12 range.',
+    accentBg: '#E0F5FC',
     heroStats: [
       { value: '₹1,299', label: 'per month' },
       { value: '14 days', label: 'free trial' },
@@ -53,7 +53,7 @@ export const programsData: ProgramData[] = [
     ],
     forWhom: [
       {
-        title: 'Class 6 through Class 12, All Core Subjects',
+        title: 'Class 6 Through Class 12, All Core Subjects',
         desc: 'History, Political Science, Geography, Economics, Chemistry, Physics, and Biology, taught through AI-driven, self-paced modules rather than a fixed classroom timetable. Grade 10 is the primary focus for this year, given board exam timing, though the course runs the full Class 6 to 12 range.',
       },
       {
@@ -150,7 +150,7 @@ export const programsData: ProgramData[] = [
       'Study Buddy pairing for joint practice and peer explanation across all seven subjects',
       'Mind Coach skill-building, with particular relevance to sustained focus across a full academic year',
       'Live intervention when a student\'s progress signals they need it, not on a fixed weekly schedule',
-      '14-day free trial with full access, no credit card required',
+      '14-day free trial with limited AI features, no credit card required',
       '20% discount when enrolled in two or more courses',
     ],
     outcomes: [
@@ -195,19 +195,19 @@ export const programsData: ProgramData[] = [
     faqs: [
       {
         q: 'Which subjects does CBSE Full Syllabus cover?',
-        a: 'The course covers all seven core subjects: History, Political Science, Geography, Economics, Physics, Chemistry, and Biology. Each subject has its own pacing — Geography runs across 7 weeks because its breadth requires it; Economics runs 4 weeks because its density compresses differently. The pacing reflects the subject, not an administrative convenience.',
+        a: 'The course covers all seven core subjects: History, Political Science, Geography, Economics, Physics, Chemistry, and Biology. Each subject has its own pacing - Geography runs across 7 weeks because its breadth requires it; Economics runs 4 weeks because its density compresses differently. The pacing reflects the subject, not an administrative convenience.',
       },
       {
         q: 'How does the course handle the difference between coaching pace and retention pace?',
-        a: 'The AI Tutor separates the two. It tracks what a student has covered versus what they have actually retained, and schedules retrieval practice at the moment recall starts to fade — not on the coaching class calendar. A student can be on schedule with their school timetable and still behind on retention, and the GAP Assessment finds that gap on day one.',
-      },
-      {
-        q: 'My child is in Class 9. Is it too early to start?',
-        a: 'Class 9 is a strong entry point. Students who begin building retention habits in Class 9 arrive at Class 10 boards with a two-year spaced retrieval advantage. The course content scales to the enrolled class, so a Class 9 student works through Class 9 material at the depth the board exam will require.',
+        a: 'The AI Tutor separates the two. It tracks what a student has covered versus what they have actually retained, and schedules retrieval practice at the moment recall starts to fade - not on the coaching class calendar. A student can be on schedule with their school timetable and still behind on retention, and the GAP Assessment finds that gap on day one.',
       },
       {
         q: 'What does the 14-day free trial include?',
         a: 'Full access to the GAP Assessment, AI Tutor sessions across all seven subjects, spaced retrieval scheduling, and the parent dashboard. No credit card is required to start. At the end of 14 days you decide whether to continue at Rs 1,299 per month.',
+      },
+      {
+        q: 'How does this course fit with the current Class 10 NEP changes?',
+        a: 'This year\'s Class 10 cohort is already working through the two-board-exam structure and more competency-based questions. The course is built for that reality, so retrieval practice and application-based review line up with what the board is asking now rather than only with textbook recall.',
       },
     ],
   },

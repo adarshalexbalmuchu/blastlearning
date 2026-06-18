@@ -137,7 +137,7 @@ export default function ProgramDetail() {
                   className="cta cta-blue"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 28px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
                 >
-                  Start 7-Day Free Trial <ArrowRight size={15} />
+                  Start 14-Day Free Trial <ArrowRight size={15} />
                 </Link>
               </motion.div>
             </motion.div>
@@ -214,7 +214,7 @@ export default function ProgramDetail() {
                     type="submit"
                     style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '13px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", background: '#0FA8DC', color: 'white', border: 'none', cursor: 'pointer' }}
                   >
-                    Enrol Now, 7-Day Free Trial <ArrowRight size={15} />
+                    Enrol Now, 14-Day Free Trial <ArrowRight size={15} />
                   </button>
                   <p style={{ textAlign: 'center', fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
                     No credit card required · Cancel anytime
@@ -394,7 +394,7 @@ export default function ProgramDetail() {
                 className="cta cta-blue"
                 style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
               >
-                Start 7-Day Free Trial <ArrowRight size={16} />
+                Start 14-Day Free Trial <ArrowRight size={16} />
               </Link>
               <p style={{ textAlign: 'center', fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
                 No credit card · Cancel any time

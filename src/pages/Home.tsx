@@ -127,9 +127,9 @@ const parentConcerns = [
 
 const homeFaqs = [
   { q: 'What is Blast Learning and how does it work?', a: 'Blast Learning is an AI-powered learning retention platform. Students upload their coaching notes or recordings, and our Metacognition Engine creates a spaced repetition study plan that helps 91% of students improve what they retain, compared to the 10% most students remember without structured revision.' },
-  { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Plan is specifically designed for Classes 8-10, with full syllabus coverage, NCERT alignment, and board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
+  { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Full Syllabus plan is designed for Classes 6-12, with Grade 10 as the primary focus this year, full syllabus coverage, and retention-first board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
   { q: 'How is Blast Learning different from other coaching apps?', a: "Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn't just teach. It tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams." },
-  { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 7-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first week." },
+  { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 14-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first two weeks." },
 ];
 
 
@@ -515,7 +515,7 @@ export default function Home() {
           </motion.div>
           <div style={{ textAlign: 'center' }}>
             <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
-              Start Your 7-Day Free Trial <ArrowRight size={16} />
+              Start Your 14-Day Free Trial <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -537,7 +537,7 @@ export default function Home() {
             {([
               {
                 id: 'cbse', slug: 'cbse-plan', name: 'CBSE Plan',
-                tags: ['Class 8', 'Class 9', 'Class 10'],
+                tags: ['Class 6-12', 'CBSE', 'Boards'],
                 blobBg: '#E0F5FC',
                 illus: (
                   <svg width="76" height="76" viewBox="0 0 76 76" fill="none" aria-hidden="true">
@@ -628,7 +628,7 @@ export default function Home() {
               Simple, Transparent Pricing
             </h2>
             <p style={{ fontSize: '16px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px', maxWidth: '440px', margin: '0 auto 28px' }}>
-              All plans include a 7-day free trial. No credit card required.
+              All plans include a 14-day free trial. No credit card required.
             </p>
             {/* Monthly / Yearly toggle */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontSize: '14px', fontWeight: 500, fontFamily: 'Inter, sans-serif', color: '#1C1C28' }}>
@@ -745,7 +745,7 @@ export default function Home() {
                       boxShadow: 'none',
                     }}
                   >
-                    Start Your 7-Day Free Trial <ArrowRight size={14} />
+                    Start Your 14-Day Free Trial <ArrowRight size={14} />
                   </Link>
                 </motion.div>
               );
@@ -793,7 +793,7 @@ export default function Home() {
           </div>
 
           <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
-            Start Your 7-Day Free Trial <ArrowRight size={16} />
+            Start Your 14-Day Free Trial <ArrowRight size={16} />
           </Link>
         </div>
       </section>

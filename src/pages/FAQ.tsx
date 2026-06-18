@@ -76,7 +76,7 @@ const faqs: FAQEntry[] = [
   {
     category: 'Programs',
     question: 'What subjects are covered in the CBSE Plan?',
-    answer: 'The CBSE Plan covers all major subjects for Classes 8-10: Mathematics, Science (Physics, Chemistry, Biology), Social Studies, and English. Each subject has full NCERT alignment with AI-powered revision and practice quizzes.',
+    answer: 'The CBSE Full Syllabus plan covers all seven core subjects across Classes 6-12: History, Political Science, Geography, Economics, Physics, Chemistry, and Biology. Each subject has retention-first pacing, AI-powered revision, and practice quizzes.',
   },
   {
     category: 'Programs',
