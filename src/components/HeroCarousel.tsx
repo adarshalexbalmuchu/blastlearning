@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import newBanner from '../assets/New banner.png';
+import hero1 from '../assets/Hero 1.png';
 import hero2 from '../assets/Hero 2.png';
 import hero3 from '../assets/Hero 3.png';
 import hero4 from '../assets/Hero 4.png';
@@ -11,7 +11,7 @@ const INTERVAL = 7000;
 const ACCENT   = '#0FA8DC';
 
 const SLIDES = [
-  { id: 'h1', src: newBanner, alt: 'Boards Are in 90 Days. Every Forgotten Chapter Costs Marks. Blast Learning' },
+  { id: 'h1', src: hero1, alt: 'Boards Are in 90 Days. Every Forgotten Chapter Costs Marks. Blast Learning' },
   { id: 'h2', src: hero2, alt: 'Upload Notes. Score Higher in Exams — Blast Learning' },
   { id: 'h3', src: hero3, alt: 'The Forgetting Curve Is Real — Blast Learning' },
   { id: 'h4', src: hero4, alt: 'Your Child Retains Only 10% of Coaching — Blast Learning' },
@@ -77,59 +77,61 @@ export default function HeroCarousel() {
       onPointerDown={(e) => { ptrX.current = e.clientX; }}
       onPointerUp={(e)   => { const dx = e.clientX - ptrX.current; if (dx < -50) next(); else if (dx > 50) prev(); }}
     >
-      {/* ── Image stack — clicking navigates to /programs ── */}
-      <Link to="/programs" aria-label="View all programs" style={{ display: 'block', cursor: 'pointer' }}>
-        <div style={{ position: 'relative', width: '100%', lineHeight: 0 }}>
-          {SLIDES.map((slide, i) => (
+      <div style={{ maxWidth: '1600px', margin: '0 auto' }}>
+        {/* ── Image stack — clicking navigates to /programs ── */}
+        <Link to="/programs" aria-label="View all programs" style={{ display: 'block', cursor: 'pointer' }}>
+          <div style={{ position: 'relative', width: '100%', aspectRatio: '8190 / 1547', lineHeight: 0, overflow: 'hidden' }}>
+            {SLIDES.map((slide, i) => (
+              <motion.div
+                key={slide.id}
+                aria-hidden={i !== active}
+                animate={{ opacity: i === active ? 1 : 0 }}
+                transition={{ duration: 0.55, ease: 'easeInOut' }}
+                style={
+                  i === active
+                    ? { position: 'relative', width: '100%', height: '100%' }
+                    : { position: 'absolute', inset: 0, width: '100%', height: '100%' }
+                }
+              >
+                <img
+                  src={slide.src}
+                  alt={slide.alt}
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  decoding={i === 0 ? 'sync' : 'async'}
+                  style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover' }}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </Link>
+
+        {/* Arrows sit outside the Link so they don't trigger navigation */}
+        <Arrow side="left"  onClick={prev} label="Previous banner" />
+        <Arrow side="right" onClick={next} label="Next banner" />
+
+        {/* ── Dot pills + auto-progress bar ── */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, padding: '12px 24px 16px' }}>
+          <div style={{ width: 220, height: 3, background: 'rgba(28,28,40,0.1)', borderRadius: 999, overflow: 'hidden' }}>
             <motion.div
-              key={slide.id}
-              aria-hidden={i !== active}
-              animate={{ opacity: i === active ? 1 : 0 }}
-              transition={{ duration: 0.55, ease: 'easeInOut' }}
-              style={
-                i === active
-                  ? { position: 'relative', width: '100%' }
-                  : { position: 'absolute', top: 0, left: 0, width: '100%' }
-              }
-            >
-              <img
-                src={slide.src}
-                alt={slide.alt}
-                loading={i === 0 ? 'eager' : 'lazy'}
-                decoding={i === 0 ? 'sync' : 'async'}
-                style={{ width: '100%', height: 'auto', display: 'block' }}
-              />
-            </motion.div>
-          ))}
-        </div>
-      </Link>
-
-      {/* Arrows sit outside the Link so they don't trigger navigation */}
-      <Arrow side="left"  onClick={prev} label="Previous banner" />
-      <Arrow side="right" onClick={next} label="Next banner" />
-
-      {/* ── Dot pills + auto-progress bar ── */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, padding: '12px 24px 16px' }}>
-        <div style={{ width: 220, height: 3, background: 'rgba(28,28,40,0.1)', borderRadius: 999, overflow: 'hidden' }}>
-          <motion.div
-            key={progressKey}
-            initial={{ width: '0%' }}
-            animate={{ width: '100%' }}
-            transition={{ duration: INTERVAL / 1000, ease: 'linear' }}
-            style={{ height: '100%', background: ACCENT, borderRadius: 999 }}
-          />
-        </div>
-        <div style={{ display: 'flex', gap: 8 }}>
-          {SLIDES.map((_, i) => (
-            <motion.button
-              key={i}
-              onClick={() => go(i)}
-              aria-label={`Slide ${i + 1}`}
-              animate={{ width: active === i ? 32 : 8, background: active === i ? ACCENT : '#DCDCE5' }}
-              transition={{ duration: 0.3 }}
-              style={{ height: 8, borderRadius: 4, border: 'none', cursor: 'pointer', padding: 0 }}
+              key={progressKey}
+              initial={{ width: '0%' }}
+              animate={{ width: '100%' }}
+              transition={{ duration: INTERVAL / 1000, ease: 'linear' }}
+              style={{ height: '100%', background: ACCENT, borderRadius: 999 }}
             />
-          ))}
+          </div>
+          <div style={{ display: 'flex', gap: 8 }}>
+            {SLIDES.map((_, i) => (
+              <motion.button
+                key={i}
+                onClick={() => go(i)}
+                aria-label={`Slide ${i + 1}`}
+                animate={{ width: active === i ? 32 : 8, background: active === i ? ACCENT : '#DCDCE5' }}
+                transition={{ duration: 0.3 }}
+                style={{ height: 8, borderRadius: 4, border: 'none', cursor: 'pointer', padding: 0 }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
