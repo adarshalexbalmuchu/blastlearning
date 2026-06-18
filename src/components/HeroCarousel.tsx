@@ -7,7 +7,7 @@ import hero2 from '../assets/Hero 2.png';
 import hero3 from '../assets/Hero 3.png';
 import hero4 from '../assets/Hero 4.png';
 
-const INTERVAL = 6000;
+const INTERVAL = 7000;
 const ACCENT   = '#0FA8DC';
 
 const SLIDES = [
