@@ -27,7 +27,7 @@ export interface ProgramData {
   description: string;
   accentBg: string;
   heroStats: { value: string; label: string }[];
-  forWhom: { title: string; desc: string }[];
+  forWhom: { title: string; desc: string; imageUrl?: string }[];
   curriculum: ProgramCurriculumModule[];
   features: string[];
   outcomes: { value: string; label: string; desc: string }[];

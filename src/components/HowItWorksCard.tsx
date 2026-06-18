@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { type FC } from 'react';
-import { ArrowUpRight } from 'lucide-react';
 import uploadImg from '../assets/Upload.png';
 import learnImg from '../assets/Learn.png';
 import masterImg from '../assets/master.png';
@@ -47,14 +46,15 @@ export function MasteryVisual() {
 // ── Card Component ─────────────────────────────────────────────────────────────
 
 interface HowItWorksCardProps {
-  num: string;
   title: string;
   desc: string;
   accent: string;
   Visual: FC;
+  height?: number | string;
+  descLines?: number;
 }
 
-export default function HowItWorksCard({ num, title, desc, accent, Visual }: HowItWorksCardProps) {
+export default function HowItWorksCard({ title, desc, accent: _accent, Visual, height = '380px', descLines = 3 }: HowItWorksCardProps) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -63,7 +63,7 @@ export default function HowItWorksCard({ num, title, desc, accent, Visual }: How
         position: 'relative',
         borderRadius: '20px',
         overflow: 'hidden',
-        height: '380px',
+        height,
         border: '1.5px solid #E2EAF0',
         boxShadow: hovered
           ? '0 16px 48px rgba(28,28,40,0.13)'
@@ -79,29 +79,6 @@ export default function HowItWorksCard({ num, title, desc, accent, Visual }: How
       {/* Full-card background illustration */}
       <Visual />
 
-      {/* Diagonal step ribbon — clipped by card overflow:hidden */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          top: '22px',
-          left: '-36px',
-          transform: 'rotate(-45deg)',
-          background: accent,
-          padding: '6px 52px',
-          fontSize: '11px',
-          fontWeight: 700,
-          fontFamily: 'Inter, sans-serif',
-          color: 'white',
-          letterSpacing: '0.06em',
-          boxShadow: `0 2px 10px ${accent}55`,
-          zIndex: 10,
-          whiteSpace: 'nowrap',
-        }}
-      >
-        STEP {num}
-      </div>
-
       {/* Frosted glass info overlay */}
       <div
         style={{
@@ -109,16 +86,18 @@ export default function HowItWorksCard({ num, title, desc, accent, Visual }: How
           bottom: '14px',
           left: '12px',
           right: '12px',
-          background: 'rgba(255,255,255,0.88)',
+          background: 'rgba(255,255,255,0.84)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
           borderRadius: '16px',
-          padding: '16px 18px 14px',
+          padding: '14px 16px 12px',
           border: '1px solid rgba(255,255,255,0.65)',
           boxShadow: '0 4px 20px rgba(28,28,40,0.08)',
           transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
           transition: 'transform 0.3s ease',
           zIndex: 5,
+          maxHeight: '54%',
+          overflow: 'hidden',
         }}
       >
         <h3
@@ -128,7 +107,7 @@ export default function HowItWorksCard({ num, title, desc, accent, Visual }: How
             fontFamily: 'Poppins, sans-serif',
             color: '#1C1C28',
             lineHeight: 1.35,
-            margin: '0 0 6px',
+            margin: '0 0 5px',
           }}
         >
           {title}
@@ -138,33 +117,29 @@ export default function HowItWorksCard({ num, title, desc, accent, Visual }: How
             fontSize: '12.5px',
             color: '#5A5A6E',
             fontFamily: 'Inter, sans-serif',
-            lineHeight: 1.65,
+            lineHeight: 1.55,
             margin: 0,
             display: '-webkit-box',
-            WebkitLineClamp: 3,
+            WebkitLineClamp: descLines,
             WebkitBoxOrient: 'vertical' as const,
             overflow: 'hidden',
           }}
         >
           {desc}
         </p>
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '10px' }}>
-          <div
-            style={{
-              width: '28px',
-              height: '28px',
-              borderRadius: '50%',
-              background: `${accent}12`,
-              border: `1px solid ${accent}22`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <ArrowUpRight size={14} style={{ color: accent }} />
-          </div>
-        </div>
       </div>
+
+      <div
+        style={{
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: '55%',
+          background: 'linear-gradient(180deg, rgba(10,10,18,0) 0%, rgba(10,10,18,0.22) 100%)',
+          pointerEvents: 'none',
+        }}
+      />
     </div>
   );
 }

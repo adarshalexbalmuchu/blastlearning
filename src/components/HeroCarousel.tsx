@@ -11,16 +11,18 @@ const INTERVAL = 7000;
 const ACCENT   = '#0FA8DC';
 
 const SLIDES = [
-  { id: 'h1', src: hero1, alt: 'Boards Are in 90 Days. Every Forgotten Chapter Costs Marks. Blast Learning' },
-  { id: 'h2', src: hero2, alt: 'Upload Notes. Score Higher in Exams — Blast Learning' },
-  { id: 'h3', src: hero3, alt: 'The Forgetting Curve Is Real — Blast Learning' },
-  { id: 'h4', src: hero4, alt: 'Your Child Retains Only 10% of Coaching — Blast Learning' },
+  { id: 'h1', src: hero1, alt: 'Boards Are in 90 Days. Every Forgotten Chapter Costs Marks. Blast Learning', width: 8190, height: 1630 },
+  { id: 'h2', src: hero2, alt: 'Upload Notes. Score Higher in Exams — Blast Learning', width: 8190, height: 1547 },
+  { id: 'h3', src: hero3, alt: 'The Forgetting Curve Is Real — Blast Learning', width: 8190, height: 1547 },
+  { id: 'h4', src: hero4, alt: 'Your Child Retains Only 10% of Coaching — Blast Learning', width: 8190, height: 1547 },
 ] as const;
 
 // ─── Arrow ───────────────────────────────────────────────────────────────────────
 function Arrow({ side, onClick, label }: { side: 'left' | 'right'; onClick: () => void; label: string }) {
   return (
     <button
+      type="button"
+      className="hide-mobile"
       onClick={onClick}
       aria-label={label}
       style={{
@@ -80,25 +82,23 @@ export default function HeroCarousel() {
       <div style={{ maxWidth: '1600px', margin: '0 auto' }}>
         {/* ── Image stack — clicking navigates to /programs ── */}
         <Link to="/programs" aria-label="View all programs" style={{ display: 'block', cursor: 'pointer' }}>
-          <div style={{ position: 'relative', width: '100%', aspectRatio: '8190 / 1547', lineHeight: 0, overflow: 'hidden' }}>
+          <div style={{ position: 'relative', display: 'grid', width: '100%', lineHeight: 0 }}>
             {SLIDES.map((slide, i) => (
               <motion.div
                 key={slide.id}
                 aria-hidden={i !== active}
                 animate={{ opacity: i === active ? 1 : 0 }}
                 transition={{ duration: 0.55, ease: 'easeInOut' }}
-                style={
-                  i === active
-                    ? { position: 'relative', width: '100%', height: '100%' }
-                    : { position: 'absolute', inset: 0, width: '100%', height: '100%' }
-                }
+                style={{ gridArea: '1 / 1', width: '100%' }}
               >
                 <img
                   src={slide.src}
                   alt={slide.alt}
+                  width={slide.width}
+                  height={slide.height}
                   loading={i === 0 ? 'eager' : 'lazy'}
                   decoding={i === 0 ? 'sync' : 'async'}
-                  style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover' }}
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
               </motion.div>
             ))}

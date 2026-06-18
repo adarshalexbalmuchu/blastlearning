@@ -2,11 +2,11 @@ import { useSEO } from '../hooks/useSEO';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Search, X } from 'lucide-react';
 import FAQItem from '../components/FAQItem';
-import TestimonialsMarquee from '../components/ui/testimonials-marquee';
 import ctaBanner from '../assets/Hero 4.png';
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
 import { useState, useEffect, useMemo } from 'react';
+import { SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
 
 const testimonialsRow1 = [
   { name: 'Ananya Krishnan', role: 'Class 10, CBSE Plan · Bangalore', text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.' },
@@ -208,10 +208,6 @@ export default function FAQ() {
     <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}
       <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', paddingTop: '80px', paddingBottom: '60px', borderBottom: '1px solid #DAEEF6' }}>
-        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
-          <div style={{ position: 'absolute', top: '-100px', right: '-160px', width: '520px', height: '520px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(15,168,220,0.07) 0%, transparent 70%)', animation: 'blob-float 14s ease-in-out infinite' }} />
-          <div style={{ position: 'absolute', bottom: '-80px', left: '-120px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%)', animation: 'blob-float 18s ease-in-out infinite reverse' }} />
-        </div>
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
@@ -393,27 +389,10 @@ export default function FAQ() {
       </section>
 
       {/* ── Testimonials ── */}
-      <section id="testimonials" className="section-pad" style={{ paddingTop: '64px', paddingBottom: '64px', background: '#F9FAFB' }}>
-        <div style={{ textAlign: 'center', padding: '0 24px', marginBottom: '40px' }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
-              Student Stories
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15, margin: '0 0 14px' }}>
-              Real Results from Real Students
-            </h2>
-            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', lineHeight: 1.6, maxWidth: '540px', margin: '0 auto' }}>
-              Hear from families who turned forgotten lessons into lasting marks.
-            </p>
-          </motion.div>
-        </div>
-        <TestimonialsMarquee row1={testimonialsRow1} row2={testimonialsRow2} />
-      </section>
+      <SharedTestimonialsSection row1={testimonialsRow1} row2={testimonialsRow2} />
 
       {/* ── CTA Banner ── */}
-      <section aria-label="Call to action" style={{ width: '100%', display: 'block', lineHeight: 0 }}>
-        <img src={ctaBanner} alt="Learn Smarter. Achieve More. Start your Blast Learning journey today." loading="lazy" decoding="async" style={{ width: '100%', height: 'auto', display: 'block' }} />
-      </section>
+      <SharedImageCtaSection src={ctaBanner} alt="Learn Smarter. Achieve More. Start your Blast Learning journey today." />
     </div>
   );
 }

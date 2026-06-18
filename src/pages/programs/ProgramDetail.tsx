@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { ChevronDown, CheckCircle, ArrowRight, ChevronRight, Zap, Users, Star } from 'lucide-react';
+import { ChevronDown, CheckCircle, ArrowRight, ChevronRight, Zap } from 'lucide-react';
 import { getProgramBySlug } from '../../data/programs';
 import BrandWhoosh from '../../components/BrandWhoosh';
+import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../../components/MarketingSections';
+import HowItWorksCard from '../../components/HowItWorksCard';
 import hero1 from '../../assets/Hero 1.png';
 import hero2 from '../../assets/Hero 2.png';
 import hero3 from '../../assets/Hero 3.png';
@@ -25,9 +27,73 @@ const stagger: Variants = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-const AVATAR_PALETTE = ['#0FA8DC', '#0FA8DC', '#22C55E', '#F59E0B', '#8B5CF6', '#06B6D4', '#EC4899'];
-function avatarColor(name: string) {
-  return AVATAR_PALETTE[name.charCodeAt(0) % AVATAR_PALETTE.length];
+const FIT_CARD_ACCENTS = ['#0FA8DC', '#3B82F6', '#F03C6F', '#8B5CF6'];
+const FIT_CARD_DEFAULT_IMAGES = [
+  'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=80',
+  'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80',
+  'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1400&q=80',
+  'https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1400&q=80',
+];
+const FIT_CARD_FALLBACK_IMAGES = [hero1, hero2, hero3, hero4];
+
+const FIT_CARD_IMAGE_RULES: Array<{ keywords: string[]; image: string }> = [
+  {
+    keywords: ['parent', 'child'],
+    image: 'https://images.unsplash.com/photo-1541516160071-4bb0c5af65ba?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['board', 'exam'],
+    image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['coaching', 'classroom', 'class'],
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['jee', 'neet', 'competitive'],
+    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['math', 'algebra', 'geometry'],
+    image: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['english', 'language', 'reading', 'writing'],
+    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=80',
+  },
+  {
+    keywords: ['foundational', 'grades behind', 'gap'],
+    image: 'https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&w=1400&q=80',
+  },
+];
+
+function getFitCardImage(slug: string, title: string, desc: string, index: number) {
+  const haystack = `${slug} ${title} ${desc}`.toLowerCase();
+  const rule = FIT_CARD_IMAGE_RULES.find((item) => item.keywords.some((keyword) => haystack.includes(keyword)));
+  if (rule) return rule.image;
+  return FIT_CARD_DEFAULT_IMAGES[index % FIT_CARD_DEFAULT_IMAGES.length];
+}
+
+function ProgramFitVisual({ image, fallback, accent }: { image: string; fallback: string; accent: string }) {
+  const [useFallback, setUseFallback] = useState(false);
+
+  return (
+    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+      <img
+        src={useFallback ? fallback : image}
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        decoding="async"
+        referrerPolicy="no-referrer"
+        onError={() => {
+          if (!useFallback) setUseFallback(true);
+        }}
+        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+      />
+      <div style={{ position: 'absolute', inset: 0, background: `linear-gradient(180deg, ${accent}22 0%, rgba(10,10,18,0.18) 100%)` }} />
+    </div>
+  );
 }
 
 export default function ProgramDetail() {
@@ -35,7 +101,6 @@ export default function ProgramDetail() {
   const program = slug ? getProgramBySlug(slug) : undefined;
 
   const [openCurriculum, setOpenCurriculum] = useState<number>(0);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [form, setForm] = useState({ name: '', phone: '', cls: '' });
   const [submitted, setSubmitted] = useState(false);
 
@@ -47,6 +112,12 @@ export default function ProgramDetail() {
   }, [program]);
 
   if (!program) return <Navigate to="/programs" replace />;
+
+  const testimonialCards = program.testimonials.map((testimonial) => ({
+    name: testimonial.name,
+    role: testimonial.role,
+    text: testimonial.content,
+  }));
 
   return (
     <div style={{ background: '#FFFFFF' }}>
@@ -64,17 +135,6 @@ export default function ProgramDetail() {
           </div>
         )}
         <div style={{ paddingTop: '60px' }} />
-        {/* Background blob */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute', top: '-80px', right: '-120px',
-            width: '480px', height: '480px', borderRadius: '50%',
-            background: program.accentBg, opacity: 0.6,
-            pointerEvents: 'none', willChange: 'transform',
-          }}
-        />
-
         <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           {/* Breadcrumb */}
@@ -248,20 +308,33 @@ export default function ProgramDetail() {
             </h2>
           </motion.div>
 
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-3-md">
-            {program.forWhom.map((item, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                style={{ padding: '28px', background: '#D6F2FA', borderRadius: '16px', border: '1px solid #ECECF1' }}
-              >
-                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: program.accentBg, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
-                  <Users size={18} style={{ color: '#0FA8DC' }} />
-                </div>
-                <h3 style={{ fontSize: '16px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '8px' }}>{item.title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{item.desc}</p>
-              </motion.div>
-            ))}
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-2-md">
+            {program.forWhom.map((item, i) => {
+              const accent = FIT_CARD_ACCENTS[i % FIT_CARD_ACCENTS.length];
+              const image = item.imageUrl || getFitCardImage(program.slug, item.title, item.desc, i);
+              const fallback = FIT_CARD_FALLBACK_IMAGES[i % FIT_CARD_FALLBACK_IMAGES.length];
+              const Visual = () => (
+                <ProgramFitVisual image={image} fallback={fallback} accent={accent} />
+              );
+
+              return (
+                <motion.div
+                  key={item.title}
+                  variants={fadeUp}
+                  whileHover={{ y: -6 }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                >
+                  <HowItWorksCard
+                    title={item.title}
+                    desc={item.desc}
+                    accent={accent}
+                    Visual={Visual}
+                    height="430px"
+                    descLines={4}
+                  />
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
@@ -405,152 +478,19 @@ export default function ProgramDetail() {
       </section>
 
       {/* ─── Student Results / Testimonials ───────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '56px' }}>
-            <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
-              Student Results
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28' }}>
-              Real Scores, Real Students
-            </h2>
-          </motion.div>
-
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-2-md">
-            {program.testimonials.map((t, i) => {
-              const bg = avatarColor(t.name);
-              return (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  style={{ background: '#FFFFFF', border: '1px solid #ECECF1', borderRadius: '20px', padding: '32px', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
-                >
-                  <div style={{ display: 'flex', gap: '4px', marginBottom: '16px' }}>
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <Star key={s} size={14} fill="#F59E0B" style={{ color: '#F59E0B' }} />
-                    ))}
-                  </div>
-
-                  <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#1C1C28', fontFamily: "'Inter', sans-serif", marginBottom: '24px', fontStyle: 'italic' }}>
-                    "{t.content}"
-                  </p>
-
-                  {/* Before / After */}
-                  <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', padding: '16px', background: '#D6F2FA', borderRadius: '12px' }}>
-                    <div style={{ flex: 1, textAlign: 'center' }}>
-                      <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>Before</div>
-                      <div style={{ fontSize: '22px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{t.before}</div>
-                    </div>
-                    <div style={{ width: '1px', background: '#ECECF1' }} />
-                    <div style={{ flex: 1, textAlign: 'center' }}>
-                      <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>After</div>
-                      <div style={{ fontSize: '22px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#059669' }}>{t.after}</div>
-                    </div>
-                    <div style={{ width: '1px', background: '#ECECF1' }} />
-                    <div style={{ flex: 1, textAlign: 'center' }}>
-                      <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>Improvement</div>
-                      <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#0FA8DC' }}>{t.improvement}</div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingTop: '16px', borderTop: '1px solid #F4F4F6' }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: 700, color: 'white', fontFamily: "'Poppins', sans-serif", flexShrink: 0 }}>
-                      {t.name.charAt(0)}
-                    </div>
-                    <div>
-                      <div style={{ fontSize: '14px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{t.name}</div>
-                      <div style={{ fontSize: '12px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>{t.role}</div>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
+      <SharedTestimonialsSection
+        row1={testimonialCards}
+        row2={[...testimonialCards].reverse()}
+        eyebrow="Student Results"
+        title={`Real Results from ${program.name} Students`}
+        subtitle="See what this programme looks like when the same study system turns into measurable improvement."
+      />
 
       {/* ─── FAQ ──────────────────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
-            <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
-              FAQs
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28' }}>
-              Common Questions
-            </h2>
-          </motion.div>
-
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {program.faqs.map((faq, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                style={{ border: '1px solid #ECECF1', borderRadius: '14px', overflow: 'hidden', background: openFaq === i ? '#FAFAFA' : '#FFFFFF' }}
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  aria-expanded={openFaq === i}
-                  style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 24px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '16px' }}
-                >
-                  <span style={{ fontSize: '15px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{faq.q}</span>
-                  <ChevronDown
-                    size={18}
-                    style={{ color: '#6B6B7B', flexShrink: 0, transition: 'transform 0.25s', transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0)' }}
-                  />
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {openFaq === i && (
-                    <motion.div
-                      key="answer"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25 }}
-                      style={{ overflow: 'hidden' }}
-                    >
-                      <p style={{ padding: '0 24px 24px', fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
-                        {faq.a}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      <SharedFaqSection items={program.faqs} eyebrow="FAQs" title="Common Questions" subtitle="Everything you need to know before you start your free trial." />
 
       {/* ─── Final CTA ────────────────────────────────────────────── */}
-      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#F9FAFB' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '16px' }}>
-              Ready to get started?
-            </h2>
-            <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '36px' }}>
-              Your first 7 days are completely free. No credit card required.
-            </p>
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link
-                to="/contact"
-                className="cta cta-blue"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
-              >
-                Start Free Trial <ArrowRight size={16} />
-              </Link>
-              <Link
-                to="/programs"
-                className="cta cta-outline"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: 'white', color: '#1C1C28', border: '1.5px solid #DCDCE5' }}
-              >
-                View All Programs
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <SharedImageCtaSection src={hero4} alt="Learn Smarter. Achieve More. Start your Blast Learning journey today." />
     </div>
   );
 }

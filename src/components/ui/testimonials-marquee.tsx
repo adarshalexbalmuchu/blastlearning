@@ -17,57 +17,49 @@ function parseRole(role: string): { rank: string; location: string } {
 
 function TestimonialCard({ card }: { card: CardT }) {
   const { rank, location } = parseRole(card.role);
+
   return (
     <div
       style={{
-        background: '#FFFFFF',
-        borderRadius: '16px',
-        border: '1.5px solid #E8ECF0',
-        boxShadow: '0 2px 16px rgba(28,28,40,0.06)',
-        padding: '28px 26px 24px',
+        background: '#F6F6F8',
+        borderRadius: '12px',
+        border: '1px solid #ECECF2',
+        boxShadow: '0 2px 10px rgba(28,28,40,0.04)',
+        padding: '26px 24px 22px',
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
+        minHeight: '360px',
         boxSizing: 'border-box',
       }}
     >
-      {/* Decorative large quote */}
+      {/* Decorative quote mark */}
       <div
         aria-hidden="true"
         style={{
-          fontSize: '88px',
-          lineHeight: 0.75,
-          color: '#0FA8DC',
+          fontSize: '72px',
+          lineHeight: 0.7,
+          color: '#D7DAE1',
           fontFamily: 'Georgia, serif',
-          fontWeight: 900,
-          marginBottom: '14px',
-          opacity: 0.12,
+          fontWeight: 700,
+          marginBottom: '12px',
           userSelect: 'none',
         }}
       >
-        "
-      </div>
-
-      {/* Stars */}
-      <div style={{ display: 'flex', gap: '3px', marginBottom: '14px' }}>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <span key={i} style={{ color: '#F59E0B', fontSize: '15px' }}>
-            ★
-          </span>
-        ))}
+        ❝
       </div>
 
       {/* Quote text */}
       <p
         style={{
-          fontSize: '14px',
-          color: '#374151',
-          lineHeight: 1.8,
+          fontSize: 'clamp(15px, 1.7vw, 17px)',
+          color: '#3F3F46',
+          lineHeight: 1.58,
           fontFamily: 'Inter, sans-serif',
-          margin: '0 0 22px',
+          margin: '0 0 24px',
           flex: 1,
           display: '-webkit-box',
-          WebkitLineClamp: 6,
+          WebkitLineClamp: 7,
           WebkitBoxOrient: 'vertical' as const,
           overflow: 'hidden',
         }}
@@ -79,39 +71,20 @@ function TestimonialCard({ card }: { card: CardT }) {
       <div
         style={{
           borderTop: '1px solid #F3F4F6',
-          paddingTop: '16px',
+          paddingTop: '15px',
           display: 'flex',
-          alignItems: 'center',
-          gap: '12px',
+          alignItems: 'flex-start',
           marginTop: 'auto',
         }}
       >
-        <div
-          style={{
-            width: '44px',
-            height: '44px',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #0FA8DC 0%, #0891B2 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '17px',
-            fontWeight: 700,
-            color: 'white',
-            fontFamily: 'Poppins, sans-serif',
-            flexShrink: 0,
-          }}
-        >
-          {card.name.charAt(0)}
-        </div>
         <div>
           <p
             style={{
               fontFamily: 'Poppins, sans-serif',
               fontWeight: 700,
-              fontSize: '14px',
+              fontSize: '18px',
               color: '#111827',
-              margin: '0 0 3px',
+              margin: '0 0 4px',
               lineHeight: 1.3,
             }}
           >
@@ -119,31 +92,34 @@ function TestimonialCard({ card }: { card: CardT }) {
           </p>
           <p
             style={{
-              fontSize: '12px',
+              fontSize: '11px',
               margin: 0,
               lineHeight: 1.4,
               display: 'flex',
               alignItems: 'center',
-              gap: '6px',
+              gap: '8px',
               flexWrap: 'wrap',
             }}
           >
             <span
               style={{
-                color: '#0FA8DC',
-                fontWeight: 600,
+                color: '#EC4899',
+                fontWeight: 700,
                 fontFamily: 'Inter, sans-serif',
+                letterSpacing: '0.01em',
               }}
             >
               {rank}
             </span>
             {location && (
               <>
-                <span style={{ color: '#D1D5DB', fontWeight: 400 }}>|</span>
+                <span style={{ color: '#C8CCD6', fontWeight: 400 }}>|</span>
                 <span
                   style={{
-                    color: '#0FA8DC',
+                    color: '#EC4899',
+                    fontWeight: 700,
                     fontFamily: 'Inter, sans-serif',
+                    letterSpacing: '0.01em',
                   }}
                 >
                   {location}
