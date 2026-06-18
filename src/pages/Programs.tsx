@@ -152,14 +152,131 @@ export default function Programs() {
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: "'Inter', sans-serif", marginBottom: '24px', background: '#E0F5FC', color: '#0FA8DC' }}>
-              Learning Programs
+              HOW BLAST LEARNING WORKS
             </span>
             <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', marginBottom: '24px', color: '#1C1C28' }}>
-              Our Programs
+              The system beneath the syllabus.
             </h1>
             <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
-              Carefully designed for Indian students in Classes 8-12. Each program uses our Metacognition Engine to ensure lasting retention, not just short-term cramming.
+              Every board exam tests the same thing twice: what your child knows, and whether that knowledge survives the walk into the exam hall. Blast Learning builds the second part. CBSE, ICSE, JEE, and NEET preparation runs on top of a study engine designed around how Indian students actually forget, and what makes them remember.
             </p>
+            <div style={{ marginTop: '32px' }}>
+              <Link
+                to="/programs/cbse-plan"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '14px 28px',
+                  borderRadius: '10px',
+                  fontSize: '15px',
+                  fontWeight: 600,
+                  fontFamily: "'Inter', sans-serif",
+                  textDecoration: 'none',
+                  background: '#0FA8DC',
+                  color: 'white',
+                }}
+              >
+                Start the 14-Day Free Trial — No Credit Card Required <ArrowRight size={16} />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Overview */}
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '24px' }}>
+              A coaching class can teach a concept twice and still lose a student to the forgetting curve by Friday, because re-reading and highlighting create a sense of familiarity that has almost nothing to do with retention. Blast Learning starts from that gap rather than from another video library. Each session is scheduled by an adaptive engine that tracks what a student has seen, how confidently they answered it, and when that memory is due to fade, so practice arrives at the moment recall takes real effort instead of the moment it feels comfortable. The result is not a faster way to consume more content. It is a study system that converts hours already being spent into marks that hold under exam pressure.
+            </p>
+            <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
+              Every course on this page, whether it runs through the CBSE syllabus, sharpens mathematical pattern recognition, builds inferential reading for English and the SAT, or prepares a student for the Digital SAT directly, sits on the same foundation described below. A GAP Assessment opens each course by identifying exactly where a student's knowledge breaks down, often several grades behind their enrolled level in a specific topic, and the AI Tutor then builds a path from that point rather than from the syllabus cover page. A Study Buddy keeps a real person in the loop for accountability and explanation, because no adaptive engine alone sustains a teenager's motivation through a Tuesday evening revision session. Parents see minutes studied and concepts mastered on a transparent dashboard.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ textAlign: 'center', marginBottom: '56px', maxWidth: '896px', marginLeft: 'auto', marginRight: 'auto' }}
+          >
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '20px' }}>
+              The Method Behind the Marks
+            </h2>
+            <p style={{ fontSize: '1.0625rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
+              Strip away the interface and five mechanisms do the actual work. Four of them move a student from gap to mastery in sequence; the fifth runs underneath all four, because none of them hold up if a student cannot manage focus, nerves, or a clock.
+            </p>
+          </motion.div>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
+            className="grid-cols-2-md"
+          >
+            {[
+              {
+                num: '1',
+                title: 'GAP Assessment',
+                body: 'Before a single lesson is assigned, Blast finds out what a student actually knows, not what their grade level assumes they should know. A Class 10 student stuck on fractions from Class 5 is common, and the gap rarely shows up on a school report card. The GAP Assessment surfaces it on day one, so the study plan that follows starts from reality rather than from the syllabus index.',
+              },
+              {
+                num: '2',
+                title: 'The AI Tutor',
+                body: 'Once the gap is mapped, the AI Tutor builds the path across it. Practice questions are generated fresh for each session rather than recycled from a fixed bank, calibrated to sit at the edge of what a student can currently do. Too easy and nothing sticks; too hard and the student disengages. The AI Tutor\'s job is to hold that edge, session after session, without a human tutor having to recalculate it by hand.',
+              },
+              {
+                num: '3',
+                title: 'Spaced Repetition and Retrieval Practice',
+                body: 'Content is scheduled to resurface at the interval where recall has started to fade but has not yet disappeared, because that moment of effortful retrieval is what cognitive psychologists call the testing effect: among the most replicated findings in the field, and the actual mechanism behind durable memory. Students are asked to produce an answer from memory rather than recognise one from a page.',
+              },
+              {
+                num: '4',
+                title: 'Study Buddy',
+                body: 'A human partner is paired with every student, working alongside the AI Tutor rather than instead of it. Two students or a student and a Study Buddy mentor receive synchronised, adaptive question sets, then practise together, explain answers to each other, and hold each other to the schedule. It is the accountability layer that makes an AI-paced study plan something a teenager will actually follow through November exam season.',
+              },
+              {
+                num: '5',
+                title: 'Mind Coach',
+                body: 'A student can have the gap mapped, the path built, and the schedule perfectly timed, and still freeze in an exam hall because nobody taught them how to manage that moment. Mind Coach treats focus, emotional control, goal-setting, and personal agency as skills, not personality traits, which means they get taught the same deliberate way a chapter on thermodynamics gets taught.',
+              },
+            ].map((card) => (
+              <motion.div
+                key={card.num}
+                variants={fadeUp}
+                style={{
+                  background: '#FFFFFF',
+                  border: '1px solid #ECECF1',
+                  borderRadius: '16px',
+                  padding: '24px',
+                  boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
+                  <div style={{ flexShrink: 0, width: '36px', height: '36px', borderRadius: '50%', background: '#E0F5FC', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ fontSize: '16px', fontWeight: 700, color: '#0FA8DC', fontFamily: "'Poppins', sans-serif" }}>{card.num}</span>
+                  </div>
+                  <div>
+                    <h3 style={{ fontSize: '17px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{card.title}</h3>
+                    <p style={{ fontSize: '14px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{card.body}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
@@ -167,6 +284,20 @@ export default function Programs() {
       {/* Program Cards */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ textAlign: 'center', marginBottom: '56px', maxWidth: '896px', marginLeft: 'auto', marginRight: 'auto' }}
+          >
+            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '20px' }}>
+              Four Courses. One Method.
+            </h2>
+            <p style={{ fontSize: '1.0625rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
+              The five-mechanism system above runs identically across every course. What changes is the subject, the syllabus, and the specific gap each course is built to close.
+            </p>
+          </motion.div>
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -268,6 +399,9 @@ export default function Programs() {
               );
             })}
           </motion.div>
+          <p style={{ textAlign: 'center', marginTop: '32px', fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+            Every course opens with a 14-day free trial and no credit card requirement. Enrol in two or more courses and a 20% discount applies automatically.
+          </p>
         </div>
       </section>
 
