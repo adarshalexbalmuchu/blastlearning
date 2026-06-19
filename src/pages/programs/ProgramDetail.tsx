@@ -10,6 +10,9 @@ import hero1 from '../../assets/Hero 1.png';
 import hero2 from '../../assets/Hero 2.png';
 import hero3 from '../../assets/Hero 3.png';
 import hero4 from '../../assets/Hero 4.png';
+import uploadVisual from '../../assets/Upload.png';
+import learnVisual from '../../assets/Learn.png';
+import masterVisual from '../../assets/master.png';
 
 const SLUG_BANNER: Record<string, string> = {
   'cbse-plan': hero1,
@@ -29,41 +32,44 @@ const stagger: Variants = {
 
 const FIT_CARD_ACCENTS = ['#0FA8DC', '#3B82F6', '#F03C6F', '#8B5CF6'];
 const FIT_CARD_DEFAULT_IMAGES = [
-  'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1400&q=80',
-  'https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1400&q=80',
+  hero1,
+  hero2,
+  hero3,
+  hero4,
+  uploadVisual,
+  learnVisual,
+  masterVisual,
 ];
 const FIT_CARD_FALLBACK_IMAGES = [hero1, hero2, hero3, hero4];
 
 const FIT_CARD_IMAGE_RULES: Array<{ keywords: string[]; image: string }> = [
   {
     keywords: ['parent', 'child'],
-    image: 'https://images.unsplash.com/photo-1541516160071-4bb0c5af65ba?auto=format&fit=crop&w=1400&q=80',
+    image: masterVisual,
   },
   {
     keywords: ['board', 'exam'],
-    image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1400&q=80',
+    image: hero1,
   },
   {
     keywords: ['coaching', 'classroom', 'class'],
-    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1400&q=80',
+    image: hero2,
   },
   {
     keywords: ['jee', 'neet', 'competitive'],
-    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1400&q=80',
+    image: hero4,
   },
   {
     keywords: ['math', 'algebra', 'geometry'],
-    image: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=1400&q=80',
+    image: uploadVisual,
   },
   {
     keywords: ['english', 'language', 'reading', 'writing'],
-    image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1400&q=80',
+    image: learnVisual,
   },
   {
     keywords: ['foundational', 'grades behind', 'gap'],
-    image: 'https://images.unsplash.com/photo-1516534775068-ba3e7458af70?auto=format&fit=crop&w=1400&q=80',
+    image: hero3,
   },
 ];
 
@@ -192,13 +198,6 @@ export default function ProgramDetail() {
               </motion.div>
 
               <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <Link
-                  to="/contact"
-                  className="cta cta-blue"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 28px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
-                >
-                  Start 14-Day Free Trial <ArrowRight size={15} />
-                </Link>
               </motion.div>
             </motion.div>
 

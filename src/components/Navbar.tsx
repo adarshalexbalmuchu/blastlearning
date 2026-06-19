@@ -192,9 +192,10 @@ const navItems: NavItem[] = [
   {
     id: 2,
     label: 'Programs',
+    path: '/programs',
     subMenus: [
       {
-        title: 'Our Programs',
+        title: '',
         items: [
           { label: 'CBSE Plan', description: 'Full CBSE syllabus for Classes 6-12', icon: IconBook, iconBg: 'linear-gradient(135deg,#EEF2FF 0%,#E0E7FF 100%)', iconBorder: '#C7D2FE', path: '/programs/cbse-plan' },
           { label: 'Math Genius Maker', description: 'Gap assessment & targeted math practice', icon: IconBulb, iconBg: 'linear-gradient(135deg,#FFFBEB 0%,#FEF3C7 100%)', iconBorder: '#FDE68A', path: '/programs/math-genius' },
@@ -335,17 +336,15 @@ export default function Navbar() {
                     onMouseLeave={() => { setOpenMenu(null); setHoveredId(null); }}
                   >
                     {item.subMenus ? (
-                      <button
-                        className="flex items-center gap-1 text-sm font-medium"
+                      <div
                         style={{
                           position: 'relative',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '2px',
                           padding: '6px 14px',
                           borderRadius: '99px',
-                          border: 'none',
-                          background: 'transparent',
-                          cursor: 'pointer',
                           color: '#5A5A6E',
-                          fontFamily: 'Inter, sans-serif',
                         }}
                       >
                         {hoveredId === item.id && (
@@ -359,17 +358,48 @@ export default function Navbar() {
                             }}
                           />
                         )}
-                        <span style={{ position: 'relative', zIndex: 1 }}>{item.label}</span>
-                        <ChevronDown
-                          size={13}
+                        <Link
+                          to={item.path || '/'}
                           style={{
                             position: 'relative',
                             zIndex: 1,
-                            transform: openMenu === item.id ? 'rotate(180deg)' : 'rotate(0)',
-                            transition: 'transform 0.25s',
+                            display: 'flex',
+                            alignItems: 'center',
+                            fontSize: '14px',
+                            fontWeight: location.pathname === item.path ? 600 : 500,
+                            fontFamily: 'Inter, sans-serif',
+                            color: location.pathname === item.path ? '#0FA8DC' : '#5A5A6E',
+                            textDecoration: 'none',
                           }}
-                        />
-                      </button>
+                        >
+                          {item.label}
+                        </Link>
+                        <button
+                          type="button"
+                          aria-label={`Open ${item.label} menu`}
+                          className="flex items-center justify-center"
+                          onClick={() => setOpenMenu((current) => (current === item.id ? null : item.id))}
+                          style={{
+                            position: 'relative',
+                            zIndex: 1,
+                            width: '20px',
+                            height: '20px',
+                            padding: 0,
+                            border: 'none',
+                            background: 'transparent',
+                            cursor: 'pointer',
+                            color: '#5A5A6E',
+                          }}
+                        >
+                          <ChevronDown
+                            size={13}
+                            style={{
+                              transform: openMenu === item.id ? 'rotate(180deg)' : 'rotate(0)',
+                              transition: 'transform 0.25s',
+                            }}
+                          />
+                        </button>
+                      </div>
                     ) : (
                       <Link
                         to={item.path || '/'}

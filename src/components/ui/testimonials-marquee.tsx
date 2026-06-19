@@ -80,19 +80,7 @@ function TestimonialCard({ card }: { card: CardT }) {
         <div>
           <p
             style={{
-              fontFamily: 'Poppins, sans-serif',
-              fontWeight: 700,
-              fontSize: '18px',
-              color: '#111827',
-              margin: '0 0 4px',
-              lineHeight: 1.3,
-            }}
-          >
-            {card.name}
-          </p>
-          <p
-            style={{
-              fontSize: '11px',
+              fontSize: '12px',
               margin: 0,
               lineHeight: 1.4,
               display: 'flex',

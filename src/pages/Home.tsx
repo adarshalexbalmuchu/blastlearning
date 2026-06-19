@@ -5,7 +5,7 @@ import {
   CheckCircle, AlertCircle,
 } from 'lucide-react';
 import ctaBanner from '../assets/Hero 4.png';
-import scienceVisual from '../assets/master.png';
+import scienceVisual from '../assets/expressive-young-girl-posing-studio.jpg';
 import HeroCarousel from '../components/HeroCarousel';
 import DashboardMockup from '../components/DashboardMockup';
 import FeatureExplorer from '../components/FeatureExplorer';
@@ -454,22 +454,19 @@ export default function Home() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ minWidth: 0 }}>
-              <div style={{ background: '#FFFFFF', border: '1px solid #ECECF1', borderRadius: '20px', padding: '24px' }}>
-                <img
-                  src={scienceVisual}
-                  alt="Student thinking through a study problem"
-                  loading="lazy"
-                  decoding="async"
-                  style={{
-                    width: '100%',
-                    aspectRatio: '16 / 10',
-                    objectFit: 'cover',
-                    objectPosition: 'center',
-                    borderRadius: '14px',
-                    display: 'block',
-                  }}
-                />
-              </div>
+              <img
+                src={scienceVisual}
+                alt="Student thinking through a study problem"
+                loading="lazy"
+                decoding="async"
+                style={{
+                  width: '100%',
+                  aspectRatio: '16 / 10',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                  display: 'block',
+                }}
+              />
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ minWidth: 0 }}>
               <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>
