@@ -340,10 +340,13 @@ interface ProgramCardData {
 function ProgramCard({ prog }: { prog: ProgramCardData }) {
   const [hovered, setHovered] = useState(false);
   return (
-    <div
+    <Link
+      to={`/programs/${prog.slug}`}
+      aria-label={`Explore ${prog.name}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
+        display: 'block',
         position: 'relative',
         background: hovered ? prog.blobBg : '#FFFFFF',
         border: '1.5px solid #E5E7EB',
@@ -352,6 +355,7 @@ function ProgramCard({ prog }: { prog: ProgramCardData }) {
         overflow: 'hidden',
         transition: 'background 0.35s ease, box-shadow 0.35s ease',
         boxShadow: hovered ? '0 8px 32px rgba(28,28,40,0.10)' : '0 2px 8px rgba(28,28,40,0.04)',
+        textDecoration: 'none',
       }}
     >
       {/* Corner blob — expands on hover */}
@@ -402,9 +406,8 @@ function ProgramCard({ prog }: { prog: ProgramCardData }) {
         ))}
       </div>
 
-      {/* Explore link */}
-      <Link
-        to={`/programs/${prog.slug}`}
+      {/* Explore label */}
+      <span
         style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -413,7 +416,6 @@ function ProgramCard({ prog }: { prog: ProgramCardData }) {
           fontWeight: 600,
           color: '#1C1C28',
           fontFamily: 'Inter, sans-serif',
-          textDecoration: 'none',
           position: 'relative',
           zIndex: 1,
         }}
@@ -422,8 +424,8 @@ function ProgramCard({ prog }: { prog: ProgramCardData }) {
         <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '28px', height: '28px', borderRadius: '50%', border: '1.5px solid #E5E7EB', background: '#F9FAFB', flexShrink: 0 }}>
           <ArrowRight size={13} />
         </span>
-      </Link>
-    </div>
+      </span>
+    </Link>
   );
 }
 
@@ -444,12 +446,12 @@ export default function Home() {
       </div>
 
       {/* ── Trust stats: overlap hero bottom ── */}
-      <div style={{ position: 'relative', zIndex: 2, marginTop: '-56px' }}>
+      <div style={{ position: 'relative', zIndex: 2, marginTop: 'clamp(-56px, -5vw, -20px)' }}>
         <TrustStats />
       </div>
 
       {/* ── Science of Retention (white) ── */}
-      <section className="section-pad" style={{ position: 'relative', overflow: 'hidden', paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ position: 'relative', overflow: 'hidden', paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
         <BrandWhoosh opacity={0.18} style={{ width: '420px', height: '420px', bottom: '-40px', right: '-40px' }} />
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
@@ -501,7 +503,7 @@ export default function Home() {
       </section>
 
       {/* ── How It Works (light gray) ── */}
-      <section id="how-it-works" className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#F9FAFB' }}>
+      <section id="how-it-works" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             eyebrow="Simple Process"
@@ -529,7 +531,7 @@ export default function Home() {
       </section>
 
       {/* ── Programs Showcase (white) ── */}
-      <section id="programs" className="section-pad" style={{ paddingTop: '56px', paddingBottom: '56px', background: '#FFFFFF' }}>
+      <section id="programs" className="section-pad" style={{ paddingTop: '44px', paddingBottom: '40px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ textAlign: 'center', marginBottom: '40px' }}>
             <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.25rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', margin: '0 0 10px' }}>
@@ -623,7 +625,7 @@ export default function Home() {
       </section>
 
       {/* ── Pricing / Programs (white) ── */}
-      <section id="programs-preview" className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
+      <section id="programs-preview" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           {/* Centered header + toggle */}
@@ -770,7 +772,7 @@ export default function Home() {
       </section>
 
       {/* ── Features: expandable explorer (light gray) ── */}
-      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             title="What Makes Us Different"
@@ -781,7 +783,7 @@ export default function Home() {
       </section>
 
       {/* ── Results Banner (white) ── */}
-      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <SectionHeading
             title="See Results Within One Month"
@@ -806,7 +808,7 @@ export default function Home() {
       </section>
 
       {/* ── Parent Concerns / Solutions ── */}
-      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#F9FAFB' }}>
+      <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, textAlign: 'center', marginBottom: '32px', color: '#1C1C28', letterSpacing: '-0.025em' }}>
             From Parent Worries to Real Results
@@ -843,7 +845,7 @@ export default function Home() {
       </section>
 
       {/* ── Parent Dashboard Showcase (white) ── */}
-      <section id="parent-dashboard" className="section-pad" style={{ position: 'relative', overflow: 'hidden', paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
+      <section id="parent-dashboard" className="section-pad" style={{ position: 'relative', overflow: 'hidden', paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
         <BrandWhoosh opacity={0.15} style={{ width: '400px', height: '400px', top: '-30px', left: '-40px', transform: 'scaleX(-1)' }} />
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">

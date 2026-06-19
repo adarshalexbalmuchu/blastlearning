@@ -60,7 +60,7 @@ export function SharedTestimonialsSection({
   sectionId?: string;
 }) {
   return (
-    <section id={sectionId} className="section-pad" style={{ paddingTop: '64px', paddingBottom: '64px', background: '#F9FAFB' }}>
+    <section id={sectionId} className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#F9FAFB' }}>
       <div style={{ textAlign: 'center', padding: '0 24px', marginBottom: '40px' }}>
         <SectionIntro eyebrow={eyebrow} title={title} subtitle={subtitle} />
       </div>
@@ -85,7 +85,7 @@ export function SharedFaqSection({
   linkLabel?: string;
 }) {
   return (
-    <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
+    <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
       <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
         <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <SectionIntro eyebrow={eyebrow} title={title} subtitle={subtitle} />
