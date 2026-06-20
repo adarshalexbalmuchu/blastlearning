@@ -4,7 +4,6 @@ import {
   ArrowRight,
   CheckCircle, AlertCircle,
 } from 'lucide-react';
-import ctaBanner from '../assets/Hero 4.png';
 import scienceVisual from '../assets/expressive-young-girl-posing-studio.jpg';
 import HeroCarousel from '../components/HeroCarousel';
 import DashboardMockup from '../components/DashboardMockup';
@@ -13,7 +12,7 @@ import TrustStats from '../components/TrustStats';
 import BrandWhoosh from '../components/BrandWhoosh';
 import ResultsScoreCards from '../components/ResultsScoreCards';
 import HowItWorksCard, { UploadVisual, AIVisual, MasteryVisual } from '../components/HowItWorksCard';
-import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
+import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import { useState, useEffect, useRef } from 'react';
 import { useSEO } from '../hooks/useSEO';
 
@@ -22,22 +21,22 @@ import { useSEO } from '../hooks/useSEO';
 const howItWorks = [
   {
     num: '01',
-    title: 'Record or Upload Content',
-    desc: 'Upload your class notes, recordings, or textbook chapters. Our AI processes and structures everything for optimal learning.',
+    title: 'AI Tutor',
+    desc: 'A quick diagnostic builds a personalised study plan, scheduled at the interval where recall is hardest and retention sticks.',
     accent: '#0FA8DC',
     Visual: UploadVisual,
   },
   {
     num: '02',
-    title: 'AI Creates Your Study Plan',
-    desc: 'Our Metacognition Engine analyzes your learning patterns and creates a personalized study schedule using spaced repetition science.',
+    title: 'Study Buddy',
+    desc: 'A human partner works from the same adaptive question set, and progress gets tracked for both. No student studies alone.',
     accent: '#0FA8DC',
     Visual: AIVisual,
   },
   {
     num: '03',
-    title: 'Learn, Practice, Master',
-    desc: 'Follow your adaptive plan, practice with smart quizzes, and track your retention scores. Master every concept before your exams.',
+    title: 'Mind Coach',
+    desc: 'Focus, emotional control, goal-setting, and personal agency are taught as skills with their own practice routine.',
     accent: '#3B82F6',
     Visual: MasteryVisual,
   },
@@ -47,51 +46,51 @@ const pricingPlans = [
   {
     id: 'cbse',
     slug: 'cbse-plan',
-    name: 'CBSE Plan',
-    classes: 'Classes 8–10',
-    desc: 'Complete board prep with AI-powered retention tracking.',
+    name: 'CBSE Full Syllabus',
+    classes: 'Class 6-12 · All core subjects',
+    desc: 'The CBSE course built on spaced repetition from the ground up. Every chapter is sequenced for retention, not just coverage.',
     monthlyPrice: 1299,
     yearlyMonthly: 1039,
     features: [
-      'Full NCERT syllabus coverage',
-      'AI spaced repetition study plans',
-      'Parent dashboard & WhatsApp alerts',
-      'Board exam mock tests',
-      'Live retention score tracking',
+      'All core NCERT subjects covered',
+      'Spaced repetition session engine',
+      'AI Tutor with doubt resolution',
+      'Study Buddy matching',
+      'Weekly parent progress reports',
     ],
     featured: true,
   },
   {
     id: 'math',
     slug: 'math-genius',
-    name: 'Math Genius',
-    classes: 'Classes 8–12',
-    desc: 'Gap-fill and master every math concept from foundation up.',
+    name: 'Math Genius Maker',
+    classes: 'Grade 5-12 · GAP Assessment driven',
+    desc: 'Starts with a diagnostic to find where a student is stuck, then rebuilds only those foundations. Zero wasted time on mastered concepts.',
     monthlyPrice: 999,
     yearlyMonthly: 799,
     features: [
-      'Personalised gap analysis',
-      'Foundation to advanced topics',
-      'Speed & accuracy drills',
-      'AI-generated practice sets',
-      'Visual concept explainers',
+      'GAP Assessment on enrolment',
+      'Topic-by-topic mastery tracking',
+      '500+ adaptive practice problems',
+      'AI Tutor with doubt resolution',
+      'Study Buddy matching',
     ],
     featured: false,
   },
   {
     id: 'english',
     slug: 'english-mastery',
-    name: 'English Mastery',
-    classes: 'All Classes',
-    desc: 'Grammar, writing, and reading built systematically.',
+    name: 'English Mastery Pass',
+    classes: 'CBSE & ICSE · SAT-compatible',
+    desc: 'Comprehension and grammar built to serve both board exams and the Digital SAT through one study system.',
     monthlyPrice: 999,
     yearlyMonthly: 799,
     features: [
-      'Grammar & writing modules',
-      'Reading comprehension tools',
-      'Vocabulary builder',
-      'AI essay feedback',
-      'Exam-style practice sets',
+      'Reading, grammar & writing modules',
+      'CBSE and ICSE board aligned',
+      'Digital SAT format compatible',
+      'AI Tutor with doubt resolution',
+      'Study Buddy matching',
     ],
     featured: false,
   },
@@ -99,34 +98,35 @@ const pricingPlans = [
     id: 'sat',
     slug: 'sat-prep',
     name: 'SAT Prep Pass',
-    classes: 'Classes 10–12',
-    desc: 'Adaptive SAT prep designed for top college scores.',
+    classes: 'Digital SAT · Diagnostic-first',
+    desc: 'Mirrors the Digital SAT adaptive format with retrieval practice calibrated to real question types and time pressure.',
     monthlyPrice: 999,
     yearlyMonthly: 799,
     features: [
-      'Complete SAT syllabus',
-      'Adaptive timed mock tests',
-      'Score improvement tracking',
-      'Verbal & math sections',
-      'College-ready benchmarks',
+      'Full Digital SAT syllabus coverage',
+      'Adaptive question sets per session',
+      '6 full-length mock tests included',
+      'AI Tutor with doubt resolution',
+      'Study Buddy matching',
     ],
     featured: false,
   },
 ];
 
 const parentConcerns = [
-  { concern: 'My child forgets everything within days of studying', solution: 'Spaced repetition schedules content exactly when your child needs to review for maximum retention' },
-  { concern: "Coaching fees keep increasing but results don't improve", solution: 'Our AI ensures every rupee spent on coaching becomes long-term knowledge, not forgotten lessons' },
-  { concern: "I can't tell if my child is actually studying", solution: 'Live dashboard shows study time, topics covered, quiz scores, and retention percentage daily' },
-  { concern: 'My child is stressed and losing confidence', solution: 'Personalized pace and progress celebrations build confidence as students see real improvement' },
-  { concern: 'Different coaching teachers explain things differently', solution: 'AI synthesizes all sources into one consistent, personalised learning path with no contradictions' },
+  { concern: 'Competency over content coverage', solution: 'Sessions target what a student can do with knowledge, not how many chapters they have covered.' },
+  { concern: 'Critical thinking over rote memorisation', solution: 'Every session is built on retrieval and application instead of the re-read-and-repeat cycle.' },
+  { concern: 'Reduced load, deeper understanding', solution: 'GAP Assessment focuses study time on genuine gaps so students go deeper on less.' },
+  { concern: 'Continuous and holistic assessment', solution: 'Progress Dashboard tracks retention and confidence week by week, not just term-end performance.' },
 ];
 
 const homeFaqs = [
-  { q: 'What is Blast Learning and how does it work?', a: 'Blast Learning is an AI-powered learning retention platform. Students upload their coaching notes or recordings, and our Metacognition Engine creates a spaced repetition study plan that helps 91% of students improve what they retain, compared to the 10% most students remember without structured revision.' },
-  { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Full Syllabus plan is designed for Classes 6-12, with Grade 10 as the primary focus this year, full syllabus coverage, and retention-first board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
-  { q: 'How is Blast Learning different from other coaching apps?', a: "Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn't just teach. It tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams." },
-  { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 14-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first two weeks." },
+  { q: 'Is Blast Learning a tutoring platform?', a: 'Blast Learning is not a tutoring platform. It is a self-study operating system built on retrieval practice, spaced repetition, and habits that turn instruction into memory.' },
+  { q: 'Which boards and exams does Blast Learning cover?', a: 'Blast supports CBSE and ICSE school tracks, plus JEE, NEET, and SAT-aligned preparation paths depending on course selection.' },
+  { q: 'How is the 14-day free trial structured?', a: 'Every course includes a full 14-day trial with core features enabled, and no credit card is required to begin.' },
+  { q: 'What is a Study Buddy and how are they matched?', a: 'A Study Buddy is a peer accountability partner working through aligned adaptive sessions, with progress tracked for both students.' },
+  { q: 'How much time does a student need to spend each day?', a: 'Most students spend 45 minutes to 1.5 hours per day depending on their syllabus load. The AI optimizes study time so every minute is spent on high-priority material.' },
+  { q: 'Do you offer a discount for enrolling in multiple courses?', a: 'Yes. Families enrolling in two or more courses receive a 20% discount on the second subscription and beyond.' },
 ];
 
 
@@ -176,9 +176,16 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title:
   return (
     <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '32px' }}>
       {eyebrow && (
-        <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
-          {eyebrow}
-        </span>
+        <div style={{ marginBottom: '16px' }}>
+          <svg width="80" height="16" viewBox="0 0 80 16" fill="none" style={{ display: 'inline-block', marginRight: '8px', verticalAlign: 'middle' }}>
+            <circle cx="8" cy="8" r="2.5" fill="#E08EC9" />
+            <circle cx="20" cy="8" r="2.5" fill="#E08EC9" />
+            <line x1="28" y1="8" x2="52" y2="8" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round" />
+          </svg>
+          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', verticalAlign: 'middle' }}>
+            {eyebrow}
+          </span>
+        </div>
       )}
       <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
         {title}
@@ -328,107 +335,6 @@ function ResultStatCard({ stat, index }: { stat: ResultStat; index: number }) {
 
 // ─── Program card with hover color wash + blob expansion ──────────────────────
 
-interface ProgramCardData {
-  id: string;
-  slug: string;
-  name: string;
-  tags: string[];
-  blobBg: string;
-  illus: React.ReactElement;
-}
-
-function ProgramCard({ prog }: { prog: ProgramCardData }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <Link
-      to={`/programs/${prog.slug}`}
-      aria-label={`Explore ${prog.name}`}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        display: 'block',
-        position: 'relative',
-        background: hovered ? prog.blobBg : '#FFFFFF',
-        border: '1.5px solid #E5E7EB',
-        borderRadius: '16px',
-        padding: '32px 32px 28px',
-        overflow: 'hidden',
-        transition: 'background 0.35s ease, box-shadow 0.35s ease',
-        boxShadow: hovered ? '0 8px 32px rgba(28,28,40,0.10)' : '0 2px 8px rgba(28,28,40,0.04)',
-        textDecoration: 'none',
-      }}
-    >
-      {/* Corner blob  -  expands on hover */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          width: hovered ? '260px' : '148px',
-          height: hovered ? '260px' : '148px',
-          borderRadius: '0 16px 0 100%',
-          background: prog.blobBg,
-          display: 'flex',
-          alignItems: 'flex-start',
-          justifyContent: 'flex-end',
-          padding: '20px 20px 0 0',
-          pointerEvents: 'none',
-          transition: 'width 0.45s cubic-bezier(0.34,1.56,0.64,1), height 0.45s cubic-bezier(0.34,1.56,0.64,1)',
-        }}
-      >
-        {prog.illus}
-      </div>
-
-      {/* Name */}
-      <h3 style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: '22px', color: '#1C1C28', margin: '0 0 18px', position: 'relative', zIndex: 1 }}>
-        {prog.name}
-      </h3>
-
-      {/* Tag pills */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '26px', position: 'relative', zIndex: 1 }}>
-        {prog.tags.map((tag) => (
-          <span
-            key={tag}
-            style={{
-              padding: '5px 14px',
-              borderRadius: '9999px',
-              border: '1.5px solid #E5E7EB',
-              fontSize: '13px',
-              color: '#374151',
-              fontFamily: 'Inter, sans-serif',
-              fontWeight: 500,
-              background: '#FFFFFF',
-            }}
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
-      {/* Explore label */}
-      <span
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '8px',
-          fontSize: '14px',
-          fontWeight: 600,
-          color: '#1C1C28',
-          fontFamily: 'Inter, sans-serif',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
-        Explore Program
-        <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '28px', height: '28px', borderRadius: '50%', border: '1.5px solid #E5E7EB', background: '#F9FAFB', flexShrink: 0 }}>
-          <ArrowRight size={13} />
-        </span>
-      </span>
-    </Link>
-  );
-}
-
 // ─── Home page ─────────────────────────────────────────────────────────────────
 export default function Home() {
   const [isYearly, setIsYearly] = useState(false);
@@ -471,20 +377,27 @@ export default function Home() {
               />
             </motion.div>
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ minWidth: 0 }}>
-              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>
-                The Science
-              </span>
+              <div style={{ marginBottom: '20px' }}>
+                <svg width="80" height="16" viewBox="0 0 80 16" fill="none" style={{ display: 'inline-block', marginRight: '8px', verticalAlign: 'middle' }}>
+                  <circle cx="8" cy="8" r="2.5" fill="#E08EC9" />
+                  <circle cx="20" cy="8" r="2.5" fill="#E08EC9" />
+                  <line x1="28" y1="8" x2="52" y2="8" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round" />
+                </svg>
+                <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', verticalAlign: 'middle' }}>
+                  Method & Science
+                </span>
+              </div>
               <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
-                Why Students Forget, and How We Fix It
+                The science that explains the method.
               </h2>
               <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px' }}>
-                Ebbinghaus's Forgetting Curve shows students lose 80% of what they learn within 24 hours. Blast Learning's spaced repetition system fights this directly, scheduling reviews at the exact moment your child is about to forget.
+                Ebbinghaus's Forgetting Curve is the starting point: students lose 80% of what they learn within 24 hours, not from lack of effort, but because the brain discards what it is not asked to use.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 {[
-                  { label: 'Spaced Repetition', desc: 'Reviews scheduled at optimal intervals, not random, not cramming.' },
-                  { label: 'Active Recall', desc: 'Smart quizzes that make your brain work harder, creating stronger memories.' },
-                  { label: 'Metacognition Tracking', desc: 'AI maps exactly where knowledge gaps exist and fills them before exams.' },
+                  { label: 'AI Tutor', desc: 'Personalised, adaptive, exam-aligned sessions where recall is hardest.' },
+                  { label: 'Study Buddy', desc: 'Peer accountability with shared progress to improve completion.' },
+                  { label: 'Mind Coach', desc: 'Focus, resilience, and agency trained like academic skills.' },
                 ].map(({ label, desc }) => (
                   <div key={label} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
                     <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#0FA8DC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
@@ -506,9 +419,9 @@ export default function Home() {
       <section id="how-it-works" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
-            eyebrow="Simple Process"
-            title="How Blast Learning Works"
-            subtitle="Three simple steps to turn everyday study into lasting retention."
+            eyebrow="Methodology"
+            title="The science that explains the method."
+            subtitle="Each step turns learning science into daily practice that improves retention over time."
           />
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '28px' }} className="grid-cols-3-md">
             {howItWorks.map(({ num, title, desc, accent, Visual }) => (
@@ -524,103 +437,9 @@ export default function Home() {
           </motion.div>
           <div style={{ textAlign: 'center' }}>
             <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
-              Start Your 14-Day Free Trial <ArrowRight size={16} />
+              Start the 14-Day Free Trial <ArrowRight size={16} />
             </Link>
           </div>
-        </div>
-      </section>
-
-      {/* ── Programs Showcase (white) ── */}
-      <section id="programs" className="section-pad" style={{ paddingTop: '44px', paddingBottom: '40px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.25rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', margin: '0 0 10px' }}>
-              Our Programs
-            </h2>
-            <p style={{ fontSize: '15px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '520px', margin: '0 auto', lineHeight: 1.65 }}>
-              Blast Learning is preparing students for every exam and learning goal. Find the one you are preparing for.
-            </p>
-          </div>
-
-          <div className="programs-cat-grid">
-            {([
-              {
-                id: 'cbse', slug: 'cbse-plan', name: 'CBSE Plan',
-                tags: ['Class 6-12', 'CBSE', 'Boards'],
-                blobBg: '#E0F5FC',
-                illus: (
-                  <svg width="76" height="76" viewBox="0 0 76 76" fill="none" aria-hidden="true">
-                    <rect x="10" y="20" width="24" height="34" rx="3" fill="#0FA8DC" opacity="0.65" />
-                    <rect x="38" y="20" width="24" height="34" rx="3" fill="#0FA8DC" />
-                    <rect x="34" y="18" width="4" height="38" rx="2" fill="#0891B2" />
-                    <rect x="14" y="27" width="15" height="2" rx="1" fill="white" opacity="0.55" />
-                    <rect x="14" y="32" width="12" height="2" rx="1" fill="white" opacity="0.55" />
-                    <rect x="14" y="37" width="15" height="2" rx="1" fill="white" opacity="0.55" />
-                    <rect x="42" y="27" width="15" height="2" rx="1" fill="white" opacity="0.55" />
-                    <rect x="42" y="32" width="12" height="2" rx="1" fill="white" opacity="0.55" />
-                    <rect x="42" y="37" width="15" height="2" rx="1" fill="white" opacity="0.55" />
-                  </svg>
-                ),
-              },
-              {
-                id: 'math', slug: 'math-genius', name: 'Math Genius',
-                tags: ['Class 8', 'Class 9', 'Class 10', 'Class 11', 'Class 12'],
-                blobBg: '#FEF3C7',
-                illus: (
-                  <svg width="76" height="76" viewBox="0 0 76 76" fill="none" aria-hidden="true">
-                    <rect x="16" y="10" width="44" height="56" rx="6" fill="#F59E0B" />
-                    <rect x="22" y="16" width="32" height="14" rx="3" fill="white" opacity="0.9" />
-                    <circle cx="28" cy="42" r="4.5" fill="white" opacity="0.75" />
-                    <circle cx="38" cy="42" r="4.5" fill="white" opacity="0.75" />
-                    <circle cx="48" cy="42" r="4.5" fill="white" opacity="0.75" />
-                    <circle cx="28" cy="55" r="4.5" fill="white" opacity="0.75" />
-                    <circle cx="38" cy="55" r="4.5" fill="white" opacity="0.75" />
-                    <circle cx="48" cy="55" r="4.5" fill="#D97706" opacity="0.85" />
-                  </svg>
-                ),
-              },
-              {
-                id: 'english', slug: 'english-mastery', name: 'English Mastery',
-                tags: ['All Classes'],
-                blobBg: '#D1FAE5',
-                illus: (
-                  <svg width="76" height="76" viewBox="0 0 76 76" fill="none" aria-hidden="true">
-                    <g transform="rotate(15 38 38)">
-                      <rect x="29" y="8" width="18" height="46" rx="5" fill="#22C55E" />
-                      <rect x="29" y="8" width="18" height="10" rx="5" fill="#86EFAC" />
-                      <rect x="33" y="10" width="10" height="5" rx="2.5" fill="#FDE68A" />
-                      <polygon points="29,54 47,54 38,68" fill="#15803D" />
-                    </g>
-                    <path d="M57 18 L59 13 L61 18 L66 20 L61 22 L59 27 L57 22 L52 20 Z" fill="#22C55E" opacity="0.45" />
-                  </svg>
-                ),
-              },
-              {
-                id: 'sat', slug: 'sat-prep', name: 'SAT Prep Pass',
-                tags: ['Class 10', 'Class 11', 'Class 12'],
-                blobBg: '#EDE9FE',
-                illus: (
-                  <svg width="76" height="76" viewBox="0 0 76 76" fill="none" aria-hidden="true">
-                    <polygon points="10,32 38,18 66,32 38,46" fill="#8B5CF6" />
-                    <ellipse cx="38" cy="32" rx="28" ry="8" fill="#7C3AED" opacity="0.4" />
-                    <rect x="35" y="44" width="6" height="18" rx="3" fill="#8B5CF6" />
-                    <ellipse cx="38" cy="62" rx="9" ry="4" fill="#7C3AED" opacity="0.6" />
-                    <circle cx="62" cy="30" r="4" fill="#A78BFA" />
-                    <line x1="62" y1="34" x2="62" y2="50" stroke="#A78BFA" strokeWidth="2.5" strokeLinecap="round" />
-                    <circle cx="62" cy="53" r="3.5" fill="#A78BFA" />
-                  </svg>
-                ),
-              },
-            ] as ProgramCardData[]).map((prog) => (
-              <ProgramCard key={prog.id} prog={prog} />
-            ))}
-          </div>
-
-          <p style={{ textAlign: 'center', marginTop: '28px', fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>
-            <Link to="/programs" style={{ color: '#0FA8DC', fontWeight: 600, textDecoration: 'none' }}>
-              See all programs with full pricing and features {'→'}
-            </Link>
-          </p>
         </div>
       </section>
 
@@ -630,14 +449,21 @@ export default function Home() {
 
           {/* Centered header + toggle */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '28px' }}>
-            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
-              Pricing
-            </span>
+            <div style={{ marginBottom: '16px' }}>
+              <svg width="80" height="16" viewBox="0 0 80 16" fill="none" style={{ display: 'inline-block', marginRight: '8px', verticalAlign: 'middle' }}>
+                <circle cx="8" cy="8" r="2.5" fill="#E08EC9" />
+                <circle cx="20" cy="8" r="2.5" fill="#E08EC9" />
+                <line x1="28" y1="8" x2="52" y2="8" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', verticalAlign: 'middle' }}>
+                Courses & Pricing
+              </span>
+            </div>
             <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', marginBottom: '12px' }}>
-              Simple, Transparent Pricing
+              Four courses. One underlying system.
             </h2>
             <p style={{ fontSize: '16px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px', maxWidth: '440px', margin: '0 auto 28px' }}>
-              All plans include a 14-day free trial. No credit card required.
+              All prices in INR and billed monthly. Every course includes a 14-day free trial.
             </p>
             {/* Monthly / Yearly toggle */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontSize: '14px', fontWeight: 500, fontFamily: 'Inter, sans-serif', color: '#1C1C28' }}>
@@ -763,9 +589,9 @@ export default function Home() {
 
           {/* Footer link */}
           <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} style={{ textAlign: 'center', marginTop: '32px', fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>
-            Not sure which plan is right?{' '}
+            Not sure which course is right?{' '}
             <Link to="/programs" style={{ color: '#0FA8DC', fontWeight: 600, textDecoration: 'none' }}>
-              Compare all programs →
+              Compare all courses →
             </Link>
           </motion.p>
         </div>
@@ -775,8 +601,8 @@ export default function Home() {
       <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
-            title="What Makes Us Different"
-            subtitle="Built around the science of memory, not just another content library. Tap any feature to see how it works."
+            title="The new curriculum changed the rules. Most platforms have not caught up."
+            subtitle="Since NEP 2020, students need competency-based progression, retrieval practice, and continuous assessment, not passive coverage."
           />
           <FeatureExplorer />
         </div>
@@ -786,8 +612,8 @@ export default function Home() {
       <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <SectionHeading
-            title="See Results Within One Month"
-            subtitle="Our students consistently report higher retention, improved exam performance, and greater confidence within their first 30 days."
+            title="What changes once retrieval replaces re-reading."
+            subtitle="Students start remembering what they studied last week, and that changes confidence, consistency, and outcomes." 
           />
 
           {/* Animated score gauge cards */}
@@ -802,7 +628,7 @@ export default function Home() {
           </div>
 
           <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
-            Start Your 14-Day Free Trial <ArrowRight size={16} />
+            Start the 14-Day Free Trial <ArrowRight size={16} />
           </Link>
         </div>
       </section>
@@ -811,12 +637,12 @@ export default function Home() {
       <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, textAlign: 'center', marginBottom: '32px', color: '#1C1C28', letterSpacing: '-0.025em' }}>
-            From Parent Worries to Real Results
+            NEP 2020 alignment in practice
           </motion.h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '32px' }} className="grid-cols-2-lg">
             <div style={{ minWidth: 0 }}>
               <h3 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Poppins, sans-serif', color: '#8E8EA0' }}>
-                <AlertCircle size={18} /> Common Parent Concerns
+                <AlertCircle size={18} /> NEP 2020 Principle
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {parentConcerns.map(({ concern }) => (
@@ -829,7 +655,7 @@ export default function Home() {
             </div>
             <div style={{ minWidth: 0 }}>
               <h3 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Poppins, sans-serif', color: '#0FA8DC' }}>
-                <CheckCircle size={18} /> Blast Learning Solutions
+                <CheckCircle size={18} /> How Blast Learning Implements It
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {parentConcerns.map(({ solution }) => (
@@ -850,17 +676,24 @@ export default function Home() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ minWidth: 0 }}>
-              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px' }}>
-                For Parents
+            <div style={{ marginBottom: '20px' }}>
+              <svg width="80" height="16" viewBox="0 0 80 16" fill="none" style={{ display: 'inline-block', marginRight: '8px', verticalAlign: 'middle' }}>
+                <circle cx="8" cy="8" r="2.5" fill="#E08EC9" />
+                <circle cx="20" cy="8" r="2.5" fill="#E08EC9" />
+                <line x1="28" y1="8" x2="52" y2="8" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', verticalAlign: 'middle' }}>
+                Parents & Students
               </span>
+            </div>
               <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
-                The Parent Dashboard: <span style={{ color: '#0FA8DC' }}>Stay Informed Every Day</span>
+                The thinking behind the product.
               </h2>
               <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px' }}>
-                Know exactly what your child is studying, how long they study, and how well they retain it. Our parent dashboard gives you real-time visibility without hovering over their shoulder.
+                Blast Learning is not a tutoring platform. It is the self-study operating system beneath every other educational investment a family makes, built on retrieval practice, spaced repetition, and the habits that turn instruction into memory.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
-                {['Real-time retention score tracking', 'Subject-wise performance breakdown', 'Weekly progress reports via WhatsApp', 'Alerts when your child misses study sessions'].map((item) => (
+                {['No credit card required for trial start', '14-day free trial on every course', 'CBSE · ICSE · JEE · NEET · SAT aligned', 'Weekly progress visibility for parents'].map((item) => (
                   <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#0FA8DC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                       <CheckCircle size={11} style={{ color: 'white' }} />
@@ -870,7 +703,7 @@ export default function Home() {
                 ))}
               </div>
               <Link className="cta cta-blue" to="/for-parents" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
-                Learn More for Parents <ArrowRight size={16} />
+                View all resources <ArrowRight size={16} />
               </Link>
             </motion.div>
 
@@ -895,24 +728,27 @@ export default function Home() {
 
       {/* ── Testimonials (light gray) ── */}
       <SharedTestimonialsSection
+        eyebrow="Parents & Students"
+        title="What changes once retrieval replaces re-reading."
+        subtitle="Students and parents describe what changed after shifting from passive review to retrieval-based study."
         row1={[
           {
             image: 'https://randomuser.me/api/portraits/women/44.jpg',
             name: 'Ananya Krishnan',
             role: 'Class 10, CBSE Plan · Bangalore',
-            text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.',
+            text: 'Within three weeks I could see my son actually remembering what he had studied the week before. That had never happened with tuition classes.',
           },
           {
             image: 'https://randomuser.me/api/portraits/men/32.jpg',
             name: 'Rahul Mehta',
             role: 'Class 12, CBSE Plan · Mumbai',
-            text: 'I was scoring 55 in Physics mock tests. Blast\'s Metacognition Engine identified my weak chapters within the first week and built a custom plan. Ended up with 81 in boards.',
+            text: 'The GAP Assessment was the first time someone told us specifically what was wrong with his maths, not just that he needed more practice.',
           },
           {
             image: 'https://randomuser.me/api/portraits/women/65.jpg',
             name: 'Kavitha Suresh',
             role: 'Class 9, English Mastery · Hyderabad',
-            text: 'Grammar used to be a nightmare. The AI broke it into tiny daily chunks and quizzed me at exactly the right time. I went from D grades to consistently getting As.',
+            text: 'I went in expecting to study for CBSE and ended up fully prepared for the SAT as well. The English Mastery Pass does exactly what it says.',
           },
           {
             image: 'https://randomuser.me/api/portraits/men/77.jpg',
@@ -962,10 +798,7 @@ export default function Home() {
       />
 
       {/* ── FAQ Preview (white) ── */}
-      <SharedFaqSection items={homeFaqs} title="Frequently Asked Questions" subtitle="Everything you need to know before you start your free trial." />
-
-      {/* ── Final CTA Banner (image) replace banner 4.webp later with a custom design ── */}
-      <SharedImageCtaSection src={ctaBanner} alt="Learn Smarter. Achieve More. Start your Blast Learning journey today." width={4095} height={774} />
+      <SharedFaqSection items={homeFaqs} title="Common questions, direct answers." subtitle="If your question is not here, the full FAQ page covers billing, syllabus details, Study Buddy matching, and technical requirements." linkLabel="View full FAQ page" />
     </div>
   );
 }

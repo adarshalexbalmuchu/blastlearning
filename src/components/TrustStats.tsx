@@ -294,10 +294,10 @@ export default function TrustStats() {
           style={{ marginBottom: '48px', textAlign: 'center' }}
         >
           <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
-            Tested before your child ever logs in.
+            The Research Behind the Product
           </span>
           <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
-            The Research Behind the Product
+            Tested before your child ever logs in.
           </h2>
           <p style={{ fontSize: '1.05rem', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6, maxWidth: '520px', margin: '14px auto 0' }}>
             Every feature in Blast Learning is grounded in published research on how memory actually works. We didn't guess. We reviewed the literature, partnered with the institutions that created it, and built around what the science says, not what's convenient to build.
