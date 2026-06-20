@@ -32,11 +32,7 @@ function SectionIntro({ eyebrow, title, subtitle }: SectionIntroProps) {
       transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
     >
       <div style={{ marginBottom: '16px' }}>
-        <svg width="80" height="16" viewBox="0 0 80 16" fill="none" style={{ display: 'inline-block', marginRight: '8px', verticalAlign: 'middle' }}>
-          <circle cx="8" cy="8" r="2.5" fill="#E08EC9" />
-          <circle cx="20" cy="8" r="2.5" fill="#E08EC9" />
-          <line x1="28" y1="8" x2="52" y2="8" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round" />
-        </svg>
+        <span style={{ color: '#E08EC9', fontSize: '13px', fontWeight: 600, marginRight: '8px', verticalAlign: 'middle' }}>• – </span>
         <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', verticalAlign: 'middle' }}>
           {eyebrow}
         </span>
