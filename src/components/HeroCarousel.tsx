@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import newBanner from '../assets/New banner.png';
+import newBanner from '../assets/Banner.png';
 
 // ─── Carousel ────────────────────────────────────────────────────────────────────
 export default function HeroCarousel() {
@@ -17,8 +17,8 @@ export default function HeroCarousel() {
         <img
           src={newBanner}
           alt="Blast Learning hero banner"
-          width={9000}
-          height={5068}
+          width={2048}
+          height={1092}
           loading="eager"
           decoding="sync"
           style={{ width: '100%', height: 'auto', display: 'block' }}

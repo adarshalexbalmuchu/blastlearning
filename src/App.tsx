@@ -44,8 +44,6 @@ function ScrollToTop() {
 }
 
 function AppLayout() {
-  const location = useLocation();
-
   return (
     <>
       {/* Skip navigation for screen readers */}
@@ -68,7 +66,7 @@ function AppLayout() {
 
       <main
         id="main-content"
-        style={{ paddingTop: location.pathname === '/' ? '0' : '64px', paddingBottom: '0' }}
+        style={{ paddingTop: '64px', paddingBottom: '0' }}
         className="pb-20 md:pb-0"
       >
         <ErrorBoundary>

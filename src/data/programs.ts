@@ -585,7 +585,7 @@ export const programsData: ProgramData[] = [
     ],
     curriculum: [
       {
-        title: 'Reading and Writing — Inference and Rhetoric',
+        title: 'Reading and Writing  -  Inference and Rhetoric',
         topics: [
           'Information and Ideas: main purpose, central claims, details',
           'Craft and Structure: word meaning in context, text structure',
@@ -598,7 +598,7 @@ export const programsData: ProgramData[] = [
         ],
       },
       {
-        title: 'Mathematics — Pattern and Application',
+        title: 'Mathematics  -  Pattern and Application',
         topics: [
           'Algebra: linear equations, inequalities, systems',
           'Advanced Math: quadratics, polynomials, functions, equivalent expressions',

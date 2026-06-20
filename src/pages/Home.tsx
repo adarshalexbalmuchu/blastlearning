@@ -358,7 +358,7 @@ function ProgramCard({ prog }: { prog: ProgramCardData }) {
         textDecoration: 'none',
       }}
     >
-      {/* Corner blob — expands on hover */}
+      {/* Corner blob  -  expands on hover */}
       <div
         aria-hidden="true"
         style={{
@@ -446,7 +446,7 @@ export default function Home() {
       </div>
 
       {/* ── Trust stats: overlap hero bottom ── */}
-      <div style={{ position: 'relative', zIndex: 2, marginTop: 'clamp(-56px, -5vw, -20px)' }}>
+      <div style={{ position: 'relative', zIndex: 2, marginTop: 0 }}>
         <TrustStats />
       </div>
 

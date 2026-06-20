@@ -212,10 +212,11 @@ interface StatItem {
 }
 
 const STATS: StatItem[] = [
-  { value: '4,999+', label: 'Students Enrolled',    bg: '#FDF3E7', accent: '#D97706', Char: GradStudent },
-  { value: '4.8/5',  label: 'Parent Satisfaction',  bg: '#FCEEF1', accent: '#F03C6F', Char: RatingStar  },
-  { value: '91%',    label: 'Academic Improvement', bg: '#E7F6FB', accent: '#0FA8DC', Char: GrowthRocket },
-  { value: '49+',    label: 'Cities Across India',  bg: '#F0EDFC', accent: '#7C3AED', Char: MapPinChar  },
+  { value: '500+', label: 'Peer-reviewed studies & patents', bg: '#FDF3E7', accent: '#D97706', Char: GradStudent },
+  { value: '100,000+', label: 'Students taught', bg: '#FCEEF1', accent: '#F03C6F', Char: RatingStar },
+  { value: '28', label: 'Countries of deployment', bg: '#E7F6FB', accent: '#0FA8DC', Char: GrowthRocket },
+  { value: '2', label: 'Institutional partners (IBM · McGraw-Hill)', bg: '#F0EDFC', accent: '#7C3AED', Char: MapPinChar },
+  { value: 'NEP 2020', label: 'Curriculum alignment', bg: '#EAF7EE', accent: '#059669', Char: GrowthRocket },
 ];
 
 // ── Card ──────────────────────────────────────────────────────────────────────
@@ -293,17 +294,17 @@ export default function TrustStats() {
           style={{ marginBottom: '48px', textAlign: 'center' }}
         >
           <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
-            By the numbers
+            Tested before your child ever logs in.
           </span>
           <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
-            A Platform Trusted by Families Across India
+            The Research Behind the Product
           </h2>
           <p style={{ fontSize: '1.05rem', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6, maxWidth: '520px', margin: '14px auto 0' }}>
-            The numbers speak for themselves. Hover a card to meet the story behind it.
+            Every feature in Blast Learning is grounded in published research on how memory actually works. We didn't guess. We reviewed the literature, partnered with the institutions that created it, and built around what the science says, not what's convenient to build.
           </p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '20px', marginBottom: '56px' }} className="grid-cols-4-lg">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', marginBottom: '56px' }} className="grid-cols-2-sm grid-cols-3-lg">
           {STATS.map((s, i) => (
             <StatCard key={s.label} stat={s} index={i} inView={inView} reduce={reduce} />
           ))}
