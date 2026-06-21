@@ -1,19 +1,16 @@
 import { Link } from 'react-router-dom';
-import { motion, type Variants, useInView, useMotionValue, useTransform, animate } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import {
   ArrowRight,
-  CheckCircle, AlertCircle,
+  CheckCircle,
 } from 'lucide-react';
-import scienceVisual from '../assets/expressive-young-girl-posing-studio.jpg';
 import HeroCarousel from '../components/HeroCarousel';
-import DashboardMockup from '../components/DashboardMockup';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
 import BrandWhoosh from '../components/BrandWhoosh';
-import ResultsScoreCards from '../components/ResultsScoreCards';
 import HowItWorksCard, { UploadVisual, AIVisual, MasteryVisual } from '../components/HowItWorksCard';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { useSEO } from '../hooks/useSEO';
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
@@ -113,13 +110,6 @@ const pricingPlans = [
   },
 ];
 
-const parentConcerns = [
-  { concern: 'Competency over content coverage', solution: 'Sessions target what a student can do with knowledge, not how many chapters they have covered.' },
-  { concern: 'Critical thinking over rote memorisation', solution: 'Every session is built on retrieval and application instead of the re-read-and-repeat cycle.' },
-  { concern: 'Reduced load, deeper understanding', solution: 'GAP Assessment focuses study time on genuine gaps so students go deeper on less.' },
-  { concern: 'Continuous and holistic assessment', solution: 'Progress Dashboard tracks retention and confidence week by week, not just term-end performance.' },
-];
-
 const homeFaqs = [
   { q: 'Is Blast Learning a tutoring platform?', a: 'Blast Learning is not a tutoring platform. It is a self-study operating system built on retrieval practice, spaced repetition, and habits that turn instruction into memory.' },
   { q: 'Which boards and exams does Blast Learning cover?', a: 'Blast supports CBSE and ICSE school tracks, plus JEE, NEET, and SAT-aligned preparation paths depending on course selection.' },
@@ -129,37 +119,44 @@ const homeFaqs = [
   { q: 'Do you offer a discount for enrolling in multiple courses?', a: 'Yes. Families enrolling in two or more courses receive a 20% discount on the second subscription and beyond.' },
 ];
 
-
-// ─── Framer Motion stat counter (no GSAP) ──────────────────────────────────────
-function StatCounter({ num, displayFn, label, color = '#1C1C28' }: { num: number; displayFn: (v: number) => string; label: string; color?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-10% 0px' });
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (v) => displayFn(Math.round(v)));
-
-  useEffect(() => {
-    if (!inView) return;
-    const ctrl = animate(count, num, { duration: 1.8, ease: [0.16, 1, 0.3, 1] });
-    return () => ctrl.stop();
-  }, [inView, num, count]);
-
-  return (
-    <div ref={ref} className="text-center">
-      <motion.div style={{
-        fontSize: 'clamp(1.75rem, 4vw, 2.75rem)',
-        fontWeight: 800,
-        marginBottom: '6px',
-        fontFamily: 'Poppins, sans-serif',
-        color,
-        letterSpacing: '-0.03em',
-        lineHeight: 1,
-      }}>
-        {rounded}
-      </motion.div>
-      <div style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', lineHeight: 1.5, marginTop: '8px' }}>{label}</div>
-    </div>
-  );
-}
+const resourceArticles = [
+  {
+    tag: 'GUIDE',
+    readTime: '8 min read',
+    title: "The Parent's Guide to Self-Study",
+    desc: 'How to set up a home environment where retrieval practice actually happens without turning every evening into a battle.',
+  },
+  {
+    tag: 'RESEARCH',
+    readTime: '6 min read',
+    title: "Why Re-Reading Doesn't Work",
+    desc: 'A plain-language summary of 50 years of cognitive science on why passive review fails and what to do instead.',
+  },
+  {
+    tag: 'GUIDE',
+    readTime: '5 min read',
+    title: 'NEP 2020 and Competency-Based Learning',
+    desc: 'What the National Education Policy actually asks of students and how spaced repetition maps directly to its learning outcomes.',
+  },
+  {
+    tag: 'RESEARCH',
+    readTime: '7 min read',
+    title: 'The GAP Assessment Methodology',
+    desc: 'How Blast Learning\'s diagnostic isolates sub-topic gaps rather than chapter-level gaps and why the difference matters for results.',
+  },
+  {
+    tag: 'GUIDE',
+    readTime: '4 min read',
+    title: 'Study Buddy: The Accountability Effect',
+    desc: 'Peer accountability raises completion rates by 40%. Here is the research behind Study Buddy pairing and how we implement it.',
+  },
+  {
+    tag: 'RESEARCH',
+    readTime: '6 min read',
+    title: 'Spaced Repetition for the CBSE Calendar',
+    desc: 'A practical schedule mapping Blast Learning sessions to the CBSE academic year, term exams, and board exam revision windows.',
+  },
+];
 
 // ─── Scroll-reveal variants ─────────────────────────────────────────────────────
 const fadeUp: Variants = {
@@ -195,140 +192,6 @@ function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title:
   );
 }
 
-// ─── Result Stat Illustrations ──────────────────────────────────────────────────
-
-function RetentionMultiplierIllus({ color }: { color: string }) {
-  return (
-    <svg width="150" height="150" viewBox="0 0 150 150" fill="none" aria-hidden="true">
-      <defs>
-        <linearGradient id="rm-bar" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor={color} />
-          <stop offset="100%" stopColor={color} stopOpacity="0.52" />
-        </linearGradient>
-      </defs>
-      <ellipse cx="75" cy="144" rx="46" ry="7" fill={color} opacity="0.13" />
-      <rect x="18" y="96" width="28" height="36" rx="8" fill={color} opacity="0.22" />
-      <rect x="61" y="68" width="28" height="64" rx="8" fill={color} opacity="0.52" />
-      <rect x="104" y="36" width="28" height="96" rx="8" fill="url(#rm-bar)" />
-      <rect x="107" y="39" width="9" height="24" rx="4.5" fill="white" opacity="0.28" />
-      <path d="M32 84 L65 58 L108 34" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="3 2" opacity="0.55" />
-      <rect x="90" y="18" width="44" height="26" rx="10" fill={color} />
-      <text x="112" y="34" textAnchor="middle" fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="14" fill="white">3×</text>
-      <path d="M18 28 L20 22 L22 28 L28 30 L22 32 L20 38 L18 32 L12 30 Z" fill={color} opacity="0.58" />
-      <circle cx="50" cy="118" r="3" fill={color} opacity="0.25" />
-      <circle cx="140" cy="80" r="2.5" fill={color} opacity="0.28" />
-    </svg>
-  );
-}
-
-function GradeImprovementIllus({ color }: { color: string }) {
-  return (
-    <svg width="150" height="150" viewBox="0 0 150 150" fill="none" aria-hidden="true">
-      <ellipse cx="75" cy="144" rx="46" ry="7" fill={color} opacity="0.13" />
-      <rect x="35" y="46" width="80" height="86" rx="12" fill="white" opacity="0.95" />
-      <rect x="35" y="46" width="80" height="26" rx="12" fill={color} opacity="0.85" />
-      <rect x="35" y="60" width="80" height="12" fill={color} opacity="0.85" />
-      <rect x="47" y="80" width="38" height="4" rx="2" fill={color} opacity="0.2" />
-      <rect x="47" y="90" width="30" height="4" rx="2" fill={color} opacity="0.15" />
-      <rect x="47" y="100" width="34" height="4" rx="2" fill={color} opacity="0.18" />
-      <rect x="90" y="74" width="30" height="30" rx="8" fill={color} />
-      <rect x="90" y="74" width="30" height="30" rx="8" fill="white" opacity="0.12" />
-      <text x="105" y="93" textAnchor="middle" fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="14" fill="white">A+</text>
-      <path d="M75 38 L75 16 M68 24 L75 16 L82 24" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M18 42 L20 36 L22 42 L28 44 L22 46 L20 52 L18 46 L12 44 Z" fill={color} opacity="0.6" />
-      <path d="M124 22 L125.5 18 L127 22 L131 23.5 L127 25 L125.5 29 L124 25 L120 23.5 Z" fill={color} opacity="0.5" />
-      <circle cx="136" cy="56" r="3.5" fill={color} opacity="0.3" />
-      <circle cx="18" cy="72" r="2.5" fill={color} opacity="0.28" />
-    </svg>
-  );
-}
-
-function CalendarResultIllus({ color }: { color: string }) {
-  return (
-    <svg width="150" height="150" viewBox="0 0 150 150" fill="none" aria-hidden="true">
-      <ellipse cx="75" cy="144" rx="46" ry="7" fill={color} opacity="0.13" />
-      <rect x="28" y="42" width="94" height="86" rx="14" fill="white" opacity="0.95" />
-      <rect x="28" y="42" width="94" height="28" rx="14" fill={color} opacity="0.88" />
-      <rect x="28" y="56" width="94" height="14" fill={color} opacity="0.88" />
-      <rect x="46" y="30" width="10" height="18" rx="5" fill={color} opacity="0.7" />
-      <rect x="94" y="30" width="10" height="18" rx="5" fill={color} opacity="0.7" />
-      <text x="75" y="62" textAnchor="middle" fontFamily="Poppins, sans-serif" fontWeight="800" fontSize="17" fill="white">30</text>
-      {Array.from({ length: 18 }, (_, i) => (
-        <rect key={i} x={38 + (i % 6) * 14} y={82 + Math.floor(i / 6) * 12} width="9" height="8" rx="2.5" fill={color} opacity={i < 12 ? 0.28 : 0.1} />
-      ))}
-      <circle cx="75" cy="107" r="20" fill={color} opacity="0.9" />
-      <path d="M65 107 L71 114 L87 99" stroke="white" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M18 34 L20 28 L22 34 L28 36 L22 38 L20 44 L18 38 L12 36 Z" fill={color} opacity="0.56" />
-      <path d="M126 16 L127.5 12 L129 16 L133 17.5 L129 19 L127.5 23 L126 19 L122 17.5 Z" fill={color} opacity="0.52" />
-      <circle cx="136" cy="60" r="3" fill={color} opacity="0.3" />
-      <circle cx="14" cy="68" r="2.5" fill={color} opacity="0.28" />
-    </svg>
-  );
-}
-
-type IllusFC = (props: { color: string }) => React.ReactElement;
-
-interface ResultStat {
-  num: number;
-  displayFn: (v: number) => string;
-  label: string;
-  accent: string;
-  bg: string;
-  Illus: IllusFC;
-}
-
-const RESULT_STATS: ResultStat[] = [
-  { num: 3, displayFn: (v) => `${v}x`, label: 'More retention than traditional study', accent: '#0FA8DC', bg: '#E7F6FB', Illus: RetentionMultiplierIllus },
-  { num: 91, displayFn: (v) => `${v}%`, label: 'Students improve their grades', accent: '#F59E0B', bg: '#FDF3E7', Illus: GradeImprovementIllus },
-  { num: 30, displayFn: (v) => `${v}`, label: 'Days average to see results', accent: '#8B5CF6', bg: '#F0EDFC', Illus: CalendarResultIllus },
-];
-
-function ResultStatCard({ stat, index }: { stat: ResultStat; index: number }) {
-  const [hovered, setHovered] = useState(false);
-  const { Illus } = stat;
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      style={{
-        position: 'relative',
-        overflow: 'hidden',
-        background: stat.bg,
-        borderRadius: '20px',
-        minHeight: '248px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        textAlign: 'center',
-        cursor: 'default',
-        boxShadow: hovered ? '0 20px 46px rgba(28,28,40,0.12)' : '0 2px 10px rgba(28,28,40,0.04)',
-        transition: 'box-shadow 0.35s ease',
-      }}
-    >
-      <motion.div
-        animate={hovered ? { y: -36 } : { y: 0 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 26 }}
-        style={{ position: 'relative', zIndex: 2 }}
-      >
-        <StatCounter num={stat.num} displayFn={stat.displayFn} label={stat.label} color={stat.accent} />
-      </motion.div>
-      <motion.div
-        initial={false}
-        animate={hovered ? { y: 0, opacity: 1 } : { y: 160, opacity: 0 }}
-        transition={{ type: 'spring', stiffness: 240, damping: 20 }}
-        style={{ position: 'absolute', bottom: '-8px', left: 0, right: 0, display: 'flex', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}
-      >
-        <Illus color={stat.accent} />
-      </motion.div>
-    </motion.div>
-  );
-}
-
 // ─── Program card with hover color wash + blob expansion ──────────────────────
 
 // ─── Home page ─────────────────────────────────────────────────────────────────
@@ -352,90 +215,14 @@ export default function Home() {
         <TrustStats />
       </div>
 
-      {/* ── Science of Retention (white) ── */}
-      <section className="section-pad" style={{ position: 'relative', overflow: 'hidden', paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
-        <BrandWhoosh opacity={0.18} style={{ width: '420px', height: '420px', bottom: '-40px', right: '-40px' }} />
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
-            <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ minWidth: 0 }}>
-              <img
-                src={scienceVisual}
-                alt="Student thinking through a study problem"
-                loading="lazy"
-                decoding="async"
-                style={{
-                  width: '100%',
-                  aspectRatio: '16 / 10',
-                  objectFit: 'cover',
-                  objectPosition: 'center',
-                  display: 'block',
-                }}
-              />
-            </motion.div>
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ minWidth: 0 }}>
-              <div style={{ marginBottom: '20px' }}>
-                <svg width="80" height="16" viewBox="0 0 80 16" fill="none" style={{ display: 'inline-block', marginRight: '8px', verticalAlign: 'middle' }}>
-                  <circle cx="8" cy="8" r="2.5" fill="#E08EC9" />
-                  <circle cx="20" cy="8" r="2.5" fill="#E08EC9" />
-                  <line x1="28" y1="8" x2="52" y2="8" stroke="#8B5CF6" strokeWidth="3" strokeLinecap="round" />
-                </svg>
-                <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', verticalAlign: 'middle' }}>
-                  Method & Science
-                </span>
-              </div>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
-                The science that explains the method.
-              </h2>
-              <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px' }}>
-                Ebbinghaus's Forgetting Curve is the starting point: students lose 80% of what they learn within 24 hours, not from lack of effort, but because the brain discards what it is not asked to use.
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                {[
-                  { label: 'AI Tutor', desc: 'Personalised, adaptive, exam-aligned sessions where recall is hardest.' },
-                  { label: 'Study Buddy', desc: 'Peer accountability with shared progress to improve completion.' },
-                  { label: 'Mind Coach', desc: 'Focus, resilience, and agency trained like academic skills.' },
-                ].map(({ label, desc }) => (
-                  <div key={label} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                    <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#0FA8DC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
-                      <CheckCircle size={11} style={{ color: 'white' }} />
-                    </div>
-                    <div>
-                      <span style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>{label}</span>
-                      <span style={{ fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>: {desc}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── How It Works (light gray) ── */}
-      <section id="how-it-works" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#F9FAFB' }}>
+      {/* ── Features: expandable explorer (white) ── */}
+      <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
-            eyebrow="Methodology"
-            title="The science that explains the method."
-            subtitle="Each step turns learning science into daily practice that improves retention over time."
+            title="The new curriculum changed the rules. Most platforms have not caught up."
+            subtitle="Since NEP 2020, students need competency-based progression, retrieval practice, and continuous assessment, not passive coverage."
           />
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '28px' }} className="grid-cols-3-md">
-            {howItWorks.map(({ num, title, desc, accent, Visual }) => (
-              <motion.div
-                key={num}
-                variants={fadeUp}
-                whileHover={{ y: -6 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              >
-                <HowItWorksCard title={title} desc={desc} accent={accent} Visual={Visual} />
-              </motion.div>
-            ))}
-          </motion.div>
-          <div style={{ textAlign: 'center' }}>
-            <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
-              Start the 14-Day Free Trial <ArrowRight size={16} />
-            </Link>
-          </div>
+          <FeatureExplorer />
         </div>
       </section>
 
@@ -589,130 +376,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Features: expandable explorer (light gray) ── */}
-      <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
+      {/* ── How It Works (light gray) ── */}
+      <section id="how-it-works" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
-            title="The new curriculum changed the rules. Most platforms have not caught up."
-            subtitle="Since NEP 2020, students need competency-based progression, retrieval practice, and continuous assessment, not passive coverage."
+            eyebrow="Methodology"
+            title="The science that explains the method."
+            subtitle="Each step turns learning science into daily practice that improves retention over time."
           />
-          <FeatureExplorer />
-        </div>
-      </section>
-
-      {/* ── Results Banner (white) ── */}
-      <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
-          <SectionHeading
-            title="What changes once retrieval replaces re-reading."
-            subtitle="Students start remembering what they studied last week, and that changes confidence, consistency, and outcomes." 
-          />
-
-          {/* Animated score gauge cards */}
-          <div style={{ marginBottom: '28px', textAlign: 'left' }}>
-            <ResultsScoreCards />
-          </div>
-
-          <div className="grid-cols-3-sm" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', maxWidth: '720px', margin: '0 auto 48px' }}>
-            {RESULT_STATS.map((s, i) => (
-              <ResultStatCard key={s.label} stat={s} index={i} />
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '28px' }} className="grid-cols-3-md">
+            {howItWorks.map(({ num, title, desc, accent, Visual }) => (
+              <motion.div
+                key={num}
+                variants={fadeUp}
+                whileHover={{ y: -6 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              >
+                <HowItWorksCard title={title} desc={desc} accent={accent} Visual={Visual} />
+              </motion.div>
             ))}
-          </div>
-
-          <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
-            Start the 14-Day Free Trial <ArrowRight size={16} />
-          </Link>
-        </div>
-      </section>
-
-      {/* ── Parent Concerns / Solutions ── */}
-      <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#F9FAFB' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.h2 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, textAlign: 'center', marginBottom: '32px', color: '#1C1C28', letterSpacing: '-0.025em' }}>
-            NEP 2020 alignment in practice
-          </motion.h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '32px' }} className="grid-cols-2-lg">
-            <div style={{ minWidth: 0 }}>
-              <h3 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Poppins, sans-serif', color: '#8E8EA0' }}>
-                <AlertCircle size={18} /> NEP 2020 Principle
-              </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {parentConcerns.map(({ concern }) => (
-                  <div key={concern} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '14px 16px', borderRadius: '12px', background: '#FFFFFF', border: '1px solid #ECECF1', borderLeft: '3px solid #DCDCE5' }}>
-                    <AlertCircle size={15} style={{ color: '#8E8EA0', flexShrink: 0, marginTop: '1px' }} />
-                    <p style={{ fontSize: '14px', color: '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.5 }}>{concern}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div style={{ minWidth: 0 }}>
-              <h3 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '8px', fontFamily: 'Poppins, sans-serif', color: '#0FA8DC' }}>
-                <CheckCircle size={18} /> How Blast Learning Implements It
-              </h3>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {parentConcerns.map(({ solution }) => (
-                  <div key={solution} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '14px 16px', borderRadius: '12px', background: '#FFFFFF', border: '1px solid #ECECF1', borderLeft: '3px solid #0FA8DC' }}>
-                    <CheckCircle size={15} style={{ color: '#0FA8DC', flexShrink: 0, marginTop: '1px' }} />
-                    <p style={{ fontSize: '14px', color: '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.5 }}>{solution}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+          </motion.div>
+          <div style={{ textAlign: 'center' }}>
+            <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
+              Start the 14-Day Free Trial <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ── Parent Dashboard Showcase (white) ── */}
-      <section id="parent-dashboard" className="section-pad" style={{ position: 'relative', overflow: 'hidden', paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
-        <BrandWhoosh opacity={0.15} style={{ width: '400px', height: '400px', top: '-30px', left: '-40px', transform: 'scaleX(-1)' }} />
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }} className="grid-cols-2-lg">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ minWidth: 0 }}>
-            <div style={{ marginBottom: '20px' }}>
-              <span style={{ color: '#E08EC9', fontSize: '13px', fontWeight: 600, marginRight: '8px', verticalAlign: 'middle' }}>• – </span>
-              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', verticalAlign: 'middle' }}>
-                Parents & Students
-              </span>
-            </div>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', marginBottom: '20px', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
-                The thinking behind the product.
-              </h2>
-              <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px' }}>
-                Blast Learning is not a tutoring platform. It is the self-study operating system beneath every other educational investment a family makes, built on retrieval practice, spaced repetition, and the habits that turn instruction into memory.
-              </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '28px' }}>
-                {['No credit card required for trial start', '14-day free trial on every course', 'CBSE · ICSE · JEE · NEET · SAT aligned', 'Weekly progress visibility for parents'].map((item) => (
-                  <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <div style={{ width: '20px', height: '20px', borderRadius: '50%', background: '#0FA8DC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                      <CheckCircle size={11} style={{ color: 'white' }} />
-                    </div>
-                    <span style={{ fontSize: '14px', color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>{item}</span>
-                  </div>
-                ))}
-              </div>
-              <Link className="cta cta-blue" to="/for-parents" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
-                View all resources <ArrowRight size={16} />
-              </Link>
-            </motion.div>
-
-            <div style={{ minWidth: 0, width: '100%', position: 'relative' }}>
-              <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} style={{ perspective: '1000px' }}>
-                <div style={{ transform: 'rotateY(-5deg)', willChange: 'transform' }}>
-                  <DashboardMockup />
-                </div>
-              </motion.div>
-              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }} className="float-card" style={{ position: 'absolute', top: '-16px', right: '-16px', background: '#FFFFFF', borderRadius: '12px', padding: '10px 14px', boxShadow: '0 8px 28px rgba(28,28,40,0.1)', border: '1px solid #ECECF1' }}>
-                <p style={{ fontSize: '12px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>Study session complete</p>
-                <p style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>1h 42m · just now</p>
-              </motion.div>
-              <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }} className="float-card" style={{ position: 'absolute', bottom: '-16px', left: '-16px', background: '#0FA8DC', borderRadius: '12px', padding: '10px 14px', boxShadow: '0 8px 28px rgba(15,168,220,0.25)' }}>
-                <p style={{ fontSize: '12px', fontWeight: 600, color: 'white', fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>Math retention +8%</p>
-                <p style={{ fontSize: '10px', color: 'rgba(255,255,255,0.7)', fontFamily: 'Inter, sans-serif' }}>This week</p>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ── Testimonials (light gray) ── */}
       <SharedTestimonialsSection
@@ -784,6 +475,51 @@ export default function Home() {
           },
         ]}
       />
+
+      {/* ── Resources (white) ── */}
+      <section id="resources" className="section-pad" style={{ position: 'relative', overflow: 'hidden', paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
+        <BrandWhoosh opacity={0.15} style={{ width: '400px', height: '400px', top: '-30px', left: '-40px', transform: 'scaleX(-1)' }} />
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <SectionHeading
+            eyebrow="Resources"
+            title="The thinking behind the product."
+            subtitle="Research summaries and practical guides for parents and students who want to understand why the method works."
+          />
+          <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+            <Link className="cta cta-blue" to="/library" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
+              View all resources <ArrowRight size={16} />
+            </Link>
+          </div>
+          <div className="grid-cols-3-md" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '18px' }}>
+            {resourceArticles.map((article) => (
+              <motion.article
+                key={article.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45 }}
+                style={{
+                  background: '#FFFFFF',
+                  border: '1px solid #ECECF1',
+                  borderRadius: '16px',
+                  padding: '18px',
+                  boxShadow: '0 2px 12px rgba(28,28,40,0.04)',
+                }}
+              >
+                <p style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '10px' }}>
+                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#0FA8DC', fontFamily: 'Inter, sans-serif' }}>{article.tag}</span>
+                  <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{article.readTime}</span>
+                </p>
+                <h3 style={{ fontSize: '16px', color: '#1C1C28', fontFamily: 'Poppins, sans-serif', marginBottom: '10px' }}>{article.title}</h3>
+                <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '12px' }}>{article.desc}</p>
+                <Link to="/library" style={{ color: '#0FA8DC', fontWeight: 600, fontSize: '13px', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
+                  Read more
+                </Link>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── FAQ Preview (white) ── */}
       <SharedFaqSection items={homeFaqs} title="Common questions, direct answers." subtitle="If your question is not here, the full FAQ page covers billing, syllabus details, Study Buddy matching, and technical requirements." linkLabel="View full FAQ page" />

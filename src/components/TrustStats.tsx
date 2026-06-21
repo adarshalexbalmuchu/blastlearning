@@ -87,10 +87,6 @@ function RatingStar({ color }: { color: string }) {
           <stop offset="0%" stopColor={color} />
           <stop offset="100%" stopColor={color} stopOpacity="0.82" />
         </linearGradient>
-        <filter id="rs-glow" x="-30%" y="-30%" width="160%" height="160%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
-          <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
-        </filter>
       </defs>
       <ellipse cx="75" cy="144" rx="46" ry="7" fill={color} opacity="0.13" />
       {cxs.map((cx) => (
@@ -99,7 +95,6 @@ function RatingStar({ color }: { color: string }) {
       {cxs.map((cx) => (
         <polygon key={cx} points={starPts(cx, 54, 14, 5.5)} fill="white" opacity="0.16" />
       ))}
-      <polygon points={starPts(71, 54, 14, 5.5)} fill={color} filter="url(#rs-glow)" opacity="0.35" />
       <rect x="30" y="84" width="90" height="42" rx="14" fill="url(#rs-badge)" />
       <rect x="30" y="84" width="90" height="42" rx="14" fill="white" opacity="0.1" />
       <path d="M30 98 Q75 92 120 98 L120 84 Q75 80 30 84 Z" fill="white" opacity="0.1" />
@@ -165,10 +160,6 @@ function MapPinChar({ color }: { color: string }) {
           <stop offset="0%" stopColor={color} />
           <stop offset="100%" stopColor={color} stopOpacity="0.78" />
         </linearGradient>
-        <radialGradient id="mp-glow" cx="50%" cy="30%" r="60%">
-          <stop offset="0%" stopColor={color} stopOpacity="0.22" />
-          <stop offset="100%" stopColor={color} stopOpacity="0" />
-        </radialGradient>
       </defs>
       <ellipse cx="75" cy="144" rx="46" ry="7" fill={color} opacity="0.13" />
       <line x1="75" y1="70" x2="32" y2="38"  stroke={color} strokeWidth="1.5" strokeDasharray="4 3" opacity="0.28" />
@@ -187,7 +178,6 @@ function MapPinChar({ color }: { color: string }) {
       <path d="M122 80 C114 80 107 87 107 95 C107 106 122 120 122 120 C122 120 137 106 137 95 C137 87 130 80 122 80 Z" fill={color} opacity="0.52" />
       <circle cx="122" cy="94" r="7" fill="white" opacity="0.38" />
       <circle cx="122" cy="94" r="3" fill={color} opacity="0.68" />
-      <circle cx="75" cy="52" r="32" fill="url(#mp-glow)" />
       <path d="M75 16 C57 16 43 30 43 48 C43 72 75 100 75 100 C75 100 107 72 107 48 C107 30 93 16 75 16 Z" fill="url(#mp-pin)" />
       <path d="M75 16 C57 16 43 30 43 48 C43 72 75 100 75 100 C75 100 107 72 107 48 C107 30 93 16 75 16 Z" fill="white" opacity="0.08" />
       <circle cx="75" cy="46" r="16" fill="white" />
