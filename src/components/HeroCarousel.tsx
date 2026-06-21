@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import newBanner from '../assets/Banner.png';
+import bannerOne from '../assets/Banner 1 (clean).png';
 
 // ─── Carousel ────────────────────────────────────────────────────────────────────
 export default function HeroCarousel() {
@@ -15,7 +15,7 @@ export default function HeroCarousel() {
     >
       <Link to="/programs" aria-label="View all programs" style={{ display: 'block', cursor: 'pointer', lineHeight: 0 }}>
         <img
-          src={newBanner}
+          src={bannerOne}
           alt="Blast Learning hero banner"
           width={2048}
           height={1092}
