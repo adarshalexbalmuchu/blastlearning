@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import bannerOne from '../assets/Banner 1 (clean).png';
+import bannerOne from '../assets/Hero banner.png';
 
 // ─── Carousel ────────────────────────────────────────────────────────────────────
 export default function HeroCarousel() {
