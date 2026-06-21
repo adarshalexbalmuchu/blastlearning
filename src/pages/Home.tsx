@@ -7,7 +7,6 @@ import {
 import HeroCarousel from '../components/HeroCarousel';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
-import BrandWhoosh from '../components/BrandWhoosh';
 import HowItWorksCard, { UploadVisual, AIVisual, MasteryVisual } from '../components/HowItWorksCard';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import { useState } from 'react';
@@ -227,11 +226,11 @@ export default function Home() {
       </section>
 
       {/* ── Pricing / Programs (white) ── */}
-      <section id="programs-preview" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
+      <section id="programs-preview" className="section-pad" style={{ paddingTop: '18px', paddingBottom: '32px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           {/* Centered header + toggle */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '28px' }}>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '20px' }}>
             <div style={{ marginBottom: '16px' }}>
               <span style={{ color: '#E08EC9', fontSize: '13px', fontWeight: 600, marginRight: '8px', verticalAlign: 'middle' }}>• – </span>
               <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', verticalAlign: 'middle' }}>
@@ -241,7 +240,7 @@ export default function Home() {
             <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', marginBottom: '12px' }}>
               Four courses. One underlying system.
             </h2>
-            <p style={{ fontSize: '16px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '28px', maxWidth: '440px', margin: '0 auto 28px' }}>
+            <p style={{ fontSize: '16px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '22px', maxWidth: '440px', margin: '0 auto 22px' }}>
               All prices in INR and billed monthly. Every course includes a 14-day free trial.
             </p>
             {/* Monthly / Yearly toggle */}
@@ -477,8 +476,7 @@ export default function Home() {
       />
 
       {/* ── Resources (white) ── */}
-      <section id="resources" className="section-pad" style={{ position: 'relative', overflow: 'hidden', paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
-        <BrandWhoosh opacity={0.15} style={{ width: '400px', height: '400px', top: '-30px', left: '-40px', transform: 'scaleX(-1)' }} />
+      <section id="resources" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#F8FAFD', borderTop: '1px solid #EAEFF5', borderBottom: '1px solid #EAEFF5' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             eyebrow="Resources"
@@ -486,7 +484,7 @@ export default function Home() {
             subtitle="Research summaries and practical guides for parents and students who want to understand why the method works."
           />
           <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-            <Link className="cta cta-blue" to="/library" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
+            <Link className="cta cta-blue" to="/library" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 8px 22px rgba(15,168,220,0.2)' }}>
               View all resources <ArrowRight size={16} />
             </Link>
           </div>
@@ -498,20 +496,21 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -3 }}
                 style={{
                   background: '#FFFFFF',
-                  border: '1px solid #ECECF1',
-                  borderRadius: '16px',
-                  padding: '18px',
-                  boxShadow: '0 2px 12px rgba(28,28,40,0.04)',
+                  border: '1px solid #E7ECF3',
+                  borderRadius: '18px',
+                  padding: '22px',
+                  boxShadow: '0 6px 18px rgba(28,28,40,0.04)',
                 }}
               >
                 <p style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '10px' }}>
                   <span style={{ fontSize: '11px', fontWeight: 700, color: '#0FA8DC', fontFamily: 'Inter, sans-serif' }}>{article.tag}</span>
                   <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{article.readTime}</span>
                 </p>
-                <h3 style={{ fontSize: '16px', color: '#1C1C28', fontFamily: 'Poppins, sans-serif', marginBottom: '10px' }}>{article.title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '12px' }}>{article.desc}</p>
+                <h3 style={{ fontSize: '17px', color: '#1C1C28', fontFamily: 'Poppins, sans-serif', marginBottom: '10px', lineHeight: 1.4 }}>{article.title}</h3>
+                <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '14px' }}>{article.desc}</p>
                 <Link to="/library" style={{ color: '#0FA8DC', fontWeight: 600, fontSize: '13px', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
                   Read more
                 </Link>

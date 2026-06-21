@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import type { ReactElement } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 
@@ -212,56 +212,69 @@ const STATS: StatItem[] = [
 // ── Card ──────────────────────────────────────────────────────────────────────
 
 function StatCard({ stat, index, inView, reduce }: { stat: StatItem; index: number; inView: boolean; reduce: boolean }) {
-  const [hovered, setHovered] = useState(false);
   const { Char } = stat;
-  const active = hovered && !reduce;
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={reduce ? undefined : { y: -4 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: reduce ? 0 : index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       className="stat-card"
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
       style={{
         position: 'relative',
         overflow: 'hidden',
-        background: stat.bg,
-        borderRadius: '20px',
-        minHeight: '248px',
+        background: 'transparent',
+        border: 'none',
+        borderRadius: '0',
+        minHeight: 'auto',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         textAlign: 'center',
+        padding: '10px 12px',
         cursor: 'default',
-        boxShadow: active ? '0 20px 46px rgba(28,28,40,0.12)' : '0 2px 10px rgba(28,28,40,0.04)',
-        transition: 'box-shadow 0.35s ease',
+        boxShadow: 'none',
+        transition: 'box-shadow 0.25s ease, transform 0.25s ease',
       }}
     >
-      <motion.div
-        animate={active ? { y: -36 } : { y: 0 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 26 }}
-        style={{ position: 'relative', zIndex: 2 }}
+      <div
+        style={{
+          width: '56px',
+          height: '56px',
+          borderRadius: '9999px',
+          background: `${stat.accent}14`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginBottom: '12px',
+        }}
       >
-        <div style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: 'clamp(2rem, 4.5vw, 2.9rem)', color: '#1C1C28', lineHeight: 1, marginBottom: '10px' }}>
+        <div style={{ transform: 'scale(0.34)', transformOrigin: 'center center', marginTop: '-14px', marginBottom: '-14px' }}>
+          <Char color={stat.accent} />
+        </div>
+      </div>
+
+      <div style={{ position: 'relative', zIndex: 2 }}>
+        <div
+          style={{
+            fontFamily: 'Poppins, sans-serif',
+            fontWeight: 800,
+            fontSize: 'clamp(2rem, 4vw, 2.6rem)',
+            lineHeight: 1,
+            marginBottom: '8px',
+            letterSpacing: '-0.02em',
+            color: '#171726',
+          }}
+        >
           <RollingNumber value={stat.value} play={inView} reduce={reduce} />
         </div>
-        <div style={{ fontSize: '14px', fontWeight: 500, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+        <div style={{ fontSize: '14px', fontWeight: 500, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', lineHeight: 1.45, maxWidth: '220px' }}>
           {stat.label}
         </div>
-      </motion.div>
-
-      <motion.div
-        initial={false}
-        animate={active ? { y: 0, opacity: 1 } : { y: 160, opacity: 0 }}
-        transition={{ type: 'spring', stiffness: 240, damping: 20 }}
-        style={{ position: 'absolute', bottom: '-8px', left: 0, right: 0, display: 'flex', justifyContent: 'center', pointerEvents: 'none', zIndex: 1 }}
-      >
-        <Char color={stat.accent} />
-      </motion.div>
+      </div>
     </motion.div>
   );
 }
@@ -274,27 +287,37 @@ export default function TrustStats() {
   const reduce = useReducedMotion() ?? false;
 
   return (
-    <section ref={ref} className="section-pad" style={{ paddingTop: '56px', paddingBottom: '44px', background: '#FFFFFF', borderRadius: '20px 20px 0 0', boxShadow: '0 -8px 32px rgba(28,28,40,0.06)' }}>
+    <section
+      ref={ref}
+      className="section-pad"
+      style={{
+        position: 'relative',
+        paddingTop: '64px',
+        paddingBottom: '48px',
+        background: '#FFFFFF',
+        borderTop: '1px solid #ECEFF4',
+      }}
+    >
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ marginBottom: '48px', textAlign: 'center' }}
+          style={{ marginBottom: '40px', textAlign: 'center' }}
         >
-          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
+          <span style={{ display: 'inline-block', padding: '7px 16px', borderRadius: '9999px', background: '#EAF4FF', color: '#228BC9', fontSize: '12px', fontWeight: 600, letterSpacing: '0.02em', fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
             The Research Behind the Product
           </span>
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 3.1vw, 2.8rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.02em', lineHeight: 1.12 }}>
             Tested before your child ever logs in.
           </h2>
-          <p style={{ fontSize: '1.05rem', color: '#6B6B7B', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.6, maxWidth: '520px', margin: '14px auto 0' }}>
+          <p style={{ fontSize: '1.06rem', color: '#5D5D72', fontFamily: 'Inter, sans-serif', marginTop: '14px', lineHeight: 1.68, maxWidth: '760px', margin: '14px auto 0' }}>
             Every feature in Blast Learning is grounded in published research on how memory actually works. We didn't guess. We reviewed the literature, partnered with the institutions that created it, and built around what the science says, not what's convenient to build.
           </p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', marginBottom: '56px' }} className="grid-cols-2-sm grid-cols-3-lg">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '26px', marginBottom: '4px' }}>
           {STATS.map((s, i) => (
             <StatCard key={s.label} stat={s} index={i} inView={inView} reduce={reduce} />
           ))}

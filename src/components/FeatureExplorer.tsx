@@ -88,7 +88,7 @@ export default function FeatureExplorer() {
   const dur = reduce ? 0 : 0.3;
 
   return (
-    <div style={{ maxWidth: '860px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+    <div style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '12px' }}>
       {features.map((f, i) => {
         const isOpen = open === i;
         const num = String(i + 1).padStart(2, '0');
@@ -97,24 +97,24 @@ export default function FeatureExplorer() {
             key={f.title}
             style={{
               background: '#FFFFFF',
-              border: `1.5px solid ${isOpen ? f.accent : '#ECECF1'}`,
+              border: `1px solid ${isOpen ? '#D8E0EC' : '#E9EDF3'}`,
               borderRadius: '20px',
               overflow: 'hidden',
               transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
               boxShadow: isOpen
-                ? `inset 3px 0 0 ${f.accent}, 0 14px 38px ${f.accent}1F`
-                : '0 2px 16px rgba(28,28,40,0.05)',
+                ? '0 10px 30px rgba(28,28,40,0.08)'
+                : '0 2px 12px rgba(28,28,40,0.04)',
             }}
             onMouseEnter={(e) => {
               if (!isOpen) {
-                e.currentTarget.style.borderColor = '#D9D9E3';
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(28,28,40,0.08)';
+                e.currentTarget.style.borderColor = '#DCE3EE';
+                e.currentTarget.style.boxShadow = '0 8px 18px rgba(28,28,40,0.06)';
               }
             }}
             onMouseLeave={(e) => {
               if (!isOpen) {
-                e.currentTarget.style.borderColor = '#ECECF1';
-                e.currentTarget.style.boxShadow = '0 2px 16px rgba(28,28,40,0.05)';
+                e.currentTarget.style.borderColor = '#E9EDF3';
+                e.currentTarget.style.boxShadow = '0 2px 12px rgba(28,28,40,0.04)';
               }
             }}
           >
@@ -129,7 +129,7 @@ export default function FeatureExplorer() {
                 padding: '22px 24px',
                 textAlign: 'left',
                 cursor: 'pointer',
-                background: 'transparent',
+                background: isOpen ? '#FAFCFF' : 'transparent',
                 border: 'none',
               }}
             >
@@ -143,7 +143,7 @@ export default function FeatureExplorer() {
                   fontWeight: 700,
                   lineHeight: 1.3,
                   letterSpacing: '0.02em',
-                  color: isOpen ? f.accent : '#C8C8D2',
+                  color: isOpen ? '#228BC9' : '#C8C8D2',
                   transition: 'color 0.25s ease',
                 }}
               >
@@ -188,9 +188,9 @@ export default function FeatureExplorer() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  border: `1px solid ${isOpen ? f.accent : '#ECECF1'}`,
-                  background: isOpen ? f.accent : 'transparent',
-                  color: isOpen ? '#FFFFFF' : '#8E8EA0',
+                  border: '1px solid #D8E0EC',
+                  background: '#FFFFFF',
+                  color: isOpen ? '#228BC9' : '#8E8EA0',
                   marginTop: '2px',
                   transition: 'background 0.25s ease, border-color 0.25s ease, color 0.25s ease',
                 }}
@@ -210,7 +210,7 @@ export default function FeatureExplorer() {
                   style={{ overflow: 'hidden' }}
                 >
                   <div style={{ paddingLeft: `${NUM_COL + GAP + 24}px`, paddingRight: '28px', paddingBottom: '24px' }}>
-                    <div style={{ height: '1px', background: '#F0F0F4', marginBottom: '16px' }} />
+                    <div style={{ height: '1px', background: '#E9EDF3', marginBottom: '16px' }} />
                     <p
                       style={{
                         fontFamily: "'Inter', sans-serif",
@@ -234,8 +234,8 @@ export default function FeatureExplorer() {
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              background: `${f.accent}14`,
-                              color: f.accent,
+                              background: '#ECF4FC',
+                              color: '#228BC9',
                               marginTop: '1px',
                             }}
                           >
