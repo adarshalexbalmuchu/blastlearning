@@ -1,4 +1,5 @@
-import { motion, type Variants, type FC } from 'framer-motion';
+import { type FC } from 'react';
+import { motion, type Variants } from 'framer-motion';
 import step1Img from '../assets/how-it-works/Group 13.png';
 import step2Img from '../assets/how-it-works/Group 14.png';
 import step3Img from '../assets/how-it-works/Group 15.png';
