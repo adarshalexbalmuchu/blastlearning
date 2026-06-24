@@ -417,7 +417,7 @@ export default function Home() {
           </motion.div>
           <div style={{ textAlign: 'center' }}>
             <Link className="cta cta-pink" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
-              Start the 14-Day Free Trial <ArrowRight size={16} />
+              Start Your Journey Now <ArrowRight size={16} />
             </Link>
           </div>
         </div>
