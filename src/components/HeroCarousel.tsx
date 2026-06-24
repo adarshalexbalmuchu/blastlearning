@@ -10,7 +10,7 @@ const bannerModules = import.meta.glob('../assets/banners/*.{png,jpg,jpeg,webp,a
 const SLIDES = Object.entries(bannerModules)
   .sort(([a], [b]) => a.localeCompare(b))
   .map(([, src]) => src)
-  .slice(0, 3);
+;
 
 // ─── Carousel ────────────────────────────────────────────────────────────────────
 export default function HeroCarousel() {
