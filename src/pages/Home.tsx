@@ -352,11 +352,11 @@ export default function Home() {
                     </ul>
 
                     <div style={{ display: 'flex', alignItems: 'baseline', marginTop: '14px', gap: '2px' }}>
-                      <span style={{ fontSize: '0.9rem', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>₹</span>
-                      <span style={{ fontSize: '2rem', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', lineHeight: 1 }}>
+                      <span style={{ fontSize: '0.75rem', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>₹</span>
+                      <span style={{ fontSize: '1.55rem', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', lineHeight: 1 }}>
                         {plan.monthlyPrice.toLocaleString('en-IN')}
                       </span>
-                      <span style={{ fontSize: '0.86rem', color: '#6B7280', fontFamily: 'Inter, sans-serif' }}>/month</span>
+                      <span style={{ fontSize: '0.75rem', color: '#6B7280', fontFamily: 'Inter, sans-serif' }}>/month</span>
                     </div>
 
                     <Link
