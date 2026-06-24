@@ -1,32 +1,44 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import newBanner from '../assets/New Banner 1.png';
 
-const SLIDES = [newBanner, newBanner, newBanner, newBanner];
+const bannerModules = import.meta.glob('../assets/banners/*.{png,jpg,jpeg,webp,avif}', {
+  eager: true,
+  import: 'default',
+}) as Record<string, string>;
+
+const SLIDES = Object.entries(bannerModules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, src]) => src)
+  .slice(0, 3);
 
 // ─── Carousel ────────────────────────────────────────────────────────────────────
 export default function HeroCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [blink, setBlink] = useState(false);
+  const hasSlides = SLIDES.length > 0;
+  const canRotate = SLIDES.length > 1;
 
   const goNext = () => {
+    if (!canRotate) return;
     setActiveIndex((prev) => (prev + 1) % SLIDES.length);
     setBlink(false);
   };
 
   const goPrev = () => {
+    if (!canRotate) return;
     setActiveIndex((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
     setBlink(false);
   };
 
   useEffect(() => {
+    if (!canRotate) return;
     const timer = window.setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % SLIDES.length);
       setBlink(false);
     }, 12000);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [canRotate]);
 
   useEffect(() => {
     const blinkInterval = window.setInterval(() => {
@@ -53,9 +65,9 @@ export default function HeroCarousel() {
     >
       <Link to="/programs/cbse-plan" aria-label="View CBSE program" style={{ display: 'block', cursor: 'pointer', lineHeight: 0, width: '100%', position: 'relative' }}>
         <div style={{ position: 'relative', boxShadow: '0 8px 32px rgba(28,28,40,0.105)' }}>
-          {SLIDES.map((slide, index) => (
+          {hasSlides && SLIDES.map((slide, index) => (
             <img
-              key={slide}
+              key={`${slide}-${index}`}
               src={slide}
               alt="Blast Learning hero banner"
               width={2048}
@@ -79,7 +91,7 @@ export default function HeroCarousel() {
         <div
           style={{
             position: 'absolute',
-            bottom: '90px',
+            bottom: '85px',
             left: '110px',
             zIndex: 3,
           }}
