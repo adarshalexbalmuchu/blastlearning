@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const bannerModules = import.meta.glob('../assets/banners/*.{png,jpg,jpeg,webp,avif}', {
@@ -104,17 +105,37 @@ export default function HeroCarousel() {
           style={{
             position: 'absolute',
             bottom: '85px',
-            left: '110px',
+            left: '60px',
             zIndex: 3,
           }}
         >
-          <button
+          <motion.button
+            animate={{
+              y: [0, -5, 0],
+              boxShadow: [
+                '0 4px 18px rgba(15,168,220,0.28)',
+                '0 10px 32px rgba(15,168,220,0.48)',
+                '0 4px 18px rgba(15,168,220,0.28)',
+              ],
+            }}
+            transition={{
+              duration: 2.4,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            whileHover={{
+              y: -7,
+              scale: 1.04,
+              boxShadow: '0 14px 36px rgba(15,168,220,0.55)',
+              transition: { type: 'spring', stiffness: 300, damping: 18 },
+            }}
+            whileTap={{ scale: 0.97 }}
             style={{
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
               gap: '8px',
-              padding: '18px 56px',
+              padding: '18px 32px',
               borderRadius: '14px',
               background: 'linear-gradient(90deg, #1E9BDA 0%, #0FA8DC 100%)',
               color: 'white',
@@ -123,14 +144,13 @@ export default function HeroCarousel() {
               fontFamily: 'Inter, sans-serif',
               border: 'none',
               cursor: 'pointer',
-              minWidth: '280px',
-              boxShadow: '0 4px 18px rgba(15,168,220,0.28)',
+              whiteSpace: 'nowrap',
               letterSpacing: '-0.01em',
             }}
             onClick={() => window.location.href = '/programs'}
           >
             See How It Works
-          </button>
+          </motion.button>
         </div>
       </Link>
 
