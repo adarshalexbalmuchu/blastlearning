@@ -105,7 +105,7 @@ export default function HeroCarousel() {
           style={{
             position: 'absolute',
             bottom: '85px',
-            left: '60px',
+            left: '100px',
             zIndex: 3,
           }}
         >
