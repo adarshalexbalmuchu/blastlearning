@@ -180,6 +180,11 @@ export default function Library() {
                 <motion.div
                   key={resource.id}
                   variants={fadeUp}
+                  whileHover={{
+                    y: -6,
+                    boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
+                    transition: { type: 'spring', stiffness: 300, damping: 22 },
+                  }}
                   style={{ position: 'relative', padding: '24px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)', opacity: resource.locked ? 0.65 : 1, display: 'flex', flexDirection: 'column' }}
                 >
                   {resource.locked && (

@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import { type FC } from 'react';
-import step1Img from '../assets/Group 24.png';
+import { motion, type Variants, type FC } from 'framer-motion';
+import step1Img from '../assets/how-it-works/Group 13.png';
 import step2Img from '../assets/how-it-works/Group 14.png';
-import step3Img from '../assets/Group 26.png';
+import step3Img from '../assets/how-it-works/Group 15.png';
 import step4Img from '../assets/how-it-works/Group 16.png';
 
 export function UploadVisual() {
@@ -57,6 +56,41 @@ export function GapVisual() {
   );
 }
 
+// ── Animation variants (match site-wide motion language) ──────────────────────
+
+const overlayVariants: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: [0.16, 1, 0.3, 1],
+      staggerChildren: 0.1,
+      delayChildren: 0.08,
+    },
+  },
+};
+
+const titleVariants: Variants = {
+  hidden: { opacity: 0, y: 14, filter: 'blur(5px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+const descVariants: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
 // ── Card Component ─────────────────────────────────────────────────────────────
 
 interface HowItWorksCardProps {
@@ -69,8 +103,6 @@ interface HowItWorksCardProps {
 }
 
 export default function HowItWorksCard({ title, desc, accent: _accent, Visual, height = '380px', descLines = 3 }: HowItWorksCardProps) {
-  const [hovered, setHovered] = useState(false);
-
   return (
     <div
       style={{
@@ -80,19 +112,21 @@ export default function HowItWorksCard({ title, desc, accent: _accent, Visual, h
         height,
         border: 'none',
         boxShadow: 'none',
-        transform: 'none',
-        transition: 'none',
         cursor: 'default',
         willChange: 'transform',
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       {/* Full-card background illustration */}
       <Visual />
 
-      {/* Frosted glass info overlay */}
-      <div
+      {/* Frosted glass info overlay — animates in on scroll, lifts on hover */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        whileHover={{ y: -6 }}
+        viewport={{ once: true, margin: '-6% 0px' }}
+        variants={overlayVariants}
+        transition={{ type: 'spring', stiffness: 260, damping: 22 }}
         style={{
           position: 'absolute',
           bottom: '14px',
@@ -104,15 +138,13 @@ export default function HowItWorksCard({ title, desc, accent: _accent, Visual, h
           borderRadius: '16px',
           padding: '14px 16px 12px',
           border: '1px solid rgba(255,255,255,0.65)',
-          boxShadow: 'none',
-          transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
-          transition: 'transform 0.3s ease',
           zIndex: 5,
           maxHeight: '54%',
           overflow: 'hidden',
         }}
       >
-        <h3
+        <motion.h3
+          variants={titleVariants}
           style={{
             fontSize: '15px',
             fontWeight: 700,
@@ -123,8 +155,9 @@ export default function HowItWorksCard({ title, desc, accent: _accent, Visual, h
           }}
         >
           {title}
-        </h3>
-        <p
+        </motion.h3>
+        <motion.p
+          variants={descVariants}
           style={{
             fontSize: '12.5px',
             color: '#5A5A6E',
@@ -138,8 +171,8 @@ export default function HowItWorksCard({ title, desc, accent: _accent, Visual, h
           }}
         >
           {desc}
-        </p>
-      </div>
+        </motion.p>
+      </motion.div>
 
       <div
         style={{

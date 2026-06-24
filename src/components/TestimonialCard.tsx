@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 interface TestimonialCardProps {
   name: string;
   role: string;
@@ -19,8 +21,12 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
   const accent = avatarColor(name);
 
   return (
-    <div
-      className="hover:-translate-y-0.5 transition duration-300 shadow-[0_2px_16px_rgba(28,28,40,0.05)] hover:shadow-[0_10px_32px_rgba(28,28,40,0.10)]"
+    <motion.div
+      whileHover={{
+        y: -6,
+        boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
+        transition: { type: 'spring', stiffness: 300, damping: 22 },
+      }}
       style={{
         background: '#FFFFFF',
         border: '1.5px solid #E8E8F0',
@@ -28,6 +34,7 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
         padding: '22px',
         display: 'flex',
         flexDirection: 'column',
+        boxShadow: '0 2px 16px rgba(28,28,40,0.05)',
       }}
     >
       {/* Before / After inline stat strip */}
@@ -101,6 +108,6 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
           <p style={{ fontSize: '12px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: 0 }}>{role}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

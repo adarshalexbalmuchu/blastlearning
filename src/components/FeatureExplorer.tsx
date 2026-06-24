@@ -1,11 +1,15 @@
-import { Brain, ClipboardCheck, ChartColumnIncreasing, BookOpenText } from 'lucide-react';
+import { motion } from 'framer-motion';
+import img1 from '../assets/Learn.png';
+import img2 from '../assets/master.png';
+import img3 from '../assets/Upload.png';
+import img4 from '../assets/expressive-young-girl-posing-studio.jpg';
 
 interface Feature {
   title: string;
   desc: string;
   accent: 'blue' | 'pink';
   panel: string;
-  Icon: typeof ClipboardCheck;
+  img: string;
 }
 
 const features: Feature[] = [
@@ -14,34 +18,47 @@ const features: Feature[] = [
     desc: 'Blast Learning sessions target what a student can do with knowledge, not how many chapters they\'ve covered.',
     accent: 'blue',
     panel: '#E7F6FB',
-    Icon: ClipboardCheck,
+    img: img1,
   },
   {
     title: 'Critical thinking over rote memorisation',
     desc: 'Every session is built on retrieval and application, the opposite of the re-read-and-repeat cycle NEP 2020 explicitly replaces.',
     accent: 'pink',
     panel: '#FCEEF1',
-    Icon: Brain,
+    img: img2,
   },
   {
     title: 'Reduced curriculum load, deeper understanding',
     desc: 'The GAP Assessment focuses study time on genuine gaps. Students go deeper on less, instead of shallower on everything.',
     accent: 'blue',
-    panel: '#E7F6FB',
-    Icon: BookOpenText,
+    panel: '#EEF6FF',
+    img: img3,
   },
   {
     title: 'Continuous and holistic assessment',
     desc: 'Progress Dashboard tracks retention and confidence week by week, not just performance at term-end examinations.',
     accent: 'pink',
     panel: '#F0EDFC',
-    Icon: ChartColumnIncreasing,
+    img: img4,
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
+};
+
+const stagger = {
+  visible: { transition: { staggerChildren: 0.12 } },
+};
+
 export default function FeatureExplorer() {
   return (
-    <div
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-8% 0px' }}
+      variants={stagger}
       style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
@@ -51,11 +68,17 @@ export default function FeatureExplorer() {
     >
       {features.map((feature) => {
         const labelColor = feature.accent === 'blue' ? '#0FA8DC' : '#E8135A';
-        const Icon = feature.Icon;
         return (
-          <article
+          <motion.article
             className="nep-principle-card"
             key={feature.title}
+            variants={cardVariants}
+            whileHover={{
+              y: -6,
+              boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
+              borderColor: '#D1D5DB',
+              transition: { type: 'spring', stiffness: 300, damping: 22 },
+            }}
             style={{
               position: 'relative',
               display: 'flex',
@@ -67,12 +90,13 @@ export default function FeatureExplorer() {
               minHeight: '180px',
               overflow: 'hidden',
               width: '100%',
+              cursor: 'default',
             }}
           >
             <div
               className="nep-principle-copy"
               style={{
-                width: '50%',
+                width: '55%',
                 padding: '24px',
                 display: 'flex',
                 flexDirection: 'column',
@@ -91,11 +115,7 @@ export default function FeatureExplorer() {
               >
                 <span
                   aria-hidden="true"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '3px',
-                  }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '3px' }}
                 >
                   <span style={{ width: '4px', height: '4px', borderRadius: '999px', background: labelColor, opacity: 0.28 }} />
                   <span style={{ width: '4px', height: '4px', borderRadius: '999px', background: labelColor, opacity: 0.45 }} />
@@ -146,7 +166,7 @@ export default function FeatureExplorer() {
             <div
               className="nep-principle-art"
               style={{
-                width: '50%',
+                width: '45%',
                 background: feature.panel,
                 display: 'flex',
                 alignItems: 'center',
@@ -154,13 +174,30 @@ export default function FeatureExplorer() {
                 borderTopRightRadius: '12px',
                 borderBottomRightRadius: '12px',
                 minHeight: '180px',
+                overflow: 'hidden',
+                position: 'relative',
               }}
             >
-              <Icon size={80} strokeWidth={1.6} color={labelColor} opacity={0.92} />
+              <motion.img
+                src={feature.img}
+                alt=""
+                aria-hidden="true"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center top',
+                  display: 'block',
+                  position: 'absolute',
+                  inset: 0,
+                }}
+              />
             </div>
-          </article>
+          </motion.article>
         );
-        })}
+      })}
 
       <style>{`
         @media (max-width: 767px) {
@@ -175,7 +212,8 @@ export default function FeatureExplorer() {
           }
 
           .nep-principle-art {
-            min-height: 160px !important;
+            min-height: 220px !important;
+            height: 220px !important;
             border-top-right-radius: 0 !important;
             border-bottom-right-radius: 12px !important;
             border-top-left-radius: 12px !important;
@@ -183,6 +221,6 @@ export default function FeatureExplorer() {
           }
         }
       `}</style>
-    </div>
+    </motion.div>
   );
 }

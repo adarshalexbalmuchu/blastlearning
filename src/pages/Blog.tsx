@@ -156,12 +156,19 @@ export default function Blog() {
                 const cats = getCategories(post);
                 const mins = readingTime(post.content.rendered);
                 return (
-                  <motion.article key={post.id} variants={fadeUp}>
+                  <motion.article
+                    key={post.id}
+                    variants={fadeUp}
+                    whileHover={{
+                      y: -6,
+                      boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
+                      transition: { type: 'spring', stiffness: 300, damping: 22 },
+                    }}
+                    style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 12px rgba(28,28,40,0.04)' }}
+                  >
                     <Link
                       to={`/blog/${post.slug}`}
-                      style={{ display: 'flex', flexDirection: 'column', height: '100%', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', overflow: 'hidden', textDecoration: 'none', boxShadow: '0 2px 12px rgba(28,28,40,0.04)', transition: 'box-shadow 0.2s, transform 0.2s' }}
-                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = '0 10px 32px rgba(28,28,40,0.10)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
-                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = '0 2px 12px rgba(28,28,40,0.04)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
+                      style={{ display: 'flex', flexDirection: 'column', height: '100%', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', overflow: 'hidden', textDecoration: 'none' }}
                     >
                       {img ? (
                         <img src={img} alt={getFeaturedAlt(post)} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} loading="lazy" />

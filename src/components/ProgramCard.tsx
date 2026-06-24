@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Zap, ArrowRight, Check } from 'lucide-react';
 
@@ -14,7 +15,12 @@ interface ProgramCardProps {
 
 export default function ProgramCard({ icon, name, price, classRange, description, outcomes, featured }: ProgramCardProps) {
   return (
-    <div
+    <motion.div
+      whileHover={{
+        y: -6,
+        boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
+        transition: { type: 'spring', stiffness: 300, damping: 22 },
+      }}
       style={{
         position: 'relative',
         background: '#FFFFFF',
@@ -24,17 +30,6 @@ export default function ProgramCard({ icon, name, price, classRange, description
         display: 'flex',
         flexDirection: 'column',
         boxShadow: '0 2px 16px rgba(28,28,40,0.05)',
-        transition: 'transform 0.3s, box-shadow 0.3s, border-color 0.3s',
-      }}
-      onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.transform = 'translateY(-6px)';
-        (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 28px rgba(15,168,220,0.12)';
-        if (!featured) (e.currentTarget as HTMLElement).style.borderColor = '#0FA8DC';
-      }}
-      onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.transform = 'none';
-        (e.currentTarget as HTMLElement).style.boxShadow = '0 2px 12px rgba(28,28,40,0.05)';
-        if (!featured) (e.currentTarget as HTMLElement).style.borderColor = '#ECECF1';
       }}
     >
       {featured && (
@@ -116,19 +111,10 @@ export default function ProgramCard({ icon, name, price, classRange, description
           background: featured ? '#0FA8DC' : '#FFFFFF',
           color: featured ? 'white' : '#1C1C28',
           border: featured ? 'none' : '1.5px solid #DCDCE5',
-          transition: 'background 0.2s, border-color 0.2s',
-        }}
-        onMouseEnter={(e) => {
-          if (featured) (e.currentTarget as HTMLElement).style.background = '#0D8BB5';
-          else (e.currentTarget as HTMLElement).style.borderColor = '#0FA8DC';
-        }}
-        onMouseLeave={(e) => {
-          if (featured) (e.currentTarget as HTMLElement).style.background = '#0FA8DC';
-          else (e.currentTarget as HTMLElement).style.borderColor = '#DCDCE5';
         }}
       >
         Learn More <ArrowRight size={14} />
       </Link>
-    </div>
+    </motion.div>
   );
 }

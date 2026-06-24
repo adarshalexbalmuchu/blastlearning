@@ -313,6 +313,11 @@ export default function Home() {
                 <motion.div
                   key={plan.id}
                   variants={fadeUp}
+                  whileHover={{
+                    y: -6,
+                    boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
+                    transition: { type: 'spring', stiffness: 300, damping: 22 },
+                  }}
                   style={{
                     background: '#FFFFFF',
                     border: '1px solid #E5E7EB',
@@ -516,13 +521,17 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
-                whileHover={{ y: -3 }}
+                whileHover={{
+                  y: -6,
+                  boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
+                  transition: { type: 'spring', stiffness: 300, damping: 22 },
+                }}
                 style={{
                   background: '#FFFFFF',
                   border: '1px solid #E7ECF3',
                   borderRadius: '18px',
                   padding: '22px',
-                  boxShadow: '0 6px 18px rgba(28,28,40,0.04)',
+                  boxShadow: '0 2px 8px rgba(28,28,40,0.04)',
                 }}
               >
                 <p style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '10px' }}>
