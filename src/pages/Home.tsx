@@ -10,7 +10,6 @@ import TrustStats from '../components/TrustStats';
 import HowItWorksCard, { UploadVisual, AIVisual, MasteryVisual, GapVisual } from '../components/HowItWorksCard';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import HeadingMarker from '../components/HeadingMarker';
-import { useState } from 'react';
 import { useSEO } from '../hooks/useSEO';
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
@@ -250,8 +249,6 @@ function SectionHeading({ eyebrow, title, subtitle, accent, align = 'left', subt
 
 // ─── Home page ─────────────────────────────────────────────────────────────────
 export default function Home() {
-  const [isYearly, setIsYearly] = useState(false);
-
   useSEO({
     title: 'Blast Learning | AI-Powered Study Retention for Indian Students',
     description: "India's #1 AI-powered study retention platform. Convert expensive coaching into permanent memory with spaced repetition. 4,999+ students, 91% retention rate. Start your free 7-day trial.",
@@ -287,142 +284,103 @@ export default function Home() {
       {/* ── Pricing / Programs (off-white) ── */}
       <section id="programs-preview" className="section-pad" style={{ paddingTop: '18px', paddingBottom: '32px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <SectionHeading
+            eyebrow="Courses & Pricing"
+            accent={CYAN}
+            align="center"
+            title={<>Four courses. One underlying {G('system', PINK)}.</>}
+            subtitle="Different subjects, different exams - the same science of memory underneath all of them."
+          />
 
-          {/* Centered header + toggle */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-8% 0px' }} variants={headingContainer} style={{ textAlign: 'center', marginBottom: '20px' }}>
-            <motion.div variants={eyebrowAnim}>
-              <HeadingMarker text="Courses & Pricing" marginBottom="10px" fontSize="12px" accent={CYAN} />
-            </motion.div>
-            <motion.h2 variants={h2Anim} style={{ fontSize: 'var(--fs-h2-fluid)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: '12px', color: '#111111' }}>
-              Four courses. One underlying {G('system', PINK)}.
-            </motion.h2>
-            <motion.p variants={subtitleAnim} style={{ fontSize: '0.95rem', color: '#5A5A6E', fontWeight: 400, fontFamily: 'Inter, sans-serif', marginBottom: '8px', maxWidth: '540px', margin: '0 auto 8px', lineHeight: 1.65, textAlign: 'center' }}>
-              Different subjects, different exams - the same science of memory underneath all of them.
-            </motion.p>
-            <motion.p variants={subtitleAnim} style={{ fontSize: '13px', color: '#A0A0B0', fontFamily: 'Inter, sans-serif', marginBottom: '22px' }}>
-              All prices in INR · billed monthly
-            </motion.p>
-            {/* Monthly / Yearly toggle */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontSize: '14px', fontWeight: 500, fontFamily: 'Inter, sans-serif', color: '#1C1C28' }}>
-              <span style={{ opacity: isYearly ? 0.45 : 1, transition: 'opacity 0.2s' }}>Monthly</span>
-              <button
-                onClick={() => setIsYearly(!isYearly)}
-                aria-label="Toggle billing period"
-                style={{ width: '44px', height: '24px', borderRadius: '999px', background: isYearly ? '#0FA8DC' : '#D1D5DB', border: 'none', cursor: 'pointer', position: 'relative', transition: 'background 0.25s', padding: 0, flexShrink: 0 }}
-              >
-                <span style={{ position: 'absolute', top: '3px', left: isYearly ? '23px' : '3px', width: '18px', height: '18px', borderRadius: '50%', background: 'white', boxShadow: '0 1px 4px rgba(0,0,0,0.2)', transition: 'left 0.25s' }} />
-              </button>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', opacity: isYearly ? 1 : 0.45, transition: 'opacity 0.2s' }}>
-                Yearly
-                <span style={{ padding: '2px 8px', borderRadius: '9999px', background: '#ECFDF5', color: '#059669', fontSize: '11px', fontWeight: 700, fontFamily: 'Inter, sans-serif' }}>
-                  Save 20%
-                </span>
-              </span>
-            </div>
-          </motion.div>
-
-          {/* Pricing cards */}
+          {/* Pricing cards (Figma layout) */}
           <motion.div
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
-            className="programs-scroll"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(1, 1fr)',
+              gap: '16px',
+            }}
+            className="grid-cols-2-md"
           >
-            {pricingPlans.map((plan) => {
-              const price = isYearly ? plan.yearlyMonthly : plan.monthlyPrice;
-              const annualYearly = plan.yearlyMonthly * 12;
-              const annualMonthly = plan.monthlyPrice * 12;
+            {pricingPlans.map((plan, idx) => {
+              const isPink = idx % 2 === 0;
+              const accent = isPink ? '#E8135A' : '#0FA8DC';
+              const buttonBg = isPink
+                ? 'linear-gradient(90deg, #E8135A 0%, #F03C6F 100%)'
+                : 'linear-gradient(90deg, #1E9BDA 0%, #4BB8E6 100%)';
+
               return (
                 <motion.div
                   key={plan.id}
                   variants={fadeUp}
-                  whileHover={{ y: -4 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 22 }}
                   style={{
-                    position: 'relative',
-                    background: plan.featured
-                      ? 'linear-gradient(180deg, #FFF6F9 0%, #FFFFFF 24%)'
-                      : 'linear-gradient(180deg, #F9FCFF 0%, #FFFFFF 24%)',
-                    border: plan.featured ? '2px solid #F7B4C9' : '1.5px solid #E6ECF4',
-                    borderRadius: '22px',
-                    padding: '24px',
-                    boxShadow: plan.featured
-                      ? '0 10px 26px rgba(240,60,111,0.12)'
-                      : '0 8px 22px rgba(28,28,40,0.06)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    minHeight: '100%',
+                    background: '#FFFFFF',
+                    border: '1px solid #E5E7EB',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    boxShadow: '0 1px 4px rgba(0, 0, 0, 0.04)',
                   }}
                 >
-                  {/* Most Popular badge */}
-                  {plan.featured && (
-                    <span style={{
-                      position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)',
-                      padding: '5px 14px', fontSize: '11px', fontWeight: 700, color: 'white',
-                      background: '#F03C6F', borderRadius: '9999px', fontFamily: 'Inter, sans-serif',
-                      whiteSpace: 'nowrap', boxShadow: 'none',
-                    }}>
-                      Most Popular
-                    </span>
-                  )}
-
-                  {/* Plan name + classes */}
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '8px', marginBottom: '8px' }}>
-                    <h3 style={{ fontSize: '1.32rem', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', margin: 0, lineHeight: 1.25 }}>
+                  <div style={{ height: '3px', width: '100%', background: accent }} />
+                  <div style={{ padding: '18px 16px 14px' }}>
+                    <h3 style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: '2rem', fontWeight: 700, color: '#1C1C28', lineHeight: 1.18 }}>
                       {plan.name}
                     </h3>
-                    <span style={{ padding: '3px 10px', fontSize: '11px', fontWeight: 600, borderRadius: '9999px', background: plan.featured ? '#FDE9F0' : '#EFF6FB', color: plan.featured ? '#C0265D' : '#0F6F95', fontFamily: 'Inter, sans-serif', flexShrink: 0 }}>
+                    <p style={{ margin: '4px 0 0', fontFamily: 'Inter, sans-serif', fontSize: '0.75rem', fontWeight: 600, color: '#8E8EA0' }}>
                       {plan.classes}
-                    </span>
-                  </div>
-                  <p style={{ fontSize: '13px', color: '#69758A', fontFamily: 'Inter, sans-serif', margin: '0 0 18px', lineHeight: 1.58, minHeight: '62px' }}>
-                    {plan.desc}
-                  </p>
+                    </p>
+                    <p style={{ margin: '8px 0 0', fontFamily: 'Inter, sans-serif', fontSize: '0.95rem', lineHeight: 1.55, color: '#666B78' }}>
+                      {plan.desc}
+                    </p>
 
-                  {/* Price */}
-                  <div style={{ marginBottom: '18px', padding: '14px 14px 12px', borderRadius: '14px', background: plan.featured ? '#FFF1F6' : '#F5FAFE', border: plan.featured ? '1px solid #FAD3E1' : '1px solid #E4EFF7' }}>
-                    <div style={{ display: 'flex', alignItems: 'flex-end', gap: '2px' }}>
-                      <span style={{ fontSize: '14px', fontWeight: 600, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', paddingBottom: '6px' }}>₹</span>
-                      <span style={{ fontSize: '36px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', lineHeight: 1 }}>
-                        {price.toLocaleString('en-IN')}
+                    <div style={{ height: '1px', background: '#E5E7EB', margin: '14px 0 12px' }} />
+
+                    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {plan.features.map((feature) => (
+                        <li key={feature} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                          <CheckCircle size={13} style={{ color: accent, flexShrink: 0, marginTop: '2px' }} />
+                          <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.92rem', color: '#4D5562', lineHeight: 1.35 }}>
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div style={{ display: 'flex', alignItems: 'baseline', marginTop: '14px', gap: '2px' }}>
+                      <span style={{ fontSize: '0.9rem', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>₹</span>
+                      <span style={{ fontSize: '2rem', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', lineHeight: 1 }}>
+                        {plan.monthlyPrice.toLocaleString('en-IN')}
                       </span>
-                      <span style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', paddingBottom: '5px', marginLeft: '2px' }}>/mo</span>
+                      <span style={{ fontSize: '0.86rem', color: '#6B7280', fontFamily: 'Inter, sans-serif' }}>/month</span>
                     </div>
-                    <p style={{ fontSize: '12px', color: '#7E899A', fontFamily: 'Inter, sans-serif', marginTop: '6px', lineHeight: 1.45 }}>
-                      {isYearly
-                        ? `Billed ₹${annualYearly.toLocaleString('en-IN')}/yr · saves ₹${(annualMonthly - annualYearly).toLocaleString('en-IN')}`
-                        : `₹${plan.yearlyMonthly.toLocaleString('en-IN')}/mo when billed yearly`}
+
+                    <Link
+                      to={`/programs/${plan.slug}`}
+                      className="cta"
+                      style={{
+                        marginTop: '10px',
+                        width: '100%',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '10px 14px',
+                        borderRadius: '4px',
+                        textDecoration: 'none',
+                        color: '#FFFFFF',
+                        background: buttonBg,
+                        fontFamily: 'Inter, sans-serif',
+                        fontWeight: 600,
+                        fontSize: '0.9rem',
+                        boxShadow: 'none',
+                      }}
+                    >
+                      Start 14-Day Free Trial
+                    </Link>
+
+                    <p style={{ margin: '6px 0 0', textAlign: 'center', fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: '#A0A5B1' }}>
+                      No credit card required
                     </p>
                   </div>
-
-                  {/* Separator */}
-                  <div style={{ height: '1px', background: '#E9EEF5', marginBottom: '18px' }} />
-
-                  {/* Features */}
-                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 22px', display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
-                    {plan.features.map((f) => (
-                      <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '9px' }}>
-                        <CheckCircle size={15} style={{ color: plan.featured ? '#F03C6F' : '#0FA8DC', flexShrink: 0, marginTop: '1px' }} />
-                        <span style={{ fontSize: '13px', color: '#3D4658', fontFamily: 'Inter, sans-serif', lineHeight: 1.45 }}>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* CTA */}
-                  <Link
-                    to={`/programs/${plan.slug}`}
-                    className={plan.featured ? 'cta cta-pink' : 'cta'}
-                    style={{
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
-                      padding: '12px 20px', borderRadius: '12px',
-                      fontSize: '14px', fontWeight: 600, fontFamily: 'Inter, sans-serif',
-                      textDecoration: 'none', marginTop: 'auto',
-                      background: plan.featured ? '#F03C6F' : 'transparent',
-                      color: plan.featured ? 'white' : '#1C1C28',
-                      border: plan.featured ? 'none' : '1.5px solid #CCD8E6',
-                      boxShadow: 'none',
-                    }}
-                  >
-                    Start Your 14-Day Free Trial <ArrowRight size={14} />
-                  </Link>
                 </motion.div>
               );
             })}
