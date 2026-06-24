@@ -6,6 +6,7 @@ import BrandArc from '../components/BrandArc';
 import ctaBanner from '../assets/Hero 4.png';
 import heroBanner from '../assets/Hero 2.png';
 import BrandWhoosh from '../components/BrandWhoosh';
+import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
 
 const testimonialsRow1 = [
@@ -146,18 +147,17 @@ export default function Programs() {
         <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: "'Inter', sans-serif", marginBottom: '24px', background: '#E0F5FC', color: '#0FA8DC' }}>
-              HOW BLAST LEARNING WORKS
-            </span>
-            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', marginBottom: '24px', color: '#1C1C28' }}>
+            <HeadingMarker text="HOW BLAST LEARNING WORKS" marginBottom="24px" fontSize="12px" />
+            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', marginBottom: '24px', color: '#111111' }}>
               The system beneath the syllabus.
             </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
+            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
               Every board exam tests the same thing twice: what your child knows, and whether that knowledge survives the walk into the exam hall. Blast Learning builds the second part. CBSE, ICSE, JEE, and NEET preparation runs on top of a study engine designed around how Indian students actually forget, and what makes them remember.
             </p>
             <div style={{ marginTop: '32px' }}>
               <Link
                 to="/programs/cbse-plan"
+                className="cta cta-pink"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -168,8 +168,9 @@ export default function Programs() {
                   fontWeight: 600,
                   fontFamily: "'Inter', sans-serif",
                   textDecoration: 'none',
-                  background: '#0FA8DC',
+                  background: '#F03C6F',
                   color: 'white',
+                  boxShadow: 'none',
                 }}
               >
                 Start the 14-Day Free Trial  -  No Credit Card Required <ArrowRight size={16} />
@@ -188,10 +189,10 @@ export default function Programs() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '24px' }}>
+            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '24px' }}>
               A coaching class can teach a concept twice and still lose a student to the forgetting curve by Friday, because re-reading and highlighting create a sense of familiarity that has almost nothing to do with retention. Blast Learning starts from that gap rather than from another video library. Each session is scheduled by an adaptive engine that tracks what a student has seen, how confidently they answered it, and when that memory is due to fade, so practice arrives at the moment recall takes real effort instead of the moment it feels comfortable. The result is not a faster way to consume more content. It is a study system that converts hours already being spent into marks that hold under exam pressure.
             </p>
-            <p style={{ fontSize: '1.0625rem', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
+            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
               Every course on this page, whether it runs through the CBSE syllabus, sharpens mathematical pattern recognition, builds inferential reading for English and the SAT, or prepares a student for the Digital SAT directly, sits on the same foundation described below. A GAP Assessment opens each course by identifying exactly where a student's knowledge breaks down, often several grades behind their enrolled level in a specific topic, and the AI Tutor then builds a path from that point rather than from the syllabus cover page. A Study Buddy keeps a real person in the loop for accountability and explanation, because no adaptive engine alone sustains a teenager's motivation through a Tuesday evening revision session. Parents see minutes studied and concepts mastered on a transparent dashboard.
             </p>
           </motion.div>
@@ -208,10 +209,10 @@ export default function Programs() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px', maxWidth: '896px', marginLeft: 'auto', marginRight: 'auto' }}
           >
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '20px' }}>
+            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '20px' }}>
               The Method Behind the Marks
             </h2>
-            <p style={{ fontSize: '1.0625rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
+            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
               Strip away the interface and five mechanisms do the actual work. Four of them move a student from gap to mastery in sequence; the fifth runs underneath all four, because none of them hold up if a student cannot manage focus, nerves, or a clock.
             </p>
           </motion.div>
@@ -286,10 +287,10 @@ export default function Programs() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px', maxWidth: '896px', marginLeft: 'auto', marginRight: 'auto' }}
           >
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '20px' }}>
+            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '20px' }}>
               Four Courses. One Method.
             </h2>
-            <p style={{ fontSize: '1.0625rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
+            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
               The five-mechanism system above runs identically across every course. What changes is the subject, the syllabus, and the specific gap each course is built to close.
             </p>
           </motion.div>
@@ -408,7 +409,7 @@ export default function Programs() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', textAlign: 'center', marginBottom: '56px' }}
+            style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', textAlign: 'center', marginBottom: '56px' }}
           >
             How We Compare
           </motion.h2>

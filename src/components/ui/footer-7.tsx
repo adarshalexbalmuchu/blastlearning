@@ -53,7 +53,7 @@ export const Footer7 = ({
   return (
     <footer
       style={{
-        background: "#EFF6FB",
+        background: "#FFFFFF",
         borderTop: "1px solid #D0E8F5",
         paddingTop: "64px",
         paddingBottom: "0",

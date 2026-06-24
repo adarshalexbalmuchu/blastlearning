@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { ChevronDown, CheckCircle, ArrowRight, ChevronRight, Zap } from 'lucide-react';
+import { ChevronDown, CheckCircle, ArrowRight, ChevronRight } from 'lucide-react';
 import { getProgramBySlug } from '../../data/programs';
 import BrandWhoosh from '../../components/BrandWhoosh';
+import HeadingMarker from '../../components/HeadingMarker';
 import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../../components/MarketingSections';
 import HowItWorksCard from '../../components/HowItWorksCard';
 import hero1 from '../../assets/Hero 1.png';
@@ -162,14 +163,12 @@ export default function ProgramDetail() {
             {/* Left, text */}
             <motion.div initial="hidden" animate="visible" variants={stagger}>
               <motion.div variants={fadeUp}>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '20px' }}>
-                  <Zap size={10} /> AI Powered · {program.classes}
-                </span>
+                <HeadingMarker text={`AI Powered · ${program.classes}`} marginBottom="20px" fontSize="11px" />
               </motion.div>
 
               <motion.h1
                 variants={fadeUp}
-                style={{ fontSize: 'clamp(2rem, 4.5vw, 3.25rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '20px', lineHeight: 1.15 }}
+                style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '20px', lineHeight: 1.15 }}
               >
                 {program.name}
               </motion.h1>
@@ -299,10 +298,8 @@ export default function ProgramDetail() {
       <section style={{ paddingTop: '96px', paddingBottom: '80px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
-            <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
-              Right for you?
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28' }}>
+            <HeadingMarker text="Right for you?" marginBottom="16px" fontSize="11px" />
+            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111' }}>
               Who This Programme Is For
             </h2>
           </motion.div>
@@ -342,10 +339,8 @@ export default function ProgramDetail() {
       <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
-            <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
-              Curriculum
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28' }}>
+            <HeadingMarker text="Curriculum" marginBottom="16px" fontSize="11px" />
+            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111' }}>
               What You'll Learn
             </h2>
           </motion.div>
@@ -408,10 +403,8 @@ export default function ProgramDetail() {
             {/* Features list */}
             <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               <motion.div variants={fadeUp} style={{ marginBottom: '40px' }}>
-                <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
-                  What's Included
-                </span>
-                <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28' }}>
+                <HeadingMarker text="What's Included" marginBottom="16px" fontSize="11px" />
+                <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111' }}>
                   Everything in This Plan
                 </h2>
               </motion.div>
@@ -463,8 +456,8 @@ export default function ProgramDetail() {
 
               <Link
                 to="/contact"
-                className="cta cta-blue"
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
+                className="cta cta-pink"
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#F03C6F', color: 'white', boxShadow: 'none' }}
               >
                 Start 14-Day Free Trial <ArrowRight size={16} />
               </Link>

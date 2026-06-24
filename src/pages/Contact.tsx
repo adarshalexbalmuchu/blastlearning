@@ -4,6 +4,7 @@ import { motion, type Variants } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
+import HeadingMarker from '../components/HeadingMarker';
 
 type Role = '' | 'parent' | 'student' | 'tutor' | 'school';
 
@@ -124,13 +125,11 @@ export default function Contact() {
         <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px', background: '#E0F5FC', color: '#0FA8DC' }}>
-              Get in Touch
-            </span>
-            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', color: '#1C1C28' }}>
+            <HeadingMarker text="Get in Touch" marginBottom="20px" fontSize="12px" />
+            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', color: '#111111' }}>
               Contact Us
             </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
               Have questions about our programs, or want to speak to a learning advisor? We're here to help.
             </p>
           </motion.div>
@@ -237,7 +236,7 @@ export default function Contact() {
                     <div style={{ width: '64px', height: '64px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '24px', background: '#E0F5FC', color: '#0FA8DC' }}>
                       <Send size={26} />
                     </div>
-                    <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', marginBottom: '12px', color: '#1C1C28' }}>Message Sent!</h2>
+                    <h2 style={{ fontSize: 'var(--fs-h3-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', marginBottom: '12px', color: '#111111' }}>Message Sent!</h2>
                     <p style={{ fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', lineHeight: 1.7 }}>
                       Thank you for reaching out. Our team will get back to you within 2 business hours.
                     </p>
@@ -370,10 +369,10 @@ export default function Contact() {
           viewport={{ once: true }}
           style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
         >
-          <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', color: '#1C1C28' }}>
+          <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', color: '#111111' }}>
             Prefer to Talk?
           </h2>
-          <p style={{ color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '32px', fontSize: '1.05rem', lineHeight: 1.7 }}>
+          <p style={{ color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '32px', fontSize: 'var(--fs-body)', lineHeight: 1.7 }}>
             Speak directly with a learning advisor who can assess your child's needs and recommend the right program.
           </p>
           <a

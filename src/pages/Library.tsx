@@ -6,6 +6,7 @@ import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, Play, FileText, HelpCircle, Lock } from 'lucide-react';
 import ctaBanner from '../assets/Hero 4.png';
+import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
 
 const testimonialsRow1 = [
@@ -106,13 +107,11 @@ export default function Library() {
             transition={{ duration: 0.6 }}
             style={{ textAlign: 'center', marginBottom: '40px' }}
           >
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px', background: '#E0F5FC', color: '#0FA8DC' }}>
-              Resource Library
-            </span>
-            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', color: '#1C1C28' }}>
+            <HeadingMarker text="Resource Library" marginBottom="20px" fontSize="12px" />
+            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', color: '#111111' }}>
               Learning Resources
             </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '560px', margin: '0 auto 32px' }}>
+            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '560px', margin: '0 auto 32px' }}>
               Videos, notes, and practice quizzes for CBSE Classes 8-12, SAT Prep, and competitive exams. Many are free to start, and a subscription unlocks the full library.
             </p>
             <div style={{ position: 'relative', maxWidth: '520px', margin: '0 auto' }}>

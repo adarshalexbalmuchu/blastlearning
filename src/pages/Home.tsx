@@ -7,8 +7,9 @@ import {
 import HeroCarousel from '../components/HeroCarousel';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
-import HowItWorksCard, { UploadVisual, AIVisual, MasteryVisual } from '../components/HowItWorksCard';
+import HowItWorksCard, { UploadVisual, AIVisual, MasteryVisual, GapVisual } from '../components/HowItWorksCard';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
+import HeadingMarker from '../components/HeadingMarker';
 import { useState } from 'react';
 import { useSEO } from '../hooks/useSEO';
 
@@ -18,7 +19,7 @@ const howItWorks = [
   {
     num: '01',
     title: 'AI Tutor',
-    desc: 'A quick diagnostic builds a personalised study plan, scheduled at the interval where recall is hardest and retention sticks.',
+    desc: "A quick diagnostic builds a personalised study plan, scheduled at the interval where recall is hardest and retention sticks. Everything stays tuned to the student's actual class and the next test, so study time gets used, not added to.",
     accent: '#0FA8DC',
     Visual: UploadVisual,
   },
@@ -32,9 +33,16 @@ const howItWorks = [
   {
     num: '03',
     title: 'Mind Coach',
-    desc: 'Focus, emotional control, goal-setting, and personal agency are taught as skills with their own practice routine.',
+    desc: 'Focus, emotional control, goal-setting, and personal agency, taught as skills with their own practice routine. Test-taking gets the same treatment: rehearsed under timed conditions until it holds.',
     accent: '#3B82F6',
     Visual: MasteryVisual,
+  },
+  {
+    num: '04',
+    title: 'GAP Assessment',
+    desc: "Blast finds the gaps left by earlier years, builds a path that closes exactly those gaps, then moves the student into the current year's material.",
+    accent: '#0FA8DC',
+    Visual: GapVisual,
   },
 ];
 
@@ -167,25 +175,72 @@ const stagger: Variants = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
+// Section heading internal stagger variants
+const headingContainer: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.13, delayChildren: 0.05 } },
+};
+const eyebrowAnim: Variants = {
+  hidden: { opacity: 0, x: -18 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
+};
+const h2Anim: Variants = {
+  hidden: { opacity: 0, y: 32, filter: 'blur(6px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } },
+};
+const subtitleAnim: Variants = {
+  hidden: { opacity: 0, y: 14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
+};
+
 // ─── Reusable section heading ───────────────────────────────────────────────────
-function SectionHeading({ eyebrow, title, subtitle }: { eyebrow?: string; title: React.ReactNode; subtitle?: string }) {
+const PINK = '#E8135A';
+const CYAN = '#0FA8DC';
+const G = (word: string, color: string = PINK) => (
+  <span style={{ color }}>{word}</span>
+);
+const GP = (word: string) => (
+  <span
+    style={{
+      backgroundImage: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)',
+      WebkitBackgroundClip: 'text',
+      backgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
+      color: 'transparent',
+    }}
+  >
+    {word}
+  </span>
+);
+
+function SectionHeading({ eyebrow, title, subtitle, accent, align = 'left', subtitleMaxWidth = '600px' }: { eyebrow?: string; title: React.ReactNode; subtitle?: React.ReactNode; accent?: string; align?: 'left' | 'center'; subtitleMaxWidth?: string }) {
+  const isCentered = align === 'center';
   return (
-    <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '32px' }}>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-8% 0px' }}
+      variants={headingContainer}
+      style={{ textAlign: align, marginBottom: '32px' }}
+    >
       {eyebrow && (
-        <div style={{ marginBottom: '16px' }}>
-          <span style={{ color: '#E08EC9', fontSize: '13px', fontWeight: 600, marginRight: '8px', verticalAlign: 'middle' }}>• – </span>
-          <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', verticalAlign: 'middle' }}>
-            {eyebrow}
-          </span>
-        </div>
+        <motion.div variants={eyebrowAnim}>
+          <HeadingMarker text={eyebrow} marginBottom="10px" fontSize="12px" accent={accent} />
+        </motion.div>
       )}
-      <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15 }}>
+      <motion.h2
+        variants={h2Anim}
+        style={{ fontSize: 'var(--fs-h2-fluid)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}
+      >
         {title}
-      </h2>
+      </motion.h2>
       {subtitle && (
-        <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', maxWidth: '600px', margin: '14px auto 0', lineHeight: 1.6 }}>
+        <motion.p
+          variants={subtitleAnim}
+          style={{ fontSize: '0.95rem', color: '#5A5A6E', fontWeight: 400, fontFamily: 'Inter, sans-serif', maxWidth: subtitleMaxWidth, margin: isCentered ? '12px auto 0' : '12px 0 0', lineHeight: 1.65, textAlign: align }}
+        >
           {subtitle}
-        </p>
+        </motion.p>
       )}
     </motion.div>
   );
@@ -218,31 +273,35 @@ export default function Home() {
       <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
-            title="The new curriculum changed the rules. Most platforms have not caught up."
-            subtitle="Since NEP 2020, students need competency-based progression, retrieval practice, and continuous assessment, not passive coverage."
+            eyebrow="NEP 2020"
+            accent={PINK}
+            align="left"
+            title={<>{G('NEP 2020', CYAN)} Set the {G('Rules', CYAN)}.<br />We Were {GP('Already Playing by Them')}.</>}
+            subtitleMaxWidth="980px"
+            subtitle={<><span style={{ display: 'block', whiteSpace: 'nowrap' }}>NEP 2020 changed what schools test for.</span><span style={{ display: 'block', whiteSpace: 'nowrap' }}>Most coaching platforms still grade on coverage and memorisation, because that's the system they were built for.</span><span style={{ display: 'block', whiteSpace: 'nowrap' }}>Blast Learning runs on retrieval practice, competency-based progression, and continuous assessment.</span><span style={{ display: 'block', whiteSpace: 'nowrap' }}>We built it that way before the policy existed. NEP 2020 just gave the rest of the industry a deadline to catch up.</span></>}
           />
           <FeatureExplorer />
         </div>
       </section>
 
-      {/* ── Pricing / Programs (white) ── */}
-      <section id="programs-preview" className="section-pad" style={{ paddingTop: '18px', paddingBottom: '32px', background: '#FFFFFF' }}>
+      {/* ── Pricing / Programs (off-white) ── */}
+      <section id="programs-preview" className="section-pad" style={{ paddingTop: '18px', paddingBottom: '32px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
 
           {/* Centered header + toggle */}
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} style={{ textAlign: 'center', marginBottom: '20px' }}>
-            <div style={{ marginBottom: '16px' }}>
-              <span style={{ color: '#E08EC9', fontSize: '13px', fontWeight: 600, marginRight: '8px', verticalAlign: 'middle' }}>• – </span>
-              <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', verticalAlign: 'middle' }}>
-                Courses & Pricing
-              </span>
-            </div>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', marginBottom: '12px' }}>
-              Four courses. One underlying system.
-            </h2>
-            <p style={{ fontSize: '16px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '22px', maxWidth: '440px', margin: '0 auto 22px' }}>
-              All prices in INR and billed monthly. Every course includes a 14-day free trial.
-            </p>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-8% 0px' }} variants={headingContainer} style={{ textAlign: 'center', marginBottom: '20px' }}>
+            <motion.div variants={eyebrowAnim}>
+              <HeadingMarker text="Courses & Pricing" marginBottom="10px" fontSize="12px" accent={CYAN} />
+            </motion.div>
+            <motion.h2 variants={h2Anim} style={{ fontSize: 'var(--fs-h2-fluid)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: '12px', color: '#111111' }}>
+              Four courses. One underlying {G('system', PINK)}.
+            </motion.h2>
+            <motion.p variants={subtitleAnim} style={{ fontSize: '0.95rem', color: '#5A5A6E', fontWeight: 400, fontFamily: 'Inter, sans-serif', marginBottom: '8px', maxWidth: '540px', margin: '0 auto 8px', lineHeight: 1.65, textAlign: 'center' }}>
+              Different subjects, different exams - the same science of memory underneath all of them.
+            </motion.p>
+            <motion.p variants={subtitleAnim} style={{ fontSize: '13px', color: '#A0A0B0', fontFamily: 'Inter, sans-serif', marginBottom: '22px' }}>
+              All prices in INR · billed monthly
+            </motion.p>
             {/* Monthly / Yearly toggle */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', fontSize: '14px', fontWeight: 500, fontFamily: 'Inter, sans-serif', color: '#1C1C28' }}>
               <span style={{ opacity: isYearly ? 0.45 : 1, transition: 'opacity 0.2s' }}>Monthly</span>
@@ -279,52 +338,55 @@ export default function Home() {
                   transition={{ type: 'spring', stiffness: 300, damping: 22 }}
                   style={{
                     position: 'relative',
-                    background: '#FFFFFF',
-                    border: plan.featured ? '2px solid #0FA8DC' : '1.5px solid #ECECF1',
-                    borderRadius: '20px',
-                    padding: '28px 24px',
+                    background: plan.featured
+                      ? 'linear-gradient(180deg, #FFF6F9 0%, #FFFFFF 24%)'
+                      : 'linear-gradient(180deg, #F9FCFF 0%, #FFFFFF 24%)',
+                    border: plan.featured ? '2px solid #F7B4C9' : '1.5px solid #E6ECF4',
+                    borderRadius: '22px',
+                    padding: '24px',
                     boxShadow: plan.featured
-                      ? '0 8px 32px rgba(15,168,220,0.14)'
-                      : '0 2px 12px rgba(28,28,40,0.04)',
+                      ? '0 10px 26px rgba(240,60,111,0.12)'
+                      : '0 8px 22px rgba(28,28,40,0.06)',
                     display: 'flex',
                     flexDirection: 'column',
+                    minHeight: '100%',
                   }}
                 >
                   {/* Most Popular badge */}
                   {plan.featured && (
                     <span style={{
-                      position: 'absolute', top: '-13px', left: '50%', transform: 'translateX(-50%)',
-                      padding: '4px 14px', fontSize: '11px', fontWeight: 700, color: 'white',
-                      background: '#0FA8DC', borderRadius: '9999px', fontFamily: 'Inter, sans-serif',
-                      whiteSpace: 'nowrap', boxShadow: '0 2px 8px rgba(15,168,220,0.35)',
+                      position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)',
+                      padding: '5px 14px', fontSize: '11px', fontWeight: 700, color: 'white',
+                      background: '#F03C6F', borderRadius: '9999px', fontFamily: 'Inter, sans-serif',
+                      whiteSpace: 'nowrap', boxShadow: 'none',
                     }}>
                       Most Popular
                     </span>
                   )}
 
                   {/* Plan name + classes */}
-                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '8px', marginBottom: '6px' }}>
-                    <h3 style={{ fontSize: '17px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', margin: 0 }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: '8px', marginBottom: '8px' }}>
+                    <h3 style={{ fontSize: '1.32rem', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', margin: 0, lineHeight: 1.25 }}>
                       {plan.name}
                     </h3>
-                    <span style={{ padding: '2px 9px', fontSize: '11px', fontWeight: 600, borderRadius: '9999px', background: '#F0F9FF', color: '#0FA8DC', fontFamily: 'Inter, sans-serif', flexShrink: 0, marginTop: '2px' }}>
+                    <span style={{ padding: '3px 10px', fontSize: '11px', fontWeight: 600, borderRadius: '9999px', background: plan.featured ? '#FDE9F0' : '#EFF6FB', color: plan.featured ? '#C0265D' : '#0F6F95', fontFamily: 'Inter, sans-serif', flexShrink: 0 }}>
                       {plan.classes}
                     </span>
                   </div>
-                  <p style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: '0 0 20px', lineHeight: 1.5 }}>
+                  <p style={{ fontSize: '13px', color: '#69758A', fontFamily: 'Inter, sans-serif', margin: '0 0 18px', lineHeight: 1.58, minHeight: '62px' }}>
                     {plan.desc}
                   </p>
 
                   {/* Price */}
-                  <div style={{ marginBottom: '20px' }}>
+                  <div style={{ marginBottom: '18px', padding: '14px 14px 12px', borderRadius: '14px', background: plan.featured ? '#FFF1F6' : '#F5FAFE', border: plan.featured ? '1px solid #FAD3E1' : '1px solid #E4EFF7' }}>
                     <div style={{ display: 'flex', alignItems: 'flex-end', gap: '2px' }}>
-                      <span style={{ fontSize: '15px', fontWeight: 600, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', paddingBottom: '6px' }}>₹</span>
-                      <span style={{ fontSize: '40px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', lineHeight: 1 }}>
+                      <span style={{ fontSize: '14px', fontWeight: 600, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', paddingBottom: '6px' }}>₹</span>
+                      <span style={{ fontSize: '36px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', lineHeight: 1 }}>
                         {price.toLocaleString('en-IN')}
                       </span>
                       <span style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', paddingBottom: '5px', marginLeft: '2px' }}>/mo</span>
                     </div>
-                    <p style={{ fontSize: '12px', color: '#A0A0B0', fontFamily: 'Inter, sans-serif', marginTop: '4px' }}>
+                    <p style={{ fontSize: '12px', color: '#7E899A', fontFamily: 'Inter, sans-serif', marginTop: '6px', lineHeight: 1.45 }}>
                       {isYearly
                         ? `Billed ₹${annualYearly.toLocaleString('en-IN')}/yr · saves ₹${(annualMonthly - annualYearly).toLocaleString('en-IN')}`
                         : `₹${plan.yearlyMonthly.toLocaleString('en-IN')}/mo when billed yearly`}
@@ -332,14 +394,14 @@ export default function Home() {
                   </div>
 
                   {/* Separator */}
-                  <div style={{ height: '1px', background: '#F0F0F5', marginBottom: '20px' }} />
+                  <div style={{ height: '1px', background: '#E9EEF5', marginBottom: '18px' }} />
 
                   {/* Features */}
-                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'flex', flexDirection: 'column', gap: '11px', flex: 1 }}>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 22px', display: 'flex', flexDirection: 'column', gap: '10px', flex: 1 }}>
                     {plan.features.map((f) => (
-                      <li key={f} style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
-                        <CheckCircle size={15} style={{ color: '#0FA8DC', flexShrink: 0 }} />
-                        <span style={{ fontSize: '13px', color: '#3D3D4E', fontFamily: 'Inter, sans-serif', lineHeight: 1.4 }}>{f}</span>
+                      <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '9px' }}>
+                        <CheckCircle size={15} style={{ color: plan.featured ? '#F03C6F' : '#0FA8DC', flexShrink: 0, marginTop: '1px' }} />
+                        <span style={{ fontSize: '13px', color: '#3D4658', fontFamily: 'Inter, sans-serif', lineHeight: 1.45 }}>{f}</span>
                       </li>
                     ))}
                   </ul>
@@ -347,14 +409,15 @@ export default function Home() {
                   {/* CTA */}
                   <Link
                     to={`/programs/${plan.slug}`}
+                    className={plan.featured ? 'cta cta-pink' : 'cta'}
                     style={{
                       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',
-                      padding: '12px 20px', borderRadius: '10px',
+                      padding: '12px 20px', borderRadius: '12px',
                       fontSize: '14px', fontWeight: 600, fontFamily: 'Inter, sans-serif',
                       textDecoration: 'none', marginTop: 'auto',
-                      background: plan.featured ? '#0FA8DC' : 'transparent',
+                      background: plan.featured ? '#F03C6F' : 'transparent',
                       color: plan.featured ? 'white' : '#1C1C28',
-                      border: plan.featured ? 'none' : '1.5px solid #DCDCE5',
+                      border: plan.featured ? 'none' : '1.5px solid #CCD8E6',
                       boxShadow: 'none',
                     }}
                   >
@@ -364,26 +427,20 @@ export default function Home() {
               );
             })}
           </motion.div>
-
-          {/* Footer link */}
-          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} style={{ textAlign: 'center', marginTop: '32px', fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>
-            Not sure which course is right?{' '}
-            <Link to="/programs" style={{ color: '#0FA8DC', fontWeight: 600, textDecoration: 'none' }}>
-              Compare all courses →
-            </Link>
-          </motion.p>
         </div>
       </section>
 
-      {/* ── How It Works (light gray) ── */}
-      <section id="how-it-works" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#F9FAFB' }}>
+      {/* ── How It Works (white) ── */}
+      <section id="how-it-works" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
-            eyebrow="Methodology"
-            title="The science that explains the method."
-            subtitle="Each step turns learning science into daily practice that improves retention over time."
+            eyebrow="Method & Science"
+            accent={CYAN}
+            align="left"
+            title={<>The {G('science', PINK)} that explains the method.</>}
+            subtitle="Ebbinghaus's Forgetting Curve is the starting point: students lose 80% of what they learn within 24 hours - not from lack of effort, but because the brain discards what it isn't asked to use. Each of the four steps below is a direct application of the science that fights this. The step is the practice; the principle beside it is why it works."
           />
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '28px' }} className="grid-cols-3-md">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '28px' }} className="grid-cols-2-md grid-cols-4-lg">
             {howItWorks.map(({ num, title, desc, accent, Visual }) => (
               <motion.div
                 key={num}
@@ -396,7 +453,7 @@ export default function Home() {
             ))}
           </motion.div>
           <div style={{ textAlign: 'center' }}>
-            <Link className="cta cta-blue" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
+            <Link className="cta cta-pink" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
               Start the 14-Day Free Trial <ArrowRight size={16} />
             </Link>
           </div>
@@ -404,10 +461,13 @@ export default function Home() {
       </section>
 
 
-      {/* ── Testimonials (light gray) ── */}
+      {/* ── Testimonials (white) ── */}
       <SharedTestimonialsSection
         eyebrow="Parents & Students"
-        title="What changes once retrieval replaces re-reading."
+        accent="#E8135A"
+        align="center"
+        background="#FFFFFF"
+        title={<>What changes once {G('retrieval', CYAN)} replaces re-reading.</>}
         subtitle="Students and parents describe what changed after shifting from passive review to retrieval-based study."
         row1={[
           {
@@ -476,11 +536,13 @@ export default function Home() {
       />
 
       {/* ── Resources (white) ── */}
-      <section id="resources" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#F8FAFD', borderTop: '1px solid #EAEFF5', borderBottom: '1px solid #EAEFF5' }}>
+      <section id="resources" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF', borderTop: '1px solid #EAEFF5', borderBottom: '1px solid #EAEFF5' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             eyebrow="Resources"
-            title="The thinking behind the product."
+            accent={PINK}
+            align="left"
+            title={<>The {G('thinking', CYAN)} behind the product.</>}
             subtitle="Research summaries and practical guides for parents and students who want to understand why the method works."
           />
           <div style={{ textAlign: 'center', marginBottom: '24px' }}>
@@ -509,7 +571,7 @@ export default function Home() {
                   <span style={{ fontSize: '11px', fontWeight: 700, color: '#0FA8DC', fontFamily: 'Inter, sans-serif' }}>{article.tag}</span>
                   <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{article.readTime}</span>
                 </p>
-                <h3 style={{ fontSize: '17px', color: '#1C1C28', fontFamily: 'Poppins, sans-serif', marginBottom: '10px', lineHeight: 1.4 }}>{article.title}</h3>
+                <h3 style={{ fontSize: '1.625rem', color: '#1C1C28', fontFamily: 'Poppins, sans-serif', marginBottom: '10px', lineHeight: 1.4 }}>{article.title}</h3>
                 <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '14px' }}>{article.desc}</p>
                 <Link to="/library" style={{ color: '#0FA8DC', fontWeight: 600, fontSize: '13px', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
                   Read more
@@ -521,7 +583,7 @@ export default function Home() {
       </section>
 
       {/* ── FAQ Preview (white) ── */}
-      <SharedFaqSection items={homeFaqs} title="Common questions, direct answers." subtitle="If your question is not here, the full FAQ page covers billing, syllabus details, Study Buddy matching, and technical requirements." linkLabel="View full FAQ page" />
+      <SharedFaqSection items={homeFaqs} eyebrow="FAQ" accent="#0FA8DC" align="center" background="#F7FAFC" title={<>Common questions, direct {G('answers', PINK)}.</>} subtitle="If your question isn't here, the full FAQ page covers every edge case - billing, syllabus details, Study Buddy matching, and technical requirements." linkLabel="View full FAQ page" />
     </div>
   );
 }

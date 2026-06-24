@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import { type FC } from 'react';
-import uploadImg from '../assets/Upload.png';
-import learnImg from '../assets/Learn.png';
-import masterImg from '../assets/master.png';
+import step1Img from '../assets/Group 24.png';
+import step2Img from '../assets/how-it-works/Group 14.png';
+import step3Img from '../assets/Group 26.png';
+import step4Img from '../assets/how-it-works/Group 16.png';
 
 export function UploadVisual() {
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
       <img
-        src={uploadImg}
+        src={step1Img}
         alt=""
         aria-hidden="true"
-        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', display: 'block' }}
       />
     </div>
   );
@@ -21,10 +22,10 @@ export function AIVisual() {
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
       <img
-        src={learnImg}
+        src={step2Img}
         alt=""
         aria-hidden="true"
-        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', display: 'block' }}
       />
     </div>
   );
@@ -34,10 +35,23 @@ export function MasteryVisual() {
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
       <img
-        src={masterImg}
+        src={step3Img}
         alt=""
         aria-hidden="true"
-        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', display: 'block' }}
+      />
+    </div>
+  );
+}
+
+export function GapVisual() {
+  return (
+    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
+      <img
+        src={step4Img}
+        alt=""
+        aria-hidden="true"
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', display: 'block' }}
       />
     </div>
   );
@@ -61,15 +75,13 @@ export default function HowItWorksCard({ title, desc, accent: _accent, Visual, h
     <div
       style={{
         position: 'relative',
-        borderRadius: '20px',
-        overflow: 'hidden',
+        borderRadius: 0,
+        overflow: 'visible',
         height,
-        border: '1.5px solid #E2EAF0',
-        boxShadow: hovered
-          ? '0 16px 48px rgba(28,28,40,0.13)'
-          : '0 4px 24px rgba(28,28,40,0.07)',
-        transform: hovered ? 'scale(1.025)' : 'scale(1)',
-        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+        border: 'none',
+        boxShadow: 'none',
+        transform: 'none',
+        transition: 'none',
         cursor: 'default',
         willChange: 'transform',
       }}
@@ -92,7 +104,7 @@ export default function HowItWorksCard({ title, desc, accent: _accent, Visual, h
           borderRadius: '16px',
           padding: '14px 16px 12px',
           border: '1px solid rgba(255,255,255,0.65)',
-          boxShadow: '0 4px 20px rgba(28,28,40,0.08)',
+          boxShadow: 'none',
           transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
           transition: 'transform 0.3s ease',
           zIndex: 5,

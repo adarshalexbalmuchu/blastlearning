@@ -66,7 +66,7 @@ export default function Login() {
               <LogIn size={24} />
             </div>
 
-            <h1 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '14px' }}>
+            <h1 style={{ fontSize: 'var(--fs-h3-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#111111', marginBottom: '14px' }}>
               {copy.heading}
             </h1>
             <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '32px' }}>
@@ -76,8 +76,8 @@ export default function Login() {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <Link
                 to="/programs"
-                className="cta cta-blue"
-                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', background: '#0FA8DC', color: '#FFFFFF', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 6px 18px rgba(15,168,220,0.25)' }}
+                className="cta cta-pink"
+                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px 28px', borderRadius: '10px', background: '#F03C6F', color: '#FFFFFF', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}
               >
                 Start your free trial <ArrowRight size={16} />
               </Link>

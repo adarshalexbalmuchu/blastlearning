@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import FAQItem from './FAQItem';
 import TestimonialsMarquee from './ui/testimonials-marquee';
+import HeadingMarker from './HeadingMarker';
 
 export type TestimonialCardData = {
   image?: string;
@@ -19,30 +20,39 @@ export type FaqPreviewItem = {
 
 type SectionIntroProps = {
   eyebrow: string;
-  title: string;
+  title: React.ReactNode;
   subtitle: string;
+  accent?: string;
+  align?: 'left' | 'center';
 };
 
-function SectionIntro({ eyebrow, title, subtitle }: SectionIntroProps) {
+import React from 'react';
+
+function SectionIntro({ eyebrow, title, subtitle, accent, align = 'left' }: SectionIntroProps) {
+  const isCentered = align === 'center';
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-8% 0px' }}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.13, delayChildren: 0.05 } } }}
+      style={{ textAlign: align }}
     >
-      <div style={{ marginBottom: '16px' }}>
-        <span style={{ color: '#E08EC9', fontSize: '13px', fontWeight: 600, marginRight: '8px', verticalAlign: 'middle' }}>• – </span>
-        <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', verticalAlign: 'middle' }}>
-          {eyebrow}
-        </span>
-      </div>
-      <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15, margin: '0 0 14px' }}>
+      <motion.div variants={{ hidden: { opacity: 0, x: -18 }, visible: { opacity: 1, x: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } } }}>
+        <HeadingMarker text={eyebrow} marginBottom="10px" fontSize="12px" accent={accent} />
+      </motion.div>
+      <motion.h2
+        variants={{ hidden: { opacity: 0, y: 32, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } } }}
+        style={{ fontSize: 'var(--fs-h2-fluid)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, letterSpacing: '-0.025em', lineHeight: 1.15, margin: '0 0 14px', color: '#111111' }}
+      >
         {title}
-      </h2>
-      <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', lineHeight: 1.6, maxWidth: '600px', margin: '0 auto' }}>
+      </motion.h2>
+      <motion.p
+        variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } } }}
+        style={{ fontSize: '0.95rem', color: '#5A5A6E', fontWeight: 400, fontFamily: 'Inter, sans-serif', lineHeight: 1.65, maxWidth: '600px', margin: isCentered ? '0 auto' : '0', textAlign: align }}
+      >
         {subtitle}
-      </p>
+      </motion.p>
     </motion.div>
   );
 }
@@ -54,18 +64,24 @@ export function SharedTestimonialsSection({
   title = 'Real Results from Real Students',
   subtitle = 'Hear from families who turned forgotten lessons into lasting marks.',
   sectionId = 'testimonials',
+  accent,
+  align,
+  background = '#F7FAFC',
 }: {
   row1: TestimonialCardData[];
   row2: TestimonialCardData[];
   eyebrow?: string;
-  title?: string;
+  title?: React.ReactNode;
   subtitle?: string;
   sectionId?: string;
+  accent?: string;
+  align?: 'left' | 'center';
+  background?: string;
 }) {
   return (
-    <section id={sectionId} className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#F9FAFB' }}>
-      <div style={{ textAlign: 'center', padding: '0 24px', marginBottom: '40px' }}>
-        <SectionIntro eyebrow={eyebrow} title={title} subtitle={subtitle} />
+    <section id={sectionId} className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background }}>
+      <div style={{ textAlign: align ?? 'left', padding: '0 24px', marginBottom: '40px' }}>
+        <SectionIntro eyebrow={eyebrow} title={title} subtitle={subtitle} accent={accent} align={align} />
       </div>
       <TestimonialsMarquee row1={row1} row2={row2} />
     </section>
@@ -79,19 +95,25 @@ export function SharedFaqSection({
   subtitle = 'Everything you need to know before you start your free trial.',
   linkTo = '/faq',
   linkLabel = 'View All FAQs',
+  accent,
+  align,
+  background = '#FFFFFF',
 }: {
   items: FaqPreviewItem[];
   eyebrow?: string;
-  title?: string;
+  title?: React.ReactNode;
   subtitle?: string;
   linkTo?: string;
   linkLabel?: string;
+  accent?: string;
+  align?: 'left' | 'center';
+  background?: string;
 }) {
   return (
-    <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
+    <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background }}>
       <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
-        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <SectionIntro eyebrow={eyebrow} title={title} subtitle={subtitle} />
+        <div style={{ textAlign: align ?? 'left', marginBottom: '32px' }}>
+          <SectionIntro eyebrow={eyebrow} title={title} subtitle={subtitle} accent={accent} align={align} />
         </div>
         <div style={{ borderTop: '1px solid #E5E7EB', marginBottom: '32px' }}>
           {items.map((faq, index) => (

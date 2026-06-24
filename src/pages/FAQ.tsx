@@ -5,6 +5,7 @@ import FAQItem from '../components/FAQItem';
 import ctaBanner from '../assets/Hero 4.png';
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
+import HeadingMarker from '../components/HeadingMarker';
 import { useState, useEffect, useMemo } from 'react';
 import { SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
 
@@ -212,20 +213,18 @@ export default function FAQ() {
           <BrandArc width="100%" opacity={0.04} />
         </div>
         <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
-        <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
+        <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 24px', textAlign: 'left', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <span style={{ display: 'inline-block', padding: '5px 16px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px', background: '#E0F5FC', color: '#0FA8DC' }}>
-              FAQ
-            </span>
-            <h1 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', color: '#1C1C28' }}>
+            <HeadingMarker text="FAQ" marginBottom="16px" fontSize="12px" />
+            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', color: '#111111' }}>
               Frequently Asked Questions
             </h1>
-            <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '32px' }}>
+            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '32px' }}>
               Everything you need to know about Blast Learning. Can't find your answer? Contact our team.
             </p>
 
             {/* ── Search input ── */}
-            <div style={{ position: 'relative', maxWidth: '520px', margin: '0 auto' }}>
+            <div style={{ position: 'relative', maxWidth: '520px', margin: 0 }}>
               <Search size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#8E8EA0', pointerEvents: 'none' }} />
               <input
                 type="search"

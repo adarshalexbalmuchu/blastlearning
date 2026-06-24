@@ -102,7 +102,7 @@ export default function BlogPost() {
                 </div>
               )}
               <h1
-                style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', lineHeight: 1.2, letterSpacing: '-0.02em', marginBottom: '20px' }}
+                style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', color: '#111111', lineHeight: 1.2, letterSpacing: '-0.02em', marginBottom: '20px' }}
                 dangerouslySetInnerHTML={{ __html: post.title.rendered }}
               />
               <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap' }}>
@@ -146,7 +146,8 @@ export default function BlogPost() {
             </Link>
             <Link
               to="/programs"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '10px 22px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#0FA8DC', color: 'white', boxShadow: '0 4px 14px rgba(15,168,220,0.28)' }}
+              className="cta cta-pink"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '10px 22px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#F03C6F', color: 'white', boxShadow: 'none' }}
             >
               Start Free Trial
             </Link>

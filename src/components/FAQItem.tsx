@@ -27,7 +27,7 @@ export default function FAQItem({ question, answer, highlight = '' }: FAQItemPro
   const [open, setOpen] = useState(false);
 
   return (
-    <div style={{ borderBottom: '1px solid #E5E7EB' }}>
+    <div style={{ borderBottom: '1px solid #E5E7EB', paddingLeft: open ? '12px' : '0', borderLeftWidth: open ? '3px' : '0', borderLeftColor: open ? '#0FA8DC' : 'transparent', transition: 'all 0.25s ease' }}>
       <button
         onClick={() => setOpen((v) => !v)}
         style={{
@@ -43,13 +43,13 @@ export default function FAQItem({ question, answer, highlight = '' }: FAQItemPro
           border: 'none',
         }}
       >
-        <span style={{ fontSize: '15px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.45 }}>
+        <span style={{ fontSize: '15px', fontWeight: 600, color: open ? '#0FA8DC' : '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.45, transition: 'color 0.25s ease' }}>
           <Highlight text={question} query={highlight} />
         </span>
         <motion.div
           animate={{ rotate: open ? 180 : 0 }}
           transition={{ duration: 0.2 }}
-          style={{ flexShrink: 0, opacity: 0.6, color: '#1C1C28' }}
+          style={{ flexShrink: 0, opacity: open ? 1 : 0.6, color: open ? '#0FA8DC' : '#1C1C28', transition: 'all 0.25s ease' }}
         >
           <ChevronDown size={16} strokeWidth={2} />
         </motion.div>

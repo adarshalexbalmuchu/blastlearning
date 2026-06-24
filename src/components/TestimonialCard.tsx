@@ -23,7 +23,7 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
       className="hover:-translate-y-0.5 transition duration-300 shadow-[0_2px_16px_rgba(28,28,40,0.05)] hover:shadow-[0_10px_32px_rgba(28,28,40,0.10)]"
       style={{
         background: '#FFFFFF',
-        border: '1.5px solid #ECECF1',
+        border: '1.5px solid #E8E8F0',
         borderRadius: '20px',
         padding: '22px',
         display: 'flex',

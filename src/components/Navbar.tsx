@@ -263,6 +263,7 @@ const navItems: NavItem[] = [
       },
     ],
   },
+  { id: 7, label: 'About us', path: '/about' },
   { id: 8, label: 'Contact', path: '/contact' },
 ];
 
@@ -317,17 +318,16 @@ export default function Navbar() {
           transition: 'box-shadow 0.3s',
         }}
       >
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <div className="flex items-center justify-between" style={{ height: '64px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', height: '64px', padding: '0 24px', justifyContent: 'space-between' }}>
+          
+          {/* Logo - Far Left with margin right */}
+          <Link to="/" className="flex items-center flex-shrink-0" style={{ textDecoration: 'none', marginRight: '40px', marginLeft: '90px' }}>
+            <img src={blastLogo} alt="Blast Learning" style={{ height: '56px', width: 'auto' }} />
+          </Link>
 
-            {/* Logo */}
-            <Link to="/" className="flex items-center flex-shrink-0" style={{ textDecoration: 'none' }}>
-              <img src={blastLogo} alt="Blast Learning" style={{ height: '44px', width: 'auto' }} />
-            </Link>
-
-            {/* Desktop Nav */}
-            <div className="show-lg-flex items-center" style={{ gap: '2px' }}>
-              <ul style={{ display: 'flex', alignItems: 'center', gap: '2px', listStyle: 'none', margin: 0, padding: 0 }}>
+          {/* Desktop Nav - Center Spread */}
+          <div className="show-lg-flex items-center" style={{ gap: '16px', flex: 1, justifyContent: 'center' }}>
+            <ul style={{ display: 'flex', alignItems: 'center', gap: '16px', listStyle: 'none', margin: 0, padding: 0 }}>
                 {navItems.map((item) => (
                   <li
                     key={item.id}
@@ -523,17 +523,32 @@ export default function Navbar() {
               </ul>
             </div>
 
-            {/* Desktop CTA */}
-            <Link
-              to="/programs"
-              className="show-lg-blk cta cta-pink"
-              style={{ padding: '9px 20px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '14px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', whiteSpace: 'nowrap', boxShadow: '0 4px 14px rgba(240,60,111,0.3)' }}
-            >
-              Start Free Trial
-            </Link>
+            {/* Right End - CTA + Login */}
+            <div className="show-lg-flex items-center" style={{ gap: '12px', flexShrink: 0, marginRight: '35px' }}>
 
-            {/* Login Dropdown */}
-            <div className="show-lg-blk" style={{ position: 'relative' }}>
+              {/* Start Free Trial Button */}
+              <Link
+                to="/programs"
+                style={{
+                  padding: '9px 20px',
+                  borderRadius: '10px',
+                  background: '#F03C6F',
+                  color: 'white',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  fontFamily: 'Inter, sans-serif',
+                  textDecoration: 'none',
+                  whiteSpace: 'nowrap',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  marginRight: '35px',
+                }}
+              >
+                Start Free Trial
+              </Link>
+
+              {/* Login Dropdown */}
+              <div style={{ position: 'relative' }}>
               <button
                 onClick={() => setLoginOpen((v) => !v)}
                 className="flex items-center gap-2 text-sm font-medium"
@@ -602,6 +617,7 @@ export default function Navbar() {
                   </motion.div>
                 )}
               </AnimatePresence>
+              </div>
             </div>
 
             {/* Mobile: Login button + hamburger */}
@@ -633,7 +649,6 @@ export default function Navbar() {
               </button>
             </div>
           </div>
-        </div>
 
       </nav>
 

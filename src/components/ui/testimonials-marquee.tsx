@@ -21,15 +21,15 @@ function TestimonialCard({ card }: { card: CardT }) {
   return (
     <div
       style={{
-        background: '#F6F6F8',
+        background: '#FFFFFF',
         borderRadius: '12px',
-        border: '1px solid #ECECF2',
+        border: '1px solid #E8E8F0',
         boxShadow: '0 2px 10px rgba(28,28,40,0.04)',
-        padding: '26px 24px 22px',
+        padding: '18px 18px 16px',
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        minHeight: '360px',
+        minHeight: '240px',
         boxSizing: 'border-box',
       }}
     >
@@ -37,12 +37,12 @@ function TestimonialCard({ card }: { card: CardT }) {
       <div
         aria-hidden="true"
         style={{
-          fontSize: '72px',
+          fontSize: '48px',
           lineHeight: 0.7,
           color: '#D7DAE1',
           fontFamily: 'Georgia, serif',
           fontWeight: 700,
-          marginBottom: '12px',
+          marginBottom: '8px',
           userSelect: 'none',
         }}
       >
@@ -52,14 +52,14 @@ function TestimonialCard({ card }: { card: CardT }) {
       {/* Quote text */}
       <p
         style={{
-          fontSize: 'clamp(15px, 1.7vw, 17px)',
-          color: '#3F3F46',
-          lineHeight: 1.58,
+          fontSize: '13px',
+          color: '#111111',
+          lineHeight: 1.55,
           fontFamily: 'Inter, sans-serif',
-          margin: '0 0 24px',
+          margin: '0 0 14px',
           flex: 1,
           display: '-webkit-box',
-          WebkitLineClamp: 7,
+          WebkitLineClamp: 6,
           WebkitBoxOrient: 'vertical' as const,
           overflow: 'hidden',
         }}
@@ -71,7 +71,7 @@ function TestimonialCard({ card }: { card: CardT }) {
       <div
         style={{
           borderTop: '1px solid #F3F4F6',
-          paddingTop: '15px',
+          paddingTop: '10px',
           display: 'flex',
           alignItems: 'flex-start',
           marginTop: 'auto',
@@ -137,11 +137,11 @@ export default function TestimonialsMarquee({
   const pageCards = all.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
 
   return (
-    <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
+    <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px', width: '100%' }}>
       {/* 3-per-page grid */}
       <div
         className="testimonials-grid"
-        style={{ marginBottom: '24px' }}
+        style={{ marginBottom: '24px', display: 'grid', gap: '20px' }}
       >
         {pageCards.map((card, i) => (
           <TestimonialCard key={`${page}-${i}`} card={card} />
@@ -150,7 +150,7 @@ export default function TestimonialsMarquee({
 
       {/* Prev / Next */}
       {totalPages > 1 && (
-        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '24px' }}>
           <button
             onClick={() => setPage(p => Math.max(0, p - 1))}
             disabled={page === 0}
