@@ -112,17 +112,20 @@ export default function HeroCarousel() {
             style={{
               display: 'inline-flex',
               alignItems: 'center',
+              justifyContent: 'center',
               gap: '8px',
-              padding: '16px 36px',
-              borderRadius: '10px',
-              background: '#0FA8DC',
+              padding: '16px 48px',
+              borderRadius: '14px',
+              background: 'linear-gradient(90deg, #1E9BDA 0%, #0FA8DC 100%)',
               color: 'white',
-              fontSize: '14px',
-              fontWeight: 600,
+              fontSize: '16px',
+              fontWeight: 700,
               fontFamily: 'Inter, sans-serif',
-              textDecoration: 'none',
               border: 'none',
               cursor: 'pointer',
+              minWidth: '220px',
+              boxShadow: '0 4px 18px rgba(15,168,220,0.28)',
+              letterSpacing: '-0.01em',
             }}
             onClick={() => window.location.href = '/programs'}
           >
