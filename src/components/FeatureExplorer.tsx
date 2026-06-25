@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
-import img1 from '../assets/Learn.png';
-import img2 from '../assets/master.png';
-import img3 from '../assets/Upload.png';
-import img4 from '../assets/expressive-young-girl-posing-studio.jpg';
+import img1 from '../assets/Critical Thinking Image.png';
+import img2 from '../assets/Competency Image.png';
+import img3 from '../assets/Continious Image.png';
+import img4 from '../assets/Competency Image (1).png';
 
 interface Feature {
+  tag: string;
   title: string;
   desc: string;
   accent: 'blue' | 'pink';
@@ -14,29 +15,33 @@ interface Feature {
 
 const features: Feature[] = [
   {
+    tag: 'COMPETENCY-BASED LEARNING',
     title: 'Competency over content coverage',
-    desc: 'Blast Learning sessions target what a student can do with knowledge, not how many chapters they\'ve covered.',
+    desc: 'Blast Learning sessions measure how effectively a student applies knowledge across every chapter studied.',
     accent: 'blue',
     panel: '#E7F6FB',
     img: img1,
   },
   {
-    title: 'Critical thinking over rote memorisation',
-    desc: 'Every session is built on retrieval and application, the opposite of the re-read-and-repeat cycle NEP 2020 explicitly replaces.',
+    tag: 'CRITICAL THINKING',
+    title: 'Reasoning over rote memorization',
+    desc: 'Every session trains retrieval and application, the specific skills NEP 2020 favors over rote re-reading.',
     accent: 'pink',
     panel: '#FCEEF1',
     img: img2,
   },
   {
-    title: 'Reduced curriculum load, deeper understanding',
-    desc: 'The GAP Assessment focuses study time on genuine gaps. Students go deeper on less, instead of shallower on everything.',
+    tag: 'CURRICULUM LOAD REDUCTION',
+    title: 'Lower load, deeper understanding',
+    desc: 'The GAP Assessment directs every study session toward genuine gaps, building depth where it matters most.',
     accent: 'blue',
     panel: '#EEF6FF',
     img: img3,
   },
   {
-    title: 'Continuous and holistic assessment',
-    desc: 'Progress Dashboard tracks retention and confidence week by week, not just performance at term-end examinations.',
+    tag: 'HOLISTIC ASSESSMENT',
+    title: 'Ongoing and holistic assessments',
+    desc: 'The Progress Dashboard measures retention and confidence every week, well ahead of term-end examinations.',
     accent: 'pink',
     panel: '#F0EDFC',
     img: img4,
@@ -133,7 +138,7 @@ export default function FeatureExplorer() {
                     textTransform: 'uppercase',
                   }}
                 >
-                  NEP 2020 PRINCIPLE
+                  {feature.tag}
                 </span>
               </div>
 
