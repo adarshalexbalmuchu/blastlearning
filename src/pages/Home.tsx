@@ -515,7 +515,7 @@ export default function Home() {
               View all resources <ArrowRight size={16} />
             </Link>
           </div>
-          <div className="grid-cols-3-md" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '28px' }}>
+          <div className="grid-cols-3-md" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
             {resourceArticles.map((article) => {
               const isGuide = article.tag === 'GUIDE';
               const accent = isGuide ? '#E8135A' : '#0FA8DC';
@@ -539,19 +539,19 @@ export default function Home() {
                   border: '1px solid #E7E9EE',
                   borderRadius: '16px',
                   overflow: 'hidden',
-                  minHeight: '288px',
+                  minHeight: '250px',
                   boxShadow: '0 2px 8px rgba(28,28,40,0.04)',
                 }}
               >
                 <div style={{ height: '3px', background: accent, width: '100%' }} />
-                <div style={{ padding: '28px 26px 26px', display: 'flex', flexDirection: 'column', minHeight: '285px' }}>
-                  <p style={{ display: 'flex', gap: '14px', alignItems: 'center', marginBottom: '18px', flexWrap: 'wrap' }}>
-                    <span style={{ padding: '5px 12px', borderRadius: '9999px', background: accentSoft, color: accent, fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', fontFamily: 'Inter, sans-serif' }}>{article.tag}</span>
+                <div style={{ padding: '22px 20px 20px', display: 'flex', flexDirection: 'column', minHeight: '248px' }}>
+                  <p style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap' }}>
+                    <span style={{ padding: '4px 10px', borderRadius: '9999px', background: accentSoft, color: accent, fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em', fontFamily: 'Inter, sans-serif' }}>{article.tag}</span>
                     <span style={{ fontSize: '11px', color: '#A0A5B1', fontFamily: 'Inter, sans-serif' }}>{article.readTime}</span>
                   </p>
-                  <h3 className="t-h4" style={{ fontSize: 'clamp(1.65rem, 1.15rem + 0.9vw, 2.05rem)', marginBottom: '16px', lineHeight: 1.25, letterSpacing: '-0.02em' }}>{article.title}</h3>
-                  <p className="t-body" style={{ color: '#6B6F7B', lineHeight: 1.55, marginBottom: '24px', flex: 1 }}>{article.desc}</p>
-                  <Link to="/library" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: accent, fontWeight: 700, fontSize: '13px', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
+                  <h3 className="t-h4" style={{ fontSize: 'clamp(1.25rem, 0.98rem + 0.55vw, 1.55rem)', marginBottom: '12px', lineHeight: 1.3, letterSpacing: '-0.015em' }}>{article.title}</h3>
+                  <p className="t-body" style={{ color: '#6B6F7B', lineHeight: 1.5, marginBottom: '16px', flex: 1 }}>{article.desc}</p>
+                  <Link to="/library" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: accent, fontWeight: 700, fontSize: '12px', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
                     Read more <ArrowRight size={14} />
                   </Link>
                 </div>

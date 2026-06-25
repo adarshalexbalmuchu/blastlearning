@@ -60,6 +60,15 @@ export default function HeroCarousel() {
     return () => window.clearInterval(blinkInterval);
   }, []);
 
+  const heroCtaButtonStyle = {
+    height: '48px',
+    minHeight: '48px',
+    paddingTop: 0,
+    paddingBottom: 0,
+    lineHeight: 1,
+    boxSizing: 'border-box',
+  } as const;
+
   return (
     <section
       aria-label="Hero banner"
@@ -124,7 +133,7 @@ export default function HeroCarousel() {
                 color: '#FFFFFF',
                 border: 'none',
                 boxShadow: 'none',
-                minHeight: '48px',
+                ...heroCtaButtonStyle,
               }}
             >
               Start Your Journey Today
@@ -133,7 +142,11 @@ export default function HeroCarousel() {
               No credit card required
             </span>
           </div>
-          <Link to="/programs/cbse-plan" className="cta cta-outline" style={{ paddingLeft: '20px', paddingRight: '20px', minHeight: '48px', marginTop: 0 }}>
+          <Link
+            to="/programs/cbse-plan"
+            className="cta cta-outline"
+            style={{ paddingLeft: '20px', paddingRight: '20px', marginTop: 0, ...heroCtaButtonStyle }}
+          >
             See How It Works
           </Link>
         </div>

@@ -12,7 +12,7 @@ export function UploadVisual() {
         src={step1Img}
         alt=""
         aria-hidden="true"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', display: 'block' }}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', transform: 'translateY(-30px)', display: 'block' }}
       />
     </div>
   );
@@ -25,7 +25,7 @@ export function AIVisual() {
         src={step2Img}
         alt=""
         aria-hidden="true"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', display: 'block' }}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', transform: 'translateY(-30px)', display: 'block' }}
       />
     </div>
   );
@@ -38,7 +38,7 @@ export function MasteryVisual() {
         src={step3Img}
         alt=""
         aria-hidden="true"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', display: 'block' }}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', transform: 'translateY(-30px)', display: 'block' }}
       />
     </div>
   );
@@ -51,7 +51,7 @@ export function GapVisual() {
         src={step4Img}
         alt=""
         aria-hidden="true"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', display: 'block' }}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', transform: 'translateY(-30px)', display: 'block' }}
       />
     </div>
   );
