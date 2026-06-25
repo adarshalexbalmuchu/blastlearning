@@ -116,6 +116,7 @@ export default function HowItWorksCard({ num, eyebrow, title, desc, descFooter, 
 
   return (
     <div
+      className="card-subtle"
       style={{
         position: 'relative',
         borderRadius: textOnlyCard ? '16px' : 0,

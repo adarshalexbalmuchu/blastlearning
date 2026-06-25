@@ -178,6 +178,7 @@ export default function Library() {
             >
               {filtered.map((resource) => (
                 <motion.div
+                  className="card-subtle"
                   key={resource.id}
                   variants={fadeUp}
                   whileHover={{

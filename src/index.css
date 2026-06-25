@@ -134,9 +134,42 @@ p, li {
   transition: box-shadow 0.2s ease, filter 0.2s ease, transform 0.15s ease,
               background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   will-change: transform;
+  animation: cta-soft-in 320ms ease-out both;
 }
 .cta:hover { transform: translateY(-2px); }
 .cta:active { transform: translateY(0); filter: brightness(0.97); }
+
+@keyframes cta-soft-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reusable subtle card animation class */
+.card-subtle {
+  animation: card-soft-in 420ms ease-out both;
+  transition: border-color 0.22s ease, filter 0.22s ease;
+}
+
+.card-subtle:hover {
+  filter: saturate(1.02) brightness(1.01);
+}
+
+@keyframes card-soft-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /* Pink — outline style */
 .cta-pink {

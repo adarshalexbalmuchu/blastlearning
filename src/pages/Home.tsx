@@ -585,6 +585,7 @@ export default function Home() {
 
               return (
               <motion.article
+                className="card-subtle"
                 key={article.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
