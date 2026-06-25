@@ -115,7 +115,7 @@ export function SharedFaqSection({
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '80px', alignItems: 'start' }} className="faq-grid">
         {/* Left: intro */}
         <div>
-          <SectionIntro eyebrow={eyebrow} title={title} subtitle={subtitle} accent={accent} align="left" />
+          <SectionIntro eyebrow={eyebrow} title={title} subtitle={subtitle} accent={accent} align={align ?? 'left'} />
           <Link
             to={linkTo}
             className="cta cta-outline"
