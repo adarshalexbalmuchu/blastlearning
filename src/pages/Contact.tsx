@@ -125,8 +125,8 @@ export default function Contact() {
         <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <HeadingMarker text="Get in Touch" marginBottom="20px" fontSize="12px" />
-            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', color: '#111111' }}>
+            <HeadingMarker text="Get in Touch" fontSize="12px" />
+            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: '20px', color: '#111111' }}>
               Contact Us
             </h1>
             <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
@@ -378,7 +378,7 @@ export default function Contact() {
           <a
             href="tel:+911234567890"
             className="cta cta-blue"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', padding: '16px 36px', borderRadius: '10px', fontSize: '18px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
+            style={{ boxShadow: 'none' }}
           >
             <Phone size={20} /> +91 123 456 7890
           </a>

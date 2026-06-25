@@ -224,7 +224,7 @@ function SectionHeading({ eyebrow, title, subtitle, accent, align = 'left', subt
     >
       {eyebrow && (
         <motion.div variants={eyebrowAnim}>
-          <HeadingMarker text={eyebrow} marginBottom="10px" fontSize="12px" accent={accent} />
+          <HeadingMarker text={eyebrow} fontSize="12px" accent={accent} />
         </motion.div>
       )}
       <motion.h2
@@ -288,7 +288,7 @@ export default function Home() {
             eyebrow="Courses & Pricing"
             accent={CYAN}
             align="center"
-            title={<>Four courses. One underlying {G('system', PINK)}.</>}
+            title={<>Four {G('courses', CYAN)}. One underlying {G('system', PINK)}.</>}
             subtitle="Different subjects, different exams - the same science of memory underneath all of them."
           />
 
@@ -328,12 +328,10 @@ export default function Home() {
                 >
                   <div style={{ height: '3px', width: '100%', background: accent }} />
                   <div style={{ padding: '18px 16px 14px' }}>
+                    <HeadingMarker text={plan.classes} accent={accent} fontSize="11px" />
                     <h3 style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: '2rem', fontWeight: 700, color: '#1C1C28', lineHeight: 1.18 }}>
                       {plan.name}
                     </h3>
-                    <p style={{ margin: '4px 0 0', fontFamily: 'Inter, sans-serif', fontSize: '0.75rem', fontWeight: 600, color: '#8E8EA0' }}>
-                      {plan.classes}
-                    </p>
                     <p style={{ margin: '8px 0 0', fontFamily: 'Inter, sans-serif', fontSize: '0.95rem', lineHeight: 1.55, color: '#666B78' }}>
                       {plan.desc}
                     </p>
@@ -400,7 +398,7 @@ export default function Home() {
             eyebrow="Method & Science"
             accent={CYAN}
             align="left"
-            title={<>The {G('science', PINK)} that explains the method.</>}
+            title={<>The {G('science', PINK)} that explains the {G('method', CYAN)}.</>}
             subtitle="Ebbinghaus's Forgetting Curve is the starting point: students lose 80% of what they learn within 24 hours - not from lack of effort, but because the brain discards what it isn't asked to use. Each of the four steps below is a direct application of the science that fights this. The step is the practice; the principle beside it is why it works."
           />
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '28px' }} className="grid-cols-2-md grid-cols-4-lg">
@@ -416,7 +414,7 @@ export default function Home() {
             ))}
           </motion.div>
           <div style={{ textAlign: 'center' }}>
-            <Link className="cta cta-pink" to="/programs" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 32px', borderRadius: '10px', background: '#F03C6F', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: 'none' }}>
+            <Link className="cta cta-pink" to="/programs">
               Start Your Journey Now <ArrowRight size={16} />
             </Link>
           </div>
@@ -430,7 +428,7 @@ export default function Home() {
         accent="#E8135A"
         align="center"
         background="#FFFFFF"
-        title={<>What changes once {G('retrieval', CYAN)} replaces re-reading.</>}
+        title={<>What changes once {GP('retrieval')} replaces {G('re-reading', CYAN)}.</>}
         subtitle="Students and parents describe what changed after shifting from passive review to retrieval-based study."
         row1={[
           {
@@ -505,11 +503,11 @@ export default function Home() {
             eyebrow="Resources"
             accent={PINK}
             align="left"
-            title={<>The {G('thinking', CYAN)} behind the product.</>}
+            title={<>The {G('thinking', CYAN)} behind the {GP('product')}.</>}
             subtitle="Research summaries and practical guides for parents and students who want to understand why the method works."
           />
           <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-            <Link className="cta cta-blue" to="/library" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '12px 28px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', boxShadow: '0 8px 22px rgba(15,168,220,0.2)' }}>
+            <Link className="cta cta-blue" to="/library">
               View all resources <ArrowRight size={16} />
             </Link>
           </div>
@@ -550,7 +548,7 @@ export default function Home() {
       </section>
 
       {/* ── FAQ Preview (white) ── */}
-      <SharedFaqSection items={homeFaqs} eyebrow="FAQ" accent="#0FA8DC" align="center" background="#F7FAFC" title={<>Common questions, direct {G('answers', PINK)}.</>} subtitle="If your question isn't here, the full FAQ page covers every edge case - billing, syllabus details, Study Buddy matching, and technical requirements." linkLabel="View full FAQ page" />
+      <SharedFaqSection items={homeFaqs} eyebrow="FAQ" accent="#0FA8DC" align="center" background="#F7FAFC" title={<>{G('Common', CYAN)} questions, direct {G('answers', PINK)}.</>} subtitle="If your question isn't here, the full FAQ page covers every edge case - billing, syllabus details, Study Buddy matching, and technical requirements." linkLabel="View full FAQ page" />
     </div>
   );
 }

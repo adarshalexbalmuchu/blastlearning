@@ -8,34 +8,40 @@ type HeadingMarkerProps = {
   accent?: string;
 };
 
-const CYAN_DOTS = ['#D2E9F8', '#BFDFF4', '#A6D4EE', '#7CBFE7', '#0FA8DC'];
-const PINK_DOTS = ['#FAD9E3', '#F5B3C8', '#F08CAD', '#EB6592', '#E8135A'];
-const MARKER_WIDTHS = ['4px', '4px', '4px', '4px', '16px'];
+const CYAN_COLORS = ['#D2E9F8', '#A6D4EE', '#0FA8DC', '#0FA8DC', '#0FA8DC'];
+const PINK_COLORS = ['#FAD9E3', '#F08CAD', '#E8135A', '#E8135A', '#E8135A'];
 
-// Each dot: blink twice (0→1→0→1) then lock in, staggered per index
+// 3 circles (increasing size) then 2 dashes (increasing length)
+const MARKER_SHAPES = [
+  { width: '3px',  height: '3px'  },
+  { width: '4px',  height: '4px'  },
+  { width: '5px',  height: '5px'  },
+  { width: '8px',  height: '2px'  },
+  { width: '13px', height: '2px'  },
+];
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DOT_VARIANTS: any = {
-  hidden: { opacity: 0, scaleX: 0 },
+  hidden: { opacity: 0, scale: 0 },
   visible: (i: number) => ({
     opacity:  [0, 1, 0, 1],
-    scaleX:   [0, 1.3, 0.9, 1],
+    scale:    [0, 1.25, 0.9, 1],
     transition: {
-      delay: i * 0.1,
-      duration: 0.55,
+      delay: i * 0.09,
+      duration: 0.5,
       times: [0, 0.35, 0.65, 1],
       ease: 'easeOut',
     },
   }),
 };
 
-// Text blinks in after all dots have settled
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const TEXT_VARIANTS: any = {
   hidden: { opacity: 0 },
   visible: {
     opacity: [0, 1, 0, 1],
     transition: {
-      delay: MARKER_WIDTHS.length * 0.1 + 0.1,
+      delay: MARKER_SHAPES.length * 0.09 + 0.1,
       duration: 0.5,
       times: [0, 0.3, 0.6, 1],
       ease: 'easeOut',
@@ -43,8 +49,8 @@ const TEXT_VARIANTS: any = {
   },
 };
 
-export default function HeadingMarker({ text, marginBottom = '20px', fontSize = '12px', accent }: HeadingMarkerProps) {
-  const dots = accent === '#E8135A' ? PINK_DOTS : CYAN_DOTS;
+export default function HeadingMarker({ text, marginBottom = '12px', fontSize = '12px', accent }: HeadingMarkerProps) {
+  const colors = accent === '#E8135A' ? PINK_COLORS : CYAN_COLORS;
   const textColor = accent ?? '#4B6B80';
 
   return (
@@ -60,21 +66,21 @@ export default function HeadingMarker({ text, marginBottom = '20px', fontSize = 
       }}
     >
       <motion.span
-        style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', transform: 'translateY(0.5px)' }}
+        style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}
         aria-hidden="true"
       >
-        {MARKER_WIDTHS.map((width, idx) => (
+        {MARKER_SHAPES.map(({ width, height }, idx) => (
           <motion.span
-            key={`${width}-${idx}`}
+            key={idx}
             custom={idx}
             variants={DOT_VARIANTS}
             style={{
               width,
-              height: '4px',
+              height,
               borderRadius: '9999px',
-              background: dots[idx],
+              background: colors[idx],
               display: 'inline-block',
-              transformOrigin: 'left',
+              transformOrigin: 'center',
             }}
           />
         ))}
@@ -87,7 +93,8 @@ export default function HeadingMarker({ text, marginBottom = '20px', fontSize = 
           fontWeight: 500,
           fontFamily: 'Inter, sans-serif',
           color: textColor,
-          letterSpacing: '0.01em',
+          letterSpacing: '0.08em',
+          textTransform: 'uppercase',
         }}
       >
         {text}

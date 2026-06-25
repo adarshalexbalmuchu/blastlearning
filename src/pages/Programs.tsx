@@ -147,8 +147,8 @@ export default function Programs() {
         <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <HeadingMarker text="HOW BLAST LEARNING WORKS" marginBottom="24px" fontSize="12px" />
-            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', marginBottom: '24px', color: '#111111' }}>
+            <HeadingMarker text="HOW BLAST LEARNING WORKS" fontSize="12px" />
+            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: '20px', color: '#111111' }}>
               The system beneath the syllabus.
             </h1>
             <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
@@ -158,20 +158,7 @@ export default function Programs() {
               <Link
                 to="/programs/cbse-plan"
                 className="cta cta-pink"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '14px 28px',
-                  borderRadius: '10px',
-                  fontSize: '15px',
-                  fontWeight: 600,
-                  fontFamily: "'Inter', sans-serif",
-                  textDecoration: 'none',
-                  background: '#F03C6F',
-                  color: 'white',
-                  boxShadow: 'none',
-                }}
+                style={{ boxShadow: 'none' }}
               >
                 Start the 14-Day Free Trial  -  No Credit Card Required <ArrowRight size={16} />
               </Link>

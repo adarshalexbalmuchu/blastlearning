@@ -163,12 +163,12 @@ export default function ProgramDetail() {
             {/* Left, text */}
             <motion.div initial="hidden" animate="visible" variants={stagger}>
               <motion.div variants={fadeUp}>
-                <HeadingMarker text={`AI Powered · ${program.classes}`} marginBottom="20px" fontSize="11px" />
+                <HeadingMarker text={`AI Powered · ${program.classes}`} fontSize="12px" />
               </motion.div>
 
               <motion.h1
                 variants={fadeUp}
-                style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '20px', lineHeight: 1.15 }}
+                style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: '20px', color: '#111111' }}
               >
                 {program.name}
               </motion.h1>
@@ -270,7 +270,8 @@ export default function ProgramDetail() {
                   </div>
                   <button
                     type="submit"
-                    style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '13px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", background: '#0FA8DC', color: 'white', border: 'none', cursor: 'pointer' }}
+                    className="cta cta-blue"
+                    style={{ width: '100%', boxShadow: 'none' }}
                   >
                     Enrol Now, 14-Day Free Trial <ArrowRight size={15} />
                   </button>
@@ -298,8 +299,8 @@ export default function ProgramDetail() {
       <section style={{ paddingTop: '96px', paddingBottom: '80px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
-            <HeadingMarker text="Right for you?" marginBottom="16px" fontSize="11px" />
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111' }}>
+            <HeadingMarker text="Right for you?" fontSize="12px" />
+            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
               Who This Programme Is For
             </h2>
           </motion.div>
@@ -339,8 +340,8 @@ export default function ProgramDetail() {
       <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
-            <HeadingMarker text="Curriculum" marginBottom="16px" fontSize="11px" />
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111' }}>
+            <HeadingMarker text="Curriculum" fontSize="12px" />
+            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
               What You'll Learn
             </h2>
           </motion.div>
@@ -403,8 +404,8 @@ export default function ProgramDetail() {
             {/* Features list */}
             <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               <motion.div variants={fadeUp} style={{ marginBottom: '40px' }}>
-                <HeadingMarker text="What's Included" marginBottom="16px" fontSize="11px" />
-                <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111' }}>
+                <HeadingMarker text="What's Included" fontSize="12px" />
+                <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
                   Everything in This Plan
                 </h2>
               </motion.div>
@@ -457,7 +458,7 @@ export default function ProgramDetail() {
               <Link
                 to="/contact"
                 className="cta cta-pink"
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#F03C6F', color: 'white', boxShadow: 'none' }}
+                style={{ display: 'flex', boxShadow: 'none' }}
               >
                 Start 14-Day Free Trial <ArrowRight size={16} />
               </Link>

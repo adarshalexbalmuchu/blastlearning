@@ -529,20 +529,8 @@ export default function Navbar() {
               {/* Start Free Trial Button */}
               <Link
                 to="/programs"
-                style={{
-                  padding: '9px 20px',
-                  borderRadius: '10px',
-                  background: '#F03C6F',
-                  color: 'white',
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  fontFamily: 'Inter, sans-serif',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  marginRight: '35px',
-                }}
+                className="cta cta-pink"
+                style={{ marginRight: '35px', padding: '9px 20px' }}
               >
                 Start Free Trial
               </Link>

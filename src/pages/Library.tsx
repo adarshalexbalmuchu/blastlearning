@@ -107,8 +107,8 @@ export default function Library() {
             transition={{ duration: 0.6 }}
             style={{ textAlign: 'center', marginBottom: '40px' }}
           >
-            <HeadingMarker text="Resource Library" marginBottom="20px" fontSize="12px" />
-            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', color: '#111111' }}>
+            <HeadingMarker text="Resource Library" fontSize="12px" />
+            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: '20px', color: '#111111' }}>
               Learning Resources
             </h1>
             <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '560px', margin: '0 auto 32px' }}>

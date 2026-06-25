@@ -109,18 +109,19 @@ export default function FeatureExplorer() {
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '10px',
+                  gap: '8px',
                   marginBottom: '12px',
                 }}
               >
                 <span
                   aria-hidden="true"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '3px' }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}
                 >
-                  <span style={{ width: '4px', height: '4px', borderRadius: '999px', background: labelColor, opacity: 0.28 }} />
-                  <span style={{ width: '4px', height: '4px', borderRadius: '999px', background: labelColor, opacity: 0.45 }} />
-                  <span style={{ width: '4px', height: '4px', borderRadius: '999px', background: labelColor, opacity: 0.65 }} />
-                  <span style={{ width: '18px', height: '3px', borderRadius: '999px', background: labelColor }} />
+                  <span style={{ width: '3px', height: '3px', borderRadius: '9999px', background: labelColor, opacity: 0.3 }} />
+                  <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: labelColor, opacity: 0.6 }} />
+                  <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: labelColor }} />
+                  <span style={{ width: '8px',  height: '2px', borderRadius: '9999px', background: labelColor }} />
+                  <span style={{ width: '13px', height: '2px', borderRadius: '9999px', background: labelColor }} />
                 </span>
                 <span
                   style={{
@@ -128,7 +129,7 @@ export default function FeatureExplorer() {
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '0.74rem',
                     fontWeight: 700,
-                    letterSpacing: '0.14em',
+                    letterSpacing: '0.08em',
                     textTransform: 'uppercase',
                   }}
                 >

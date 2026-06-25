@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface FAQItemProps {
   question: string;
@@ -27,7 +26,7 @@ export default function FAQItem({ question, answer, highlight = '' }: FAQItemPro
   const [open, setOpen] = useState(false);
 
   return (
-    <div style={{ borderBottom: '1px solid #E5E7EB', paddingLeft: open ? '12px' : '0', borderLeftWidth: open ? '3px' : '0', borderLeftColor: open ? '#0FA8DC' : 'transparent', transition: 'all 0.25s ease' }}>
+    <div style={{ borderBottom: '1px solid #E5E7EB' }}>
       <button
         onClick={() => setOpen((v) => !v)}
         style={{
@@ -36,23 +35,19 @@ export default function FAQItem({ question, answer, highlight = '' }: FAQItemPro
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: '16px',
-          padding: '16px 0',
+          padding: '20px 0',
           textAlign: 'left',
           cursor: 'pointer',
           background: 'transparent',
           border: 'none',
         }}
       >
-        <span style={{ fontSize: '15px', fontWeight: 600, color: open ? '#0FA8DC' : '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.45, transition: 'color 0.25s ease' }}>
+        <span style={{ fontSize: '15px', fontWeight: 700, color: '#111111', fontFamily: 'Inter, sans-serif', lineHeight: 1.45 }}>
           <Highlight text={question} query={highlight} />
         </span>
-        <motion.div
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-          style={{ flexShrink: 0, opacity: open ? 1 : 0.6, color: open ? '#0FA8DC' : '#1C1C28', transition: 'all 0.25s ease' }}
-        >
-          <ChevronDown size={16} strokeWidth={2} />
-        </motion.div>
+        <span style={{ flexShrink: 0, fontSize: '20px', lineHeight: 1, color: '#6B7280', fontWeight: 300, transition: 'color 0.2s' }}>
+          {open ? '−' : '+'}
+        </span>
       </button>
 
       <AnimatePresence initial={false}>
@@ -65,7 +60,7 @@ export default function FAQItem({ question, answer, highlight = '' }: FAQItemPro
             transition={{ duration: 0.22, ease: 'easeInOut' }}
             style={{ overflow: 'hidden' }}
           >
-            <p style={{ fontSize: '14px', lineHeight: 1.72, color: '#6B7280', fontFamily: 'Inter, sans-serif', margin: 0, paddingBottom: '16px' }}>
+            <p style={{ fontSize: '14px', lineHeight: 1.72, color: '#6B7280', fontFamily: 'Inter, sans-serif', margin: 0, paddingBottom: '20px' }}>
               <Highlight text={answer} query={highlight} />
             </p>
           </motion.div>

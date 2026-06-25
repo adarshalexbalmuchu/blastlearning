@@ -110,43 +110,8 @@ export default function HeroCarousel() {
           }}
         >
           <motion.button
-            animate={{
-              y: [0, -5, 0],
-              boxShadow: [
-                '0 4px 18px rgba(15,168,220,0.28)',
-                '0 10px 32px rgba(15,168,220,0.48)',
-                '0 4px 18px rgba(15,168,220,0.28)',
-              ],
-            }}
-            transition={{
-              duration: 2.4,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-            whileHover={{
-              y: -7,
-              scale: 1.04,
-              boxShadow: '0 14px 36px rgba(15,168,220,0.55)',
-              transition: { type: 'spring', stiffness: 300, damping: 18 },
-            }}
             whileTap={{ scale: 0.97 }}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              padding: '18px 32px',
-              borderRadius: '14px',
-              background: 'linear-gradient(90deg, #1E9BDA 0%, #0FA8DC 100%)',
-              color: 'white',
-              fontSize: '18px',
-              fontWeight: 700,
-              fontFamily: 'Inter, sans-serif',
-              border: 'none',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              letterSpacing: '-0.01em',
-            }}
+            className="cta cta-outline"
             onClick={() => window.location.href = '/programs'}
           >
             See How It Works

@@ -147,7 +147,7 @@ export default function BlogPost() {
             <Link
               to="/programs"
               className="cta cta-pink"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '10px 22px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#F03C6F', color: 'white', boxShadow: 'none' }}
+              style={{ boxShadow: 'none' }}
             >
               Start Free Trial
             </Link>

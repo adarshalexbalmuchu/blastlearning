@@ -91,7 +91,7 @@ function TestimonialCard({ card }: { card: CardT }) {
           >
             <span
               style={{
-                color: '#EC4899',
+                color: '#F03C6F',
                 fontWeight: 700,
                 fontFamily: 'Inter, sans-serif',
                 letterSpacing: '0.01em',
@@ -104,7 +104,7 @@ function TestimonialCard({ card }: { card: CardT }) {
                 <span style={{ color: '#C8CCD6', fontWeight: 400 }}>|</span>
                 <span
                   style={{
-                    color: '#EC4899',
+                    color: '#0FA8DC',
                     fontWeight: 700,
                     fontFamily: 'Inter, sans-serif',
                     letterSpacing: '0.01em',

@@ -39,7 +39,7 @@ function SectionIntro({ eyebrow, title, subtitle, accent, align = 'left' }: Sect
       style={{ textAlign: align }}
     >
       <motion.div variants={{ hidden: { opacity: 0, x: -18 }, visible: { opacity: 1, x: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } } }}>
-        <HeadingMarker text={eyebrow} marginBottom="10px" fontSize="12px" accent={accent} />
+        <HeadingMarker text={eyebrow} fontSize="12px" accent={accent} />
       </motion.div>
       <motion.h2
         variants={{ hidden: { opacity: 0, y: 32, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } } }}
@@ -110,20 +110,25 @@ export function SharedFaqSection({
   background?: string;
 }) {
   return (
-    <section className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background }}>
-      <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
-        <div style={{ textAlign: align ?? 'left', marginBottom: '32px' }}>
-          <SectionIntro eyebrow={eyebrow} title={title} subtitle={subtitle} accent={accent} align={align} />
+    <section className="section-pad" style={{ paddingTop: '64px', paddingBottom: '64px', background }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '80px', alignItems: 'start' }} className="faq-grid">
+        {/* Left: intro */}
+        <div>
+          <SectionIntro eyebrow={eyebrow} title={title} subtitle={subtitle} accent={accent} align="left" />
+          <Link
+            to={linkTo}
+            className="cta cta-outline"
+            style={{ marginTop: '28px' }}
+          >
+            {linkLabel} <ArrowRight size={15} />
+          </Link>
         </div>
-        <div style={{ borderTop: '1px solid #E5E7EB', marginBottom: '32px' }}>
+
+        {/* Right: FAQ list */}
+        <div>
           {items.map((faq, index) => (
             <FAQItem key={`${faq.q}-${index}`} question={faq.q} answer={faq.a} />
           ))}
-        </div>
-        <div style={{ textAlign: 'center' }}>
-          <Link to={linkTo} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 600, color: '#0FA8DC', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
-            {linkLabel} <ArrowRight size={15} style={{ color: '#0FA8DC' }} />
-          </Link>
         </div>
       </div>
     </section>
