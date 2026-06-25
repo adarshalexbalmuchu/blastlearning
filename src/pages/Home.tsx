@@ -424,11 +424,11 @@ export default function Home() {
 
       {/* ── Testimonials (white) ── */}
       <SharedTestimonialsSection
-        eyebrow="Parents & Students"
+        eyebrow="Observed Evidence"
         accent="#E8135A"
         align="center"
         background="#FFFFFF"
-        title={<>What changes once {GP('retrieval')} replaces {G('re-reading', CYAN)}.</>}
+        title={<>Field {GP('Notes')}: what changes once {GP('retrieval')} replaces {G('re-reading', CYAN)}.</>}
         subtitle="Students and parents describe what changed after shifting from passive review to retrieval-based study."
         row1={[
           {
@@ -500,7 +500,7 @@ export default function Home() {
       <section id="resources" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF', borderTop: '1px solid #EAEFF5', borderBottom: '1px solid #EAEFF5' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
-            eyebrow="Resources"
+            eyebrow="Library"
             accent={PINK}
             align="left"
             title={<>The {G('thinking', CYAN)} behind the {GP('product')}.</>}
@@ -511,8 +511,13 @@ export default function Home() {
               View all resources <ArrowRight size={16} />
             </Link>
           </div>
-          <div className="grid-cols-3-md" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '18px' }}>
-            {resourceArticles.map((article) => (
+          <div className="grid-cols-3-md" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '28px' }}>
+            {resourceArticles.map((article) => {
+              const isGuide = article.tag === 'GUIDE';
+              const accent = isGuide ? '#E8135A' : '#0FA8DC';
+              const accentSoft = isGuide ? '#FFF0F4' : '#EAF6FF';
+
+              return (
               <motion.article
                 key={article.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -525,24 +530,29 @@ export default function Home() {
                   transition: { type: 'spring', stiffness: 300, damping: 22 },
                 }}
                 style={{
+                  position: 'relative',
                   background: '#FFFFFF',
-                  border: '1px solid #E7ECF3',
-                  borderRadius: '18px',
-                  padding: '22px',
+                  border: '1px solid #E7E9EE',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  minHeight: '288px',
                   boxShadow: '0 2px 8px rgba(28,28,40,0.04)',
                 }}
               >
-                <p style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '10px' }}>
-                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#0FA8DC', fontFamily: 'Inter, sans-serif' }}>{article.tag}</span>
-                  <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{article.readTime}</span>
-                </p>
-                <h3 style={{ fontSize: '1.625rem', color: '#1C1C28', fontFamily: 'Poppins, sans-serif', marginBottom: '10px', lineHeight: 1.4 }}>{article.title}</h3>
-                <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '14px' }}>{article.desc}</p>
-                <Link to="/library" style={{ color: '#0FA8DC', fontWeight: 600, fontSize: '13px', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
-                  Read more
-                </Link>
+                <div style={{ height: '3px', background: accent, width: '100%' }} />
+                <div style={{ padding: '28px 26px 26px', display: 'flex', flexDirection: 'column', minHeight: '285px' }}>
+                  <p style={{ display: 'flex', gap: '14px', alignItems: 'center', marginBottom: '18px', flexWrap: 'wrap' }}>
+                    <span style={{ padding: '5px 12px', borderRadius: '9999px', background: accentSoft, color: accent, fontSize: '11px', fontWeight: 700, letterSpacing: '0.08em', fontFamily: 'Inter, sans-serif' }}>{article.tag}</span>
+                    <span style={{ fontSize: '11px', color: '#A0A5B1', fontFamily: 'Inter, sans-serif' }}>{article.readTime}</span>
+                  </p>
+                  <h3 className="t-h4" style={{ fontSize: 'clamp(1.65rem, 1.15rem + 0.9vw, 2.05rem)', marginBottom: '16px', lineHeight: 1.25, letterSpacing: '-0.02em' }}>{article.title}</h3>
+                  <p className="t-body" style={{ color: '#6B6F7B', lineHeight: 1.55, marginBottom: '24px', flex: 1 }}>{article.desc}</p>
+                  <Link to="/library" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: accent, fontWeight: 700, fontSize: '13px', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
+                    Read more <ArrowRight size={14} />
+                  </Link>
+                </div>
               </motion.article>
-            ))}
+            );})}
           </div>
         </div>
       </section>

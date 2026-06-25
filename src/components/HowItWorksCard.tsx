@@ -1,9 +1,9 @@
 import { type FC } from 'react';
 import { motion, type Variants } from 'framer-motion';
-import step1Img from '../assets/how-it-works/Group 13.png';
-import step2Img from '../assets/how-it-works/Group 14.png';
-import step3Img from '../assets/how-it-works/Group 15.png';
-import step4Img from '../assets/how-it-works/Group 16.png';
+import step1Img from '../assets/Group 31.png';
+import step2Img from '../assets/Group 32.png';
+import step3Img from '../assets/Group 33.png';
+import step4Img from '../assets/Group 34.png';
 
 export function UploadVisual() {
   return (
