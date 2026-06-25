@@ -9,7 +9,7 @@ const bannerModules = import.meta.glob('../assets/banners/*.{png,jpg,jpeg,webp,a
 const BANNER_ORDER = [1, 3, 2, 4];
 
 function getBannerIndex(path: string): number {
-  const match = path.match(/banner\s*(\d+)/i);
+  const match = path.match(/(?:hb|hero\s*banner|banner)\s*(\d+)/i);
   return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
 }
 
