@@ -31,7 +31,7 @@ const SLIDES = Object.entries(bannerModules)
 const PRIMARY_CTA_CONFIG = [
   { text: 'Explore CBSE Program', to: '/programs/cbse-plan' },
   { text: 'Start Your Journey Now', to: '/programs/english-mastery' },
-  { text: 'Try the GAP Assessment', to: '/programs/math-genius' },
+  { text: 'Try The GAP Assessment', to: '/programs/math-genius' },
   { text: 'See How It Works', to: '/programs' },
 ];
 

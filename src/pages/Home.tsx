@@ -6,7 +6,7 @@ import {
 import HeroCarousel from '../components/HeroCarousel';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
-import HowItWorksCard, { UploadVisual, AIVisual, MasteryVisual, GapVisual } from '../components/HowItWorksCard';
+import HowItWorksCard from '../components/HowItWorksCard';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import HeadingMarker from '../components/HeadingMarker';
 import ebbinghausCurve from '../assets/Ebbinghaus Curve.png';
@@ -19,33 +19,60 @@ const howItWorks = [
     num: '01',
     eyebrow: 'Spaced Repetition',
     title: 'AI Tutor',
-    desc: "A short diagnostic builds a study plan, timed to when recall is hardest, so study time isn't wasted.",
+    desc: 'AI Tutor turns brief topic notes into a full study guide: a summary lesson, an interactive podcast, and a schedule built around the student\'s class and next test. Every question stays fresh and calibrated to the right level for steady mastery.',
+    descFooter: (
+      <>
+        <span style={{ color: '#0FA8DC' }}>Personalized</span>
+        <span style={{ color: '#0FA8DC' }}> · </span>
+        <span style={{ color: '#E8135A' }}>Adaptive</span>
+        <span style={{ color: '#0FA8DC' }}> · Exam-aligned</span>
+      </>
+    ),
+    descFooterColor: '#0FA8DC',
     accent: '#0FA8DC',
-    Visual: UploadVisual,
   },
   {
     num: '02',
     eyebrow: 'Active Recall',
     title: 'Study Buddy',
-    desc: 'Study Buddy shares the same adaptive question set and tracks progress for both. No one studies solo.',
+    desc: 'A human partner studies alongside your student, working from the same adaptive question set so both track progress together. Your student never works through the material alone, building confidence through co-studying.',
+    descFooter: (
+      <>
+        <span style={{ color: '#0FA8DC' }}>Peer accountability</span>
+        <span style={{ color: '#E8135A' }}> · Shared progress</span>
+      </>
+    ),
     accent: '#0FA8DC',
-    Visual: AIVisual,
   },
   {
     num: '03',
-    eyebrow: 'SELF REGULATION',
+    eyebrow: 'Self-Regulation',
     title: 'Mind Coach',
-    desc: 'Focus, emotional control, goal-setting, and agency are treated as skills. Test-taking gets the same.',
+    desc: 'Mind Coach treats focus, emotional control, goal-setting, and personal agency as learnable skills, each built through its own practice routine. Test taking gets the same treatment, rehearsed under timed conditions, step by step, until it holds.',
+    descFooter: (
+      <>
+        <span style={{ color: '#0FA8DC' }}>Focus</span>
+        <span style={{ color: '#0FA8DC' }}> · </span>
+        <span style={{ color: '#E8135A' }}>Resilience</span>
+        <span style={{ color: '#0FA8DC' }}> · Agency</span>
+      </>
+    ),
     accent: '#3B82F6',
-    Visual: MasteryVisual,
   },
   {
     num: '04',
     eyebrow: 'Diagnostic-First Learning',
     title: 'GAP Assessment',
-    desc: "Blast pinpoints each gap left by earlier years, then builds a path into the current year's material.",
+    desc: 'GAP Assessment finds the gaps left by earlier years and builds a personalized path that closes exactly those gaps. From there, your student moves into the current year\'s material, then ahead into next year\'s, well ahead of the grade-level pace.',
+    descFooter: (
+      <>
+        <span style={{ color: '#0FA8DC' }}>Targeted</span>
+        <span style={{ color: '#0FA8DC' }}> · </span>
+        <span style={{ color: '#E8135A' }}>Sequential</span>
+        <span style={{ color: '#0FA8DC' }}> · No wasted time</span>
+      </>
+    ),
     accent: '#0FA8DC',
-    Visual: GapVisual,
   },
 ];
 
@@ -152,7 +179,7 @@ const resourceArticles = [
     desc: 'What the National Education Policy actually asks of students and how spaced repetition maps directly to its learning outcomes.',
   },
   {
-    tag: 'ARTICLE',
+    tag: 'RESEARCH',
     tagAccent: '#0FA8DC',
     readTime: '7 min read',
     title: 'The GAP Assessment Methodology',
@@ -299,53 +326,56 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, margin: '-8% 0px' }}
             variants={headingContainer}
-            style={{ display: 'flex', alignItems: 'center', gap: '48px', marginBottom: '32px' }}
+            style={{ marginBottom: '32px' }}
           >
-            <div style={{ flex: '1 1 0', minWidth: 0 }}>
+            <div style={{ maxWidth: '760px' }}>
               <motion.div variants={eyebrowAnim}>
                 <HeadingMarker text="Method & Science" fontSize="12px" accent={CYAN} />
               </motion.div>
-              <motion.h2 variants={h2Anim} className="t-h2">
+              <motion.h2 variants={h2Anim} className="t-h2" style={{ whiteSpace: 'nowrap' }}>
                 The {G('science', PINK)} that explains the {G('method', CYAN)}.
               </motion.h2>
-              <motion.p variants={subtitleAnim} className="t-body" style={{ maxWidth: '600px', margin: '12px 0 0' }}>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '48px', marginTop: '12px' }}>
+              <motion.p variants={subtitleAnim} className="t-body" style={{ flex: '1 1 0', minWidth: 0, maxWidth: '600px', margin: 0 }}>
                 Ebbinghaus&apos;s Forgetting Curve is the starting point: students lose 80% of what they learn within 24 hours, and the brain discards information it isn&apos;t asked to use regardless of how hard a student studied. Each of the four steps below applies the science that fights this loss directly. The step is the practice; the principle beside it explains why it works.
               </motion.p>
+              <motion.div
+                variants={fadeUp}
+                style={{ flex: '0 0 530px', maxWidth: '530px', borderRadius: '16px', overflow: 'hidden', background: '#fff', boxShadow: '0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06)', cursor: 'default', transform: 'translateX(16px)' }}
+                className="hide-sm"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                whileHover={{
+                  scale: 1.03,
+                  boxShadow: '0 16px 48px rgba(0,0,0,0.14), 0 4px 12px rgba(0,0,0,0.08)',
+                  transition: { type: 'spring', stiffness: 280, damping: 22 },
+                }}
+              >
+                <img
+                  src={ebbinghausCurve}
+                  alt="Ebbinghaus Forgetting Curve"
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                />
+              </motion.div>
             </div>
-            <motion.div
-              variants={fadeUp}
-              style={{ flex: '0 0 420px', maxWidth: '420px', borderRadius: '16px', overflow: 'hidden', background: '#fff', boxShadow: '0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06)', cursor: 'default' }}
-              className="hide-sm"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              whileHover={{
-                scale: 1.03,
-                boxShadow: '0 16px 48px rgba(0,0,0,0.14), 0 4px 12px rgba(0,0,0,0.08)',
-                transition: { type: 'spring', stiffness: 280, damping: 22 },
-              }}
-            >
-              <img
-                src={ebbinghausCurve}
-                alt="Ebbinghaus Forgetting Curve"
-                style={{ width: '100%', height: 'auto', display: 'block' }}
-              />
-            </motion.div>
           </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginTop: '-5px', marginBottom: '28px' }} className="grid-cols-2-md grid-cols-4-lg">
-            {howItWorks.map(({ num, eyebrow, title, desc, accent, Visual }) => (
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginTop: '-5px', marginBottom: '28px', alignItems: 'start' }} className="grid-cols-2-md grid-cols-4-lg">
+            {howItWorks.map(({ num, eyebrow, title, desc, descFooter, descFooterColor, accent }) => (
               <motion.div
                 key={num}
                 variants={fadeUp}
                 whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
-                <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} accent={accent} Visual={Visual} height="300px" descLines={4} />
+                <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} descFooter={descFooter} descFooterColor={descFooterColor} accent={accent} Visual={() => null} height="auto" showVisual={false} />
               </motion.div>
             ))}
           </motion.div>
           <div style={{ textAlign: 'center' }}>
             <Link className="cta cta-pink" to="/programs">
-              Start Your Journey Now
+              Deep Dive Into Method & Science
             </Link>
           </div>
         </div>
@@ -547,7 +577,7 @@ export default function Home() {
             accent={PINK}
             align="left"
             title={<>The {G('thinking', CYAN)} behind the {GP('product')}.</>}
-            subtitle="Research summaries and practical guides for parents and students who want to understand why the method works."
+            subtitle="Articles, blogs, research papers, case studies, guides, and tools for parents and students who want to understand why the method works, and how to put it into practice."
           />
           <div className="grid-cols-3-md" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
             {resourceArticles.map((article) => {
@@ -592,7 +622,7 @@ export default function Home() {
           </div>
           <div style={{ textAlign: 'center', marginTop: '24px' }}>
             <Link className="cta cta-blue" to="/library">
-              View all library
+              Access The Full Library
             </Link>
           </div>
         </div>
@@ -613,7 +643,7 @@ export default function Home() {
           </>
         }
         subtitle="If your question isn't here, the full FAQ page covers every edge case - billing, syllabus details, Study Buddy matching, and technical requirements."
-        linkLabel="View full FAQ page"
+        linkLabel="More FAQ..."
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { type FC, type ReactNode } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import step1Img from '../assets/method-science-new/1.png';
 import step2Img from '../assets/method-science-new/2.png';
@@ -99,31 +99,36 @@ interface HowItWorksCardProps {
   eyebrow?: string;
   title: string;
   desc: string;
+  descFooter?: ReactNode;
+  descFooterColor?: string;
   accent: string;
   Visual: FC;
   height?: number | string;
   descLines?: number;
+  overlayHeight?: string;
+  showVisual?: boolean;
 }
 
-export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visual, height = '300px', descLines = 3 }: HowItWorksCardProps) {
+export default function HowItWorksCard({ num, eyebrow, title, desc, descFooter, descFooterColor, accent, Visual, height = '300px', descLines = 3, overlayHeight = '44%', showVisual = true }: HowItWorksCardProps) {
   const stepNumber = Number.parseInt(num ?? '', 10);
   const labelAccent = Number.isNaN(stepNumber) ? accent : (stepNumber % 2 === 1 ? '#E8135A' : '#0FA8DC');
+  const textOnlyCard = !showVisual;
 
   return (
     <div
       style={{
         position: 'relative',
-        borderRadius: 0,
-        overflow: 'visible',
+        borderRadius: textOnlyCard ? '16px' : 0,
+        overflow: textOnlyCard ? 'hidden' : 'visible',
         height,
-        border: 'none',
-        boxShadow: 'none',
+        border: textOnlyCard ? '1px solid #E7ECF3' : 'none',
+        background: textOnlyCard ? '#FFFFFF' : 'transparent',
+        boxShadow: textOnlyCard ? '0 8px 24px rgba(28,28,40,0.06)' : 'none',
         cursor: 'default',
         willChange: 'transform',
       }}
     >
-      {/* Full-card background illustration */}
-      <Visual />
+      {showVisual && <Visual />}
 
       {/* Frosted glass info overlay — animates in on scroll, lifts on hover */}
       <motion.div
@@ -134,21 +139,23 @@ export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visu
         variants={overlayVariants}
         transition={{ type: 'spring', stiffness: 260, damping: 22 }}
         style={{
-          position: 'absolute',
-          bottom: '2px',
-          left: '12px',
-          right: '12px',
-          background: 'rgba(255,255,255,0.84)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          borderRadius: '18px',
-          padding: '10px 12px 2px',
-          border: '1px solid rgba(255,255,255,0.65)',
-          boxShadow: '0 12px 30px rgba(28,28,40,0.10)',
+          position: textOnlyCard ? 'relative' : 'absolute',
+          bottom: textOnlyCard ? undefined : '2px',
+          left: textOnlyCard ? undefined : '12px',
+          right: textOnlyCard ? undefined : '12px',
+          background: textOnlyCard ? '#FFFFFF' : 'rgba(255,255,255,0.84)',
+          backdropFilter: textOnlyCard ? undefined : 'blur(12px)',
+          WebkitBackdropFilter: textOnlyCard ? undefined : 'blur(12px)',
+          borderRadius: textOnlyCard ? '16px' : '18px',
+          padding: textOnlyCard ? '16px 16px 14px' : '10px 12px 2px',
+          border: textOnlyCard ? 'none' : '1px solid rgba(255,255,255,0.65)',
+          boxShadow: textOnlyCard ? 'none' : '0 12px 30px rgba(28,28,40,0.10)',
           zIndex: 5,
-          height: '44%',
-          maxHeight: '44%',
-          overflow: 'hidden',
+          height: textOnlyCard ? '100%' : overlayHeight,
+          maxHeight: textOnlyCard ? '100%' : overlayHeight,
+          overflow: textOnlyCard ? 'visible' : 'hidden',
+          display: textOnlyCard ? 'flex' : 'block',
+          flexDirection: textOnlyCard ? 'column' : undefined,
         }}
       >
         {(num || eyebrow) && (
@@ -173,6 +180,7 @@ export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visu
                   color: labelAccent,
                   fontFamily: 'Inter, sans-serif',
                   lineHeight: 1.35,
+                  whiteSpace: 'nowrap',
                 }}
               >
                 {eyebrow}
@@ -189,6 +197,7 @@ export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visu
             color: '#1C1C28',
             lineHeight: 1.35,
             margin: '0 0 4px',
+            minHeight: textOnlyCard ? '40px' : undefined,
           }}
         >
           {title}
@@ -201,27 +210,44 @@ export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visu
             fontFamily: 'Inter, sans-serif',
             lineHeight: 1.55,
             margin: 0,
-            display: '-webkit-box',
-            WebkitLineClamp: descLines,
-            WebkitBoxOrient: 'vertical' as const,
-            overflow: 'hidden',
+            display: textOnlyCard ? 'block' : '-webkit-box',
+            WebkitLineClamp: textOnlyCard ? undefined : descLines,
+            WebkitBoxOrient: textOnlyCard ? undefined : ('vertical' as const),
+            overflow: textOnlyCard ? 'visible' : 'hidden',
           }}
         >
           {desc}
         </motion.p>
+        {descFooter && (
+          <motion.p
+            variants={descVariants}
+            style={{
+              fontSize: '12.5px',
+              color: descFooterColor ?? accent,
+              fontFamily: 'Inter, sans-serif',
+              lineHeight: 1.55,
+              margin: textOnlyCard ? '8px 0 0' : '10px 0 0',
+              fontWeight: 600,
+            }}
+          >
+            {descFooter}
+          </motion.p>
+        )}
       </motion.div>
 
-      <div
-        style={{
-          position: 'absolute',
-          left: 0,
-          right: 0,
-          bottom: 0,
-          height: '55%',
-          background: 'linear-gradient(180deg, rgba(10,10,18,0) 0%, rgba(10,10,18,0.22) 100%)',
-          pointerEvents: 'none',
-        }}
-      />
+      {showVisual && (
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            bottom: 0,
+            height: '55%',
+            background: 'linear-gradient(180deg, rgba(10,10,18,0) 0%, rgba(10,10,18,0.22) 100%)',
+            pointerEvents: 'none',
+          }}
+        />
+      )}
     </div>
   );
 }

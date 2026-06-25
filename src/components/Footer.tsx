@@ -7,7 +7,21 @@ import { Footer7 } from './ui/footer-7';
 
 const sections = [
   {
-    title: 'Programs',
+    title: 'Main Navigation',
+    links: [
+      { name: 'Home', href: '/' },
+      { name: 'Programs', href: '/programs' },
+      { name: 'For Parents', href: '/for-parents' },
+      { name: 'For Students', href: '/for-students' },
+      { name: 'Library', href: '/library' },
+      { name: 'Blog', href: '/blog' },
+      { name: 'FAQ', href: '/faq' },
+      { name: 'About Us', href: '/about' },
+      { name: 'Contact', href: '/contact' },
+    ],
+  },
+  {
+    title: 'Program Pages',
     links: [
       { name: 'CBSE Plan', href: '/programs/cbse-plan' },
       { name: 'Math Genius Maker', href: '/programs/math-genius' },
@@ -16,21 +30,13 @@ const sections = [
     ],
   },
   {
-    title: 'Company',
+    title: 'Access',
     links: [
-      { name: 'About Us', href: '/about' },
-      { name: 'For Parents', href: '/for-parents' },
-      { name: 'For Students', href: '/for-students' },
-      { name: 'Contact', href: '/contact' },
-    ],
-  },
-  {
-    title: 'Resources',
-    links: [
-      { name: 'Study Library', href: '/library' },
-      { name: 'FAQ', href: '/faq' },
-      { name: 'Programs Overview', href: '/programs' },
-      { name: 'Get Started', href: '/programs' },
+      { name: 'Login', href: '/login' },
+      { name: 'Student Login', href: '/login?role=student' },
+      { name: 'Parent Login', href: '/login?role=parent' },
+      { name: 'Tutor Login', href: '/login?role=tutor' },
+      { name: 'Institutions', href: '/contact' },
     ],
   },
 ];
@@ -53,7 +59,7 @@ const Footer = () => (
     description="AI-powered learning retention platform. We help Indian students in Classes 8-12 retain 90% of what they study, so coaching fees become lasting knowledge."
     sections={sections}
     socialLinks={socialLinks}
-    copyright="© 2025 Blast Learning. All rights reserved. · Bangalore, India"
+    copyright="© 2026 Blast Learning. All rights reserved. · Bangalore, India"
     legalLinks={legalLinks}
   />
 );
