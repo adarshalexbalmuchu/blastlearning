@@ -9,6 +9,7 @@ import TrustStats from '../components/TrustStats';
 import HowItWorksCard, { UploadVisual, AIVisual, MasteryVisual, GapVisual } from '../components/HowItWorksCard';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import HeadingMarker from '../components/HeadingMarker';
+import ebbinghausCurve from '../assets/Ebbinghaus Curve.png';
 import { useSEO } from '../hooks/useSEO';
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
@@ -290,8 +291,68 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Pricing / Programs (off-white) ── */}
-      <section id="programs-preview" className="section-pad" style={{ paddingTop: '18px', paddingBottom: '32px', background: '#F7FAFC' }}>
+      {/* ── How It Works (off-white) ── */}
+      <section id="how-it-works" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#F7FAFC' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-8% 0px' }}
+            variants={headingContainer}
+            style={{ display: 'flex', alignItems: 'center', gap: '48px', marginBottom: '32px' }}
+          >
+            <div style={{ flex: '1 1 0', minWidth: 0 }}>
+              <motion.div variants={eyebrowAnim}>
+                <HeadingMarker text="Method & Science" fontSize="12px" accent={CYAN} />
+              </motion.div>
+              <motion.h2 variants={h2Anim} className="t-h2">
+                The {G('science', PINK)} that explains the {G('method', CYAN)}.
+              </motion.h2>
+              <motion.p variants={subtitleAnim} className="t-body" style={{ maxWidth: '600px', margin: '12px 0 0' }}>
+                Ebbinghaus&apos;s Forgetting Curve is the starting point: students lose 80% of what they learn within 24 hours, and the brain discards information it isn&apos;t asked to use regardless of how hard a student studied. Each of the four steps below applies the science that fights this loss directly. The step is the practice; the principle beside it explains why it works.
+              </motion.p>
+            </div>
+            <motion.div
+              variants={fadeUp}
+              style={{ flex: '0 0 420px', maxWidth: '420px', borderRadius: '16px', overflow: 'hidden', background: '#fff', boxShadow: '0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06)', cursor: 'default' }}
+              className="hide-sm"
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              whileHover={{
+                scale: 1.03,
+                boxShadow: '0 16px 48px rgba(0,0,0,0.14), 0 4px 12px rgba(0,0,0,0.08)',
+                transition: { type: 'spring', stiffness: 280, damping: 22 },
+              }}
+            >
+              <img
+                src={ebbinghausCurve}
+                alt="Ebbinghaus Forgetting Curve"
+                style={{ width: '100%', height: 'auto', display: 'block' }}
+              />
+            </motion.div>
+          </motion.div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginTop: '-5px', marginBottom: '28px' }} className="grid-cols-2-md grid-cols-4-lg">
+            {howItWorks.map(({ num, eyebrow, title, desc, accent, Visual }) => (
+              <motion.div
+                key={num}
+                variants={fadeUp}
+                whileHover={{ y: -6 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+              >
+                <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} accent={accent} Visual={Visual} height="300px" descLines={4} />
+              </motion.div>
+            ))}
+          </motion.div>
+          <div style={{ textAlign: 'center' }}>
+            <Link className="cta cta-pink" to="/programs">
+              Start Your Journey Now
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Pricing / Programs (white) ── */}
+      <section id="programs-preview" className="section-pad" style={{ paddingTop: '18px', paddingBottom: '32px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <SectionHeading
             eyebrow="Courses & Pricing"
@@ -397,36 +458,6 @@ export default function Home() {
               );
             })}
           </motion.div>
-        </div>
-      </section>
-
-      {/* ── How It Works (white) ── */}
-      <section id="how-it-works" className="section-pad" style={{ paddingTop: '40px', paddingBottom: '32px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <SectionHeading
-            eyebrow="Method & Science"
-            accent={CYAN}
-            align="left"
-            title={<>The {G('science', PINK)} that explains the {G('method', CYAN)}.</>}
-            subtitle="Ebbinghaus's Forgetting Curve is the starting point: students lose 80% of what they learn within 24 hours, and the brain discards information it isn't asked to use regardless of how hard a student studied. Each of the four steps below applies the science that fights this loss directly. The step is the practice; the principle beside it explains why it works."
-          />
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginTop: '-20px', marginBottom: '28px' }} className="grid-cols-2-md grid-cols-4-lg">
-            {howItWorks.map(({ num, eyebrow, title, desc, accent, Visual }) => (
-              <motion.div
-                key={num}
-                variants={fadeUp}
-                whileHover={{ y: -6 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-              >
-                <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} accent={accent} Visual={Visual} height="300px" descLines={4} />
-              </motion.div>
-            ))}
-          </motion.div>
-          <div style={{ textAlign: 'center' }}>
-            <Link className="cta cta-pink" to="/programs">
-              Start Your Journey Now
-            </Link>
-          </div>
         </div>
       </section>
 

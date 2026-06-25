@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion';
-import img1 from '../assets/Critical Thinking Image.png';
-import img2 from '../assets/Competency Image.png';
-import img3 from '../assets/Continious Image.png';
-import img4 from '../assets/Competency Image (1).png';
+import img1 from '../assets/Competency Based Learning.png';
+import img2 from '../assets/Critical Thinking.png';
+import img3 from '../assets/Curriculum Load Reduction.png';
+import img4 from '../assets/Holistic Assessment.png';
 
 interface Feature {
   tag: string;

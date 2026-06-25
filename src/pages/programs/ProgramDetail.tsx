@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { ChevronDown, CheckCircle, ChevronRight } from 'lucide-react';
+import { ChevronDown, CheckCircle, ArrowRight, ChevronRight } from 'lucide-react';
 import { getProgramBySlug } from '../../data/programs';
 import BrandWhoosh from '../../components/BrandWhoosh';
 import HeadingMarker from '../../components/HeadingMarker';
-import AccentText from '../../components/AccentText';
 import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../../components/MarketingSections';
 import HowItWorksCard from '../../components/HowItWorksCard';
 import hero1 from '../../assets/Hero 1.png';
@@ -164,36 +163,26 @@ export default function ProgramDetail() {
             {/* Left, text */}
             <motion.div initial="hidden" animate="visible" variants={stagger}>
               <motion.div variants={fadeUp}>
-                <HeadingMarker text={`AI Powered · ${program.classes}`} fontSize="12px" />
+                <HeadingMarker text={`AI Powered · ${program.classes}`} marginBottom="20px" fontSize="11px" />
               </motion.div>
 
               <motion.h1
                 variants={fadeUp}
-                className="t-h1" style={{ marginBottom: '20px' }}
+                style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '20px', lineHeight: 1.15 }}
               >
-                {program.name.split(' ').map((word, index, words) => {
-                  const isFirst = index === 0;
-                  const isLast = index === words.length - 1;
-                  if (isFirst && words.length > 1) {
-                    return <AccentText key={`${word}-${index}`} tone="pink">{word} </AccentText>;
-                  }
-                  if (isLast) {
-                    return <AccentText key={`${word}-${index}`} tone="gradient">{word}</AccentText>;
-                  }
-                  return `${word} `;
-                })}
+                {program.name}
               </motion.h1>
 
               <motion.p
                 variants={fadeUp}
-                className="t-body" style={{ marginBottom: '16px', maxWidth: '560px' }}
+                style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '16px', maxWidth: '560px' }}
               >
                 {program.tagline}
               </motion.p>
 
               <motion.p
                 variants={fadeUp}
-                className="t-small" style={{ marginBottom: '24px', maxWidth: '560px' }}
+                style={{ fontSize: '0.9375rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '24px', maxWidth: '560px' }}
               >
                 {program.description}
               </motion.p>
@@ -201,7 +190,7 @@ export default function ProgramDetail() {
               <motion.div variants={fadeUp} style={{ display: 'flex', gap: '28px', flexWrap: 'wrap', marginBottom: '28px', paddingTop: '20px', borderTop: '1px solid #F0F0F4' }}>
                 {program.heroStats.map((stat) => (
                   <div key={stat.label}>
-                    <div className="t-h4" style={{ marginBottom: '2px' }}>{stat.value}</div>
+                    <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1.2 }}>{stat.value}</div>
                     <div style={{ fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '2px' }}>{stat.label}</div>
                   </div>
                 ))}
@@ -220,7 +209,7 @@ export default function ProgramDetail() {
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
                 <div>
-                  <div style={{ fontSize: '28px', fontWeight: 700, fontFamily: "'Inter', sans-serif", color: '#1C1C28', lineHeight: 1.1 }}>{program.price}</div>
+                  <div style={{ fontSize: '28px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1.1 }}>{program.price}</div>
                   <div style={{ fontSize: '12px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '2px' }}>per month</div>
                 </div>
                 <span style={{ padding: '5px 12px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif" }}>
@@ -232,7 +221,7 @@ export default function ProgramDetail() {
 
               {!submitted ? (
                 <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
-                  <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
+                  <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: "'Poppins', sans-serif", marginBottom: '16px' }}>
                     Start your free 7-day trial
                   </p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '16px' }}>
@@ -281,10 +270,9 @@ export default function ProgramDetail() {
                   </div>
                   <button
                     type="submit"
-                    className="cta cta-blue"
-                    style={{ width: '100%', boxShadow: 'none' }}
+                    style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '13px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", background: '#0FA8DC', color: 'white', border: 'none', cursor: 'pointer' }}
                   >
-                    Enrol Now, 14-Day Free Trial
+                    Enrol Now, 14-Day Free Trial <ArrowRight size={15} />
                   </button>
                   <p style={{ textAlign: 'center', fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
                     No credit card required · Cancel anytime
@@ -295,7 +283,7 @@ export default function ProgramDetail() {
                   <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#E0F5FC', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
                     <CheckCircle size={22} style={{ color: '#0FA8DC' }} />
                   </div>
-                  <p className="t-h4" style={{ marginBottom: '8px' }}>You're all set!</p>
+                  <p style={{ fontSize: '16px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '8px' }}>You're all set!</p>
                   <p style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", lineHeight: 1.6 }}>
                     We'll contact {form.name || 'you'} within 24 hours to begin your free trial.
                   </p>
@@ -310,9 +298,9 @@ export default function ProgramDetail() {
       <section style={{ paddingTop: '96px', paddingBottom: '80px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
-            <HeadingMarker text="Right for you?" fontSize="12px" />
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Inter, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
-              Who This <AccentText tone="blue">Programme</AccentText> Is For
+            <HeadingMarker text="Right for you?" marginBottom="16px" fontSize="11px" />
+            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111' }}>
+              Who This Programme Is For
             </h2>
           </motion.div>
 
@@ -351,9 +339,9 @@ export default function ProgramDetail() {
       <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
-            <HeadingMarker text="Curriculum" fontSize="12px" />
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Inter, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
-              What You'll <AccentText tone="gradient">Learn</AccentText>
+            <HeadingMarker text="Curriculum" marginBottom="16px" fontSize="11px" />
+            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111' }}>
+              What You'll Learn
             </h2>
           </motion.div>
 
@@ -370,10 +358,10 @@ export default function ProgramDetail() {
                   style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 24px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '16px' }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                    <span style={{ width: '28px', height: '28px', borderRadius: '8px', background: program.accentBg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700, color: '#0FA8DC', fontFamily: "'Inter', sans-serif", flexShrink: 0 }}>
+                    <span style={{ width: '28px', height: '28px', borderRadius: '8px', background: program.accentBg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700, color: '#0FA8DC', fontFamily: "'Poppins', sans-serif", flexShrink: 0 }}>
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="t-body" style={{ fontWeight: 600, color: '#1C1C28' }}>{module.title}</span>
+                    <span style={{ fontSize: '15px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{module.title}</span>
                   </div>
                   <ChevronDown
                     size={18}
@@ -395,7 +383,7 @@ export default function ProgramDetail() {
                         {module.topics.map((topic, j) => (
                           <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                             <CheckCircle size={14} style={{ color: '#0FA8DC', flexShrink: 0, marginTop: '3px' }} />
-                            <span className="t-small" style={{ color: '#5A5A6E' }}>{topic}</span>
+                            <span style={{ fontSize: '14px', lineHeight: 1.6, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{topic}</span>
                           </div>
                         ))}
                       </div>
@@ -415,9 +403,9 @@ export default function ProgramDetail() {
             {/* Features list */}
             <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               <motion.div variants={fadeUp} style={{ marginBottom: '40px' }}>
-                <HeadingMarker text="What's Included" fontSize="12px" />
-                <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Inter, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
-                  Everything in This <AccentText tone="pink">Plan</AccentText>
+                <HeadingMarker text="What's Included" marginBottom="16px" fontSize="11px" />
+                <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111' }}>
+                  Everything in This Plan
                 </h2>
               </motion.div>
 
@@ -447,7 +435,7 @@ export default function ProgramDetail() {
                 </span>
               </div>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', marginBottom: '6px' }}>
-                <span style={{ fontSize: '42px', fontWeight: 700, fontFamily: "'Inter', sans-serif", color: '#1C1C28', lineHeight: 1 }}>{program.price}</span>
+                <span style={{ fontSize: '42px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1 }}>{program.price}</span>
                 <span style={{ fontSize: '14px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>/month</span>
               </div>
               <p style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '28px' }}>{program.classes}</p>
@@ -457,8 +445,8 @@ export default function ProgramDetail() {
               {program.outcomes.map((outcome, i) => (
                 <div key={i} style={{ marginBottom: i < program.outcomes.length - 1 ? '20px' : '0' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                    <span className="t-body" style={{ fontWeight: 600, color: '#1C1C28' }}>{outcome.label}</span>
-                    <span className="t-h4" style={{ color: '#0FA8DC', marginBottom: 0 }}>{outcome.value}</span>
+                    <span style={{ fontSize: '14px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{outcome.label}</span>
+                    <span style={{ fontSize: '18px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#0FA8DC' }}>{outcome.value}</span>
                   </div>
                   <p style={{ fontSize: '12px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}>{outcome.desc}</p>
                 </div>
@@ -469,9 +457,9 @@ export default function ProgramDetail() {
               <Link
                 to="/contact"
                 className="cta cta-pink"
-                style={{ display: 'flex', boxShadow: 'none' }}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#F03C6F', color: 'white', boxShadow: 'none' }}
               >
-                Start 14-Day Free Trial
+                Start 14-Day Free Trial <ArrowRight size={16} />
               </Link>
               <p style={{ textAlign: 'center', fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
                 No credit card · Cancel any time
