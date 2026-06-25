@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Bell, LogIn } from 'lucide-react';
+import { Bell, LogIn } from 'lucide-react';
 import AccentText from '../components/AccentText';
 
 const ROLE_COPY: Record<string, { heading: React.ReactNode; line: string }> = {
@@ -80,7 +80,7 @@ export default function Login() {
                 className="cta cta-pink"
                 style={{ boxShadow: 'none' }}
               >
-                Start your free trial <ArrowRight size={16} />
+                Start your free trial
               </Link>
               <Link
                 to="/contact"

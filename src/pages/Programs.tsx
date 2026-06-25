@@ -1,7 +1,7 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { BookOpen, Target, Brain, TrendingUp, ArrowRight, CheckCircle, Zap } from 'lucide-react';
+import { BookOpen, Target, Brain, TrendingUp, CheckCircle, Zap } from 'lucide-react';
 import BrandArc from '../components/BrandArc';
 import ctaBanner from '../assets/Hero 4.png';
 import heroBanner from '../assets/Hero 2.png';
@@ -161,7 +161,7 @@ export default function Programs() {
                 className="cta cta-pink"
                 style={{ boxShadow: 'none' }}
               >
-                Start the 14-Day Free Trial  -  No Credit Card Required <ArrowRight size={16} />
+                Start the 14-Day Free Trial  -  No Credit Card Required
               </Link>
             </div>
           </motion.div>
@@ -364,7 +364,7 @@ export default function Programs() {
                         border: prog.featured ? 'none' : '1.5px solid #DCDCE5',
                       }}
                     >
-                      Learn More <ArrowRight size={16} />
+                      Learn More
                     </Link>
                   </div>
                 </motion.div>

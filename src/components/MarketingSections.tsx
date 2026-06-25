@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import FAQItem from './FAQItem';
@@ -11,6 +10,7 @@ export type TestimonialCardData = {
   image?: string;
   name: string;
   role: string;
+  planName?: string;
   text: string;
 };
 
@@ -98,6 +98,8 @@ export function SharedFaqSection({
   linkLabel = 'View All FAQs',
   accent,
   align,
+  ctaAtBottom = false,
+  ctaInFaqColumn = false,
   background = '#FFFFFF',
 }: {
   items: FaqPreviewItem[];
@@ -108,30 +110,61 @@ export function SharedFaqSection({
   linkLabel?: string;
   accent?: string;
   align?: 'left' | 'center';
+  ctaAtBottom?: boolean;
+  ctaInFaqColumn?: boolean;
   background?: string;
 }) {
+  const isCentered = align === 'center';
+
   return (
     <section className="section-pad" style={{ paddingTop: '64px', paddingBottom: '64px', background }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '80px', alignItems: 'start' }} className="faq-grid">
+      <div
+        style={{
+          maxWidth: '1280px',
+          margin: '0 auto',
+          padding: '0 24px',
+          display: 'grid',
+          gridTemplateColumns: isCentered ? '1fr' : '1fr 1.5fr',
+          gap: isCentered ? '32px' : '80px',
+          alignItems: 'start',
+        }}
+        className="faq-grid"
+      >
         {/* Left: intro */}
-        <div>
+        <div style={isCentered ? { maxWidth: '880px', margin: '0 auto', textAlign: 'center' } : undefined}>
           <SectionIntro eyebrow={eyebrow} title={title} subtitle={subtitle} accent={accent} align={align ?? 'left'} />
-          <Link
-            to={linkTo}
-            className="cta cta-outline"
-            style={{ marginTop: '28px' }}
-          >
-            {linkLabel} <ArrowRight size={15} />
-          </Link>
+          {!ctaAtBottom && !ctaInFaqColumn && (
+            <Link
+              to={linkTo}
+              className="cta cta-outline"
+              style={{ marginTop: '28px', marginLeft: isCentered ? 'auto' : undefined, marginRight: isCentered ? 'auto' : undefined }}
+            >
+              {linkLabel}
+            </Link>
+          )}
         </div>
 
         {/* Right: FAQ list */}
-        <div>
+        <div style={isCentered ? { maxWidth: '980px', width: '100%', margin: '0 auto' } : undefined}>
           {items.map((faq, index) => (
             <FAQItem key={`${faq.q}-${index}`} question={faq.q} answer={faq.a} />
           ))}
+          {ctaInFaqColumn && (
+            <div style={{ marginTop: '24px', textAlign: 'center' }}>
+              <Link to={linkTo} className="cta cta-outline">
+                {linkLabel}
+              </Link>
+            </div>
+          )}
         </div>
       </div>
+      {ctaAtBottom && (
+        <div style={{ maxWidth: '1280px', margin: '28px auto 0', padding: '0 24px', textAlign: 'left' }}>
+          <Link to={linkTo} className="cta cta-outline">
+            {linkLabel}
+          </Link>
+        </div>
+      )}
     </section>
   );
 }

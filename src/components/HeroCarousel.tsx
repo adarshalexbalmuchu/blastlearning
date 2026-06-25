@@ -6,8 +6,25 @@ const bannerModules = import.meta.glob('../assets/banners/*.{png,jpg,jpeg,webp,a
   import: 'default',
 }) as Record<string, string>;
 
+const BANNER_ORDER = [1, 3, 2, 4];
+
+function getBannerIndex(path: string): number {
+  const match = path.match(/banner\s*(\d+)/i);
+  return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
+}
+
 const SLIDES = Object.entries(bannerModules)
-  .sort(([a], [b]) => a.localeCompare(b))
+  .sort(([a], [b]) => {
+    const aIndex = getBannerIndex(a);
+    const bIndex = getBannerIndex(b);
+    const aPos = BANNER_ORDER.indexOf(aIndex);
+    const bPos = BANNER_ORDER.indexOf(bIndex);
+
+    if (aPos !== -1 && bPos !== -1) return aPos - bPos;
+    if (aPos !== -1) return -1;
+    if (bPos !== -1) return 1;
+    return a.localeCompare(b);
+  })
   .map(([, src]) => src)
 ;
 
@@ -26,6 +43,7 @@ export default function HeroCarousel() {
   const [blink, setBlink] = useState(false);
   const hasSlides = SLIDES.length > 0;
   const canRotate = SLIDES.length > 1;
+  const isLastSlide = hasSlides && activeIndex === SLIDES.length - 1;
   const activePrimaryCta = PRIMARY_CTA_CONFIG[activeIndex] ?? { text: 'Start Your Journey Today', to: '/programs' };
   const activeDotColor = HERO_DOT_COLORS[activeIndex] ?? '#0FA8DC';
   const firstBannerDotNudge = activeIndex === 0 ? 'translate(0.5px, -1px)' : undefined;
@@ -102,6 +120,7 @@ export default function HeroCarousel() {
             width: '100%',
             aspectRatio: '2048 / 1092',
             overflow: 'hidden',
+            background: '#FFFFFF',
             boxShadow: '0 8px 32px rgba(28,28,40,0.105)',
           }}
         >
@@ -121,7 +140,7 @@ export default function HeroCarousel() {
                 display: 'block',
                 position: 'absolute',
                 inset: 0,
-                objectFit: 'cover',
+                objectFit: 'contain',
                 objectPosition: 'center center',
                 opacity: activeIndex === index ? 1 : 0,
                 transition: 'opacity 500ms ease',
@@ -145,15 +164,25 @@ export default function HeroCarousel() {
         >
           <span
             aria-hidden="true"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '-336.25px', left: '18px', pointerEvents: 'none', transform: firstBannerDotNudge }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '-311.75px', left: '18.5px', pointerEvents: 'none', transform: firstBannerDotNudge }}
           >
-            <span style={{ width: '3.5px', height: '3.5px', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: '4.5px', height: '4.5px', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: '5.5px', height: '5.5px', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: '8.5px', height: '2.5px', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: '13.5px', height: '2.5px', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: '9px', height: '3px', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: '14px', height: '3px', borderRadius: '9999px', background: activeDotColor }} />
           </span>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+          <div
+            aria-hidden={isLastSlide}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '6px',
+              visibility: isLastSlide ? 'hidden' : 'visible',
+              pointerEvents: isLastSlide ? 'none' : 'auto',
+            }}
+          >
             <Link
               to={activePrimaryCta.to}
               className="cta"
@@ -174,7 +203,19 @@ export default function HeroCarousel() {
           <Link
             to="/programs"
             className="cta cta-outline"
-            style={{ paddingLeft: '20px', paddingRight: '20px', marginTop: 0, ...heroCtaButtonStyle }}
+            style={{
+              paddingLeft: '20px',
+              paddingRight: '20px',
+              marginTop: isLastSlide ? '-20px' : 0,
+              ...(isLastSlide
+                ? {
+                    background: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)',
+                    color: '#FFFFFF',
+                    border: 'none',
+                  }
+                : {}),
+              ...heroCtaButtonStyle,
+            }}
           >
             See How It Works
           </Link>

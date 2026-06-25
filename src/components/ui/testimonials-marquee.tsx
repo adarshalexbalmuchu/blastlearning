@@ -8,10 +8,15 @@ type CardT = {
   image?: string;
   name: string;
   role: string;
+  planName?: string;
   text: string;
 };
 
 function parseRole(role: string): { classInfo: string; planName: string; location: string } {
+  if (!role.includes(' · ')) {
+    return { classInfo: role, planName: '', location: '' };
+  }
+
   const [rankPart, location = ''] = role.split(' · ');
   const commaIdx = rankPart.indexOf(', ');
   if (commaIdx !== -1) {
@@ -25,7 +30,10 @@ function parseRole(role: string): { classInfo: string; planName: string; locatio
 }
 
 function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }) {
-  const { classInfo, planName, location } = parseRole(card.role);
+  const parsed = parseRole(card.role);
+  const classInfo = parsed.classInfo;
+  const planName = card.planName ?? parsed.planName;
+  const location = parsed.location;
   const markerAccent = cardIndex === 1 ? '#0FA8DC' : '#E8135A';
   const classAccent = cardIndex % 2 === 0 ? '#E8135A' : '#0FA8DC';
 

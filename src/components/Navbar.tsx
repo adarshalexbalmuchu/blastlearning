@@ -318,16 +318,35 @@ export default function Navbar() {
           transition: 'box-shadow 0.3s',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', height: '64px', padding: '0 24px', justifyContent: 'space-between' }}>
-          
-          {/* Logo - Far Left with margin right */}
-          <Link to="/" className="flex items-center flex-shrink-0" style={{ textDecoration: 'none', marginRight: '40px', marginLeft: '90px' }}>
+        {/* Full-width bar: logo far-left, login far-right, nav+CTA hero-aligned center */}
+        <div style={{ position: 'relative', height: '64px', display: 'flex', alignItems: 'center', padding: '0 24px' }}>
+
+          {/* Logo — stays at far left, independent of hero container */}
+          <Link to="/" className="flex items-center flex-shrink-0" style={{ textDecoration: 'none', position: 'relative', zIndex: 2, marginLeft: '66px' }}>
             <img src={blastLogo} alt="Blast Learning" style={{ height: '56px', width: 'auto' }} />
           </Link>
 
-          {/* Desktop Nav - Center Spread */}
-          <div className="show-lg-flex items-center" style={{ gap: '16px', flex: 1, justifyContent: 'center' }}>
-            <ul style={{ display: 'flex', alignItems: 'center', gap: '16px', listStyle: 'none', margin: 0, padding: 0 }}>
+          {/* Nav items + Start Free Trial — absolutely centered in 1280px hero zone */}
+          <div
+            className="show-lg-flex"
+            style={{
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '100%',
+              maxWidth: '1280px',
+              padding: '0 24px',
+              boxSizing: 'border-box',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '64px',
+              pointerEvents: 'none',
+              zIndex: 1,
+            }}
+          >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(14px, 1.6vw, 22px)', pointerEvents: 'auto' }}>
+            <ul style={{ display: 'flex', alignItems: 'center', gap: 'clamp(12px, 1.2vw, 20px)', listStyle: 'none', margin: 0, padding: 0 }}>
                 {navItems.map((item) => (
                   <li
                     key={item.id}
@@ -342,7 +361,7 @@ export default function Navbar() {
                           display: 'flex',
                           alignItems: 'center',
                           gap: '2px',
-                          padding: '6px 14px',
+                          padding: '6px clamp(6px, 0.8vw, 14px)',
                           borderRadius: '99px',
                           color: '#5A5A6E',
                         }}
@@ -370,6 +389,7 @@ export default function Navbar() {
                             fontFamily: 'Inter, sans-serif',
                             color: location.pathname === item.path ? '#0FA8DC' : '#5A5A6E',
                             textDecoration: 'none',
+                            whiteSpace: 'nowrap',
                           }}
                         >
                           {item.label}
@@ -407,13 +427,14 @@ export default function Navbar() {
                           position: 'relative',
                           display: 'flex',
                           alignItems: 'center',
-                          padding: '6px 14px',
+                          padding: '6px clamp(6px, 0.8vw, 14px)',
                           borderRadius: '99px',
                           fontSize: '14px',
                           fontWeight: 500,
                           fontFamily: 'Inter, sans-serif',
                           color: location.pathname === item.path ? '#0FA8DC' : '#5A5A6E',
                           textDecoration: 'none',
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         {hoveredId === item.id && (
@@ -521,22 +542,26 @@ export default function Navbar() {
                   </li>
                 ))}
               </ul>
-            </div>
 
-            {/* Right End - CTA + Login */}
-            <div className="show-lg-flex items-center" style={{ gap: '12px', flexShrink: 0, marginRight: '35px' }}>
+            {/* CTA + Login inline after nav items */}
+            <div className="show-lg-flex items-center" style={{ gap: 'clamp(6px, 0.8vw, 12px)', flexShrink: 0, marginLeft: 'clamp(8px, 1.2vw, 20px)' }}>
 
               {/* Start Free Trial Button */}
               <Link
                 to="/programs"
                 className="cta cta-pink"
-                style={{ marginRight: '35px', padding: '9px 20px' }}
+                style={{ padding: '9px clamp(12px, 1.2vw, 20px)', whiteSpace: 'nowrap', fontSize: 'clamp(12px, 0.85vw, 14px)' }}
               >
                 Start Free Trial
               </Link>
+            </div>
+          </div>
+          </div>
+          {/* ↑ closes the absolutely-centered nav+CTA overlay */}
 
-              {/* Login Dropdown */}
-              <div style={{ position: 'relative' }}>
+          {/* Login — centered in the white gap to the right of the 1280px hero zone */}
+          <div className="show-lg-flex items-center" style={{ marginLeft: 'auto', marginRight: 'calc((100vw - min(100vw, 1280px)) / 8)', position: 'relative', zIndex: 2 }}>
+            <div style={{ position: 'relative' }}>
               <button
                 onClick={() => setLoginOpen((v) => !v)}
                 className="flex items-center gap-2 text-sm font-medium"
@@ -549,19 +574,17 @@ export default function Navbar() {
                   cursor: 'pointer',
                   fontFamily: 'Inter, sans-serif',
                   transition: 'border-color 0.2s, color 0.2s',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  whiteSpace: 'nowrap',
                 }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#0FA8DC'; (e.currentTarget as HTMLElement).style.color = '#0FA8DC'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#DCDCE5'; (e.currentTarget as HTMLElement).style.color = '#1C1C28'; }}
               >
                 <User size={14} />
                 Login
-                <ChevronDown
-                  size={12}
-                  style={{
-                    transform: loginOpen ? 'rotate(180deg)' : 'rotate(0)',
-                    transition: 'transform 0.2s',
-                  }}
-                />
+                <ChevronDown size={12} style={{ transform: loginOpen ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.2s' }} />
               </button>
               <AnimatePresence>
                 {loginOpen && (
@@ -588,13 +611,7 @@ export default function Navbar() {
                         key={opt.label}
                         to={opt.to}
                         className="block text-sm"
-                        style={{
-                          padding: '12px 16px',
-                          color: '#1C1C28',
-                          textDecoration: 'none',
-                          fontFamily: 'Inter, sans-serif',
-                          transition: 'background 0.15s, color 0.15s',
-                        }}
+                        style={{ padding: '12px 16px', color: '#1C1C28', textDecoration: 'none', fontFamily: 'Inter, sans-serif', transition: 'background 0.15s, color 0.15s', display: 'block' }}
                         onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F7F7F8'; (e.currentTarget as HTMLElement).style.color = '#0FA8DC'; }}
                         onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = '#1C1C28'; }}
                         onClick={() => setLoginOpen(false)}
@@ -605,38 +622,38 @@ export default function Navbar() {
                   </motion.div>
                 )}
               </AnimatePresence>
-              </div>
-            </div>
-
-            {/* Mobile: Login button + hamburger */}
-            <div className="hide-lg" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Link
-                to="/login"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  padding: '8px 16px',
-                  borderRadius: '8px',
-                  background: '#0FA8DC',
-                  color: 'white',
-                  fontSize: '13px',
-                  fontWeight: 700,
-                  fontFamily: 'Inter, sans-serif',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                Login / Register
-              </Link>
-              <button
-                style={{ color: '#1C1C28', background: 'transparent', border: 'none', cursor: 'pointer', padding: '10px', borderRadius: '8px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                onClick={() => setMobileOpen((v) => !v)}
-                aria-label="Toggle menu"
-              >
-                {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-              </button>
             </div>
           </div>
+
+          {/* Mobile: Login button + hamburger */}
+          <div className="hide-lg" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Link
+              to="/login"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '8px 16px',
+                borderRadius: '8px',
+                background: '#0FA8DC',
+                color: 'white',
+                fontSize: '13px',
+                fontWeight: 700,
+                fontFamily: 'Inter, sans-serif',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Login / Register
+            </Link>
+            <button
+              style={{ color: '#1C1C28', background: 'transparent', border: 'none', cursor: 'pointer', padding: '10px', borderRadius: '8px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
+        </div>
 
       </nav>
 

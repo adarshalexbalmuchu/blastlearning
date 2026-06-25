@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { ChevronDown, CheckCircle, ArrowRight, ChevronRight } from 'lucide-react';
+import { ChevronDown, CheckCircle, ChevronRight } from 'lucide-react';
 import { getProgramBySlug } from '../../data/programs';
 import BrandWhoosh from '../../components/BrandWhoosh';
 import HeadingMarker from '../../components/HeadingMarker';
@@ -284,7 +284,7 @@ export default function ProgramDetail() {
                     className="cta cta-blue"
                     style={{ width: '100%', boxShadow: 'none' }}
                   >
-                    Enrol Now, 14-Day Free Trial <ArrowRight size={15} />
+                    Enrol Now, 14-Day Free Trial
                   </button>
                   <p style={{ textAlign: 'center', fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
                     No credit card required · Cancel anytime
@@ -471,7 +471,7 @@ export default function ProgramDetail() {
                 className="cta cta-pink"
                 style={{ display: 'flex', boxShadow: 'none' }}
               >
-                Start 14-Day Free Trial <ArrowRight size={16} />
+                Start 14-Day Free Trial
               </Link>
               <p style={{ textAlign: 'center', fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
                 No credit card · Cancel any time

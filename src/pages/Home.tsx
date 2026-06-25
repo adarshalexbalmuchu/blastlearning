@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion, type Variants } from 'framer-motion';
 import {
-  ArrowRight,
   CheckCircle,
 } from 'lucide-react';
 import HeroCarousel from '../components/HeroCarousel';
@@ -54,7 +53,7 @@ const pricingPlans = [
     id: 'cbse',
     slug: 'cbse-plan',
     name: 'CBSE Full Syllabus',
-    classes: 'Class 6-12 · All core subjects',
+    classes: 'Class 10 · All core subjects',
     desc: 'The CBSE course built on spaced repetition from the ground up. Every chapter is sequenced for retention, not just coverage.',
     monthlyPrice: 1299,
     yearlyMonthly: 1039,
@@ -425,7 +424,7 @@ export default function Home() {
           </motion.div>
           <div style={{ textAlign: 'center' }}>
             <Link className="cta cta-pink" to="/programs">
-              Start Your Journey Now <ArrowRight size={16} />
+              Start Your Journey Now
             </Link>
           </div>
         </div>
@@ -444,19 +443,22 @@ export default function Home() {
           {
             image: 'https://randomuser.me/api/portraits/women/44.jpg',
             name: 'Ananya Krishnan',
-            role: 'Class 10, CBSE Plan · Bangalore',
+            role: 'A student of class 10, Bangalore',
+            planName: 'CBSE Plan',
             text: 'Within three weeks I could see my son actually remembering what he had studied the week before. That had never happened with tuition classes.',
           },
           {
             image: 'https://randomuser.me/api/portraits/men/32.jpg',
             name: 'Rahul Mehta',
-            role: 'Class 12, CBSE Plan · Mumbai',
+            role: 'A student of class 12, Mumbai',
+            planName: 'CBSE Plan',
             text: 'The GAP Assessment was the first time someone told us specifically what was wrong with his maths, not just that he needed more practice.',
           },
           {
             image: 'https://randomuser.me/api/portraits/women/65.jpg',
             name: 'Kavitha Suresh',
-            role: 'Class 9, English Mastery · Hyderabad',
+            role: 'A student of class 9, Hyderabad',
+            planName: 'English Mastery',
             text: 'I went in expecting to study for CBSE and ended up fully prepared for the SAT as well. The English Mastery Pass does exactly what it says.',
           },
           {
@@ -551,7 +553,7 @@ export default function Home() {
                   <h3 className="t-h4" style={{ fontSize: 'clamp(1.25rem, 0.98rem + 0.55vw, 1.55rem)', marginBottom: '12px', lineHeight: 1.3, letterSpacing: '-0.015em' }}>{article.title}</h3>
                   <p className="t-body" style={{ color: '#6B6F7B', lineHeight: 1.5, marginBottom: '16px', flex: 1 }}>{article.desc}</p>
                   <Link to="/library" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: accent, fontWeight: 700, fontSize: '12px', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
-                    Read more <ArrowRight size={14} />
+                    Read more
                   </Link>
                 </div>
               </motion.article>
@@ -559,14 +561,29 @@ export default function Home() {
           </div>
           <div style={{ textAlign: 'center', marginTop: '24px' }}>
             <Link className="cta cta-blue" to="/library">
-              View all resources <ArrowRight size={16} />
+              View all library
             </Link>
           </div>
         </div>
       </section>
 
       {/* ── FAQ Preview (white) ── */}
-      <SharedFaqSection items={homeFaqs} eyebrow="FAQ" accent="#0FA8DC" align="center" background="#F7FAFC" title={<>Common {G('questions', CYAN)}, direct {G('answers', PINK)}.</>} subtitle="If your question isn't here, the full FAQ page covers every edge case - billing, syllabus details, Study Buddy matching, and technical requirements." linkLabel="View full FAQ page" />
+      <SharedFaqSection
+        items={homeFaqs}
+        eyebrow="FAQ"
+        accent="#0FA8DC"
+        align="left"
+        ctaInFaqColumn
+        background="#F7FAFC"
+        title={
+          <>
+            <span style={{ display: 'block', whiteSpace: 'nowrap' }}>Common {G('questions', CYAN)}</span>
+            <span style={{ display: 'block' }}>Direct {G('answers', PINK)}.</span>
+          </>
+        }
+        subtitle="If your question isn't here, the full FAQ page covers every edge case - billing, syllabus details, Study Buddy matching, and technical requirements."
+        linkLabel="View full FAQ page"
+      />
     </div>
   );
 }

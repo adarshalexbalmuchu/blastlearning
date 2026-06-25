@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Zap, ArrowRight, Check } from 'lucide-react';
+import { Zap, Check } from 'lucide-react';
 
 interface ProgramCardProps {
   icon: ReactNode;
@@ -113,7 +113,7 @@ export default function ProgramCard({ icon, name, price, classRange, description
           border: featured ? 'none' : '1.5px solid #DCDCE5',
         }}
       >
-        Learn More <ArrowRight size={14} />
+        Learn More
       </Link>
     </motion.div>
   );
