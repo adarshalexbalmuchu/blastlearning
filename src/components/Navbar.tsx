@@ -345,8 +345,8 @@ export default function Navbar() {
               zIndex: 1,
             }}
           >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(14px, 1.6vw, 22px)', pointerEvents: 'auto' }}>
-            <ul style={{ display: 'flex', alignItems: 'center', gap: 'clamp(12px, 1.2vw, 20px)', listStyle: 'none', margin: 0, padding: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(9px, 1.1vw, 17px)', pointerEvents: 'auto' }}>
+            <ul style={{ display: 'flex', alignItems: 'center', gap: 'clamp(7px, 0.9vw, 15px)', listStyle: 'none', margin: 0, padding: 0 }}>
                 {navItems.map((item) => (
                   <li
                     key={item.id}
