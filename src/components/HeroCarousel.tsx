@@ -28,6 +28,7 @@ export default function HeroCarousel() {
   const canRotate = SLIDES.length > 1;
   const activePrimaryCta = PRIMARY_CTA_CONFIG[activeIndex] ?? { text: 'Start Your Journey Today', to: '/programs' };
   const activeDotColor = HERO_DOT_COLORS[activeIndex] ?? '#0FA8DC';
+  const firstBannerDotNudge = activeIndex === 0 ? 'translate(0.5px, -1px)' : undefined;
 
   useEffect(() => {
     if (!hasSlides) return;
@@ -121,24 +122,13 @@ export default function HeroCarousel() {
                 position: 'absolute',
                 inset: 0,
                 objectFit: 'cover',
-                objectPosition: index === 0 ? 'center calc(50% - 1px)' : 'center center',
+                objectPosition: 'center center',
                 opacity: activeIndex === index ? 1 : 0,
                 transition: 'opacity 500ms ease',
               }}
             />
           ))}
         </div>
-
-        <span
-          aria-hidden="true"
-          style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '152px', left: '108px', zIndex: 3, pointerEvents: 'none' }}
-        >
-          <span style={{ width: '3.5px', height: '3.5px', borderRadius: '9999px', background: activeDotColor }} />
-          <span style={{ width: '4.5px', height: '4.5px', borderRadius: '9999px', background: activeDotColor }} />
-          <span style={{ width: '5.5px', height: '5.5px', borderRadius: '9999px', background: activeDotColor }} />
-          <span style={{ width: '8.5px', height: '2.5px', borderRadius: '9999px', background: activeDotColor }} />
-          <span style={{ width: '13.5px', height: '2.5px', borderRadius: '9999px', background: activeDotColor }} />
-        </span>
 
         {/* Hero CTAs */}
         <div
@@ -153,6 +143,16 @@ export default function HeroCarousel() {
           }}
           className="hero-cta-wrap"
         >
+          <span
+            aria-hidden="true"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '-336.25px', left: '18px', pointerEvents: 'none', transform: firstBannerDotNudge }}
+          >
+            <span style={{ width: '3.5px', height: '3.5px', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: '4.5px', height: '4.5px', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: '5.5px', height: '5.5px', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: '8.5px', height: '2.5px', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: '13.5px', height: '2.5px', borderRadius: '9999px', background: activeDotColor }} />
+          </span>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
             <Link
               to={activePrimaryCta.to}
