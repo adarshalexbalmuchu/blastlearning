@@ -18,6 +18,8 @@ const PRIMARY_CTA_CONFIG = [
   { text: 'Start the 40 Day Free Trial', to: '/programs' },
 ];
 
+const HERO_DOT_COLORS = ['#0FA8DC', '#0FA8DC', '#E8135A', '#E8135A'];
+
 // ─── Carousel ────────────────────────────────────────────────────────────────────
 export default function HeroCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -25,6 +27,7 @@ export default function HeroCarousel() {
   const hasSlides = SLIDES.length > 0;
   const canRotate = SLIDES.length > 1;
   const activePrimaryCta = PRIMARY_CTA_CONFIG[activeIndex] ?? { text: 'Start Your Journey Today', to: '/programs' };
+  const activeDotColor = HERO_DOT_COLORS[activeIndex] ?? '#0FA8DC';
 
   useEffect(() => {
     if (!hasSlides) return;
@@ -139,7 +142,17 @@ export default function HeroCarousel() {
           }}
           className="hero-cta-wrap"
         >
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', position: 'relative' }}>
+            <span
+              aria-hidden="true"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '-334px', left: '18px' }}
+            >
+              <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: activeDotColor }} />
+              <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: activeDotColor }} />
+              <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: activeDotColor }} />
+              <span style={{ width: '9px', height: '3px', borderRadius: '9999px', background: activeDotColor }} />
+              <span style={{ width: '14px', height: '3px', borderRadius: '9999px', background: activeDotColor }} />
+            </span>
             <Link
               to={activePrimaryCta.to}
               className="cta"
