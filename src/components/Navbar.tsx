@@ -251,10 +251,10 @@ const navItems: NavItem[] = [
   },
   {
     id: 7,
-    label: 'Resources',
+    label: 'Library',
     subMenus: [
       {
-        title: 'Resources',
+        title: 'Library',
         items: [
           { label: 'Blog', description: 'Articles, tips & learning insights', icon: IconNewspaper, iconBg: 'linear-gradient(135deg,#E0F2FE 0%,#BAE6FD 100%)', iconBorder: '#7DD3FC', path: '/blog' },
           { label: 'Resource Library', description: 'Videos, notes & practice quizzes', icon: IconBooks, iconBg: 'linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%)', iconBorder: '#FED7AA', path: '/library' },

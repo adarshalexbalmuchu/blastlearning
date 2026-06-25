@@ -32,10 +32,10 @@ const PRIMARY_CTA_CONFIG = [
   { text: 'Explore CBSE Program', to: '/programs/cbse-plan' },
   { text: 'Start Your Journey Now', to: '/programs/english-mastery' },
   { text: 'Try the GAP Assessment', to: '/programs/math-genius' },
-  { text: 'Start the 40 Day Free Trial', to: '/programs' },
+  { text: 'See How It Works', to: '/programs' },
 ];
 
-const HERO_DOT_COLORS = ['#0FA8DC', '#0FA8DC', '#E8135A', '#E8135A'];
+const HERO_DOT_COLORS = ['#0FA8DC', '#E8135A', '#0FA8DC', '#E8135A'];
 
 // ─── Carousel ────────────────────────────────────────────────────────────────────
 export default function HeroCarousel() {
@@ -153,7 +153,7 @@ export default function HeroCarousel() {
         <div
           style={{
             position: 'absolute',
-            bottom: '135px',
+            bottom: '165px',
             left: '90px',
             zIndex: 3,
             display: 'flex',
@@ -164,7 +164,7 @@ export default function HeroCarousel() {
         >
           <span
             aria-hidden="true"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '-311.75px', left: '18.5px', pointerEvents: 'none', transform: firstBannerDotNudge }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '-335px', left: '18.5px', pointerEvents: 'none', transform: firstBannerDotNudge }}
           >
             <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: activeDotColor }} />
             <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: activeDotColor }} />
@@ -172,15 +172,13 @@ export default function HeroCarousel() {
             <span style={{ width: '9px', height: '3px', borderRadius: '9999px', background: activeDotColor }} />
             <span style={{ width: '14px', height: '3px', borderRadius: '9999px', background: activeDotColor }} />
           </span>
+          <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', position: 'relative', top: '-35px' }}>
           <div
-            aria-hidden={isLastSlide}
             style={{
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               gap: '6px',
-              visibility: isLastSlide ? 'hidden' : 'visible',
-              pointerEvents: isLastSlide ? 'none' : 'auto',
             }}
           >
             <Link
@@ -200,25 +198,20 @@ export default function HeroCarousel() {
               No credit card required
             </span>
           </div>
-          <Link
-            to="/programs"
-            className="cta cta-outline"
-            style={{
-              paddingLeft: '20px',
-              paddingRight: '20px',
-              marginTop: isLastSlide ? '-20px' : 0,
-              ...(isLastSlide
-                ? {
-                    background: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)',
-                    color: '#FFFFFF',
-                    border: 'none',
-                  }
-                : {}),
-              ...heroCtaButtonStyle,
-            }}
-          >
-            See How It Works
-          </Link>
+          {!isLastSlide && (
+            <Link
+              to="/programs"
+              className="cta cta-outline"
+              style={{
+                paddingLeft: '20px',
+                paddingRight: '20px',
+                ...heroCtaButtonStyle,
+              }}
+            >
+              See How It Works
+            </Link>
+          )}
+          </div>
         </div>
       </div>
 
