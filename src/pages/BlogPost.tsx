@@ -8,7 +8,6 @@ import {
   stripHtml, formatDate, readingTime,
 } from '../lib/wordpress';
 import BrandArc from '../components/BrandArc';
-import BrandWhoosh from '../components/BrandWhoosh';
 
 function PostSkeleton() {
   return (
@@ -42,9 +41,9 @@ export default function BlogPost() {
           0% { background-position: 200% 0; }
           100% { background-position: -200% 0; }
         }
-        .wp-content h2 { font-size: 1.5rem; font-weight: 700; font-family: 'Inter', sans-serif; color: #1C1C28; margin: 2rem 0 1rem; letter-spacing: -0.015em; }
-        .wp-content h3 { font-size: 1.2rem; font-weight: 700; font-family: 'Inter', sans-serif; color: #1C1C28; margin: 1.75rem 0 0.75rem; }
-        .wp-content h4 { font-size: 1.05rem; font-weight: 600; font-family: 'Inter', sans-serif; color: #1C1C28; margin: 1.5rem 0 0.5rem; }
+        .wp-content h2 { font-size: 1.5rem; font-weight: 700; font-family: 'Poppins', sans-serif; color: #1C1C28; margin: 2rem 0 1rem; letter-spacing: -0.015em; }
+        .wp-content h3 { font-size: 1.2rem; font-weight: 700; font-family: 'Poppins', sans-serif; color: #1C1C28; margin: 1.75rem 0 0.75rem; }
+        .wp-content h4 { font-size: 1.05rem; font-weight: 600; font-family: 'Poppins', sans-serif; color: #1C1C28; margin: 1.5rem 0 0.5rem; }
         .wp-content p { font-size: 1.0625rem; line-height: 1.8; color: #3D3D52; font-family: 'Inter', sans-serif; margin-bottom: 1.25rem; }
         .wp-content a { color: #0FA8DC; text-decoration: underline; text-underline-offset: 3px; }
         .wp-content a:hover { color: #0D8BB5; }
@@ -65,7 +64,6 @@ export default function BlogPost() {
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
-        <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
 
         <div style={{ maxWidth: '760px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           <button
@@ -102,7 +100,7 @@ export default function BlogPost() {
                 </div>
               )}
               <h1
-                className="t-h1" style={{ marginBottom: '20px' }}
+                style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', color: '#111111', lineHeight: 1.2, letterSpacing: '-0.02em', marginBottom: '20px' }}
                 dangerouslySetInnerHTML={{ __html: post.title.rendered }}
               />
               <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap' }}>
@@ -147,7 +145,7 @@ export default function BlogPost() {
             <Link
               to="/programs"
               className="cta cta-pink"
-              style={{ boxShadow: 'none' }}
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '10px 22px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#F03C6F', color: 'white', boxShadow: 'none' }}
             >
               Start Free Trial
             </Link>

@@ -6,7 +6,7 @@ import img4 from '../assets/Holistic Assessment.png';
 
 interface Feature {
   tag: string;
-  title: string;
+  title: React.ReactNode;
   desc: string;
   accent: 'blue' | 'pink';
   panel: string;
@@ -76,7 +76,7 @@ export default function FeatureExplorer() {
         return (
           <motion.article
             className="nep-principle-card"
-            key={feature.title}
+            key={feature.tag}
             variants={cardVariants}
             whileHover={{
               y: -6,

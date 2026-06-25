@@ -2,13 +2,10 @@ import { useSEO } from '../hooks/useSEO';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Search, X } from 'lucide-react';
 import FAQItem from '../components/FAQItem';
-import ctaBanner from '../assets/Hero 4.png';
 import BrandArc from '../components/BrandArc';
-import BrandWhoosh from '../components/BrandWhoosh';
 import HeadingMarker from '../components/HeadingMarker';
 import { useState, useEffect, useMemo } from 'react';
-import { SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
-import AccentText from '../components/AccentText';
+import { SharedTestimonialsSection } from '../components/MarketingSections';
 
 const testimonialsRow1 = [
   { name: 'Ananya Krishnan', role: 'Class 10, CBSE Plan · Bangalore', text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.' },
@@ -78,7 +75,7 @@ const faqs: FAQEntry[] = [
   {
     category: 'Programs',
     question: 'What subjects are covered in the CBSE Plan?',
-    answer: 'The CBSE Full Syllabus plan covers all seven core subjects across Classes 6-12: History, Political Science, Geography, Economics, Physics, Chemistry, and Biology. Each subject has retention-first pacing, AI-powered revision, and practice quizzes.',
+    answer: 'The CBSE Full Syllabus plan covers all seven core subjects for Class 10: History, Political Science, Geography, Economics, Physics, Chemistry, and Biology. Each subject has retention-first pacing, AI-powered revision, and practice quizzes.',
   },
   {
     category: 'Programs',
@@ -213,14 +210,13 @@ export default function FAQ() {
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
-        <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 24px', textAlign: 'left', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <HeadingMarker text="FAQ" fontSize="12px" />
-            <h1 className="t-h1" style={{ marginBottom: '20px' }}>
-              Frequently Asked <AccentText tone="gradient">Questions</AccentText>
+            <HeadingMarker text="FAQ" marginBottom="16px" fontSize="12px" />
+            <h1 className="page-hero-title" style={{ marginBottom: '16px' }}>
+              Frequently Asked Questions
             </h1>
-            <p className="t-body" style={{ marginBottom: '32px' }}>
+            <p className="page-hero-copy" style={{ marginBottom: '32px' }}>
               Everything you need to know about Blast Learning. Can't find your answer? Contact our team.
             </p>
 
@@ -326,7 +322,7 @@ export default function FAQ() {
               style={{ textAlign: 'center', padding: '60px 24px' }}
             >
               <div style={{ fontSize: '40px', marginBottom: '16px' }}>🔍</div>
-              <p className="t-h4" style={{ marginBottom: '8px' }}>No matches found</p>
+              <p style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif', marginBottom: '8px' }}>No matches found</p>
               <p style={{ fontSize: '14px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '24px' }}>Try a different keyword or browse by category above.</p>
               <button
                 onClick={() => { setQuery(''); setActiveCategory('All'); }}
@@ -360,11 +356,11 @@ export default function FAQ() {
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           fontSize: '12px', fontWeight: 700, color: 'white',
                           background: CATEGORY_COLOR[group.category],
-                          fontFamily: 'Inter, sans-serif', flexShrink: 0,
+                          fontFamily: 'Poppins, sans-serif', flexShrink: 0,
                         }}>
                           {group.category.charAt(0)}
                         </span>
-                        <h2 className="t-h4" style={{ margin: 0 }}>
+                        <h2 style={{ fontSize: '18px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>
                           {group.category}
                         </h2>
                       </div>
@@ -391,8 +387,6 @@ export default function FAQ() {
       {/* ── Testimonials ── */}
       <SharedTestimonialsSection row1={testimonialsRow1} row2={testimonialsRow2} />
 
-      {/* ── CTA Banner ── */}
-      <SharedImageCtaSection src={ctaBanner} alt="Learn Smarter. Achieve More. Start your Blast Learning journey today." />
     </div>
   );
 }

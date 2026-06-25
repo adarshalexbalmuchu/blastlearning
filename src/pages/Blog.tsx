@@ -9,9 +9,7 @@ import {
   stripHtml, formatDate, readingTime,
 } from '../lib/wordpress';
 import BrandArc from '../components/BrandArc';
-import BrandWhoosh from '../components/BrandWhoosh';
 import HeadingMarker from '../components/HeadingMarker';
-import AccentText from '../components/AccentText';
 
 function PostCardSkeleton() {
   return (
@@ -72,14 +70,13 @@ export default function Blog() {
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
-        <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <HeadingMarker text="Blast Learning Blog" fontSize="12px" />
-            <h1 className="t-h1" style={{ marginBottom: '20px' }}>
-              Study <AccentText tone="pink">Tips</AccentText> & <AccentText tone="blue">Learning Science</AccentText>
+            <HeadingMarker text="Blast Learning Blog" marginBottom="20px" fontSize="12px" />
+            <h1 className="page-hero-title" style={{ marginBottom: '18px' }}>
+              Study Tips & Learning Science
             </h1>
-            <p className="t-body" style={{ maxWidth: '520px', margin: '0 auto 32px' }}>
+            <p className="page-hero-copy" style={{ maxWidth: '520px', margin: '0 auto 32px' }}>
               Exam strategies, retention science, and practical guides from our educators and AI researchers.
             </p>
             {/* Search */}
@@ -188,7 +185,7 @@ export default function Blog() {
                             ))}
                           </div>
                         )}
-                        <h2 className="t-h4" style={{ marginBottom: '10px', lineHeight: 1.35 }}
+                        <h2 style={{ fontSize: '16px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', lineHeight: 1.35, marginBottom: '10px' }}
                           dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                         />
                         <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', flex: 1, marginBottom: '16px' }}>

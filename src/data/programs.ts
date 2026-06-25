@@ -41,20 +41,20 @@ export const programsData: ProgramData[] = [
     name: 'CBSE Full Syllabus',
     tagline: 'The syllabus your coaching class covers. The retention it does not check for.',
     price: '₹1,299',
-    classes: 'Classes 6-12',
+    classes: 'Class 10',
     description:
-      'A coaching class can teach History, Geography, and Economics on schedule and still leave a student unable to recall most of it by the next test. CBSE Full Syllabus runs the full curriculum, Class 6 through 12, on a study system built around what actually makes a concept stay learned. Grade 10 is the primary focus for this year, but the course runs the full Class 6 to 12 range.',
+      'A coaching class can teach History, Geography, and Economics on schedule and still leave a student unable to recall most of it by the next test. CBSE Full Syllabus is built around the Class 10 board exam and the study system needed to make the concepts stay learned.',
     accentBg: '#E0F5FC',
     heroStats: [
       { value: '₹1,299', label: 'per month' },
       { value: '14 days', label: 'free trial' },
-      { value: 'Class 6-12', label: 'all grades' },
+      { value: 'Class 10', label: 'board focus' },
       { value: '7 subjects', label: 'covered' },
     ],
     forWhom: [
       {
-        title: 'Class 6 Through Class 12, All Core Subjects',
-        desc: 'History, Political Science, Geography, Economics, Chemistry, Physics, and Biology, taught through AI-driven, self-paced modules rather than a fixed classroom timetable. Grade 10 is the primary focus for this year, given board exam timing, though the course runs the full Class 6 to 12 range.',
+        title: 'Class 10 Board Exam Students',
+        desc: 'History, Political Science, Geography, Economics, Chemistry, Physics, and Biology, taught through AI-driven, self-paced modules rather than a fixed classroom timetable. Grade 10 is the primary focus for this year, given board exam timing.',
       },
       {
         title: 'Students Whose Coaching Moves at the Syllabus Pace',

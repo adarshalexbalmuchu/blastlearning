@@ -2,11 +2,8 @@ import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Heart, Lightbulb, Users, Shield } from 'lucide-react';
 import BrandArc from '../components/BrandArc';
-import ctaBanner from '../assets/Hero 4.png';
-import BrandWhoosh from '../components/BrandWhoosh';
 import HeadingMarker from '../components/HeadingMarker';
-import AccentText from '../components/AccentText';
-import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
+import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 
 const testimonialsRow1 = [
   { name: 'Ananya Krishnan', role: 'Class 10, CBSE Plan · Bangalore', text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.' },
@@ -24,7 +21,7 @@ const testimonialsRow2 = [
 ];
 const pageFaqs = [
   { q: 'What is Blast Learning and how does it work?', a: 'Blast Learning is an AI-powered learning retention platform. Students upload their coaching notes or recordings, and our Metacognition Engine creates a spaced repetition study plan that helps 91% of students improve what they retain, compared to the 10% most students remember without structured revision.' },
-  { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Full Syllabus plan is designed for Classes 6-12, with Grade 10 as the primary focus this year, full syllabus coverage, and retention-first board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
+  { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Full Syllabus plan is designed for Class 10, with full syllabus coverage and retention-first board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
   { q: 'How is Blast Learning different from other coaching apps?', a: "Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn't just teach  -  it tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams." },
   { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 14-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first two weeks." },
 ];
@@ -93,14 +90,13 @@ export default function About() {
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
-        <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <HeadingMarker text="Our Mission" fontSize="12px" />
-            <h1 className="t-h1" style={{ marginBottom: '20px' }}>
-              Making <AccentText tone="blue">Learning Stick</AccentText> for Every <AccentText tone="gradient">Indian Student</AccentText>
+            <HeadingMarker text="Our Mission" marginBottom="24px" fontSize="12px" />
+            <h1 className="page-hero-title">
+              Making Learning Stick for Every Indian Student
             </h1>
-            <p className="t-body" style={{ maxWidth: '640px', margin: '0 auto' }}>
+            <p className="page-hero-copy" style={{ maxWidth: '640px', margin: '0 auto' }}>
               India spends billions on education every year, yet most students forget 90% of what they learn within a week. We built Blast Learning to fix that, to make every hour of study count, permanently.
             </p>
           </motion.div>
@@ -119,8 +115,8 @@ export default function About() {
             className="grid-cols-2-lg"
           >
             <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
-              <h2 className="t-h2" style={{ marginBottom: '28px' }}>
-                Why We Built <AccentText tone="pink">Blast Learning</AccentText>
+              <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#111111', marginBottom: '28px' }}>
+                Why We Built Blast Learning
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 {[
@@ -129,7 +125,7 @@ export default function About() {
                   'Blast Learning was built to bridge that gap. We take the science of how memory actually works and translate it into a daily experience that any student can follow, regardless of their school, city, or coaching setup.',
                   "Our Metacognition Engine doesn't just deliver content. It tracks how well you remember, identifies what's at risk of being forgotten, and schedules review at the exact right time. The result: 90% retention instead of 10%.",
                 ].map((text, i) => (
-                  <p key={i} style={{ fontSize: 'var(--fs-body)', lineHeight: 'var(--lh-body)', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                  <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                     {text}
                   </p>
                 ))}
@@ -148,11 +144,10 @@ export default function About() {
                 <motion.div
                   key={item.val}
                   variants={fadeUp}
-                  className="surface-card surface-card-md"
-                  style={{ background: statPastels[i % statPastels.length] }}
+                  style={{ borderRadius: '16px', padding: '24px', background: statPastels[i % statPastels.length], border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
                 >
-                  <div style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '12px', fontFamily: 'Inter, sans-serif', color: '#1C1C28' }}>{item.val}</div>
-                  <p style={{ fontSize: 'var(--fs-xs)', lineHeight: 1.5, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{item.desc}</p>
+                  <div style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '12px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>{item.val}</div>
+                  <p style={{ fontSize: '13px', lineHeight: 1.6, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{item.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -173,7 +168,7 @@ export default function About() {
           >
             {companyStats.map((s) => (
               <motion.div key={s.label} variants={fadeUp} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '8px', fontFamily: 'Inter, sans-serif', color: '#0FA8DC' }}>{s.value}</div>
+                <div style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '8px', fontFamily: 'Poppins, sans-serif', color: '#0FA8DC' }}>{s.value}</div>
                 <div style={{ fontSize: '14px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>{s.label}</div>
               </motion.div>
             ))}
@@ -191,8 +186,8 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <h2 className="t-h2">
-              The <AccentText tone="blue">Team</AccentText> Behind Blast Learning
+            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#111111' }}>
+              The Team Behind Blast Learning
             </h2>
           </motion.div>
           <motion.div
@@ -211,15 +206,14 @@ export default function About() {
                   key={member.name}
                   variants={fadeUp}
                   whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
-                  className="surface-card surface-card-lg"
-                  style={{ textAlign: 'center' }}
+                  style={{ padding: '28px', borderRadius: '16px', textAlign: 'center', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
                 >
                   <div
-                    style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 600, color: isIndigo ? 'white' : '#0FA8DC', margin: '0 auto 16px', fontFamily: 'Inter, sans-serif', background: fill }}
+                    style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 600, color: isIndigo ? 'white' : '#0FA8DC', margin: '0 auto 16px', fontFamily: 'Poppins, sans-serif', background: fill }}
                   >
                     {member.name.split(' ').map((n) => n[0]).join('')}
                   </div>
-                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: 'Inter, sans-serif', color: '#1C1C28', marginBottom: '4px' }}>{member.name}</h3>
+                  <h3 style={{ fontSize: '15px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '4px' }}>{member.name}</h3>
                   <p style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{member.role}</p>
                 </motion.div>
               );
@@ -238,8 +232,8 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <h2 className="t-h2">
-              What We <AccentText tone="gradient">Stand For</AccentText>
+            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#111111' }}>
+              What We Stand For
             </h2>
           </motion.div>
           <motion.div
@@ -255,13 +249,13 @@ export default function About() {
                 key={title}
                 variants={fadeUp}
                 whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
-                className="surface-card surface-card-xl"
+                style={{ padding: '32px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
               >
                 <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: '#E0F5FC', color: '#0FA8DC' }}>
                   <Icon size={22} />
                 </div>
-                <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: 'Inter, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>{title}</h3>
-                <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
+                <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>{title}</h3>
+                <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -274,8 +268,6 @@ export default function About() {
       {/* ── FAQ ── */}
       <SharedFaqSection items={pageFaqs} />
 
-      {/* ── CTA Banner ── */}
-      <SharedImageCtaSection src={ctaBanner} alt="Learn Smarter. Achieve More. Start your Blast Learning journey today." />
     </div>
   );
 }

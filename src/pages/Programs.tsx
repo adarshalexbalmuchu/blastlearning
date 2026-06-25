@@ -2,12 +2,9 @@ import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { BookOpen, Target, Brain, TrendingUp, ArrowRight, CheckCircle, Zap } from 'lucide-react';
-import BrandArc from '../components/BrandArc';
-import ctaBanner from '../assets/Hero 4.png';
-import heroBanner from '../assets/Hero 2.png';
-import BrandWhoosh from '../components/BrandWhoosh';
-import HeadingMarker from '../components/HeadingMarker';
-import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
+import AccentText from '../components/AccentText';
+import PageHeading from '../components/PageHeading';
+import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 
 const testimonialsRow1 = [
   { name: 'Ananya Krishnan', role: 'Class 10, CBSE Plan · Bangalore', text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.' },
@@ -25,7 +22,7 @@ const testimonialsRow2 = [
 ];
 const pageFaqs = [
   { q: 'What is Blast Learning and how does it work?', a: 'Blast Learning is an AI-powered learning retention platform. Students upload their coaching notes or recordings, and our Metacognition Engine creates a spaced repetition study plan that helps 91% of students improve what they retain, compared to the 10% most students remember without structured revision.' },
-  { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Full Syllabus plan is designed for Classes 6-12, with Grade 10 as the primary focus this year, full syllabus coverage, and retention-first board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
+  { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Full Syllabus plan is designed for Class 10, with full syllabus coverage and retention-first board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
   { q: 'How is Blast Learning different from other coaching apps?', a: "Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn't just teach  -  it tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams." },
   { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 14-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first two weeks." },
 ];
@@ -36,11 +33,11 @@ const programs = [
     slug: 'cbse-plan',
     name: 'CBSE Plan',
     price: '₹1,299',
-    classes: 'Classes 6-12',
-    description: 'Full CBSE syllabus coverage with a retention-first study system. Designed for Classes 6-12 with Grade 10 as the primary focus this year, so the board exam content is taught in a way that actually sticks.',
+    classes: 'Class 10',
+    description: 'Full CBSE syllabus coverage with a retention-first study system. Designed for Class 10 with the board exam content taught in a way that actually sticks.',
     outcomes: ['Board readiness', 'Retention tracking', 'Concept mastery'],
     features: [
-      'Complete CBSE curriculum coverage across Classes 6-12',
+      'Complete CBSE Class 10 curriculum coverage',
       'AI-powered gap assessment and targeted revision',
       'Board-focused practice built around retention, not just coverage',
       'Subject-wise retention tracking across all core subjects',
@@ -107,7 +104,6 @@ const programs = [
 
 const comparisonRows = [
   { feature: 'AI Personalization', blast: true, coaching: false, apps: false },
-  { feature: 'Retention Tracking', blast: true, coaching: false, apps: false },
   { feature: 'Parent Dashboard', blast: true, coaching: false, apps: false },
   { feature: 'Spaced Repetition', blast: true, coaching: false, apps: true },
   { feature: 'Human Support', blast: true, coaching: true, apps: false },
@@ -134,49 +130,37 @@ export default function Programs() {
 
   return (
     <div style={{ background: '#FFFFFF' }}>
-      {/* ── Hero Banner ── */}
-      <div style={{ lineHeight: 0 }}>
-        <img src={heroBanner} alt="Upload Notes. Score Higher in Exams  -  Blast Learning" loading="eager" decoding="sync" style={{ width: '100%', height: 'auto', display: 'block' }} />
-      </div>
-
-      {/* Hero */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', paddingTop: '80px', paddingBottom: '80px' }}>
-        <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
-          <BrandArc width="100%" opacity={0.04} />
-        </div>
-        <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
-        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <HeadingMarker text="HOW BLAST LEARNING WORKS" marginBottom="24px" fontSize="12px" />
-            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', marginBottom: '24px', color: '#111111' }}>
-              The system beneath the syllabus.
-            </h1>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
-              Every board exam tests the same thing twice: what your child knows, and whether that knowledge survives the walk into the exam hall. Blast Learning builds the second part. CBSE, ICSE, JEE, and NEET preparation runs on top of a study engine designed around how Indian students actually forget, and what makes them remember.
-            </p>
-            <div style={{ marginTop: '32px' }}>
-              <Link
-                to="/programs/cbse-plan"
-                className="cta cta-pink"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '14px 28px',
-                  borderRadius: '10px',
-                  fontSize: '15px',
-                  fontWeight: 600,
-                  fontFamily: "'Inter', sans-serif",
-                  textDecoration: 'none',
-                  background: '#F03C6F',
-                  color: 'white',
-                  boxShadow: 'none',
-                }}
-              >
-                Start The 14-Day Free Trial  -  No Credit Card Required <ArrowRight size={16} />
-              </Link>
-            </div>
-          </motion.div>
+      <section style={{ background: '#FFFFFF', paddingTop: '56px', paddingBottom: '24px', borderBottom: '1px solid #ECECF1' }}>
+        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
+          <PageHeading
+            eyebrow="How Blast Learning Works"
+            title={<>The <AccentText tone="blue">system</AccentText> beneath the <AccentText tone="pink">syllabus</AccentText>.</>}
+            subtitle={<>Every board exam tests the same thing twice: what your child knows, and whether that knowledge survives the walk into the exam hall. Blast Learning builds the second part. CBSE, ICSE, JEE, and NEET preparation runs on top of a study engine designed around how Indian students actually forget, and what makes them remember.</>}
+            align="center"
+            maxWidth="760px"
+          />
+          <div style={{ marginTop: '32px', textAlign: 'center' }}>
+            <Link
+              to="/programs/cbse-plan"
+              className="cta cta-pink"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '14px 28px',
+                borderRadius: '10px',
+                fontSize: '15px',
+                fontWeight: 600,
+                fontFamily: "'Inter', sans-serif",
+                textDecoration: 'none',
+                background: '#F03C6F',
+                color: 'white',
+                boxShadow: 'none',
+              }}
+            >
+              Start The 14-Day Free Trial  -  No Credit Card Required <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -472,10 +456,23 @@ export default function Programs() {
       <SharedTestimonialsSection row1={testimonialsRow1} row2={testimonialsRow2} subtitle="Hear from students who chose the right program and saw real results." />
 
       {/* ── FAQ ── */}
-      <SharedFaqSection items={pageFaqs} />
+      <SharedFaqSection
+        items={pageFaqs}
+        eyebrow="FAQ"
+        accent="#0FA8DC"
+        align="left"
+        ctaInFaqColumn
+        background="#F7FAFC"
+        title={
+          <>
+            <span className="faq-heading-line" style={{ display: 'block' }}>Common <AccentText tone="blue">questions</AccentText></span>
+            <span style={{ display: 'block' }}>Direct <AccentText tone="pink">answers</AccentText>.</span>
+          </>
+        }
+        subtitle="If your question isn't here, the full FAQ page covers every edge case - billing, syllabus details, Study Buddy matching, and technical requirements."
+        linkLabel="More FAQ..."
+      />
 
-      {/* ── CTA Banner ── */}
-      <SharedImageCtaSection src={ctaBanner} alt="Learn Smarter. Achieve More. Start your Blast Learning journey today." />
     </div>
   );
 }

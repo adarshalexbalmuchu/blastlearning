@@ -100,6 +100,7 @@ export function SharedFaqSection({
   align,
   ctaAtBottom = false,
   ctaInFaqColumn = false,
+  variant = 'split',
   background = '#FFFFFF',
 }: {
   items: FaqPreviewItem[];
@@ -112,9 +113,11 @@ export function SharedFaqSection({
   align?: 'left' | 'center';
   ctaAtBottom?: boolean;
   ctaInFaqColumn?: boolean;
+  variant?: 'split' | 'stacked';
   background?: string;
 }) {
   const isCentered = align === 'center';
+  const isStacked = variant === 'stacked';
 
   return (
     <section className="section-pad" style={{ paddingTop: '64px', paddingBottom: '64px', background }}>
@@ -124,8 +127,8 @@ export function SharedFaqSection({
           margin: '0 auto',
           padding: '0 24px',
           display: 'grid',
-          gridTemplateColumns: isCentered ? '1fr' : '1fr 1.5fr',
-          gap: isCentered ? '32px' : '80px',
+          gridTemplateColumns: isCentered || isStacked ? '1fr' : '1fr 1.5fr',
+          gap: isCentered || isStacked ? '32px' : '80px',
           alignItems: 'start',
         }}
         className="faq-grid"
@@ -145,7 +148,7 @@ export function SharedFaqSection({
         </div>
 
         {/* Right: FAQ list */}
-        <div style={isCentered ? { maxWidth: '980px', width: '100%', margin: '0 auto' } : undefined}>
+        <div style={isCentered || isStacked ? { maxWidth: '980px', width: '100%', margin: '0 auto' } : undefined}>
           {items.map((faq, index) => (
             <FAQItem key={`${faq.q}-${index}`} question={faq.q} answer={faq.a} />
           ))}

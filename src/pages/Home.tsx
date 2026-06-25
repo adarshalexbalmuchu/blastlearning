@@ -312,7 +312,7 @@ export default function Home() {
             align="left"
             title={<>{G('NEP 2020', CYAN)} Set the {G('Rules', CYAN)}.<br />We Were {GP('Already Playing by Them')}.</>}
             subtitleMaxWidth="980px"
-            subtitle={<><span style={{ display: 'block', whiteSpace: 'nowrap' }}>NEP 2020 changed what schools test for.</span><span style={{ display: 'block', whiteSpace: 'nowrap' }}>Most coaching platforms still grade on coverage and memorisation, because that's the system they were built for.</span><span style={{ display: 'block', whiteSpace: 'nowrap' }}>Blast Learning runs on retrieval practice, competency-based progression, and continuous assessment.</span><span style={{ display: 'block', whiteSpace: 'nowrap' }}>We built it that way before the policy existed. NEP 2020 just gave the rest of the industry a deadline to catch up.</span></>}
+            subtitle={<><span className="nep-subtitle-line" style={{ display: 'block' }}>NEP 2020 changed what schools test for.</span><span className="nep-subtitle-line" style={{ display: 'block' }}>Most coaching platforms still grade on coverage and memorisation, because that's the system they were built for.</span><span className="nep-subtitle-line" style={{ display: 'block' }}>Blast Learning runs on retrieval practice, competency-based progression, and continuous assessment.</span><span className="nep-subtitle-line" style={{ display: 'block' }}>We built it that way before the policy existed. NEP 2020 just gave the rest of the industry a deadline to catch up.</span></>}
           />
           <FeatureExplorer />
         </div>
@@ -332,19 +332,19 @@ export default function Home() {
               <motion.div variants={eyebrowAnim}>
                 <HeadingMarker text="Method & Science" fontSize="12px" accent={CYAN} />
               </motion.div>
-              <motion.h2 variants={h2Anim} className="t-h2" style={{ whiteSpace: 'nowrap' }}>
+              <motion.h2 variants={h2Anim} className="t-h2 method-heading">
                 The {G('science', PINK)} that explains the {G('method', CYAN)}.
               </motion.h2>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '48px', marginTop: '12px' }}>
-              <motion.p variants={subtitleAnim} className="t-body" style={{ flex: '1 1 0', minWidth: 0, maxWidth: '600px', margin: 0 }}>
+            <div className="method-intro-row" style={{ display: 'flex', alignItems: 'flex-start', gap: '48px', marginTop: '12px' }}>
+              <motion.p variants={subtitleAnim} className="t-body method-intro-copy" style={{ flex: '1 1 0', minWidth: 0, maxWidth: '600px', margin: 0 }}>
                 Ebbinghaus&apos;s Forgetting Curve is the starting point: students lose 80% of what they learn within 24 hours, and the brain discards information it isn&apos;t asked to use regardless of how hard a student studied. Each of the four steps below applies the science that fights this loss directly. The step is the practice; the principle beside it explains why it works.
               </motion.p>
               <motion.div
                 variants={fadeUp}
+                className="method-curve-card"
                 style={{ flex: '0 0 530px', maxWidth: '530px', borderRadius: '16px', overflow: 'hidden', background: '#fff', boxShadow: '0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06)', cursor: 'default', transform: 'translateX(16px)' }}
-                className="hide-sm"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
                 whileHover={{
@@ -608,10 +608,10 @@ export default function Home() {
               >
                 <div style={{ height: '3px', background: accent, width: '100%' }} />
                 <div style={{ padding: '22px 20px 20px', display: 'flex', flexDirection: 'column', minHeight: '248px' }}>
-                  <p style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap' }}>
                     <HeadingMarker text={article.tag} accent={accent} fontSize="10px" marginBottom="0" />
                     <span style={{ fontSize: '11px', color: '#A0A5B1', fontFamily: 'Inter, sans-serif' }}>{article.readTime}</span>
-                  </p>
+                  </div>
                   <h3 className="t-h4" style={{ fontSize: 'clamp(1.25rem, 0.98rem + 0.55vw, 1.55rem)', marginBottom: '12px', lineHeight: 1.3, letterSpacing: '-0.015em' }}>{article.title}</h3>
                   <p className="t-body" style={{ color: '#6B6F7B', lineHeight: 1.5, marginBottom: '16px', flex: 1 }}>{article.desc}</p>
                   <Link to="/library" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: accent, fontWeight: 700, fontSize: '12px', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
@@ -639,7 +639,7 @@ export default function Home() {
         background="#F7FAFC"
         title={
           <>
-            <span style={{ display: 'block', whiteSpace: 'nowrap' }}>Common {G('questions', CYAN)}</span>
+            <span className="faq-heading-line" style={{ display: 'block' }}>Common {G('questions', CYAN)}</span>
             <span style={{ display: 'block' }}>Direct {G('answers', PINK)}.</span>
           </>
         }

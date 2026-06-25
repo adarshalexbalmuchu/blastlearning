@@ -124,29 +124,6 @@ const IconBolt = (
   </svg>
 );
 
-const IconBuilding = (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-    <rect x="3" y="7" width="18" height="14" rx="1.5" fill="#67E8F9"/>
-    <rect x="3" y="7" width="18" height="4" rx="1.5" fill="#06B6D4"/>
-    <rect x="7" y="12" width="3" height="3" rx="0.5" fill="white" fillOpacity="0.8"/>
-    <rect x="11" y="12" width="3" height="3" rx="0.5" fill="white" fillOpacity="0.8"/>
-    <rect x="15" y="12" width="3" height="3" rx="0.5" fill="white" fillOpacity="0.8"/>
-    <rect x="9" y="17" width="6" height="4" rx="0.5" fill="#0891B2"/>
-    <rect x="10" y="3" width="4" height="4" rx="0.5" fill="#0EA5E9"/>
-    <line x1="12" y1="3" x2="12" y2="7" stroke="#0284C7" strokeWidth="1"/>
-  </svg>
-);
-
-const IconGradCap = (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-    <path d="M12 3L2 8.5L12 14L22 8.5L12 3Z" fill="#4ADE80"/>
-    <path d="M2 8.5L2 8.5" stroke="#16A34A" strokeWidth="1.5" strokeLinecap="round"/>
-    <path d="M18 10.5V16.5C18 16.5 15.5 19 12 19C8.5 19 6 16.5 6 16.5V10.5L12 14L18 10.5Z" fill="#22C55E"/>
-    <line x1="22" y1="8.5" x2="22" y2="14" stroke="#16A34A" strokeWidth="1.5" strokeLinecap="round"/>
-    <circle cx="22" cy="14.5" r="1.5" fill="#16A34A"/>
-  </svg>
-);
-
 const IconHandshake = (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
     <path d="M2 9L7 6.5L10 9H14L17 6.5L22 9" stroke="#F97316" strokeWidth="1.5" strokeLinecap="round"/>
@@ -197,7 +174,7 @@ const navItems: NavItem[] = [
       {
         title: '',
         items: [
-          { label: 'CBSE Plan', description: 'Full CBSE syllabus for Classes 6-12', icon: IconBook, iconBg: 'linear-gradient(135deg,#EEF2FF 0%,#E0E7FF 100%)', iconBorder: '#C7D2FE', path: '/programs/cbse-plan' },
+          { label: 'CBSE Plan', description: 'Full CBSE syllabus for Class 10', icon: IconBook, iconBg: 'linear-gradient(135deg,#EEF2FF 0%,#E0E7FF 100%)', iconBorder: '#C7D2FE', path: '/programs/cbse-plan' },
           { label: 'Math Genius Maker', description: 'Gap assessment & targeted math practice', icon: IconBulb, iconBg: 'linear-gradient(135deg,#FFFBEB 0%,#FEF3C7 100%)', iconBorder: '#FDE68A', path: '/programs/math-genius' },
           { label: 'English Mastery', description: 'Grammar, comprehension & writing skills', icon: IconPen, iconBg: 'linear-gradient(135deg,#F0FDF4 0%,#DCFCE7 100%)', iconBorder: '#BBF7D0', path: '/programs/english-mastery' },
           { label: 'SAT Prep Pass', description: 'US college admission test preparation', icon: IconTrophy, iconBg: 'linear-gradient(135deg,#F5F3FF 0%,#EDE9FE 100%)', iconBorder: '#DDD6FE', path: '/programs/sat-prep' },
@@ -242,8 +219,6 @@ const navItems: NavItem[] = [
       {
         title: 'For Institutions',
         items: [
-          { label: 'School Partnerships', description: 'Bulk enrollment & custom programs for schools', icon: IconBuilding, iconBg: 'linear-gradient(135deg,#ECFEFF 0%,#CFFAFE 100%)', iconBorder: '#A5F3FC', path: '/contact' },
-          { label: 'Batch Programs', description: 'Group learning plans for student cohorts', icon: IconGradCap, iconBg: 'linear-gradient(135deg,#F0FDF4 0%,#DCFCE7 100%)', iconBorder: '#BBF7D0', path: '/programs' },
           { label: 'Partnership Enquiry', description: 'Talk to our institution success team', icon: IconHandshake, iconBg: 'linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%)', iconBorder: '#FED7AA', path: '/contact' },
         ],
       },
@@ -256,15 +231,14 @@ const navItems: NavItem[] = [
       {
         title: 'Library',
         items: [
-          { label: 'Blog', description: 'Articles, tips & learning insights', icon: IconNewspaper, iconBg: 'linear-gradient(135deg,#E0F2FE 0%,#BAE6FD 100%)', iconBorder: '#7DD3FC', path: '/blog' },
-          { label: 'Resource Library', description: 'Videos, notes & practice quizzes', icon: IconBooks, iconBg: 'linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%)', iconBorder: '#FED7AA', path: '/library' },
-          { label: 'FAQs', description: 'Common questions answered', icon: IconFAQ, iconBg: 'linear-gradient(135deg,#F5F3FF 0%,#EDE9FE 100%)', iconBorder: '#DDD6FE', path: '/faq' },
+          { label: 'Blogs', description: 'Articles, tips & learning insights', icon: IconNewspaper, iconBg: 'linear-gradient(135deg,#E0F2FE 0%,#BAE6FD 100%)', iconBorder: '#7DD3FC', path: '/blog' },
+          { label: 'FAQ', description: 'Common questions answered', icon: IconFAQ, iconBg: 'linear-gradient(135deg,#F5F3FF 0%,#EDE9FE 100%)', iconBorder: '#DDD6FE', path: '/faq' },
         ],
       },
     ],
   },
-  { id: 7, label: 'About us', path: '/about' },
-  { id: 8, label: 'Contact', path: '/contact' },
+  { id: 8, label: 'About us', path: '/about' },
+  { id: 9, label: 'Contact', path: '/contact' },
 ];
 
 const loginOptions = [
@@ -319,11 +293,11 @@ export default function Navbar() {
         }}
       >
         {/* Full-width bar: logo far-left, login far-right, nav+CTA hero-aligned center */}
-        <div style={{ position: 'relative', height: '64px', display: 'flex', alignItems: 'center', padding: '0 24px' }}>
+        <div className="nav-inner-bar" style={{ position: 'relative', height: '64px', display: 'flex', alignItems: 'center', padding: '0 24px' }}>
 
           {/* Logo — stays at far left, independent of hero container */}
-          <Link to="/" className="flex items-center flex-shrink-0" style={{ textDecoration: 'none', position: 'relative', zIndex: 2, marginLeft: '66px' }}>
-            <img src={blastLogo} alt="Blast Learning" style={{ height: '56px', width: 'auto' }} />
+          <Link to="/" className="flex items-center flex-shrink-0 nav-logo-link" style={{ textDecoration: 'none', position: 'relative', zIndex: 2, marginLeft: '66px' }}>
+            <img src={blastLogo} alt="Blast Learning" className="nav-logo-img" style={{ height: '56px', width: 'auto' }} />
           </Link>
 
           {/* Nav items + Start Free Trial — absolutely centered in 1280px hero zone */}
@@ -337,7 +311,6 @@ export default function Navbar() {
               maxWidth: '1280px',
               padding: '0 24px',
               boxSizing: 'border-box',
-              display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               height: '64px',
@@ -629,6 +602,7 @@ export default function Navbar() {
           <div className="hide-lg" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Link
               to="/login"
+              className="nav-mobile-auth"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -646,6 +620,7 @@ export default function Navbar() {
               Login / Register
             </Link>
             <button
+              className="nav-mobile-menu-btn"
               style={{ color: '#1C1C28', background: 'transparent', border: 'none', cursor: 'pointer', padding: '10px', borderRadius: '8px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Toggle menu"

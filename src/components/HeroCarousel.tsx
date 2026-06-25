@@ -160,8 +160,45 @@ export default function HeroCarousel() {
             gap: '12px',
             alignItems: 'flex-start',
           }}
-          className="hero-cta-wrap"
+          className="hero-cta-wrap hero-cta-floating"
         >
+          <div className="hero-controls-mobile" aria-label="Hero controls">
+            <button
+              type="button"
+              aria-label="Previous slide"
+              onClick={goPrev}
+              className="hero-control-btn hero-control-prev"
+            >
+              ←
+            </button>
+            <div className="hero-control-dots" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              {SLIDES.map((_, index) => (
+                <button
+                  key={`mobile-dot-${index}`}
+                  type="button"
+                  aria-label={`Go to slide ${index + 1}`}
+                  onClick={() => setActiveIndex(index)}
+                  style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    border: 'none',
+                    background: activeIndex === index ? (blink ? '#F03C6F' : 'rgba(240,60,111,0.3)') : 'rgba(0,0,0,0.15)',
+                    cursor: 'pointer',
+                  }}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              aria-label="Next slide"
+              onClick={goNext}
+              className="hero-control-btn hero-control-next"
+            >
+              →
+            </button>
+          </div>
+
           <span
             aria-hidden="true"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '-335px', left: '18.5px', pointerEvents: 'none', transform: firstBannerDotNudge }}
@@ -172,8 +209,9 @@ export default function HeroCarousel() {
             <span style={{ width: '9px', height: '3px', borderRadius: '9999px', background: activeDotColor }} />
             <span style={{ width: '14px', height: '3px', borderRadius: '9999px', background: activeDotColor }} />
           </span>
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', position: 'relative', top: '-35px' }}>
+          <div className="hero-cta-actions" style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', position: 'relative', top: '-35px' }}>
           <div
+            className="hero-cta-primary-wrap"
             style={{
               display: 'flex',
               flexDirection: 'column',
@@ -183,7 +221,7 @@ export default function HeroCarousel() {
           >
             <Link
               to={activePrimaryCta.to}
-              className="cta"
+              className="cta hero-cta-primary"
               style={{
                 background: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)',
                 color: '#FFFFFF',
@@ -194,14 +232,14 @@ export default function HeroCarousel() {
             >
               {activePrimaryCta.text}
             </Link>
-            <span style={{ fontSize: '12px', color: '#9CA3AF', fontFamily: 'Inter, sans-serif', fontWeight: 500, lineHeight: 1.2, textAlign: 'center' }}>
+            <span className="hero-cta-note" style={{ fontSize: '12px', color: '#9CA3AF', fontFamily: 'Inter, sans-serif', fontWeight: 500, lineHeight: 1.2, textAlign: 'center' }}>
               No credit card required
             </span>
           </div>
           {!isLastSlide && (
             <Link
               to="/programs"
-              className="cta cta-outline"
+              className="cta cta-outline hero-cta-secondary"
               style={{
                 paddingLeft: '20px',
                 paddingRight: '20px',
@@ -217,6 +255,7 @@ export default function HeroCarousel() {
 
       {/* Clean Premium Controls - Below Hero */}
       <div
+        className="hero-controls-main"
         style={{
           position: 'relative',
           bottom: 'auto',
