@@ -19,7 +19,7 @@ const howItWorks = [
     num: '01',
     eyebrow: 'Spaced Repetition',
     title: 'AI Tutor',
-    desc: "A quick diagnostic builds a personalised study plan, scheduled at the interval where recall is hardest and retention sticks. Everything stays tuned to the student's actual class and the next test, so study time gets used, not added to.",
+    desc: "A short diagnostic builds a study plan, timed to when recall is hardest, so study time isn't wasted.",
     accent: '#0FA8DC',
     Visual: UploadVisual,
   },
@@ -27,15 +27,15 @@ const howItWorks = [
     num: '02',
     eyebrow: 'Active Recall',
     title: 'Study Buddy',
-    desc: 'A human partner works from the same adaptive question set, and progress gets tracked for both. No student studies alone.',
+    desc: 'Study Buddy shares the same adaptive question set and tracks progress for both. No one studies solo.',
     accent: '#0FA8DC',
     Visual: AIVisual,
   },
   {
     num: '03',
-    eyebrow: 'Metacognition & Emotional Regulation',
+    eyebrow: 'SELF REGULATION',
     title: 'Mind Coach',
-    desc: 'Focus, emotional control, goal-setting, and personal agency, taught as skills with their own practice routine. Test-taking gets the same treatment: rehearsed under timed conditions until it holds.',
+    desc: 'Focus, emotional control, goal-setting, and agency are treated as skills. Test-taking gets the same.',
     accent: '#3B82F6',
     Visual: MasteryVisual,
   },
@@ -43,7 +43,7 @@ const howItWorks = [
     num: '04',
     eyebrow: 'Diagnostic-First Learning',
     title: 'GAP Assessment',
-    desc: 'Blast finds the gaps left by earlier years, builds a path that closes exactly those gaps, then moves the student into the current year\'s material.',
+    desc: "Blast pinpoints each gap left by earlier years, then builds a path into the current year's material.",
     accent: '#0FA8DC',
     Visual: GapVisual,
   },
@@ -413,7 +413,7 @@ export default function Home() {
                 whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
-                <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} accent={accent} Visual={Visual} />
+                <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} accent={accent} Visual={Visual} descLines={4} />
               </motion.div>
             ))}
           </motion.div>
@@ -510,11 +510,6 @@ export default function Home() {
             title={<>The {G('thinking', CYAN)} behind the {GP('product')}.</>}
             subtitle="Research summaries and practical guides for parents and students who want to understand why the method works."
           />
-          <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-            <Link className="cta cta-blue" to="/library">
-              View all resources <ArrowRight size={16} />
-            </Link>
-          </div>
           <div className="grid-cols-3-md" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
             {resourceArticles.map((article) => {
               const isGuide = article.tag === 'GUIDE';
@@ -557,6 +552,11 @@ export default function Home() {
                 </div>
               </motion.article>
             );})}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '24px' }}>
+            <Link className="cta cta-blue" to="/library">
+              View all resources <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>

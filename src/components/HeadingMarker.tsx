@@ -93,7 +93,7 @@ export default function HeadingMarker({ text, marginBottom = '12px', fontSize = 
           fontWeight: 500,
           fontFamily: 'Inter, sans-serif',
           color: textColor,
-          letterSpacing: '0.08em',
+          letterSpacing: '0.2em',
           textTransform: 'uppercase',
         }}
       >

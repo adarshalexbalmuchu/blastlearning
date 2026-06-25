@@ -12,7 +12,7 @@ export function UploadVisual() {
         src={step1Img}
         alt=""
         aria-hidden="true"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', transform: 'translateY(-30px)', display: 'block' }}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 62%', transform: 'translateY(-60px)', display: 'block' }}
       />
     </div>
   );
@@ -25,7 +25,7 @@ export function AIVisual() {
         src={step2Img}
         alt=""
         aria-hidden="true"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', transform: 'translateY(-30px)', display: 'block' }}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 62%', transform: 'translateY(-60px)', display: 'block' }}
       />
     </div>
   );
@@ -38,7 +38,7 @@ export function MasteryVisual() {
         src={step3Img}
         alt=""
         aria-hidden="true"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', transform: 'translateY(-30px)', display: 'block' }}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 62%', transform: 'translateY(-60px)', display: 'block' }}
       />
     </div>
   );
@@ -51,7 +51,7 @@ export function GapVisual() {
         src={step4Img}
         alt=""
         aria-hidden="true"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 70%', transform: 'translateY(-30px)', display: 'block' }}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 62%', transform: 'translateY(-60px)', display: 'block' }}
       />
     </div>
   );
@@ -138,11 +138,12 @@ export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visu
           background: 'rgba(255,255,255,0.84)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
-          borderRadius: '16px',
+          borderRadius: '18px',
           padding: '14px 16px 12px',
           border: '1px solid rgba(255,255,255,0.65)',
+          boxShadow: '0 12px 30px rgba(28,28,40,0.10)',
           zIndex: 5,
-          maxHeight: '58%',
+          maxHeight: '68%',
           overflow: 'hidden',
         }}
       >

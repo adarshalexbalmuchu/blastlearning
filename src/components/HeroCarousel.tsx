@@ -47,7 +47,7 @@ export default function HeroCarousel() {
     const timer = window.setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % SLIDES.length);
       setBlink(false);
-    }, 12000);
+    }, 20000);
 
     return () => window.clearInterval(timer);
   }, [canRotate]);
@@ -115,7 +115,7 @@ export default function HeroCarousel() {
         <div
           style={{
             position: 'absolute',
-            bottom: '145px',
+            bottom: '135px',
             left: '90px',
             zIndex: 3,
             display: 'flex',
