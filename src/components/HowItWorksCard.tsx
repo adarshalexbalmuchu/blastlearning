@@ -1,9 +1,9 @@
 import { type FC } from 'react';
 import { motion, type Variants } from 'framer-motion';
-import step1Img from '../assets/Group 31.png';
-import step2Img from '../assets/Group 32.png';
-import step3Img from '../assets/Group 33.png';
-import step4Img from '../assets/Group 34.png';
+import step1Img from '../assets/method-science-new/1.png';
+import step2Img from '../assets/method-science-new/2.png';
+import step3Img from '../assets/method-science-new/3.png';
+import step4Img from '../assets/method-science-new/4.png';
 
 export function UploadVisual() {
   return (
