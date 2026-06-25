@@ -12,12 +12,20 @@ const SLIDES = Object.entries(bannerModules)
   .map(([, src]) => src)
 ;
 
+const PRIMARY_CTA_CONFIG = [
+  { text: 'Explore CBSE Program', to: '/programs/cbse-plan' },
+  { text: 'Start Your Journey Now', to: '/programs/english-mastery' },
+  { text: 'Try the GAP Assessment', to: '/programs/math-genius' },
+  { text: 'Start the 40 Day Free Trial', to: '/programs' },
+];
+
 // ─── Carousel ────────────────────────────────────────────────────────────────────
 export default function HeroCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [blink, setBlink] = useState(false);
   const hasSlides = SLIDES.length > 0;
   const canRotate = SLIDES.length > 1;
+  const activePrimaryCta = PRIMARY_CTA_CONFIG[activeIndex] ?? { text: 'Start Your Journey Today', to: '/programs' };
 
   useEffect(() => {
     if (!hasSlides) return;
@@ -85,41 +93,39 @@ export default function HeroCarousel() {
       }}
     >
       <div style={{ position: 'relative', width: '100%' }}>
-        <Link to="/programs/cbse-plan" aria-label="View CBSE program" style={{ display: 'block', cursor: 'pointer', lineHeight: 0, width: '100%' }}>
-          <div
-            style={{
-              position: 'relative',
-              width: '100%',
-              aspectRatio: '2048 / 1092',
-              overflow: 'hidden',
-              boxShadow: '0 8px 32px rgba(28,28,40,0.105)',
-            }}
-          >
-            {hasSlides && SLIDES.map((slide, index) => (
-              <img
-                key={`${slide}-${index}`}
-                src={slide}
-                alt="Blast Learning hero banner"
-                width={2048}
-                height={1092}
-                loading="eager"
-                fetchPriority={index === 0 ? 'high' : 'auto'}
-                decoding="sync"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  display: 'block',
-                  position: 'absolute',
-                  inset: 0,
-                  objectFit: 'cover',
-                  objectPosition: 'center center',
-                  opacity: activeIndex === index ? 1 : 0,
-                  transition: 'opacity 500ms ease',
-                }}
-              />
-            ))}
-          </div>
-        </Link>
+        <div
+          style={{
+            position: 'relative',
+            width: '100%',
+            aspectRatio: '2048 / 1092',
+            overflow: 'hidden',
+            boxShadow: '0 8px 32px rgba(28,28,40,0.105)',
+          }}
+        >
+          {hasSlides && SLIDES.map((slide, index) => (
+            <img
+              key={`${slide}-${index}`}
+              src={slide}
+              alt="Blast Learning hero banner"
+              width={2048}
+              height={1092}
+              loading="eager"
+              fetchPriority={index === 0 ? 'high' : 'auto'}
+              decoding="sync"
+              style={{
+                width: '100%',
+                height: '100%',
+                display: 'block',
+                position: 'absolute',
+                inset: 0,
+                objectFit: 'cover',
+                objectPosition: 'center center',
+                opacity: activeIndex === index ? 1 : 0,
+                transition: 'opacity 500ms ease',
+              }}
+            />
+          ))}
+        </div>
 
         {/* Hero CTAs */}
         <div
@@ -136,7 +142,7 @@ export default function HeroCarousel() {
         >
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
             <Link
-              to="/programs"
+              to={activePrimaryCta.to}
               className="cta"
               style={{
                 background: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)',
@@ -146,14 +152,14 @@ export default function HeroCarousel() {
                 ...heroCtaButtonStyle,
               }}
             >
-              Start Your Journey Today
+              {activePrimaryCta.text}
             </Link>
-            <span style={{ fontSize: '11px', color: '#9CA3AF', fontFamily: 'Inter, sans-serif', fontWeight: 500, lineHeight: 1.2 }}>
+            <span style={{ fontSize: '12px', color: '#9CA3AF', fontFamily: 'Inter, sans-serif', fontWeight: 500, lineHeight: 1.2, textAlign: 'center' }}>
               No credit card required
             </span>
           </div>
           <Link
-            to="/programs/cbse-plan"
+            to="/programs"
             className="cta cta-outline"
             style={{ paddingLeft: '20px', paddingRight: '20px', marginTop: 0, ...heroCtaButtonStyle }}
           >

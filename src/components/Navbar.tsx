@@ -318,28 +318,16 @@ export default function Navbar() {
           transition: 'box-shadow 0.3s',
         }}
       >
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            height: '64px',
-            width: '100%',
-            maxWidth: '1320px',
-            margin: '0 auto',
-            padding: '0 clamp(16px, 2vw, 24px)',
-            justifyContent: 'space-between',
-            gap: 'clamp(12px, 1.8vw, 28px)',
-          }}
-        >
+        <div style={{ display: 'flex', alignItems: 'center', height: '64px', padding: '0 24px', justifyContent: 'space-between' }}>
           
-          {/* Logo */}
-          <Link to="/" className="flex items-center flex-shrink-0" style={{ textDecoration: 'none' }}>
+          {/* Logo - Far Left with margin right */}
+          <Link to="/" className="flex items-center flex-shrink-0" style={{ textDecoration: 'none', marginRight: '40px', marginLeft: '90px' }}>
             <img src={blastLogo} alt="Blast Learning" style={{ height: '56px', width: 'auto' }} />
           </Link>
 
           {/* Desktop Nav - Center Spread */}
-          <div className="show-lg-flex items-center" style={{ gap: '16px', flex: 1, justifyContent: 'center', minWidth: 0 }}>
-            <ul style={{ display: 'flex', alignItems: 'center', gap: 'clamp(10px, 1.2vw, 16px)', listStyle: 'none', margin: 0, padding: 0 }}>
+          <div className="show-lg-flex items-center" style={{ gap: '16px', flex: 1, justifyContent: 'center' }}>
+            <ul style={{ display: 'flex', alignItems: 'center', gap: '16px', listStyle: 'none', margin: 0, padding: 0 }}>
                 {navItems.map((item) => (
                   <li
                     key={item.id}
@@ -536,13 +524,13 @@ export default function Navbar() {
             </div>
 
             {/* Right End - CTA + Login */}
-            <div className="show-lg-flex items-center" style={{ gap: '12px', flexShrink: 0 }}>
+            <div className="show-lg-flex items-center" style={{ gap: '12px', flexShrink: 0, marginRight: '35px' }}>
 
               {/* Start Free Trial Button */}
               <Link
                 to="/programs"
                 className="cta cta-pink"
-                style={{ padding: '9px 20px' }}
+                style={{ marginRight: '35px', padding: '9px 20px' }}
               >
                 Start Free Trial
               </Link>
