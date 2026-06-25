@@ -7,6 +7,7 @@ import heroBanner from '../assets/Hero 4.png';
 import BrandWhoosh from '../components/BrandWhoosh';
 import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
+import AccentText from '../components/AccentText';
 
 const testimonialsRow1 = [
   { name: 'Ananya Krishnan', role: 'Class 10, CBSE Plan · Bangalore', text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.' },
@@ -113,10 +114,10 @@ export default function ForStudents() {
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <HeadingMarker text="For Students" fontSize="12px" />
-            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: '20px', color: '#111111' }}>
-              Learning That Feels Like Play
+            <h1 className="t-h1" style={{ marginBottom: '20px' }}>
+              Learning That Feels Like <AccentText tone="gradient">Play</AccentText>
             </h1>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
+            <p className="t-body" style={{ maxWidth: '640px', margin: '0 auto' }}>
               Studying does not have to feel like a chore. Blast Learning adds games, rewards, and an AI study buddy that explains things in a way that finally clicks.
             </p>
           </motion.div>
@@ -133,10 +134,10 @@ export default function ForStudents() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '64px' }}
           >
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '16px' }}>
-              Why Students Love Us
+            <h2 className="t-h2" style={{ marginBottom: '16px' }}>
+              Why <AccentText tone="pink">Students</AccentText> Love Us
             </h2>
-            <p style={{ fontSize: 'var(--fs-body)', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
+            <p className="t-body" style={{ maxWidth: '600px', margin: '0 auto' }}>
               We built Blast Learning with one goal: make studying so engaging your child forgets it is work.
             </p>
           </motion.div>
@@ -155,19 +156,13 @@ export default function ForStudents() {
                   key={feature.title}
                   variants={fadeUp}
                   whileHover={{ y: -6 }}
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid #ECECF1',
-                    borderRadius: '16px',
-                    padding: '32px',
-                    boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-                  }}
+                  className="surface-card surface-card-xl"
                 >
                   <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: feature.tile, color: '#0FA8DC' }}>
                     <Icon size={24} />
                   </div>
-                  <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{feature.title}</h3>
-                  <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{feature.description}</p>
+                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{feature.title}</h3>
+                  <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{feature.description}</p>
                 </motion.div>
               );
             })}
@@ -183,9 +178,9 @@ export default function ForStudents() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', textAlign: 'center', marginBottom: '56px' }}
+            className="t-h2" style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            How It Works
+            How It <AccentText tone="blue">Works</AccentText>
           </motion.h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-2-md">
             {steps.map((step) => (
@@ -195,21 +190,13 @@ export default function ForStudents() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                style={{
-                  display: 'flex',
-                  gap: '20px',
-                  alignItems: 'flex-start',
-                  background: '#FFFFFF',
-                  border: '1px solid #ECECF1',
-                  borderRadius: '16px',
-                  padding: '28px',
-                  boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-                }}
+                className="surface-card surface-card-lg"
+                style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}
               >
                 <div style={{ fontSize: '40px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#0FA8DC', flexShrink: 0, lineHeight: 1 }}>{step.number}</div>
                 <div>
-                  <h3 style={{ fontSize: '17px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '8px' }}>{step.title}</h3>
-                  <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{step.description}</p>
+                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '8px' }}>{step.title}</h3>
+                  <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{step.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -225,16 +212,16 @@ export default function ForStudents() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '16px' }}
+            className="t-h2" style={{ marginBottom: '16px' }}
           >
-            Collect Achievements
+            Collect <AccentText tone="gradient">Achievements</AccentText>
           </motion.h2>
           <motion.p
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ fontSize: 'var(--fs-body)', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginBottom: '56px', maxWidth: '600px', margin: '0 auto 56px' }}
+            className="t-body" style={{ marginBottom: '56px', maxWidth: '600px', margin: '0 auto 56px' }}
           >
             Every milestone earns you a badge. How many can you collect?
           </motion.p>
@@ -253,13 +240,8 @@ export default function ForStudents() {
                   key={ach.label}
                   variants={fadeUp}
                   whileHover={{ scale: 1.05, y: -4 }}
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid #ECECF1',
-                    borderRadius: '16px',
-                    padding: '32px 20px',
-                    boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-                  }}
+                  className="surface-card surface-card-xl"
+                  style={{ paddingLeft: '20px', paddingRight: '20px' }}
                 >
                   <div style={{ width: '64px', height: '64px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', background: ach.tile, color: '#0FA8DC' }}>
                     <Icon size={28} />

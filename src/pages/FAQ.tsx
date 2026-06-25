@@ -8,6 +8,7 @@ import BrandWhoosh from '../components/BrandWhoosh';
 import HeadingMarker from '../components/HeadingMarker';
 import { useState, useEffect, useMemo } from 'react';
 import { SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
+import AccentText from '../components/AccentText';
 
 const testimonialsRow1 = [
   { name: 'Ananya Krishnan', role: 'Class 10, CBSE Plan · Bangalore', text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.' },
@@ -216,10 +217,10 @@ export default function FAQ() {
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 24px', textAlign: 'left', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <HeadingMarker text="FAQ" fontSize="12px" />
-            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: '20px', color: '#111111' }}>
-              Frequently Asked Questions
+            <h1 className="t-h1" style={{ marginBottom: '20px' }}>
+              Frequently Asked <AccentText tone="gradient">Questions</AccentText>
             </h1>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '32px' }}>
+            <p className="t-body" style={{ marginBottom: '32px' }}>
               Everything you need to know about Blast Learning. Can't find your answer? Contact our team.
             </p>
 
@@ -325,7 +326,7 @@ export default function FAQ() {
               style={{ textAlign: 'center', padding: '60px 24px' }}
             >
               <div style={{ fontSize: '40px', marginBottom: '16px' }}>🔍</div>
-              <p style={{ fontSize: '16px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif', marginBottom: '8px' }}>No matches found</p>
+              <p className="t-h4" style={{ marginBottom: '8px' }}>No matches found</p>
               <p style={{ fontSize: '14px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '24px' }}>Try a different keyword or browse by category above.</p>
               <button
                 onClick={() => { setQuery(''); setActiveCategory('All'); }}
@@ -363,7 +364,7 @@ export default function FAQ() {
                         }}>
                           {group.category.charAt(0)}
                         </span>
-                        <h2 style={{ fontSize: '18px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>
+                        <h2 className="t-h4" style={{ margin: 0 }}>
                           {group.category}
                         </h2>
                       </div>

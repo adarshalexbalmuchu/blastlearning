@@ -5,6 +5,7 @@ import { ChevronDown, CheckCircle, ArrowRight, ChevronRight } from 'lucide-react
 import { getProgramBySlug } from '../../data/programs';
 import BrandWhoosh from '../../components/BrandWhoosh';
 import HeadingMarker from '../../components/HeadingMarker';
+import AccentText from '../../components/AccentText';
 import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../../components/MarketingSections';
 import HowItWorksCard from '../../components/HowItWorksCard';
 import hero1 from '../../assets/Hero 1.png';
@@ -168,21 +169,31 @@ export default function ProgramDetail() {
 
               <motion.h1
                 variants={fadeUp}
-                style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: '20px', color: '#111111' }}
+                className="t-h1" style={{ marginBottom: '20px' }}
               >
-                {program.name}
+                {program.name.split(' ').map((word, index, words) => {
+                  const isFirst = index === 0;
+                  const isLast = index === words.length - 1;
+                  if (isFirst && words.length > 1) {
+                    return <AccentText key={`${word}-${index}`} tone="pink">{word} </AccentText>;
+                  }
+                  if (isLast) {
+                    return <AccentText key={`${word}-${index}`} tone="gradient">{word}</AccentText>;
+                  }
+                  return `${word} `;
+                })}
               </motion.h1>
 
               <motion.p
                 variants={fadeUp}
-                style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '16px', maxWidth: '560px' }}
+                className="t-body" style={{ marginBottom: '16px', maxWidth: '560px' }}
               >
                 {program.tagline}
               </motion.p>
 
               <motion.p
                 variants={fadeUp}
-                style={{ fontSize: '0.9375rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '24px', maxWidth: '560px' }}
+                className="t-small" style={{ marginBottom: '24px', maxWidth: '560px' }}
               >
                 {program.description}
               </motion.p>
@@ -190,7 +201,7 @@ export default function ProgramDetail() {
               <motion.div variants={fadeUp} style={{ display: 'flex', gap: '28px', flexWrap: 'wrap', marginBottom: '28px', paddingTop: '20px', borderTop: '1px solid #F0F0F4' }}>
                 {program.heroStats.map((stat) => (
                   <div key={stat.label}>
-                    <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1.2 }}>{stat.value}</div>
+                    <div className="t-h4" style={{ marginBottom: '2px' }}>{stat.value}</div>
                     <div style={{ fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '2px' }}>{stat.label}</div>
                   </div>
                 ))}
@@ -284,7 +295,7 @@ export default function ProgramDetail() {
                   <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#E0F5FC', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
                     <CheckCircle size={22} style={{ color: '#0FA8DC' }} />
                   </div>
-                  <p style={{ fontSize: '16px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '8px' }}>You're all set!</p>
+                  <p className="t-h4" style={{ marginBottom: '8px' }}>You're all set!</p>
                   <p style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", lineHeight: 1.6 }}>
                     We'll contact {form.name || 'you'} within 24 hours to begin your free trial.
                   </p>
@@ -301,7 +312,7 @@ export default function ProgramDetail() {
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
             <HeadingMarker text="Right for you?" fontSize="12px" />
             <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
-              Who This Programme Is For
+              Who This <AccentText tone="blue">Programme</AccentText> Is For
             </h2>
           </motion.div>
 
@@ -342,7 +353,7 @@ export default function ProgramDetail() {
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
             <HeadingMarker text="Curriculum" fontSize="12px" />
             <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
-              What You'll Learn
+              What You'll <AccentText tone="gradient">Learn</AccentText>
             </h2>
           </motion.div>
 
@@ -362,7 +373,7 @@ export default function ProgramDetail() {
                     <span style={{ width: '28px', height: '28px', borderRadius: '8px', background: program.accentBg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700, color: '#0FA8DC', fontFamily: "'Poppins', sans-serif", flexShrink: 0 }}>
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span style={{ fontSize: '15px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{module.title}</span>
+                    <span className="t-body" style={{ fontWeight: 600, color: '#1C1C28' }}>{module.title}</span>
                   </div>
                   <ChevronDown
                     size={18}
@@ -384,7 +395,7 @@ export default function ProgramDetail() {
                         {module.topics.map((topic, j) => (
                           <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                             <CheckCircle size={14} style={{ color: '#0FA8DC', flexShrink: 0, marginTop: '3px' }} />
-                            <span style={{ fontSize: '14px', lineHeight: 1.6, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{topic}</span>
+                            <span className="t-small" style={{ color: '#5A5A6E' }}>{topic}</span>
                           </div>
                         ))}
                       </div>
@@ -406,7 +417,7 @@ export default function ProgramDetail() {
               <motion.div variants={fadeUp} style={{ marginBottom: '40px' }}>
                 <HeadingMarker text="What's Included" fontSize="12px" />
                 <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
-                  Everything in This Plan
+                  Everything in This <AccentText tone="pink">Plan</AccentText>
                 </h2>
               </motion.div>
 
@@ -446,8 +457,8 @@ export default function ProgramDetail() {
               {program.outcomes.map((outcome, i) => (
                 <div key={i} style={{ marginBottom: i < program.outcomes.length - 1 ? '20px' : '0' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '14px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{outcome.label}</span>
-                    <span style={{ fontSize: '18px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#0FA8DC' }}>{outcome.value}</span>
+                    <span className="t-body" style={{ fontWeight: 600, color: '#1C1C28' }}>{outcome.label}</span>
+                    <span className="t-h4" style={{ color: '#0FA8DC', marginBottom: 0 }}>{outcome.value}</span>
                   </div>
                   <p style={{ fontSize: '12px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}>{outcome.desc}</p>
                 </div>

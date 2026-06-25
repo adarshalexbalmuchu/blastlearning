@@ -40,27 +40,120 @@ html {
 }
 
 :root {
-  /* Golden-ratio type scale from a 16px body base */
-  --fs-body: 1rem;
-  --fs-h3: 2rem;
-  --fs-h2: 3.25rem;
+  /* ── Type scale ──────────────────────────────────── */
   --fs-h1: 5.25rem;
+  --fs-h2: 3.25rem;
+  --fs-h3: 2rem;
+  --fs-h4: 1.125rem;   /* 18px — card sub-headings   */
+  --fs-body: 1rem;     /* 16px — body / descriptions */
+  --fs-small: 0.9rem;  /* 14.4px — secondary body    */
+  --fs-xs: 0.75rem;    /* 12px — metadata / tags     */
 
-  --fs-h3-fluid: clamp(1.5rem, 1.1rem + 1.5vw, var(--fs-h3));
-  --fs-h2-fluid: clamp(2.1rem, 1.3rem + 3.5vw, var(--fs-h2));
   --fs-h1-fluid: clamp(2.75rem, 1.25rem + 5.5vw, var(--fs-h1));
+  --fs-h2-fluid: clamp(2.1rem,  1.3rem  + 3.5vw, var(--fs-h2));
+  --fs-h3-fluid: clamp(1.5rem,  1.1rem  + 1.5vw, var(--fs-h3));
+
+  /* ── Shared typography tokens ────────────────────── */
+  --fw-black:    800;
+  --fw-bold:     700;
+  --fw-semibold: 600;
+  --fw-medium:   500;
+  --fw-regular:  400;
+
+  --lh-heading: 1.15;
+  --lh-card:    1.2;
+  --lh-body:    1.65;
+  --lh-small:   1.6;
+
+  --ls-h1: -0.025em;
+  --ls-h2: -0.025em;
+  --ls-h3: -0.02em;
+  --ls-label: 0.08em;
+
+  --color-heading: #111111;
+  --color-card-heading: #1C1C28;
+  --color-body: #5A5A6E;
+  --color-muted: #6B7280;
+  --color-meta: #8E8EA0;
 }
 
 body {
   font-family: 'Inter', sans-serif;
   font-size: var(--fs-body);
-  line-height: 1.6;
+  line-height: var(--lh-body);
   color: #1C1C28;
   background: #FFFFFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
+
+/* ── Semantic typography classes ─────────────────────────────────────────── */
+.t-h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--fs-h1-fluid);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-h1);
+  color: var(--color-heading);
+}
+.t-h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--fs-h2-fluid);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-h2);
+  color: var(--color-heading);
+}
+.t-h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--fs-h3-fluid);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-card);
+  letter-spacing: var(--ls-h3);
+  color: var(--color-card-heading);
+}
+.t-h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-card);
+  letter-spacing: -0.015em;
+  color: var(--color-card-heading);
+}
+.t-body {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-body);
+  color: var(--color-body);
+}
+.t-small {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-small);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-small);
+  color: var(--color-muted);
+}
+.t-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+  color: var(--color-meta);
+}
+
+/* ── Shared card surfaces ───────────────────────────────────────────────── */
+.surface-card {
+  background: #FFFFFF;
+  border: 1px solid #ECECF1;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(28,28,40,0.05);
+}
+.surface-card-sm { padding: 20px; }
+.surface-card-md { padding: 24px; }
+.surface-card-lg { padding: 28px; }
+.surface-card-xl { padding: 32px; }
 
 /* Global focus-visible ring for keyboard navigation */
 :focus-visible {
@@ -122,24 +215,21 @@ p, li {
 .cta:hover { transform: translateY(-2px); }
 .cta:active { transform: translateY(0); filter: brightness(0.97); }
 
-/* Pink primary action */
+/* Pink — outline style */
 .cta-pink {
-  background: #F03C6F;
-  color: #FFFFFF;
+  background: transparent;
+  color: #F03C6F;
   border-color: #F03C6F;
 }
-.cta-pink:hover { filter: brightness(1.06); }
+.cta-pink:hover { background: #FFF5F8; }
 
-/* Blue secondary action */
+/* Blue — outline style */
 .cta-blue {
-  background: #0FA8DC;
-  color: #FFFFFF;
+  background: transparent;
+  color: #0FA8DC;
   border-color: #0FA8DC;
 }
-.cta-blue:hover {
-  filter: brightness(1.06);
-  box-shadow: 0 10px 28px rgba(15, 168, 220, 0.32);
-}
+.cta-blue:hover { background: #F0FBFF; }
 
 /* Outlined / ghost — pink border, pink text */
 .cta-outline {
@@ -147,9 +237,7 @@ p, li {
   color: #F03C6F;
   border-color: #F03C6F;
 }
-.cta-outline:hover {
-  background: #FFF5F8;
-}
+.cta-outline:hover { background: #FFF5F8; }
 
 /* Light button sitting on a colored surface */
 .cta-onfill {

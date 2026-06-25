@@ -5,6 +5,7 @@ import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
 import HeadingMarker from '../components/HeadingMarker';
+import AccentText from '../components/AccentText';
 
 type Role = '' | 'parent' | 'student' | 'tutor' | 'school';
 
@@ -126,10 +127,10 @@ export default function Contact() {
         <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <HeadingMarker text="Get in Touch" fontSize="12px" />
-            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: '20px', color: '#111111' }}>
-              Contact Us
+            <h1 className="t-h1" style={{ marginBottom: '20px' }}>
+              Contact <AccentText tone="gradient">Us</AccentText>
             </h1>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+            <p className="t-body">
               Have questions about our programs, or want to speak to a learning advisor? We're here to help.
             </p>
           </motion.div>
@@ -149,8 +150,8 @@ export default function Contact() {
           >
             {/* Contact Info */}
             <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
-              <div style={{ padding: '32px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)', marginBottom: '20px' }}>
-                <h2 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '28px' }}>Contact Information</h2>
+              <div className="surface-card surface-card-xl" style={{ marginBottom: '20px' }}>
+                <h2 className="t-h4" style={{ marginBottom: '28px' }}>Contact <AccentText tone="pink">Information</AccentText></h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                   {[
                     {
@@ -222,7 +223,7 @@ export default function Contact() {
                   <MapPin size={22} />
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                  <p style={{ fontSize: '14px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>Blast Learning HQ</p>
+                  <p className="t-h4" style={{ margin: 0 }}>Blast Learning HQ</p>
                   <p style={{ fontSize: '12px', marginTop: '4px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>Bangalore, Karnataka, India</p>
                 </div>
               </div>
@@ -230,20 +231,20 @@ export default function Contact() {
 
             {/* Contact Form */}
             <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
-              <div style={{ padding: '32px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}>
+              <div className="surface-card surface-card-xl">
                 {submitted ? (
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '64px 0', textAlign: 'center' }}>
                     <div style={{ width: '64px', height: '64px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '24px', background: '#E0F5FC', color: '#0FA8DC' }}>
                       <Send size={26} />
                     </div>
-                    <h2 style={{ fontSize: 'var(--fs-h3-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', marginBottom: '12px', color: '#111111' }}>Message Sent!</h2>
+                    <h2 style={{ fontSize: 'var(--fs-h3-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', marginBottom: '12px', color: '#111111' }}>Message <AccentText tone="blue">Sent!</AccentText></h2>
                     <p style={{ fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', lineHeight: 1.7 }}>
                       Thank you for reaching out. Our team will get back to you within 2 business hours.
                     </p>
                   </div>
                 ) : (
                   <>
-                    <h2 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '28px' }}>Send Us a Message</h2>
+                    <h2 className="t-h4" style={{ marginBottom: '28px' }}>Send Us a <AccentText tone="gradient">Message</AccentText></h2>
                     <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px' }} className="grid-cols-2-sm">
                         <div>
@@ -369,8 +370,8 @@ export default function Contact() {
           viewport={{ once: true }}
           style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
         >
-          <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', color: '#111111' }}>
-            Prefer to Talk?
+          <h2 className="t-h2" style={{ marginBottom: '16px' }}>
+            Prefer to <AccentText tone="pink">Talk?</AccentText>
           </h2>
           <p style={{ color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '32px', fontSize: 'var(--fs-body)', lineHeight: 1.7 }}>
             Speak directly with a learning advisor who can assess your child's needs and recommend the right program.

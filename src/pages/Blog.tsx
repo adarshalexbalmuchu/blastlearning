@@ -11,6 +11,7 @@ import {
 import BrandArc from '../components/BrandArc';
 import BrandWhoosh from '../components/BrandWhoosh';
 import HeadingMarker from '../components/HeadingMarker';
+import AccentText from '../components/AccentText';
 
 function PostCardSkeleton() {
   return (
@@ -75,10 +76,10 @@ export default function Blog() {
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <HeadingMarker text="Blast Learning Blog" fontSize="12px" />
-            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: '20px', color: '#111111' }}>
-              Study Tips & Learning Science
+            <h1 className="t-h1" style={{ marginBottom: '20px' }}>
+              Study <AccentText tone="pink">Tips</AccentText> & <AccentText tone="blue">Learning Science</AccentText>
             </h1>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '520px', margin: '0 auto 32px' }}>
+            <p className="t-body" style={{ maxWidth: '520px', margin: '0 auto 32px' }}>
               Exam strategies, retention science, and practical guides from our educators and AI researchers.
             </p>
             {/* Search */}
@@ -187,7 +188,7 @@ export default function Blog() {
                             ))}
                           </div>
                         )}
-                        <h2 style={{ fontSize: '16px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', lineHeight: 1.35, marginBottom: '10px' }}
+                        <h2 className="t-h4" style={{ marginBottom: '10px', lineHeight: 1.35 }}
                           dangerouslySetInnerHTML={{ __html: post.title.rendered }}
                         />
                         <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', flex: 1, marginBottom: '16px' }}>

@@ -10,13 +10,21 @@ type CardT = {
   text: string;
 };
 
-function parseRole(role: string): { rank: string; location: string } {
-  const parts = role.split(' · ');
-  return { rank: parts[0] ?? role, location: parts[1] ?? '' };
+function parseRole(role: string): { classInfo: string; planName: string; location: string } {
+  const [rankPart, location = ''] = role.split(' · ');
+  const commaIdx = rankPart.indexOf(', ');
+  if (commaIdx !== -1) {
+    return {
+      classInfo: rankPart.slice(0, commaIdx),
+      planName: rankPart.slice(commaIdx + 2),
+      location,
+    };
+  }
+  return { classInfo: rankPart, planName: '', location };
 }
 
 function TestimonialCard({ card }: { card: CardT }) {
-  const { rank, location } = parseRole(card.role);
+  const { classInfo, planName, location } = parseRole(card.role);
 
   return (
     <div
@@ -89,27 +97,21 @@ function TestimonialCard({ card }: { card: CardT }) {
               flexWrap: 'wrap',
             }}
           >
-            <span
-              style={{
-                color: '#F03C6F',
-                fontWeight: 700,
-                fontFamily: 'Inter, sans-serif',
-                letterSpacing: '0.01em',
-              }}
-            >
-              {rank}
+            <span style={{ color: '#0FA8DC', fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
+              {classInfo}
             </span>
+            {planName && (
+              <>
+                <span style={{ color: '#C8CCD6', fontWeight: 400 }}>|</span>
+                <span style={{ color: '#1C1C28', fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
+                  {planName}
+                </span>
+              </>
+            )}
             {location && (
               <>
                 <span style={{ color: '#C8CCD6', fontWeight: 400 }}>|</span>
-                <span
-                  style={{
-                    color: '#0FA8DC',
-                    fontWeight: 700,
-                    fontFamily: 'Inter, sans-serif',
-                    letterSpacing: '0.01em',
-                  }}
-                >
+                <span style={{ color: '#F03C6F', fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
                   {location}
                 </span>
               </>

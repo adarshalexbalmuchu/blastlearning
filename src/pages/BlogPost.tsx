@@ -102,7 +102,7 @@ export default function BlogPost() {
                 </div>
               )}
               <h1
-                style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', color: '#111111', lineHeight: 1.2, letterSpacing: '-0.02em', marginBottom: '20px' }}
+                className="t-h1" style={{ marginBottom: '20px' }}
                 dangerouslySetInnerHTML={{ __html: post.title.rendered }}
               />
               <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap' }}>

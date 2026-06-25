@@ -229,14 +229,14 @@ function SectionHeading({ eyebrow, title, subtitle, accent, align = 'left', subt
       )}
       <motion.h2
         variants={h2Anim}
-        style={{ fontSize: 'var(--fs-h2-fluid)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}
+        className="t-h2"
       >
         {title}
       </motion.h2>
       {subtitle && (
         <motion.p
           variants={subtitleAnim}
-          style={{ fontSize: '0.95rem', color: '#5A5A6E', fontWeight: 400, fontFamily: 'Inter, sans-serif', maxWidth: subtitleMaxWidth, margin: isCentered ? '12px auto 0' : '12px 0 0', lineHeight: 1.65, textAlign: align }}
+          className="t-body" style={{ maxWidth: subtitleMaxWidth, margin: isCentered ? '12px auto 0' : '12px 0 0', textAlign: align }}
         >
           {subtitle}
         </motion.p>
@@ -329,10 +329,10 @@ export default function Home() {
                   <div style={{ height: '3px', width: '100%', background: accent }} />
                   <div style={{ padding: '18px 16px 14px' }}>
                     <HeadingMarker text={plan.classes} accent={accent} fontSize="11px" />
-                    <h3 style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: '2rem', fontWeight: 700, color: '#1C1C28', lineHeight: 1.18 }}>
+                    <h3 style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: 'var(--fs-h3)', fontWeight: 700, color: '#1C1C28', lineHeight: 'var(--lh-card)' }}>
                       {plan.name}
                     </h3>
-                    <p style={{ margin: '8px 0 0', fontFamily: 'Inter, sans-serif', fontSize: '0.95rem', lineHeight: 1.55, color: '#666B78' }}>
+                    <p className="t-body" style={{ margin: '8px 0 0' }}>
                       {plan.desc}
                     </p>
 
@@ -537,7 +537,7 @@ export default function Home() {
                   <span style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{article.readTime}</span>
                 </p>
                 <h3 style={{ fontSize: '1.625rem', color: '#1C1C28', fontFamily: 'Poppins, sans-serif', marginBottom: '10px', lineHeight: 1.4 }}>{article.title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '14px' }}>{article.desc}</p>
+                <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '14px' }}>{article.desc}</p>
                 <Link to="/library" style={{ color: '#0FA8DC', fontWeight: 600, fontSize: '13px', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
                   Read more
                 </Link>

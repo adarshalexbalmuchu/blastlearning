@@ -7,6 +7,7 @@ import ctaBanner from '../assets/Hero 4.png';
 import heroBanner from '../assets/Hero 3.png';
 import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import HeadingMarker from '../components/HeadingMarker';
+import AccentText from '../components/AccentText';
 
 const benefits = [
   {
@@ -106,10 +107,10 @@ export default function ForParents() {
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <HeadingMarker text="For Parents" fontSize="12px" />
-            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: '20px', color: '#111111' }}>
-              Peace of Mind for Parents
+            <h1 className="t-h1" style={{ marginBottom: '20px' }}>
+              Peace of <AccentText tone="pink">Mind</AccentText> for <AccentText tone="blue">Parents</AccentText>
             </h1>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
+            <p className="t-body" style={{ maxWidth: '640px', margin: '0 auto' }}>
               Stay informed and involved in your child's education journey. Track progress, celebrate wins, and support their growth, all backed by transparent data.
             </p>
           </motion.div>
@@ -126,10 +127,10 @@ export default function ForParents() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '64px' }}
           >
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '16px' }}>
-              Everything You Need to Stay Involved
+            <h2 className="t-h2" style={{ marginBottom: '16px' }}>
+              Everything You Need to <AccentText tone="gradient">Stay Involved</AccentText>
             </h2>
-            <p style={{ fontSize: 'var(--fs-body)', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
+            <p className="t-body" style={{ maxWidth: '600px', margin: '0 auto' }}>
               Powerful tools designed to keep you connected to your child's learning journey.
             </p>
           </motion.div>
@@ -149,19 +150,13 @@ export default function ForParents() {
                   key={benefit.title}
                   variants={fadeUp}
                   whileHover={{ y: -6 }}
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid #ECECF1',
-                    borderRadius: '16px',
-                    padding: '32px',
-                    boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-                  }}
+                  className="surface-card surface-card-xl"
                 >
                   <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: tile, color: '#0FA8DC' }}>
                     <Icon size={24} />
                   </div>
-                  <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{benefit.title}</h3>
-                  <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{benefit.description}</p>
+                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{benefit.title}</h3>
+                  <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{benefit.description}</p>
                 </motion.div>
               );
             })}
@@ -174,17 +169,17 @@ export default function ForParents() {
         <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }} className="grid-cols-2-md">
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-              <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '24px' }}>
-                Built on Trust & Transparency
+              <h2 className="t-h2" style={{ marginBottom: '24px' }}>
+                Built on <AccentText tone="pink">Trust</AccentText> & <AccentText tone="blue">Transparency</AccentText>
               </h2>
-              <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '32px' }}>
+              <p className="t-body" style={{ marginBottom: '32px' }}>
                 We believe parents deserve complete clarity. No hidden costs, no confusing contracts, just honest, effective education.
               </p>
               <div style={{ display: 'grid', gap: '16px' }}>
                 {trustPoints.map((point) => (
                   <div key={point} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <CheckCircle size={20} style={{ color: '#0FA8DC', flexShrink: 0 }} />
-                    <span style={{ fontSize: '15px', color: '#1C1C28', fontFamily: "'Inter', sans-serif" }}>{point}</span>
+                    <span style={{ fontSize: 'var(--fs-body)', color: '#1C1C28', fontFamily: "'Inter', sans-serif" }}>{point}</span>
                   </div>
                 ))}
               </div>
@@ -205,13 +200,8 @@ export default function ForParents() {
                 <motion.div
                   key={stat.label}
                   variants={fadeUp}
-                  style={{
-                    background: stat.bg,
-                    borderRadius: '16px',
-                    padding: '28px 20px',
-                    textAlign: 'center',
-                    border: '1px solid #ECECF1',
-                  }}
+                  className="surface-card surface-card-lg"
+                  style={{ background: stat.bg, textAlign: 'center' }}
                 >
                   <div style={{ fontSize: '28px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: stat.color, marginBottom: '6px' }}>{stat.value}</div>
                   <div style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>{stat.label}</div>

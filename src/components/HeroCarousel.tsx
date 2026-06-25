@@ -75,30 +75,32 @@ export default function HeroCarousel() {
         paddingBottom: '40px',
       }}
     >
-      <Link to="/programs/cbse-plan" aria-label="View CBSE program" style={{ display: 'block', cursor: 'pointer', lineHeight: 0, width: '100%', position: 'relative' }}>
-        <div style={{ position: 'relative', boxShadow: '0 8px 32px rgba(28,28,40,0.105)' }}>
-          {hasSlides && SLIDES.map((slide, index) => (
-            <img
-              key={`${slide}-${index}`}
-              src={slide}
-              alt="Blast Learning hero banner"
-              width={2048}
-              height={1092}
-              loading="eager"
-              fetchPriority={index === 0 ? 'high' : 'auto'}
-              decoding="sync"
-              style={{
-                width: '100%',
-                height: 'auto',
-                display: 'block',
-                position: index === 0 ? 'relative' : 'absolute',
-                inset: 0,
-                opacity: activeIndex === index ? 1 : 0,
-                transition: 'opacity 500ms ease',
-              }}
-            />
-          ))}
-        </div>
+      <div style={{ position: 'relative', width: '100%' }}>
+        <Link to="/programs/cbse-plan" aria-label="View CBSE program" style={{ display: 'block', cursor: 'pointer', lineHeight: 0, width: '100%' }}>
+          <div style={{ position: 'relative', boxShadow: '0 8px 32px rgba(28,28,40,0.105)' }}>
+            {hasSlides && SLIDES.map((slide, index) => (
+              <img
+                key={`${slide}-${index}`}
+                src={slide}
+                alt="Blast Learning hero banner"
+                width={2048}
+                height={1092}
+                loading="eager"
+                fetchPriority={index === 0 ? 'high' : 'auto'}
+                decoding="sync"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block',
+                  position: index === 0 ? 'relative' : 'absolute',
+                  inset: 0,
+                  opacity: activeIndex === index ? 1 : 0,
+                  transition: 'opacity 500ms ease',
+                }}
+              />
+            ))}
+          </div>
+        </Link>
 
         {/* Secondary CTA - See How It Works (Overlay on Hero) */}
         <div
@@ -109,15 +111,11 @@ export default function HeroCarousel() {
             zIndex: 3,
           }}
         >
-          <motion.button
-            whileTap={{ scale: 0.97 }}
-            className="cta cta-outline"
-            onClick={() => window.location.href = '/programs'}
-          >
+          <Link to="/programs" className="cta cta-outline">
             See How It Works
-          </motion.button>
+          </Link>
         </div>
-      </Link>
+      </div>
 
       {/* Clean Premium Controls - Below Hero */}
       <div

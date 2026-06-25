@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { Search, Play, FileText, HelpCircle, Lock } from 'lucide-react';
 import ctaBanner from '../assets/Hero 4.png';
 import HeadingMarker from '../components/HeadingMarker';
+import AccentText from '../components/AccentText';
 import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
 
 const testimonialsRow1 = [
@@ -108,10 +109,10 @@ export default function Library() {
             style={{ textAlign: 'center', marginBottom: '40px' }}
           >
             <HeadingMarker text="Resource Library" fontSize="12px" />
-            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: '20px', color: '#111111' }}>
-              Learning Resources
+            <h1 className="t-h1" style={{ marginBottom: '20px' }}>
+              <AccentText tone="pink">Learning</AccentText> <AccentText tone="blue">Resources</AccentText>
             </h1>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '560px', margin: '0 auto 32px' }}>
+            <p className="t-body" style={{ maxWidth: '560px', margin: '0 auto 32px' }}>
               Videos, notes, and practice quizzes for CBSE Classes 8-12, SAT Prep, and competitive exams. Many are free to start, and a subscription unlocks the full library.
             </p>
             <div style={{ position: 'relative', maxWidth: '520px', margin: '0 auto' }}>
@@ -185,7 +186,8 @@ export default function Library() {
                     boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
                     transition: { type: 'spring', stiffness: 300, damping: 22 },
                   }}
-                  style={{ position: 'relative', padding: '24px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)', opacity: resource.locked ? 0.65 : 1, display: 'flex', flexDirection: 'column' }}
+                  className="surface-card surface-card-md"
+                  style={{ position: 'relative', opacity: resource.locked ? 0.65 : 1, display: 'flex', flexDirection: 'column' }}
                 >
                   {resource.locked && (
                     <div style={{ position: 'absolute', top: '16px', right: '16px' }}>
@@ -204,8 +206,8 @@ export default function Library() {
                       <span style={{ fontSize: '11px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>{resource.duration}</span>
                     )}
                   </div>
-                  <h3 style={{ fontSize: '15px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '10px' }}>{resource.title}</h3>
-                  <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '20px', flex: 1 }}>{resource.description}</p>
+                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '10px' }}>{resource.title}</h3>
+                  <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '20px', flex: 1 }}>{resource.description}</p>
                   {resource.locked ? (
                     <Link
                       to="/programs"

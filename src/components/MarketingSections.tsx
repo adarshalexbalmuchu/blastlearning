@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import FAQItem from './FAQItem';
 import TestimonialsMarquee from './ui/testimonials-marquee';
 import HeadingMarker from './HeadingMarker';
+import AccentText from './AccentText';
 
 export type TestimonialCardData = {
   image?: string;
@@ -43,13 +44,13 @@ function SectionIntro({ eyebrow, title, subtitle, accent, align = 'left' }: Sect
       </motion.div>
       <motion.h2
         variants={{ hidden: { opacity: 0, y: 32, filter: 'blur(6px)' }, visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] } } }}
-        style={{ fontSize: 'var(--fs-h2-fluid)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, letterSpacing: '-0.025em', lineHeight: 1.15, margin: '0 0 14px', color: '#111111' }}
+        className="t-h2" style={{ margin: '0 0 14px' }}
       >
         {title}
       </motion.h2>
       <motion.p
         variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } } }}
-        style={{ fontSize: '0.95rem', color: '#5A5A6E', fontWeight: 400, fontFamily: 'Inter, sans-serif', lineHeight: 1.65, maxWidth: '600px', margin: isCentered ? '0 auto' : '0', textAlign: align }}
+        className="t-body" style={{ maxWidth: '600px', margin: isCentered ? '0 auto' : '0', textAlign: align }}
       >
         {subtitle}
       </motion.p>
@@ -61,7 +62,7 @@ export function SharedTestimonialsSection({
   row1,
   row2,
   eyebrow = 'Student Stories',
-  title = 'Real Results from Real Students',
+  title = <><AccentText tone="pink">Real Results</AccentText> from Real <AccentText tone="blue">Students</AccentText>.</>,
   subtitle = 'Hear from families who turned forgotten lessons into lasting marks.',
   sectionId = 'testimonials',
   accent,
@@ -91,7 +92,7 @@ export function SharedTestimonialsSection({
 export function SharedFaqSection({
   items,
   eyebrow = 'Common Questions',
-  title = 'Frequently Asked Questions',
+  title = <>Frequently Asked <AccentText tone="gradient">Questions</AccentText>.</>,
   subtitle = 'Everything you need to know before you start your free trial.',
   linkTo = '/faq',
   linkLabel = 'View All FAQs',

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import AccentText from '../components/AccentText';
 
 const NotFound = () => {
   return (
@@ -17,7 +18,7 @@ const NotFound = () => {
       <div
         style={{
           fontFamily: 'Poppins, sans-serif',
-          fontSize: 'clamp(5rem, 15vw, 9rem)',
+          fontSize: 'var(--fs-h1-fluid)',
           fontWeight: 700,
           color: '#E0F5FC',
           lineHeight: 1,
@@ -31,13 +32,13 @@ const NotFound = () => {
       <h1
         style={{
           fontFamily: 'Poppins, sans-serif',
-          fontSize: '2rem',
-          fontWeight: 700,
-          color: '#1C1C28',
+          fontSize: 'var(--fs-h2-fluid)',
+          fontWeight: 800,
+          color: '#111111',
           margin: '0 0 1rem',
         }}
       >
-        Page Not Found
+        Page <AccentText tone="gradient">Not Found</AccentText>
       </h1>
 
       <p

@@ -5,6 +5,7 @@ import BrandArc from '../components/BrandArc';
 import ctaBanner from '../assets/Hero 4.png';
 import BrandWhoosh from '../components/BrandWhoosh';
 import HeadingMarker from '../components/HeadingMarker';
+import AccentText from '../components/AccentText';
 import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
 
 const testimonialsRow1 = [
@@ -96,10 +97,10 @@ export default function About() {
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <HeadingMarker text="Our Mission" fontSize="12px" />
-            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: '20px', color: '#111111' }}>
-              Making Learning Stick for Every Indian Student
+            <h1 className="t-h1" style={{ marginBottom: '20px' }}>
+              Making <AccentText tone="blue">Learning Stick</AccentText> for Every <AccentText tone="gradient">Indian Student</AccentText>
             </h1>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px', margin: '0 auto' }}>
+            <p className="t-body" style={{ maxWidth: '640px', margin: '0 auto' }}>
               India spends billions on education every year, yet most students forget 90% of what they learn within a week. We built Blast Learning to fix that, to make every hour of study count, permanently.
             </p>
           </motion.div>
@@ -118,8 +119,8 @@ export default function About() {
             className="grid-cols-2-lg"
           >
             <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
-              <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#111111', marginBottom: '28px' }}>
-                Why We Built Blast Learning
+              <h2 className="t-h2" style={{ marginBottom: '28px' }}>
+                Why We Built <AccentText tone="pink">Blast Learning</AccentText>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 {[
@@ -128,7 +129,7 @@ export default function About() {
                   'Blast Learning was built to bridge that gap. We take the science of how memory actually works and translate it into a daily experience that any student can follow, regardless of their school, city, or coaching setup.',
                   "Our Metacognition Engine doesn't just deliver content. It tracks how well you remember, identifies what's at risk of being forgotten, and schedules review at the exact right time. The result: 90% retention instead of 10%.",
                 ].map((text, i) => (
-                  <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                  <p key={i} style={{ fontSize: 'var(--fs-body)', lineHeight: 'var(--lh-body)', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                     {text}
                   </p>
                 ))}
@@ -147,10 +148,11 @@ export default function About() {
                 <motion.div
                   key={item.val}
                   variants={fadeUp}
-                  style={{ borderRadius: '16px', padding: '24px', background: statPastels[i % statPastels.length], border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
+                  className="surface-card surface-card-md"
+                  style={{ background: statPastels[i % statPastels.length] }}
                 >
                   <div style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '12px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>{item.val}</div>
-                  <p style={{ fontSize: '13px', lineHeight: 1.6, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{item.desc}</p>
+                  <p style={{ fontSize: 'var(--fs-xs)', lineHeight: 1.5, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{item.desc}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -189,8 +191,8 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#111111' }}>
-              The Team Behind Blast Learning
+            <h2 className="t-h2">
+              The <AccentText tone="blue">Team</AccentText> Behind Blast Learning
             </h2>
           </motion.div>
           <motion.div
@@ -209,14 +211,15 @@ export default function About() {
                   key={member.name}
                   variants={fadeUp}
                   whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
-                  style={{ padding: '28px', borderRadius: '16px', textAlign: 'center', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
+                  className="surface-card surface-card-lg"
+                  style={{ textAlign: 'center' }}
                 >
                   <div
                     style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 600, color: isIndigo ? 'white' : '#0FA8DC', margin: '0 auto 16px', fontFamily: 'Poppins, sans-serif', background: fill }}
                   >
                     {member.name.split(' ').map((n) => n[0]).join('')}
                   </div>
-                  <h3 style={{ fontSize: '15px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '4px' }}>{member.name}</h3>
+                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '4px' }}>{member.name}</h3>
                   <p style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{member.role}</p>
                 </motion.div>
               );
@@ -235,8 +238,8 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#111111' }}>
-              What We Stand For
+            <h2 className="t-h2">
+              What We <AccentText tone="gradient">Stand For</AccentText>
             </h2>
           </motion.div>
           <motion.div
@@ -252,13 +255,13 @@ export default function About() {
                 key={title}
                 variants={fadeUp}
                 whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
-                style={{ padding: '32px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
+                className="surface-card surface-card-xl"
               >
                 <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: '#E0F5FC', color: '#0FA8DC' }}>
                   <Icon size={22} />
                 </div>
-                <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>{title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
+                <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>{title}</h3>
+                <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
               </motion.div>
             ))}
           </motion.div>

@@ -2,24 +2,25 @@ import { useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Bell, LogIn } from 'lucide-react';
+import AccentText from '../components/AccentText';
 
-const ROLE_COPY: Record<string, { heading: string; line: string }> = {
+const ROLE_COPY: Record<string, { heading: React.ReactNode; line: string }> = {
   parent: {
-    heading: 'Parent login is on the way',
+    heading: <>Parent <AccentText tone="pink">login</AccentText> is on the way</>,
     line: 'The parent dashboard, with live retention scores and weekly progress, is rolling out soon. Start a free trial now and you will be first in line when logins open.',
   },
   student: {
-    heading: 'Student login is on the way',
+    heading: <>Student <AccentText tone="blue">login</AccentText> is on the way</>,
     line: 'Your personalised study plan, streaks, and quizzes are almost ready. Start a free trial now and we will set up your account the moment logins open.',
   },
   tutor: {
-    heading: 'Tutor login is on the way',
+    heading: <>Tutor <AccentText tone="gradient">login</AccentText> is on the way</>,
     line: 'The tutor console for tracking your students and clearing doubts is in final testing. Reach out and we will get you early access.',
   },
 };
 
 const DEFAULT_COPY = {
-  heading: 'Logins are launching soon',
+  heading: <>Logins are <AccentText tone="gradient">launching soon</AccentText></>,
   line: 'We are putting the finishing touches on the Blast Learning app. Start a free trial now, or get in touch and we will let you know the moment your account is ready.',
 };
 
@@ -66,7 +67,7 @@ export default function Login() {
               <LogIn size={24} />
             </div>
 
-            <h1 style={{ fontSize: 'var(--fs-h3-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#111111', marginBottom: '14px' }}>
+            <h1 className="t-h3" style={{ marginBottom: '14px' }}>
               {copy.heading}
             </h1>
             <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '32px' }}>

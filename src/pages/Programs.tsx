@@ -8,6 +8,7 @@ import heroBanner from '../assets/Hero 2.png';
 import BrandWhoosh from '../components/BrandWhoosh';
 import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection, SharedImageCtaSection, SharedTestimonialsSection } from '../components/MarketingSections';
+import AccentText from '../components/AccentText';
 
 const testimonialsRow1 = [
   { name: 'Ananya Krishnan', role: 'Class 10, CBSE Plan · Bangalore', text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.' },
@@ -148,10 +149,10 @@ export default function Programs() {
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <HeadingMarker text="HOW BLAST LEARNING WORKS" fontSize="12px" />
-            <h1 style={{ fontSize: 'var(--fs-h1-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, marginBottom: '20px', color: '#111111' }}>
-              The system beneath the syllabus.
+            <h1 className="t-h1" style={{ marginBottom: '20px' }}>
+              The <AccentText tone="blue">system</AccentText> beneath the <AccentText tone="gradient">syllabus</AccentText>.
             </h1>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
+            <p className="t-body" style={{ maxWidth: '640px', margin: '0 auto' }}>
               Every board exam tests the same thing twice: what your child knows, and whether that knowledge survives the walk into the exam hall. Blast Learning builds the second part. CBSE, ICSE, JEE, and NEET preparation runs on top of a study engine designed around how Indian students actually forget, and what makes them remember.
             </p>
             <div style={{ marginTop: '32px' }}>
@@ -176,10 +177,10 @@ export default function Programs() {
             whileInView="visible"
             viewport={{ once: true }}
           >
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '24px' }}>
+            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 'var(--lh-body)', color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '24px' }}>
               A coaching class can teach a concept twice and still lose a student to the forgetting curve by Friday, because re-reading and highlighting create a sense of familiarity that has almost nothing to do with retention. Blast Learning starts from that gap rather than from another video library. Each session is scheduled by an adaptive engine that tracks what a student has seen, how confidently they answered it, and when that memory is due to fade, so practice arrives at the moment recall takes real effort instead of the moment it feels comfortable. The result is not a faster way to consume more content. It is a study system that converts hours already being spent into marks that hold under exam pressure.
             </p>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
+            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 'var(--lh-body)', color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
               Every course on this page, whether it runs through the CBSE syllabus, sharpens mathematical pattern recognition, builds inferential reading for English and the SAT, or prepares a student for the Digital SAT directly, sits on the same foundation described below. A GAP Assessment opens each course by identifying exactly where a student's knowledge breaks down, often several grades behind their enrolled level in a specific topic, and the AI Tutor then builds a path from that point rather than from the syllabus cover page. A Study Buddy keeps a real person in the loop for accountability and explanation, because no adaptive engine alone sustains a teenager's motivation through a Tuesday evening revision session. Parents see minutes studied and concepts mastered on a transparent dashboard.
             </p>
           </motion.div>
@@ -196,10 +197,10 @@ export default function Programs() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px', maxWidth: '896px', marginLeft: 'auto', marginRight: 'auto' }}
           >
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '20px' }}>
-              The Method Behind the Marks
+            <h2 className="t-h2" style={{ marginBottom: '20px' }}>
+              The <AccentText tone="pink">Method</AccentText> Behind the <AccentText tone="blue">Marks</AccentText>
             </h2>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
+            <p className="t-body">
               Strip away the interface and five mechanisms do the actual work. Four of them move a student from gap to mastery in sequence; the fifth runs underneath all four, because none of them hold up if a student cannot manage focus, nerves, or a clock.
             </p>
           </motion.div>
@@ -241,21 +242,15 @@ export default function Programs() {
               <motion.div
                 key={card.num}
                 variants={fadeUp}
-                style={{
-                  background: '#FFFFFF',
-                  border: '1px solid #ECECF1',
-                  borderRadius: '16px',
-                  padding: '24px',
-                  boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-                }}
+                className="surface-card surface-card-md"
               >
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                   <div style={{ flexShrink: 0, width: '36px', height: '36px', borderRadius: '50%', background: '#E0F5FC', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <span style={{ fontSize: '16px', fontWeight: 700, color: '#0FA8DC', fontFamily: "'Poppins', sans-serif" }}>{card.num}</span>
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '17px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{card.title}</h3>
-                    <p style={{ fontSize: '14px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{card.body}</p>
+                    <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{card.title}</h3>
+                    <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{card.body}</p>
                   </div>
                 </div>
               </motion.div>
@@ -274,10 +269,10 @@ export default function Programs() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px', maxWidth: '896px', marginLeft: 'auto', marginRight: 'auto' }}
           >
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '20px' }}>
-              Four Courses. One Method.
+            <h2 className="t-h2" style={{ marginBottom: '20px' }}>
+              Four <AccentText tone="gradient">Courses</AccentText>. One Method.
             </h2>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
+            <p className="t-body">
               The five-mechanism system above runs identically across every course. What changes is the subject, the syllabus, and the specific gap each course is built to close.
             </p>
           </motion.div>
@@ -298,14 +293,8 @@ export default function Programs() {
                   variants={fadeUp}
                   whileHover={{ y: -6 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                  style={{
-                    position: 'relative',
-                    background: '#FFFFFF',
-                    border: prog.featured ? '2px solid #0FA8DC' : '1px solid #ECECF1',
-                    borderRadius: '16px',
-                    overflow: 'hidden',
-                    boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-                  }}
+                    className="surface-card surface-card-xl"
+                    style={{ position: 'relative', overflow: 'hidden', border: prog.featured ? '2px solid #0FA8DC' : '1px solid #ECECF1' }}
                 >
                   {prog.featured && (
                     <div style={{ padding: '10px', textAlign: 'center', fontSize: '11px', fontWeight: 600, color: 'white', background: '#0FA8DC', fontFamily: "'Inter', sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase' }}>
@@ -326,7 +315,7 @@ export default function Programs() {
                             {prog.classes}
                           </span>
                         </div>
-                        <h2 style={{ fontSize: '20px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '4px' }}>{prog.name}</h2>
+                        <h2 className="t-h4" style={{ marginBottom: '4px' }}>{prog.name}</h2>
                         <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
                           <span style={{ fontSize: '26px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{prog.price}</span>
                           <span style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>/month</span>
@@ -334,7 +323,7 @@ export default function Programs() {
                       </div>
                     </div>
 
-                    <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', marginBottom: '24px', fontFamily: "'Inter', sans-serif" }}>{prog.description}</p>
+                    <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', marginBottom: '24px', fontFamily: "'Inter', sans-serif" }}>{prog.description}</p>
 
                     <div style={{ marginBottom: '24px' }}>
                       <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', marginBottom: '10px', fontFamily: "'Inter', sans-serif" }}>Key Outcomes</p>
@@ -396,9 +385,9 @@ export default function Programs() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', textAlign: 'center', marginBottom: '56px' }}
+            className="t-h2" style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            How We Compare
+            How We <AccentText tone="pink">Compare</AccentText>
           </motion.h2>
           <div className="comparison-table-wrap">
           <motion.div
@@ -444,7 +433,7 @@ export default function Programs() {
                     {val ? (
                       <CheckCircle size={18} style={{ color: j === 0 ? '#0FA8DC' : '#6B6B7B' }} />
                     ) : (
-                      <span style={{ fontSize: '18px', color: '#6B6B7B' }}>×</span>
+                      <span style={{ fontSize: 'var(--fs-h4)', color: '#6B6B7B' }}>×</span>
                     )}
                   </div>
                 ))}
