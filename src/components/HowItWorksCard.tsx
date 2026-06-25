@@ -95,6 +95,8 @@ const descVariants: Variants = {
 // ── Card Component ─────────────────────────────────────────────────────────────
 
 interface HowItWorksCardProps {
+  num?: string;
+  eyebrow?: string;
   title: string;
   desc: string;
   accent: string;
@@ -103,7 +105,7 @@ interface HowItWorksCardProps {
   descLines?: number;
 }
 
-export default function HowItWorksCard({ title, desc, accent: _accent, Visual, height = '380px', descLines = 3 }: HowItWorksCardProps) {
+export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visual, height = '380px', descLines = 3 }: HowItWorksCardProps) {
   return (
     <div
       style={{
@@ -140,10 +142,53 @@ export default function HowItWorksCard({ title, desc, accent: _accent, Visual, h
           padding: '14px 16px 12px',
           border: '1px solid rgba(255,255,255,0.65)',
           zIndex: 5,
-          maxHeight: '54%',
+          maxHeight: '58%',
           overflow: 'hidden',
         }}
       >
+        {(num || eyebrow) && (
+          <motion.div
+            variants={titleVariants}
+            style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '0 0 10px' }}
+          >
+            {num && (
+              <span
+                style={{
+                  minWidth: '28px',
+                  height: '28px',
+                  borderRadius: '9999px',
+                  background: accent,
+                  color: '#FFFFFF',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  fontFamily: 'Poppins, sans-serif',
+                  lineHeight: 1,
+                  flexShrink: 0,
+                }}
+              >
+                {num}
+              </span>
+            )}
+            {eyebrow && (
+              <span
+                style={{
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: accent,
+                  fontFamily: 'Inter, sans-serif',
+                  lineHeight: 1.35,
+                }}
+              >
+                {eyebrow}
+              </span>
+            )}
+          </motion.div>
+        )}
         <motion.h3
           variants={titleVariants}
           style={{

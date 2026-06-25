@@ -102,16 +102,38 @@ export default function HeroCarousel() {
           </div>
         </Link>
 
-        {/* Secondary CTA - See How It Works (Overlay on Hero) */}
+        {/* Hero CTAs */}
         <div
           style={{
             position: 'absolute',
-            bottom: '85px',
-            left: '110px',
+            bottom: '145px',
+            left: '90px',
             zIndex: 3,
+            display: 'flex',
+            gap: '12px',
+            alignItems: 'flex-start',
           }}
+          className="hero-cta-wrap"
         >
-          <Link to="/programs" className="cta cta-outline">
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+            <Link
+              to="/programs"
+              className="cta"
+              style={{
+                background: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)',
+                color: '#FFFFFF',
+                border: 'none',
+                boxShadow: 'none',
+                minHeight: '48px',
+              }}
+            >
+              Start Your Journey Today
+            </Link>
+            <span style={{ fontSize: '11px', color: '#9CA3AF', fontFamily: 'Inter, sans-serif', fontWeight: 500, lineHeight: 1.2 }}>
+              No credit card required
+            </span>
+          </div>
+          <Link to="/programs/cbse-plan" className="cta cta-outline" style={{ paddingLeft: '20px', paddingRight: '20px', minHeight: '48px', marginTop: 0 }}>
             See How It Works
           </Link>
         </div>

@@ -17,6 +17,7 @@ import { useSEO } from '../hooks/useSEO';
 const howItWorks = [
   {
     num: '01',
+    eyebrow: 'Spaced Repetition',
     title: 'AI Tutor',
     desc: "A quick diagnostic builds a personalised study plan, scheduled at the interval where recall is hardest and retention sticks. Everything stays tuned to the student's actual class and the next test, so study time gets used, not added to.",
     accent: '#0FA8DC',
@@ -24,6 +25,7 @@ const howItWorks = [
   },
   {
     num: '02',
+    eyebrow: 'Active Recall',
     title: 'Study Buddy',
     desc: 'A human partner works from the same adaptive question set, and progress gets tracked for both. No student studies alone.',
     accent: '#0FA8DC',
@@ -31,6 +33,7 @@ const howItWorks = [
   },
   {
     num: '03',
+    eyebrow: 'Metacognition & Emotional Regulation',
     title: 'Mind Coach',
     desc: 'Focus, emotional control, goal-setting, and personal agency, taught as skills with their own practice routine. Test-taking gets the same treatment: rehearsed under timed conditions until it holds.',
     accent: '#3B82F6',
@@ -38,8 +41,9 @@ const howItWorks = [
   },
   {
     num: '04',
+    eyebrow: 'Diagnostic-First Learning',
     title: 'GAP Assessment',
-    desc: "Blast finds the gaps left by earlier years, builds a path that closes exactly those gaps, then moves the student into the current year's material.",
+    desc: 'Blast finds the gaps left by earlier years, builds a path that closes exactly those gaps, then moves the student into the current year\'s material.',
     accent: '#0FA8DC',
     Visual: GapVisual,
   },
@@ -401,15 +405,15 @@ export default function Home() {
             title={<>The {G('science', PINK)} that explains the {G('method', CYAN)}.</>}
             subtitle="Ebbinghaus's Forgetting Curve is the starting point: students lose 80% of what they learn within 24 hours - not from lack of effort, but because the brain discards what it isn't asked to use. Each of the four steps below is a direct application of the science that fights this. The step is the practice; the principle beside it is why it works."
           />
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginBottom: '28px' }} className="grid-cols-2-md grid-cols-4-lg">
-            {howItWorks.map(({ num, title, desc, accent, Visual }) => (
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginTop: '-20px', marginBottom: '28px' }} className="grid-cols-2-md grid-cols-4-lg">
+            {howItWorks.map(({ num, eyebrow, title, desc, accent, Visual }) => (
               <motion.div
                 key={num}
                 variants={fadeUp}
                 whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
-                <HowItWorksCard title={title} desc={desc} accent={accent} Visual={Visual} />
+                <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} accent={accent} Visual={Visual} />
               </motion.div>
             ))}
           </motion.div>
