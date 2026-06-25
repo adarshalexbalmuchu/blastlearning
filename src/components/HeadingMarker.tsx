@@ -90,7 +90,7 @@ export default function HeadingMarker({ text, marginBottom = '12px', fontSize = 
         variants={TEXT_VARIANTS}
         style={{
           fontSize,
-          fontWeight: 500,
+          fontWeight: 400,
           fontFamily: 'Inter, sans-serif',
           color: textColor,
           letterSpacing: '0.2em',

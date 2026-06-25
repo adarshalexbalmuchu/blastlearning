@@ -42,9 +42,9 @@ export default function BlogPost() {
           0% { background-position: 200% 0; }
           100% { background-position: -200% 0; }
         }
-        .wp-content h2 { font-size: 1.5rem; font-weight: 700; font-family: 'Poppins', sans-serif; color: #1C1C28; margin: 2rem 0 1rem; letter-spacing: -0.015em; }
-        .wp-content h3 { font-size: 1.2rem; font-weight: 700; font-family: 'Poppins', sans-serif; color: #1C1C28; margin: 1.75rem 0 0.75rem; }
-        .wp-content h4 { font-size: 1.05rem; font-weight: 600; font-family: 'Poppins', sans-serif; color: #1C1C28; margin: 1.5rem 0 0.5rem; }
+        .wp-content h2 { font-size: 1.5rem; font-weight: 700; font-family: 'Inter', sans-serif; color: #1C1C28; margin: 2rem 0 1rem; letter-spacing: -0.015em; }
+        .wp-content h3 { font-size: 1.2rem; font-weight: 700; font-family: 'Inter', sans-serif; color: #1C1C28; margin: 1.75rem 0 0.75rem; }
+        .wp-content h4 { font-size: 1.05rem; font-weight: 600; font-family: 'Inter', sans-serif; color: #1C1C28; margin: 1.5rem 0 0.5rem; }
         .wp-content p { font-size: 1.0625rem; line-height: 1.8; color: #3D3D52; font-family: 'Inter', sans-serif; margin-bottom: 1.25rem; }
         .wp-content a { color: #0FA8DC; text-decoration: underline; text-underline-offset: 3px; }
         .wp-content a:hover { color: #0D8BB5; }

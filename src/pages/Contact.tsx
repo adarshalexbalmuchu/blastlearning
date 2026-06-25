@@ -237,7 +237,7 @@ export default function Contact() {
                     <div style={{ width: '64px', height: '64px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '24px', background: '#E0F5FC', color: '#0FA8DC' }}>
                       <Send size={26} />
                     </div>
-                    <h2 style={{ fontSize: 'var(--fs-h3-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', marginBottom: '12px', color: '#111111' }}>Message <AccentText tone="blue">Sent!</AccentText></h2>
+                    <h2 style={{ fontSize: 'var(--fs-h3-fluid)', fontWeight: 800, fontFamily: 'Inter, sans-serif', marginBottom: '12px', color: '#111111' }}>Message <AccentText tone="blue">Sent!</AccentText></h2>
                     <p style={{ fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', lineHeight: 1.7 }}>
                       Thank you for reaching out. Our team will get back to you within 2 business hours.
                     </p>

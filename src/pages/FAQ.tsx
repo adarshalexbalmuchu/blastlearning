@@ -360,7 +360,7 @@ export default function FAQ() {
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
                           fontSize: '12px', fontWeight: 700, color: 'white',
                           background: CATEGORY_COLOR[group.category],
-                          fontFamily: 'Poppins, sans-serif', flexShrink: 0,
+                          fontFamily: 'Inter, sans-serif', flexShrink: 0,
                         }}>
                           {group.category.charAt(0)}
                         </span>

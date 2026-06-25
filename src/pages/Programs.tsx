@@ -246,10 +246,10 @@ export default function Programs() {
               >
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
                   <div style={{ flexShrink: 0, width: '36px', height: '36px', borderRadius: '50%', background: '#E0F5FC', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ fontSize: '16px', fontWeight: 700, color: '#0FA8DC', fontFamily: "'Poppins', sans-serif" }}>{card.num}</span>
+                    <span style={{ fontSize: '16px', fontWeight: 700, color: '#0FA8DC', fontFamily: "'Inter', sans-serif" }}>{card.num}</span>
                   </div>
                   <div>
-                    <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{card.title}</h3>
+                    <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: "'Inter', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{card.title}</h3>
                     <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{card.body}</p>
                   </div>
                 </div>
@@ -317,7 +317,7 @@ export default function Programs() {
                         </div>
                         <h2 className="t-h4" style={{ marginBottom: '4px' }}>{prog.name}</h2>
                         <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                          <span style={{ fontSize: '26px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{prog.price}</span>
+                          <span style={{ fontSize: '26px', fontWeight: 700, fontFamily: "'Inter', sans-serif", color: '#1C1C28' }}>{prog.price}</span>
                           <span style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>/month</span>
                         </div>
                       </div>
@@ -407,7 +407,7 @@ export default function Programs() {
                     textAlign: 'center',
                     fontSize: '14px',
                     fontWeight: 600,
-                    fontFamily: "'Poppins', sans-serif",
+                    fontFamily: "'Inter', sans-serif",
                     background: i === 0 ? '#E0F5FC' : 'transparent',
                     color: i === 0 ? '#0FA8DC' : '#5A5A6E',
                     borderBottom: '1px solid #ECECF1',

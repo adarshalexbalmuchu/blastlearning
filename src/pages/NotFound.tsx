@@ -17,7 +17,7 @@ const NotFound = () => {
     >
       <div
         style={{
-          fontFamily: 'Poppins, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontSize: 'var(--fs-h1-fluid)',
           fontWeight: 700,
           color: '#E0F5FC',
@@ -31,7 +31,7 @@ const NotFound = () => {
 
       <h1
         style={{
-          fontFamily: 'Poppins, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontSize: 'var(--fs-h2-fluid)',
           fontWeight: 800,
           color: '#111111',

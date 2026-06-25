@@ -155,7 +155,7 @@ export default function ForParents() {
                   <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: tile, color: '#0FA8DC' }}>
                     <Icon size={24} />
                   </div>
-                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{benefit.title}</h3>
+                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: "'Inter', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{benefit.title}</h3>
                   <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{benefit.description}</p>
                 </motion.div>
               );
@@ -203,7 +203,7 @@ export default function ForParents() {
                   className="surface-card surface-card-lg"
                   style={{ background: stat.bg, textAlign: 'center' }}
                 >
-                  <div style={{ fontSize: '28px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: stat.color, marginBottom: '6px' }}>{stat.value}</div>
+                  <div style={{ fontSize: '28px', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: stat.color, marginBottom: '6px' }}>{stat.value}</div>
                   <div style={{ fontSize: '13px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>{stat.label}</div>
                 </motion.div>
               ))}

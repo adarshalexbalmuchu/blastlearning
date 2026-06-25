@@ -141,7 +141,7 @@ export default function FeatureExplorer() {
                 style={{
                   margin: 0,
                   color: '#111111',
-                  fontFamily: 'Poppins, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontWeight: 700,
                   fontSize: '1rem',
                   lineHeight: 1.35,

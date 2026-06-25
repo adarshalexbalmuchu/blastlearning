@@ -17,7 +17,7 @@ export default function StatBar({ stats, subheading }: StatBarProps) {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }} className="grid-cols-4-md">
         {stats.map((stat) => (
           <div key={stat.label} className="text-center">
-            <div className="text-3xl font-bold mb-1 text-[#1C1C28]" style={{ fontFamily: "'Poppins', sans-serif" }} >
+            <div className="text-3xl font-bold mb-1 text-[#1C1C28]" style={{ fontFamily: "'Inter', sans-serif" }} >
               {stat.value}
             </div>
             <div className="text-sm text-[#8E8EA0]" style={{ fontFamily: "'Inter', sans-serif" }} >{stat.label}</div>

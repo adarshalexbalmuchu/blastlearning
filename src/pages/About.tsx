@@ -151,7 +151,7 @@ export default function About() {
                   className="surface-card surface-card-md"
                   style={{ background: statPastels[i % statPastels.length] }}
                 >
-                  <div style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '12px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>{item.val}</div>
+                  <div style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '12px', fontFamily: 'Inter, sans-serif', color: '#1C1C28' }}>{item.val}</div>
                   <p style={{ fontSize: 'var(--fs-xs)', lineHeight: 1.5, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{item.desc}</p>
                 </motion.div>
               ))}
@@ -173,7 +173,7 @@ export default function About() {
           >
             {companyStats.map((s) => (
               <motion.div key={s.label} variants={fadeUp} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '8px', fontFamily: 'Poppins, sans-serif', color: '#0FA8DC' }}>{s.value}</div>
+                <div style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '8px', fontFamily: 'Inter, sans-serif', color: '#0FA8DC' }}>{s.value}</div>
                 <div style={{ fontSize: '14px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>{s.label}</div>
               </motion.div>
             ))}
@@ -215,11 +215,11 @@ export default function About() {
                   style={{ textAlign: 'center' }}
                 >
                   <div
-                    style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 600, color: isIndigo ? 'white' : '#0FA8DC', margin: '0 auto 16px', fontFamily: 'Poppins, sans-serif', background: fill }}
+                    style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 600, color: isIndigo ? 'white' : '#0FA8DC', margin: '0 auto 16px', fontFamily: 'Inter, sans-serif', background: fill }}
                   >
                     {member.name.split(' ').map((n) => n[0]).join('')}
                   </div>
-                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '4px' }}>{member.name}</h3>
+                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: 'Inter, sans-serif', color: '#1C1C28', marginBottom: '4px' }}>{member.name}</h3>
                   <p style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{member.role}</p>
                 </motion.div>
               );
@@ -260,7 +260,7 @@ export default function About() {
                 <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: '#E0F5FC', color: '#0FA8DC' }}>
                   <Icon size={22} />
                 </div>
-                <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>{title}</h3>
+                <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: 'Inter, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>{title}</h3>
                 <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
               </motion.div>
             ))}

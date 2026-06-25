@@ -220,7 +220,7 @@ export default function ProgramDetail() {
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
                 <div>
-                  <div style={{ fontSize: '28px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1.1 }}>{program.price}</div>
+                  <div style={{ fontSize: '28px', fontWeight: 700, fontFamily: "'Inter', sans-serif", color: '#1C1C28', lineHeight: 1.1 }}>{program.price}</div>
                   <div style={{ fontSize: '12px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '2px' }}>per month</div>
                 </div>
                 <span style={{ padding: '5px 12px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif" }}>
@@ -232,7 +232,7 @@ export default function ProgramDetail() {
 
               {!submitted ? (
                 <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
-                  <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: "'Poppins', sans-serif", marginBottom: '16px' }}>
+                  <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
                     Start your free 7-day trial
                   </p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '16px' }}>
@@ -311,7 +311,7 @@ export default function ProgramDetail() {
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
             <HeadingMarker text="Right for you?" fontSize="12px" />
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
+            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Inter, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
               Who This <AccentText tone="blue">Programme</AccentText> Is For
             </h2>
           </motion.div>
@@ -352,7 +352,7 @@ export default function ProgramDetail() {
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
             <HeadingMarker text="Curriculum" fontSize="12px" />
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
+            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Inter, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
               What You'll <AccentText tone="gradient">Learn</AccentText>
             </h2>
           </motion.div>
@@ -370,7 +370,7 @@ export default function ProgramDetail() {
                   style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 24px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '16px' }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                    <span style={{ width: '28px', height: '28px', borderRadius: '8px', background: program.accentBg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700, color: '#0FA8DC', fontFamily: "'Poppins', sans-serif", flexShrink: 0 }}>
+                    <span style={{ width: '28px', height: '28px', borderRadius: '8px', background: program.accentBg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700, color: '#0FA8DC', fontFamily: "'Inter', sans-serif", flexShrink: 0 }}>
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <span className="t-body" style={{ fontWeight: 600, color: '#1C1C28' }}>{module.title}</span>
@@ -416,7 +416,7 @@ export default function ProgramDetail() {
             <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               <motion.div variants={fadeUp} style={{ marginBottom: '40px' }}>
                 <HeadingMarker text="What's Included" fontSize="12px" />
-                <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
+                <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Inter, sans-serif', letterSpacing: '-0.025em', lineHeight: 1.15, color: '#111111' }}>
                   Everything in This <AccentText tone="pink">Plan</AccentText>
                 </h2>
               </motion.div>
@@ -447,7 +447,7 @@ export default function ProgramDetail() {
                 </span>
               </div>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', marginBottom: '6px' }}>
-                <span style={{ fontSize: '42px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1 }}>{program.price}</span>
+                <span style={{ fontSize: '42px', fontWeight: 700, fontFamily: "'Inter', sans-serif", color: '#1C1C28', lineHeight: 1 }}>{program.price}</span>
                 <span style={{ fontSize: '14px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>/month</span>
               </div>
               <p style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '28px' }}>{program.classes}</p>

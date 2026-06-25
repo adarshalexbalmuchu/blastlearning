@@ -45,7 +45,7 @@ export default function FAQItem({ question, answer, highlight = '' }: FAQItemPro
         <span style={{ fontSize: 'var(--fs-body)', fontWeight: 700, color: '#111111', fontFamily: 'Inter, sans-serif', lineHeight: 'var(--lh-small)' }}>
           <Highlight text={question} query={highlight} />
         </span>
-        <span style={{ flexShrink: 0, fontSize: '20px', lineHeight: 1, color: '#6B7280', fontWeight: 300, transition: 'color 0.2s' }}>
+        <span style={{ flexShrink: 0, fontSize: '20px', lineHeight: 1, color: '#111111', fontWeight: 300, transition: 'color 0.2s' }}>
           {open ? '−' : '+'}
         </span>
       </button>
@@ -60,7 +60,7 @@ export default function FAQItem({ question, answer, highlight = '' }: FAQItemPro
             transition={{ duration: 0.22, ease: 'easeInOut' }}
             style={{ overflow: 'hidden' }}
           >
-            <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-body)', color: '#6B7280', fontFamily: 'Inter, sans-serif', margin: 0, paddingBottom: '20px' }}>
+            <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-body)', color: '#111111', fontFamily: 'Inter, sans-serif', margin: 0, paddingBottom: '20px' }}>
               <Highlight text={answer} query={highlight} />
             </p>
           </motion.div>

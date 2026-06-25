@@ -132,36 +132,42 @@ const homeFaqs = [
 const resourceArticles = [
   {
     tag: 'GUIDE',
+    tagAccent: '#E8135A',
     readTime: '8 min read',
     title: "The Parent's Guide to Self-Study",
     desc: 'How to set up a home environment where retrieval practice actually happens without turning every evening into a battle.',
   },
   {
-    tag: 'RESEARCH',
+    tag: 'ARTICLE',
+    tagAccent: '#0FA8DC',
     readTime: '6 min read',
     title: "Why Re-Reading Doesn't Work",
     desc: 'A plain-language summary of 50 years of cognitive science on why passive review fails and what to do instead.',
   },
   {
-    tag: 'GUIDE',
+    tag: 'BLOG',
+    tagAccent: '#E8135A',
     readTime: '5 min read',
     title: 'NEP 2020 and Competency-Based Learning',
     desc: 'What the National Education Policy actually asks of students and how spaced repetition maps directly to its learning outcomes.',
   },
   {
     tag: 'RESEARCH',
+    tagAccent: '#0FA8DC',
     readTime: '7 min read',
     title: 'The GAP Assessment Methodology',
     desc: 'How Blast Learning\'s diagnostic isolates sub-topic gaps rather than chapter-level gaps and why the difference matters for results.',
   },
   {
-    tag: 'GUIDE',
+    tag: 'BLOG',
+    tagAccent: '#E8135A',
     readTime: '4 min read',
     title: 'Study Buddy: The Accountability Effect',
     desc: 'Peer accountability raises completion rates by 40%. Here is the research behind Study Buddy pairing and how we implement it.',
   },
   {
-    tag: 'RESEARCH',
+    tag: 'ARTICLE',
+    tagAccent: '#0FA8DC',
     readTime: '6 min read',
     title: 'Spaced Repetition for the CBSE Calendar',
     desc: 'A practical schedule mapping Blast Learning sessions to the CBSE academic year, term exams, and board exam revision windows.',
@@ -333,7 +339,7 @@ export default function Home() {
                   <div style={{ height: '3px', width: '100%', background: accent }} />
                   <div style={{ padding: '18px 16px 14px' }}>
                     <HeadingMarker text={plan.classes} accent={accent} fontSize="11px" />
-                    <h3 style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: 'var(--fs-h3)', fontWeight: 700, color: '#1C1C28', lineHeight: 'var(--lh-card)' }}>
+                    <h3 style={{ margin: 0, fontFamily: 'Inter, sans-serif', fontSize: 'var(--fs-h3)', fontWeight: 700, color: '#1C1C28', lineHeight: 'var(--lh-card)' }}>
                       {plan.name}
                     </h3>
                     <p className="t-body" style={{ margin: '8px 0 0' }}>
@@ -355,7 +361,7 @@ export default function Home() {
 
                     <div style={{ display: 'flex', alignItems: 'baseline', marginTop: '14px', gap: '2px' }}>
                       <span style={{ fontSize: '0.75rem', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>₹</span>
-                      <span style={{ fontSize: '1.55rem', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', lineHeight: 1 }}>
+                      <span style={{ fontSize: '1.55rem', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: '#1C1C28', lineHeight: 1 }}>
                         {plan.monthlyPrice.toLocaleString('en-IN')}
                       </span>
                       <span style={{ fontSize: '0.75rem', color: '#6B7280', fontFamily: 'Inter, sans-serif' }}>/month</span>
@@ -413,7 +419,7 @@ export default function Home() {
                 whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
-                <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} accent={accent} Visual={Visual} descLines={4} />
+                <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} accent={accent} Visual={Visual} height="340px" descLines={4} />
               </motion.div>
             ))}
           </motion.div>
@@ -432,7 +438,7 @@ export default function Home() {
         accent="#E8135A"
         align="center"
         background="#FFFFFF"
-        title={<>Field {GP('Notes')}: what changes once {GP('retrieval')} replaces {G('re-reading', CYAN)}.</>}
+        title={<>What changes once {GP('retrieval')} replaces {G('re-reading', CYAN)}.</>}
         subtitle="Students and parents describe what changed after shifting from passive review to retrieval-based study."
         row1={[
           {
@@ -512,9 +518,7 @@ export default function Home() {
           />
           <div className="grid-cols-3-md" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
             {resourceArticles.map((article) => {
-              const isGuide = article.tag === 'GUIDE';
-              const accent = isGuide ? '#E8135A' : '#0FA8DC';
-              const accentSoft = isGuide ? '#FFF0F4' : '#EAF6FF';
+              const accent = article.tagAccent;
 
               return (
               <motion.article
@@ -541,7 +545,7 @@ export default function Home() {
                 <div style={{ height: '3px', background: accent, width: '100%' }} />
                 <div style={{ padding: '22px 20px 20px', display: 'flex', flexDirection: 'column', minHeight: '248px' }}>
                   <p style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap' }}>
-                    <span style={{ padding: '4px 10px', borderRadius: '9999px', background: accentSoft, color: accent, fontSize: '10px', fontWeight: 700, letterSpacing: '0.08em', fontFamily: 'Inter, sans-serif' }}>{article.tag}</span>
+                    <HeadingMarker text={article.tag} accent={accent} fontSize="10px" marginBottom="0" />
                     <span style={{ fontSize: '11px', color: '#A0A5B1', fontFamily: 'Inter, sans-serif' }}>{article.readTime}</span>
                   </p>
                   <h3 className="t-h4" style={{ fontSize: 'clamp(1.25rem, 0.98rem + 0.55vw, 1.55rem)', marginBottom: '12px', lineHeight: 1.3, letterSpacing: '-0.015em' }}>{article.title}</h3>
@@ -562,7 +566,7 @@ export default function Home() {
       </section>
 
       {/* ── FAQ Preview (white) ── */}
-      <SharedFaqSection items={homeFaqs} eyebrow="FAQ" accent="#0FA8DC" align="center" background="#F7FAFC" title={<>{G('Common', CYAN)} questions, direct {G('answers', PINK)}.</>} subtitle="If your question isn't here, the full FAQ page covers every edge case - billing, syllabus details, Study Buddy matching, and technical requirements." linkLabel="View full FAQ page" />
+      <SharedFaqSection items={homeFaqs} eyebrow="FAQ" accent="#0FA8DC" align="center" background="#F7FAFC" title={<>Common {G('questions', CYAN)}, direct {G('answers', PINK)}.</>} subtitle="If your question isn't here, the full FAQ page covers every edge case - billing, syllabus details, Study Buddy matching, and technical requirements." linkLabel="View full FAQ page" />
     </div>
   );
 }

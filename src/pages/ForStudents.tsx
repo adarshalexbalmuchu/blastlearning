@@ -161,7 +161,7 @@ export default function ForStudents() {
                   <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: feature.tile, color: '#0FA8DC' }}>
                     <Icon size={24} />
                   </div>
-                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{feature.title}</h3>
+                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: "'Inter', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{feature.title}</h3>
                   <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{feature.description}</p>
                 </motion.div>
               );
@@ -193,9 +193,9 @@ export default function ForStudents() {
                 className="surface-card surface-card-lg"
                 style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}
               >
-                <div style={{ fontSize: '40px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#0FA8DC', flexShrink: 0, lineHeight: 1 }}>{step.number}</div>
+                <div style={{ fontSize: '40px', fontWeight: 700, fontFamily: "'Inter', sans-serif", color: '#0FA8DC', flexShrink: 0, lineHeight: 1 }}>{step.number}</div>
                 <div>
-                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '8px' }}>{step.title}</h3>
+                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: "'Inter', sans-serif", color: '#1C1C28', marginBottom: '8px' }}>{step.title}</h3>
                   <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{step.description}</p>
                 </div>
               </motion.div>

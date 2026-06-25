@@ -206,7 +206,7 @@ export default function Library() {
                       <span style={{ fontSize: '11px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>{resource.duration}</span>
                     )}
                   </div>
-                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '10px' }}>{resource.title}</h3>
+                  <h3 style={{ fontSize: 'var(--fs-h4)', fontWeight: 600, fontFamily: 'Inter, sans-serif', color: '#1C1C28', marginBottom: '10px' }}>{resource.title}</h3>
                   <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-small)', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '20px', flex: 1 }}>{resource.description}</p>
                   {resource.locked ? (
                     <Link

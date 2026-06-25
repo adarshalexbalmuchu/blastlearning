@@ -64,7 +64,7 @@ export default function ProgramCard({ icon, name, price, classRange, description
           {icon}
         </div>
         <div style={{ textAlign: 'right' }}>
-          <span style={{ fontSize: '22px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{price}</span>
+          <span style={{ fontSize: '22px', fontWeight: 700, fontFamily: "'Inter', sans-serif", color: '#1C1C28' }}>{price}</span>
           <span style={{ fontSize: '12px', color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginLeft: '2px' }}>/mo</span>
         </div>
       </div>
@@ -76,7 +76,7 @@ export default function ProgramCard({ icon, name, price, classRange, description
         </span>
       </div>
 
-      <h3 style={{ fontSize: '17px', fontWeight: 600, color: '#1C1C28', marginBottom: '4px', fontFamily: "'Poppins', sans-serif" }}>{name}</h3>
+      <h3 style={{ fontSize: '17px', fontWeight: 600, color: '#1C1C28', marginBottom: '4px', fontFamily: "'Inter', sans-serif" }}>{name}</h3>
       <span style={{ display: 'inline-block', marginBottom: '12px', padding: '3px 10px', fontSize: '11px', fontWeight: 500, borderRadius: '9999px', background: '#F7F7F8', color: '#5A5A6E', border: '1px solid #ECECF1', fontFamily: "'Inter', sans-serif" }}>
         {classRange}
       </span>

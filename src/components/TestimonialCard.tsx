@@ -49,7 +49,7 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
             <div style={{ fontSize: '9px', fontWeight: 600, color: '#B0B8C4', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '4px' }}>
               Before
             </div>
-            <div style={{ fontSize: '19px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#C8CDD6', lineHeight: 1, letterSpacing: '-0.02em' }}>
+            <div style={{ fontSize: '19px', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: '#C8CDD6', lineHeight: 1, letterSpacing: '-0.02em' }}>
               {before}
             </div>
           </div>
@@ -59,7 +59,7 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
             <div style={{ fontSize: '9px', fontWeight: 700, color: accent, fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '4px' }}>
               {metric}
             </div>
-            <div style={{ fontSize: '17px', fontWeight: 800, fontFamily: 'Poppins, sans-serif', color: accent, lineHeight: 1, letterSpacing: '-0.01em' }}>
+            <div style={{ fontSize: '17px', fontWeight: 800, fontFamily: 'Inter, sans-serif', color: accent, lineHeight: 1, letterSpacing: '-0.01em' }}>
               +{improvement}
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
             <div style={{ fontSize: '9px', fontWeight: 600, color: `${accent}CC`, fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '4px' }}>
               After
             </div>
-            <div style={{ fontSize: '19px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: accent, lineHeight: 1, letterSpacing: '-0.02em' }}>
+            <div style={{ fontSize: '19px', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: accent, lineHeight: 1, letterSpacing: '-0.02em' }}>
               {after}
             </div>
           </div>
@@ -99,12 +99,12 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
           background: accent,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontSize: '15px', fontWeight: 700, color: 'white',
-          fontFamily: 'Poppins, sans-serif', flexShrink: 0,
+          fontFamily: 'Inter, sans-serif', flexShrink: 0,
         }}>
           {name.charAt(0)}
         </div>
         <div>
-          <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif', margin: 0 }}>{name}</p>
+          <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif', margin: 0 }}>{name}</p>
           <p style={{ fontSize: '12px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: 0 }}>{role}</p>
         </div>
       </div>

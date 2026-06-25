@@ -51,7 +51,7 @@ export function GapVisual() {
         src={step4Img}
         alt=""
         aria-hidden="true"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 62%', transform: 'translateY(-60px)', display: 'block' }}
+        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center 60%', transform: 'translateY(-78px)', display: 'block' }}
       />
     </div>
   );
@@ -105,7 +105,10 @@ interface HowItWorksCardProps {
   descLines?: number;
 }
 
-export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visual, height = '380px', descLines = 3 }: HowItWorksCardProps) {
+export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visual, height = '340px', descLines = 3 }: HowItWorksCardProps) {
+  const stepNumber = Number.parseInt(num ?? '', 10);
+  const labelAccent = Number.isNaN(stepNumber) ? accent : (stepNumber % 2 === 1 ? '#E8135A' : '#0FA8DC');
+
   return (
     <div
       style={{
@@ -139,11 +142,12 @@ export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visu
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
           borderRadius: '18px',
-          padding: '14px 16px 12px',
+          padding: '10px 12px 6px',
           border: '1px solid rgba(255,255,255,0.65)',
           boxShadow: '0 12px 30px rgba(28,28,40,0.10)',
           zIndex: 5,
-          maxHeight: '68%',
+          height: '52%',
+          maxHeight: '52%',
           overflow: 'hidden',
         }}
       >
@@ -152,35 +156,21 @@ export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visu
             variants={titleVariants}
             style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '0 0 10px' }}
           >
-            {num && (
-              <span
-                style={{
-                  minWidth: '28px',
-                  height: '28px',
-                  borderRadius: '9999px',
-                  background: accent,
-                  color: '#FFFFFF',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: '12px',
-                  fontWeight: 700,
-                  fontFamily: 'Poppins, sans-serif',
-                  lineHeight: 1,
-                  flexShrink: 0,
-                }}
-              >
-                {num}
-              </span>
-            )}
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
+              <span style={{ width: '3px', height: '3px', borderRadius: '9999px', background: labelAccent }} />
+              <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: labelAccent }} />
+              <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: labelAccent }} />
+              <span style={{ width: '8px', height: '2px', borderRadius: '9999px', background: labelAccent }} />
+              <span style={{ width: '13px', height: '2px', borderRadius: '9999px', background: labelAccent }} />
+            </span>
             {eyebrow && (
               <span
                 style={{
                   fontSize: '10px',
-                  fontWeight: 700,
+                  fontWeight: 400,
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  color: accent,
+                  color: labelAccent,
                   fontFamily: 'Inter, sans-serif',
                   lineHeight: 1.35,
                 }}
@@ -195,7 +185,7 @@ export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visu
           style={{
             fontSize: '15px',
             fontWeight: 700,
-            fontFamily: 'Poppins, sans-serif',
+            fontFamily: 'Inter, sans-serif',
             color: '#1C1C28',
             lineHeight: 1.35,
             margin: '0 0 5px',

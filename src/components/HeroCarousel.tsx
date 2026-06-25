@@ -86,7 +86,15 @@ export default function HeroCarousel() {
     >
       <div style={{ position: 'relative', width: '100%' }}>
         <Link to="/programs/cbse-plan" aria-label="View CBSE program" style={{ display: 'block', cursor: 'pointer', lineHeight: 0, width: '100%' }}>
-          <div style={{ position: 'relative', boxShadow: '0 8px 32px rgba(28,28,40,0.105)' }}>
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              aspectRatio: '2048 / 1092',
+              overflow: 'hidden',
+              boxShadow: '0 8px 32px rgba(28,28,40,0.105)',
+            }}
+          >
             {hasSlides && SLIDES.map((slide, index) => (
               <img
                 key={`${slide}-${index}`}
@@ -99,10 +107,12 @@ export default function HeroCarousel() {
                 decoding="sync"
                 style={{
                   width: '100%',
-                  height: 'auto',
+                  height: '100%',
                   display: 'block',
-                  position: index === 0 ? 'relative' : 'absolute',
+                  position: 'absolute',
                   inset: 0,
+                  objectFit: 'cover',
+                  objectPosition: 'center center',
                   opacity: activeIndex === index ? 1 : 0,
                   transition: 'opacity 500ms ease',
                 }}

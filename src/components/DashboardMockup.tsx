@@ -50,7 +50,7 @@ export default function DashboardMockup() {
       <div style={{ padding: '16px 20px', borderBottom: '1px solid #ECECF1', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <div>
           <p style={{ fontSize: '11px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif", marginBottom: '2px' }}>Good morning,</p>
-          <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: "'Poppins', sans-serif" }}>Arjun Sharma</p>
+          <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: "'Inter', sans-serif" }}>Arjun Sharma</p>
         </div>
         <div style={{
           padding: '6px 12px',
@@ -70,7 +70,7 @@ export default function DashboardMockup() {
         <div className="grid grid-cols-3 gap-3 mb-5">
           {topStats.map((stat) => (
             <div key={stat.label} style={{ borderRadius: '12px', padding: '14px 12px', textAlign: 'center', background: stat.bg, border: '1px solid #ECECF1' }}>
-              <div style={{ fontSize: '18px', fontWeight: 700, marginBottom: '2px', fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{stat.value}</div>
+              <div style={{ fontSize: '18px', fontWeight: 700, marginBottom: '2px', fontFamily: "'Inter', sans-serif", color: '#1C1C28' }}>{stat.value}</div>
               <div style={{ fontSize: '10px', color: '#8E8EA0', fontFamily: "'Inter', sans-serif" }}>{stat.label}</div>
             </div>
           ))}
@@ -84,7 +84,7 @@ export default function DashboardMockup() {
               <div key={s.subject}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '5px' }}>
                   <span style={{ fontSize: '12px', fontWeight: 500, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{s.subject}</span>
-                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#1C1C28', fontFamily: "'Poppins', sans-serif" }}>{s.percent}%</span>
+                  <span style={{ fontSize: '11px', fontWeight: 700, color: '#1C1C28', fontFamily: "'Inter', sans-serif" }}>{s.percent}%</span>
                 </div>
                 <div style={{ height: '5px', borderRadius: '3px', overflow: 'hidden', background: '#F7F7F8' }}>
                   <div style={{ width: `${s.percent}%`, height: '100%', background: s.color, borderRadius: '3px' }} />
