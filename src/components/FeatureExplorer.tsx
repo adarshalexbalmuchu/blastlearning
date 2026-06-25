@@ -100,7 +100,7 @@ export default function FeatureExplorer() {
                 padding: '24px',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'center',
+                justifyContent: 'flex-start',
                 alignItems: 'flex-start',
                 textAlign: 'left',
               }}
@@ -128,7 +128,7 @@ export default function FeatureExplorer() {
                     color: labelColor,
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '0.74rem',
-                    fontWeight: 700,
+                    fontWeight: 400,
                     letterSpacing: '0.08em',
                     textTransform: 'uppercase',
                   }}
@@ -142,7 +142,7 @@ export default function FeatureExplorer() {
                   margin: 0,
                   color: '#111111',
                   fontFamily: 'Inter, sans-serif',
-                  fontWeight: 700,
+                  fontWeight: 400,
                   fontSize: '1rem',
                   lineHeight: 1.35,
                 }}
@@ -152,7 +152,7 @@ export default function FeatureExplorer() {
 
               <p
                 style={{
-                  margin: '10px 0 0',
+                  margin: '6px 0 0',
                   color: '#5A5A6E',
                   fontFamily: 'Inter, sans-serif',
                   fontWeight: 400,

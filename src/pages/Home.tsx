@@ -152,7 +152,7 @@ const resourceArticles = [
     desc: 'What the National Education Policy actually asks of students and how spaced repetition maps directly to its learning outcomes.',
   },
   {
-    tag: 'RESEARCH',
+    tag: 'ARTICLE',
     tagAccent: '#0FA8DC',
     readTime: '7 min read',
     title: 'The GAP Assessment Methodology',
@@ -419,7 +419,7 @@ export default function Home() {
                 whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
-                <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} accent={accent} Visual={Visual} height="340px" descLines={4} />
+                <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} accent={accent} Visual={Visual} height="300px" descLines={4} />
               </motion.div>
             ))}
           </motion.div>

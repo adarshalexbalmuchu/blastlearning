@@ -27,6 +27,7 @@ function parseRole(role: string): { classInfo: string; planName: string; locatio
 function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }) {
   const { classInfo, planName, location } = parseRole(card.role);
   const markerAccent = cardIndex === 1 ? '#0FA8DC' : '#E8135A';
+  const classAccent = cardIndex % 2 === 0 ? '#E8135A' : '#0FA8DC';
 
   return (
     <div
@@ -43,21 +44,8 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
         boxSizing: 'border-box',
       }}
     >
-      {/* Plan label + decorative quote mark */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'flex-start',
-          justifyContent: 'space-between',
-          gap: '10px',
-          marginBottom: '8px',
-        }}
-      >
-        {planName ? (
-          <HeadingMarker text={planName} fontSize="11px" marginBottom="0" accent={markerAccent} />
-        ) : (
-          <span />
-        )}
+      {/* Decorative quote mark */}
+      <div style={{ marginBottom: '2px' }}>
         <span
           aria-hidden="true"
           style={{
@@ -67,11 +55,26 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
             fontFamily: 'Georgia, serif',
             fontWeight: 700,
             userSelect: 'none',
-            flexShrink: 0,
+            display: 'inline-block',
           }}
         >
           ❝
         </span>
+      </div>
+
+      {/* Plan heading */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          marginBottom: '8px',
+        }}
+      >
+        {planName ? (
+          <HeadingMarker text={planName} fontSize="11px" marginBottom="0" accent={markerAccent} />
+        ) : (
+          <span />
+        )}
       </div>
 
       {/* Quote text */}
@@ -114,13 +117,13 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
               flexWrap: 'wrap',
             }}
           >
-            <span style={{ color: '#111111', fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
+            <span style={{ color: classAccent, fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
               {classInfo}
             </span>
             {location && (
               <>
-                <span style={{ color: '#111111', fontWeight: 400 }}>|</span>
-                <span style={{ color: '#111111', fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
+                <span style={{ color: classAccent, fontWeight: 400 }}>|</span>
+                <span style={{ color: classAccent, fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
                   {location}
                 </span>
               </>
@@ -155,7 +158,7 @@ export default function TestimonialsMarquee({
         style={{ marginBottom: '24px', display: 'grid', gap: '20px' }}
       >
         {pageCards.map((card, i) => (
-          <TestimonialCard key={`${page}-${i}`} card={card} cardIndex={i} />
+          <TestimonialCard key={`${page}-${i}`} card={card} cardIndex={page * PAGE_SIZE + i} />
         ))}
       </div>
 

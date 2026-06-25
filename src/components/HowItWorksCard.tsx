@@ -105,7 +105,7 @@ interface HowItWorksCardProps {
   descLines?: number;
 }
 
-export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visual, height = '340px', descLines = 3 }: HowItWorksCardProps) {
+export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visual, height = '300px', descLines = 3 }: HowItWorksCardProps) {
   const stepNumber = Number.parseInt(num ?? '', 10);
   const labelAccent = Number.isNaN(stepNumber) ? accent : (stepNumber % 2 === 1 ? '#E8135A' : '#0FA8DC');
 
@@ -135,26 +135,26 @@ export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visu
         transition={{ type: 'spring', stiffness: 260, damping: 22 }}
         style={{
           position: 'absolute',
-          bottom: '14px',
+          bottom: '2px',
           left: '12px',
           right: '12px',
           background: 'rgba(255,255,255,0.84)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
           borderRadius: '18px',
-          padding: '10px 12px 6px',
+          padding: '10px 12px 2px',
           border: '1px solid rgba(255,255,255,0.65)',
           boxShadow: '0 12px 30px rgba(28,28,40,0.10)',
           zIndex: 5,
-          height: '52%',
-          maxHeight: '52%',
+          height: '44%',
+          maxHeight: '44%',
           overflow: 'hidden',
         }}
       >
         {(num || eyebrow) && (
           <motion.div
             variants={titleVariants}
-            style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '0 0 10px' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '10px', margin: '0 0 8px' }}
           >
             <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}>
               <span style={{ width: '3px', height: '3px', borderRadius: '9999px', background: labelAccent }} />
@@ -188,7 +188,7 @@ export default function HowItWorksCard({ num, eyebrow, title, desc, accent, Visu
             fontFamily: 'Inter, sans-serif',
             color: '#1C1C28',
             lineHeight: 1.35,
-            margin: '0 0 5px',
+            margin: '0 0 4px',
           }}
         >
           {title}
