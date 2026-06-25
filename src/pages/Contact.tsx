@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 
@@ -125,7 +126,7 @@ export default function Contact() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <HeadingMarker text="Get in Touch" marginBottom="20px" fontSize="12px" />
             <h1 className="page-hero-title" style={{ marginBottom: '20px' }}>
-              Contact Us
+              <AccentText tone="blue">Contact</AccentText> <AccentText tone="pink">Us</AccentText>
             </h1>
             <p className="page-hero-copy">
               Have questions about our programs, or want to speak to a learning advisor? We're here to help.
@@ -148,7 +149,7 @@ export default function Contact() {
             {/* Contact Info */}
             <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
               <div style={{ padding: '32px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)', marginBottom: '20px' }}>
-                <h2 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '28px' }}>Contact Information</h2>
+                <h2 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '28px' }}>Contact <AccentText tone="blue">Information</AccentText></h2>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                   {[
                     {
@@ -234,14 +235,14 @@ export default function Contact() {
                     <div style={{ width: '64px', height: '64px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '24px', background: '#E0F5FC', color: '#0FA8DC' }}>
                       <Send size={26} />
                     </div>
-                    <h2 style={{ fontSize: 'var(--fs-h3-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', marginBottom: '12px', color: '#111111' }}>Message Sent!</h2>
+                    <h2 style={{ fontSize: 'var(--fs-h3-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', marginBottom: '12px', color: '#111111' }}>Message <AccentText tone="pink">Sent</AccentText>!</h2>
                     <p style={{ fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', lineHeight: 1.7 }}>
                       Thank you for reaching out. Our team will get back to you within 2 business hours.
                     </p>
                   </div>
                 ) : (
                   <>
-                    <h2 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '28px' }}>Send Us a Message</h2>
+                    <h2 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '28px' }}>Send Us a <AccentText tone="pink">Message</AccentText></h2>
                     <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px' }} className="grid-cols-2-sm">
                         <div>
@@ -368,7 +369,7 @@ export default function Contact() {
           style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}
         >
           <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', marginBottom: '16px', color: '#111111' }}>
-            Prefer to Talk?
+            Prefer to <AccentText tone="blue">Talk</AccentText>?
           </h2>
           <p style={{ color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '32px', fontSize: 'var(--fs-body)', lineHeight: 1.7 }}>
             Speak directly with a learning advisor who can assess your child's needs and recommend the right program.

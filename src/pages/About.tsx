@@ -1,6 +1,7 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Heart, Lightbulb, Users, Shield } from 'lucide-react';
+import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
@@ -94,7 +95,7 @@ export default function About() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <HeadingMarker text="Our Mission" marginBottom="24px" fontSize="12px" />
             <h1 className="page-hero-title">
-              Making Learning Stick for Every Indian Student
+              Making <AccentText tone="blue">Learning</AccentText> <AccentText tone="pink">Stick</AccentText> for Every Indian Student
             </h1>
             <p className="page-hero-copy" style={{ maxWidth: '640px', margin: '0 auto' }}>
               India spends billions on education every year, yet most students forget 90% of what they learn within a week. We built Blast Learning to fix that, to make every hour of study count, permanently.
@@ -116,7 +117,7 @@ export default function About() {
           >
             <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
               <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#111111', marginBottom: '28px' }}>
-                Why We Built Blast Learning
+                Why We <AccentText tone="blue">Built</AccentText> Blast <AccentText tone="pink">Learning</AccentText>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 {[
@@ -187,7 +188,7 @@ export default function About() {
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
             <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#111111' }}>
-              The Team Behind Blast Learning
+              The <AccentText tone="blue">Team</AccentText> Behind Blast <AccentText tone="pink">Learning</AccentText>
             </h2>
           </motion.div>
           <motion.div
@@ -233,7 +234,7 @@ export default function About() {
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
             <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#111111' }}>
-              What We Stand For
+              What We <AccentText tone="blue">Stand</AccentText> <AccentText tone="pink">For</AccentText>
             </h2>
           </motion.div>
           <motion.div

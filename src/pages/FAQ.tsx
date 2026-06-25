@@ -2,6 +2,7 @@ import { useSEO } from '../hooks/useSEO';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Search, X } from 'lucide-react';
 import FAQItem from '../components/FAQItem';
+import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import { useState, useEffect, useMemo } from 'react';
@@ -214,7 +215,7 @@ export default function FAQ() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <HeadingMarker text="FAQ" marginBottom="16px" fontSize="12px" />
             <h1 className="page-hero-title" style={{ marginBottom: '16px' }}>
-              Frequently Asked Questions
+              Frequently Asked <AccentText tone="gradient">Questions</AccentText>
             </h1>
             <p className="page-hero-copy" style={{ marginBottom: '32px' }}>
               Everything you need to know about Blast Learning. Can't find your answer? Contact our team.

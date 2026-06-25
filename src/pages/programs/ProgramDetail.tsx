@@ -233,7 +233,7 @@ export default function ProgramDetail() {
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
             <PageHeading
               eyebrow="NEP 2020"
-              title="Who This Programme Is For"
+              title={<>Who This <AccentText tone="blue">Programme</AccentText> Is <AccentText tone="pink">For</AccentText></>}
               subtitle="The same card design and image language as the Home page, reused across every program so the site feels consistent end to end."
               maxWidth="880px"
             />
@@ -354,7 +354,7 @@ export default function ProgramDetail() {
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '40px' }}>
             <PageHeading
               eyebrow="What's Included"
-              title="Everything in This Plan"
+              title={<>Everything in This <AccentText tone="pink">Plan</AccentText></>}
               subtitle={program.description}
               maxWidth="980px"
             />
@@ -477,7 +477,7 @@ export default function ProgramDetail() {
         row1={testimonialCards}
         row2={[...testimonialCards].reverse()}
         eyebrow="Student Results"
-        title={`Real Results from ${program.name} Students`}
+        title={<>Real <AccentText tone="pink">Results</AccentText> from {program.name} <AccentText tone="blue">Students</AccentText></>}
         subtitle="See what this programme looks like when the same study system turns into measurable improvement."
       />
 

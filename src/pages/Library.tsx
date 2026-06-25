@@ -4,6 +4,7 @@ import BrandArc from '../components/BrandArc';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, Play, FileText, HelpCircle, Lock } from 'lucide-react';
+import AccentText from '../components/AccentText';
 import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 
@@ -106,7 +107,7 @@ export default function Library() {
           >
             <HeadingMarker text="Resource Library" marginBottom="20px" fontSize="12px" />
             <h1 className="page-hero-title" style={{ marginBottom: '20px' }}>
-              Learning Resources
+              <AccentText tone="blue">Learning</AccentText> <AccentText tone="pink">Resources</AccentText>
             </h1>
             <p className="page-hero-copy" style={{ maxWidth: '560px', margin: '0 auto 32px' }}>
               Videos, notes, and practice quizzes for CBSE Classes 8-12, SAT Prep, and competitive exams. Many are free to start, and a subscription unlocks the full library.

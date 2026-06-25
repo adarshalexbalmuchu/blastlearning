@@ -1,6 +1,7 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Shield, TrendingUp, Clock, Heart, BarChart3, Bell, CheckCircle } from 'lucide-react';
+import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import HeadingMarker from '../components/HeadingMarker';
@@ -98,7 +99,7 @@ export default function ForParents() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <HeadingMarker text="For Parents" marginBottom="24px" fontSize="12px" />
             <h1 className="page-hero-title">
-              Peace of Mind for Parents
+              <AccentText tone="blue">Peace</AccentText> of <AccentText tone="pink">Mind</AccentText> for Parents
             </h1>
             <p className="page-hero-copy" style={{ maxWidth: '640px', margin: '0 auto' }}>
               Stay informed and involved in your child's education journey. Track progress, celebrate wins, and support their growth, all backed by transparent data.
@@ -118,7 +119,7 @@ export default function ForParents() {
             style={{ textAlign: 'center', marginBottom: '64px' }}
           >
             <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '16px' }}>
-              Everything You Need to Stay Involved
+              Everything You <AccentText tone="blue">Need</AccentText> to Stay <AccentText tone="pink">Involved</AccentText>
             </h2>
             <p style={{ fontSize: 'var(--fs-body)', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
               Powerful tools designed to keep you connected to your child's learning journey.
@@ -166,7 +167,7 @@ export default function ForParents() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }} className="grid-cols-2-md">
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
               <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '24px' }}>
-                Built on Trust & Transparency
+                Built on <AccentText tone="blue">Trust</AccentText> & <AccentText tone="pink">Transparency</AccentText>
               </h2>
               <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '32px' }}>
                 We believe parents deserve complete clarity. No hidden costs, no confusing contracts, just honest, effective education.
@@ -214,7 +215,7 @@ export default function ForParents() {
       </section>
 
       {/* ── Testimonials ── */}
-      <SharedTestimonialsSection row1={testimonialsRow1} row2={testimonialsRow2} eyebrow="Parent Stories" title="What Parents Are Saying" subtitle="Thousands of families trust Blast Learning to keep their children on track." />
+      <SharedTestimonialsSection row1={testimonialsRow1} row2={testimonialsRow2} eyebrow="Parent Stories" title={<>What <AccentText tone="blue">Parents</AccentText> Are <AccentText tone="pink">Saying</AccentText></>} subtitle="Thousands of families trust Blast Learning to keep their children on track." />
 
       {/* ── FAQ ── */}
       <SharedFaqSection items={pageFaqs} />

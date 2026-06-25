@@ -8,6 +8,7 @@ import {
   getFeaturedImage, getFeaturedAlt, getCategories,
   stripHtml, formatDate, readingTime,
 } from '../lib/wordpress';
+import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 
@@ -74,7 +75,7 @@ export default function Blog() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <HeadingMarker text="Blast Learning Blog" marginBottom="20px" fontSize="12px" />
             <h1 className="page-hero-title" style={{ marginBottom: '18px' }}>
-              Study Tips & Learning Science
+              <AccentText tone="blue">Study</AccentText> Tips & Learning <AccentText tone="pink">Science</AccentText>
             </h1>
             <p className="page-hero-copy" style={{ maxWidth: '520px', margin: '0 auto 32px' }}>
               Exam strategies, retention science, and practical guides from our educators and AI researchers.

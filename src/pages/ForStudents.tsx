@@ -1,6 +1,7 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Gamepad2, Trophy, Brain, Target, Sparkles, Star, Flame, Award } from 'lucide-react';
+import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
@@ -105,7 +106,7 @@ export default function ForStudents() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <HeadingMarker text="For Students" marginBottom="24px" fontSize="12px" />
             <h1 className="page-hero-title">
-              Learning That Feels Like Play
+              <AccentText tone="blue">Learning</AccentText> That Feels Like <AccentText tone="pink">Play</AccentText>
             </h1>
             <p className="page-hero-copy" style={{ maxWidth: '640px', margin: '0 auto' }}>
               Studying does not have to feel like a chore. Blast Learning adds games, rewards, and an AI study buddy that explains things in a way that finally clicks.
@@ -125,7 +126,7 @@ export default function ForStudents() {
             style={{ textAlign: 'center', marginBottom: '64px' }}
           >
             <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '16px' }}>
-              Why Students Love Us
+              Why <AccentText tone="blue">Students</AccentText> Love <AccentText tone="pink">Us</AccentText>
             </h2>
             <p style={{ fontSize: 'var(--fs-body)', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
               We built Blast Learning with one goal: make studying so engaging your child forgets it is work.
@@ -176,7 +177,7 @@ export default function ForStudents() {
             viewport={{ once: true }}
             style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', textAlign: 'center', marginBottom: '56px' }}
           >
-            How It Works
+            How It <AccentText tone="blue">Works</AccentText>
           </motion.h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-2-md">
             {steps.map((step) => (
@@ -218,7 +219,7 @@ export default function ForStudents() {
             viewport={{ once: true }}
             style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '16px' }}
           >
-            Collect Achievements
+            Collect <AccentText tone="pink">Achievements</AccentText>
           </motion.h2>
           <motion.p
             variants={fadeUp}
