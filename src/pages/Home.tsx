@@ -53,8 +53,8 @@ const pricingPlans = [
     id: 'cbse',
     slug: 'cbse-plan',
     name: 'CBSE Full Syllabus',
-    classes: 'Class 10 · All core subjects',
-    desc: 'The CBSE course built on spaced repetition from the ground up. Every chapter is sequenced for retention, not just coverage.',
+    classes: 'Retention-Optimized · Class 10',
+    desc: 'The CBSE course is built on spaced repetition from the ground up, with each chapter sequenced for maximum and lasting retention.',
     monthlyPrice: 1299,
     yearlyMonthly: 1039,
     features: [
@@ -70,8 +70,8 @@ const pricingPlans = [
     id: 'math',
     slug: 'math-genius',
     name: 'Math Genius Maker',
-    classes: 'Grade 5-12 · GAP Assessment driven',
-    desc: 'Starts with a diagnostic to find where a student is stuck, then rebuilds only those foundations. Zero wasted time on mastered concepts.',
+    classes: 'Foundation-Rebuilt · Grades 5–8',
+    desc: 'A diagnostic test locates exactly where the student got stuck, then rebuilds only those foundations, skipping mastered concepts.',
     monthlyPrice: 999,
     yearlyMonthly: 799,
     features: [
@@ -87,12 +87,12 @@ const pricingPlans = [
     id: 'english',
     slug: 'english-mastery',
     name: 'English Mastery Pass',
-    classes: 'CBSE & ICSE · SAT-compatible',
-    desc: 'Comprehension and grammar built to serve both board exams and the Digital SAT through one study system.',
+    classes: 'SAT-Compatible · CBSE & ICSE',
+    desc: 'Comprehension and grammar training serves both board exams and the Digital SAT, producing one system with two distinct outcomes.',
     monthlyPrice: 999,
     yearlyMonthly: 799,
     features: [
-      'Reading, grammar & writing modules',
+      'Reading, grammar, & writing modules',
       'CBSE and ICSE board aligned',
       'Digital SAT format compatible',
       'AI Tutor with doubt resolution',
@@ -104,8 +104,8 @@ const pricingPlans = [
     id: 'sat',
     slug: 'sat-prep',
     name: 'SAT Prep Pass',
-    classes: 'Digital SAT · Diagnostic-first',
-    desc: 'Mirrors the Digital SAT adaptive format with retrieval practice calibrated to real question types and time pressure.',
+    classes: 'Diagnostic-Engineered · Digital SAT',
+    desc: "Mirrors the Digital SAT's adaptive format. Retrieval practice calibrated to exact question types and time pressures of the exam.",
     monthlyPrice: 999,
     yearlyMonthly: 799,
     features: [
@@ -408,7 +408,7 @@ export default function Home() {
             accent={CYAN}
             align="left"
             title={<>The {G('science', PINK)} that explains the {G('method', CYAN)}.</>}
-            subtitle="Ebbinghaus's Forgetting Curve is the starting point: students lose 80% of what they learn within 24 hours - not from lack of effort, but because the brain discards what it isn't asked to use. Each of the four steps below is a direct application of the science that fights this. The step is the practice; the principle beside it is why it works."
+            subtitle="Ebbinghaus's Forgetting Curve is the starting point: students lose 80% of what they learn within 24 hours, and the brain discards information it isn't asked to use regardless of how hard a student studied. Each of the four steps below applies the science that fights this loss directly. The step is the practice; the principle beside it explains why it works."
           />
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginTop: '-20px', marginBottom: '28px' }} className="grid-cols-2-md grid-cols-4-lg">
             {howItWorks.map(({ num, eyebrow, title, desc, accent, Visual }) => (
