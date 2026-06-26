@@ -268,8 +268,8 @@ export default function Programs() {
                   className={`hiw-row${isReversed ? ' reversed' : ''}`}
                 >
                   {/* Content panel */}
-                  <div className="hiw-content" style={{ background: '#FFFFFF', padding: '48px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
+                  <div className="hiw-content" style={{ background: '#FFFFFF', padding: '48px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: isReversed ? 'left' : 'right' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px', alignSelf: isReversed ? 'flex-start' : 'flex-end' }}>
                       <div style={{ width: '44px', height: '44px', borderRadius: '50%', background: step.accent, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                         <span style={{ fontSize: '15px', fontWeight: 700, color: '#FFFFFF', fontFamily: "'Poppins', sans-serif" }}>{step.num}</span>
                       </div>
