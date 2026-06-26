@@ -599,7 +599,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile: Login button + hamburger */}
-          <div className="hide-lg" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div className="hide-lg" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
             <Link
               to="/login"
               className="nav-mobile-auth"

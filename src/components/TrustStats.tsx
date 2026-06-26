@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { FlaskConical, GraduationCap, Building2, BookOpen, type LucideIcon } from 'lucide-react';
 import './TrustStats.css';
 
 // ── Data ─────────────────────────────────────────────────────────────────────
@@ -8,13 +9,14 @@ interface StatItem {
   value: string;
   label: string;
   sublabel?: string;
+  Icon: LucideIcon;
 }
 
 const STATS: StatItem[] = [
-  { value: '500+', label: 'Peer-reviewed studies & patents' },
-  { value: '100,000+', label: 'Students taught' },
-  { value: '2', label: 'Institutional partners', sublabel: '(IBM · McGraw-Hill)' },
-  { value: 'NEP 2020', label: 'Curriculum alignment' },
+  { value: '500+', label: 'Peer-reviewed studies & patents', Icon: FlaskConical },
+  { value: '100,000+', label: 'Students taught', Icon: GraduationCap },
+  { value: '2', label: 'Institutional partners', sublabel: '(IBM · McGraw-Hill)', Icon: Building2 },
+  { value: 'NEP 2020', label: 'Curriculum alignment', Icon: BookOpen },
 ];
 
 // ── Count-up (scroll-triggered) ───────────────────────────────────────────────
@@ -101,6 +103,7 @@ export default function TrustStats() {
               transition: { type: 'spring', stiffness: 320, damping: 20 },
             }}
           >
+            <div className="trust-strip__icon"><stat.Icon size={22} /></div>
             <div className="trust-strip__value">
               <CountUpValue value={stat.value} play={inView} />
             </div>

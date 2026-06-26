@@ -418,6 +418,8 @@ p, li {
     right: auto !important;
     bottom: auto !important;
     margin-top: 14px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
 
   .hero-controls-main {

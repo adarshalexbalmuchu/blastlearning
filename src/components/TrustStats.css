@@ -87,6 +87,15 @@
   color: #d42d5e;
 }
 
+.trust-strip__icon {
+  margin-bottom: 8px;
+  color: #0fa8dc;
+}
+
+.trust-strip__card:nth-child(even) .trust-strip__icon {
+  color: #f03c6f;
+}
+
 @media (max-width: 1023px) {
   .trust-strip {
     padding: 10px 20px;
@@ -106,5 +115,35 @@
 
   .trust-strip__card {
     min-width: 180px;
+  }
+}
+
+@media (max-width: 767px) {
+  .trust-strip {
+    padding: 0;
+  }
+
+  .trust-strip__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    overflow-x: visible;
+    flex-wrap: unset;
+  }
+
+  .trust-strip__card {
+    min-width: 0;
+    flex: none;
+    padding: 20px 16px;
+    border-right: 1px solid rgba(236, 236, 241, 0.8);
+    border-bottom: 1px solid rgba(236, 236, 241, 0.8);
+  }
+
+  .trust-strip__card:nth-child(2n) {
+    border-right: none;
+  }
+
+  .trust-strip__card:nth-last-child(-n+2) {
+    border-bottom: none;
   }
 }
