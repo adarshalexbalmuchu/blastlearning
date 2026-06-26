@@ -145,7 +145,13 @@ export default function Programs() {
               className="programs-hero-cta"
               style={{ position: 'absolute', bottom: '15.1%', left: '4.4%', zIndex: 3 }}
             >
-              <HeadingMarker text="Our Programs" fontSize="11px" marginBottom="14px" />
+              <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', marginBottom: '14px' }}>
+                <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: '#E8135A' }} />
+                <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: '#E8135A' }} />
+                <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: '#E8135A' }} />
+                <span style={{ width: '9px', height: '3px', borderRadius: '9999px', background: '#E8135A' }} />
+                <span style={{ width: '14px', height: '3px', borderRadius: '9999px', background: '#E8135A' }} />
+              </span>
               <Link
                 to="/programs/cbse-plan"
                 className="cta"

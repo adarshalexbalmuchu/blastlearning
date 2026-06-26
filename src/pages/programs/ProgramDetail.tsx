@@ -53,6 +53,8 @@ export default function ProgramDetail() {
     text: testimonial.content,
   }));
 
+  const dotColor = program.slug === 'cbse-plan' || program.slug === 'english-mastery' ? '#E8135A' : '#0FA8DC';
+
   return (
     <div className="program-detail-page" style={{ background: '#FFFFFF' }}>
       {/* ─── Hero Banner ───────────────────────────────────────── */}
@@ -88,14 +90,15 @@ export default function ProgramDetail() {
                 objectPosition: 'center center',
               }}
             />
-            {/* HeadingMarker overlay */}
+            {/* dots-only overlay — matches home hero style */}
             <div className="programs-hero-cta" style={{ position: 'absolute', bottom: '15.1%', left: '4.4%', zIndex: 3 }}>
-              <HeadingMarker
-                text={`AI Powered · ${program.classes}`}
-                fontSize="11px"
-                marginBottom="0"
-                accent={program.slug === 'cbse-plan' || program.slug === 'english-mastery' ? '#E8135A' : '#0FA8DC'}
-              />
+              <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: dotColor }} />
+                <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: dotColor }} />
+                <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: dotColor }} />
+                <span style={{ width: '9px', height: '3px', borderRadius: '9999px', background: dotColor }} />
+                <span style={{ width: '14px', height: '3px', borderRadius: '9999px', background: dotColor }} />
+              </span>
             </div>
           </motion.div>
         </div>
