@@ -1,7 +1,7 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { BookOpen, Target, Brain, TrendingUp, ArrowRight, CheckCircle, Zap } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import AccentText from '../components/AccentText';
 import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
@@ -30,7 +30,6 @@ const pageFaqs = [
 
 const programs = [
   {
-    icon: BookOpen,
     slug: 'cbse-plan',
     name: 'CBSE Plan',
     price: '₹1,299',
@@ -48,7 +47,6 @@ const programs = [
     featured: true,
   },
   {
-    icon: Target,
     slug: 'math-genius',
     name: 'Math Genius Maker Pass',
     price: '₹999',
@@ -66,7 +64,6 @@ const programs = [
     featured: false,
   },
   {
-    icon: Brain,
     slug: 'english-mastery',
     name: 'English Mastery Pass',
     price: '₹999',
@@ -84,7 +81,6 @@ const programs = [
     featured: false,
   },
   {
-    icon: TrendingUp,
     slug: 'sat-prep',
     name: 'SAT Prep Pass',
     price: '₹999',
@@ -110,9 +106,6 @@ const comparisonRows = [
   { feature: 'Human Support', blast: true, coaching: true, apps: false },
   { feature: 'Affordable Price', blast: true, coaching: false, apps: true },
 ];
-
-// Pastel fills rotated across program icon tiles
-const pastels = ['#FDF3E7', '#FCEEF1', '#E7F6FB', '#F0EDFC'];
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -257,10 +250,15 @@ export default function Programs() {
               The five-mechanism system above runs identically across every course. What changes is the subject, the syllabus, and the specific gap each course is built to close.
             </p>
           </motion.div>
-          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '32px' }}>
+          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px' }}>
             {programs.map((prog, idx) => {
-              const Icon = prog.icon;
-              const tile = pastels[idx % pastels.length];
+              const isPink = idx % 2 === 0;
+              const accent = isPink ? '#E8135A' : '#0FA8DC';
+              const buttonBg = isPink
+                ? 'linear-gradient(90deg, #E8135A 0%, #F03C6F 100%)'
+                : 'linear-gradient(90deg, #1E9BDA 0%, #4BB8E6 100%)';
+              const priceNum = prog.price.replace('₹', '').trim();
+
               return (
                 <motion.div
                   key={prog.name}
@@ -268,74 +266,76 @@ export default function Programs() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  whileHover={{ y: -6 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  whileHover={{
+                    y: -6,
+                    boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
+                    transition: { type: 'spring', stiffness: 300, damping: 22 },
+                  }}
                   style={{
-                    position: 'relative',
                     background: '#FFFFFF',
-                    border: prog.featured ? '2px solid #0FA8DC' : '1px solid #ECECF1',
-                    borderRadius: '16px',
+                    border: '1px solid #E5E7EB',
+                    borderRadius: '8px',
                     overflow: 'hidden',
-                    boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
+                    boxShadow: '0 1px 4px rgba(0, 0, 0, 0.04)',
                   }}
                 >
-                  {prog.featured && (
-                    <div style={{ padding: '10px', textAlign: 'center', fontSize: '11px', fontWeight: 600, color: 'white', background: 'linear-gradient(90deg, #1E9BDA 0%, #4BB8E6 100%)', fontFamily: "'Inter', sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                      Most Popular
-                    </div>
-                  )}
-                  <div style={{ padding: '32px' }}>
-                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', marginBottom: '24px' }}>
-                      <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, background: tile, color: '#0FA8DC' }}>
-                        <Icon size={22} />
-                      </div>
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
-                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '3px 10px', borderRadius: '9999px', fontSize: '10px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif" }}>
-                            <Zap size={10} /> AI Powered
+                  <div style={{ height: '3px', width: '100%', background: accent }} />
+                  <div style={{ padding: '18px 16px 14px' }}>
+                    <HeadingMarker text={prog.classes} accent={accent} fontSize="11px" />
+                    <h3 style={{ margin: 0, fontFamily: 'Inter, sans-serif', fontSize: 'var(--fs-h3)', fontWeight: 700, color: '#1C1C28', lineHeight: 'var(--lh-card)' }}>
+                      {prog.name}
+                    </h3>
+                    <p className="t-body" style={{ margin: '8px 0 0' }}>
+                      {prog.description}
+                    </p>
+
+                    <div style={{ height: '1px', background: '#E5E7EB', margin: '14px 0 12px' }} />
+
+                    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {prog.features.map((feature) => (
+                        <li key={feature} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                          <CheckCircle size={13} style={{ color: accent, flexShrink: 0, marginTop: '2px' }} />
+                          <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.92rem', color: '#4D5562', lineHeight: 1.35 }}>
+                            {feature}
                           </span>
-                          <span style={{ padding: '3px 10px', fontSize: '11px', fontWeight: 500, borderRadius: '9999px', background: '#D6F2FA', color: '#5A5A6E', border: '1px solid #ECECF1', fontFamily: "'Inter', sans-serif" }}>
-                            {prog.classes}
-                          </span>
-                        </div>
-                        <h2 style={{ fontSize: '20px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '4px' }}>{prog.name}</h2>
-                        <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                          <span style={{ fontSize: '26px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{prog.price}</span>
-                          <span style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>/month</span>
-                        </div>
-                      </div>
-                    </div>
+                        </li>
+                      ))}
+                    </ul>
 
-                    <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', marginBottom: '24px', fontFamily: "'Inter', sans-serif" }}>{prog.description}</p>
-
-                    <div style={{ marginBottom: '24px' }}>
-                      <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', marginBottom: '10px', fontFamily: "'Inter', sans-serif" }}>Key Outcomes</p>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                        {prog.outcomes.map((o) => (
-                          <span key={o} style={{ padding: '4px 12px', fontSize: '12px', fontWeight: 500, borderRadius: '9999px', color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif" }}>{o}</span>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div style={{ marginBottom: '28px' }}>
-                      <p style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', marginBottom: '12px', fontFamily: "'Inter', sans-serif" }}>What's Included</p>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '8px' }} className="grid-cols-2-sm">
-                        {prog.features.map((f) => (
-                          <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                            <CheckCircle size={14} style={{ color: '#0FA8DC', flexShrink: 0, marginTop: '2px' }} />
-                            <span style={{ fontSize: '13px', lineHeight: 1.5, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{f}</span>
-                          </div>
-                        ))}
-                      </div>
+                    <div style={{ display: 'flex', alignItems: 'baseline', marginTop: '14px', gap: '2px' }}>
+                      <span style={{ fontSize: '0.75rem', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>₹</span>
+                      <span style={{ fontSize: '1.55rem', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: '#1C1C28', lineHeight: 1 }}>
+                        {priceNum}
+                      </span>
+                      <span style={{ fontSize: '0.75rem', color: '#6B7280', fontFamily: 'Inter, sans-serif' }}>/month</span>
                     </div>
 
                     <Link
                       to={`/programs/${prog.slug}`}
-                      className={`cta ${prog.featured ? 'cta-blue' : 'cta-outline'}`}
-                      style={{ width: '100%', ...(prog.featured && { background: 'linear-gradient(90deg, #1E9BDA 0%, #4BB8E6 100%)', color: '#fff', borderColor: 'transparent' }) }}
+                      className="cta"
+                      style={{
+                        marginTop: '10px',
+                        width: '100%',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        padding: '10px 14px',
+                        borderRadius: '4px',
+                        textDecoration: 'none',
+                        color: '#FFFFFF',
+                        background: buttonBg,
+                        fontFamily: 'Inter, sans-serif',
+                        fontWeight: 600,
+                        fontSize: '0.9rem',
+                        boxShadow: 'none',
+                      }}
                     >
-                      Learn More <ArrowRight size={16} />
+                      Start 14-Day Free Trial
                     </Link>
+
+                    <p style={{ margin: '6px 0 0', textAlign: 'center', fontFamily: 'Inter, sans-serif', fontSize: '0.72rem', color: '#A0A5B1' }}>
+                      No credit card required
+                    </p>
                   </div>
                 </motion.div>
               );
