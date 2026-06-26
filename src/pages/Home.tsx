@@ -386,7 +386,7 @@ export default function Home() {
               </motion.div>
             </div>
           </motion.div>
-          <MobileCarousel desktopGridClass="grid-cols-2-md grid-cols-3-lg" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginTop: '-5px', marginBottom: '28px', alignItems: 'start' }}>
+          <MobileCarousel desktopGridClass="grid-cols-2-md grid-cols-3-lg" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginTop: '-5px', marginBottom: '28px', alignItems: 'stretch' }}>
             {howItWorks.map(({ num, eyebrow, title, desc, descFooter, descFooterColor, accent }) => (
               <motion.div
                 key={num}
@@ -396,8 +396,9 @@ export default function Home() {
                 viewport={{ once: true }}
                 whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                style={{ height: '100%' }}
               >
-                <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} descFooter={descFooter} descFooterColor={descFooterColor} accent={accent} Visual={() => null} height="auto" showVisual={false} />
+                <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} descFooter={descFooter} descFooterColor={descFooterColor} accent={accent} Visual={() => null} height="100%" showVisual={false} />
               </motion.div>
             ))}
           </MobileCarousel>

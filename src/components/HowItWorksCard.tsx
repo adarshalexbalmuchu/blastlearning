@@ -215,6 +215,7 @@ export default function HowItWorksCard({ num, eyebrow, title, desc, descFooter, 
             WebkitLineClamp: textOnlyCard ? undefined : descLines,
             WebkitBoxOrient: textOnlyCard ? undefined : ('vertical' as const),
             overflow: textOnlyCard ? 'visible' : 'hidden',
+            flex: textOnlyCard ? 1 : undefined,
           }}
         >
           {desc}
