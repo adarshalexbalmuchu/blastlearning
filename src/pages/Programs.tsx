@@ -224,7 +224,7 @@ export default function Programs() {
               The <AccentText tone="blue">Method</AccentText> Behind the <AccentText tone="pink">Marks</AccentText>
             </h2>
             <p className="t-body">
-              Five mechanisms do the actual work. Four move a student from gap to mastery in sequence; the fifth runs underneath all four.
+              Blast Learning runs on seven features: GAP Assessment, AI Tutor, Study Buddy, Mind Coach, spaced repetition, retrieval practice, and English Mastery. Each one builds a different part of how a student learns, and together they develop the same thing: the skills to learn independently, for life, in any course a student takes.
             </p>
           </motion.div>
 
