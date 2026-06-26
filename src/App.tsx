@@ -64,7 +64,11 @@ function AppLayout() {
       <ScrollToTop />
       <Navbar />
 
-      <main id="main-content" style={{ paddingTop: '64px', paddingBottom: '0' }} className="pb-20 md:pb-0">
+      <main
+        id="main-content"
+        style={{ paddingTop: '64px', paddingBottom: '0' }}
+        className="pb-20 md:pb-0"
+      >
         <ErrorBoundary>
           <Suspense fallback={<PageLoader />}>
             <Routes>

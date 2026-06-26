@@ -66,7 +66,7 @@ export const HeroIllustration: FC<IllustrationProps> = ({ className, width = '10
       <rect x="18" y="76" width="112" height="66" rx="12" fill="#FFFFFF" stroke="#ECECF1" strokeWidth="1" />
       <rect x="26" y="88" width="42" height="4" rx="2" fill="url(#hi-grad1)" />
       <text x="26" y="114" fontFamily="Inter, sans-serif" fontSize="10" fill="#8E8EA0">Mathematics</text>
-      <text x="26" y="132" fontFamily="Poppins, sans-serif" fontSize="16" fontWeight="700" fill="url(#hi-grad1)">89%</text>
+      <text x="26" y="132" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="700" fill="url(#hi-grad1)">89%</text>
     </g>
 
     {/* Floating card, Physics */}
@@ -74,14 +74,14 @@ export const HeroIllustration: FC<IllustrationProps> = ({ className, width = '10
       <rect x="350" y="56" width="112" height="66" rx="12" fill="#FFFFFF" stroke="#ECECF1" strokeWidth="1" />
       <rect x="358" y="68" width="42" height="4" rx="2" fill="#E9F7EF" />
       <text x="358" y="94" fontFamily="Inter, sans-serif" fontSize="10" fill="#8E8EA0">Physics</text>
-      <text x="358" y="112" fontFamily="Poppins, sans-serif" fontSize="16" fontWeight="700" fill="#1C8A5B">+27%</text>
+      <text x="358" y="112" fontFamily="Inter, sans-serif" fontSize="16" fontWeight="700" fill="#1C8A5B">+27%</text>
     </g>
 
     {/* Floating card, Session */}
     <g style={{ animation: 'float 6s ease-in-out infinite', animationDelay: '2s' }}>
       <rect x="340" y="218" width="122" height="56" rx="12" fill="#FFFFFF" stroke="#ECECF1" strokeWidth="1" />
       <text x="350" y="240" fontFamily="Inter, sans-serif" fontSize="10" fill="#8E8EA0">Today's Session</text>
-      <text x="350" y="256" fontFamily="Poppins, sans-serif" fontSize="13" fontWeight="600" fill="#1C1C28">1h 42m</text>
+      <text x="350" y="256" fontFamily="Inter, sans-serif" fontSize="13" fontWeight="600" fill="#1C1C28">1h 42m</text>
       <rect x="350" y="262" width="80" height="3" rx="1.5" fill="#ECECF1" />
       <rect x="350" y="262" width="62" height="3" rx="1.5" fill="#0FA8DC" />
     </g>

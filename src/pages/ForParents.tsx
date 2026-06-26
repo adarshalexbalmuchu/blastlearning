@@ -1,13 +1,10 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Shield, TrendingUp, Clock, Heart, BarChart3, Bell, CheckCircle } from 'lucide-react';
+import { Shield, TrendingUp, Clock, Heart, BarChart3, Bell, CheckCircle } from 'lucide-react';
+import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
-import BrandWhoosh from '../components/BrandWhoosh';
-import TestimonialsMarquee from '../components/ui/testimonials-marquee';
-import FAQItem from '../components/FAQItem';
-import ctaBanner from '../assets/Hero 4.png';
-import heroBanner from '../assets/Hero 3.png';
+import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
+import HeadingMarker from '../components/HeadingMarker';
 
 const benefits = [
   {
@@ -68,9 +65,9 @@ const testimonialsRow2 = [
 ];
 const pageFaqs = [
   { q: 'What is Blast Learning and how does it work?', a: 'Blast Learning is an AI-powered learning retention platform. Students upload their coaching notes or recordings, and our Metacognition Engine creates a spaced repetition study plan that helps 91% of students improve what they retain, compared to the 10% most students remember without structured revision.' },
-  { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Plan is specifically designed for Classes 8-10, with full syllabus coverage, NCERT alignment, and board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
-  { q: 'How is Blast Learning different from other coaching apps?', a: "Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn't just teach — it tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams." },
-  { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 7-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first week." },
+  { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Full Syllabus plan is designed for Class 10, with full syllabus coverage and retention-first board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
+  { q: 'How is Blast Learning different from other coaching apps?', a: "Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn't just teach  -  it tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams." },
+  { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 14-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first two weeks." },
 ];
 
 // Pastel fills rotated across benefit icon tiles
@@ -93,29 +90,18 @@ export default function ForParents() {
 
   return (
     <div style={{ background: '#FFFFFF' }}>
-      {/* ── Hero Banner ── */}
-      <div style={{ marginTop: '-64px', lineHeight: 0 }}>
-        <img src={heroBanner} alt="The Forgetting Curve Is Real — Blast Learning" loading="eager" decoding="sync" style={{ width: '100%', height: 'auto', display: 'block' }} />
-      </div>
-
       {/* Hero */}
       <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', paddingTop: '80px', paddingBottom: '80px' }}>
-        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
-          <div style={{ position: 'absolute', bottom: '-80px', left: '-120px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%)', willChange: 'transform', animation: 'blob-float 18s ease-in-out infinite reverse' }} />
-        </div>
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
-        <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: "'Inter', sans-serif", marginBottom: '24px', background: '#E0F5FC', color: '#0FA8DC' }}>
-              For Parents
-            </span>
-            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', marginBottom: '24px', color: '#1C1C28' }}>
-              Peace of Mind for Parents
+            <HeadingMarker text="For Parents" marginBottom="24px" fontSize="12px" />
+            <h1 className="page-hero-title">
+              <AccentText tone="blue">Peace</AccentText> of <AccentText tone="pink">Mind</AccentText> for Parents
             </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '640px', margin: '0 auto' }}>
+            <p className="page-hero-copy" style={{ maxWidth: '640px', margin: '0 auto' }}>
               Stay informed and involved in your child's education journey. Track progress, celebrate wins, and support their growth, all backed by transparent data.
             </p>
           </motion.div>
@@ -132,10 +118,10 @@ export default function ForParents() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '64px' }}
           >
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '16px' }}>
-              Everything You Need to Stay Involved
+            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '16px' }}>
+              Everything You <AccentText tone="blue">Need</AccentText> to Stay <AccentText tone="pink">Involved</AccentText>
             </h2>
-            <p style={{ fontSize: '1.05rem', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
+            <p style={{ fontSize: 'var(--fs-body)', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
               Powerful tools designed to keep you connected to your child's learning journey.
             </p>
           </motion.div>
@@ -180,10 +166,10 @@ export default function ForParents() {
         <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }} className="grid-cols-2-md">
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '24px' }}>
-                Built on Trust & Transparency
+              <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 800, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#111111', marginBottom: '24px' }}>
+                Built on <AccentText tone="blue">Trust</AccentText> & <AccentText tone="pink">Transparency</AccentText>
               </h2>
-              <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '32px' }}>
+              <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '32px' }}>
                 We believe parents deserve complete clarity. No hidden costs, no confusing contracts, just honest, effective education.
               </p>
               <div style={{ display: 'grid', gap: '16px' }}>
@@ -229,54 +215,11 @@ export default function ForParents() {
       </section>
 
       {/* ── Testimonials ── */}
-      <section id="testimonials" className="section-pad" style={{ paddingTop: '64px', paddingBottom: '64px', background: '#F9FAFB' }}>
-        <div style={{ textAlign: 'center', padding: '0 24px', marginBottom: '40px' }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
-              Parent Stories
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15, margin: '0 0 14px' }}>
-              What Parents Are Saying
-            </h2>
-            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', lineHeight: 1.6, maxWidth: '540px', margin: '0 auto' }}>
-              Thousands of families trust Blast Learning to keep their children on track.
-            </p>
-          </motion.div>
-        </div>
-        <TestimonialsMarquee row1={testimonialsRow1} row2={testimonialsRow2} />
-      </section>
+      <SharedTestimonialsSection row1={testimonialsRow1} row2={testimonialsRow2} eyebrow="Parent Stories" title={<>What <AccentText tone="blue">Parents</AccentText> Are <AccentText tone="pink">Saying</AccentText></>} subtitle="Thousands of families trust Blast Learning to keep their children on track." />
 
       {/* ── FAQ ── */}
-      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ textAlign: 'center', marginBottom: '32px' }}>
-            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
-              Common Questions
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15, margin: '0 0 14px' }}>
-              Frequently Asked Questions
-            </h2>
-            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
-              Everything you need to know before you start your free trial.
-            </p>
-          </motion.div>
-          <div style={{ borderTop: '1px solid #E5E7EB', marginBottom: '32px' }}>
-            {pageFaqs.map((faq, i) => (
-              <FAQItem key={i} question={faq.q} answer={faq.a} />
-            ))}
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <Link to="/faq" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 600, color: '#0FA8DC', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
-              View All FAQs <ArrowRight size={15} style={{ color: '#0FA8DC' }} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <SharedFaqSection items={pageFaqs} />
 
-      {/* ── CTA Banner ── */}
-      <section aria-label="Call to action" style={{ width: '100%', display: 'block', lineHeight: 0 }}>
-        <img src={ctaBanner} alt="Learn Smarter. Achieve More. Start your Blast Learning journey today." loading="lazy" decoding="async" style={{ width: '100%', height: 'auto', display: 'block' }} />
-      </section>
     </div>
   );
 }

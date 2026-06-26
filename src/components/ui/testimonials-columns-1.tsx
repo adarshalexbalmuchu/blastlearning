@@ -101,7 +101,7 @@ export const TestimonialsColumn = (props: {
                     className="h-10 w-10 rounded-full object-cover"
                   />
                   <div className="flex flex-col">
-                    <div className="font-semibold text-[#1C1C28] text-sm leading-5 font-[Poppins,sans-serif]">
+                    <div className="font-semibold text-[#1C1C28] text-sm leading-5 font-[Inter,sans-serif]">
                       {name}
                     </div>
                     <div className="text-xs text-[#8E8EA0] leading-5">{role}</div>

@@ -1,20 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
-import { ChevronDown, CheckCircle, ArrowRight, ChevronRight, Zap, Users, Star } from 'lucide-react';
+import { ChevronDown, CheckCircle, ArrowRight, ChevronRight } from 'lucide-react';
 import { getProgramBySlug } from '../../data/programs';
-import BrandWhoosh from '../../components/BrandWhoosh';
-import hero1 from '../../assets/Hero 1.png';
-import hero2 from '../../assets/Hero 2.png';
-import hero3 from '../../assets/Hero 3.png';
-import hero4 from '../../assets/Hero 4.png';
-
-const SLUG_BANNER: Record<string, string> = {
-  'cbse-plan': hero1,
-  'math-genius': hero2,
-  'english-mastery': hero3,
-  'sat-prep': hero4,
-};
+import AccentText from '../../components/AccentText';
+import PageHeading from '../../components/PageHeading';
+import HeadingMarker from '../../components/HeadingMarker';
+import { SharedFaqSection, SharedTestimonialsSection } from '../../components/MarketingSections';
+import banner1 from '../../assets/banners/HB 1.png';
+import banner2 from '../../assets/banners/HB 2.png';
+import banner3 from '../../assets/banners/HB 3.png';
+import banner4 from '../../assets/banners/HB 4.png';
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -25,17 +21,18 @@ const stagger: Variants = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-const AVATAR_PALETTE = ['#0FA8DC', '#0FA8DC', '#22C55E', '#F59E0B', '#8B5CF6', '#06B6D4', '#EC4899'];
-function avatarColor(name: string) {
-  return AVATAR_PALETTE[name.charCodeAt(0) % AVATAR_PALETTE.length];
-}
+const PROGRAM_BANNERS: Record<string, string> = {
+  'cbse-plan': banner1,
+  'math-genius': banner2,
+  'english-mastery': banner3,
+  'sat-prep': banner4,
+};
 
 export default function ProgramDetail() {
   const { slug } = useParams<{ slug: string }>();
   const program = slug ? getProgramBySlug(slug) : undefined;
 
   const [openCurriculum, setOpenCurriculum] = useState<number>(0);
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [form, setForm] = useState({ name: '', phone: '', cls: '' });
   const [submitted, setSubmitted] = useState(false);
 
@@ -47,35 +44,55 @@ export default function ProgramDetail() {
   }, [program]);
 
   if (!program) return <Navigate to="/programs" replace />;
+  const heroBanner = PROGRAM_BANNERS[program.slug] ?? banner1;
+
+  const testimonialCards = program.testimonials.map((testimonial) => ({
+    name: testimonial.name,
+    role: testimonial.role,
+    text: testimonial.content,
+  }));
 
   return (
-    <div style={{ background: '#FFFFFF' }}>
-      {/* ─── Hero ─────────────────────────────────────────────────── */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', paddingBottom: '80px' }}>
-        {slug && SLUG_BANNER[slug] && (
-          <div style={{ width: '100%', aspectRatio: '4095 / 774', overflow: 'hidden' }}>
+    <div className="program-detail-page" style={{ background: '#FFFFFF' }}>
+      {/* ─── Hero Banner ───────────────────────────────────────── */}
+      <section style={{ paddingTop: '18px', paddingBottom: '10px', background: '#FFFFFF' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55 }}
+            style={{
+              position: 'relative',
+              width: '100%',
+              aspectRatio: '2048 / 1092',
+              overflow: 'hidden',
+              background: '#FFFFFF',
+              boxShadow: '0 8px 32px rgba(28,28,40,0.105)',
+              borderRadius: '0',
+            }}
+          >
             <img
-              src={SLUG_BANNER[slug]}
+              src={heroBanner}
               alt={`${program.name} hero banner`}
+              width={2048}
+              height={1092}
               loading="eager"
+              fetchPriority="high"
               decoding="sync"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              style={{
+                width: '100%',
+                height: '100%',
+                display: 'block',
+                objectFit: 'contain',
+                objectPosition: 'center center',
+              }}
             />
-          </div>
-        )}
-        <div style={{ paddingTop: '60px' }} />
-        {/* Background blob */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: 'absolute', top: '-80px', right: '-120px',
-            width: '480px', height: '480px', borderRadius: '50%',
-            background: program.accentBg, opacity: 0.6,
-            pointerEvents: 'none', willChange: 'transform',
-          }}
-        />
+          </motion.div>
+        </div>
+      </section>
 
-        <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
+      {/* ─── Hero ─────────────────────────────────────────────────── */}
+      <section className="program-section program-hero-section" style={{ background: '#FFFFFF', paddingTop: '56px', paddingBottom: '32px', borderBottom: '1px solid #ECECF1' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           {/* Breadcrumb */}
           <motion.nav
@@ -83,7 +100,7 @@ export default function ProgramDetail() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
             aria-label="Breadcrumb"
-            style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '32px', flexWrap: 'wrap' }}
+            style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '20px', flexWrap: 'wrap' }}
           >
             <Link to="/" style={{ fontSize: '13px', color: '#6B6B7B', textDecoration: 'none', fontFamily: "'Inter', sans-serif" }}>Home</Link>
             <ChevronRight size={12} style={{ color: '#C4C4D0' }} />
@@ -92,37 +109,17 @@ export default function ProgramDetail() {
             <span style={{ fontSize: '13px', color: '#1C1C28', fontFamily: "'Inter', sans-serif", fontWeight: 500 }}>{program.name}</span>
           </motion.nav>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'start' }} className="lg:grid-cols-hero">
+          <div className="program-hero-grid lg:grid-cols-hero" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'start' }}>
             {/* Left, text */}
             <motion.div initial="hidden" animate="visible" variants={stagger}>
-              <motion.div variants={fadeUp}>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '20px' }}>
-                  <Zap size={10} /> AI Powered · {program.classes}
-                </span>
-              </motion.div>
+              <PageHeading
+                eyebrow={`AI Powered · ${program.classes}`}
+                title={program.slug === 'cbse-plan' ? <><AccentText tone="blue">CBSE</AccentText> Full <AccentText tone="pink">Syllabus</AccentText></> : program.slug === 'math-genius' ? <><AccentText tone="blue">Math</AccentText> <AccentText tone="pink">Genius</AccentText> Maker</> : program.slug === 'english-mastery' ? <><AccentText tone="blue">English</AccentText> <AccentText tone="pink">Mastery</AccentText> Pass</> : <><AccentText tone="blue">SAT</AccentText> Prep <AccentText tone="pink">Pass</AccentText></>}
+                subtitle={<>{program.tagline} {program.description}</>}
+                maxWidth="560px"
+              />
 
-              <motion.h1
-                variants={fadeUp}
-                style={{ fontSize: 'clamp(2rem, 4.5vw, 3.25rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '20px', lineHeight: 1.15 }}
-              >
-                {program.name}
-              </motion.h1>
-
-              <motion.p
-                variants={fadeUp}
-                style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '16px', maxWidth: '560px' }}
-              >
-                {program.tagline}
-              </motion.p>
-
-              <motion.p
-                variants={fadeUp}
-                style={{ fontSize: '0.9375rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '24px', maxWidth: '560px' }}
-              >
-                {program.description}
-              </motion.p>
-
-              <motion.div variants={fadeUp} style={{ display: 'flex', gap: '28px', flexWrap: 'wrap', marginBottom: '28px', paddingTop: '20px', borderTop: '1px solid #F0F0F4' }}>
+              <motion.div variants={fadeUp} style={{ display: 'flex', gap: '28px', flexWrap: 'wrap', marginBottom: '24px', paddingTop: '16px', borderTop: '1px solid #F0F0F4' }}>
                 {program.heroStats.map((stat) => (
                   <div key={stat.label}>
                     <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1.2 }}>{stat.value}</div>
@@ -132,13 +129,6 @@ export default function ProgramDetail() {
               </motion.div>
 
               <motion.div variants={fadeUp} style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-                <Link
-                  to="/contact"
-                  className="cta cta-blue"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 28px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
-                >
-                  Start 7-Day Free Trial <ArrowRight size={15} />
-                </Link>
               </motion.div>
             </motion.div>
 
@@ -147,7 +137,8 @@ export default function ProgramDetail() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              style={{ background: '#FFFFFF', border: '1.5px solid #ECECF1', borderRadius: '20px', padding: '32px', boxShadow: '0 4px 24px rgba(28,28,40,0.07)' }}
+              className="card-subtle surface-card program-detail-form-card"
+              style={{ padding: '32px' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
                 <div>
@@ -163,7 +154,7 @@ export default function ProgramDetail() {
 
               {!submitted ? (
                 <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
-                  <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: "'Poppins', sans-serif", marginBottom: '16px' }}>
+                  <p style={{ fontSize: '15px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif', marginBottom: '16px' }}>
                     Start your free 7-day trial
                   </p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '16px' }}>
@@ -214,7 +205,7 @@ export default function ProgramDetail() {
                     type="submit"
                     style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '13px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, fontFamily: "'Inter', sans-serif", background: '#0FA8DC', color: 'white', border: 'none', cursor: 'pointer' }}
                   >
-                    Enrol Now, 7-Day Free Trial <ArrowRight size={15} />
+                    Enrol Now, 14-Day Free Trial <ArrowRight size={15} />
                   </button>
                   <p style={{ textAlign: 'center', fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
                     No credit card required · Cancel anytime
@@ -237,45 +228,72 @@ export default function ProgramDetail() {
       </section>
 
       {/* ─── Who It's For ─────────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '80px', background: '#FFFFFF' }}>
+      <section className="program-section program-overview-section" style={{ paddingTop: '96px', paddingBottom: '80px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
-            <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
-              Right for you?
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28' }}>
-              Who This Programme Is For
-            </h2>
+            <PageHeading
+              eyebrow="NEP 2020"
+              title={<>Who This <AccentText tone="blue">Programme</AccentText> Is <AccentText tone="pink">For</AccentText></>}
+              subtitle="The same card design and image language as the Home page, reused across every program so the site feels consistent end to end."
+              maxWidth="880px"
+            />
           </motion.div>
 
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-3-md">
-            {program.forWhom.map((item, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                style={{ padding: '28px', background: '#D6F2FA', borderRadius: '16px', border: '1px solid #ECECF1' }}
-              >
-                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: program.accentBg, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
-                  <Users size={18} style={{ color: '#0FA8DC' }} />
-                </div>
-                <h3 style={{ fontSize: '16px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '8px' }}>{item.title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{item.desc}</p>
-              </motion.div>
-            ))}
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '24px',
+              alignItems: 'stretch',
+            }}
+          >
+            {program.forWhom.map((card, index) => {
+              const cardAccent = [
+                '#0FA8DC',
+                '#E8135A',
+                '#4F46E5',
+                '#F59E0B',
+              ][index % 4];
+
+              return (
+                <motion.article
+                  key={card.title}
+                  variants={fadeUp}
+                  className="card-subtle surface-card"
+                  style={{
+                    overflow: 'hidden',
+                    minHeight: '100%',
+                  }}
+                >
+                  <div style={{ height: '3px', width: '100%', background: cardAccent }} />
+                  <div style={{ padding: '22px 20px 20px' }}>
+                    <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap' }}>
+                      <HeadingMarker text={program.slug === 'cbse-plan' ? 'CBSE' : program.slug === 'math-genius' ? 'Math' : program.slug === 'english-mastery' ? 'English' : 'SAT'} accent={cardAccent} fontSize="10px" marginBottom="0" />
+                      <span style={{ fontSize: '11px', color: '#A0A5B1', fontFamily: 'Inter, sans-serif' }}>For whom</span>
+                    </div>
+                    <h3 style={{ margin: '0 0 10px', fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: '1.05rem', lineHeight: 1.35, color: '#111111' }}>
+                      {card.title}
+                    </h3>
+                    <p className="t-body" style={{ margin: 0, color: '#5A5A6E' }}>
+                      {card.desc}
+                    </p>
+                  </div>
+                </motion.article>
+              );
+            })}
           </motion.div>
         </div>
       </section>
 
       {/* ─── Curriculum ───────────────────────────────────────────── */}
-      <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#F9FAFB' }}>
+      <section className="program-section program-curriculum-section" style={{ paddingTop: '80px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
-            <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
-              Curriculum
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28' }}>
-              What You'll Learn
-            </h2>
+            <PageHeading eyebrow="Curriculum" title={<><AccentText tone="blue">What</AccentText> You'll <AccentText tone="pink">Learn</AccentText></>} />
           </motion.div>
 
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -283,7 +301,8 @@ export default function ProgramDetail() {
               <motion.div
                 key={i}
                 variants={fadeUp}
-                style={{ background: '#FFFFFF', border: '1px solid #ECECF1', borderRadius: '14px', overflow: 'hidden', boxShadow: openCurriculum === i ? '0 4px 16px rgba(28,28,40,0.06)' : 'none' }}
+                className="card-subtle surface-card program-curriculum-card"
+                style={{ overflow: 'hidden', boxShadow: openCurriculum === i ? '0 4px 16px rgba(28,28,40,0.06)' : '0 2px 8px rgba(28,28,40,0.04)' }}
               >
                 <button
                   onClick={() => setOpenCurriculum(openCurriculum === i ? -1 : i)}
@@ -330,30 +349,59 @@ export default function ProgramDetail() {
       </section>
 
       {/* ─── Features + Pricing ───────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section className="program-section program-features-section" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'start' }} className="grid-cols-2-lg">
-            {/* Features list */}
-            <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-              <motion.div variants={fadeUp} style={{ marginBottom: '40px' }}>
-                <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
-                  What's Included
-                </span>
-                <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28' }}>
-                  Everything in This Plan
-                </h2>
-              </motion.div>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '40px' }}>
+            <PageHeading
+              eyebrow="What's Included"
+              title={<>Everything in This <AccentText tone="pink">Plan</AccentText></>}
+              subtitle={program.description}
+              maxWidth="980px"
+            />
+          </motion.div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                {program.features.map((feature, i) => (
-                  <motion.div key={i} variants={fadeUp} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                    <div style={{ width: '22px', height: '22px', borderRadius: '6px', background: '#E0F5FC', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '1px' }}>
-                      <CheckCircle size={13} style={{ color: '#0FA8DC' }} />
-                    </div>
-                    <span style={{ fontSize: '15px', lineHeight: 1.6, color: '#1C1C28', fontFamily: "'Inter', sans-serif" }}>{feature}</span>
-                  </motion.div>
+          <div className="program-features-grid grid-cols-2-lg" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', alignItems: 'start' }}>
+            {/* What’s Included list */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="program-included-card"
+              style={{ background: '#FFFFFF' }}
+            >
+              <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {program.features.map((feature) => (
+                  <li key={feature} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                    <CheckCircle size={14} style={{ color: '#E8135A', flexShrink: 0, marginTop: '4px' }} />
+                    <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.97rem', color: '#4D5562', lineHeight: 1.6 }}>
+                      {feature}
+                    </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
+
+              <Link
+                to="/contact"
+                className="cta cta-pink"
+                style={{
+                  marginTop: '24px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '10px 18px',
+                  borderRadius: '4px',
+                  textDecoration: 'none',
+                  color: '#FFFFFF',
+                  background: 'linear-gradient(90deg, #E8135A 0%, #F03C6F 100%)',
+                  fontFamily: 'Inter, sans-serif',
+                  fontWeight: 600,
+                  fontSize: '0.9rem',
+                  boxShadow: 'none',
+                }}
+              >
+                Start 14-Day Free Trial
+              </Link>
             </motion.div>
 
             {/* Pricing card */}
@@ -362,195 +410,95 @@ export default function ProgramDetail() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              style={{ background: '#D6F2FA', border: '2px solid #0FA8DC', borderRadius: '20px', padding: '40px', boxShadow: '0 8px 32px rgba(15,168,220,0.10)' }}
+              className="card-subtle surface-card-subtle program-pricing-card"
+              style={{ overflow: 'hidden' }}
             >
-              <div style={{ marginBottom: '8px' }}>
-                <span style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#0FA8DC', fontFamily: "'Inter', sans-serif" }}>
+              <div style={{ height: '3px', width: '100%', background: '#0FA8DC' }} />
+              <div style={{ padding: '18px 16px 14px' }}>
+                <HeadingMarker text={program.classes} accent="#0FA8DC" fontSize="11px" />
+                <h3 style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: 'var(--fs-h3-fluid)', fontWeight: 800, color: '#111111', lineHeight: 1.2 }}>
                   {program.name}
-                </span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px', marginBottom: '6px' }}>
-                <span style={{ fontSize: '42px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1 }}>{program.price}</span>
-                <span style={{ fontSize: '14px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>/month</span>
-              </div>
-              <p style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '28px' }}>{program.classes}</p>
+                </h3>
+                <p className="t-body" style={{ margin: '8px 0 0' }}>
+                  {program.tagline}
+                </p>
 
-              <div style={{ height: '1px', background: '#ECECF1', marginBottom: '28px' }} />
+                <div style={{ height: '1px', background: '#E5E7EB', margin: '14px 0 12px' }} />
 
-              {program.outcomes.map((outcome, i) => (
-                <div key={i} style={{ marginBottom: i < program.outcomes.length - 1 ? '20px' : '0' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
-                    <span style={{ fontSize: '14px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{outcome.label}</span>
-                    <span style={{ fontSize: '18px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#0FA8DC' }}>{outcome.value}</span>
-                  </div>
-                  <p style={{ fontSize: '12px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", lineHeight: 1.5 }}>{outcome.desc}</p>
+                <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {program.outcomes.map((outcome) => (
+                    <li key={outcome.label} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+                      <CheckCircle size={13} style={{ color: '#0FA8DC', flexShrink: 0, marginTop: '2px' }} />
+                      <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.92rem', color: '#4D5562', lineHeight: 1.35 }}>
+                        {outcome.label}: {outcome.desc}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div style={{ display: 'flex', alignItems: 'baseline', marginTop: '14px', gap: '2px' }}>
+                  <span style={{ fontSize: '0.75rem', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>₹</span>
+                  <span style={{ fontSize: '1.55rem', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: '#1C1C28', lineHeight: 1 }}>
+                    {Number.parseInt(program.price.replace(/[^0-9]/g, ''), 10).toLocaleString('en-IN')}
+                  </span>
+                  <span style={{ fontSize: '0.75rem', color: '#6B7280', fontFamily: 'Inter, sans-serif' }}>/month</span>
                 </div>
-              ))}
 
-              <div style={{ height: '1px', background: '#ECECF1', margin: '28px 0' }} />
-
-              <Link
-                to="/contact"
-                className="cta cta-blue"
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
-              >
-                Start 7-Day Free Trial <ArrowRight size={16} />
-              </Link>
-              <p style={{ textAlign: 'center', fontSize: '11px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '10px' }}>
-                No credit card · Cancel any time
-              </p>
+                <Link
+                  to="/contact"
+                  className="cta cta-blue"
+                  style={{
+                    marginTop: '10px',
+                    width: '100%',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '10px 14px',
+                    borderRadius: '4px',
+                    textDecoration: 'none',
+                    color: '#FFFFFF',
+                    background: 'linear-gradient(90deg, #1E9BDA 0%, #4BB8E6 100%)',
+                    fontFamily: 'Inter, sans-serif',
+                    fontWeight: 600,
+                    fontSize: '0.9rem',
+                    boxShadow: 'none',
+                  }}
+                >
+                  Start 14-Day Free Trial
+                </Link>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* ─── Student Results / Testimonials ───────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '56px' }}>
-            <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
-              Student Results
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28' }}>
-              Real Scores, Real Students
-            </h2>
-          </motion.div>
-
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-2-md">
-            {program.testimonials.map((t, i) => {
-              const bg = avatarColor(t.name);
-              return (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  style={{ background: '#FFFFFF', border: '1px solid #ECECF1', borderRadius: '20px', padding: '32px', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
-                >
-                  <div style={{ display: 'flex', gap: '4px', marginBottom: '16px' }}>
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <Star key={s} size={14} fill="#F59E0B" style={{ color: '#F59E0B' }} />
-                    ))}
-                  </div>
-
-                  <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#1C1C28', fontFamily: "'Inter', sans-serif", marginBottom: '24px', fontStyle: 'italic' }}>
-                    "{t.content}"
-                  </p>
-
-                  {/* Before / After */}
-                  <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', padding: '16px', background: '#D6F2FA', borderRadius: '12px' }}>
-                    <div style={{ flex: 1, textAlign: 'center' }}>
-                      <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>Before</div>
-                      <div style={{ fontSize: '22px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{t.before}</div>
-                    </div>
-                    <div style={{ width: '1px', background: '#ECECF1' }} />
-                    <div style={{ flex: 1, textAlign: 'center' }}>
-                      <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>After</div>
-                      <div style={{ fontSize: '22px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#059669' }}>{t.after}</div>
-                    </div>
-                    <div style={{ width: '1px', background: '#ECECF1' }} />
-                    <div style={{ flex: 1, textAlign: 'center' }}>
-                      <div style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginBottom: '4px' }}>Improvement</div>
-                      <div style={{ fontSize: '20px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#0FA8DC' }}>{t.improvement}</div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingTop: '16px', borderTop: '1px solid #F4F4F6' }}>
-                    <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: bg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px', fontWeight: 700, color: 'white', fontFamily: "'Poppins', sans-serif", flexShrink: 0 }}>
-                      {t.name.charAt(0)}
-                    </div>
-                    <div>
-                      <div style={{ fontSize: '14px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{t.name}</div>
-                      <div style={{ fontSize: '12px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif" }}>{t.role}</div>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
+      <SharedTestimonialsSection
+        row1={testimonialCards}
+        row2={[...testimonialCards].reverse()}
+        eyebrow="Student Results"
+        title={<>Real <AccentText tone="pink">Results</AccentText> from {program.name} <AccentText tone="blue">Students</AccentText></>}
+        subtitle="See what this programme looks like when the same study system turns into measurable improvement."
+      />
 
       {/* ─── FAQ ──────────────────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '48px' }}>
-            <span style={{ display: 'inline-block', padding: '5px 14px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif", marginBottom: '16px' }}>
-              FAQs
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28' }}>
-              Common Questions
-            </h2>
-          </motion.div>
+      <SharedFaqSection
+        items={program.faqs}
+        eyebrow="FAQ"
+        accent="#0FA8DC"
+        align="left"
+        ctaInFaqColumn
+        background="#F7FAFC"
+        title={
+          <>
+            <span className="faq-heading-line" style={{ display: 'block' }}>Common <AccentText tone="blue">questions</AccentText></span>
+            <span style={{ display: 'block' }}>Direct <AccentText tone="pink">answers</AccentText>.</span>
+          </>
+        }
+        subtitle="If your question isn't here, the full FAQ page covers every edge case - billing, syllabus details, Study Buddy matching, and technical requirements."
+        linkLabel="More FAQ..."
+      />
 
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {program.faqs.map((faq, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                style={{ border: '1px solid #ECECF1', borderRadius: '14px', overflow: 'hidden', background: openFaq === i ? '#FAFAFA' : '#FFFFFF' }}
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  aria-expanded={openFaq === i}
-                  style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 24px', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '16px' }}
-                >
-                  <span style={{ fontSize: '15px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28' }}>{faq.q}</span>
-                  <ChevronDown
-                    size={18}
-                    style={{ color: '#6B6B7B', flexShrink: 0, transition: 'transform 0.25s', transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0)' }}
-                  />
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {openFaq === i && (
-                    <motion.div
-                      key="answer"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25 }}
-                      style={{ overflow: 'hidden' }}
-                    >
-                      <p style={{ padding: '0 24px 24px', fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
-                        {faq.a}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ─── Final CTA ────────────────────────────────────────────── */}
-      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#F9FAFB' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
-          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '16px' }}>
-              Ready to get started?
-            </h2>
-            <p style={{ fontSize: '1rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '36px' }}>
-              Your first 7 days are completely free. No credit card required.
-            </p>
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link
-                to="/contact"
-                className="cta cta-blue"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
-              >
-                Start Free Trial <ArrowRight size={16} />
-              </Link>
-              <Link
-                to="/programs"
-                className="cta cta-outline"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: "'Inter', sans-serif", textDecoration: 'none', background: 'white', color: '#1C1C28', border: '1.5px solid #DCDCE5' }}
-              >
-                View All Programs
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 }

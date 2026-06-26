@@ -18,7 +18,7 @@ export default class ErrorBoundary extends Component<Props, State> {
           <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#FFF0F4', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '24px' }}>
             <span style={{ fontSize: '28px' }}>⚡</span>
           </div>
-          <h1 style={{ fontFamily: 'Poppins, sans-serif', fontSize: '1.75rem', fontWeight: 700, color: '#1C1C28', marginBottom: '12px' }}>
+          <h1 style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.75rem', fontWeight: 700, color: '#1C1C28', marginBottom: '12px' }}>
             Something went wrong
           </h1>
           <p style={{ fontFamily: 'Inter, sans-serif', color: '#5A5A6E', marginBottom: '32px', maxWidth: '400px', lineHeight: 1.6 }}>

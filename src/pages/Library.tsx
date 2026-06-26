@@ -1,13 +1,12 @@
 import { useState } from 'react';
 import { useSEO } from '../hooks/useSEO';
 import BrandArc from '../components/BrandArc';
-import BrandWhoosh from '../components/BrandWhoosh';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Search, Play, FileText, HelpCircle, Lock } from 'lucide-react';
-import TestimonialsMarquee from '../components/ui/testimonials-marquee';
-import FAQItem from '../components/FAQItem';
-import ctaBanner from '../assets/Hero 4.png';
+import { Search, Play, FileText, HelpCircle, Lock } from 'lucide-react';
+import AccentText from '../components/AccentText';
+import HeadingMarker from '../components/HeadingMarker';
+import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 
 const testimonialsRow1 = [
   { name: 'Ananya Krishnan', role: 'Class 10, CBSE Plan · Bangalore', text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.' },
@@ -25,9 +24,9 @@ const testimonialsRow2 = [
 ];
 const pageFaqs = [
   { q: 'What is Blast Learning and how does it work?', a: 'Blast Learning is an AI-powered learning retention platform. Students upload their coaching notes or recordings, and our Metacognition Engine creates a spaced repetition study plan that helps 91% of students improve what they retain, compared to the 10% most students remember without structured revision.' },
-  { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Plan is specifically designed for Classes 8-10, with full syllabus coverage, NCERT alignment, and board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
-  { q: 'How is Blast Learning different from other coaching apps?', a: "Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn't just teach — it tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams." },
-  { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 7-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first week." },
+  { q: 'Is Blast Learning suitable for CBSE students preparing for board exams?', a: 'Absolutely. Our CBSE Full Syllabus plan is designed for Class 10, with full syllabus coverage and retention-first board exam preparation tracks. Students see significant improvement in retention and exam performance within the first month.' },
+  { q: 'How is Blast Learning different from other coaching apps?', a: "Most apps focus on delivering content. Blast Learning focuses on retention. Our Metacognition Engine doesn't just teach  -  it tracks how well your child remembers and adapts the study plan to fill gaps before they become problems in exams." },
+  { q: 'Can I try Blast Learning before paying?', a: "Yes! We offer a 14-day free trial with full access to all features. No credit card required. You'll see real retention data for your child within the first two weeks." },
 ];
 
 type FilterTab = 'All' | 'CBSE' | 'Maths' | 'English' | 'SAT' | 'Science';
@@ -96,14 +95,9 @@ export default function Library() {
     <div style={{ background: '#FFFFFF' }}>
       {/* Hero + Filters */}
       <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', borderBottom: '1px solid #DAEEF6', paddingTop: '120px', paddingBottom: '80px' }}>
-        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
-          <div style={{ position: 'absolute', top: '-100px', right: '-160px', width: '520px', height: '520px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(15,168,220,0.07) 0%, transparent 70%)', willChange: 'transform', animation: 'blob-float 14s ease-in-out infinite' }} />
-          <div style={{ position: 'absolute', bottom: '-80px', left: '-120px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%)', willChange: 'transform', animation: 'blob-float 18s ease-in-out infinite reverse' }} />
-        </div>
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
-        <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -111,13 +105,11 @@ export default function Library() {
             transition={{ duration: 0.6 }}
             style={{ textAlign: 'center', marginBottom: '40px' }}
           >
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px', background: '#E0F5FC', color: '#0FA8DC' }}>
-              Resource Library
-            </span>
-            <h1 style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.03em', marginBottom: '20px', color: '#1C1C28' }}>
-              Learning Resources
+            <HeadingMarker text="Resource Library" marginBottom="20px" fontSize="12px" />
+            <h1 className="page-hero-title" style={{ marginBottom: '20px' }}>
+              <AccentText tone="blue">Learning</AccentText> <AccentText tone="pink">Resources</AccentText>
             </h1>
-            <p style={{ fontSize: '1.125rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '560px', margin: '0 auto 32px' }}>
+            <p className="page-hero-copy" style={{ maxWidth: '560px', margin: '0 auto 32px' }}>
               Videos, notes, and practice quizzes for CBSE Classes 8-12, SAT Prep, and competitive exams. Many are free to start, and a subscription unlocks the full library.
             </p>
             <div style={{ position: 'relative', maxWidth: '520px', margin: '0 auto' }}>
@@ -184,8 +176,14 @@ export default function Library() {
             >
               {filtered.map((resource) => (
                 <motion.div
+                  className="card-subtle"
                   key={resource.id}
                   variants={fadeUp}
+                  whileHover={{
+                    y: -6,
+                    boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
+                    transition: { type: 'spring', stiffness: 300, damping: 22 },
+                  }}
                   style={{ position: 'relative', padding: '24px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)', opacity: resource.locked ? 0.65 : 1, display: 'flex', flexDirection: 'column' }}
                 >
                   {resource.locked && (
@@ -213,7 +211,7 @@ export default function Library() {
                       className="cta cta-outline"
                       style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '10px', borderRadius: '10px', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: 'white', border: '1.5px solid #DCDCE5', color: '#1C1C28' }}
                     >
-                      <Lock size={13} /> Unlock with Subscription
+                      <Lock size={13} /> Unlock With Subscription
                     </Link>
                   ) : (
                     <button
@@ -230,54 +228,11 @@ export default function Library() {
       </section>
 
       {/* ── Testimonials ── */}
-      <section id="testimonials" className="section-pad" style={{ paddingTop: '64px', paddingBottom: '64px', background: '#F9FAFB' }}>
-        <div style={{ textAlign: 'center', padding: '0 24px', marginBottom: '40px' }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
-              Student Stories
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15, margin: '0 0 14px' }}>
-              Real Results from Real Students
-            </h2>
-            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', lineHeight: 1.6, maxWidth: '540px', margin: '0 auto' }}>
-              Hear from students who used our library to boost their scores.
-            </p>
-          </motion.div>
-        </div>
-        <TestimonialsMarquee row1={testimonialsRow1} row2={testimonialsRow2} />
-      </section>
+      <SharedTestimonialsSection row1={testimonialsRow1} row2={testimonialsRow2} subtitle="Hear from students who used our library to boost their scores." />
 
       {/* ── FAQ ── */}
-      <section className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} style={{ textAlign: 'center', marginBottom: '32px' }}>
-            <span style={{ display: 'inline-block', padding: '6px 14px', borderRadius: '9999px', background: '#E0F5FC', color: '#0FA8DC', fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '16px' }}>
-              Common Questions
-            </span>
-            <h2 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif', fontWeight: 800, color: '#1C1C28', letterSpacing: '-0.025em', lineHeight: 1.15, margin: '0 0 14px' }}>
-              Frequently Asked Questions
-            </h2>
-            <p style={{ fontSize: '1.05rem', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
-              Everything you need to know before you start your free trial.
-            </p>
-          </motion.div>
-          <div style={{ borderTop: '1px solid #E5E7EB', marginBottom: '32px' }}>
-            {pageFaqs.map((faq, i) => (
-              <FAQItem key={i} question={faq.q} answer={faq.a} />
-            ))}
-          </div>
-          <div style={{ textAlign: 'center' }}>
-            <Link to="/faq" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 600, color: '#0FA8DC', fontFamily: 'Inter, sans-serif', textDecoration: 'none' }}>
-              View All FAQs <ArrowRight size={15} style={{ color: '#0FA8DC' }} />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <SharedFaqSection items={pageFaqs} />
 
-      {/* ── CTA Banner ── */}
-      <section aria-label="Call to action" style={{ width: '100%', display: 'block', lineHeight: 0 }}>
-        <img src={ctaBanner} alt="Learn Smarter. Achieve More. Start your Blast Learning journey today." loading="lazy" decoding="async" style={{ width: '100%', height: 'auto', display: 'block' }} />
-      </section>
     </div>
   );
 }

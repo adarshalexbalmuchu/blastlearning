@@ -86,7 +86,7 @@ function ScoreGaugeCard({ data, index }: { data: ScoreData; index: number }) {
     >
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
-        <span style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', letterSpacing: '-0.01em' }}>
+        <span style={{ fontSize: '15px', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: '#1C1C28', letterSpacing: '-0.01em' }}>
           {data.subject}
         </span>
         <span style={{
@@ -149,7 +149,7 @@ function ScoreGaugeCard({ data, index }: { data: ScoreData; index: number }) {
         <text
           x={CX} y={CY - 14}
           textAnchor="middle"
-          fontFamily="Poppins, sans-serif"
+          fontFamily="Inter, sans-serif"
           fontWeight="800"
           fontSize="30"
           fill={`url(#${scoreGradId})`}
@@ -180,7 +180,7 @@ function ScoreGaugeCard({ data, index }: { data: ScoreData; index: number }) {
           <div style={{ fontSize: '9.5px', fontFamily: 'Inter, sans-serif', fontWeight: 600, color: '#B0B8C4', textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '3px' }}>
             Before
           </div>
-          <div style={{ fontSize: '22px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#C8CDD6', lineHeight: 1, letterSpacing: '-0.02em' }}>
+          <div style={{ fontSize: '22px', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: '#C8CDD6', lineHeight: 1, letterSpacing: '-0.02em' }}>
             {data.beforeScore}%
           </div>
         </div>
@@ -189,7 +189,7 @@ function ScoreGaugeCard({ data, index }: { data: ScoreData; index: number }) {
           <div style={{ fontSize: '9.5px', fontFamily: 'Inter, sans-serif', fontWeight: 600, color: data.color2, textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '3px' }}>
             After
           </div>
-          <div style={{ fontSize: '22px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: data.color2, lineHeight: 1, letterSpacing: '-0.02em' }}>
+          <div style={{ fontSize: '22px', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: data.color2, lineHeight: 1, letterSpacing: '-0.02em' }}>
             {data.afterScore}%
           </div>
         </div>

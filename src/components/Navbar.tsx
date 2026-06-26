@@ -124,29 +124,6 @@ const IconBolt = (
   </svg>
 );
 
-const IconBuilding = (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-    <rect x="3" y="7" width="18" height="14" rx="1.5" fill="#67E8F9"/>
-    <rect x="3" y="7" width="18" height="4" rx="1.5" fill="#06B6D4"/>
-    <rect x="7" y="12" width="3" height="3" rx="0.5" fill="white" fillOpacity="0.8"/>
-    <rect x="11" y="12" width="3" height="3" rx="0.5" fill="white" fillOpacity="0.8"/>
-    <rect x="15" y="12" width="3" height="3" rx="0.5" fill="white" fillOpacity="0.8"/>
-    <rect x="9" y="17" width="6" height="4" rx="0.5" fill="#0891B2"/>
-    <rect x="10" y="3" width="4" height="4" rx="0.5" fill="#0EA5E9"/>
-    <line x1="12" y1="3" x2="12" y2="7" stroke="#0284C7" strokeWidth="1"/>
-  </svg>
-);
-
-const IconGradCap = (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-    <path d="M12 3L2 8.5L12 14L22 8.5L12 3Z" fill="#4ADE80"/>
-    <path d="M2 8.5L2 8.5" stroke="#16A34A" strokeWidth="1.5" strokeLinecap="round"/>
-    <path d="M18 10.5V16.5C18 16.5 15.5 19 12 19C8.5 19 6 16.5 6 16.5V10.5L12 14L18 10.5Z" fill="#22C55E"/>
-    <line x1="22" y1="8.5" x2="22" y2="14" stroke="#16A34A" strokeWidth="1.5" strokeLinecap="round"/>
-    <circle cx="22" cy="14.5" r="1.5" fill="#16A34A"/>
-  </svg>
-);
-
 const IconHandshake = (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
     <path d="M2 9L7 6.5L10 9H14L17 6.5L22 9" stroke="#F97316" strokeWidth="1.5" strokeLinecap="round"/>
@@ -192,11 +169,12 @@ const navItems: NavItem[] = [
   {
     id: 2,
     label: 'Programs',
+    path: '/programs',
     subMenus: [
       {
-        title: 'Our Programs',
+        title: '',
         items: [
-          { label: 'CBSE Plan', description: 'Full NCERT curriculum for Classes 8-10', icon: IconBook, iconBg: 'linear-gradient(135deg,#EEF2FF 0%,#E0E7FF 100%)', iconBorder: '#C7D2FE', path: '/programs/cbse-plan' },
+          { label: 'CBSE Plan', description: 'Full CBSE syllabus for Class 10', icon: IconBook, iconBg: 'linear-gradient(135deg,#EEF2FF 0%,#E0E7FF 100%)', iconBorder: '#C7D2FE', path: '/programs/cbse-plan' },
           { label: 'Math Genius Maker', description: 'Gap assessment & targeted math practice', icon: IconBulb, iconBg: 'linear-gradient(135deg,#FFFBEB 0%,#FEF3C7 100%)', iconBorder: '#FDE68A', path: '/programs/math-genius' },
           { label: 'English Mastery', description: 'Grammar, comprehension & writing skills', icon: IconPen, iconBg: 'linear-gradient(135deg,#F0FDF4 0%,#DCFCE7 100%)', iconBorder: '#BBF7D0', path: '/programs/english-mastery' },
           { label: 'SAT Prep Pass', description: 'US college admission test preparation', icon: IconTrophy, iconBg: 'linear-gradient(135deg,#F5F3FF 0%,#EDE9FE 100%)', iconBorder: '#DDD6FE', path: '/programs/sat-prep' },
@@ -241,8 +219,6 @@ const navItems: NavItem[] = [
       {
         title: 'For Institutions',
         items: [
-          { label: 'School Partnerships', description: 'Bulk enrollment & custom programs for schools', icon: IconBuilding, iconBg: 'linear-gradient(135deg,#ECFEFF 0%,#CFFAFE 100%)', iconBorder: '#A5F3FC', path: '/contact' },
-          { label: 'Batch Programs', description: 'Group learning plans for student cohorts', icon: IconGradCap, iconBg: 'linear-gradient(135deg,#F0FDF4 0%,#DCFCE7 100%)', iconBorder: '#BBF7D0', path: '/programs' },
           { label: 'Partnership Enquiry', description: 'Talk to our institution success team', icon: IconHandshake, iconBg: 'linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%)', iconBorder: '#FED7AA', path: '/contact' },
         ],
       },
@@ -250,19 +226,19 @@ const navItems: NavItem[] = [
   },
   {
     id: 7,
-    label: 'Resources',
+    label: 'Library',
     subMenus: [
       {
-        title: 'Resources',
+        title: 'Library',
         items: [
-          { label: 'Blog', description: 'Articles, tips & learning insights', icon: IconNewspaper, iconBg: 'linear-gradient(135deg,#E0F2FE 0%,#BAE6FD 100%)', iconBorder: '#7DD3FC', path: '/blog' },
-          { label: 'Resource Library', description: 'Videos, notes & practice quizzes', icon: IconBooks, iconBg: 'linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%)', iconBorder: '#FED7AA', path: '/library' },
-          { label: 'FAQs', description: 'Common questions answered', icon: IconFAQ, iconBg: 'linear-gradient(135deg,#F5F3FF 0%,#EDE9FE 100%)', iconBorder: '#DDD6FE', path: '/faq' },
+          { label: 'Blogs', description: 'Articles, tips & learning insights', icon: IconNewspaper, iconBg: 'linear-gradient(135deg,#E0F2FE 0%,#BAE6FD 100%)', iconBorder: '#7DD3FC', path: '/blog' },
+          { label: 'FAQ', description: 'Common questions answered', icon: IconFAQ, iconBg: 'linear-gradient(135deg,#F5F3FF 0%,#EDE9FE 100%)', iconBorder: '#DDD6FE', path: '/faq' },
         ],
       },
     ],
   },
-  { id: 8, label: 'Contact', path: '/contact' },
+  { id: 8, label: 'About us', path: '/about' },
+  { id: 9, label: 'Contact', path: '/contact' },
 ];
 
 const loginOptions = [
@@ -316,17 +292,34 @@ export default function Navbar() {
           transition: 'box-shadow 0.3s',
         }}
       >
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <div className="flex items-center justify-between" style={{ height: '64px' }}>
+        {/* Full-width bar: logo far-left, login far-right, nav+CTA hero-aligned center */}
+        <div className="nav-inner-bar" style={{ position: 'relative', height: '64px', display: 'flex', alignItems: 'center', padding: '0 24px' }}>
 
-            {/* Logo */}
-            <Link to="/" className="flex items-center flex-shrink-0" style={{ textDecoration: 'none' }}>
-              <img src={blastLogo} alt="Blast Learning" style={{ height: '44px', width: 'auto' }} />
-            </Link>
+          {/* Logo — stays at far left, independent of hero container */}
+          <Link to="/" className="flex items-center flex-shrink-0 nav-logo-link" style={{ textDecoration: 'none', position: 'relative', zIndex: 2, marginLeft: '66px' }}>
+            <img src={blastLogo} alt="Blast Learning" className="nav-logo-img" style={{ height: '56px', width: 'auto' }} />
+          </Link>
 
-            {/* Desktop Nav */}
-            <div className="show-lg-flex items-center" style={{ gap: '2px' }}>
-              <ul style={{ display: 'flex', alignItems: 'center', gap: '2px', listStyle: 'none', margin: 0, padding: 0 }}>
+          {/* Nav items + Start Free Trial — absolutely centered in 1280px hero zone */}
+          <div
+            className="show-lg-flex"
+            style={{
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '100%',
+              maxWidth: '1280px',
+              padding: '0 24px',
+              boxSizing: 'border-box',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '64px',
+              pointerEvents: 'none',
+              zIndex: 1,
+            }}
+          >
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(9px, 1.1vw, 17px)', pointerEvents: 'auto' }}>
+            <ul style={{ display: 'flex', alignItems: 'center', gap: 'clamp(7px, 0.9vw, 15px)', listStyle: 'none', margin: 0, padding: 0 }}>
                 {navItems.map((item) => (
                   <li
                     key={item.id}
@@ -335,17 +328,15 @@ export default function Navbar() {
                     onMouseLeave={() => { setOpenMenu(null); setHoveredId(null); }}
                   >
                     {item.subMenus ? (
-                      <button
-                        className="flex items-center gap-1 text-sm font-medium"
+                      <div
                         style={{
                           position: 'relative',
-                          padding: '6px 14px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '2px',
+                          padding: '6px clamp(6px, 0.8vw, 14px)',
                           borderRadius: '99px',
-                          border: 'none',
-                          background: 'transparent',
-                          cursor: 'pointer',
                           color: '#5A5A6E',
-                          fontFamily: 'Inter, sans-serif',
                         }}
                       >
                         {hoveredId === item.id && (
@@ -359,17 +350,49 @@ export default function Navbar() {
                             }}
                           />
                         )}
-                        <span style={{ position: 'relative', zIndex: 1 }}>{item.label}</span>
-                        <ChevronDown
-                          size={13}
+                        <Link
+                          to={item.path || '/'}
                           style={{
                             position: 'relative',
                             zIndex: 1,
-                            transform: openMenu === item.id ? 'rotate(180deg)' : 'rotate(0)',
-                            transition: 'transform 0.25s',
+                            display: 'flex',
+                            alignItems: 'center',
+                            fontSize: '14px',
+                            fontWeight: location.pathname === item.path ? 600 : 500,
+                            fontFamily: 'Inter, sans-serif',
+                            color: location.pathname === item.path ? '#0FA8DC' : '#5A5A6E',
+                            textDecoration: 'none',
+                            whiteSpace: 'nowrap',
                           }}
-                        />
-                      </button>
+                        >
+                          {item.label}
+                        </Link>
+                        <button
+                          type="button"
+                          aria-label={`Open ${item.label} menu`}
+                          className="flex items-center justify-center"
+                          onClick={() => setOpenMenu((current) => (current === item.id ? null : item.id))}
+                          style={{
+                            position: 'relative',
+                            zIndex: 1,
+                            width: '20px',
+                            height: '20px',
+                            padding: 0,
+                            border: 'none',
+                            background: 'transparent',
+                            cursor: 'pointer',
+                            color: '#5A5A6E',
+                          }}
+                        >
+                          <ChevronDown
+                            size={13}
+                            style={{
+                              transform: openMenu === item.id ? 'rotate(180deg)' : 'rotate(0)',
+                              transition: 'transform 0.25s',
+                            }}
+                          />
+                        </button>
+                      </div>
                     ) : (
                       <Link
                         to={item.path || '/'}
@@ -377,13 +400,14 @@ export default function Navbar() {
                           position: 'relative',
                           display: 'flex',
                           alignItems: 'center',
-                          padding: '6px 14px',
+                          padding: '6px clamp(6px, 0.8vw, 14px)',
                           borderRadius: '99px',
                           fontSize: '14px',
                           fontWeight: 500,
                           fontFamily: 'Inter, sans-serif',
                           color: location.pathname === item.path ? '#0FA8DC' : '#5A5A6E',
                           textDecoration: 'none',
+                          whiteSpace: 'nowrap',
                         }}
                       >
                         {hoveredId === item.id && (
@@ -462,7 +486,7 @@ export default function Navbar() {
                                                 fontWeight: 600,
                                                 color: '#1C1C28',
                                                 marginBottom: '2px',
-                                                fontFamily: 'Poppins, sans-serif',
+                                                fontFamily: 'Inter, sans-serif',
                                               }}
                                             >
                                               {subItem.label}
@@ -491,19 +515,26 @@ export default function Navbar() {
                   </li>
                 ))}
               </ul>
+
+            {/* CTA + Login inline after nav items */}
+            <div className="show-lg-flex items-center" style={{ gap: 'clamp(6px, 0.8vw, 12px)', flexShrink: 0, marginLeft: 'clamp(8px, 1.2vw, 20px)' }}>
+
+              {/* Start Free Trial Button */}
+              <Link
+                to="/programs"
+                className="cta cta-pink"
+                style={{ padding: '9px clamp(12px, 1.2vw, 20px)', whiteSpace: 'nowrap', fontSize: 'clamp(12px, 0.85vw, 14px)' }}
+              >
+                Start Free Trial
+              </Link>
             </div>
+          </div>
+          </div>
+          {/* ↑ closes the absolutely-centered nav+CTA overlay */}
 
-            {/* Desktop CTA */}
-            <Link
-              to="/programs"
-              className="show-lg-blk cta cta-blue"
-              style={{ padding: '9px 20px', borderRadius: '10px', background: '#0FA8DC', color: 'white', fontSize: '14px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', whiteSpace: 'nowrap', boxShadow: '0 4px 14px rgba(15,168,220,0.25)' }}
-            >
-              Start Free Trial
-            </Link>
-
-            {/* Login Dropdown */}
-            <div className="show-lg-blk" style={{ position: 'relative' }}>
+          {/* Login — centered in the white gap to the right of the 1280px hero zone */}
+          <div className="show-lg-flex items-center" style={{ marginLeft: 'auto', marginRight: 'calc((100vw - min(100vw, 1280px)) / 8)', position: 'relative', zIndex: 2 }}>
+            <div style={{ position: 'relative' }}>
               <button
                 onClick={() => setLoginOpen((v) => !v)}
                 className="flex items-center gap-2 text-sm font-medium"
@@ -516,19 +547,17 @@ export default function Navbar() {
                   cursor: 'pointer',
                   fontFamily: 'Inter, sans-serif',
                   transition: 'border-color 0.2s, color 0.2s',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  whiteSpace: 'nowrap',
                 }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#0FA8DC'; (e.currentTarget as HTMLElement).style.color = '#0FA8DC'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#DCDCE5'; (e.currentTarget as HTMLElement).style.color = '#1C1C28'; }}
               >
                 <User size={14} />
                 Login
-                <ChevronDown
-                  size={12}
-                  style={{
-                    transform: loginOpen ? 'rotate(180deg)' : 'rotate(0)',
-                    transition: 'transform 0.2s',
-                  }}
-                />
+                <ChevronDown size={12} style={{ transform: loginOpen ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.2s' }} />
               </button>
               <AnimatePresence>
                 {loginOpen && (
@@ -555,13 +584,7 @@ export default function Navbar() {
                         key={opt.label}
                         to={opt.to}
                         className="block text-sm"
-                        style={{
-                          padding: '12px 16px',
-                          color: '#1C1C28',
-                          textDecoration: 'none',
-                          fontFamily: 'Inter, sans-serif',
-                          transition: 'background 0.15s, color 0.15s',
-                        }}
+                        style={{ padding: '12px 16px', color: '#1C1C28', textDecoration: 'none', fontFamily: 'Inter, sans-serif', transition: 'background 0.15s, color 0.15s', display: 'block' }}
                         onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = '#F7F7F8'; (e.currentTarget as HTMLElement).style.color = '#0FA8DC'; }}
                         onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent'; (e.currentTarget as HTMLElement).style.color = '#1C1C28'; }}
                         onClick={() => setLoginOpen(false)}
@@ -573,35 +596,37 @@ export default function Navbar() {
                 )}
               </AnimatePresence>
             </div>
+          </div>
 
-            {/* Mobile: Login button + hamburger */}
-            <div className="hide-lg" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Link
-                to="/login"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  padding: '8px 16px',
-                  borderRadius: '8px',
-                  background: '#0FA8DC',
-                  color: 'white',
-                  fontSize: '13px',
-                  fontWeight: 700,
-                  fontFamily: 'Inter, sans-serif',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                Login / Register
-              </Link>
-              <button
-                style={{ color: '#1C1C28', background: 'transparent', border: 'none', cursor: 'pointer', padding: '10px', borderRadius: '8px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                onClick={() => setMobileOpen((v) => !v)}
-                aria-label="Toggle menu"
-              >
-                {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-              </button>
-            </div>
+          {/* Mobile: Login button + hamburger */}
+          <div className="hide-lg" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
+            <Link
+              to="/login"
+              className="nav-mobile-auth"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '8px 16px',
+                borderRadius: '8px',
+                background: '#0FA8DC',
+                color: 'white',
+                fontSize: '13px',
+                fontWeight: 700,
+                fontFamily: 'Inter, sans-serif',
+                textDecoration: 'none',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Login / Register
+            </Link>
+            <button
+              className="nav-mobile-menu-btn"
+              style={{ color: '#1C1C28', background: 'transparent', border: 'none', cursor: 'pointer', padding: '10px', borderRadius: '8px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-label="Toggle menu"
+            >
+              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
           </div>
         </div>
 

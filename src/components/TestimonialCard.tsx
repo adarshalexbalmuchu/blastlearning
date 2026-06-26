@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 interface TestimonialCardProps {
   name: string;
   role: string;
@@ -19,15 +21,21 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
   const accent = avatarColor(name);
 
   return (
-    <div
-      className="hover:-translate-y-0.5 transition duration-300 shadow-[0_2px_16px_rgba(28,28,40,0.05)] hover:shadow-[0_10px_32px_rgba(28,28,40,0.10)]"
+    <motion.div
+      className="card-subtle"
+      whileHover={{
+        y: -6,
+        boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
+        transition: { type: 'spring', stiffness: 300, damping: 22 },
+      }}
       style={{
         background: '#FFFFFF',
-        border: '1.5px solid #ECECF1',
+        border: '1.5px solid #E8E8F0',
         borderRadius: '20px',
         padding: '22px',
         display: 'flex',
         flexDirection: 'column',
+        boxShadow: '0 2px 16px rgba(28,28,40,0.05)',
       }}
     >
       {/* Before / After inline stat strip */}
@@ -42,7 +50,7 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
             <div style={{ fontSize: '9px', fontWeight: 600, color: '#B0B8C4', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '4px' }}>
               Before
             </div>
-            <div style={{ fontSize: '19px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#C8CDD6', lineHeight: 1, letterSpacing: '-0.02em' }}>
+            <div style={{ fontSize: '19px', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: '#C8CDD6', lineHeight: 1, letterSpacing: '-0.02em' }}>
               {before}
             </div>
           </div>
@@ -52,7 +60,7 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
             <div style={{ fontSize: '9px', fontWeight: 700, color: accent, fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '4px' }}>
               {metric}
             </div>
-            <div style={{ fontSize: '17px', fontWeight: 800, fontFamily: 'Poppins, sans-serif', color: accent, lineHeight: 1, letterSpacing: '-0.01em' }}>
+            <div style={{ fontSize: '17px', fontWeight: 800, fontFamily: 'Inter, sans-serif', color: accent, lineHeight: 1, letterSpacing: '-0.01em' }}>
               +{improvement}
             </div>
           </div>
@@ -62,7 +70,7 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
             <div style={{ fontSize: '9px', fontWeight: 600, color: `${accent}CC`, fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.09em', marginBottom: '4px' }}>
               After
             </div>
-            <div style={{ fontSize: '19px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: accent, lineHeight: 1, letterSpacing: '-0.02em' }}>
+            <div style={{ fontSize: '19px', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: accent, lineHeight: 1, letterSpacing: '-0.02em' }}>
               {after}
             </div>
           </div>
@@ -92,15 +100,15 @@ export default function TestimonialCard({ name, role, content, rating = 5, befor
           background: accent,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontSize: '15px', fontWeight: 700, color: 'white',
-          fontFamily: 'Poppins, sans-serif', flexShrink: 0,
+          fontFamily: 'Inter, sans-serif', flexShrink: 0,
         }}>
           {name.charAt(0)}
         </div>
         <div>
-          <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Poppins, sans-serif', margin: 0 }}>{name}</p>
+          <p style={{ fontSize: '14px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif', margin: 0 }}>{name}</p>
           <p style={{ fontSize: '12px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: 0 }}>{role}</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

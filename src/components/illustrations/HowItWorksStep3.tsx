@@ -26,9 +26,9 @@ export const HowItWorksStep3: FC<IllustrationProps> = ({ className, width = '100
 
     <rect x="52" y="38" width="196" height="170" rx="14" fill="#FFFFFF" stroke="#ECECF1" strokeWidth="1.5" />
 
-    <text x="150" y="68" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="12" fontWeight="600" fill="#1C1C28">Retention Score</text>
+    <text x="150" y="68" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="12" fontWeight="600" fill="#1C1C28">Retention Score</text>
 
-    <text x="150" y="104" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="34" fontWeight="700" fill="url(#s3g1)">89%</text>
+    <text x="150" y="104" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="34" fontWeight="700" fill="url(#s3g1)">89%</text>
 
     <polyline
       points="72,172 94,162 116,165 138,155 160,148 182,143 204,136 226,128"

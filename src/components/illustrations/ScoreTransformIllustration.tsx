@@ -35,20 +35,20 @@ export const ScoreTransformIllustration: FC<IllustrationProps> = ({ className, w
     {/* ── Arc 1: Mathematics 65→89 ── */}
     <path d="M 28 186 A 76 76 0 0 1 180 186" stroke="#ECECF1" strokeWidth="12" strokeLinecap="round" />
     <path className="score-arc-after" d="M 28 186 A 76 76 0 0 1 176 146" stroke="url(#sti-g1)" strokeWidth="12" strokeLinecap="round" />
-    <text x="104" y="165" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="22" fontWeight="700" fill="#1C1C28">89%</text>
+    <text x="104" y="165" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="22" fontWeight="700" fill="#1C1C28">89%</text>
     <text x="104" y="180" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fill="#5A5A6E">Mathematics</text>
     <text x="22" y="202" fontFamily="Inter, sans-serif" fontSize="10" fill="#8E8EA0">65%</text>
 
     {/* ── Arc 2: Physics 52→81 ── */}
     <path d="M 140 186 A 76 76 0 0 1 292 186" stroke="#ECECF1" strokeWidth="12" strokeLinecap="round" />
     <path className="score-arc-after" d="M 140 186 A 76 76 0 0 1 285 152" stroke="url(#sti-g2)" strokeWidth="12" strokeLinecap="round" />
-    <text x="216" y="165" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="22" fontWeight="700" fill="#1C1C28">81%</text>
+    <text x="216" y="165" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="22" fontWeight="700" fill="#1C1C28">81%</text>
     <text x="216" y="180" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fill="#5A5A6E">Physics</text>
 
     {/* ── Arc 3: English 58→84 ── */}
     <path d="M 252 186 A 76 76 0 0 1 404 186" stroke="#ECECF1" strokeWidth="12" strokeLinecap="round" />
     <path className="score-arc-after" d="M 252 186 A 76 76 0 0 1 398 149" stroke="url(#sti-g3)" strokeWidth="12" strokeLinecap="round" />
-    <text x="328" y="165" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="22" fontWeight="700" fill="#1C1C28">84%</text>
+    <text x="328" y="165" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="22" fontWeight="700" fill="#1C1C28">84%</text>
     <text x="328" y="180" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="9" fill="#5A5A6E">English</text>
 
     <text x="210" y="230" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="11" fill="#5A5A6E">Average improvement: +27% in 30 days</text>

@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface FAQItemProps {
   question: string;
@@ -36,23 +35,19 @@ export default function FAQItem({ question, answer, highlight = '' }: FAQItemPro
           alignItems: 'center',
           justifyContent: 'space-between',
           gap: '16px',
-          padding: '16px 0',
+          padding: '20px 0',
           textAlign: 'left',
           cursor: 'pointer',
           background: 'transparent',
           border: 'none',
         }}
       >
-        <span style={{ fontSize: '15px', fontWeight: 600, color: '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.45 }}>
+        <span style={{ fontSize: 'var(--fs-body)', fontWeight: 700, color: '#111111', fontFamily: 'Inter, sans-serif', lineHeight: 'var(--lh-small)' }}>
           <Highlight text={question} query={highlight} />
         </span>
-        <motion.div
-          animate={{ rotate: open ? 180 : 0 }}
-          transition={{ duration: 0.2 }}
-          style={{ flexShrink: 0, opacity: 0.6, color: '#1C1C28' }}
-        >
-          <ChevronDown size={16} strokeWidth={2} />
-        </motion.div>
+        <span style={{ flexShrink: 0, fontSize: '20px', lineHeight: 1, color: '#111111', fontWeight: 300, transition: 'color 0.2s' }}>
+          {open ? '−' : '+'}
+        </span>
       </button>
 
       <AnimatePresence initial={false}>
@@ -65,7 +60,7 @@ export default function FAQItem({ question, answer, highlight = '' }: FAQItemPro
             transition={{ duration: 0.22, ease: 'easeInOut' }}
             style={{ overflow: 'hidden' }}
           >
-            <p style={{ fontSize: '14px', lineHeight: 1.72, color: '#6B7280', fontFamily: 'Inter, sans-serif', margin: 0, paddingBottom: '16px' }}>
+            <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-body)', color: '#111111', fontFamily: 'Inter, sans-serif', margin: 0, paddingBottom: '20px' }}>
               <Highlight text={answer} query={highlight} />
             </p>
           </motion.div>

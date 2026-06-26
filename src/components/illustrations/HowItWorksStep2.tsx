@@ -27,7 +27,7 @@ export const HowItWorksStep2: FC<IllustrationProps> = ({ className, width = '100
     <rect x="58" y="42" width="184" height="168" rx="14" fill="#FFFFFF" stroke="#ECECF1" strokeWidth="1.5" />
     <rect x="58" y="42" width="184" height="38" rx="14" fill="#F0EDFC" />
     <rect x="58" y="66" width="184" height="14" fill="#F0EDFC" />
-    <text x="150" y="66" textAnchor="middle" fontFamily="Poppins, sans-serif" fontSize="12" fontWeight="600" fill="#1C1C28">Study Plan</text>
+    <text x="150" y="66" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="12" fontWeight="600" fill="#1C1C28">Study Plan</text>
 
     {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((d, col) => (
       <text key={col} x={76 + col * 22} y="98" textAnchor="middle" fontFamily="Inter, sans-serif" fontSize="8" fill="#8E8EA0">{d}</text>

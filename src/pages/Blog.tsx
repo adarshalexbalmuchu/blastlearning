@@ -8,8 +8,9 @@ import {
   getFeaturedImage, getFeaturedAlt, getCategories,
   stripHtml, formatDate, readingTime,
 } from '../lib/wordpress';
+import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
-import BrandWhoosh from '../components/BrandWhoosh';
+import HeadingMarker from '../components/HeadingMarker';
 
 function PostCardSkeleton() {
   return (
@@ -67,23 +68,16 @@ export default function Blog() {
 
       {/* Hero */}
       <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', borderBottom: '1px solid #DAEEF6', paddingTop: '120px', paddingBottom: '72px' }}>
-        <div aria-hidden="true" style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
-          <div style={{ position: 'absolute', top: '-100px', right: '-160px', width: '520px', height: '520px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(15,168,220,0.07) 0%, transparent 70%)', willChange: 'transform', animation: 'blob-float 14s ease-in-out infinite' }} />
-          <div style={{ position: 'absolute', bottom: '-80px', left: '-120px', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%)', willChange: 'transform', animation: 'blob-float 18s ease-in-out infinite reverse' }} />
-        </div>
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
-        <BrandWhoosh opacity={0.25} style={{ width: '480px', height: '480px', bottom: '-60px', right: '-60px' }} />
         <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <span style={{ display: 'inline-block', padding: '6px 18px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', marginBottom: '20px', background: '#E0F5FC', color: '#0FA8DC' }}>
-              Blast Learning Blog
-            </span>
-            <h1 style={{ fontSize: 'clamp(2rem, 4.5vw, 3rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.025em', marginBottom: '18px', color: '#1C1C28', lineHeight: 1.15 }}>
-              Study Tips & Learning Science
+            <HeadingMarker text="Blast Learning Blog" marginBottom="20px" fontSize="12px" />
+            <h1 className="page-hero-title" style={{ marginBottom: '18px' }}>
+              <AccentText tone="blue">Study</AccentText> Tips & Learning <AccentText tone="pink">Science</AccentText>
             </h1>
-            <p style={{ fontSize: '1.0625rem', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '520px', margin: '0 auto 32px' }}>
+            <p className="page-hero-copy" style={{ maxWidth: '520px', margin: '0 auto 32px' }}>
               Exam strategies, retention science, and practical guides from our educators and AI researchers.
             </p>
             {/* Search */}
@@ -161,12 +155,19 @@ export default function Blog() {
                 const cats = getCategories(post);
                 const mins = readingTime(post.content.rendered);
                 return (
-                  <motion.article key={post.id} variants={fadeUp}>
+                  <motion.article
+                    key={post.id}
+                    variants={fadeUp}
+                    whileHover={{
+                      y: -6,
+                      boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
+                      transition: { type: 'spring', stiffness: 300, damping: 22 },
+                    }}
+                    style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 12px rgba(28,28,40,0.04)' }}
+                  >
                     <Link
                       to={`/blog/${post.slug}`}
-                      style={{ display: 'flex', flexDirection: 'column', height: '100%', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', overflow: 'hidden', textDecoration: 'none', boxShadow: '0 2px 12px rgba(28,28,40,0.04)', transition: 'box-shadow 0.2s, transform 0.2s' }}
-                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = '0 10px 32px rgba(28,28,40,0.10)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
-                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = '0 2px 12px rgba(28,28,40,0.04)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(0)'; }}
+                      style={{ display: 'flex', flexDirection: 'column', height: '100%', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', overflow: 'hidden', textDecoration: 'none' }}
                     >
                       {img ? (
                         <img src={img} alt={getFeaturedAlt(post)} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} loading="lazy" />
