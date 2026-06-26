@@ -4,8 +4,14 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import AccentText from '../components/AccentText';
 import HeadingMarker from '../components/HeadingMarker';
+import BrandArc from '../components/BrandArc';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import MobileCarousel from '../components/MobileCarousel';
+import step1Img from '../assets/method-science-new/1.png';
+import step2Img from '../assets/method-science-new/2.png';
+import step3Img from '../assets/method-science-new/3.png';
+import step4Img from '../assets/method-science-new/4.png';
+import ebbinghausImg from '../assets/Ebbinghaus Curve.png';
 
 const testimonialsRow1 = [
   { name: 'Ananya Krishnan', role: 'Class 10, CBSE Plan · Bangalore', text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.' },
@@ -145,90 +151,131 @@ export default function Programs() {
 
       {/* Overview */}
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '24px' }}>
-              A coaching class can teach a concept twice and still lose a student to the forgetting curve by Friday, because re-reading and highlighting create a sense of familiarity that has almost nothing to do with retention. Blast Learning starts from that gap rather than from another video library. Each session is scheduled by an adaptive engine that tracks what a student has seen, how confidently they answered it, and when that memory is due to fade, so practice arrives at the moment recall takes real effort instead of the moment it feels comfortable. The result is not a faster way to consume more content. It is a study system that converts hours already being spent into marks that hold under exam pressure.
-            </p>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
-              Every course on this page, whether it runs through the CBSE syllabus, sharpens mathematical pattern recognition, builds inferential reading for English and the SAT, or prepares a student for the Digital SAT directly, sits on the same foundation described below. A GAP Assessment opens each course by identifying exactly where a student's knowledge breaks down, often several grades behind their enrolled level in a specific topic, and the AI Tutor then builds a path from that point rather than from the syllabus cover page. A Study Buddy keeps a real person in the loop for accountability and explanation, because no adaptive engine alone sustains a teenager's motivation through a Tuesday evening revision session. Parents see minutes studied and concepts mastered on a transparent dashboard.
-            </p>
-          </motion.div>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'center' }} className="grid-cols-2-md">
+            {/* Text */}
+            <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+              <HeadingMarker text="Our Approach" marginBottom="16px" fontSize="12px" />
+              <h2 className="t-h2" style={{ marginBottom: '24px' }}>
+                The <AccentText tone="blue">science</AccentText> of lasting <AccentText tone="pink">retention</AccentText>
+              </h2>
+              <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '20px' }}>
+                A coaching class can teach a concept twice and still lose a student to the forgetting curve by Friday, because re-reading and highlighting create a sense of familiarity that has almost nothing to do with retention. Blast Learning starts from that gap. Each session is scheduled by an adaptive engine that tracks what a student has seen, how confidently they answered it, and when that memory is due to fade.
+              </p>
+              <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
+                A GAP Assessment opens each course by identifying exactly where understanding breaks down — often several grades behind enrolled level — and the AI Tutor builds the path from that point. A Study Buddy keeps a real person in the loop. Parents see retention scores, not just time logged.
+              </p>
+            </motion.div>
+            {/* Illustration */}
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+              whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 280, damping: 22 } }}
+              style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: '0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06)', background: '#fff' }}
+            >
+              <img src={ebbinghausImg} alt="Ebbinghaus Forgetting Curve" style={{ width: '100%', height: 'auto', display: 'block' }} />
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB', position: 'relative', overflow: 'hidden' }}>
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
+          <BrandArc width="100%" opacity={0.05} />
+        </div>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           <motion.div
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ textAlign: 'center', marginBottom: '56px', maxWidth: '896px', marginLeft: 'auto', marginRight: 'auto' }}
+            style={{ textAlign: 'center', marginBottom: '64px', maxWidth: '760px', marginLeft: 'auto', marginRight: 'auto' }}
           >
             <HeadingMarker text="How It Works" marginBottom="16px" fontSize="12px" />
             <h2 className="t-h2" style={{ marginBottom: '20px' }}>
               The <AccentText tone="blue">Method</AccentText> Behind the <AccentText tone="pink">Marks</AccentText>
             </h2>
             <p className="t-body">
-              Strip away the interface and five mechanisms do the actual work. Four of them move a student from gap to mastery in sequence; the fifth runs underneath all four, because none of them hold up if a student cannot manage focus, nerves, or a clock.
+              Five mechanisms do the actual work. Four move a student from gap to mastery in sequence; the fifth runs underneath all four.
             </p>
           </motion.div>
-          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {[
               {
-                num: '1',
+                num: '1', eyebrow: 'Diagnostic First', accent: '#E8135A', bg: '#FCEEF1',
                 title: 'GAP Assessment',
-                body: 'Before a single lesson is assigned, Blast finds out what a student actually knows, not what their grade level assumes they should know. A Class 10 student stuck on fractions from Class 5 is common, and the gap rarely shows up on a school report card. The GAP Assessment surfaces it on day one, so the study plan that follows starts from reality rather than from the syllabus index.',
+                body: 'Before a single lesson is assigned, Blast finds out what a student actually knows — not what their grade level assumes. A Class 10 student stuck on fractions from Class 5 is common, and it rarely shows on a report card. The GAP Assessment surfaces it on day one so the study plan starts from reality.',
+                img: step1Img,
               },
               {
-                num: '2',
+                num: '2', eyebrow: 'AI-Powered', accent: '#0FA8DC', bg: '#E0F5FC',
                 title: 'The AI Tutor',
-                body: 'Once the gap is mapped, the AI Tutor builds the path across it. Practice questions are generated fresh for each session rather than recycled from a fixed bank, calibrated to sit at the edge of what a student can currently do. Too easy and nothing sticks; too hard and the student disengages. The AI Tutor\'s job is to hold that edge, session after session, without a human tutor having to recalculate it by hand.',
+                body: 'Once the gap is mapped, the AI Tutor builds the path across it. Questions are generated fresh each session — calibrated to sit at the edge of what a student can currently do. Too easy and nothing sticks; too hard and the student disengages. The AI Tutor holds that edge, session after session.',
+                img: step2Img,
               },
               {
-                num: '3',
-                title: 'Spaced Repetition and Retrieval Practice',
-                body: 'Content is scheduled to resurface at the interval where recall has started to fade but has not yet disappeared, because that moment of effortful retrieval is what cognitive psychologists call the testing effect: among the most replicated findings in the field, and the actual mechanism behind durable memory. Students are asked to produce an answer from memory rather than recognise one from a page.',
+                num: '3', eyebrow: 'Memory Science', accent: '#E8135A', bg: '#FCEEF1',
+                title: 'Spaced Repetition & Retrieval Practice',
+                body: 'Content resurfaces at the interval where recall has started to fade but not yet vanished — the testing effect. That moment of effortful retrieval is among the most replicated findings in cognitive science, and the actual mechanism behind durable memory.',
+                img: step3Img,
               },
               {
-                num: '4',
+                num: '4', eyebrow: 'Peer Accountability', accent: '#0FA8DC', bg: '#E0F5FC',
                 title: 'Study Buddy',
-                body: 'A human partner is paired with every student, working alongside the AI Tutor rather than instead of it. Two students or a student and a Study Buddy mentor receive synchronised, adaptive question sets, then practise together, explain answers to each other, and hold each other to the schedule. It is the accountability layer that makes an AI-paced study plan something a teenager will actually follow through November exam season.',
+                body: 'A human partner works alongside the AI Tutor, not instead of it. Two students receive synchronised adaptive question sets, practise together, explain answers to each other, and hold each other to the schedule — the accountability layer that makes a study plan stick through November exam season.',
+                img: step4Img,
               },
               {
-                num: '5',
+                num: '5', eyebrow: 'Self-Regulation', accent: '#8B5CF6', bg: '#F0EDFC',
                 title: 'Mind Coach',
-                body: 'A student can have the gap mapped, the path built, and the schedule perfectly timed, and still freeze in an exam hall because nobody taught them how to manage that moment. Mind Coach treats focus, emotional control, goal-setting, and personal agency as skills, not personality traits, which means they get taught the same deliberate way a chapter on thermodynamics gets taught.',
+                body: 'A student can have the gap mapped, the path built, and the schedule timed perfectly — and still freeze in an exam hall. Mind Coach treats focus, emotional control, goal-setting, and personal agency as learnable skills, taught the same deliberate way a chapter on thermodynamics gets taught.',
+                img: ebbinghausImg,
               },
-            ].map((card) => (
-              <motion.div
-                key={card.num}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="card-subtle surface-card"
-                style={{ padding: '24px' }}
-              >
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                  <div style={{ flexShrink: 0, width: '36px', height: '36px', borderRadius: '50%', background: '#0FA8DC', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ fontSize: '14px', fontWeight: 700, color: '#FFFFFF', fontFamily: "'Poppins', sans-serif" }}>{card.num}</span>
+            ].map((step, idx) => {
+              const isReversed = idx % 2 !== 0;
+              return (
+                <motion.div
+                  key={step.num}
+                  variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className={`hiw-row${isReversed ? ' reversed' : ''}`}
+                >
+                  {/* Content panel */}
+                  <div className="hiw-content" style={{ background: '#FFFFFF', padding: '48px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
+                      <div style={{ width: '44px', height: '44px', borderRadius: '50%', background: step.accent, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <span style={{ fontSize: '15px', fontWeight: 700, color: '#FFFFFF', fontFamily: "'Poppins', sans-serif" }}>{step.num}</span>
+                      </div>
+                      <HeadingMarker text={step.eyebrow} accent={step.accent} fontSize="11px" marginBottom="0" />
+                    </div>
+                    <h3 style={{ fontSize: 'clamp(1.3rem, 1rem + 1.5vw, 1.75rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '16px', lineHeight: 1.25 }}>
+                      {step.title}
+                    </h3>
+                    <p style={{ fontSize: '15px', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", margin: 0 }}>
+                      {step.body}
+                    </p>
                   </div>
-                  <div>
-                    <h3 style={{ fontSize: '17px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{card.title}</h3>
-                    <p style={{ fontSize: '14px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{card.body}</p>
+
+                  {/* Image panel */}
+                  <div className="hiw-image" style={{ background: step.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '32px', position: 'relative', overflow: 'hidden' }}>
+                    <img
+                      src={step.img}
+                      alt={step.title}
+                      style={{ width: '100%', maxWidth: '380px', height: 'auto', objectFit: 'contain', display: 'block', position: 'relative', zIndex: 1 }}
+                    />
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </MobileCarousel>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
