@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import HeadingMarker from './HeadingMarker';
 
 const PINK       = '#E8135A';
