@@ -598,27 +598,8 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile: Login button + hamburger */}
-          <div className="hide-lg" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginLeft: 'auto' }}>
-            <Link
-              to="/login"
-              className="nav-mobile-auth"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                padding: '8px 16px',
-                borderRadius: '8px',
-                background: '#0FA8DC',
-                color: 'white',
-                fontSize: '13px',
-                fontWeight: 700,
-                fontFamily: 'Inter, sans-serif',
-                textDecoration: 'none',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              Login / Register
-            </Link>
+          {/* Mobile: hamburger only */}
+          <div className="hide-lg" style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
             <button
               className="nav-mobile-menu-btn"
               style={{ color: '#1C1C28', background: 'transparent', border: 'none', cursor: 'pointer', padding: '10px', borderRadius: '8px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
