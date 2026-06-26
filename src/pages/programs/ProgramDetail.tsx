@@ -24,8 +24,8 @@ const stagger: Variants = {
 
 const PROGRAM_BANNERS: Record<string, string> = {
   'cbse-plan': banner1,
-  'math-genius': banner2,
-  'english-mastery': banner3,
+  'math-genius': banner3,
+  'english-mastery': banner2,
   'sat-prep': banner4,
 };
 
@@ -90,16 +90,14 @@ export default function ProgramDetail() {
                 objectPosition: 'center center',
               }}
             />
-            {/* dots-only overlay — matches home hero style */}
-            <div className="programs-hero-cta" style={{ position: 'absolute', bottom: '15.1%', left: '4.4%', zIndex: 3 }}>
-              <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: dotColor }} />
-                <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: dotColor }} />
-                <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: dotColor }} />
-                <span style={{ width: '9px', height: '3px', borderRadius: '9999px', background: dotColor }} />
-                <span style={{ width: '14px', height: '3px', borderRadius: '9999px', background: dotColor }} />
-              </span>
-            </div>
+            {/* dots-only overlay — top-left, matches home hero style */}
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '6%', left: '4.4%', zIndex: 3, pointerEvents: 'none' }}>
+              <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: dotColor }} />
+              <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: dotColor }} />
+              <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: dotColor }} />
+              <span style={{ width: '9px', height: '3px', borderRadius: '9999px', background: dotColor }} />
+              <span style={{ width: '14px', height: '3px', borderRadius: '9999px', background: dotColor }} />
+            </span>
           </motion.div>
         </div>
       </section>

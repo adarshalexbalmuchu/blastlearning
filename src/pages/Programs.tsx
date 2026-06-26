@@ -141,17 +141,19 @@ export default function Programs() {
               fetchPriority="high"
               style={{ width: '100%', height: '100%', display: 'block', objectFit: 'contain', objectPosition: 'center center' }}
             />
+            {/* dots — top-left, matches home hero */}
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '6%', left: '4.4%', zIndex: 3, pointerEvents: 'none' }}>
+              <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: '9px', height: '3px', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: '14px', height: '3px', borderRadius: '9999px', background: '#E8135A' }} />
+            </span>
+            {/* CTA — bottom-left */}
             <div
               className="programs-hero-cta"
               style={{ position: 'absolute', bottom: '15.1%', left: '4.4%', zIndex: 3 }}
             >
-              <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', marginBottom: '14px' }}>
-                <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: '#E8135A' }} />
-                <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: '#E8135A' }} />
-                <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: '#E8135A' }} />
-                <span style={{ width: '9px', height: '3px', borderRadius: '9999px', background: '#E8135A' }} />
-                <span style={{ width: '14px', height: '3px', borderRadius: '9999px', background: '#E8135A' }} />
-              </span>
               <Link
                 to="/programs/cbse-plan"
                 className="cta"
