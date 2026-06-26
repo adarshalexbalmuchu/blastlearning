@@ -11,7 +11,8 @@ import MobileCarousel from '../components/MobileCarousel';
 import step1Img from '../assets/Competency Based Learning.png';
 import step2Img from '../assets/Critical Thinking.png';
 import step3Img from '../assets/Curriculum Load Reduction.png';
-import step4Img from '../assets/Holistic Assessment.png';
+import step4Img from '../assets/Study Buddy.png';
+import step5Img from '../assets/Holistic Assessment.png';
 import ebbinghausImg from '../assets/Ebbinghaus Curve.png';
 
 const testimonialsRow1 = [
@@ -254,7 +255,7 @@ export default function Programs() {
                 num: '5', eyebrow: 'Self-Regulation', accent: '#8B5CF6', bg: '#F0EDFC',
                 title: 'Mind Coach',
                 body: 'A student can have the gap mapped, the path built, and the schedule timed perfectly — and still freeze in an exam hall. Mind Coach treats focus, emotional control, goal-setting, and personal agency as learnable skills, taught the same deliberate way a chapter on thermodynamics gets taught.',
-                img: step4Img,
+                img: step5Img,
               },
             ].map((step, idx) => {
               const isReversed = idx % 2 !== 0;
