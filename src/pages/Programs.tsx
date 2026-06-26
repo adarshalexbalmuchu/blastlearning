@@ -264,7 +264,7 @@ export default function Programs() {
                 img: step4Img,
               },
               {
-                num: '5', eyebrow: 'Resilient by Design', accent: '#8B5CF6', bg: '#F0EDFC',
+                num: '5', eyebrow: 'Resilient by Design', accent: '#E8135A', bg: '#FCEEF1',
                 title: 'Mind Coach',
                 body: 'Mind Coach treats focus, emotional control, goal-setting, agency, and exam composure as skills built through practice, not traits a student happens to have or lack. A child who freezes on a hard question is missing one specific, trainable skill, and Mind Coach builds it directly, the same way, regardless of which exam or course a student is preparing for, whatever it is.',
                 img: step5Img,
