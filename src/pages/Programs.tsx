@@ -182,7 +182,7 @@ export default function Programs() {
                 A coaching class can teach a concept twice and still lose a student to the forgetting curve by Friday, because re-reading and highlighting create a sense of familiarity that has almost nothing to do with retention. Blast Learning starts from that gap. Each session is scheduled by an adaptive engine that tracks what a student has seen, how confidently they answered it, and when that memory is due to fade.
               </p>
               <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
-                A GAP Assessment opens each course by identifying exactly where understanding breaks down — often several grades behind enrolled level — and the AI Tutor builds the path from that point. A Study Buddy keeps a real person in the loop. Parents see retention scores, not just time logged.
+                The Blast Learning GAP Assessment starts each course by identifying exactly where understanding breaks down, which is typically several grades earlier, and the AI Tutor builds the path from that point. A Study Buddy keeps a real person in the loop. Parents see retention scores apart from the time logged.
               </p>
             </motion.div>
             {/* Illustration */}
@@ -227,7 +227,7 @@ export default function Programs() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {[
               {
-                num: '1', eyebrow: 'Diagnostic First', accent: '#E8135A', bg: '#FCEEF1',
+                num: '1', eyebrow: 'PRI', accent: '#E8135A', bg: '#FCEEF1',
                 title: 'GAP Assessment',
                 body: 'Before a single lesson is assigned, Blast finds out what a student actually knows — not what their grade level assumes. A Class 10 student stuck on fractions from Class 5 is common, and it rarely shows on a report card. The GAP Assessment surfaces it on day one so the study plan starts from reality.',
                 img: step1Img,
@@ -269,7 +269,7 @@ export default function Programs() {
                 >
                   {/* Content panel */}
                   <div className="hiw-content" style={{ background: '#FFFFFF', padding: '48px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '20px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
                       <div style={{ width: '44px', height: '44px', borderRadius: '50%', background: step.accent, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                         <span style={{ fontSize: '15px', fontWeight: 700, color: '#FFFFFF', fontFamily: "'Poppins', sans-serif" }}>{step.num}</span>
                       </div>
