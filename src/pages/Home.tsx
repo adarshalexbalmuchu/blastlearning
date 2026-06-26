@@ -3,6 +3,7 @@ import { motion, type Variants } from 'framer-motion';
 import {
   CheckCircle,
 } from 'lucide-react';
+import MobileCarousel from '../components/MobileCarousel';
 import HeroCarousel from '../components/HeroCarousel';
 import FeatureExplorer from '../components/FeatureExplorer';
 import TrustStats from '../components/TrustStats';
@@ -207,10 +208,6 @@ const fadeUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-const stagger: Variants = {
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
 // Section heading internal stagger variants
 const headingContainer: Variants = {
   hidden: {},
@@ -361,18 +358,21 @@ export default function Home() {
               </motion.div>
             </div>
           </motion.div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginTop: '-5px', marginBottom: '28px', alignItems: 'start' }} className="grid-cols-2-md grid-cols-4-lg">
+          <MobileCarousel desktopGridClass="grid-cols-2-md grid-cols-4-lg" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginTop: '-5px', marginBottom: '28px', alignItems: 'start' }}>
             {howItWorks.map(({ num, eyebrow, title, desc, descFooter, descFooterColor, accent }) => (
               <motion.div
                 key={num}
                 variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
                 whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
               >
                 <HowItWorksCard num={num} eyebrow={eyebrow} title={title} desc={desc} descFooter={descFooter} descFooterColor={descFooterColor} accent={accent} Visual={() => null} height="auto" showVisual={false} />
               </motion.div>
             ))}
-          </motion.div>
+          </MobileCarousel>
           <div style={{ textAlign: 'center' }}>
             <Link className="cta cta-pink" to="/programs">
               Deep Dive Into Method & Science
@@ -393,15 +393,7 @@ export default function Home() {
           />
 
           {/* Pricing cards (Figma layout) */}
-          <motion.div
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(1, 1fr)',
-              gap: '16px',
-            }}
-            className="grid-cols-2-md"
-          >
+          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px' }}>
             {pricingPlans.map((plan, idx) => {
               const isPink = idx % 2 === 0;
               const accent = isPink ? '#E8135A' : '#0FA8DC';
@@ -413,6 +405,9 @@ export default function Home() {
                 <motion.div
                   key={plan.id}
                   variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
                   whileHover={{
                     y: -6,
                     boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
@@ -487,7 +482,7 @@ export default function Home() {
                 </motion.div>
               );
             })}
-          </motion.div>
+          </MobileCarousel>
         </div>
       </section>
 
@@ -579,7 +574,7 @@ export default function Home() {
             title={<>The {G('thinking', CYAN)} behind the {GP('product')}.</>}
             subtitle="Articles, blogs, research papers, case studies, guides, and tools for parents and students who want to understand why the method works, and how to put it into practice."
           />
-          <div className="grid-cols-3-md" style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
+          <MobileCarousel desktopGridClass="grid-cols-3-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
             {resourceArticles.map((article) => {
               const accent = article.tagAccent;
 
@@ -620,7 +615,7 @@ export default function Home() {
                 </div>
               </motion.article>
             );})}
-          </div>
+          </MobileCarousel>
           <div style={{ textAlign: 'center', marginTop: '24px' }}>
             <Link className="cta cta-blue" to="/library">
               Access The Full Library

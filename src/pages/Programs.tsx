@@ -5,6 +5,7 @@ import { BookOpen, Target, Brain, TrendingUp, ArrowRight, CheckCircle, Zap } fro
 import AccentText from '../components/AccentText';
 import PageHeading from '../components/PageHeading';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
+import MobileCarousel from '../components/MobileCarousel';
 
 const testimonialsRow1 = [
   { name: 'Ananya Krishnan', role: 'Class 10, CBSE Plan · Bangalore', text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.' },
@@ -118,10 +119,6 @@ const fadeUp: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
-const stagger: Variants = {
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
 export default function Programs() {
   useSEO({
     title: 'Programs | CBSE, Maths, English & SAT Prep · Blast Learning',
@@ -200,14 +197,7 @@ export default function Programs() {
               Strip away the interface and five mechanisms do the actual work. Four of them move a student from gap to mastery in sequence; the fifth runs underneath all four, because none of them hold up if a student cannot manage focus, nerves, or a clock.
             </p>
           </motion.div>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
-            className="grid-cols-2-md"
-          >
+          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
             {[
               {
                 num: '1',
@@ -238,6 +228,9 @@ export default function Programs() {
               <motion.div
                 key={card.num}
                 variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
                 style={{
                   background: '#FFFFFF',
                   border: '1px solid #ECECF1',
@@ -257,7 +250,7 @@ export default function Programs() {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </MobileCarousel>
         </div>
       </section>
 
@@ -278,14 +271,7 @@ export default function Programs() {
               The five-mechanism system above runs identically across every course. What changes is the subject, the syllabus, and the specific gap each course is built to close.
             </p>
           </motion.div>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '32px' }}
-            className="grid-cols-2-md"
-          >
+          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '32px' }}>
             {programs.map((prog, idx) => {
               const Icon = prog.icon;
               const tile = pastels[idx % pastels.length];
@@ -293,6 +279,9 @@ export default function Programs() {
                 <motion.div
                   key={prog.name}
                   variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
                   whileHover={{ y: -6 }}
                   transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                   style={{
@@ -378,7 +367,7 @@ export default function Programs() {
                 </motion.div>
               );
             })}
-          </motion.div>
+          </MobileCarousel>
           <p style={{ textAlign: 'center', marginTop: '32px', fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
             Every course opens with a 14-day free trial and no credit card requirement. Enrol in two or more courses and a 20% discount applies automatically.
           </p>

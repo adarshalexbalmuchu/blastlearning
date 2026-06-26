@@ -7,6 +7,7 @@ import { Search, Play, FileText, HelpCircle, Lock } from 'lucide-react';
 import AccentText from '../components/AccentText';
 import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
+import MobileCarousel from '../components/MobileCarousel';
 
 const testimonialsRow1 = [
   { name: 'Ananya Krishnan', role: 'Class 10, CBSE Plan · Bangalore', text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.' },
@@ -70,10 +71,6 @@ const TypeIcon = ({ type }: { type: Resource['type'] }) => {
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
-const stagger: Variants = {
-  visible: { transition: { staggerChildren: 0.08 } },
 };
 
 export default function Library() {
@@ -167,18 +164,15 @@ export default function Library() {
               <p style={{ fontSize: '15px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>No resources found for your search.</p>
             </motion.div>
           ) : (
-            <motion.div
-              variants={stagger}
-              initial="hidden"
-              animate="visible"
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}
-              className="grid-cols-2-sm grid-cols-3-lg"
-            >
+            <MobileCarousel desktopGridClass="grid-cols-2-sm grid-cols-3-lg" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
               {filtered.map((resource) => (
                 <motion.div
                   className="card-subtle"
                   key={resource.id}
                   variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
                   whileHover={{
                     y: -6,
                     boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
@@ -222,7 +216,7 @@ export default function Library() {
                   )}
                 </motion.div>
               ))}
-            </motion.div>
+            </MobileCarousel>
           )}
         </div>
       </section>

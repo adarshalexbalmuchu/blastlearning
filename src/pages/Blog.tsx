@@ -8,6 +8,7 @@ import {
   getFeaturedImage, getFeaturedAlt, getCategories,
   stripHtml, formatDate, readingTime,
 } from '../lib/wordpress';
+import MobileCarousel from '../components/MobileCarousel';
 import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
@@ -144,12 +145,7 @@ export default function Blog() {
           )}
 
           {!loading && !error && posts.length > 0 && (
-            <motion.div
-              initial="hidden" animate="visible"
-              variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
-              className="grid-cols-2-md grid-cols-3-lg"
-            >
+            <MobileCarousel desktopGridClass="grid-cols-2-md grid-cols-3-lg" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
               {posts.map((post) => {
                 const img = getFeaturedImage(post);
                 const cats = getCategories(post);
@@ -158,6 +154,9 @@ export default function Blog() {
                   <motion.article
                     key={post.id}
                     variants={fadeUp}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
                     whileHover={{
                       y: -6,
                       boxShadow: '0 16px 40px rgba(15, 23, 42, 0.10), 0 4px 12px rgba(15, 23, 42, 0.06)',
@@ -210,7 +209,7 @@ export default function Blog() {
                   </motion.article>
                 );
               })}
-            </motion.div>
+            </MobileCarousel>
           )}
 
           {/* Pagination */}

@@ -5,6 +5,7 @@ import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import HeadingMarker from '../components/HeadingMarker';
+import MobileCarousel from '../components/MobileCarousel';
 
 const benefits = [
   {
@@ -125,14 +126,7 @@ export default function ForParents() {
               Powerful tools designed to keep you connected to your child's learning journey.
             </p>
           </motion.div>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
-            className="grid-cols-3-md"
-          >
+          <MobileCarousel desktopGridClass="grid-cols-3-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
             {benefits.map((benefit, idx) => {
               const Icon = benefit.icon;
               const tile = pastels[idx % pastels.length];
@@ -140,6 +134,9 @@ export default function ForParents() {
                 <motion.div
                   key={benefit.title}
                   variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
                   whileHover={{ y: -6 }}
                   style={{
                     background: '#FFFFFF',
@@ -157,7 +154,7 @@ export default function ForParents() {
                 </motion.div>
               );
             })}
-          </motion.div>
+          </MobileCarousel>
         </div>
       </section>
 

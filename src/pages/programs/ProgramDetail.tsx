@@ -7,6 +7,7 @@ import AccentText from '../../components/AccentText';
 import PageHeading from '../../components/PageHeading';
 import HeadingMarker from '../../components/HeadingMarker';
 import { SharedFaqSection, SharedTestimonialsSection } from '../../components/MarketingSections';
+import MobileCarousel from '../../components/MobileCarousel';
 import banner1 from '../../assets/banners/HB 1.png';
 import banner2 from '../../assets/banners/HB 2.png';
 import banner3 from '../../assets/banners/HB 3.png';
@@ -239,18 +240,7 @@ export default function ProgramDetail() {
             />
           </motion.div>
 
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: '24px',
-              alignItems: 'stretch',
-            }}
-          >
+          <MobileCarousel desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px', alignItems: 'stretch' }}>
             {program.forWhom.map((card, index) => {
               const cardAccent = [
                 '#0FA8DC',
@@ -263,6 +253,9 @@ export default function ProgramDetail() {
                 <motion.article
                   key={card.title}
                   variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
                   className="card-subtle surface-card"
                   style={{
                     overflow: 'hidden',
@@ -285,7 +278,7 @@ export default function ProgramDetail() {
                 </motion.article>
               );
             })}
-          </motion.div>
+          </MobileCarousel>
         </div>
       </section>
 
