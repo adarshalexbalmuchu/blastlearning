@@ -504,7 +504,7 @@ export default function Programs() {
       </section>
 
       {/* ── Testimonials ── */}
-      <SharedTestimonialsSection row1={testimonialsRow1} row2={testimonialsRow2} subtitle="Hear from students who chose the right program and saw real results." />
+      <SharedTestimonialsSection row1={testimonialsRow1} row2={testimonialsRow2} eyebrow="Observed Evidence" subtitle="Hear from students who chose the right program and saw real results." />
 
       {/* ── FAQ ── */}
       <SharedFaqSection

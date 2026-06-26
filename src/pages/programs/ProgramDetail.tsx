@@ -479,7 +479,7 @@ export default function ProgramDetail() {
       <SharedTestimonialsSection
         row1={testimonialCards}
         row2={[...testimonialCards].reverse()}
-        eyebrow="Student Results"
+        eyebrow="Observed Evidence"
         title={<>Real <AccentText tone="pink">Results</AccentText> from {program.name} <AccentText tone="blue">Students</AccentText></>}
         subtitle="See what this programme looks like when the same study system turns into measurable improvement."
         align="center"
