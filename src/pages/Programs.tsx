@@ -440,10 +440,19 @@ export default function Programs() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              style={{ marginBottom: 0 }}
+              style={{ marginBottom: '16px' }}
             >
-              How <AccentText tone="blue">We</AccentText> Compare
+              How We <AccentText tone="gradient">Compare</AccentText>
             </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              style={{ fontSize: 'var(--fs-body)', lineHeight: 1.8, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '680px', margin: '0 auto' }}
+            >
+              A parent comparing study platforms usually checks the obvious things first: how many videos, how many questions, how many hours of content. None of that tells you whether any of it sticks. None of this is features stacked against features. It&apos;s a different starting assumption about what makes a study habit actually hold, and that assumption is what the rest of this page exists to prove.
+            </motion.p>
           </div>
           <div className="comparison-table-wrap">
           <motion.div
