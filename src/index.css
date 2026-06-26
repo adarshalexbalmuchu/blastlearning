@@ -848,3 +848,18 @@ p, li {
   .mc-desktop-grid { display: none !important; }
   .mc-mobile-carousel { display: block; padding-bottom: 24px; }
 }
+
+/* ── How It Works alternating rows (Programs page) ─────────────────────────── */
+.hiw-row {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(28,28,40,0.06);
+}
+.hiw-row .hiw-content { flex: 1 1 50%; }
+.hiw-row .hiw-image  { flex: 1 1 50%; min-height: 280px; }
+@media (min-width: 768px) {
+  .hiw-row { flex-direction: row; }
+  .hiw-row.reversed { flex-direction: row-reverse; }
+}
