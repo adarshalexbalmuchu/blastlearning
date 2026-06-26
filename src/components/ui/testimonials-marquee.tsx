@@ -12,29 +12,8 @@ type CardT = {
   text: string;
 };
 
-function parseRole(role: string): { classInfo: string; planName: string; location: string } {
-  if (!role.includes(' · ')) {
-    return { classInfo: role, planName: '', location: '' };
-  }
-
-  const [rankPart, location = ''] = role.split(' · ');
-  const commaIdx = rankPart.indexOf(', ');
-  if (commaIdx !== -1) {
-    return {
-      classInfo: rankPart.slice(0, commaIdx),
-      planName: rankPart.slice(commaIdx + 2),
-      location,
-    };
-  }
-  return { classInfo: rankPart, planName: '', location };
-}
-
 function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }) {
-  const parsed = parseRole(card.role);
-  const classInfo = parsed.classInfo;
-  const planName = card.planName ?? parsed.planName;
-  const location = parsed.location;
-  const markerAccent = cardIndex === 1 ? '#0FA8DC' : '#E8135A';
+  const markerAccent = cardIndex % 2 === 0 ? '#E8135A' : '#0FA8DC';
 
   return (
     <div
@@ -69,19 +48,9 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
         </span>
       </div>
 
-      {/* Plan heading */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          marginBottom: '10px',
-        }}
-      >
-        {planName ? (
-          <HeadingMarker text={planName} fontSize="11px" marginBottom="0" accent={markerAccent} />
-        ) : (
-          <span />
-        )}
+      {/* Role / plan heading */}
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+        <HeadingMarker text={card.role} fontSize="11px" marginBottom="0" accent={markerAccent} />
       </div>
 
       {/* Quote text */}
@@ -107,36 +76,14 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
         style={{
           borderTop: '1px solid #F3F4F6',
           paddingTop: '10px',
-          display: 'flex',
-          alignItems: 'flex-start',
           marginTop: 'auto',
         }}
       >
-        <div>
-          <p
-            style={{
-              fontSize: '12px',
-              margin: 0,
-              lineHeight: 1.4,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              flexWrap: 'wrap',
-            }}
-          >
-            <span style={{ color: '#E8135A', fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
-              {classInfo}
-            </span>
-            {location && (
-              <>
-                <span style={{ color: '#9CA3AF', fontWeight: 400 }}>|</span>
-                <span style={{ color: '#6B7280', fontWeight: 500, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
-                  {location}
-                </span>
-              </>
-            )}
-          </p>
-        </div>
+        <p style={{ fontSize: '12px', margin: 0, lineHeight: 1.4 }}>
+          <span style={{ color: '#E8135A', fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
+            {card.name}
+          </span>
+        </p>
       </div>
     </div>
   );
