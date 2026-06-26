@@ -227,7 +227,7 @@ export default function Programs() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {[
               {
-                num: '1', eyebrow: 'PRI', accent: '#E8135A', bg: '#FCEEF1',
+                num: '1', eyebrow: 'Diagnostic First', accent: '#E8135A', bg: '#FCEEF1',
                 title: 'GAP Assessment',
                 body: 'Before a single lesson is assigned, Blast finds out what a student actually knows — not what their grade level assumes. A Class 10 student stuck on fractions from Class 5 is common, and it rarely shows on a report card. The GAP Assessment surfaces it on day one so the study plan starts from reality.',
                 img: step1Img,
