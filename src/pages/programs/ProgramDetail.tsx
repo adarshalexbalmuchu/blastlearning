@@ -89,7 +89,7 @@ export default function ProgramDetail() {
               }}
             />
             {/* HeadingMarker overlay */}
-            <div className="programs-hero-cta" style={{ position: 'absolute', bottom: '165px', left: '90px', zIndex: 3 }}>
+            <div className="programs-hero-cta" style={{ position: 'absolute', bottom: '15.1%', left: '4.4%', zIndex: 3 }}>
               <HeadingMarker
                 text={`AI Powered · ${program.classes}`}
                 fontSize="11px"
