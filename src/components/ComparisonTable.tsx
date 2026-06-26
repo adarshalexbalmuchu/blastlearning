@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import HeadingMarker from './HeadingMarker';
 
-// Design tokens extracted directly from PricingCard
-const PINK        = '#E8135A';   // token A — top border + pink label accent
-const PINK_LIGHT  = '#FFF5F8';   // lightest pink tint (Col3 background)
-const PINK_HOVER  = '#FCE8EF';   // one step deeper for Col3 hover
-const DARK        = '#1C1C28';   // token G — card heading color
-const BODY_MUTED  = '#4D5562';   // token H — feature list text color
-const BORDER      = '#E5E7EB';   // token D — card border + internal divider
+const PINK   = '#E8135A';
+const BLUE   = '#0FA8DC';
+const DARK   = '#1C1C28';
+const NAVY   = '#0D1F3C';
+const MUTED  = '#6B7280';
+const BORDER = '#E5E7EB';
 
 const rows = [
   {
@@ -47,26 +45,38 @@ const rows = [
   },
 ];
 
+const CheckIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: '2px' }}>
+    <circle cx="8" cy="8" r="8" fill={PINK} fillOpacity="0.12" />
+    <path d="M5 8.5l2 2 4-4" stroke={PINK} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const DashIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: '2px' }}>
+    <circle cx="8" cy="8" r="8" fill="#F3F4F6" />
+    <path d="M5.5 8h5" stroke="#9CA3AF" strokeWidth="1.6" strokeLinecap="round" />
+  </svg>
+);
+
 export default function ComparisonTable() {
   const [hovered, setHovered] = useState<number | null>(null);
   const lastIdx = rows.length - 1;
 
   return (
-    /* Outer wrapper: enables horizontal scroll on mobile only */
     <div style={{ overflowX: 'auto', width: '100%' }}>
-      {/* Card shell — identical structure to PricingCard */}
       <div
         style={{
           border: `1px solid ${BORDER}`,
-          borderRadius: '8px',
-          boxShadow: '0 1px 4px rgba(0, 0, 0, 0.04)',
+          borderRadius: '12px',
+          boxShadow: '0 4px 24px rgba(0,0,0,0.07)',
           background: '#FFFFFF',
           overflow: 'hidden',
           minWidth: '560px',
         }}
       >
-        {/* Top accent bar — same as pricing card (token E): 3px pink stripe */}
-        <div style={{ height: '3px', width: '100%', background: PINK }} />
+        {/* Gradient top accent bar */}
+        <div style={{ height: '3px', width: '100%', background: `linear-gradient(90deg, ${PINK} 0%, ${BLUE} 100%)` }} />
 
         <table
           style={{
@@ -77,50 +87,92 @@ export default function ComparisonTable() {
           }}
         >
           <colgroup>
-            <col style={{ width: '22%' }} />
-            <col style={{ width: '36%' }} />
+            <col style={{ width: '20%' }} />
+            <col style={{ width: '38%' }} />
             <col style={{ width: '42%' }} />
           </colgroup>
 
           <thead>
             <tr>
-              {/* Col1 header — empty */}
+              {/* Col1 — empty */}
               <th
                 style={{
-                  padding: '16px 20px',
+                  padding: '20px',
                   background: '#FFFFFF',
                   borderBottom: `1px solid ${BORDER}`,
                   fontWeight: 'normal',
                 }}
               />
 
-              {/* Col2 header — HeadingMarker, muted (no accent = default blue-gray) */}
+              {/* Col2 — The Usual Way */}
               <th
                 style={{
-                  padding: '16px 20px',
+                  padding: '18px 24px',
                   textAlign: 'left',
-                  background: '#FFFFFF',
+                  background: '#F7F8FA',
                   borderBottom: `1px solid ${BORDER}`,
+                  borderRight: `1px solid ${BORDER}`,
                   fontWeight: 'normal',
                   verticalAlign: 'middle',
                 }}
               >
-                <HeadingMarker text="The Usual Approach" fontSize="11px" marginBottom="0" />
+                <span
+                  style={{
+                    display: 'block',
+                    fontSize: '10px',
+                    fontWeight: 600,
+                    letterSpacing: '0.13em',
+                    textTransform: 'uppercase',
+                    color: '#9CA3AF',
+                    fontFamily: 'Inter, sans-serif',
+                    marginBottom: '4px',
+                  }}
+                >
+                  The Usual Way
+                </span>
+                <span style={{ fontSize: '13px', color: MUTED, fontFamily: 'Inter, sans-serif' }}>
+                  Most tutoring platforms
+                </span>
               </th>
 
-              {/* Col3 header — HeadingMarker pink, pink-tinted bg */}
+              {/* Col3 — Blast Learning (dark navy) */}
               <th
                 style={{
-                  padding: '16px 20px',
+                  padding: '18px 24px',
                   textAlign: 'left',
-                  background: '#FFFFFF',
-                  borderBottom: `1px solid ${PINK}`,
-                  borderLeft: `1px solid ${PINK}`,
+                  background: NAVY,
+                  borderBottom: `2px solid ${PINK}`,
                   fontWeight: 'normal',
                   verticalAlign: 'middle',
                 }}
               >
-                <HeadingMarker text="Blast Learning" fontSize="11px" marginBottom="0" accent={PINK} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
+                  <span
+                    style={{
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      background: PINK,
+                      display: 'inline-block',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span
+                    style={{
+                      fontSize: '10px',
+                      fontWeight: 700,
+                      letterSpacing: '0.13em',
+                      textTransform: 'uppercase',
+                      color: PINK,
+                      fontFamily: 'Inter, sans-serif',
+                    }}
+                  >
+                    Blast Learning
+                  </span>
+                </div>
+                <span style={{ fontSize: '13px', color: 'rgba(255,255,255,0.55)', fontFamily: 'Inter, sans-serif' }}>
+                  Science-backed retention
+                </span>
               </th>
             </tr>
           </thead>
@@ -128,78 +180,72 @@ export default function ComparisonTable() {
           <tbody>
             {rows.map((row, i) => {
               const isHovered = hovered === i;
-              const isLast = i === lastIdx;
-              const defaultBg = '#FFFFFF';
-              const hoverBg = '#F9FAFB';
-
-              const isFirstRow = i === 0;
-              const rowBorder = isLast ? 'none' : isFirstRow ? 'none' : `1px solid ${BORDER}`;
-              const col3Border = isLast ? 'none' : isFirstRow ? 'none' : `1px solid #F9C0D0`;
+              const isLast    = i === lastIdx;
+              const bg        = isHovered ? '#F9FAFB' : '#FFFFFF';
+              const blastBg   = isHovered ? '#FFF6F9' : '#FFFFFF';
 
               return (
-                <React.Fragment key={i}>
-                  <tr
-                    onMouseEnter={() => setHovered(i)}
-                    onMouseLeave={() => setHovered(null)}
+                <tr
+                  key={i}
+                  onMouseEnter={() => setHovered(i)}
+                  onMouseLeave={() => setHovered(null)}
+                >
+                  {/* Category label */}
+                  <td
+                    style={{
+                      padding: '18px 20px',
+                      fontSize: '11px',
+                      fontWeight: 600,
+                      color: '#9CA3AF',
+                      letterSpacing: '0.06em',
+                      textTransform: 'uppercase',
+                      verticalAlign: 'top',
+                      background: bg,
+                      borderBottom: isLast ? 'none' : `1px solid ${BORDER}`,
+                      transition: 'background 150ms ease',
+                    }}
                   >
-                    {/* Col1 — category label */}
-                    <td
-                      style={{
-                        padding: '20px 20px',
-                        fontSize: '0.92rem',
-                        fontWeight: 600,
-                        color: '#0FA8DC',
-                        verticalAlign: 'top',
-                        background: isHovered ? hoverBg : defaultBg,
-                        borderBottom: rowBorder,
-                        transition: 'background 150ms ease',
-                      }}
-                    >
-                      {row.category}
-                    </td>
+                    {row.category}
+                  </td>
 
-                    {/* Col2 — usual approach */}
-                    <td
-                      style={{
-                        padding: '20px 20px',
-                        fontSize: '0.92rem',
-                        color: BODY_MUTED,
-                        lineHeight: 1.65,
-                        verticalAlign: 'top',
-                        background: isHovered ? hoverBg : defaultBg,
-                        borderBottom: rowBorder,
-                        borderRight: `1px solid ${BORDER}`,
-                        transition: 'background 150ms ease',
-                      }}
-                    >
-                      {row.usual}
-                    </td>
+                  {/* Usual */}
+                  <td
+                    style={{
+                      padding: '18px 24px',
+                      verticalAlign: 'top',
+                      background: bg,
+                      borderBottom: isLast ? 'none' : `1px solid ${BORDER}`,
+                      borderRight: `1px solid ${BORDER}`,
+                      transition: 'background 150ms ease',
+                    }}
+                  >
+                    <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                      <DashIcon />
+                      <span style={{ fontSize: '0.875rem', color: MUTED, lineHeight: 1.65 }}>
+                        {row.usual}
+                      </span>
+                    </div>
+                  </td>
 
-                    {/* Col3 — Blast Learning */}
-                    <td
-                      style={{
-                        padding: '20px 20px',
-                        fontSize: '0.92rem',
-                        color: DARK,
-                        lineHeight: 1.65,
-                        verticalAlign: 'top',
-                        background: isHovered ? hoverBg : defaultBg,
-                        borderBottom: col3Border,
-                        borderLeft: `2px solid ${PINK}`,
-                        transition: 'background 150ms ease',
-                      }}
-                    >
-                      {row.blast}
-                    </td>
-                  </tr>
-
-                  {/* Gradient divider after first row */}
-                  {isFirstRow && (
-                    <tr aria-hidden="true">
-                      <td colSpan={3} style={{ padding: 0, height: '2px', background: 'linear-gradient(90deg, #0FA8DC 0%, #E8135A 100%)', border: 'none' }} />
-                    </tr>
-                  )}
-                </React.Fragment>
+                  {/* Blast */}
+                  <td
+                    style={{
+                      padding: '18px 24px',
+                      verticalAlign: 'top',
+                      background: blastBg,
+                      borderBottom: isLast ? 'none' : `1px solid ${BORDER}`,
+                      borderLeft: `2px solid ${PINK}`,
+                      transition: 'background 150ms ease',
+                    }}
+                  >
+                    <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-start' }}>
+                      <CheckIcon />
+                      <span style={{ fontSize: '0.875rem', color: DARK, lineHeight: 1.65, fontWeight: 500 }}>
+                        {row.blast}
+                      </span>
+                    </div>
+                  </td>
+                </tr>
               );
             })}
           </tbody>
