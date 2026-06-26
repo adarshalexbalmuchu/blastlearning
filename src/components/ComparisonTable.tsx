@@ -113,7 +113,7 @@ export default function ComparisonTable() {
                 style={{
                   padding: '16px 20px',
                   textAlign: 'left',
-                  background: PINK_LIGHT,
+                  background: '#FFFFFF',
                   borderBottom: `1px solid ${PINK}`,
                   borderLeft: `1px solid ${PINK}`,
                   fontWeight: 'normal',
@@ -179,7 +179,7 @@ export default function ComparisonTable() {
                       color: DARK,
                       lineHeight: 1.65,
                       verticalAlign: 'top',
-                      background: isHovered ? PINK_HOVER : PINK_LIGHT,
+                      background: isHovered ? hoverBg : defaultBg,
                       borderBottom: isLast ? 'none' : `1px solid #F9C0D0`,
                       borderLeft: `2px solid ${PINK}`,
                       transition: 'background 150ms ease',
