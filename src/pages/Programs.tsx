@@ -1,7 +1,7 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import ComparisonTable from '../components/ComparisonTable';
 import AccentText from '../components/AccentText';
 import HeadingMarker from '../components/HeadingMarker';
