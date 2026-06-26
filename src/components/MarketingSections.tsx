@@ -171,29 +171,3 @@ export function SharedFaqSection({
     </section>
   );
 }
-
-export function SharedImageCtaSection({
-  src,
-  alt,
-  width,
-  height,
-}: {
-  src: string;
-  alt: string;
-  width?: number;
-  height?: number;
-}) {
-  return (
-    <section aria-label="Call to action" style={{ width: '100%', display: 'block', lineHeight: 0 }}>
-      <img
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        loading="lazy"
-        decoding="async"
-        style={{ width: '100%', height: 'auto', display: 'block' }}
-      />
-    </section>
-  );
-}

@@ -1,9 +1,9 @@
-export interface ProgramCurriculumModule {
+interface ProgramCurriculumModule {
   title: string;
   topics: string[];
 }
 
-export interface ProgramTestimonial {
+interface ProgramTestimonial {
   name: string;
   role: string;
   content: string;
@@ -13,7 +13,7 @@ export interface ProgramTestimonial {
   improvement: string;
 }
 
-export interface ProgramFAQ {
+interface ProgramFAQ {
   q: string;
   a: string;
 }
@@ -35,7 +35,7 @@ export interface ProgramData {
   faqs: ProgramFAQ[];
 }
 
-export const programsData: ProgramData[] = [
+const programsData: ProgramData[] = [
   {
     slug: 'cbse-plan',
     name: 'CBSE Full Syllabus',
