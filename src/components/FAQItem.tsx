@@ -26,7 +26,7 @@ export default function FAQItem({ question, answer, highlight = '' }: FAQItemPro
   const [open, setOpen] = useState(false);
 
   return (
-    <div style={{ borderBottom: '1px solid #E5E7EB' }}>
+    <div style={{ borderBottom: '1px solid var(--color-card-border)' }}>
       <button
         onClick={() => setOpen((v) => !v)}
         style={{
@@ -42,10 +42,10 @@ export default function FAQItem({ question, answer, highlight = '' }: FAQItemPro
           border: 'none',
         }}
       >
-        <span style={{ fontSize: 'var(--fs-body)', fontWeight: 700, color: '#111111', fontFamily: 'Inter, sans-serif', lineHeight: 'var(--lh-small)' }}>
+        <span style={{ fontSize: 'var(--fs-body)', fontWeight: 700, color: '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 'var(--lh-small)' }}>
           <Highlight text={question} query={highlight} />
         </span>
-        <span style={{ flexShrink: 0, fontSize: '20px', lineHeight: 1, color: '#111111', fontWeight: 300, transition: 'color 0.2s' }}>
+        <span style={{ flexShrink: 0, fontSize: '20px', lineHeight: 1, color: '#1C1C28', fontWeight: 300, transition: 'color 0.2s' }}>
           {open ? '−' : '+'}
         </span>
       </button>
@@ -60,7 +60,7 @@ export default function FAQItem({ question, answer, highlight = '' }: FAQItemPro
             transition={{ duration: 0.22, ease: 'easeInOut' }}
             style={{ overflow: 'hidden' }}
           >
-            <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-body)', color: '#111111', fontFamily: 'Inter, sans-serif', margin: 0, paddingBottom: '20px' }}>
+            <p style={{ fontSize: 'var(--fs-small)', lineHeight: 'var(--lh-body)', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0, paddingBottom: '20px' }}>
               <Highlight text={answer} query={highlight} />
             </p>
           </motion.div>
