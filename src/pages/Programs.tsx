@@ -229,7 +229,7 @@ export default function Programs() {
               {
                 num: '1', eyebrow: 'Diagnostic First', accent: '#E8135A', bg: '#FCEEF1',
                 title: 'GAP Assessment',
-                body: 'Before a single lesson is assigned, Blast finds out what a student actually knows — not what their grade level assumes. A Class 10 student stuck on fractions from Class 5 is common, and it rarely shows on a report card. The GAP Assessment surfaces it on day one so the study plan starts from reality.',
+                body: 'Math Genius Maker opens with a quick GAP Assessment that checks what a student actually knows in math right now. A Class 10 student missing a Class 5 fraction rule is common and rarely shows up on a report card, and the study plan starts exactly there before moving the student into this year\'s material.',
                 img: step1Img,
               },
               {
