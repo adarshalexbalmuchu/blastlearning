@@ -144,7 +144,7 @@ export default function ComparisonTable() {
                       padding: '20px 20px',
                       fontSize: '0.92rem',
                       fontWeight: 600,
-                      color: DARK,
+                      color: '#0FA8DC',
                       verticalAlign: 'top',
                       background: isHovered ? hoverBg : defaultBg,
                       borderBottom: isLast ? 'none' : `1px solid ${BORDER}`,
