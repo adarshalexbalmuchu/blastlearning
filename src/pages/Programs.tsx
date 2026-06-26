@@ -284,12 +284,14 @@ export default function Programs() {
                   </div>
 
                   {/* Image panel */}
-                  <div className="hiw-image" style={{ background: step.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '32px', position: 'relative', overflow: 'hidden' }}>
-                    <img
-                      src={step.img}
-                      alt={step.title}
-                      style={{ width: '100%', maxWidth: '380px', height: 'auto', objectFit: 'contain', display: 'block', position: 'relative', zIndex: 1 }}
-                    />
+                  <div className="hiw-image" style={{ background: step.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '32px', position: 'relative', overflow: 'hidden', minHeight: '260px' }}>
+                    <div style={{ width: '100%', maxWidth: '380px', aspectRatio: '4/3', borderRadius: '12px', background: 'rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                        <rect x="6" y="10" width="36" height="28" rx="4" stroke="rgba(0,0,0,0.2)" strokeWidth="2" fill="none"/>
+                        <circle cx="17" cy="20" r="4" stroke="rgba(0,0,0,0.2)" strokeWidth="2" fill="none"/>
+                        <path d="M6 32l10-8 8 6 6-5 12 9" stroke="rgba(0,0,0,0.2)" strokeWidth="2" strokeLinejoin="round" fill="none"/>
+                      </svg>
+                    </div>
                   </div>
                 </motion.div>
               );
