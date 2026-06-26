@@ -2,9 +2,18 @@ import React, { useState } from 'react';
 import HeadingMarker from './HeadingMarker';
 
 const PINK       = '#E8135A';
+const BLUE       = '#0FA8DC';
 const DARK       = '#1C1C28';
 const BODY_MUTED = '#6B7280';
 const BORDER     = '#E5E7EB';
+
+// Column base backgrounds
+const USUAL_BG       = '#F7F8FA';   // faint gray — muted/neutral lane
+const USUAL_HOVER    = '#F0F2F5';
+const BLAST_BG       = '#FFF5F8';   // faint pink — brand lane
+const BLAST_HOVER    = '#FCE8EF';
+const CAT_BG         = '#FFFFFF';
+const CAT_HOVER      = '#F9FAFB';
 
 const rows = [
   {
@@ -53,14 +62,15 @@ export default function ComparisonTable() {
       <div
         style={{
           border: `1px solid ${BORDER}`,
-          borderRadius: '8px',
-          boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
+          borderRadius: '10px',
+          boxShadow: '0 2px 16px rgba(0,0,0,0.06)',
           background: '#FFFFFF',
           overflow: 'hidden',
           minWidth: '560px',
         }}
       >
-        <div style={{ height: '3px', background: PINK }} />
+        {/* Gradient top accent — matches site's pink-to-blue brand */}
+        <div style={{ height: '3px', background: `linear-gradient(90deg, ${PINK} 0%, ${BLUE} 100%)` }} />
 
         <table
           style={{
@@ -71,40 +81,43 @@ export default function ComparisonTable() {
           }}
         >
           <colgroup>
-            <col style={{ width: '22%' }} />
+            <col style={{ width: '21%' }} />
             <col style={{ width: '37%' }} />
-            <col style={{ width: '41%' }} />
+            <col style={{ width: '42%' }} />
           </colgroup>
 
           <thead>
             <tr>
-              <th style={{ padding: '16px 20px', background: '#FFFFFF', borderBottom: `1px solid ${BORDER}` }} />
+              {/* Col1 — empty */}
+              <th style={{
+                padding: '16px 20px',
+                background: '#FFFFFF',
+                borderBottom: `1px solid ${BORDER}`,
+              }} />
 
-              <th
-                style={{
-                  padding: '16px 20px',
-                  textAlign: 'left',
-                  background: '#FAFAFA',
-                  borderBottom: `1px solid ${BORDER}`,
-                  borderRight: `1px solid ${BORDER}`,
-                  fontWeight: 'normal',
-                  verticalAlign: 'middle',
-                }}
-              >
+              {/* Col2 — Usual header: gray-washed */}
+              <th style={{
+                padding: '16px 20px',
+                textAlign: 'left',
+                background: USUAL_BG,
+                borderBottom: `1px solid ${BORDER}`,
+                borderRight: `1px solid ${BORDER}`,
+                fontWeight: 'normal',
+                verticalAlign: 'middle',
+              }}>
                 <HeadingMarker text="The Usual Approach" fontSize="11px" marginBottom="0" />
               </th>
 
-              <th
-                style={{
-                  padding: '16px 20px',
-                  textAlign: 'left',
-                  background: '#FFFFFF',
-                  borderBottom: `1px solid ${BORDER}`,
-                  borderLeft: `2px solid ${PINK}`,
-                  fontWeight: 'normal',
-                  verticalAlign: 'middle',
-                }}
-              >
+              {/* Col3 — Blast header: pink-washed + stronger top border */}
+              <th style={{
+                padding: '16px 20px',
+                textAlign: 'left',
+                background: BLAST_BG,
+                borderBottom: `1px solid #F2B8C8`,
+                borderLeft: `2px solid ${PINK}`,
+                fontWeight: 'normal',
+                verticalAlign: 'middle',
+              }}>
                 <HeadingMarker text="Blast Learning" fontSize="11px" marginBottom="0" accent={PINK} />
               </th>
             </tr>
@@ -114,7 +127,6 @@ export default function ComparisonTable() {
             {rows.map((row, i) => {
               const isHovered = hovered === i;
               const isLast    = i === lastIdx;
-              const bg        = isHovered ? '#F9FAFB' : '#FFFFFF';
 
               return (
                 <tr
@@ -122,50 +134,47 @@ export default function ComparisonTable() {
                   onMouseEnter={() => setHovered(i)}
                   onMouseLeave={() => setHovered(null)}
                 >
-                  <td
-                    style={{
-                      padding: '18px 20px',
-                      fontSize: '0.875rem',
-                      fontWeight: 600,
-                      color: '#0FA8DC',
-                      verticalAlign: 'top',
-                      background: bg,
-                      borderBottom: isLast ? 'none' : `1px solid ${BORDER}`,
-                      transition: 'background 150ms ease',
-                    }}
-                  >
+                  {/* Category */}
+                  <td style={{
+                    padding: '16px 20px',
+                    fontSize: '0.875rem',
+                    fontWeight: 600,
+                    color: BLUE,
+                    verticalAlign: 'middle',
+                    background: isHovered ? CAT_HOVER : CAT_BG,
+                    borderBottom: isLast ? 'none' : `1px solid ${BORDER}`,
+                    transition: 'background 150ms ease',
+                  }}>
                     {row.category}
                   </td>
 
-                  <td
-                    style={{
-                      padding: '18px 20px',
-                      fontSize: '0.875rem',
-                      color: BODY_MUTED,
-                      lineHeight: 1.65,
-                      verticalAlign: 'top',
-                      background: bg,
-                      borderBottom: isLast ? 'none' : `1px solid ${BORDER}`,
-                      borderRight: `1px solid ${BORDER}`,
-                      transition: 'background 150ms ease',
-                    }}
-                  >
+                  {/* Usual */}
+                  <td style={{
+                    padding: '16px 20px',
+                    fontSize: '0.875rem',
+                    color: BODY_MUTED,
+                    lineHeight: 1.65,
+                    verticalAlign: 'middle',
+                    background: isHovered ? USUAL_HOVER : USUAL_BG,
+                    borderBottom: isLast ? 'none' : `1px solid ${BORDER}`,
+                    borderRight: `1px solid ${BORDER}`,
+                    transition: 'background 150ms ease',
+                  }}>
                     {row.usual}
                   </td>
 
-                  <td
-                    style={{
-                      padding: '18px 20px',
-                      fontSize: '0.875rem',
-                      color: DARK,
-                      lineHeight: 1.65,
-                      verticalAlign: 'top',
-                      background: bg,
-                      borderBottom: isLast ? 'none' : `1px solid ${BORDER}`,
-                      borderLeft: `2px solid ${PINK}`,
-                      transition: 'background 150ms ease',
-                    }}
-                  >
+                  {/* Blast */}
+                  <td style={{
+                    padding: '16px 20px',
+                    fontSize: '0.875rem',
+                    color: DARK,
+                    lineHeight: 1.65,
+                    verticalAlign: 'middle',
+                    background: isHovered ? BLAST_HOVER : BLAST_BG,
+                    borderBottom: isLast ? 'none' : `1px solid #F2B8C8`,
+                    borderLeft: `2px solid ${PINK}`,
+                    transition: 'background 150ms ease',
+                  }}>
                     {row.blast}
                   </td>
                 </tr>
