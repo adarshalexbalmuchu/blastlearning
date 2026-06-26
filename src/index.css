@@ -836,3 +836,13 @@ p, li {
 @media (min-width: 640px) { .hero-banner-img { height: 300px; } }
 @media (min-width: 768px) { .hero-banner-img { height: 360px; object-position: center; } }
 @media (min-width: 1024px) { .hero-banner-img { height: auto; object-fit: unset; object-position: unset; } }
+
+/* ── MobileCarousel ───────────────────────────── */
+.mc-desktop-grid { display: grid; }
+.mc-mobile-carousel { display: none; }
+.mc-scroll-track::-webkit-scrollbar { display: none; }
+
+@media (max-width: 768px) {
+  .mc-desktop-grid { display: none !important; }
+  .mc-mobile-carousel { display: block; padding-bottom: 24px; }
+}

@@ -5,6 +5,7 @@ import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
+import MobileCarousel from '../components/MobileCarousel';
 
 const testimonialsRow1 = [
   { name: 'Ananya Krishnan', role: 'Class 10, CBSE Plan · Bangalore', text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.' },
@@ -132,20 +133,16 @@ export default function ForStudents() {
               We built Blast Learning with one goal: make studying so engaging your child forgets it is work.
             </p>
           </motion.div>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
-            className="grid-cols-3-md"
-          >
+          <MobileCarousel desktopGridClass="grid-cols-3-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
                 <motion.div
                   key={feature.title}
                   variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
                   whileHover={{ y: -6 }}
                   style={{
                     background: '#FFFFFF',
@@ -163,7 +160,7 @@ export default function ForStudents() {
                 </motion.div>
               );
             })}
-          </motion.div>
+          </MobileCarousel>
         </div>
       </section>
 
@@ -179,7 +176,7 @@ export default function ForStudents() {
           >
             How It <AccentText tone="blue">Works</AccentText>
           </motion.h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }} className="grid-cols-2-md">
+          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
             {steps.map((step) => (
               <motion.div
                 key={step.number}
@@ -205,7 +202,7 @@ export default function ForStudents() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </MobileCarousel>
         </div>
       </section>
 

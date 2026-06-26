@@ -5,6 +5,7 @@ import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
+import MobileCarousel from '../components/MobileCarousel';
 
 const testimonialsRow1 = [
   { name: 'Ananya Krishnan', role: 'Class 10, CBSE Plan · Bangalore', text: 'Blast Learning showed me exactly which chapters I kept forgetting. My Science score went from 61 to 84 in one term. The spaced revision reminders are the real game-changer.' },
@@ -191,14 +192,7 @@ export default function About() {
               The <AccentText tone="blue">Team</AccentText> Behind Blast <AccentText tone="pink">Learning</AccentText>
             </h2>
           </motion.div>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
-            className="grid-cols-2-sm grid-cols-3-lg"
-          >
+          <MobileCarousel desktopGridClass="grid-cols-2-sm grid-cols-3-lg" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
             {team.map((member, i) => {
               const fill = teamPastels[i % teamPastels.length];
               const isIndigo = fill === '#0FA8DC';
@@ -206,6 +200,9 @@ export default function About() {
                 <motion.div
                   key={member.name}
                   variants={fadeUp}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
                   whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
                   style={{ padding: '28px', borderRadius: '16px', textAlign: 'center', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
                 >
@@ -219,7 +216,7 @@ export default function About() {
                 </motion.div>
               );
             })}
-          </motion.div>
+          </MobileCarousel>
         </div>
       </section>
 
@@ -237,18 +234,14 @@ export default function About() {
               What We <AccentText tone="blue">Stand</AccentText> <AccentText tone="pink">For</AccentText>
             </h2>
           </motion.div>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
-            className="grid-cols-2-sm"
-          >
+          <MobileCarousel desktopGridClass="grid-cols-2-sm" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
             {values.map(({ icon: Icon, title, desc }) => (
               <motion.div
                 key={title}
                 variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
                 whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
                 style={{ padding: '32px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
               >
@@ -259,7 +252,7 @@ export default function About() {
                 <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
               </motion.div>
             ))}
-          </motion.div>
+          </MobileCarousel>
         </div>
       </section>
 
