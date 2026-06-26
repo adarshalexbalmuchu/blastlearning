@@ -120,7 +120,7 @@ export function SharedFaqSection({
   const isStacked = variant === 'stacked';
 
   return (
-    <section className="section-pad" style={{ paddingTop: '64px', paddingBottom: '64px', background }}>
+    <section className="section-pad faq-section" style={{ paddingTop: '64px', paddingBottom: '64px', background }}>
       <div
         style={{
           maxWidth: '1280px',

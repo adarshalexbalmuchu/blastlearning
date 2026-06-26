@@ -147,6 +147,29 @@ export default function HeroCarousel() {
               }}
             />
           ))}
+
+          {/* Mobile-only overlay controls — inside image, clears the gap below */}
+          {canRotate && (
+            <div className="hero-slide-overlay-controls">
+              <button type="button" onClick={goPrev} className="hero-ctrl-mob" aria-label="Previous slide">←</button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                {SLIDES.map((_, index) => (
+                  <button
+                    key={`ov-dot-${index}`}
+                    type="button"
+                    aria-label={`Go to slide ${index + 1}`}
+                    onClick={() => setActiveIndex(index)}
+                    style={{
+                      width: '7px', height: '7px', borderRadius: '50%', border: 'none', padding: 0,
+                      background: activeIndex === index ? '#F03C6F' : 'rgba(255,255,255,0.55)',
+                      cursor: 'pointer',
+                    }}
+                  />
+                ))}
+              </div>
+              <button type="button" onClick={goNext} className="hero-ctrl-mob" aria-label="Next slide">→</button>
+            </div>
+          )}
         </div>
 
         {/* Hero CTAs */}

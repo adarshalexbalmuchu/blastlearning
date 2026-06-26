@@ -121,6 +121,7 @@
 @media (max-width: 767px) {
   .trust-strip {
     padding: 0;
+    background: #F8F9FA;
   }
 
   .trust-strip__grid {
@@ -129,14 +130,19 @@
     gap: 0;
     overflow-x: visible;
     flex-wrap: unset;
+    align-items: stretch;
   }
 
   .trust-strip__card {
     min-width: 0;
     flex: none;
-    padding: 20px 16px;
+    padding: 24px 16px;
     border-right: 1px solid rgba(236, 236, 241, 0.8);
     border-bottom: 1px solid rgba(236, 236, 241, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
   }
 
   .trust-strip__card:nth-child(2n) {
@@ -145,5 +151,14 @@
 
   .trust-strip__card:nth-last-child(-n+2) {
     border-bottom: none;
+  }
+
+  .trust-strip__value {
+    font-size: 2rem;
+    white-space: nowrap;
+  }
+
+  .trust-strip__icon {
+    margin-bottom: 10px;
   }
 }

@@ -174,6 +174,7 @@ export const Footer7 = ({
 
         {/* Bottom bar */}
         <div
+          className="footer-bottom-bar"
           style={{
             borderTop: "1px solid #C8E0EF",
             padding: "20px 0",
@@ -217,14 +218,52 @@ export const Footer7 = ({
       </div>
 
       <style>{`
+        .footer-inner {
+          padding: 0 32px;
+        }
         @media (max-width: 768px) {
+          .footer-inner {
+            padding: 0 20px;
+          }
           .footer-grid {
             grid-template-columns: 1fr 1fr !important;
+            gap: 0 24px !important;
+          }
+          .footer-grid > div {
+            padding-top: 24px;
+          }
+          .footer-grid > div:first-child {
+            grid-column: 1 / -1;
+            padding-top: 0;
+            border-bottom: 1px solid #ECECF1;
+            padding-bottom: 24px;
+          }
+          .footer-grid > div > h3 {
+            margin-top: 0 !important;
+            letter-spacing: 0.09em;
+          }
+          .footer-grid ul {
+            gap: 0 !important;
+          }
+          .footer-grid ul li a {
+            display: block;
+            padding: 10px 0 !important;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+          }
+          .footer-bottom-bar {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 8px !important;
           }
         }
         @media (max-width: 480px) {
           .footer-grid {
             grid-template-columns: 1fr !important;
+          }
+          .footer-grid > div:first-child {
+            grid-column: auto;
           }
         }
       `}</style>
