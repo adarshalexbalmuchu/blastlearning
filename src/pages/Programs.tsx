@@ -13,7 +13,7 @@ import step2Img from '../assets/Critical Thinking.png';
 import step3Img from '../assets/Curriculum Load Reduction.png';
 import step4Img from '../assets/Study Buddy.png';
 import step5Img from '../assets/Holistic Assessment.png';
-import step6Img from '../assets/Learn.png';
+import step6Img from '../assets/English Image.png';
 import ebbinghausImg from '../assets/Ebbinghaus Curve.png';
 
 const testimonialsRow1 = [
