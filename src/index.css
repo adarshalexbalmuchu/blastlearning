@@ -491,6 +491,14 @@ p, li {
     padding-right: 16px !important;
   }
 
+  .programs-hero-cta {
+    position: static !important;
+    left: auto !important;
+    bottom: auto !important;
+    padding: 16px 16px 0 !important;
+    display: block !important;
+  }
+
   .hero-controls-main {
     display: none !important;
   }

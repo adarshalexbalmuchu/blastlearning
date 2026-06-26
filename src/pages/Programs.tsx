@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import AccentText from '../components/AccentText';
 import HeadingMarker from '../components/HeadingMarker';
+import heroBanner4 from '../assets/banners/HB 4.png';
 import BrandArc from '../components/BrandArc';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import MobileCarousel from '../components/MobileCarousel';
@@ -126,26 +127,44 @@ export default function Programs() {
 
   return (
     <div style={{ background: '#FFFFFF' }}>
-      <section style={{ background: '#FFFFFF', paddingTop: '56px', paddingBottom: '24px', borderBottom: '1px solid #ECECF1' }}>
-        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <HeadingMarker text="How Blast Learning Works" marginBottom="24px" fontSize="12px" />
-            <h1 style={{ fontSize: 'clamp(1.875rem, 1rem + 3.5vw, 2.75rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', lineHeight: 1.15, color: '#1C1C28', marginBottom: '24px', maxWidth: '760px', marginLeft: 'auto', marginRight: 'auto', wordBreak: 'break-word', overflowWrap: 'break-word' }}>
-              The <AccentText tone="blue">system</AccentText> beneath the <AccentText tone="pink">syllabus</AccentText>.
-            </h1>
-            <p className="page-hero-copy" style={{ maxWidth: '760px', margin: '0 auto' }}>
-              Every board exam tests the same thing twice: what your child knows, and whether that knowledge survives the walk into the exam hall. Blast Learning builds the second part. CBSE, ICSE, JEE, and NEET preparation runs on top of a study engine designed around how Indian students actually forget, and what makes them remember.
-            </p>
-          </motion.div>
-          <div style={{ marginTop: '32px', textAlign: 'center' }}>
-            <Link
-              to="/programs/cbse-plan"
-              className="cta cta-pink"
-              style={{ background: 'linear-gradient(90deg, #E8135A 0%, #F03C6F 100%)', color: '#fff', borderColor: 'transparent' }}
-            >
-              Start The 14-Day Free Trial  -  No Credit Card Required <ArrowRight size={16} />
-            </Link>
-          </div>
+      {/* Hero banner — HB 4 with single primary CTA */}
+      <section style={{ position: 'relative', width: '100%', maxWidth: '1280px', margin: '0 auto' }}>
+        <div style={{ position: 'relative', width: '100%', aspectRatio: '2048 / 1092', overflow: 'hidden', background: '#FFFFFF', boxShadow: '0 8px 32px rgba(28,28,40,0.105)' }}>
+          <img
+            src={heroBanner4}
+            alt="Blast Learning programs"
+            width={2048}
+            height={1092}
+            loading="eager"
+            fetchPriority="high"
+            style={{ width: '100%', height: '100%', display: 'block', objectFit: 'contain', objectPosition: 'center center' }}
+          />
+        </div>
+        <div
+          className="programs-hero-cta"
+          style={{ position: 'absolute', bottom: '165px', left: '90px', zIndex: 3 }}
+        >
+          <Link
+            to="/programs/cbse-plan"
+            className="cta"
+            style={{
+              background: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)',
+              color: '#FFFFFF',
+              border: 'none',
+              boxShadow: 'none',
+              height: '48px',
+              minHeight: '48px',
+              paddingTop: 0,
+              paddingBottom: 0,
+              lineHeight: 1,
+              boxSizing: 'border-box',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+            }}
+          >
+            Start The 14-Day Free Trial <ArrowRight size={16} />
+          </Link>
         </div>
       </section>
 
