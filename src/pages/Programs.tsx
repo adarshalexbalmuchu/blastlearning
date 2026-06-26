@@ -270,13 +270,13 @@ export default function Programs() {
                 >
                   {/* Content panel */}
                   <div className="hiw-content" style={{ background: '#FFFFFF', padding: '48px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginBottom: '20px', alignItems: isReversed ? 'flex-start' : 'flex-end' }}>
                       <div style={{ width: '44px', height: '44px', borderRadius: '50%', background: step.accent, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                         <span style={{ fontSize: '15px', fontWeight: 700, color: '#FFFFFF', fontFamily: "'Poppins', sans-serif" }}>{step.num}</span>
                       </div>
                       <HeadingMarker text={step.eyebrow} accent={step.accent} fontSize="11px" marginBottom="0" />
                     </div>
-                    <h3 style={{ fontSize: 'clamp(1.3rem, 1rem + 1.5vw, 1.75rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '16px', lineHeight: 1.25 }}>
+                    <h3 style={{ fontSize: 'clamp(1.3rem, 1rem + 1.5vw, 1.75rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '16px', lineHeight: 1.25, textAlign: isReversed ? 'left' : 'right' }}>
                       {step.title}
                     </h3>
                     <p style={{ fontSize: '15px', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", margin: 0, textAlign: isReversed ? 'left' : 'right' }}>
