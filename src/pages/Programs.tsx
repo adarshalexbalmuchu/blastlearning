@@ -284,11 +284,11 @@ export default function Programs() {
                   </div>
 
                   {/* Image panel */}
-                  <div className="hiw-image" style={{ background: step.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '32px', position: 'relative', overflow: 'hidden', minHeight: '260px' }}>
+                  <div className="hiw-image" style={{ background: '#FFFFFF', display: 'flex', alignItems: 'stretch', justifyContent: 'center', padding: '0', position: 'relative', overflow: 'hidden', minHeight: '260px' }}>
                     <img
                       src={step.img}
                       alt={step.title}
-                      style={{ width: '100%', maxWidth: '380px', height: 'auto', objectFit: 'contain', display: 'block', position: 'relative', zIndex: 1 }}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
                     />
                   </div>
                 </motion.div>
