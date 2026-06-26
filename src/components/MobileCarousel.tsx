@@ -55,13 +55,13 @@ export default function MobileCarousel({ children, desktopGridClass = '', deskto
           style={{
             display: 'flex',
             gap: '16px',
-            overflowX: 'scroll',
-            overflowY: 'visible',
-            scrollSnapType: 'x mandatory',
-            WebkitOverflowScrolling: 'touch',
-            scrollBehavior: 'smooth',
-            padding: '0 16px 16px 16px',
+            overflowX: 'auto',
+            overflowY: 'hidden',       // prevent vertical axis conflict
+            scrollSnapType: 'x proximity', // proximity = no forced hard snap
+            touchAction: 'pan-x',      // browser commits to horizontal axis only
+            padding: '4px 16px 16px 16px',
             scrollbarWidth: 'none',
+            WebkitOverflowScrolling: 'touch',
           }}
         >
           {items.map((child, i) => (
@@ -69,10 +69,10 @@ export default function MobileCarousel({ children, desktopGridClass = '', deskto
               key={i}
               data-mc-idx={i}
               style={{
-                flex: '0 0 88%',
-                width: '88%',
-                scrollSnapAlign: 'center',
+                flex: '0 0 88%',       // no duplicate width — flex-basis is enough
+                scrollSnapAlign: 'start',
                 boxSizing: 'border-box',
+                minWidth: 0,
               }}
             >
               {child}
@@ -85,11 +85,11 @@ export default function MobileCarousel({ children, desktopGridClass = '', deskto
               key={i}
               style={{
                 display: 'block',
-                width: '8px',
+                width: i === active ? '16px' : '8px',
                 height: '8px',
-                borderRadius: '50%',
-                background: i === active ? '#E91E8C' : '#DCDCE5',
-                transition: 'background 0.3s',
+                borderRadius: '9999px',
+                background: i === active ? '#E8135A' : '#DCDCE5',
+                transition: 'background 0.3s, width 0.3s',
               }}
             />
           ))}
