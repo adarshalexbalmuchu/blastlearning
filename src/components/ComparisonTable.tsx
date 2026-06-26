@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-const BRAND_TEAL = '#0A7B63';
-const TEAL_BG = '#F0FAF7';
-const TEAL_TEXT = '#085041';
+const PINK = '#E8135A';
+const PINK_LIGHT = '#FFF5F8';
+const PINK_HOVER = '#FCE8EF';
 const MUTED = '#6B7280';
 const DARK = '#1C1C28';
 const BORDER = '#E5E7EB';
@@ -50,7 +50,7 @@ export default function ComparisonTable() {
   const lastIdx = rows.length - 1;
 
   return (
-    <div className="overflow-x-auto w-full">
+    <div style={{ overflowX: 'auto', width: '100%', borderRadius: '8px', border: `1px solid ${BORDER}`, boxShadow: '0 1px 4px rgba(0,0,0,0.04)', overflow: 'hidden' }}>
       <table
         style={{
           width: '100%',
@@ -58,9 +58,6 @@ export default function ComparisonTable() {
           borderCollapse: 'collapse',
           fontFamily: 'Inter, sans-serif',
           background: '#FFFFFF',
-          border: `1px solid ${BORDER}`,
-          borderRadius: '12px',
-          overflow: 'hidden',
         }}
       >
         <colgroup>
@@ -70,7 +67,7 @@ export default function ComparisonTable() {
         </colgroup>
         <thead>
           <tr>
-            <th style={{ padding: '12px 16px', background: 'transparent', borderBottom: `1px solid ${BORDER}` }} />
+            <th style={{ padding: '12px 16px', background: '#FFFFFF', borderBottom: `1px solid ${BORDER}` }} />
             <th
               style={{
                 padding: '12px 16px',
@@ -80,7 +77,7 @@ export default function ComparisonTable() {
                 color: MUTED,
                 textTransform: 'uppercase',
                 letterSpacing: '0.08em',
-                background: 'transparent',
+                background: '#FFFFFF',
                 borderBottom: `1px solid ${BORDER}`,
                 borderLeft: `1px solid ${BORDER}`,
               }}
@@ -92,13 +89,14 @@ export default function ComparisonTable() {
                 padding: '12px 16px',
                 textAlign: 'left',
                 fontSize: '11px',
-                fontWeight: 500,
-                color: BRAND_TEAL,
+                fontWeight: 600,
+                color: PINK,
                 textTransform: 'uppercase',
                 letterSpacing: '0.08em',
-                background: TEAL_BG,
-                borderBottom: `1px solid ${BRAND_TEAL}`,
-                borderLeft: `2px solid ${BRAND_TEAL}`,
+                background: PINK_LIGHT,
+                borderTop: `3px solid ${PINK}`,
+                borderBottom: `1px solid ${BORDER}`,
+                borderLeft: `2px solid ${PINK}`,
                 borderRadius: '6px 6px 0 0',
               }}
             >
@@ -110,8 +108,8 @@ export default function ComparisonTable() {
           {rows.map((row, i) => {
             const isHovered = hovered === i;
             const isLast = i === lastIdx;
-            const cellBorder = isLast ? 'none' : `1px solid ${BORDER}`;
-            const blastBorder = isLast ? 'none' : `1px solid #C9EDE3`;
+            const defaultBg = '#FFFFFF';
+            const hoverBg = '#F9FAFB';
 
             return (
               <tr
@@ -123,11 +121,11 @@ export default function ComparisonTable() {
                   style={{
                     padding: '16px 16px',
                     fontSize: '14px',
-                    fontWeight: 500,
+                    fontWeight: 600,
                     color: DARK,
                     verticalAlign: 'top',
-                    background: isHovered ? '#F9FAFB' : '#FFFFFF',
-                    borderBottom: cellBorder,
+                    background: isHovered ? hoverBg : defaultBg,
+                    borderBottom: isLast ? 'none' : `1px solid ${BORDER}`,
                     transition: 'background 150ms ease',
                   }}
                 >
@@ -140,8 +138,8 @@ export default function ComparisonTable() {
                     color: MUTED,
                     lineHeight: 1.6,
                     verticalAlign: 'top',
-                    background: isHovered ? '#F9FAFB' : '#FFFFFF',
-                    borderBottom: cellBorder,
+                    background: isHovered ? hoverBg : defaultBg,
+                    borderBottom: isLast ? 'none' : `1px solid ${BORDER}`,
                     borderLeft: `1px solid ${BORDER}`,
                     transition: 'background 150ms ease',
                   }}
@@ -152,12 +150,12 @@ export default function ComparisonTable() {
                   style={{
                     padding: '16px 16px',
                     fontSize: '14px',
-                    color: TEAL_TEXT,
+                    color: DARK,
                     lineHeight: 1.6,
                     verticalAlign: 'top',
-                    background: isHovered ? '#E4F5F0' : TEAL_BG,
-                    borderBottom: blastBorder,
-                    borderLeft: `2px solid ${BRAND_TEAL}`,
+                    background: isHovered ? PINK_HOVER : PINK_LIGHT,
+                    borderBottom: isLast ? 'none' : `1px solid #F9C0D0`,
+                    borderLeft: `2px solid ${PINK}`,
                     transition: 'background 150ms ease',
                   }}
                 >

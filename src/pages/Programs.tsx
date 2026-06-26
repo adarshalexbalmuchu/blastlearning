@@ -134,7 +134,7 @@ export default function Programs() {
               style={{ width: '100%', height: '100%', display: 'block', objectFit: 'contain', objectPosition: 'center center' }}
             />
             {/* dots — top-left, matches home hero */}
-            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '10%', left: '7.5%', zIndex: 3, pointerEvents: 'none' }}>
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '27%', left: '7.5%', zIndex: 3, pointerEvents: 'none' }}>
               <span style={{ width: '3px', height: '3px', borderRadius: '9999px', background: '#E8135A' }} />
               <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: '#E8135A' }} />
               <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: '#E8135A' }} />
@@ -330,9 +330,7 @@ export default function Programs() {
             {programs.map((prog, idx) => {
               const isPink = idx % 2 === 0;
               const accent = isPink ? '#E8135A' : '#0FA8DC';
-              const buttonBg = isPink
-                ? 'linear-gradient(90deg, #E8135A 0%, #F03C6F 100%)'
-                : 'linear-gradient(90deg, #1E9BDA 0%, #4BB8E6 100%)';
+              const buttonBg = 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)';
               const priceNum = prog.price.replace('₹', '').trim();
 
               return (
