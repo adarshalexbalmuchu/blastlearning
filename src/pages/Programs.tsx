@@ -241,31 +241,31 @@ export default function Programs() {
               {
                 num: '1', eyebrow: 'Precise by Design', accent: '#E8135A', bg: '#FCEEF1',
                 title: 'GAP Assessment',
-                body: 'Math Genius Maker opens with a quick GAP Assessment that checks what a student actually knows in math right now. A Class 10 student missing a Class 5 fraction rule is common and rarely shows up on a report card, and the study plan starts exactly there before moving the student into this year\'s material.',
+                body: 'Math Genius Maker opens with a quick GAP Assessment that checks what a student actually knows in math right now, not the grade on the cover. A Class 10 student missing a Class 5 fraction rule is still common and rarely shows up on a report card, so the study plan starts exactly where that gap sits and carries forward into this year\'s material, then into whatever comes next.',
                 img: step1Img,
               },
               {
-                num: '2', eyebrow: 'Intelligent by Design', accent: '#0FA8DC', bg: '#E0F5FC',
+                num: '2', eyebrow: 'Intuitive by Design', accent: '#0FA8DC', bg: '#E0F5FC',
                 title: 'The AI Tutor',
-                body: 'Once the gap is mapped, the AI Tutor builds the path across it. Questions are generated fresh each session — calibrated to sit at the edge of what a student can currently do. Too easy and nothing sticks; too hard and the student disengages. The AI Tutor holds that edge, session after session.',
+                body: 'The AI Tutor works out exactly where a student\'s understanding breaks down, then sets each question right at that edge, hard enough to demand real effort and forgiving enough that the student keeps going. That balance gets recalculated after every session, the same way, always, no matter the subject or course, so doubt-resolution carries into whatever a student studies next.',
                 img: step2Img,
               },
               {
                 num: '3', eyebrow: 'Cumulative by Design', accent: '#E8135A', bg: '#FCEEF1',
                 title: 'Spaced Repetition & Retrieval Practice',
-                body: 'Content resurfaces at the interval where recall has started to fade but not yet vanished — the testing effect. That moment of effortful retrieval is among the most replicated findings in cognitive science, and the actual mechanism behind durable memory.',
+                body: 'Spaced repetition schedules review at the exact point a student\'s memory starts to slip, and retrieval practice asks them to answer, solve, or reconstruct an idea from memory first, with correction coming only after the attempt. Together, material gets recalled months later instead of forgotten the week after a test, the same way across every subject a student takes on.',
                 img: step3Img,
               },
               {
                 num: '4', eyebrow: 'Accountable by Design', accent: '#0FA8DC', bg: '#E0F5FC',
                 title: 'Study Buddy',
-                body: 'A human partner works alongside the AI Tutor, not instead of it. Two students receive synchronised adaptive question sets, practise together, explain answers to each other, and hold each other to the schedule — the accountability layer that makes a study plan stick through November exam season.',
+                body: 'Study Buddy pairs a student with a human partner working through the same synchronised, adaptive question set, so neither one studies alone or loses momentum. A notification from an app rarely keeps a habit alive past the second week, a person checking in does, and that accountability habit holds whether the course changes from one term to the next, regardless of subject.',
                 img: step4Img,
               },
               {
-                num: '5', eyebrow: 'Self-Regulation', accent: '#8B5CF6', bg: '#F0EDFC',
+                num: '5', eyebrow: 'Resilient by Design', accent: '#8B5CF6', bg: '#F0EDFC',
                 title: 'Mind Coach',
-                body: 'A student can have the gap mapped, the path built, and the schedule timed perfectly — and still freeze in an exam hall. Mind Coach treats focus, emotional control, goal-setting, and personal agency as learnable skills, taught the same deliberate way a chapter on thermodynamics gets taught.',
+                body: 'Mind Coach treats focus, emotional control, goal-setting, agency, and exam composure as skills built through practice, not traits a student happens to have or lack. A child who freezes on a hard question is missing one specific, trainable skill, and Mind Coach builds it directly, the same way, regardless of which exam or course a student is preparing for, whatever it is.',
                 img: step5Img,
               },
             ].map((step, idx) => {
