@@ -8,10 +8,10 @@ import heroBanner4 from '../assets/banners/HB 4.png';
 import BrandArc from '../components/BrandArc';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import MobileCarousel from '../components/MobileCarousel';
-import step1Img from '../assets/method-science-new/1.png';
-import step2Img from '../assets/method-science-new/2.png';
-import step3Img from '../assets/method-science-new/3.png';
-import step4Img from '../assets/method-science-new/4.png';
+import step1Img from '../assets/Competency Based Learning.png';
+import step2Img from '../assets/Critical Thinking.png';
+import step3Img from '../assets/Curriculum Load Reduction.png';
+import step4Img from '../assets/Holistic Assessment.png';
 import ebbinghausImg from '../assets/Ebbinghaus Curve.png';
 
 const testimonialsRow1 = [
@@ -254,7 +254,7 @@ export default function Programs() {
                 num: '5', eyebrow: 'Self-Regulation', accent: '#8B5CF6', bg: '#F0EDFC',
                 title: 'Mind Coach',
                 body: 'A student can have the gap mapped, the path built, and the schedule timed perfectly — and still freeze in an exam hall. Mind Coach treats focus, emotional control, goal-setting, and personal agency as learnable skills, taught the same deliberate way a chapter on thermodynamics gets taught.',
-                img: ebbinghausImg,
+                img: step4Img,
               },
             ].map((step, idx) => {
               const isReversed = idx % 2 !== 0;
@@ -285,13 +285,11 @@ export default function Programs() {
 
                   {/* Image panel */}
                   <div className="hiw-image" style={{ background: step.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '32px', position: 'relative', overflow: 'hidden', minHeight: '260px' }}>
-                    <div style={{ width: '100%', maxWidth: '380px', aspectRatio: '4/3', borderRadius: '12px', background: 'rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                        <rect x="6" y="10" width="36" height="28" rx="4" stroke="rgba(0,0,0,0.2)" strokeWidth="2" fill="none"/>
-                        <circle cx="17" cy="20" r="4" stroke="rgba(0,0,0,0.2)" strokeWidth="2" fill="none"/>
-                        <path d="M6 32l10-8 8 6 6-5 12 9" stroke="rgba(0,0,0,0.2)" strokeWidth="2" strokeLinejoin="round" fill="none"/>
-                      </svg>
-                    </div>
+                    <img
+                      src={step.img}
+                      alt={step.title}
+                      style={{ width: '100%', maxWidth: '380px', height: 'auto', objectFit: 'contain', display: 'block', position: 'relative', zIndex: 1 }}
+                    />
                   </div>
                 </motion.div>
               );
