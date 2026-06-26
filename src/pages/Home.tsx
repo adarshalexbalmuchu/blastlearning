@@ -18,6 +18,34 @@ import { useSEO } from '../hooks/useSEO';
 const howItWorks = [
   {
     num: '01',
+    eyebrow: 'Cumulative by Design',
+    title: 'Spaced Repetition',
+    desc: 'Spaced repetition schedules review at the exact point a student\'s memory starts to slip, and retrieval practice asks them to answer, solve, or reconstruct an idea from memory first, with correction coming only after the attempt. Together, material gets recalled months later instead of forgotten the week after a test.',
+    descFooter: (
+      <>
+        <span style={{ color: '#0FA8DC' }}>Long-term recall</span>
+        <span style={{ color: '#E8135A' }}> · Retrieval practice</span>
+        <span style={{ color: '#0FA8DC' }}> · Adaptive pacing</span>
+      </>
+    ),
+    accent: '#0FA8DC',
+  },
+  {
+    num: '02',
+    eyebrow: 'Perceptive by Design',
+    title: 'English Mastery',
+    desc: 'English Mastery builds comprehension as inference, working out what a passage actually implies rather than only what it states, a skill rote reading rarely builds on its own. That is the exact skill both board exams and the SAT test in their reading and writing sections.',
+    descFooter: (
+      <>
+        <span style={{ color: '#0FA8DC' }}>Inference</span>
+        <span style={{ color: '#E8135A' }}> · Comprehension</span>
+        <span style={{ color: '#0FA8DC' }}> · Exam-ready writing</span>
+      </>
+    ),
+    accent: '#E8135A',
+  },
+  {
+    num: '03',
     eyebrow: 'Spaced Repetition',
     title: 'AI Tutor',
     desc: 'AI Tutor turns brief topic notes into a full study guide: a summary lesson, an interactive podcast, and a schedule built around the student\'s class and next test. Every question stays fresh and calibrated to the right level for steady mastery.',
@@ -33,7 +61,7 @@ const howItWorks = [
     accent: '#0FA8DC',
   },
   {
-    num: '02',
+    num: '04',
     eyebrow: 'Active Recall',
     title: 'Study Buddy',
     desc: 'A human partner studies alongside your student, working from the same adaptive question set so both track progress together. Your student never works through the material alone, building confidence through co-studying.',
@@ -46,7 +74,7 @@ const howItWorks = [
     accent: '#0FA8DC',
   },
   {
-    num: '03',
+    num: '05',
     eyebrow: 'Self-Regulation',
     title: 'Mind Coach',
     desc: 'Mind Coach treats focus, emotional control, goal-setting, and personal agency as learnable skills, each built through its own practice routine. Test taking gets the same treatment, rehearsed under timed conditions, step by step, until it holds.',
@@ -61,7 +89,7 @@ const howItWorks = [
     accent: '#3B82F6',
   },
   {
-    num: '04',
+    num: '06',
     eyebrow: 'Diagnostic-First Learning',
     title: 'GAP Assessment',
     desc: 'GAP Assessment finds the gaps left by earlier years and builds a personalized path that closes exactly those gaps. From there, your student moves into the current year\'s material, then ahead into next year\'s, well ahead of the grade-level pace.',
@@ -358,7 +386,7 @@ export default function Home() {
               </motion.div>
             </div>
           </motion.div>
-          <MobileCarousel desktopGridClass="grid-cols-2-md grid-cols-4-lg" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginTop: '-5px', marginBottom: '28px', alignItems: 'start' }}>
+          <MobileCarousel desktopGridClass="grid-cols-2-md grid-cols-3-lg" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', marginTop: '-5px', marginBottom: '28px', alignItems: 'start' }}>
             {howItWorks.map(({ num, eyebrow, title, desc, descFooter, descFooterColor, accent }) => (
               <motion.div
                 key={num}
