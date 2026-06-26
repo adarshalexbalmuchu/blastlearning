@@ -119,10 +119,11 @@ export default function ForParents() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '64px' }}
           >
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '16px' }}>
+            <HeadingMarker text="Features" marginBottom="16px" fontSize="12px" />
+            <h2 className="t-h2">
               Everything You <AccentText tone="blue">Need</AccentText> to Stay <AccentText tone="pink">Involved</AccentText>
             </h2>
-            <p style={{ fontSize: 'var(--fs-body)', color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
+            <p className="t-body" style={{ maxWidth: '600px', margin: '0 auto' }}>
               Powerful tools designed to keep you connected to your child's learning journey.
             </p>
           </motion.div>
@@ -138,13 +139,8 @@ export default function ForParents() {
                   whileInView="visible"
                   viewport={{ once: true }}
                   whileHover={{ y: -6 }}
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid #ECECF1',
-                    borderRadius: '16px',
-                    padding: '32px',
-                    boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-                  }}
+                  className="card-subtle surface-card"
+                  style={{ padding: '32px' }}
                 >
                   <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: tile, color: '#0FA8DC' }}>
                     <Icon size={24} />
@@ -163,10 +159,11 @@ export default function ForParents() {
         <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }} className="grid-cols-2-md">
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-              <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '24px' }}>
+              <HeadingMarker text="Why Choose Us" marginBottom="16px" fontSize="12px" />
+              <h2 className="t-h2" style={{ marginBottom: '24px' }}>
                 Built on <AccentText tone="blue">Trust</AccentText> & <AccentText tone="pink">Transparency</AccentText>
               </h2>
-              <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '32px' }}>
+              <p className="t-body" style={{ marginBottom: '32px' }}>
                 We believe parents deserve complete clarity. No hidden costs, no confusing contracts, just honest, effective education.
               </p>
               <div style={{ display: 'grid', gap: '16px' }}>
