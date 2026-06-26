@@ -88,6 +88,15 @@ export default function ProgramDetail() {
                 objectPosition: 'center center',
               }}
             />
+            {/* HeadingMarker overlay */}
+            <div className="programs-hero-cta" style={{ position: 'absolute', bottom: '165px', left: '90px', zIndex: 3 }}>
+              <HeadingMarker
+                text={`AI Powered · ${program.classes}`}
+                fontSize="11px"
+                marginBottom="0"
+                accent={program.slug === 'cbse-plan' || program.slug === 'english-mastery' ? '#E8135A' : '#0FA8DC'}
+              />
+            </div>
           </motion.div>
         </div>
       </section>

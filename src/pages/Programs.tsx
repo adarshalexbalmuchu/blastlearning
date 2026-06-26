@@ -145,6 +145,7 @@ export default function Programs() {
           className="programs-hero-cta"
           style={{ position: 'absolute', bottom: '165px', left: '90px', zIndex: 3 }}
         >
+          <HeadingMarker text="Our Programs" fontSize="11px" marginBottom="14px" />
           <Link
             to="/programs/cbse-plan"
             className="cta"
