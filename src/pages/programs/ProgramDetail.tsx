@@ -91,7 +91,7 @@ export default function ProgramDetail() {
               }}
             />
             {/* dots-only overlay — top-left, matches home hero style */}
-            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '35%', left: '7.5%', zIndex: 3, pointerEvents: 'none' }}>
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '27%', left: '7.5%', zIndex: 3, pointerEvents: 'none' }}>
               <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: dotColor }} />
               <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: dotColor }} />
               <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: dotColor }} />
