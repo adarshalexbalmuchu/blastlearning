@@ -275,7 +275,7 @@ export default function ProgramDetail() {
                       <HeadingMarker text={program.slug === 'cbse-plan' ? 'CBSE' : program.slug === 'math-genius' ? 'Math' : program.slug === 'english-mastery' ? 'English' : 'SAT'} accent={cardAccent} fontSize="10px" marginBottom="0" />
                       <span style={{ fontSize: '11px', color: '#A0A5B1', fontFamily: 'Inter, sans-serif' }}>For whom</span>
                     </div>
-                    <h3 style={{ margin: '0 0 10px', fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: '1.05rem', lineHeight: 1.35, color: '#111111' }}>
+                    <h3 style={{ margin: '0 0 10px', fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: '1.05rem', lineHeight: 1.35, color: '#1C1C28' }}>
                       {card.title}
                     </h3>
                     <p className="t-body" style={{ margin: 0, color: '#5A5A6E' }}>
@@ -416,7 +416,7 @@ export default function ProgramDetail() {
               <div style={{ height: '3px', width: '100%', background: '#0FA8DC' }} />
               <div style={{ padding: '18px 16px 14px' }}>
                 <HeadingMarker text={program.classes} accent="#0FA8DC" fontSize="11px" />
-                <h3 style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: 'var(--fs-h3-fluid)', fontWeight: 800, color: '#111111', lineHeight: 1.2 }}>
+                <h3 style={{ margin: 0, fontFamily: 'Poppins, sans-serif', fontSize: 'var(--fs-h3-fluid)', fontWeight: 700, color: '#1C1C28', lineHeight: 1.2 }}>
                   {program.name}
                 </h3>
                 <p className="t-body" style={{ margin: '8px 0 0' }}>
