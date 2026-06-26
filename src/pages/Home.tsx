@@ -571,7 +571,7 @@ export default function Home() {
             eyebrow="Library"
             accent={PINK}
             align="left"
-            title={<>The {G('thinking', CYAN)} behind the {GP('product')}.</>}
+            title={<>The {G('thought', CYAN)} behind the {GP('product')}.</>}
             subtitle="Articles, blogs, research papers, case studies, guides, and tools for parents and students who want to understand why the method works, and how to put it into practice."
           />
           <MobileCarousel desktopGridClass="grid-cols-3-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
