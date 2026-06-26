@@ -1,7 +1,8 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import ComparisonTable from '../components/ComparisonTable';
 import AccentText from '../components/AccentText';
 import HeadingMarker from '../components/HeadingMarker';
 import heroBanner4 from '../assets/banners/HB 4.png';
@@ -105,13 +106,6 @@ const programs = [
   },
 ];
 
-const comparisonRows = [
-  { feature: 'AI Personalization', blast: true, coaching: false, apps: false },
-  { feature: 'Parent Dashboard', blast: true, coaching: false, apps: false },
-  { feature: 'Spaced Repetition', blast: true, coaching: false, apps: true },
-  { feature: 'Human Support', blast: true, coaching: true, apps: false },
-  { feature: 'Affordable Price', blast: true, coaching: false, apps: true },
-];
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -140,12 +134,12 @@ export default function Programs() {
               style={{ width: '100%', height: '100%', display: 'block', objectFit: 'contain', objectPosition: 'center center' }}
             />
             {/* dots — top-left, matches home hero */}
-            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '22%', left: '7.5%', zIndex: 3, pointerEvents: 'none' }}>
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '3%', left: '7.5%', zIndex: 3, pointerEvents: 'none' }}>
+              <span style={{ width: '3px', height: '3px', borderRadius: '9999px', background: '#E8135A' }} />
               <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: '#E8135A' }} />
               <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: '#E8135A' }} />
-              <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: '#E8135A' }} />
-              <span style={{ width: '9px', height: '3px', borderRadius: '9999px', background: '#E8135A' }} />
-              <span style={{ width: '14px', height: '3px', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: '8px', height: '2px', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: '13px', height: '2px', borderRadius: '9999px', background: '#E8135A' }} />
             </span>
             {/* CTA — bottom-left */}
             <div
@@ -431,7 +425,7 @@ export default function Programs() {
 
       {/* Comparison Table */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
-        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ textAlign: 'center', marginBottom: '56px' }}>
             <HeadingMarker text="Comparison" marginBottom="16px" fontSize="12px" />
             <motion.h2
@@ -455,56 +449,7 @@ export default function Programs() {
             </motion.p>
           </div>
           <div className="comparison-table-wrap">
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ background: '#FFFFFF', border: '1px solid #ECECF1', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
-          >
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
-              <div style={{ padding: '16px', borderBottom: '1px solid #ECECF1' }} />
-              {['Blast Learning', 'Coaching Classes', 'Other Apps'].map((h, i) => (
-                <div
-                  key={h}
-                  style={{
-                    padding: '16px',
-                    textAlign: 'center',
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    fontFamily: "'Poppins', sans-serif",
-                    background: i === 0 ? '#E0F5FC' : 'transparent',
-                    color: i === 0 ? '#0FA8DC' : '#5A5A6E',
-                    borderBottom: '1px solid #ECECF1',
-                  }}
-                >
-                  {h}
-                </div>
-              ))}
-            </div>
-            {comparisonRows.map((row, i) => (
-              <div
-                key={row.feature}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(4, 1fr)',
-                  borderTop: '1px solid #ECECF1',
-                  background: i % 2 === 0 ? 'transparent' : '#F7F7F8',
-                }}
-              >
-                <div style={{ padding: '14px 16px', fontSize: '14px', fontWeight: 500, color: '#1C1C28', fontFamily: "'Inter', sans-serif" }}>{row.feature}</div>
-                {[row.blast, row.coaching, row.apps].map((val, j) => (
-                  <div key={j} style={{ padding: '14px 16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {val ? (
-                      <CheckCircle size={18} style={{ color: j === 0 ? '#0FA8DC' : '#6B6B7B' }} />
-                    ) : (
-                      <span style={{ fontSize: '18px', color: '#6B6B7B' }}>×</span>
-                    )}
-                  </div>
-                ))}
-              </div>
-            ))}
-          </motion.div>
+            <ComparisonTable />
           </div>
         </div>
       </section>
@@ -529,6 +474,71 @@ export default function Programs() {
         subtitle="If your question isn't here, the full FAQ page covers every edge case - billing, syllabus details, Study Buddy matching, and technical requirements."
         linkLabel="More FAQ..."
       />
+
+      {/* ── Bottom CTA ── */}
+      <section
+        style={{
+          position: 'relative',
+          overflow: 'hidden',
+          background: 'linear-gradient(135deg, #0A1628 0%, #0D1F3C 50%, #0A1628 100%)',
+          paddingTop: '96px',
+          paddingBottom: '96px',
+        }}
+      >
+        {/* Subtle arc decoration */}
+        <div
+          aria-hidden="true"
+          style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}
+        >
+          <BrandArc width="100%" opacity={0.08} color1="#0FA8DC" color2="#E8135A" />
+        </div>
+
+        {/* Glow spots */}
+        <div aria-hidden="true" style={{ position: 'absolute', top: '20%', left: '8%', width: '340px', height: '340px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(14,168,220,0.10) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div aria-hidden="true" style={{ position: 'absolute', bottom: '15%', right: '6%', width: '280px', height: '280px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(232,19,90,0.09) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+        <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <HeadingMarker text="CTA" marginBottom="20px" fontSize="11px" accent="#0FA8DC" />
+            <h2
+              className="t-h2"
+              style={{ color: '#FFFFFF', marginBottom: '18px', lineHeight: 1.2 }}
+            >
+              Don&apos;t take our word{' '}
+              <span
+                style={{
+                  backgroundImage: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                for it.
+              </span>
+            </h2>
+            <p
+              style={{
+                fontSize: 'var(--fs-body)',
+                lineHeight: 1.75,
+                color: 'rgba(255,255,255,0.65)',
+                fontFamily: 'Inter, sans-serif',
+                maxWidth: '540px',
+                margin: '0 auto 36px',
+              }}
+            >
+              Take a look around with the 14-day free trial, no credit card required.
+            </p>
+            <Link to="/programs" className="cta" style={{ background: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)', color: '#FFFFFF', border: 'none', fontSize: '15px', fontWeight: 700, padding: '15px 36px', boxShadow: '0 8px 28px rgba(232,19,90,0.30)' }}>
+              Start Your Free Trial
+            </Link>
+          </motion.div>
+        </div>
+      </section>
 
     </div>
   );

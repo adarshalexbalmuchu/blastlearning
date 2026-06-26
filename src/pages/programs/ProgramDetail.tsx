@@ -53,7 +53,7 @@ export default function ProgramDetail() {
     text: testimonial.content,
   }));
 
-  const dotColor = program.slug === 'cbse-plan' || program.slug === 'english-mastery' ? '#E8135A' : '#0FA8DC';
+  const dotColor = program.slug === 'math-genius' || program.slug === 'sat-prep' ? '#E8135A' : '#0FA8DC';
 
   return (
     <div className="program-detail-page" style={{ background: '#FFFFFF' }}>
@@ -91,12 +91,12 @@ export default function ProgramDetail() {
               }}
             />
             {/* dots-only overlay — top-left, matches home hero style */}
-            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '22%', left: '7.5%', zIndex: 3, pointerEvents: 'none' }}>
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '3%', left: '7.5%', zIndex: 3, pointerEvents: 'none' }}>
+              <span style={{ width: '3px', height: '3px', borderRadius: '9999px', background: dotColor }} />
               <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: dotColor }} />
               <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: dotColor }} />
-              <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: dotColor }} />
-              <span style={{ width: '9px', height: '3px', borderRadius: '9999px', background: dotColor }} />
-              <span style={{ width: '14px', height: '3px', borderRadius: '9999px', background: dotColor }} />
+              <span style={{ width: '8px', height: '2px', borderRadius: '9999px', background: dotColor }} />
+              <span style={{ width: '13px', height: '2px', borderRadius: '9999px', background: dotColor }} />
             </span>
           </motion.div>
         </div>
