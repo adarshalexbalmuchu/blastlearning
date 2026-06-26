@@ -80,8 +80,8 @@ export function SharedTestimonialsSection({
   background?: string;
 }) {
   return (
-    <section id={sectionId} className="section-pad" style={{ paddingTop: '48px', paddingBottom: '40px', background }}>
-      <div style={{ textAlign: align ?? 'left', padding: '0 24px', marginBottom: '40px' }}>
+    <section id={sectionId} className="section-pad" style={{ paddingTop: '64px', paddingBottom: '80px', background, overflowX: 'hidden' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto 40px', padding: '0 24px', textAlign: align ?? 'left' }}>
         <SectionIntro eyebrow={eyebrow} title={title} subtitle={subtitle} accent={accent} align={align} />
       </div>
       <TestimonialsMarquee row1={row1} row2={row2} />

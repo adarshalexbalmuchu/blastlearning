@@ -35,7 +35,6 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
   const planName = card.planName ?? parsed.planName;
   const location = parsed.location;
   const markerAccent = cardIndex === 1 ? '#0FA8DC' : '#E8135A';
-  const classAccent = cardIndex % 2 === 0 ? '#E8135A' : '#0FA8DC';
 
   return (
     <div
@@ -43,8 +42,8 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
         background: '#FFFFFF',
         borderRadius: '12px',
         border: '1px solid #E8E8F0',
-        boxShadow: '0 2px 10px rgba(28,28,40,0.04)',
-        padding: '18px 18px 16px',
+        boxShadow: '0 2px 8px rgba(28,28,40,0.05)',
+        padding: '24px',
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
@@ -53,11 +52,11 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
       }}
     >
       {/* Decorative quote mark */}
-      <div style={{ marginBottom: '2px' }}>
+      <div style={{ marginBottom: '4px' }}>
         <span
           aria-hidden="true"
           style={{
-            fontSize: '42px',
+            fontSize: '44px',
             lineHeight: 0.75,
             color: '#D7DAE1',
             fontFamily: 'Georgia, serif',
@@ -75,7 +74,7 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
         style={{
           display: 'flex',
           alignItems: 'center',
-          marginBottom: '8px',
+          marginBottom: '10px',
         }}
       >
         {planName ? (
@@ -88,9 +87,9 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
       {/* Quote text */}
       <p
         style={{
-          fontSize: '13px',
+          fontSize: '15px',
           color: '#111111',
-          lineHeight: 1.55,
+          lineHeight: 1.625,
           fontFamily: 'Inter, sans-serif',
           margin: '0 0 14px',
           flex: 1,
@@ -125,13 +124,13 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
               flexWrap: 'wrap',
             }}
           >
-            <span style={{ color: classAccent, fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
+            <span style={{ color: '#E8135A', fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
               {classInfo}
             </span>
             {location && (
               <>
-                <span style={{ color: classAccent, fontWeight: 400 }}>|</span>
-                <span style={{ color: classAccent, fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
+                <span style={{ color: '#9CA3AF', fontWeight: 400 }}>|</span>
+                <span style={{ color: '#6B7280', fontWeight: 500, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
                   {location}
                 </span>
               </>
@@ -155,15 +154,26 @@ export default function TestimonialsMarquee({
   const all = React.useMemo(() => [...row1, ...row2], [row1, row2]);
   const totalPages = Math.ceil(all.length / PAGE_SIZE);
   const [page, setPage] = useState(0);
+  const [prevHover, setPrevHover] = useState(false);
+  const [nextHover, setNextHover] = useState(false);
 
   const pageCards = all.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE);
+
+  const prevDisabled = page === 0;
+  const nextDisabled = page === totalPages - 1;
 
   return (
     <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px', width: '100%' }}>
       {/* 3-per-page grid */}
       <div
         className="testimonials-grid"
-        style={{ marginBottom: '24px', display: 'grid', gap: '20px' }}
+        style={{
+          marginBottom: '24px',
+          display: 'grid',
+          gap: '20px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+          alignItems: 'stretch',
+        }}
       >
         {pageCards.map((card, i) => (
           <TestimonialCard key={`${page}-${i}`} card={card} cardIndex={page * PAGE_SIZE + i} />
@@ -175,19 +185,21 @@ export default function TestimonialsMarquee({
         <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginTop: '24px' }}>
           <button
             onClick={() => setPage(p => Math.max(0, p - 1))}
-            disabled={page === 0}
+            disabled={prevDisabled}
+            onMouseEnter={() => setPrevHover(true)}
+            onMouseLeave={() => setPrevHover(false)}
             style={{
               width: '40px',
               height: '40px',
               borderRadius: '50%',
-              border: `1.5px solid ${page === 0 ? '#E5E7EB' : '#CBD5E1'}`,
-              background: page === 0 ? '#F9FAFB' : '#FFFFFF',
+              border: `1.5px solid ${prevDisabled ? '#E5E7EB' : prevHover ? '#0FA8DC' : '#CBD5E1'}`,
+              background: prevDisabled ? '#F9FAFB' : prevHover ? '#E0F5FC' : '#FFFFFF',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              cursor: page === 0 ? 'not-allowed' : 'pointer',
-              color: page === 0 ? '#CBD5E1' : '#1C1C28',
-              transition: 'background 0.2s ease, border-color 0.2s ease',
+              cursor: prevDisabled ? 'not-allowed' : 'pointer',
+              color: prevDisabled ? '#CBD5E1' : prevHover ? '#0FA8DC' : '#1C1C28',
+              transition: 'background 0.2s ease, border-color 0.2s ease, color 0.2s ease',
             }}
             aria-label="Previous testimonials"
           >
@@ -195,19 +207,21 @@ export default function TestimonialsMarquee({
           </button>
           <button
             onClick={() => setPage(p => Math.min(totalPages - 1, p + 1))}
-            disabled={page === totalPages - 1}
+            disabled={nextDisabled}
+            onMouseEnter={() => setNextHover(true)}
+            onMouseLeave={() => setNextHover(false)}
             style={{
               width: '40px',
               height: '40px',
               borderRadius: '50%',
-              border: `1.5px solid ${page === totalPages - 1 ? '#E5E7EB' : '#CBD5E1'}`,
-              background: page === totalPages - 1 ? '#F9FAFB' : '#FFFFFF',
+              border: `1.5px solid ${nextDisabled ? '#E5E7EB' : nextHover ? '#0FA8DC' : '#CBD5E1'}`,
+              background: nextDisabled ? '#F9FAFB' : nextHover ? '#E0F5FC' : '#FFFFFF',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              cursor: page === totalPages - 1 ? 'not-allowed' : 'pointer',
-              color: page === totalPages - 1 ? '#CBD5E1' : '#1C1C28',
-              transition: 'background 0.2s ease, border-color 0.2s ease',
+              cursor: nextDisabled ? 'not-allowed' : 'pointer',
+              color: nextDisabled ? '#CBD5E1' : nextHover ? '#0FA8DC' : '#1C1C28',
+              transition: 'background 0.2s ease, border-color 0.2s ease, color 0.2s ease',
             }}
             aria-label="Next testimonials"
           >
