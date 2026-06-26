@@ -330,7 +330,7 @@ export default function Programs() {
             {programs.map((prog, idx) => {
               const isPink = idx % 2 === 0;
               const accent = isPink ? '#E8135A' : '#0FA8DC';
-              const buttonBg = 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)';
+              const buttonBg = accent;
               const priceNum = prog.price.replace('₹', '').trim();
 
               return (
