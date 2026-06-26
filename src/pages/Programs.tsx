@@ -474,65 +474,24 @@ export default function Programs() {
       />
 
       {/* ── Bottom CTA ── */}
-      <section
-        style={{
-          position: 'relative',
-          overflow: 'hidden',
-          background: 'linear-gradient(135deg, #0A1628 0%, #0D1F3C 50%, #0A1628 100%)',
-          paddingTop: '96px',
-          paddingBottom: '96px',
-        }}
-      >
-        {/* Subtle arc decoration */}
-        <div
-          aria-hidden="true"
-          style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}
-        >
-          <BrandArc width="100%" opacity={0.08} color1="#0FA8DC" color2="#E8135A" />
-        </div>
-
-        {/* Glow spots */}
-        <div aria-hidden="true" style={{ position: 'absolute', top: '20%', left: '8%', width: '340px', height: '340px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(14,168,220,0.10) 0%, transparent 70%)', pointerEvents: 'none' }} />
-        <div aria-hidden="true" style={{ position: 'absolute', bottom: '15%', right: '6%', width: '280px', height: '280px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(232,19,90,0.09) 0%, transparent 70%)', pointerEvents: 'none' }} />
-
-        <div style={{ maxWidth: '720px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative', zIndex: 1 }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+        <div style={{ maxWidth: '680px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <HeadingMarker text="CTA" marginBottom="20px" fontSize="11px" accent="#0FA8DC" />
-            <h2
-              className="t-h2"
-              style={{ color: '#FFFFFF', marginBottom: '18px', lineHeight: 1.2 }}
-            >
-              Don&apos;t take our word{' '}
-              <span
-                style={{
-                  backgroundImage: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                for it.
-              </span>
+            <HeadingMarker text="14-Day Free Trial" marginBottom="20px" fontSize="11px" accent="#E8135A" />
+            <h2 className="t-h2" style={{ marginBottom: '16px' }}>
+              See the <AccentText tone="pink">difference</AccentText> in the{' '}
+              <AccentText tone="blue">first week.</AccentText>
             </h2>
-            <p
-              style={{
-                fontSize: 'var(--fs-body)',
-                lineHeight: 1.75,
-                color: 'rgba(255,255,255,0.65)',
-                fontFamily: 'Inter, sans-serif',
-                maxWidth: '540px',
-                margin: '0 auto 36px',
-              }}
-            >
-              Take a look around with the 14-day free trial, no credit card required.
+            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '36px' }}>
+              Full access for 14 days. No credit card required. Cancel any time.
             </p>
-            <Link to="/programs" className="cta" style={{ background: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)', color: '#FFFFFF', border: 'none', fontSize: '15px', fontWeight: 700, padding: '15px 36px', boxShadow: '0 8px 28px rgba(232,19,90,0.30)' }}>
-              Start Your Free Trial
+            <Link to="/programs/cbse-plan" className="cta cta-pink" style={{ fontSize: '15px', fontWeight: 700, padding: '14px 40px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              Start Free Trial <ArrowRight size={16} />
             </Link>
           </motion.div>
         </div>
