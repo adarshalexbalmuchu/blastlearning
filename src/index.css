@@ -180,6 +180,8 @@ p, li {
   color: var(--color-text-dark);
   line-height: 1.2;
   margin-bottom: 16px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .t-body {

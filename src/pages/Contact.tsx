@@ -136,7 +136,7 @@ export default function Contact() {
       </section>
 
       {/* Main Content */}
-      <section style={{ paddingTop: '80px', paddingBottom: '96px', background: '#F9FAFB' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
@@ -346,7 +346,8 @@ export default function Contact() {
                       <button
                         type="submit"
                         disabled={submitting}
-                        style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '14px', borderRadius: '10px', fontSize: '15px', fontWeight: 600, fontFamily: 'Inter, sans-serif', cursor: submitting ? 'not-allowed' : 'pointer', background: '#0FA8DC', color: 'white', border: 'none', marginTop: '8px', opacity: submitting ? 0.7 : 1 }}
+                        className="cta cta-blue"
+                        style={{ width: '100%', background: 'linear-gradient(90deg, #1E9BDA 0%, #4BB8E6 100%)', color: '#fff', borderColor: 'transparent', marginTop: '8px', opacity: submitting ? 0.7 : 1, cursor: submitting ? 'not-allowed' : 'pointer' }}
                       >
                         <Send size={16} /> {submitting ? 'Sending...' : 'Send Message'}
                       </button>
@@ -377,7 +378,7 @@ export default function Contact() {
           <a
             href="tel:+911234567890"
             className="cta cta-blue"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '12px', padding: '16px 36px', borderRadius: '10px', fontSize: '18px', fontWeight: 600, fontFamily: 'Inter, sans-serif', textDecoration: 'none', background: '#0FA8DC', color: 'white' }}
+            style={{ background: 'linear-gradient(90deg, #1E9BDA 0%, #4BB8E6 100%)', color: '#fff', borderColor: 'transparent' }}
           >
             <Phone size={20} /> +91 123 456 7890
           </a>

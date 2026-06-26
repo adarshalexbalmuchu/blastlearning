@@ -126,10 +126,11 @@ export default function ForStudents() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '64px' }}
           >
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '16px' }}>
+            <HeadingMarker text="Features" marginBottom="16px" fontSize="12px" />
+            <h2 className="t-h2">
               Why <AccentText tone="blue">Students</AccentText> Love <AccentText tone="pink">Us</AccentText>
             </h2>
-            <p style={{ fontSize: 'var(--fs-body)', color: '#5A5A6E', fontFamily: "'Inter', sans-serif", maxWidth: '600px', margin: '0 auto' }}>
+            <p className="t-body" style={{ maxWidth: '600px', margin: '0 auto' }}>
               We built Blast Learning with one goal: make studying so engaging your child forgets it is work.
             </p>
           </motion.div>
@@ -144,13 +145,8 @@ export default function ForStudents() {
                   whileInView="visible"
                   viewport={{ once: true }}
                   whileHover={{ y: -6 }}
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid #ECECF1',
-                    borderRadius: '16px',
-                    padding: '32px',
-                    boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-                  }}
+                  className="card-subtle surface-card"
+                  style={{ padding: '32px' }}
                 >
                   <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: feature.tile, color: '#0FA8DC' }}>
                     <Icon size={24} />
@@ -167,15 +163,19 @@ export default function ForStudents() {
       {/* How It Works */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', textAlign: 'center', marginBottom: '56px' }}
-          >
-            How It <AccentText tone="blue">Works</AccentText>
-          </motion.h2>
+          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+            <HeadingMarker text="Process" marginBottom="16px" fontSize="12px" />
+            <motion.h2
+              className="t-h2"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              style={{ marginBottom: 0 }}
+            >
+              How It <AccentText tone="blue">Works</AccentText>
+            </motion.h2>
+          </div>
           <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
             {steps.map((step) => (
               <motion.div
@@ -184,16 +184,8 @@ export default function ForStudents() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                style={{
-                  display: 'flex',
-                  gap: '20px',
-                  alignItems: 'flex-start',
-                  background: '#FFFFFF',
-                  border: '1px solid #ECECF1',
-                  borderRadius: '16px',
-                  padding: '28px',
-                  boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-                }}
+                className="card-subtle surface-card"
+                style={{ display: 'flex', gap: '20px', alignItems: 'flex-start', padding: '28px' }}
               >
                 <div style={{ fontSize: '40px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#0FA8DC', flexShrink: 0, lineHeight: 1 }}>{step.number}</div>
                 <div>
@@ -209,12 +201,13 @@ export default function ForStudents() {
       {/* Achievements */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1024px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
+          <HeadingMarker text="Badges" marginBottom="16px" fontSize="12px" />
           <motion.h2
+            className="t-h2"
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '16px' }}
           >
             Collect <AccentText tone="pink">Achievements</AccentText>
           </motion.h2>
@@ -223,7 +216,8 @@ export default function ForStudents() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ fontSize: 'var(--fs-body)', color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '56px', maxWidth: '600px', margin: '0 auto 56px' }}
+            className="t-body"
+            style={{ maxWidth: '600px', margin: '0 auto 56px' }}
           >
             Every milestone earns you a badge. How many can you collect?
           </motion.p>
@@ -242,13 +236,8 @@ export default function ForStudents() {
                   key={ach.label}
                   variants={fadeUp}
                   whileHover={{ scale: 1.05, y: -4 }}
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid #ECECF1',
-                    borderRadius: '16px',
-                    padding: '32px 20px',
-                    boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-                  }}
+                  className="card-subtle surface-card"
+                  style={{ padding: '32px 20px' }}
                 >
                   <div style={{ width: '64px', height: '64px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', background: ach.tile, color: '#0FA8DC' }}>
                     <Icon size={28} />

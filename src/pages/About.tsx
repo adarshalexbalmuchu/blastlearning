@@ -117,7 +117,8 @@ export default function About() {
             className="grid-cols-2-lg"
           >
             <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
-              <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '28px' }}>
+              <HeadingMarker text="Our Story" marginBottom="16px" fontSize="12px" />
+              <h2 className="t-h2" style={{ marginBottom: '28px' }}>
                 Why We <AccentText tone="blue">Built</AccentText> Blast <AccentText tone="pink">Learning</AccentText>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
@@ -158,7 +159,7 @@ export default function About() {
       </section>
 
       {/* Company Stats */}
-      <section style={{ paddingTop: '72px', paddingBottom: '72px', background: '#FFFFFF' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
@@ -188,7 +189,8 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#1C1C28' }}>
+            <HeadingMarker text="Our Team" marginBottom="16px" fontSize="12px" />
+            <h2 className="t-h2" style={{ marginBottom: 0 }}>
               The <AccentText tone="blue">Team</AccentText> Behind Blast <AccentText tone="pink">Learning</AccentText>
             </h2>
           </motion.div>
@@ -204,7 +206,8 @@ export default function About() {
                   whileInView="visible"
                   viewport={{ once: true }}
                   whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
-                  style={{ padding: '28px', borderRadius: '16px', textAlign: 'center', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
+                  className="card-subtle surface-card"
+                  style={{ padding: '28px', textAlign: 'center' }}
                 >
                   <div
                     style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 600, color: isIndigo ? 'white' : '#0FA8DC', margin: '0 auto 16px', fontFamily: 'Poppins, sans-serif', background: fill }}
@@ -230,7 +233,8 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', letterSpacing: '-0.02em', color: '#1C1C28' }}>
+            <HeadingMarker text="Our Values" marginBottom="16px" fontSize="12px" />
+            <h2 className="t-h2" style={{ marginBottom: 0 }}>
               What We <AccentText tone="blue">Stand</AccentText> <AccentText tone="pink">For</AccentText>
             </h2>
           </motion.div>
@@ -243,7 +247,8 @@ export default function About() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
-                style={{ padding: '32px', borderRadius: '16px', background: '#FFFFFF', border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
+                className="card-subtle surface-card"
+                style={{ padding: '32px' }}
               >
                 <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: '#E0F5FC', color: '#0FA8DC' }}>
                   <Icon size={22} />
