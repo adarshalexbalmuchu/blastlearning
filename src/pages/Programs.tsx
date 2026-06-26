@@ -13,6 +13,7 @@ import step2Img from '../assets/Critical Thinking.png';
 import step3Img from '../assets/Curriculum Load Reduction.png';
 import step4Img from '../assets/Study Buddy.png';
 import step5Img from '../assets/Holistic Assessment.png';
+import step6Img from '../assets/Learn.png';
 import ebbinghausImg from '../assets/Ebbinghaus Curve.png';
 
 const testimonialsRow1 = [
@@ -267,6 +268,12 @@ export default function Programs() {
                 title: 'Mind Coach',
                 body: 'Mind Coach treats focus, emotional control, goal-setting, agency, and exam composure as skills built through practice, not traits a student happens to have or lack. A child who freezes on a hard question is missing one specific, trainable skill, and Mind Coach builds it directly, the same way, regardless of which exam or course a student is preparing for, whatever it is.',
                 img: step5Img,
+              },
+              {
+                num: '6', eyebrow: 'Perceptive by Design', accent: '#0FA8DC', bg: '#E0F5FC',
+                title: 'English Mastery',
+                body: 'English Mastery builds comprehension as inference, working out what a passage actually implies rather than only what it states, a skill rote reading rarely builds on its own. That is the exact skill both board exams and the SAT test in their reading and writing sections, so a student who builds it once carries it directly into whichever exam, subject, or course comes next.',
+                img: step6Img,
               },
             ].map((step, idx) => {
               const isReversed = idx % 2 !== 0;
