@@ -229,25 +229,25 @@ export default function Programs() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {[
               {
-                num: '1', eyebrow: 'Diagnostic First', accent: '#E8135A', bg: '#FCEEF1',
+                num: '1', eyebrow: 'Precise by Design', accent: '#E8135A', bg: '#FCEEF1',
                 title: 'GAP Assessment',
                 body: 'Math Genius Maker opens with a quick GAP Assessment that checks what a student actually knows in math right now. A Class 10 student missing a Class 5 fraction rule is common and rarely shows up on a report card, and the study plan starts exactly there before moving the student into this year\'s material.',
                 img: step1Img,
               },
               {
-                num: '2', eyebrow: 'AI-Powered', accent: '#0FA8DC', bg: '#E0F5FC',
+                num: '2', eyebrow: 'Intelligent by Design', accent: '#0FA8DC', bg: '#E0F5FC',
                 title: 'The AI Tutor',
                 body: 'Once the gap is mapped, the AI Tutor builds the path across it. Questions are generated fresh each session — calibrated to sit at the edge of what a student can currently do. Too easy and nothing sticks; too hard and the student disengages. The AI Tutor holds that edge, session after session.',
                 img: step2Img,
               },
               {
-                num: '3', eyebrow: 'Memory Science', accent: '#E8135A', bg: '#FCEEF1',
+                num: '3', eyebrow: 'Cumulative by Design', accent: '#E8135A', bg: '#FCEEF1',
                 title: 'Spaced Repetition & Retrieval Practice',
                 body: 'Content resurfaces at the interval where recall has started to fade but not yet vanished — the testing effect. That moment of effortful retrieval is among the most replicated findings in cognitive science, and the actual mechanism behind durable memory.',
                 img: step3Img,
               },
               {
-                num: '4', eyebrow: 'Peer Accountability', accent: '#0FA8DC', bg: '#E0F5FC',
+                num: '4', eyebrow: 'Accountable by Design', accent: '#0FA8DC', bg: '#E0F5FC',
                 title: 'Study Buddy',
                 body: 'A human partner works alongside the AI Tutor, not instead of it. Two students receive synchronised adaptive question sets, practise together, explain answers to each other, and hold each other to the schedule — the accountability layer that makes a study plan stick through November exam season.',
                 img: step4Img,
