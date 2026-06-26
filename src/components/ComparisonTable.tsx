@@ -132,62 +132,74 @@ export default function ComparisonTable() {
               const defaultBg = '#FFFFFF';
               const hoverBg = '#F9FAFB';
 
+              const isFirstRow = i === 0;
+              const rowBorder = isLast ? 'none' : isFirstRow ? 'none' : `1px solid ${BORDER}`;
+              const col3Border = isLast ? 'none' : isFirstRow ? 'none' : `1px solid #F9C0D0`;
+
               return (
-                <tr
-                  key={i}
-                  onMouseEnter={() => setHovered(i)}
-                  onMouseLeave={() => setHovered(null)}
-                >
-                  {/* Col1 — category label */}
-                  <td
-                    style={{
-                      padding: '20px 20px',
-                      fontSize: '0.92rem',
-                      fontWeight: 600,
-                      color: '#0FA8DC',
-                      verticalAlign: 'top',
-                      background: isHovered ? hoverBg : defaultBg,
-                      borderBottom: isLast ? 'none' : `1px solid ${BORDER}`,
-                      transition: 'background 150ms ease',
-                    }}
+                <React.Fragment key={i}>
+                  <tr
+                    onMouseEnter={() => setHovered(i)}
+                    onMouseLeave={() => setHovered(null)}
                   >
-                    {row.category}
-                  </td>
+                    {/* Col1 — category label */}
+                    <td
+                      style={{
+                        padding: '20px 20px',
+                        fontSize: '0.92rem',
+                        fontWeight: 600,
+                        color: '#0FA8DC',
+                        verticalAlign: 'top',
+                        background: isHovered ? hoverBg : defaultBg,
+                        borderBottom: rowBorder,
+                        transition: 'background 150ms ease',
+                      }}
+                    >
+                      {row.category}
+                    </td>
 
-                  {/* Col2 — usual approach */}
-                  <td
-                    style={{
-                      padding: '20px 20px',
-                      fontSize: '0.92rem',
-                      color: BODY_MUTED,
-                      lineHeight: 1.65,
-                      verticalAlign: 'top',
-                      background: isHovered ? hoverBg : defaultBg,
-                      borderBottom: isLast ? 'none' : `1px solid ${BORDER}`,
-                      borderRight: `1px solid ${BORDER}`,
-                      transition: 'background 150ms ease',
-                    }}
-                  >
-                    {row.usual}
-                  </td>
+                    {/* Col2 — usual approach */}
+                    <td
+                      style={{
+                        padding: '20px 20px',
+                        fontSize: '0.92rem',
+                        color: BODY_MUTED,
+                        lineHeight: 1.65,
+                        verticalAlign: 'top',
+                        background: isHovered ? hoverBg : defaultBg,
+                        borderBottom: rowBorder,
+                        borderRight: `1px solid ${BORDER}`,
+                        transition: 'background 150ms ease',
+                      }}
+                    >
+                      {row.usual}
+                    </td>
 
-                  {/* Col3 — Blast Learning */}
-                  <td
-                    style={{
-                      padding: '20px 20px',
-                      fontSize: '0.92rem',
-                      color: DARK,
-                      lineHeight: 1.65,
-                      verticalAlign: 'top',
-                      background: isHovered ? hoverBg : defaultBg,
-                      borderBottom: isLast ? 'none' : `1px solid #F9C0D0`,
-                      borderLeft: `2px solid ${PINK}`,
-                      transition: 'background 150ms ease',
-                    }}
-                  >
-                    {row.blast}
-                  </td>
-                </tr>
+                    {/* Col3 — Blast Learning */}
+                    <td
+                      style={{
+                        padding: '20px 20px',
+                        fontSize: '0.92rem',
+                        color: DARK,
+                        lineHeight: 1.65,
+                        verticalAlign: 'top',
+                        background: isHovered ? hoverBg : defaultBg,
+                        borderBottom: col3Border,
+                        borderLeft: `2px solid ${PINK}`,
+                        transition: 'background 150ms ease',
+                      }}
+                    >
+                      {row.blast}
+                    </td>
+                  </tr>
+
+                  {/* Gradient divider after first row */}
+                  {isFirstRow && (
+                    <tr aria-hidden="true">
+                      <td colSpan={3} style={{ padding: 0, height: '2px', background: 'linear-gradient(90deg, #0FA8DC 0%, #E8135A 100%)', border: 'none' }} />
+                    </tr>
+                  )}
+                </React.Fragment>
               );
             })}
           </tbody>
