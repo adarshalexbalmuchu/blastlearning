@@ -3,7 +3,7 @@ import { motion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { BookOpen, Target, Brain, TrendingUp, ArrowRight, CheckCircle, Zap } from 'lucide-react';
 import AccentText from '../components/AccentText';
-import PageHeading from '../components/PageHeading';
+import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import MobileCarousel from '../components/MobileCarousel';
 
@@ -129,31 +129,20 @@ export default function Programs() {
     <div style={{ background: '#FFFFFF' }}>
       <section style={{ background: '#FFFFFF', paddingTop: '56px', paddingBottom: '24px', borderBottom: '1px solid #ECECF1' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
-          <PageHeading
-            eyebrow="How Blast Learning Works"
-            title={<>The <AccentText tone="blue">system</AccentText> beneath the <AccentText tone="pink">syllabus</AccentText>.</>}
-            subtitle={<>Every board exam tests the same thing twice: what your child knows, and whether that knowledge survives the walk into the exam hall. Blast Learning builds the second part. CBSE, ICSE, JEE, and NEET preparation runs on top of a study engine designed around how Indian students actually forget, and what makes them remember.</>}
-            align="center"
-            maxWidth="760px"
-          />
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <HeadingMarker text="How Blast Learning Works" marginBottom="24px" fontSize="12px" />
+            <h1 style={{ fontSize: 'clamp(1.875rem, 1rem + 3.5vw, 2.75rem)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', lineHeight: 1.15, color: '#1C1C28', marginBottom: '24px', maxWidth: '760px', marginLeft: 'auto', marginRight: 'auto', wordBreak: 'break-word', overflowWrap: 'break-word' }}>
+              The <AccentText tone="blue">system</AccentText> beneath the <AccentText tone="pink">syllabus</AccentText>.
+            </h1>
+            <p className="page-hero-copy" style={{ maxWidth: '760px', margin: '0 auto' }}>
+              Every board exam tests the same thing twice: what your child knows, and whether that knowledge survives the walk into the exam hall. Blast Learning builds the second part. CBSE, ICSE, JEE, and NEET preparation runs on top of a study engine designed around how Indian students actually forget, and what makes them remember.
+            </p>
+          </motion.div>
           <div style={{ marginTop: '32px', textAlign: 'center' }}>
             <Link
               to="/programs/cbse-plan"
               className="cta cta-pink"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '14px 28px',
-                borderRadius: '10px',
-                fontSize: '15px',
-                fontWeight: 600,
-                fontFamily: "'Inter', sans-serif",
-                textDecoration: 'none',
-                background: '#F03C6F',
-                color: 'white',
-                boxShadow: 'none',
-              }}
+              style={{ background: 'linear-gradient(90deg, #E8135A 0%, #F03C6F 100%)', color: '#fff', borderColor: 'transparent' }}
             >
               Start The 14-Day Free Trial  -  No Credit Card Required <ArrowRight size={16} />
             </Link>
@@ -190,10 +179,11 @@ export default function Programs() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px', maxWidth: '896px', marginLeft: 'auto', marginRight: 'auto' }}
           >
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '20px' }}>
+            <HeadingMarker text="How It Works" marginBottom="16px" fontSize="12px" />
+            <h2 className="t-h2" style={{ marginBottom: '20px' }}>
               The <AccentText tone="blue">Method</AccentText> Behind the <AccentText tone="pink">Marks</AccentText>
             </h2>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
+            <p className="t-body">
               Strip away the interface and five mechanisms do the actual work. Four of them move a student from gap to mastery in sequence; the fifth runs underneath all four, because none of them hold up if a student cannot manage focus, nerves, or a clock.
             </p>
           </motion.div>
@@ -231,17 +221,12 @@ export default function Programs() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                style={{
-                  background: '#FFFFFF',
-                  border: '1px solid #ECECF1',
-                  borderRadius: '16px',
-                  padding: '24px',
-                  boxShadow: '0 2px 12px rgba(28,28,40,0.05)',
-                }}
+                className="card-subtle surface-card"
+                style={{ padding: '24px' }}
               >
                 <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                  <div style={{ flexShrink: 0, width: '36px', height: '36px', borderRadius: '50%', background: '#E0F5FC', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span style={{ fontSize: '16px', fontWeight: 700, color: '#0FA8DC', fontFamily: "'Poppins', sans-serif" }}>{card.num}</span>
+                  <div style={{ flexShrink: 0, width: '36px', height: '36px', borderRadius: '50%', background: '#0FA8DC', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ fontSize: '14px', fontWeight: 700, color: '#FFFFFF', fontFamily: "'Poppins', sans-serif" }}>{card.num}</span>
                   </div>
                   <div>
                     <h3 style={{ fontSize: '17px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{card.title}</h3>
@@ -264,10 +249,11 @@ export default function Programs() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px', maxWidth: '896px', marginLeft: 'auto', marginRight: 'auto' }}
           >
-            <h2 style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', marginBottom: '20px' }}>
+            <HeadingMarker text="Programs" marginBottom="16px" fontSize="12px" />
+            <h2 className="t-h2" style={{ marginBottom: '20px' }}>
               Four <AccentText tone="blue">Courses</AccentText>. One <AccentText tone="pink">Method</AccentText>.
             </h2>
-            <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
+            <p className="t-body">
               The five-mechanism system above runs identically across every course. What changes is the subject, the syllabus, and the specific gap each course is built to close.
             </p>
           </motion.div>
@@ -294,7 +280,7 @@ export default function Programs() {
                   }}
                 >
                   {prog.featured && (
-                    <div style={{ padding: '10px', textAlign: 'center', fontSize: '11px', fontWeight: 600, color: 'white', background: '#0FA8DC', fontFamily: "'Inter', sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                    <div style={{ padding: '10px', textAlign: 'center', fontSize: '11px', fontWeight: 600, color: 'white', background: 'linear-gradient(90deg, #1E9BDA 0%, #4BB8E6 100%)', fontFamily: "'Inter', sans-serif", letterSpacing: '0.08em', textTransform: 'uppercase' }}>
                       Most Popular
                     </div>
                   )}
@@ -345,21 +331,8 @@ export default function Programs() {
 
                     <Link
                       to={`/programs/${prog.slug}`}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '8px',
-                        padding: '13px',
-                        borderRadius: '10px',
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        fontFamily: "'Inter', sans-serif",
-                        textDecoration: 'none',
-                        background: prog.featured ? '#0FA8DC' : '#FFFFFF',
-                        color: prog.featured ? 'white' : '#1C1C28',
-                        border: prog.featured ? 'none' : '1.5px solid #DCDCE5',
-                      }}
+                      className={`cta ${prog.featured ? 'cta-blue' : 'cta-outline'}`}
+                      style={{ width: '100%', ...(prog.featured && { background: 'linear-gradient(90deg, #1E9BDA 0%, #4BB8E6 100%)', color: '#fff', borderColor: 'transparent' }) }}
                     >
                       Learn More <ArrowRight size={16} />
                     </Link>
@@ -377,15 +350,19 @@ export default function Programs() {
       {/* Comparison Table */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ fontSize: 'var(--fs-h2-fluid)', fontWeight: 700, fontFamily: "'Poppins', sans-serif", letterSpacing: '-0.02em', color: '#1C1C28', textAlign: 'center', marginBottom: '56px' }}
-          >
-            How We Compare
-          </motion.h2>
+          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+            <HeadingMarker text="Comparison" marginBottom="16px" fontSize="12px" />
+            <motion.h2
+              className="t-h2"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              style={{ marginBottom: 0 }}
+            >
+              How <AccentText tone="blue">We</AccentText> Compare
+            </motion.h2>
+          </div>
           <div className="comparison-table-wrap">
           <motion.div
             variants={fadeUp}
