@@ -531,7 +531,7 @@ const programsData: ProgramData[] = [
     testimonials: [
       {
         name: 'A Student of Class 10 from Ahmedabad',
-        role: 'CBSE Class 10',
+        role: 'English Mastery · Class 10, Ahmedabad',
         content:
           'I could always read a passage fine, I just couldn\'t explain what it meant. English Mastery has me working out the writer\'s point instead of summarising the lines, and that\'s exactly where my marks were slipping.',
         before: '',
@@ -541,13 +541,23 @@ const programsData: ProgramData[] = [
       },
       {
         name: 'Rohan Kapoor',
-        role: 'Class 11 student · Delhi',
+        role: 'English Mastery · Class 11, Delhi',
         content:
           'I was preparing for SAT alongside boards and could not figure out why my reading scores were low when I felt I understood the passages. The distinction between what a passage states and what it implies changed how I approach every question now.',
         before: '520',
         after: '680',
         metric: 'SAT Reading',
         improvement: '+160',
+      },
+      {
+        name: 'A Student of Class 9 from Hyderabad',
+        role: 'English Mastery · Class 9, Hyderabad',
+        content:
+          'My comprehension scores improved the moment I stopped summarising and started asking what the writer actually implies. The AI breaks down every wrong answer to show exactly which type of inference I missed.',
+        before: '',
+        after: '',
+        metric: '',
+        improvement: '',
       },
     ],
     faqs: [

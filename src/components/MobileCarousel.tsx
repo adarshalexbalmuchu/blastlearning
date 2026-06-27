@@ -73,6 +73,8 @@ export default function MobileCarousel({ children, desktopGridClass = '', deskto
                 scrollSnapAlign: 'start',
                 boxSizing: 'border-box',
                 minWidth: 0,
+                display: 'flex',
+                flexDirection: 'column',
               }}
             >
               {child}
