@@ -493,9 +493,8 @@ export default function About() {
       {/* ── 7. Get In Touch ─────────────────────────────────────── */}
       <section style={{ paddingTop: '72px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ maxWidth: '560px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp}>
+            <motion.div variants={fadeUp} style={{ maxWidth: '560px' }}>
               <HeadingMarker text="Questions? Let's Connect" marginBottom="16px" fontSize="12px" />
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '36px' }}>
                 Every question a parent asks during the trial period gets answered by someone who actually understands the methodology, not a script.
@@ -527,7 +526,6 @@ export default function About() {
               </div>
             </motion.div>
           </motion.div>
-          </div>
         </div>
       </section>
 
