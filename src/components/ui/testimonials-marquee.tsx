@@ -12,8 +12,31 @@ type CardT = {
   text: string;
 };
 
+// Splits "Class 10, CBSE Plan · Bangalore" → { plan: "CBSE Plan", detail: "Class 10 · Bangalore" }
+// Splits "Parent · Class 11 CBSE, Delhi"   → { plan: "Parent",    detail: "Class 11 CBSE, Delhi" }
+function parseRole(role: string): { plan: string; detail: string } {
+  if (role.startsWith('Parent')) {
+    const sep = role.indexOf(' · ');
+    return sep !== -1
+      ? { plan: 'Parent', detail: role.slice(sep + 3) }
+      : { plan: 'Parent', detail: '' };
+  }
+  const dotSep = role.indexOf(' · ');
+  if (dotSep !== -1) {
+    const before = role.slice(0, dotSep);   // "Class X, Plan Name"
+    const city   = role.slice(dotSep + 3);  // "City"
+    const comma  = before.indexOf(', ');
+    if (comma !== -1) {
+      return { plan: before.slice(comma + 2), detail: `${before.slice(0, comma)} · ${city}` };
+    }
+    return { plan: before, detail: city };
+  }
+  return { plan: role, detail: '' };
+}
+
 function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }) {
   const markerAccent = cardIndex % 2 === 0 ? '#E8135A' : '#0FA8DC';
+  const { plan, detail } = parseRole(card.role);
 
   return (
     <div
@@ -48,9 +71,9 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
         </span>
       </div>
 
-      {/* Role / plan heading */}
+      {/* Plan tag — short program name only */}
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-        <HeadingMarker text={card.role} fontSize="11px" marginBottom="0" accent={markerAccent} alignItems="center" noWrap />
+        <HeadingMarker text={plan} fontSize="11px" marginBottom="0" accent={markerAccent} alignItems="center" noWrap />
       </div>
 
       {/* Quote text */}
@@ -71,7 +94,7 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
         {card.text}
       </p>
 
-      {/* Author */}
+      {/* Author + class/location detail */}
       <div
         style={{
           borderTop: '1px solid #F3F4F6',
@@ -84,6 +107,11 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
             {card.name}
           </span>
         </p>
+        {detail && (
+          <p style={{ fontSize: '11px', margin: '3px 0 0', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', letterSpacing: '0.02em' }}>
+            {detail}
+          </p>
+        )}
       </div>
     </div>
   );
