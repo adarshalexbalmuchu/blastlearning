@@ -224,7 +224,7 @@ p, li {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px 32px;
+  padding: 10px 28px;
   border-radius: 10px;
   font-size: 15px;
   font-weight: 600;
@@ -829,6 +829,7 @@ p, li {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  align-items: stretch;
 }
 
 /* ── Hero banner image carousel responsive heights ─────────────────────────── */

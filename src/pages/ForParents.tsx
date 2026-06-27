@@ -100,7 +100,7 @@ export default function ForParents() {
               Powerful tools designed to keep you connected to your child's learning journey.
             </p>
           </motion.div>
-          <MobileCarousel desktopGridClass="grid-cols-3-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
+          <MobileCarousel desktopGridClass="grid-cols-3-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', alignItems: 'stretch' }}>
             {benefits.map((benefit, idx) => {
               const Icon = benefit.icon;
               const tile = pastels[idx % pastels.length];
@@ -113,13 +113,13 @@ export default function ForParents() {
                   viewport={{ once: true }}
                   whileHover={{ y: -6 }}
                   className="card-subtle surface-card"
-                  style={{ padding: '32px' }}
+                  style={{ padding: '32px', height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
                   <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: tile, color: '#0FA8DC' }}>
                     <Icon size={24} />
                   </div>
                   <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{benefit.title}</h3>
-                  <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{benefit.description}</p>
+                  <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", flex: 1 }}>{benefit.description}</p>
                 </motion.div>
               );
             })}
@@ -170,6 +170,7 @@ export default function ForParents() {
                     padding: '28px 20px',
                     textAlign: 'center',
                     border: '1px solid #ECECF1',
+                    height: '100%',
                   }}
                 >
                   <div style={{ fontSize: '28px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: stat.color, marginBottom: '6px' }}>{stat.value}</div>

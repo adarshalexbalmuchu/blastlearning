@@ -422,7 +422,7 @@ export default function Home() {
           />
 
           {/* Pricing cards (Figma layout) */}
-          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px' }}>
+          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px', alignItems: 'stretch' }}>
             {pricingPlans.map((plan, idx) => {
               const isPink = idx % 2 === 0;
               const accent = isPink ? '#E8135A' : '#0FA8DC';
@@ -448,10 +448,13 @@ export default function Home() {
                     borderRadius: '8px',
                     overflow: 'hidden',
                     boxShadow: '0 1px 4px rgba(0, 0, 0, 0.04)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%',
                   }}
                 >
                   <div style={{ height: '3px', width: '100%', background: accent }} />
-                  <div style={{ padding: '18px 16px 14px' }}>
+                  <div style={{ padding: '18px 16px 14px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                     <HeadingMarker text={plan.classes} accent={accent} fontSize="11px" />
                     <h3 style={{ margin: 0, fontFamily: 'Inter, sans-serif', fontSize: 'var(--fs-h3)', fontWeight: 700, color: '#1C1C28', lineHeight: 'var(--lh-card)' }}>
                       {plan.name}
@@ -485,12 +488,12 @@ export default function Home() {
                       to={`/programs/${plan.slug}`}
                       className="cta"
                       style={{
-                        marginTop: '10px',
+                        marginTop: 'auto',
                         width: '100%',
                         display: 'inline-flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        padding: '10px 14px',
+                        padding: '12px 24px',
                         borderRadius: '4px',
                         textDecoration: 'none',
                         color: '#FFFFFF',
@@ -603,7 +606,7 @@ export default function Home() {
             title={<>The {G('thought', CYAN)} behind the {GP('product')}.</>}
             subtitle="Articles, blogs, research papers, case studies, guides, and tools for parents and students who want to understand why the method works, and how to put it into practice."
           />
-          <MobileCarousel desktopGridClass="grid-cols-3-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }}>
+          <MobileCarousel desktopGridClass="grid-cols-3-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', alignItems: 'stretch' }}>
             {resourceArticles.map((article) => {
               const accent = article.tagAccent;
 
@@ -626,12 +629,14 @@ export default function Home() {
                   border: '1px solid #E7E9EE',
                   borderRadius: '16px',
                   overflow: 'hidden',
-                  minHeight: '250px',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
                   boxShadow: '0 2px 8px rgba(28,28,40,0.04)',
                 }}
               >
                 <div style={{ height: '3px', background: accent, width: '100%' }} />
-                <div style={{ padding: '22px 20px 20px', display: 'flex', flexDirection: 'column', minHeight: '248px' }}>
+                <div style={{ padding: '22px 20px 20px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap' }}>
                     <HeadingMarker text={article.tag} accent={accent} fontSize="10px" marginBottom="0" />
                     <span style={{ fontSize: '11px', color: '#A0A5B1', fontFamily: 'Inter, sans-serif' }}>{article.readTime}</span>

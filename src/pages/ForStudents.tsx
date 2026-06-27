@@ -108,7 +108,7 @@ export default function ForStudents() {
               We built Blast Learning with one goal: make studying so engaging your child forgets it is work.
             </p>
           </motion.div>
-          <MobileCarousel desktopGridClass="grid-cols-3-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
+          <MobileCarousel desktopGridClass="grid-cols-3-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', alignItems: 'stretch' }}>
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
@@ -120,13 +120,13 @@ export default function ForStudents() {
                   viewport={{ once: true }}
                   whileHover={{ y: -6 }}
                   className="card-subtle surface-card"
-                  style={{ padding: '32px' }}
+                  style={{ padding: '32px', height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
                   <div style={{ width: '52px', height: '52px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: feature.tile, color: '#0FA8DC' }}>
                     <Icon size={24} />
                   </div>
                   <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', marginBottom: '10px' }}>{feature.title}</h3>
-                  <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>{feature.description}</p>
+                  <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", flex: 1 }}>{feature.description}</p>
                 </motion.div>
               );
             })}
@@ -150,7 +150,7 @@ export default function ForStudents() {
               How It <AccentText tone="blue">Works</AccentText>
             </motion.h2>
           </div>
-          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
+          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', alignItems: 'stretch' }}>
             {steps.map((step) => (
               <motion.div
                 key={step.number}
@@ -159,7 +159,7 @@ export default function ForStudents() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 className="card-subtle surface-card"
-                style={{ display: 'flex', gap: '20px', alignItems: 'flex-start', padding: '28px' }}
+                style={{ display: 'flex', gap: '20px', alignItems: 'flex-start', padding: '28px', height: '100%' }}
               >
                 <div style={{ fontSize: '40px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#0FA8DC', flexShrink: 0, lineHeight: 1 }}>{step.number}</div>
                 <div>
@@ -200,7 +200,7 @@ export default function ForStudents() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', alignItems: 'stretch' }}
             className="grid-cols-4-md"
           >
             {achievements.map((ach) => {
@@ -211,7 +211,7 @@ export default function ForStudents() {
                   variants={fadeUp}
                   whileHover={{ scale: 1.05, y: -4 }}
                   className="card-subtle surface-card"
-                  style={{ padding: '32px 20px' }}
+                  style={{ padding: '32px 20px', height: '100%' }}
                 >
                   <div style={{ width: '64px', height: '64px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', background: ach.tile, color: '#0FA8DC' }}>
                     <Icon size={28} />

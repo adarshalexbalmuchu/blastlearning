@@ -120,7 +120,7 @@ export default function About() {
                 <motion.div
                   key={item.val}
                   variants={fadeUp}
-                  style={{ borderRadius: '16px', padding: '24px', background: statPastels[i % statPastels.length], border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)' }}
+                  style={{ borderRadius: '16px', padding: '24px', background: statPastels[i % statPastels.length], border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)', height: '100%' }}
                 >
                   <div style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '12px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>{item.val}</div>
                   <p style={{ fontSize: '13px', lineHeight: 1.6, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{item.desc}</p>
@@ -167,7 +167,7 @@ export default function About() {
               The <AccentText tone="blue">Team</AccentText> Behind Blast <AccentText tone="pink">Learning</AccentText>
             </h2>
           </motion.div>
-          <MobileCarousel desktopGridClass="grid-cols-2-sm grid-cols-3-lg" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
+          <MobileCarousel desktopGridClass="grid-cols-2-sm grid-cols-3-lg" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', alignItems: 'stretch' }}>
             {team.map((member, i) => {
               const fill = teamPastels[i % teamPastels.length];
               const isIndigo = fill === '#0FA8DC';
@@ -180,7 +180,7 @@ export default function About() {
                   viewport={{ once: true }}
                   whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
                   className="card-subtle surface-card"
-                  style={{ padding: '28px', textAlign: 'center' }}
+                  style={{ padding: '28px', textAlign: 'center', height: '100%' }}
                 >
                   <div
                     style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 600, color: isIndigo ? 'white' : '#0FA8DC', margin: '0 auto 16px', fontFamily: 'Poppins, sans-serif', background: fill }}
@@ -211,7 +211,7 @@ export default function About() {
               What We <AccentText tone="blue">Stand</AccentText> <AccentText tone="pink">For</AccentText>
             </h2>
           </motion.div>
-          <MobileCarousel desktopGridClass="grid-cols-2-sm" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}>
+          <MobileCarousel desktopGridClass="grid-cols-2-sm" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', alignItems: 'stretch' }}>
             {values.map(({ icon: Icon, title, desc }) => (
               <motion.div
                 key={title}
@@ -221,13 +221,13 @@ export default function About() {
                 viewport={{ once: true }}
                 whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
                 className="card-subtle surface-card"
-                style={{ padding: '32px' }}
+                style={{ padding: '32px', height: '100%', display: 'flex', flexDirection: 'column' }}
               >
                 <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: '#E0F5FC', color: '#0FA8DC' }}>
                   <Icon size={22} />
                 </div>
                 <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>{title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{desc}</p>
+                <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', flex: 1 }}>{desc}</p>
               </motion.div>
             ))}
           </MobileCarousel>

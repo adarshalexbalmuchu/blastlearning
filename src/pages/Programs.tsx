@@ -316,7 +316,7 @@ export default function Programs() {
               The five-mechanism system above runs identically across every course. What changes is the subject, the syllabus, and the specific gap each course is built to close.
             </p>
           </motion.div>
-          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px' }}>
+          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px', alignItems: 'stretch' }}>
             {programs.map((prog, idx) => {
               const isPink = idx % 2 === 0;
               const accent = isPink ? '#E8135A' : '#0FA8DC';
@@ -341,10 +341,13 @@ export default function Programs() {
                     borderRadius: '8px',
                     overflow: 'hidden',
                     boxShadow: '0 1px 4px rgba(0, 0, 0, 0.04)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%',
                   }}
                 >
                   <div style={{ height: '3px', width: '100%', background: accent }} />
-                  <div style={{ padding: '18px 16px 14px' }}>
+                  <div style={{ padding: '18px 16px 14px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                     <HeadingMarker text={prog.classes} accent={accent} fontSize="11px" />
                     <h3 style={{ margin: 0, fontFamily: 'Inter, sans-serif', fontSize: 'var(--fs-h3)', fontWeight: 700, color: '#1C1C28', lineHeight: 'var(--lh-card)' }}>
                       {prog.name}
@@ -378,12 +381,12 @@ export default function Programs() {
                       to={`/programs/${prog.slug}`}
                       className="cta"
                       style={{
-                        marginTop: '10px',
+                        marginTop: 'auto',
                         width: '100%',
                         display: 'inline-flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        padding: '10px 14px',
+                        padding: '12px 24px',
                         borderRadius: '4px',
                         textDecoration: 'none',
                         color: '#FFFFFF',
