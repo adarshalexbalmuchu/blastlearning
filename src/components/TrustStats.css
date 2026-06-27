@@ -134,6 +134,8 @@
     overflow-x: visible;
     flex-wrap: unset;
     align-items: stretch;
+    touch-action: auto;
+    overscroll-behavior-x: auto;
   }
 
   .trust-strip__card {
