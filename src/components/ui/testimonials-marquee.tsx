@@ -12,31 +12,39 @@ type CardT = {
   text: string;
 };
 
-// Splits "Class 10, CBSE Plan · Bangalore" → { plan: "CBSE Plan", detail: "Class 10 · Bangalore" }
-// Splits "Parent · Class 11 CBSE, Delhi"   → { plan: "Parent",    detail: "Class 11 CBSE, Delhi" }
-function parseRole(role: string): { plan: string; detail: string } {
+// "Class 10, CBSE Plan · Bangalore" → { tag: "CBSE Plan · Class 10", detail: "Bangalore" }
+// "Parent · Class 11 CBSE, Delhi"   → { tag: "Parent · Class 11",    detail: "Delhi" }
+function parseRole(role: string): { tag: string; detail: string } {
   if (role.startsWith('Parent')) {
     const sep = role.indexOf(' · ');
-    return sep !== -1
-      ? { plan: 'Parent', detail: role.slice(sep + 3) }
-      : { plan: 'Parent', detail: '' };
+    if (sep !== -1) {
+      const rest = role.slice(sep + 3); // "Class 11 CBSE, Delhi"
+      const comma = rest.lastIndexOf(', ');
+      return comma !== -1
+        ? { tag: `Parent · ${rest.slice(0, comma)}`, detail: rest.slice(comma + 2) }
+        : { tag: `Parent · ${rest}`, detail: '' };
+    }
+    return { tag: 'Parent', detail: '' };
   }
+  // "Class X, Plan Name · City"
   const dotSep = role.indexOf(' · ');
   if (dotSep !== -1) {
-    const before = role.slice(0, dotSep);   // "Class X, Plan Name"
-    const city   = role.slice(dotSep + 3);  // "City"
+    const before = role.slice(0, dotSep); // "Class X, Plan Name"
+    const city   = role.slice(dotSep + 3);
     const comma  = before.indexOf(', ');
     if (comma !== -1) {
-      return { plan: before.slice(comma + 2), detail: `${before.slice(0, comma)} · ${city}` };
+      const classNum = before.slice(0, comma); // "Class X"
+      const planName = before.slice(comma + 2); // "Plan Name"
+      return { tag: `${planName} · ${classNum}`, detail: city };
     }
-    return { plan: before, detail: city };
+    return { tag: before, detail: city };
   }
-  return { plan: role, detail: '' };
+  return { tag: role, detail: '' };
 }
 
 function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }) {
   const markerAccent = cardIndex % 2 === 0 ? '#E8135A' : '#0FA8DC';
-  const { plan, detail } = parseRole(card.role);
+  const { tag, detail } = parseRole(card.role);
 
   return (
     <div
@@ -73,7 +81,7 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
 
       {/* Plan tag — short program name only */}
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-        <HeadingMarker text={plan} fontSize="11px" marginBottom="0" accent={markerAccent} alignItems="center" noWrap />
+        <HeadingMarker text={tag} fontSize="11px" marginBottom="0" accent={markerAccent} alignItems="center" noWrap />
       </div>
 
       {/* Quote text */}
