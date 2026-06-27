@@ -13,6 +13,7 @@ const Programs      = lazy(() => import('./pages/Programs'));
 const ProgramDetail = lazy(() => import('./pages/programs/ProgramDetail'));
 const ForParents    = lazy(() => import('./pages/ForParents'));
 const ForStudents = lazy(() => import('./pages/ForStudents'));
+const ForInstitutions = lazy(() => import('./pages/ForInstitutions'));
 const About       = lazy(() => import('./pages/About'));
 const Library     = lazy(() => import('./pages/Library'));
 const FAQ         = lazy(() => import('./pages/FAQ'));
@@ -75,8 +76,9 @@ function AppLayout() {
               <Route path="/"             element={<Home />} />
               <Route path="/programs"          element={<Programs />} />
               <Route path="/programs/:slug"    element={<ProgramDetail />} />
-              <Route path="/for-parents"  element={<ForParents />} />
-              <Route path="/for-students" element={<ForStudents />} />
+              <Route path="/for-parents"       element={<ForParents />} />
+              <Route path="/for-students"      element={<ForStudents />} />
+              <Route path="/for-institutions"  element={<ForInstitutions />} />
               <Route path="/about"        element={<About />} />
               <Route path="/library"      element={<Library />} />
               <Route path="/blog"         element={<Blog />} />

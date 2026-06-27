@@ -186,52 +186,25 @@ const navItems: NavItem[] = [
     id: 3,
     label: 'Parents',
     path: '/for-parents',
-    subMenus: [
-      {
-        title: 'For Parents',
-        items: [
-          { label: 'Parent Dashboard', description: 'Real-time progress & retention tracking', icon: IconChart, iconBg: 'linear-gradient(135deg,#EFF6FF 0%,#DBEAFE 100%)', iconBorder: '#BFDBFE', path: '/for-parents' },
-          { label: 'Tutor Mom Support', description: 'Expert human support Mon-Sat 9am-9pm', icon: IconChat, iconBg: 'linear-gradient(135deg,#FFF1F2 0%,#FFE4E6 100%)', iconBorder: '#FECDD3', path: '/for-parents' },
-          { label: 'Daily Reports', description: 'Daily digest, alerts & weekly trends', icon: IconClipboard, iconBg: 'linear-gradient(135deg,#F0FDFA 0%,#CCFBF1 100%)', iconBorder: '#99F6E4', path: '/for-parents' },
-        ],
-      },
-    ],
   },
   {
     id: 4,
     label: 'Students',
     path: '/for-students',
-    subMenus: [
-      {
-        title: 'For Students',
-        items: [
-          { label: 'AI Study Planner', description: 'Personalized daily study schedule', icon: IconRobot, iconBg: 'linear-gradient(135deg,#FAF5FF 0%,#F3E8FF 100%)', iconBorder: '#E9D5FF', path: '/for-students' },
-          { label: 'Resource Library', description: 'Videos, notes & practice quizzes', icon: IconBooks, iconBg: 'linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%)', iconBorder: '#FED7AA', path: '/for-students' },
-          { label: 'Focus Trainer', description: 'Proven focus & retention techniques', icon: IconBolt, iconBg: 'linear-gradient(135deg,#FEFCE8 0%,#FEF9C3 100%)', iconBorder: '#FEF08A', path: '/for-students' },
-        ],
-      },
-    ],
   },
   {
     id: 5,
     label: 'Institutions',
-    subMenus: [
-      {
-        title: 'For Institutions',
-        items: [
-          { label: 'Partnership Enquiry', description: 'Talk to our institution success team', icon: IconHandshake, iconBg: 'linear-gradient(135deg,#FFF7ED 0%,#FFEDD5 100%)', iconBorder: '#FED7AA', path: '/contact' },
-        ],
-      },
-    ],
+    path: '/for-institutions',
   },
   {
     id: 7,
     label: 'Library',
+    path: '/blog',
     subMenus: [
       {
         title: 'Library',
         items: [
-          { label: 'Blogs', description: 'Articles, tips & learning insights', icon: IconNewspaper, iconBg: 'linear-gradient(135deg,#E0F2FE 0%,#BAE6FD 100%)', iconBorder: '#7DD3FC', path: '/blog' },
           { label: 'FAQ', description: 'Common questions answered', icon: IconFAQ, iconBg: 'linear-gradient(135deg,#F5F3FF 0%,#EDE9FE 100%)', iconBorder: '#DDD6FE', path: '/faq' },
         ],
       },

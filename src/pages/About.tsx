@@ -4,9 +4,6 @@ import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import MobileCarousel from '../components/MobileCarousel';
-import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
-import { sharedTestimonialsRow1, sharedTestimonialsRow2 } from '../data/testimonials';
-import { sharedFaqs } from '../data/faqs';
 import { fadeUp, stagger } from '../constants/animations';
 
 const leaders = [
@@ -64,13 +61,13 @@ const beliefs = [
   {
     num: '02',
     title: 'Skills Over Marks',
-    desc: 'Marks fade faster than the skills that produced them. We teach recall under pressure, structured revision, and honest self-assessment — skills that outlast a single board exam and apply directly to the next one.',
+    desc: 'Marks fade faster than the skills that produced them. We teach recall under pressure, structured revision, and honest self-assessment: skills that outlast a single board exam and apply directly to the next one.',
     accent: '#E8135A',
   },
   {
     num: '03',
     title: 'Made for India',
-    desc: "Blast Learning India was rebuilt around the CBSE calendar, the realities of joint-family study schedules, and the particular pressure of board season — not retrofitted from someone else's curriculum.",
+    desc: "Blast Learning India was rebuilt around the CBSE calendar, the realities of joint-family study schedules, and the particular pressure of board season, not retrofitted from someone else's curriculum.",
     accent: '#0FA8DC',
   },
 ];
@@ -93,15 +90,15 @@ const timelinePoints = [
   },
   {
     dot: '#E8135A',
-    year: '2020 — Platform Founded',
+    year: '2020: Platform Founded',
     label: 'A decision point',
     desc: 'Remote schooling exposed how few students could study without a teacher physically present. Twenty-five years of enterprise research became a direct-to-student platform on one premise: every student deserves this training.',
   },
   {
     dot: '#0FA8DC',
-    year: '2024 — India Launch',
+    year: '2024: India Launch',
     label: 'Blast Learning India',
-    desc: 'The same patented methodology rebuilt for the CBSE curriculum, the Indian coaching economy, and the particular pressures of board exam season — not a retrofit, a rebuild.',
+    desc: 'The same patented methodology rebuilt for the CBSE curriculum, the Indian coaching economy, and the particular pressures of board exam season, not a retrofit, a rebuild.',
   },
 ];
 
@@ -109,7 +106,7 @@ export default function About() {
   useSEO({
     title: 'About Us | Blast Learning India',
     description:
-      "Blast Learning India is the self-study operating system beneath every family's existing educational investment — twenty-five years of patented learning science rebuilt for CBSE, ICSE, and SAT-track students.",
+      "Blast Learning India is the self-study operating system beneath every family's existing educational investment. Twenty-five years of patented learning science rebuilt for CBSE, ICSE, and SAT-track students.",
   });
 
   return (
@@ -128,76 +125,28 @@ export default function About() {
           <BrandArc width="100%" opacity={0.04} />
         </div>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }}
+          <div
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'start' }}
             className="grid-cols-2-lg"
           >
-            {/* Left: copy */}
-            <motion.div variants={fadeUp}>
+            {/* Left: label + title */}
+            <div>
               <HeadingMarker text="Who We Are" marginBottom="24px" fontSize="12px" />
-              <h1 className="page-hero-title" style={{ marginBottom: '24px' }}>
+              <h1 className="page-hero-title">
                 About <AccentText tone="blue">Blast</AccentText> <AccentText tone="pink">Learning</AccentText> India
               </h1>
+            </div>
+
+            {/* Right: description */}
+            <div style={{ paddingTop: '4px' }}>
               <p className="page-hero-copy" style={{ marginBottom: '16px' }}>
                 Ask a parent managing a child's CBSE or ICSE schedule what worries them most, and marks rarely top the list. The real worry is retention. Months of tuition fade within days, and no extra coaching class has ever fixed that on its own.
               </p>
-              <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '560px' }}>
-                Blast Learning is not a tutoring platform. It is the self-study operating system beneath all other educational investment — the layer that decides whether anything taught survives past the exam it was meant for.
+              <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                Blast Learning is not a tutoring platform. It is the self-study operating system beneath all other educational investment, the layer that decides whether anything taught survives past the exam it was meant for.
               </p>
-            </motion.div>
-
-            {/* Right: abstract geometric SVG */}
-            <motion.div variants={fadeUp} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <svg
-                viewBox="0 0 440 300"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-                style={{ width: '100%', maxWidth: '480px', height: 'auto' }}
-              >
-                {/* Outer framework rectangle — Cyan */}
-                <rect x="160" y="20" width="240" height="180" stroke="#0FA8DC" strokeWidth="1.5" opacity="0.45" />
-                {/* Inner rectangle — Cyan */}
-                <rect x="200" y="60" width="160" height="100" stroke="#0FA8DC" strokeWidth="1.5" opacity="0.7" />
-                {/* Dashed connector inside inner rect */}
-                <line x1="200" y1="110" x2="360" y2="110" stroke="#0FA8DC" strokeWidth="1" opacity="0.4" strokeDasharray="5 4" />
-                {/* Diagonal direction lines — Pink (upper-left to inner rect) */}
-                <line x1="20" y1="140" x2="200" y2="20" stroke="#E8135A" strokeWidth="1.5" opacity="0.55" />
-                <line x1="20" y1="158" x2="162" y2="58" stroke="#E8135A" strokeWidth="1" opacity="0.28" />
-                {/* Diagonal lines — Pink (lower right) */}
-                <line x1="162" y1="200" x2="402" y2="265" stroke="#E8135A" strokeWidth="1.5" opacity="0.5" />
-                <line x1="162" y1="216" x2="362" y2="272" stroke="#E8135A" strokeWidth="1" opacity="0.26" />
-                {/* Anchor squares */}
-                <rect x="16" y="132" width="10" height="10" fill="#E8135A" opacity="0.9" />
-                <rect x="390" y="18" width="8" height="8" fill="#0FA8DC" opacity="0.9" />
-                <rect x="156" y="196" width="6" height="6" fill="#E8135A" opacity="0.85" />
-                <rect x="396" y="258" width="6" height="6" fill="#0FA8DC" opacity="0.7" />
-                {/* Concentric circles — structural anchor, lower left */}
-                <circle cx="76" cy="226" r="52" stroke="#0FA8DC" strokeWidth="1.5" opacity="0.5" />
-                <circle cx="76" cy="226" r="32" stroke="#0FA8DC" strokeWidth="1" opacity="0.28" />
-                {/* Dot grid — upper right */}
-                <circle cx="298" cy="28" r="2.5" fill="#0FA8DC" opacity="0.5" />
-                <circle cx="314" cy="28" r="2.5" fill="#E8135A" opacity="0.5" />
-                <circle cx="330" cy="28" r="2.5" fill="#0FA8DC" opacity="0.5" />
-                <circle cx="346" cy="28" r="2.5" fill="#E8135A" opacity="0.5" />
-                <circle cx="298" cy="44" r="2.5" fill="#E8135A" opacity="0.5" />
-                <circle cx="314" cy="44" r="2.5" fill="#0FA8DC" opacity="0.5" />
-                <circle cx="330" cy="44" r="2.5" fill="#E8135A" opacity="0.5" />
-                <circle cx="346" cy="44" r="2.5" fill="#0FA8DC" opacity="0.5" />
-                <circle cx="298" cy="60" r="2.5" fill="#0FA8DC" opacity="0.5" />
-                <circle cx="314" cy="60" r="2.5" fill="#E8135A" opacity="0.5" />
-                <circle cx="330" cy="60" r="2.5" fill="#0FA8DC" opacity="0.5" />
-                <circle cx="346" cy="60" r="2.5" fill="#E8135A" opacity="0.5" />
-                {/* Vertical bars — right edge (varying heights) */}
-                <rect x="416" y="56" width="4" height="44" fill="#0FA8DC" opacity="0.5" />
-                <rect x="424" y="70" width="4" height="28" fill="#E8135A" opacity="0.42" />
-                <rect x="432" y="84" width="4" height="14" fill="#0FA8DC" opacity="0.32" />
-              </svg>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -220,13 +169,13 @@ export default function About() {
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  Bruce Lewolt spent twenty-five years building learning technology before most of today's edtech platforms existed — work that was eventually licensed by IBM and McGraw-Hill and used by more than 100,000 students across multiple countries. His research rests on one observation: most students who underperform are missing a method that fits how their memory actually works, not additional ability.
+                  Bruce Lewolt spent twenty-five years building learning technology before most of today's edtech platforms existed; work that was eventually licensed by IBM and McGraw-Hill and used by more than 100,000 students across multiple countries. His research rests on one observation: most students who underperform are missing a method that fits how their memory actually works, not additional ability.
                 </p>
                 <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                   That research sat largely behind enterprise licensing deals until 2020, when remote schooling exposed how few students could study without a teacher physically present. Reading and mathematics scores fell to their lowest recorded levels within months. Lewolt made a decision that turned twenty-five years of licensed research into a direct-to-student platform, founding Blast Learning that year on one premise: give every student the same independent-learning training that, until then, only large institutions could afford to license.
                 </p>
                 <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  Ankit Sahu, an electrical engineer with an MBA from the University of San Francisco and a record of building businesses across India's financial sector, partnered with Lewolt in 2024 to adapt that platform for students in India. The result is Blast Learning India — the same patented methodology rebuilt for the CBSE curriculum and the realities of the Indian coaching economy.
+                  Ankit Sahu, an electrical engineer with an MBA from the University of San Francisco and a record of building businesses across India's financial sector, partnered with Lewolt in 2024 to adapt that platform for students in India. The result is Blast Learning India: the same patented methodology rebuilt for the CBSE curriculum and the realities of the Indian coaching economy.
                 </p>
               </div>
             </motion.div>
@@ -290,6 +239,13 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true }}
           >
+            {/* Section intro */}
+            <motion.div variants={fadeUp} style={{ textAlign: 'center', marginBottom: '48px' }}>
+              <HeadingMarker text="The Research Behind the System" marginBottom="16px" fontSize="12px" />
+              <p className="t-body" style={{ maxWidth: '680px', margin: '0 auto' }}>
+                Every claim on this page is traceable to a study, a patent filing, or a partnership that predates Blast Learning India itself.
+              </p>
+            </motion.div>
             {/* Bordered stat band */}
             <motion.div
               variants={fadeUp}
@@ -360,7 +316,7 @@ export default function About() {
                 Why a <AccentText tone="blue">System</AccentText>, Not a <AccentText tone="pink">Service</AccentText>
               </h2>
               <p className="t-body" style={{ maxWidth: '740px', margin: '0 auto' }}>
-                Every competitor in the Indian coaching market is, at its core, a content business: more videos, more question banks, more live classes layered onto a schedule that is already full. Blast Learning India was built on a different bet: retention, not exposure, is the actual product parents are paying for. The methodology is aligned to CBSE and ICSE curricula and structured around the competency goals set out in NEP 2020 — but the underlying skillset travels with a student long after a particular syllabus is finished.
+                Every competitor in the Indian coaching market is, at its core, a content business: more videos, more question banks, more live classes layered onto a schedule that is already full. Blast Learning India was built on a different bet: retention, not exposure, is the actual product parents are paying for. The methodology is aligned to CBSE and ICSE curricula and structured around the competency goals set out in NEP 2020, but the underlying skillset travels with a student long after a particular syllabus is finished.
               </p>
             </motion.div>
 
@@ -412,7 +368,7 @@ export default function About() {
           >
             <HeadingMarker text="What We Believe" marginBottom="16px" fontSize="12px" />
             <h2 className="t-h2" style={{ marginBottom: 0 }}>
-              What We <AccentText tone="blue">Stand</AccentText> <AccentText tone="pink">For</AccentText>
+              What We <AccentText tone="blue">Believe</AccentText>
             </h2>
           </motion.div>
           <MobileCarousel
@@ -525,7 +481,7 @@ export default function About() {
                     href="#"
                     style={{ fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', color: leader.accent, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
                   >
-                    Read profile →
+                    Read {leader.name.split(' ')[0]}'s full profile and articles →
                   </a>
                 </div>
               </motion.div>
@@ -533,12 +489,6 @@ export default function About() {
           </MobileCarousel>
         </div>
       </section>
-
-      {/* ── Testimonials ────────────────────────────────────────── */}
-      <SharedTestimonialsSection row1={sharedTestimonialsRow1} row2={sharedTestimonialsRow2} />
-
-      {/* ── FAQ ─────────────────────────────────────────────────── */}
-      <SharedFaqSection items={sharedFaqs} />
 
       {/* ── 7. Get In Touch ─────────────────────────────────────── */}
       <section style={{ paddingTop: '72px', paddingBottom: '96px', background: '#FFFFFF' }}>

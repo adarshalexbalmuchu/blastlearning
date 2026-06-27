@@ -1,9 +1,9 @@
 import { useSEO } from '../hooks/useSEO';
 
-export default function ForStudents() {
+export default function ForInstitutions() {
   useSEO({
-    title: 'For Students | Blast Learning India',
-    description: 'The student platform is coming soon.',
+    title: 'For Institutions | Blast Learning India',
+    description: 'The institutions portal is coming soon.',
   });
 
   return (
@@ -26,7 +26,7 @@ export default function ForStudents() {
         fontFamily: 'Inter, sans-serif',
         marginBottom: '20px',
       }}>
-        For Students
+        For Institutions
       </p>
       <h1 style={{
         fontSize: 'clamp(2rem, 5vw, 3.25rem)',
@@ -45,7 +45,7 @@ export default function ForStudents() {
         fontFamily: 'Inter, sans-serif',
         maxWidth: '480px',
       }}>
-        The student portal is under development. Check back shortly.
+        The institutions portal is under development. Check back shortly.
       </p>
     </div>
   );
