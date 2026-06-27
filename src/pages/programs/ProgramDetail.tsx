@@ -156,7 +156,7 @@ export default function ProgramDetail() {
                   <div style={{ fontSize: '28px', fontWeight: 700, fontFamily: "'Poppins', sans-serif", color: '#1C1C28', lineHeight: 1.1 }}>{program.price}</div>
                   <div style={{ fontSize: '12px', color: '#6B6B7B', fontFamily: "'Inter', sans-serif", marginTop: '2px' }}>per month</div>
                 </div>
-                <span style={{ padding: '5px 12px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif" }}>
+                <span style={{ padding: '4px 12px', borderRadius: '9999px', fontSize: '11px', fontWeight: 600, color: '#0FA8DC', background: '#E0F5FC', fontFamily: "'Inter', sans-serif" }}>
                   {program.classes}
                 </span>
               </div>

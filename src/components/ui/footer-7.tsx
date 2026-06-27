@@ -74,7 +74,7 @@ export const Footer7 = ({
           {/* Brand column */}
           <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             {logo.src && (
-              <Link to={logo.url}>
+              <Link to={logo.url} className="footer-logo-link">
                 <img
                   src={logo.src}
                   alt={logo.alt}

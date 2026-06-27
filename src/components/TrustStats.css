@@ -96,6 +96,12 @@
   color: #f03c6f;
 }
 
+/* NEP 2020 is a label, not a numeric stat — render smaller than numbers */
+.trust-strip__value--text {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
 @media (max-width: 1023px) {
   .trust-strip {
     padding: 10px 20px;
@@ -107,6 +113,8 @@
     flex-wrap: nowrap;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
   }
 
   .trust-strip__grid::-webkit-scrollbar {
@@ -115,6 +123,7 @@
 
   .trust-strip__card {
     min-width: 180px;
+    flex-shrink: 0;
   }
 }
 
@@ -131,6 +140,8 @@
     overflow-x: visible;
     flex-wrap: unset;
     align-items: stretch;
+    touch-action: auto;
+    overscroll-behavior-x: auto;
   }
 
   .trust-strip__card {

@@ -54,11 +54,13 @@ export default function MobileCarousel({ children, desktopGridClass = '', deskto
           className="mc-scroll-track"
           style={{
             display: 'flex',
+            alignItems: 'stretch',
             gap: '16px',
             overflowX: 'auto',
-            overflowY: 'hidden',       // prevent vertical axis conflict
-            scrollSnapType: 'x proximity', // proximity = no forced hard snap
-            touchAction: 'pan-x',      // browser commits to horizontal axis only
+            overflowY: 'hidden',
+            scrollSnapType: 'x proximity',
+            touchAction: 'pan-x',
+            overscrollBehaviorX: 'contain',
             padding: '4px 16px 16px 16px',
             scrollbarWidth: 'none',
             WebkitOverflowScrolling: 'touch',
@@ -69,24 +71,26 @@ export default function MobileCarousel({ children, desktopGridClass = '', deskto
               key={i}
               data-mc-idx={i}
               style={{
-                flex: '0 0 88%',       // no duplicate width — flex-basis is enough
+                flex: '0 0 88%',
                 scrollSnapAlign: 'start',
                 boxSizing: 'border-box',
                 minWidth: 0,
+                display: 'flex',
+                flexDirection: 'column',
               }}
             >
               {child}
             </div>
           ))}
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '12px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '12px' }}>
           {items.map((_, i) => (
             <span
               key={i}
               style={{
                 display: 'block',
-                width: i === active ? '16px' : '8px',
-                height: '8px',
+                width: i === active ? '20px' : '6px',
+                height: '6px',
                 borderRadius: '9999px',
                 background: i === active ? '#E8135A' : '#DCDCE5',
                 transition: 'background 0.3s, width 0.3s',

@@ -169,12 +169,14 @@ export default function FeatureExplorer() {
             display: 'flex',
             gap: '16px',
             overflowX: 'scroll',
-            overflowY: 'visible',
+            overflowY: 'hidden',
             scrollSnapType: 'x mandatory',
             WebkitOverflowScrolling: 'touch',
             scrollBehavior: 'smooth',
             padding: '0 16px 16px 16px',
             scrollbarWidth: 'none',
+            touchAction: 'pan-x',
+            overscrollBehaviorX: 'contain',
           }}
         >
           {features.map((feature, i) => {
@@ -194,6 +196,7 @@ export default function FeatureExplorer() {
                   boxSizing: 'border-box',
                   display: 'flex',
                   flexDirection: 'column',
+                  minHeight: '400px',
                 }}
               >
                 {/* Category label */}
@@ -218,7 +221,7 @@ export default function FeatureExplorer() {
                   {feature.desc}
                 </p>
                 {/* Image */}
-                <div style={{ marginTop: '16px', borderRadius: '12px', overflow: 'hidden', background: feature.panel }}>
+                <div style={{ marginTop: 'auto', paddingTop: '16px', borderRadius: '12px', overflow: 'hidden', background: feature.panel }}>
                   <img
                     src={feature.img}
                     alt=""
@@ -232,17 +235,17 @@ export default function FeatureExplorer() {
         </div>
 
         {/* Dot indicators */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '12px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '12px' }}>
           {features.map((_, i) => (
             <span
               key={i}
               style={{
                 display: 'block',
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                background: i === activeCard ? '#E91E8C' : '#DCDCE5',
-                transition: 'background 0.3s',
+                width: i === activeCard ? '20px' : '6px',
+                height: '6px',
+                borderRadius: '9999px',
+                background: i === activeCard ? '#E8135A' : '#DCDCE5',
+                transition: 'background 0.3s, width 0.3s',
               }}
             />
           ))}

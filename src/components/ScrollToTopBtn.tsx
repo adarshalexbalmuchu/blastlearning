@@ -22,6 +22,7 @@ export default function ScrollToTopBtn() {
           whileTap={{ scale: 0.93 }}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           aria-label="Scroll to top"
+          className="scroll-top-btn"
           style={{
             position: 'fixed', bottom: '96px', right: '24px', zIndex: 9001,
             width: '44px', height: '44px', borderRadius: '50%',

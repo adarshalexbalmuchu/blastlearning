@@ -6,6 +6,8 @@ type HeadingMarkerProps = {
   marginBottom?: string;
   fontSize?: string;
   accent?: string;
+  alignItems?: string;
+  noWrap?: boolean;
 };
 
 const CYAN_COLORS = ['#D2E9F8', '#A6D4EE', '#0FA8DC', '#0FA8DC', '#0FA8DC'];
@@ -49,7 +51,7 @@ const TEXT_VARIANTS: any = {
   },
 };
 
-export default function HeadingMarker({ text, marginBottom = '12px', fontSize = '12px', accent }: HeadingMarkerProps) {
+export default function HeadingMarker({ text, marginBottom = '12px', fontSize = '12px', accent, alignItems = 'center', noWrap = false }: HeadingMarkerProps) {
   const colors = accent === '#E8135A' ? PINK_COLORS : CYAN_COLORS;
   const textColor = accent ?? '#4B6B80';
 
@@ -59,14 +61,16 @@ export default function HeadingMarker({ text, marginBottom = '12px', fontSize = 
       whileInView="visible"
       viewport={{ once: true, margin: '-5% 0px' }}
       style={{
-        display: 'inline-flex',
-        alignItems: 'center',
+        display: noWrap ? 'flex' : 'inline-flex',
+        alignItems,
         gap: '8px',
         marginBottom,
+        maxWidth: noWrap ? '100%' : undefined,
+        overflow: noWrap ? 'hidden' : undefined,
       }}
     >
       <motion.span
-        style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+        style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', flexShrink: 0 }}
         aria-hidden="true"
       >
         {MARKER_SHAPES.map(({ width, height }, idx) => (
@@ -95,6 +99,7 @@ export default function HeadingMarker({ text, marginBottom = '12px', fontSize = 
           color: textColor,
           letterSpacing: '0.2em',
           textTransform: 'uppercase',
+          ...(noWrap ? { whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', minWidth: 0 } : {}),
         }}
       >
         {text}
