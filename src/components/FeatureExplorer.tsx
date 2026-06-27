@@ -235,17 +235,17 @@ export default function FeatureExplorer() {
         </div>
 
         {/* Dot indicators */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '12px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '12px' }}>
           {features.map((_, i) => (
             <span
               key={i}
               style={{
                 display: 'block',
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                background: i === activeCard ? '#E91E8C' : '#DCDCE5',
-                transition: 'background 0.3s',
+                width: i === activeCard ? '20px' : '6px',
+                height: '6px',
+                borderRadius: '9999px',
+                background: i === activeCard ? '#E8135A' : '#DCDCE5',
+                transition: 'background 0.3s, width 0.3s',
               }}
             />
           ))}

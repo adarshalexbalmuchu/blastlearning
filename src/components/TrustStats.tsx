@@ -92,7 +92,9 @@ export default function TrustStats() {
         animate={inView ? 'visible' : 'hidden'}
         variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
       >
-        {STATS.map((stat) => (
+        {STATS.map((stat) => {
+          const isTextValue = !/^[\d,]+\+?$/.test(stat.value);
+          return (
           <motion.article
             key={stat.label}
             className="trust-strip__card"
@@ -104,13 +106,14 @@ export default function TrustStats() {
             }}
           >
             <div className="trust-strip__icon"><stat.Icon size={22} /></div>
-            <div className="trust-strip__value">
+            <div className={`trust-strip__value${isTextValue ? ' trust-strip__value--text' : ''}`}>
               <CountUpValue value={stat.value} play={inView} />
             </div>
             <div className="trust-strip__label">{stat.label}</div>
             {stat.sublabel && <div className="trust-strip__sublabel">{stat.sublabel}</div>}
           </motion.article>
-        ))}
+          );
+        })}
       </motion.div>
     </section>
   );

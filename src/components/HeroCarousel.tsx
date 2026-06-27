@@ -160,9 +160,14 @@ export default function HeroCarousel() {
                     aria-label={`Go to slide ${index + 1}`}
                     onClick={() => setActiveIndex(index)}
                     style={{
-                      width: '7px', height: '7px', borderRadius: '50%', border: 'none', padding: 0,
+                      width: activeIndex === index ? '20px' : '6px',
+                      height: '6px',
+                      borderRadius: '9999px',
+                      border: 'none',
+                      padding: 0,
                       background: activeIndex === index ? '#F03C6F' : 'rgba(255,255,255,0.55)',
                       cursor: 'pointer',
+                      transition: 'width 0.3s, background 0.3s',
                     }}
                   />
                 ))}
@@ -323,12 +328,13 @@ export default function HeroCarousel() {
               aria-label={`Go to slide ${index + 1}`}
               onClick={() => setActiveIndex(index)}
               style={{
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
+                width: activeIndex === index ? '20px' : '6px',
+                height: '6px',
+                borderRadius: '9999px',
                 border: 'none',
-                background: activeIndex === index ? (blink ? '#F03C6F' : 'rgba(240,60,111,0.3)') : 'rgba(0,0,0,0.15)',
+                background: activeIndex === index ? '#F03C6F' : 'rgba(0,0,0,0.15)',
                 cursor: 'pointer',
+                transition: 'width 0.3s, background 0.3s',
               }}
             />
           ))}
