@@ -1,84 +1,207 @@
 import { useSEO } from '../hooks/useSEO';
 import { motion } from 'framer-motion';
-import { Heart, Lightbulb, Users, Shield } from 'lucide-react';
 import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
-import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import MobileCarousel from '../components/MobileCarousel';
+import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import { sharedTestimonialsRow1, sharedTestimonialsRow2 } from '../data/testimonials';
 import { sharedFaqs } from '../data/faqs';
 import { fadeUp, stagger } from '../constants/animations';
 
-const team = [
-  { name: 'Arjun Mehta', role: 'Co-founder & CEO' },
-  { name: 'Priya Sharma', role: 'Co-founder & CTO' },
-  { name: 'Kiran Reddy', role: 'Head of Curriculum' },
-  { name: 'Sunita Nair', role: 'Head of Product' },
-  { name: 'Rahul Kumar', role: 'Head of Engineering' },
-  { name: 'Deepa Iyer', role: 'Head of Learning Science' },
+const leaders = [
+  {
+    name: 'Bruce Lewolt',
+    title: 'Founder',
+    initials: 'BL',
+    accent: '#0FA8DC',
+    bio: 'Built the underlying methodology over twenty-five years, later licensed by IBM and McGraw-Hill and protected by patents in the US and internationally. He remains the architect of the system Blast Learning India runs on.',
+  },
+  {
+    name: 'Ankit Sahu',
+    title: 'Founder & Managing Director',
+    initials: 'AS',
+    accent: '#E8135A',
+    bio: "An electrical engineer with an MBA from the University of San Francisco, Sahu has built and scaled businesses across India's financial sector, including a digital payments platform serving rural communities. He brought Lewolt's methodology to India in 2024.",
+  },
+  {
+    name: 'Purvi Sahu',
+    title: 'Director & Chief Marketing Officer',
+    initials: 'PS',
+    accent: '#0FA8DC',
+    bio: "Twenty-eight years in business and operations inform how Purvi Sahu shapes the brand a parent encounters before they ever speak to a counsellor. Her role spans strategy and the daily decisions that keep that strategy consistent.",
+  },
+  {
+    name: 'Arun Kumar Tyagi',
+    title: 'Director of Alliances',
+    initials: 'AT',
+    accent: '#E8135A',
+    bio: 'A professor with decades inside Indian education and innovation circles, Tyagi manages the partnerships that extend Blast Learning India\'s reach across CBSE, ICSE, and NEP 2020-aligned institutions.',
+  },
+  {
+    name: 'Reena Prakash Tyagi',
+    title: 'Director of Content Management',
+    initials: 'RT',
+    accent: '#0FA8DC',
+    bio: "Reena Prakash Tyagi founded SEAS Global Institute, recognised as India's first fully virtual school, before joining Blast Learning India to oversee how content gets built and maintained.",
+  },
+  {
+    name: 'Aditya Reddy Dinesh',
+    title: 'Head of Business Development',
+    initials: 'AD',
+    accent: '#E8135A',
+    bio: 'Studied international hospitality management at the Swiss Hotel Management School before moving into startups and customer-facing growth roles. He owns the commercial relationships that turn product readiness into actual enrolment.',
+  },
 ];
 
-const companyStats = [
-  { value: '2022', label: 'Founded' },
-  { value: '4,999+', label: 'Students Helped' },
-  { value: '49+', label: 'Cities Across India' },
-  { value: '91%', label: 'Improvement Rate' },
-];
-
-const values = [
+const beliefs = [
   {
-    icon: Lightbulb,
-    title: 'Retention First',
-    desc: 'We obsess over one question: will the student still remember this in 30 days? Everything we build is measured against long-term retention, not short-term engagement.',
+    num: '01',
+    title: 'No Child Is Weak',
+    desc: 'A low mark rarely measures ability. More often, it measures whether a student was ever shown a method that matches how their memory actually works. Every student can close that gap once the method is right.',
+    accent: '#0FA8DC',
   },
   {
-    icon: Heart,
-    title: 'Student Empathy',
-    desc: 'We remember what it felt like to be an Indian student, the pressure, the expectations, the fear of exams. Every decision we make starts with empathy for that experience.',
+    num: '02',
+    title: 'Skills Over Marks',
+    desc: 'Marks fade faster than the skills that produced them. We teach recall under pressure, structured revision, and honest self-assessment — skills that outlast a single board exam and apply directly to the next one.',
+    accent: '#E8135A',
   },
   {
-    icon: Users,
-    title: 'Family Partnership',
-    desc: 'Education is a family effort. We build tools for students and parents together, because the best outcomes happen when everyone is informed and aligned.',
-  },
-  {
-    icon: Shield,
-    title: 'Science-Backed Only',
-    desc: "We don't ship features based on what looks impressive. Every technique in Blast Learning (spaced repetition, active recall, metacognition) is backed by peer-reviewed cognitive science.",
+    num: '03',
+    title: 'Made for India',
+    desc: "Blast Learning India was rebuilt around the CBSE calendar, the realities of joint-family study schedules, and the particular pressure of board season — not retrofitted from someone else's curriculum.",
+    accent: '#0FA8DC',
   },
 ];
 
-const statPastels = ['#FDF3E7', '#FCEEF1', '#E7F6FB', '#F0EDFC'];
-const teamPastels = ['#0FA8DC', '#FCEEF1', '#E7F6FB', '#F0EDFC', '#E9F7EF', '#FDF3E7'];
+const researchStats = [
+  { value: '500+', label: 'Peer-reviewed learning science studies behind the methodology', color: '#E8135A' },
+  { value: '100,000+', label: 'Students taught under this system, across multiple countries', color: '#0FA8DC' },
+  { value: 'US & International', label: 'Patents protecting the core methodology', color: '#E8135A' },
+  { value: 'IBM & McGraw-Hill', label: 'Institutional partners who have licensed the underlying technology', color: '#0FA8DC' },
+];
+
+const curriculumPills = ['CBSE', 'ICSE', 'JEE', 'NEET', 'SAT', 'NEP 2020'];
+
+const timelinePoints = [
+  {
+    dot: '#0FA8DC',
+    year: 'Research Foundation',
+    label: 'Twenty-five years',
+    desc: 'Learning science methodology developed and refined, eventually licensed by IBM and McGraw-Hill and protected by US and international patents. Core insight: most underperforming students are missing a method, not ability.',
+  },
+  {
+    dot: '#E8135A',
+    year: '2020 — Platform Founded',
+    label: 'A decision point',
+    desc: 'Remote schooling exposed how few students could study without a teacher physically present. Twenty-five years of enterprise research became a direct-to-student platform on one premise: every student deserves this training.',
+  },
+  {
+    dot: '#0FA8DC',
+    year: '2024 — India Launch',
+    label: 'Blast Learning India',
+    desc: 'The same patented methodology rebuilt for the CBSE curriculum, the Indian coaching economy, and the particular pressures of board exam season — not a retrofit, a rebuild.',
+  },
+];
 
 export default function About() {
   useSEO({
-    title: 'About Us | Our Mission · Blast Learning',
-    description: "Learn about Blast Learning's mission to fix India's education retention crisis. Our AI-powered platform helps students retain 91% of what they learn.",
+    title: 'About Us | Blast Learning India',
+    description:
+      "Blast Learning India is the self-study operating system beneath every family's existing educational investment — twenty-five years of patented learning science rebuilt for CBSE, ICSE, and SAT-track students.",
   });
 
   return (
     <div style={{ background: '#FFFFFF' }}>
-      {/* Hero */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', paddingTop: '120px', paddingBottom: '100px', borderBottom: '1px solid #DAEEF6' }}>
+
+      {/* ── 1. Hero ─────────────────────────────────────────────── */}
+      <section style={{
+        position: 'relative',
+        overflow: 'hidden',
+        background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)',
+        paddingTop: '120px',
+        paddingBottom: '100px',
+        borderBottom: '1px solid #DAEEF6',
+      }}>
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
-        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <HeadingMarker text="Our Mission" marginBottom="24px" fontSize="12px" />
-            <h1 className="page-hero-title">
-              Making <AccentText tone="blue">Learning</AccentText> <AccentText tone="pink">Stick</AccentText> for Every Indian Student
-            </h1>
-            <p className="page-hero-copy" style={{ maxWidth: '640px', margin: '0 auto' }}>
-              India spends billions on education every year, yet most students forget 90% of what they learn within a week. We built Blast Learning to fix that, to make every hour of study count, permanently.
-            </p>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="visible"
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }}
+            className="grid-cols-2-lg"
+          >
+            {/* Left: copy */}
+            <motion.div variants={fadeUp}>
+              <HeadingMarker text="Who We Are" marginBottom="24px" fontSize="12px" />
+              <h1 className="page-hero-title" style={{ marginBottom: '24px' }}>
+                About <AccentText tone="blue">Blast</AccentText> <AccentText tone="pink">Learning</AccentText> India
+              </h1>
+              <p className="page-hero-copy" style={{ marginBottom: '16px' }}>
+                Ask a parent managing a child's CBSE or ICSE schedule what worries them most, and marks rarely top the list. The real worry is retention. Months of tuition fade within days, and no extra coaching class has ever fixed that on its own.
+              </p>
+              <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '560px' }}>
+                Blast Learning is not a tutoring platform. It is the self-study operating system beneath all other educational investment — the layer that decides whether anything taught survives past the exam it was meant for.
+              </p>
+            </motion.div>
+
+            {/* Right: abstract geometric SVG */}
+            <motion.div variants={fadeUp} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <svg
+                viewBox="0 0 440 300"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                style={{ width: '100%', maxWidth: '480px', height: 'auto' }}
+              >
+                {/* Outer framework rectangle — Cyan */}
+                <rect x="160" y="20" width="240" height="180" stroke="#0FA8DC" strokeWidth="1.5" opacity="0.45" />
+                {/* Inner rectangle — Cyan */}
+                <rect x="200" y="60" width="160" height="100" stroke="#0FA8DC" strokeWidth="1.5" opacity="0.7" />
+                {/* Dashed connector inside inner rect */}
+                <line x1="200" y1="110" x2="360" y2="110" stroke="#0FA8DC" strokeWidth="1" opacity="0.4" strokeDasharray="5 4" />
+                {/* Diagonal direction lines — Pink (upper-left to inner rect) */}
+                <line x1="20" y1="140" x2="200" y2="20" stroke="#E8135A" strokeWidth="1.5" opacity="0.55" />
+                <line x1="20" y1="158" x2="162" y2="58" stroke="#E8135A" strokeWidth="1" opacity="0.28" />
+                {/* Diagonal lines — Pink (lower right) */}
+                <line x1="162" y1="200" x2="402" y2="265" stroke="#E8135A" strokeWidth="1.5" opacity="0.5" />
+                <line x1="162" y1="216" x2="362" y2="272" stroke="#E8135A" strokeWidth="1" opacity="0.26" />
+                {/* Anchor squares */}
+                <rect x="16" y="132" width="10" height="10" fill="#E8135A" opacity="0.9" />
+                <rect x="390" y="18" width="8" height="8" fill="#0FA8DC" opacity="0.9" />
+                <rect x="156" y="196" width="6" height="6" fill="#E8135A" opacity="0.85" />
+                <rect x="396" y="258" width="6" height="6" fill="#0FA8DC" opacity="0.7" />
+                {/* Concentric circles — structural anchor, lower left */}
+                <circle cx="76" cy="226" r="52" stroke="#0FA8DC" strokeWidth="1.5" opacity="0.5" />
+                <circle cx="76" cy="226" r="32" stroke="#0FA8DC" strokeWidth="1" opacity="0.28" />
+                {/* Dot grid — upper right */}
+                <circle cx="298" cy="28" r="2.5" fill="#0FA8DC" opacity="0.5" />
+                <circle cx="314" cy="28" r="2.5" fill="#E8135A" opacity="0.5" />
+                <circle cx="330" cy="28" r="2.5" fill="#0FA8DC" opacity="0.5" />
+                <circle cx="346" cy="28" r="2.5" fill="#E8135A" opacity="0.5" />
+                <circle cx="298" cy="44" r="2.5" fill="#E8135A" opacity="0.5" />
+                <circle cx="314" cy="44" r="2.5" fill="#0FA8DC" opacity="0.5" />
+                <circle cx="330" cy="44" r="2.5" fill="#E8135A" opacity="0.5" />
+                <circle cx="346" cy="44" r="2.5" fill="#0FA8DC" opacity="0.5" />
+                <circle cx="298" cy="60" r="2.5" fill="#0FA8DC" opacity="0.5" />
+                <circle cx="314" cy="60" r="2.5" fill="#E8135A" opacity="0.5" />
+                <circle cx="330" cy="60" r="2.5" fill="#0FA8DC" opacity="0.5" />
+                <circle cx="346" cy="60" r="2.5" fill="#E8135A" opacity="0.5" />
+                {/* Vertical bars — right edge (varying heights) */}
+                <rect x="416" y="56" width="4" height="44" fill="#0FA8DC" opacity="0.5" />
+                <rect x="424" y="70" width="4" height="28" fill="#E8135A" opacity="0.42" />
+                <rect x="432" y="84" width="4" height="14" fill="#0FA8DC" opacity="0.32" />
+              </svg>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Why We Built Blast */}
+      {/* ── 2. Our Story ────────────────────────────────────────── */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
@@ -86,117 +209,198 @@ export default function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'center' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'start' }}
             className="grid-cols-2-lg"
           >
-            <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
+            {/* Left: copy */}
+            <motion.div variants={fadeUp}>
               <HeadingMarker text="Our Story" marginBottom="16px" fontSize="12px" />
               <h2 className="t-h2" style={{ marginBottom: '28px' }}>
-                Why We <AccentText tone="blue">Built</AccentText> Blast <AccentText tone="pink">Learning</AccentText>
+                A System Built Before It <AccentText tone="blue">Had</AccentText> a <AccentText tone="pink">Market</AccentText>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                {[
-                  "It started with a frustration. Our founders watched their younger siblings spend hours at coaching classes, only to draw blanks on exam papers weeks later. The problem wasn't intelligence or effort. Nobody had taught them how to make learning stick.",
-                  'Cognitive science has known for decades that spaced repetition and active recall are the most effective learning techniques available. Yet the Indian education system (coaching classes, textbooks, tutors) delivers content without any retention strategy.',
-                  'Blast Learning was built to bridge that gap. We take the science of how memory actually works and translate it into a daily experience that any student can follow, regardless of their school, city, or coaching setup.',
-                  "Our Metacognition Engine doesn't just deliver content. It tracks how well you remember, identifies what's at risk of being forgotten, and schedules review at the exact right time. The result: 90% retention instead of 10%.",
-                ].map((text, i) => (
-                  <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                    {text}
-                  </p>
+                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                  Bruce Lewolt spent twenty-five years building learning technology before most of today's edtech platforms existed — work that was eventually licensed by IBM and McGraw-Hill and used by more than 100,000 students across multiple countries. His research rests on one observation: most students who underperform are missing a method that fits how their memory actually works, not additional ability.
+                </p>
+                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                  That research sat largely behind enterprise licensing deals until 2020, when remote schooling exposed how few students could study without a teacher physically present. Reading and mathematics scores fell to their lowest recorded levels within months. Lewolt made a decision that turned twenty-five years of licensed research into a direct-to-student platform, founding Blast Learning that year on one premise: give every student the same independent-learning training that, until then, only large institutions could afford to license.
+                </p>
+                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                  Ankit Sahu, an electrical engineer with an MBA from the University of San Francisco and a record of building businesses across India's financial sector, partnered with Lewolt in 2024 to adapt that platform for students in India. The result is Blast Learning India — the same patented methodology rebuilt for the CBSE curriculum and the realities of the Indian coaching economy.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Right: vertical timeline */}
+            <motion.div variants={fadeUp} style={{ paddingTop: '4px' }}>
+              <div style={{ position: 'relative' }}>
+                {/* Connector line */}
+                <div style={{
+                  position: 'absolute',
+                  left: '19px',
+                  top: '18px',
+                  bottom: '18px',
+                  width: '2px',
+                  background: 'linear-gradient(to bottom, #0FA8DC 0%, #E8135A 50%, #0FA8DC 100%)',
+                  borderRadius: '2px',
+                }} />
+
+                {timelinePoints.map((item, i) => (
+                  <div
+                    key={i}
+                    style={{ display: 'flex', gap: '24px', alignItems: 'flex-start', paddingBottom: i < timelinePoints.length - 1 ? '44px' : 0 }}
+                  >
+                    {/* Dot */}
+                    <div style={{ flexShrink: 0, width: '40px', display: 'flex', justifyContent: 'center', position: 'relative', zIndex: 1, paddingTop: '2px' }}>
+                      <div style={{
+                        width: '16px',
+                        height: '16px',
+                        borderRadius: '50%',
+                        background: item.dot,
+                        border: '3px solid #F9FAFB',
+                        boxShadow: `0 0 0 2px ${item.dot}55`,
+                      }} />
+                    </div>
+                    {/* Content */}
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: '12px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: item.dot, marginBottom: '3px', letterSpacing: '0.02em', textTransform: 'uppercase' }}>
+                        {item.year}
+                      </div>
+                      <div style={{ fontSize: '16px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '8px' }}>
+                        {item.label}
+                      </div>
+                      <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
                 ))}
               </div>
             </motion.div>
-            <motion.div
-              variants={stagger}
-              className="stat-cards-2col" style={{ minWidth: 0 }}
-            >
-              {[
-                { val: '90%', desc: 'Average retention achieved by Blast students vs 10% without structured revision' },
-                { val: '₹1,299', desc: 'Starting price, a fraction of the cost of coaching, with far better retention outcomes' },
-                { val: '30 days', desc: 'Average time for students to see measurable improvement in exam scores' },
-                { val: '4.8/5', desc: 'Average parent satisfaction rating across all enrolled families' },
-              ].map((item, i) => (
-                <motion.div
-                  key={item.val}
-                  variants={fadeUp}
-                  style={{ borderRadius: '16px', padding: '24px', background: statPastels[i % statPastels.length], border: '1px solid #ECECF1', boxShadow: '0 2px 12px rgba(28,28,40,0.05)', height: '100%' }}
-                >
-                  <div style={{ fontSize: '1.875rem', fontWeight: 700, marginBottom: '12px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28' }}>{item.val}</div>
-                  <p style={{ fontSize: '13px', lineHeight: 1.6, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{item.desc}</p>
-                </motion.div>
-              ))}
-            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Company Stats */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
+      {/* ── 3. Research Stats ───────────────────────────────────── */}
+      <section style={{ paddingTop: '80px', paddingBottom: '80px', background: '#FFFFFF' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px' }}
-            className="grid-cols-4-md"
           >
-            {companyStats.map((s) => (
-              <motion.div key={s.label} variants={fadeUp} style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '8px', fontFamily: 'Poppins, sans-serif', color: '#0FA8DC' }}>{s.value}</div>
-                <div style={{ fontSize: '14px', color: '#6B6B7B', fontFamily: 'Inter, sans-serif' }}>{s.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ textAlign: 'center', marginBottom: '56px' }}
-          >
-            <HeadingMarker text="Our Team" marginBottom="16px" fontSize="12px" />
-            <h2 className="t-h2" style={{ marginBottom: 0 }}>
-              The <AccentText tone="blue">Team</AccentText> Behind Blast <AccentText tone="pink">Learning</AccentText>
-            </h2>
-          </motion.div>
-          <MobileCarousel desktopGridClass="grid-cols-2-sm grid-cols-3-lg" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', alignItems: 'stretch' }}>
-            {team.map((member, i) => {
-              const fill = teamPastels[i % teamPastels.length];
-              const isIndigo = fill === '#0FA8DC';
-              return (
-                <motion.div
-                  key={member.name}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
-                  className="card-subtle surface-card"
-                  style={{ padding: '28px', textAlign: 'center', height: '100%' }}
+            {/* Bordered stat band */}
+            <motion.div
+              variants={fadeUp}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                borderTop: '1px solid #ECECF1',
+                borderLeft: '1px solid #ECECF1',
+              }}
+              className="grid-cols-4-md"
+            >
+              {researchStats.map((stat, i) => (
+                <div
+                  key={i}
+                  style={{
+                    padding: '40px 24px',
+                    borderRight: '1px solid #ECECF1',
+                    borderBottom: '1px solid #ECECF1',
+                    textAlign: 'center',
+                  }}
                 >
-                  <div
-                    style={{ width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '22px', fontWeight: 600, color: isIndigo ? 'white' : '#0FA8DC', margin: '0 auto 16px', fontFamily: 'Poppins, sans-serif', background: fill }}
-                  >
-                    {member.name.split(' ').map((n) => n[0]).join('')}
+                  <div style={{ fontSize: 'clamp(1.45rem, 3vw, 2.1rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: stat.color, lineHeight: 1.1, marginBottom: '12px' }}>
+                    {stat.value}
                   </div>
-                  <h3 style={{ fontSize: '15px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '4px' }}>{member.name}</h3>
-                  <p style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>{member.role}</p>
-                </motion.div>
-              );
-            })}
-          </MobileCarousel>
+                  <p style={{ fontSize: '13px', lineHeight: 1.55, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: '0 auto', maxWidth: '200px' }}>
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Curriculum pills */}
+            <motion.div variants={fadeUp} style={{ marginTop: '40px', textAlign: 'center' }}>
+              <p style={{ fontSize: '12px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginBottom: '16px', letterSpacing: '0.04em', textTransform: 'uppercase', fontWeight: 500 }}>
+                Curriculum range this methodology already maps to in India
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center' }}>
+                {curriculumPills.map((pill, i) => (
+                  <span
+                    key={pill}
+                    style={{
+                      padding: '5px 16px',
+                      borderRadius: '9999px',
+                      fontSize: '12px',
+                      fontWeight: 600,
+                      fontFamily: 'Inter, sans-serif',
+                      background: i % 2 === 0 ? '#E0F5FC' : '#FFF0F4',
+                      color: i % 2 === 0 ? '#0FA8DC' : '#E8135A',
+                      border: `1px solid ${i % 2 === 0 ? '#B3E5F5' : '#FBCCD8'}`,
+                    }}
+                  >
+                    {pill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Values */}
+      {/* ── 4. Our Position ─────────────────────────────────────── */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.div variants={fadeUp} style={{ textAlign: 'center', marginBottom: '48px' }}>
+              <HeadingMarker text="Our Position" marginBottom="16px" fontSize="12px" />
+              <h2 className="t-h2" style={{ marginBottom: '20px' }}>
+                Why a <AccentText tone="blue">System</AccentText>, Not a <AccentText tone="pink">Service</AccentText>
+              </h2>
+              <p className="t-body" style={{ maxWidth: '740px', margin: '0 auto' }}>
+                Every competitor in the Indian coaching market is, at its core, a content business: more videos, more question banks, more live classes layered onto a schedule that is already full. Blast Learning India was built on a different bet: retention, not exposure, is the actual product parents are paying for. The methodology is aligned to CBSE and ICSE curricula and structured around the competency goals set out in NEP 2020 — but the underlying skillset travels with a student long after a particular syllabus is finished.
+              </p>
+            </motion.div>
+
+            {/* Vision + Mission cards */}
+            <motion.div
+              variants={stagger}
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', marginBottom: '40px' }}
+              className="grid-cols-2-md"
+            >
+              <motion.div variants={fadeUp} className="card-subtle surface-card" style={{ overflow: 'hidden', height: '100%' }}>
+                <div style={{ height: '3px', background: '#0FA8DC' }} />
+                <div style={{ padding: '28px' }}>
+                  <HeadingMarker text="Vision" marginBottom="16px" fontSize="11px" accent="#0FA8DC" />
+                  <p style={{ fontSize: '15px', lineHeight: 1.8, color: '#1C1C28', fontFamily: "'Newsreader', Georgia, 'Times New Roman', serif", fontStyle: 'italic', margin: 0 }}>
+                    A future where a child's result in the exam hall has nothing to do with how much a family could afford to spend on tuition, and everything to do with whether that child was ever taught how to learn.
+                  </p>
+                </div>
+              </motion.div>
+              <motion.div variants={fadeUp} className="card-subtle surface-card" style={{ overflow: 'hidden', height: '100%' }}>
+                <div style={{ height: '3px', background: '#E8135A' }} />
+                <div style={{ padding: '28px' }}>
+                  <HeadingMarker text="Mission" marginBottom="16px" fontSize="11px" accent="#E8135A" />
+                  <p style={{ fontSize: '15px', lineHeight: 1.8, color: '#1C1C28', fontFamily: "'Newsreader', Georgia, 'Times New Roman', serif", fontStyle: 'italic', margin: 0 }}>
+                    To put twenty-five years of patented learning science inside a system every CBSE, ICSE, and SAT-track family in India can actually use, regardless of how much coaching they have already paid for.
+                  </p>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* Brand mantra */}
+            <motion.div variants={fadeUp} style={{ textAlign: 'center', paddingTop: '8px' }}>
+              <p style={{ fontSize: '19px', fontFamily: "'Newsreader', Georgia, 'Times New Roman', serif", fontStyle: 'italic', color: '#8E8EA0', letterSpacing: '0.01em', margin: 0 }}>
+                "Curiosity is a habit."
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── 5. What We Believe ──────────────────────────────────── */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
@@ -206,39 +410,177 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <HeadingMarker text="Our Values" marginBottom="16px" fontSize="12px" />
+            <HeadingMarker text="What We Believe" marginBottom="16px" fontSize="12px" />
             <h2 className="t-h2" style={{ marginBottom: 0 }}>
               What We <AccentText tone="blue">Stand</AccentText> <AccentText tone="pink">For</AccentText>
             </h2>
           </motion.div>
-          <MobileCarousel desktopGridClass="grid-cols-2-sm" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', alignItems: 'stretch' }}>
-            {values.map(({ icon: Icon, title, desc }) => (
+          <MobileCarousel
+            desktopGridClass="grid-cols-3-md"
+            desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', alignItems: 'stretch' }}
+          >
+            {beliefs.map((b) => (
               <motion.div
-                key={title}
+                key={b.title}
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.12)' }}
                 className="card-subtle surface-card"
-                style={{ padding: '32px', height: '100%', display: 'flex', flexDirection: 'column' }}
+                style={{ overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}
               >
-                <div style={{ width: '48px', height: '48px', borderRadius: '14px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px', background: '#E0F5FC', color: '#0FA8DC' }}>
-                  <Icon size={22} />
+                {/* Accent bar */}
+                <div style={{ height: '3px', background: b.accent, flexShrink: 0 }} />
+                <div style={{ padding: '28px 28px 24px', display: 'flex', flexDirection: 'column', flex: 1, position: 'relative' }}>
+                  {/* Large abstract number — structural, not decorative */}
+                  <div aria-hidden="true" style={{ position: 'absolute', top: '10px', right: '18px', fontSize: '56px', fontWeight: 800, fontFamily: 'Poppins, sans-serif', color: b.accent, opacity: 0.07, lineHeight: 1, userSelect: 'none' }}>
+                    {b.num}
+                  </div>
+                  <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>
+                    {b.title}
+                  </h3>
+                  <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', flex: 1, margin: 0 }}>
+                    {b.desc}
+                  </p>
                 </div>
-                <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>{title}</h3>
-                <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', flex: 1 }}>{desc}</p>
               </motion.div>
             ))}
           </MobileCarousel>
         </div>
       </section>
 
-      {/* ── Testimonials ── */}
+      {/* ── 6. Leadership ───────────────────────────────────────── */}
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ textAlign: 'center', marginBottom: '56px' }}
+          >
+            <HeadingMarker text="Leadership" marginBottom="16px" fontSize="12px" />
+            <h2 className="t-h2" style={{ marginBottom: '16px' }}>
+              The People <AccentText tone="blue">Building</AccentText> <AccentText tone="pink">It</AccentText>
+            </h2>
+            <p className="t-body" style={{ maxWidth: '580px', margin: '0 auto' }}>
+              Six people carry direct responsibility for what Blast Learning India becomes, each accountable for a distinct piece of the system.
+            </p>
+          </motion.div>
+          <MobileCarousel
+            desktopGridClass="grid-cols-2-sm grid-cols-3-lg"
+            desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', alignItems: 'stretch' }}
+          >
+            {leaders.map((leader) => (
+              <motion.div
+                key={leader.name}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                whileHover={{ boxShadow: '0 8px 28px rgba(15,168,220,0.10)' }}
+                className="card-subtle surface-card"
+                style={{ overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}
+              >
+                {/* Image slot — replace inner div with <img src="…" /> when photos are ready */}
+                <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#F3F4F6', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                  {/* Triangle corner accent */}
+                  <div style={{
+                    position: 'absolute', top: 0, right: 0,
+                    width: 0, height: 0,
+                    borderStyle: 'solid',
+                    borderWidth: '0 44px 44px 0',
+                    borderColor: `transparent ${leader.accent} transparent transparent`,
+                    zIndex: 1,
+                  }} />
+                  {/* Initials placeholder */}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+                    <div style={{
+                      width: '76px', height: '76px', borderRadius: '50%',
+                      background: `${leader.accent}18`,
+                      border: `2px solid ${leader.accent}50`,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: '24px', fontWeight: 700, fontFamily: 'Poppins, sans-serif',
+                      color: leader.accent,
+                    }}>
+                      {leader.initials}
+                    </div>
+                    <span style={{ fontSize: '10px', color: '#B0B0C0', fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                      Photo coming soon
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div style={{ padding: '20px 20px 20px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                  <h3 style={{ fontSize: '16px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '4px' }}>
+                    {leader.name}
+                  </h3>
+                  <HeadingMarker text={leader.title} fontSize="10px" marginBottom="12px" accent={leader.accent} />
+                  <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', flex: 1, margin: '0 0 16px' }}>
+                    {leader.bio}
+                  </p>
+                  <a
+                    href="#"
+                    style={{ fontSize: '12px', fontWeight: 600, fontFamily: 'Inter, sans-serif', color: leader.accent, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                  >
+                    Read profile →
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </MobileCarousel>
+        </div>
+      </section>
+
+      {/* ── Testimonials ────────────────────────────────────────── */}
       <SharedTestimonialsSection row1={sharedTestimonialsRow1} row2={sharedTestimonialsRow2} />
 
-      {/* ── FAQ ── */}
+      {/* ── FAQ ─────────────────────────────────────────────────── */}
       <SharedFaqSection items={sharedFaqs} />
+
+      {/* ── 7. Get In Touch ─────────────────────────────────────── */}
+      <section style={{ paddingTop: '72px', paddingBottom: '96px', background: '#FFFFFF' }}>
+        <div style={{ maxWidth: '600px', margin: '0 auto', padding: '0 24px' }}>
+          {/* Thin Cyan rule */}
+          <div style={{ height: '2px', background: 'linear-gradient(90deg, #0FA8DC 0%, #E8135A 100%)', marginBottom: '48px', borderRadius: '2px' }} />
+
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.div variants={fadeUp}>
+              <HeadingMarker text="Questions? Let's Connect" marginBottom="16px" fontSize="12px" />
+              <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '36px' }}>
+                Every question a parent asks during the trial period gets answered by someone who actually understands the methodology, not a script.
+              </p>
+            </motion.div>
+
+            <motion.div variants={fadeUp} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <div>
+                <div style={{ fontSize: '11px', fontWeight: 600, color: '#8E8EA0', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '4px' }}>
+                  Email
+                </div>
+                <div style={{ fontSize: '17px', fontFamily: 'Inter, sans-serif', color: '#1C1C28', fontWeight: 500 }}>
+                  team@blastlearning.in
+                </div>
+                <div style={{ fontSize: '11px', color: '#C4C4D0', fontFamily: 'Inter, sans-serif', marginTop: '3px' }}>
+                  Verify before publishing
+                </div>
+              </div>
+              <div>
+                <div style={{ fontSize: '11px', fontWeight: 600, color: '#8E8EA0', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '4px' }}>
+                  Call
+                </div>
+                <div style={{ fontSize: '17px', fontFamily: 'Inter, sans-serif', color: '#1C1C28', fontWeight: 500 }}>
+                  +91 XXXXX XXXXX
+                </div>
+                <div style={{ fontSize: '11px', color: '#C4C4D0', fontFamily: 'Inter, sans-serif', marginTop: '3px' }}>
+                  Verify before publishing
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
     </div>
   );
