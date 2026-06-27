@@ -569,34 +569,32 @@ export default function Navbar() {
                     const allSubItems = item.subMenus.flatMap((s) => s.items);
                     return (
                       <div key={item.id}>
-                        {/* Parent row — tapping the label navigates, chevron toggles */}
+                        {/* Parent row — full row is tappable, chevron sits right after the label */}
                         <div style={{ display: 'flex', alignItems: 'center', borderBottom: expanded ? 'none' : '1px solid #F7F7F8' }}>
-                          <Link
-                            to={item.path ?? '/'}
-                            onClick={() => setMobileOpen(false)}
+                          <button
+                            onClick={() => setOpenMenu(expanded ? null : item.id)}
+                            aria-label={`${expanded ? 'Collapse' : 'Expand'} ${item.label}`}
                             style={{
                               flex: 1,
                               display: 'flex',
                               alignItems: 'center',
-                              gap: '10px',
+                              gap: '6px',
                               padding: '14px 20px',
                               fontSize: '15px',
                               fontWeight: active ? 600 : 500,
                               fontFamily: 'Inter, sans-serif',
                               color: active ? '#0FA8DC' : '#1C1C28',
-                              textDecoration: 'none',
+                              background: 'none',
+                              border: 'none',
+                              cursor: 'pointer',
                               minHeight: '50px',
+                              textAlign: 'left',
+                              justifyContent: 'flex-start',
                             }}
                           >
                             {active && <div style={{ width: '3px', height: '18px', borderRadius: '2px', background: '#0FA8DC', flexShrink: 0 }} />}
                             {item.label}
-                          </Link>
-                          <button
-                            onClick={() => setOpenMenu(expanded ? null : item.id)}
-                            aria-label={`${expanded ? 'Collapse' : 'Expand'} ${item.label}`}
-                            style={{ padding: '14px 16px', background: 'none', border: 'none', cursor: 'pointer', color: '#8E8EA0', display: 'flex', alignItems: 'center' }}
-                          >
-                            <ChevronDown size={16} style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.2s' }} />
+                            <ChevronDown size={14} style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.2s', color: '#8E8EA0', flexShrink: 0 }} />
                           </button>
                         </div>
                         {/* Sub-items */}
