@@ -60,7 +60,7 @@ export default function HeadingMarker({ text, marginBottom = '12px', fontSize = 
       viewport={{ once: true, margin: '-5% 0px' }}
       style={{
         display: 'inline-flex',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         gap: '8px',
         marginBottom,
       }}
