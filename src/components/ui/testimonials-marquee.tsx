@@ -12,39 +12,52 @@ type CardT = {
   text: string;
 };
 
-// "Class 10, CBSE Plan · Bangalore" → { tag: "CBSE Plan · Class 10", detail: "Bangalore" }
-// "Parent · Class 11 CBSE, Delhi"   → { tag: "Parent · Class 11",    detail: "Delhi" }
-function parseRole(role: string): { tag: string; detail: string } {
-  if (role.startsWith('Parent')) {
+// Returns the short plan label shown in the tag
+function normalizePlanTag(raw: string): string {
+  if (/^cbse/i.test(raw)) return 'CBSE';
+  if (/^sat/i.test(raw)) return 'SAT Prep';
+  if (/^math\s*genius/i.test(raw)) return 'Math Genius';
+  if (/^english\s*mastery/i.test(raw)) return 'English Mastery';
+  if (/^parent/i.test(raw)) return 'Parent';
+  return raw;
+}
+
+// "Class 10, CBSE Plan · Bangalore" → { tag:"CBSE",     authorLine:"A Student of Class 10 from Bangalore" }
+// "Parent · Class 11 CBSE, Delhi"   → { tag:"Parent",   authorLine:"A Parent from Delhi" }
+// "CBSE Class 10" / "SAT Prep Pass" → { tag:"CBSE"/…,   authorLine:null } (card.name already correct)
+function parseRole(role: string): { tag: string; authorLine: string | null } {
+  if (/^parent/i.test(role)) {
     const sep = role.indexOf(' · ');
     if (sep !== -1) {
-      const rest = role.slice(sep + 3); // "Class 11 CBSE, Delhi"
+      const rest = role.slice(sep + 3);
       const comma = rest.lastIndexOf(', ');
-      return comma !== -1
-        ? { tag: `Parent · ${rest.slice(0, comma)}`, detail: rest.slice(comma + 2) }
-        : { tag: `Parent · ${rest}`, detail: '' };
+      const location = comma !== -1 ? rest.slice(comma + 2) : '';
+      return { tag: 'Parent', authorLine: location ? `A Parent from ${location}` : null };
     }
-    return { tag: 'Parent', detail: '' };
+    return { tag: 'Parent', authorLine: null };
   }
-  // "Class X, Plan Name · City"
+
   const dotSep = role.indexOf(' · ');
   if (dotSep !== -1) {
-    const before = role.slice(0, dotSep); // "Class X, Plan Name"
+    const before = role.slice(0, dotSep);
     const city   = role.slice(dotSep + 3);
     const comma  = before.indexOf(', ');
     if (comma !== -1) {
-      const classNum = before.slice(0, comma); // "Class X"
-      const planName = before.slice(comma + 2); // "Plan Name"
-      return { tag: `${planName} · ${classNum}`, detail: city };
+      const classNum = before.slice(0, comma);
+      const planRaw  = before.slice(comma + 2);
+      return { tag: normalizePlanTag(planRaw), authorLine: `A Student of ${classNum} from ${city}` };
     }
-    return { tag: before, detail: city };
+    return { tag: normalizePlanTag(before), authorLine: null };
   }
-  return { tag: role, detail: '' };
+
+  // "CBSE Class 10", "SAT Prep Pass" — card.name already has the right format
+  return { tag: normalizePlanTag(role), authorLine: null };
 }
 
 function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }) {
   const markerAccent = cardIndex % 2 === 0 ? '#E8135A' : '#0FA8DC';
-  const { tag, detail } = parseRole(card.role);
+  const { tag, authorLine } = parseRole(card.role);
+  const displayAuthor = authorLine ?? card.name;
 
   return (
     <div
@@ -102,7 +115,7 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
         {card.text}
       </p>
 
-      {/* Author + class/location detail */}
+      {/* Author */}
       <div
         style={{
           borderTop: '1px solid #F3F4F6',
@@ -112,14 +125,9 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
       >
         <p style={{ fontSize: '12px', margin: 0, lineHeight: 1.4 }}>
           <span style={{ color: '#E8135A', fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
-            {card.name}
+            {displayAuthor}
           </span>
         </p>
-        {detail && (
-          <p style={{ fontSize: '11px', margin: '3px 0 0', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', letterSpacing: '0.02em' }}>
-            {detail}
-          </p>
-        )}
       </div>
     </div>
   );
