@@ -563,11 +563,90 @@ export default function Navbar() {
               <div style={{ flex: 1, padding: '8px 0' }}>
                 {navItems.map((item) => {
                   const active = location.pathname === item.path;
-                  const to = item.path ?? (item.subMenus?.[0]?.items?.[0]?.path ?? '/');
+                  const expanded = openMenu === item.id;
+
+                  if (item.subMenus) {
+                    const allSubItems = item.subMenus.flatMap((s) => s.items);
+                    return (
+                      <div key={item.id}>
+                        {/* Parent row — tapping the label navigates, chevron toggles */}
+                        <div style={{ display: 'flex', alignItems: 'center', borderBottom: expanded ? 'none' : '1px solid #F7F7F8' }}>
+                          <Link
+                            to={item.path ?? '/'}
+                            onClick={() => setMobileOpen(false)}
+                            style={{
+                              flex: 1,
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '10px',
+                              padding: '14px 20px',
+                              fontSize: '15px',
+                              fontWeight: active ? 600 : 500,
+                              fontFamily: 'Inter, sans-serif',
+                              color: active ? '#0FA8DC' : '#1C1C28',
+                              textDecoration: 'none',
+                              minHeight: '50px',
+                            }}
+                          >
+                            {active && <div style={{ width: '3px', height: '18px', borderRadius: '2px', background: '#0FA8DC', flexShrink: 0 }} />}
+                            {item.label}
+                          </Link>
+                          <button
+                            onClick={() => setOpenMenu(expanded ? null : item.id)}
+                            aria-label={`${expanded ? 'Collapse' : 'Expand'} ${item.label}`}
+                            style={{ padding: '14px 16px', background: 'none', border: 'none', cursor: 'pointer', color: '#8E8EA0', display: 'flex', alignItems: 'center' }}
+                          >
+                            <ChevronDown size={16} style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform 0.2s' }} />
+                          </button>
+                        </div>
+                        {/* Sub-items */}
+                        <AnimatePresence>
+                          {expanded && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              style={{ overflow: 'hidden', background: '#F9FAFB', borderBottom: '1px solid #F7F7F8' }}
+                            >
+                              {allSubItems.map((sub) => (
+                                <Link
+                                  key={sub.label}
+                                  to={sub.path}
+                                  onClick={() => setMobileOpen(false)}
+                                  style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '12px',
+                                    padding: '12px 20px 12px 32px',
+                                    fontSize: '14px',
+                                    fontWeight: location.pathname === sub.path ? 600 : 400,
+                                    fontFamily: 'Inter, sans-serif',
+                                    color: location.pathname === sub.path ? '#0FA8DC' : '#5A5A6E',
+                                    textDecoration: 'none',
+                                    borderBottom: '1px solid #ECECF1',
+                                  }}
+                                >
+                                  <div style={{ width: '30px', height: '30px', borderRadius: '8px', border: `1px solid ${sub.iconBorder}`, background: sub.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                    {sub.icon}
+                                  </div>
+                                  <div>
+                                    <div style={{ fontWeight: 600, color: location.pathname === sub.path ? '#0FA8DC' : '#1C1C28', fontSize: '13px', fontFamily: 'Inter, sans-serif' }}>{sub.label}</div>
+                                    <div style={{ fontSize: '12px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif' }}>{sub.description}</div>
+                                  </div>
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  }
+
                   return (
                     <Link
                       key={item.id}
-                      to={to}
+                      to={item.path ?? '/'}
                       onClick={() => setMobileOpen(false)}
                       style={{
                         display: 'flex',
@@ -583,9 +662,7 @@ export default function Navbar() {
                         minHeight: '50px',
                       }}
                     >
-                      {active && (
-                        <div style={{ width: '3px', height: '18px', borderRadius: '2px', background: '#0FA8DC', flexShrink: 0 }} />
-                      )}
+                      {active && <div style={{ width: '3px', height: '18px', borderRadius: '2px', background: '#0FA8DC', flexShrink: 0 }} />}
                       {item.label}
                     </Link>
                   );
