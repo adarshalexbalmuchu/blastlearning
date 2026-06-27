@@ -420,6 +420,8 @@ p, li {
   padding-bottom: 16px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
 }
 .programs-scroll::-webkit-scrollbar { display: none; }
 .programs-scroll > * {
@@ -439,6 +441,22 @@ p, li {
 }
 @media (min-width: 1024px) {
   .programs-scroll { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ── Scroll container utility ────────────────────────────────────────────────── */
+.scroll-container-x {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.scroll-container-x::-webkit-scrollbar { display: none; }
+.scroll-container-x > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
 }
 
 /* ── Mobile responsive improvements (≤767px) ─────────────────────────────────── */
@@ -853,6 +871,7 @@ p, li {
 @media (max-width: 768px) {
   .mc-desktop-grid { display: none !important; }
   .mc-mobile-carousel { display: block; padding-bottom: 24px; }
+  .cta { padding: 12px 24px; }
 }
 
 /* Disable card hover-lift on touch devices — prevents jank during swipe */

@@ -107,6 +107,8 @@
     flex-wrap: nowrap;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
+    overscroll-behavior-x: contain;
   }
 
   .trust-strip__grid::-webkit-scrollbar {
@@ -115,6 +117,7 @@
 
   .trust-strip__card {
     min-width: 180px;
+    flex-shrink: 0;
   }
 }
 
@@ -131,6 +134,8 @@
     overflow-x: visible;
     flex-wrap: unset;
     align-items: stretch;
+    touch-action: auto;
+    overscroll-behavior-x: auto;
   }
 
   .trust-strip__card {

@@ -169,12 +169,14 @@ export default function FeatureExplorer() {
             display: 'flex',
             gap: '16px',
             overflowX: 'scroll',
-            overflowY: 'visible',
+            overflowY: 'hidden',
             scrollSnapType: 'x mandatory',
             WebkitOverflowScrolling: 'touch',
             scrollBehavior: 'smooth',
             padding: '0 16px 16px 16px',
             scrollbarWidth: 'none',
+            touchAction: 'pan-x',
+            overscrollBehaviorX: 'contain',
           }}
         >
           {features.map((feature, i) => {
@@ -194,6 +196,7 @@ export default function FeatureExplorer() {
                   boxSizing: 'border-box',
                   display: 'flex',
                   flexDirection: 'column',
+                  minHeight: '400px',
                 }}
               >
                 {/* Category label */}
@@ -218,7 +221,7 @@ export default function FeatureExplorer() {
                   {feature.desc}
                 </p>
                 {/* Image */}
-                <div style={{ marginTop: '16px', borderRadius: '12px', overflow: 'hidden', background: feature.panel }}>
+                <div style={{ marginTop: 'auto', paddingTop: '16px', borderRadius: '12px', overflow: 'hidden', background: feature.panel }}>
                   <img
                     src={feature.img}
                     alt=""
