@@ -194,6 +194,7 @@ export default function FeatureExplorer() {
                   boxSizing: 'border-box',
                   display: 'flex',
                   flexDirection: 'column',
+                  minHeight: '400px',
                 }}
               >
                 {/* Category label */}
@@ -218,7 +219,7 @@ export default function FeatureExplorer() {
                   {feature.desc}
                 </p>
                 {/* Image */}
-                <div style={{ marginTop: '16px', borderRadius: '12px', overflow: 'hidden', background: feature.panel }}>
+                <div style={{ marginTop: 'auto', paddingTop: '16px', borderRadius: '12px', overflow: 'hidden', background: feature.panel }}>
                   <img
                     src={feature.img}
                     alt=""

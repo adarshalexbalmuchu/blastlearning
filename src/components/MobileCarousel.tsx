@@ -54,11 +54,13 @@ export default function MobileCarousel({ children, desktopGridClass = '', deskto
           className="mc-scroll-track"
           style={{
             display: 'flex',
+            alignItems: 'stretch',
             gap: '16px',
             overflowX: 'auto',
-            overflowY: 'hidden',       // prevent vertical axis conflict
-            scrollSnapType: 'x proximity', // proximity = no forced hard snap
-            touchAction: 'pan-x',      // browser commits to horizontal axis only
+            overflowY: 'hidden',
+            scrollSnapType: 'x proximity',
+            touchAction: 'pan-x',
+            overscrollBehaviorX: 'contain',
             padding: '4px 16px 16px 16px',
             scrollbarWidth: 'none',
             WebkitOverflowScrolling: 'touch',
@@ -69,10 +71,12 @@ export default function MobileCarousel({ children, desktopGridClass = '', deskto
               key={i}
               data-mc-idx={i}
               style={{
-                flex: '0 0 88%',       // no duplicate width — flex-basis is enough
+                flex: '0 0 88%',
                 scrollSnapAlign: 'start',
                 boxSizing: 'border-box',
                 minWidth: 0,
+                display: 'flex',
+                flexDirection: 'column',
               }}
             >
               {child}
