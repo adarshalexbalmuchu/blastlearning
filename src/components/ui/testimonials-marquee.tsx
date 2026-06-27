@@ -12,8 +12,52 @@ type CardT = {
   text: string;
 };
 
+// Returns the short plan label shown in the tag
+function normalizePlanTag(raw: string): string {
+  if (/^cbse/i.test(raw)) return 'CBSE';
+  if (/^sat/i.test(raw)) return 'SAT Prep';
+  if (/^math\s*genius/i.test(raw)) return 'Math Genius';
+  if (/^english\s*mastery/i.test(raw)) return 'English Mastery';
+  if (/^parent/i.test(raw)) return 'Parent';
+  return raw;
+}
+
+// "Class 10, CBSE Plan · Bangalore" → { tag:"CBSE",     authorLine:"A Student of Class 10 from Bangalore" }
+// "Parent · Class 11 CBSE, Delhi"   → { tag:"Parent",   authorLine:"A Parent from Delhi" }
+// "CBSE Class 10" / "SAT Prep Pass" → { tag:"CBSE"/…,   authorLine:null } (card.name already correct)
+function parseRole(role: string): { tag: string; authorLine: string | null } {
+  if (/^parent/i.test(role)) {
+    const sep = role.indexOf(' · ');
+    if (sep !== -1) {
+      const rest = role.slice(sep + 3);
+      const comma = rest.lastIndexOf(', ');
+      const location = comma !== -1 ? rest.slice(comma + 2) : '';
+      return { tag: 'Parent', authorLine: location ? `A Parent from ${location}` : null };
+    }
+    return { tag: 'Parent', authorLine: null };
+  }
+
+  const dotSep = role.indexOf(' · ');
+  if (dotSep !== -1) {
+    const before = role.slice(0, dotSep);
+    const city   = role.slice(dotSep + 3);
+    const comma  = before.indexOf(', ');
+    if (comma !== -1) {
+      const classNum = before.slice(0, comma);
+      const planRaw  = before.slice(comma + 2);
+      return { tag: normalizePlanTag(planRaw), authorLine: `A Student of ${classNum} from ${city}` };
+    }
+    return { tag: normalizePlanTag(before), authorLine: null };
+  }
+
+  // "CBSE Class 10", "SAT Prep Pass" — card.name already has the right format
+  return { tag: normalizePlanTag(role), authorLine: null };
+}
+
 function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }) {
   const markerAccent = cardIndex % 2 === 0 ? '#E8135A' : '#0FA8DC';
+  const { tag, authorLine } = parseRole(card.role);
+  const displayAuthor = authorLine ?? card.name;
 
   return (
     <div
@@ -48,9 +92,9 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
         </span>
       </div>
 
-      {/* Role / plan heading */}
+      {/* Plan tag — short program name only */}
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-        <HeadingMarker text={card.role} fontSize="11px" marginBottom="0" accent={markerAccent} alignItems="center" noWrap />
+        <HeadingMarker text={tag} fontSize="11px" marginBottom="0" accent={markerAccent} alignItems="center" noWrap />
       </div>
 
       {/* Quote text */}
@@ -81,7 +125,7 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
       >
         <p style={{ fontSize: '12px', margin: 0, lineHeight: 1.4 }}>
           <span style={{ color: '#E8135A', fontWeight: 700, fontFamily: 'Inter, sans-serif', letterSpacing: '0.01em' }}>
-            {card.name}
+            {displayAuthor}
           </span>
         </p>
       </div>

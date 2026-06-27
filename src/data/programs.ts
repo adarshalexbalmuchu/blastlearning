@@ -362,7 +362,7 @@ const programsData: ProgramData[] = [
     testimonials: [
       {
         name: 'Arjun Nair',
-        role: 'Class 10 student, Kochi',
+        role: 'Class 10, Math Genius · Kochi',
         content:
           'Maths was my nightmare subject. I failed Class 9 and was terrified for boards. The GAP Assessment showed the problem was fractions from Class 6, not Class 10 at all. After fixing the foundation, everything clicked. I scored 84 in my actual boards.',
         before: '38%',
@@ -372,7 +372,7 @@ const programsData: ProgramData[] = [
       },
       {
         name: 'Priya Sharma',
-        role: 'Class 8 student, Pune',
+        role: 'Class 8, Math Genius · Pune',
         content:
           'My daughter was three years behind in Maths. The program started her at the right level without making her feel bad about it. Within four months her confidence completely changed. She actually asks to do her Maths sessions now.',
         before: '41%',
@@ -541,7 +541,7 @@ const programsData: ProgramData[] = [
       },
       {
         name: 'Rohan Kapoor',
-        role: 'Class 11 student · Delhi',
+        role: 'Class 11, English Mastery · Delhi',
         content:
           'I was preparing for SAT alongside boards and could not figure out why my reading scores were low when I felt I understood the passages. The distinction between what a passage states and what it implies changed how I approach every question now.',
         before: '520',
