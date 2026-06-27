@@ -51,12 +51,14 @@ export default function HeroCarousel() {
   useEffect(() => {
     if (!hasSlides) return;
 
-    // Warm browser cache for all hero slides so transitions feel instant.
-    SLIDES.forEach((src) => {
-      const img = new Image();
-      img.decoding = 'sync';
-      img.src = src;
-    });
+    // Defer pre-warming non-visible slides until after initial paint
+    const timer = window.setTimeout(() => {
+      SLIDES.slice(1).forEach((src) => {
+        const img = new Image();
+        img.src = src;
+      });
+    }, 2000);
+    return () => window.clearTimeout(timer);
   }, [hasSlides]);
 
   const goNext = () => {
@@ -131,9 +133,9 @@ export default function HeroCarousel() {
               alt="Blast Learning hero banner"
               width={2048}
               height={1092}
-              loading="eager"
-              fetchPriority={index === 0 ? 'high' : 'auto'}
-              decoding="sync"
+              loading={index === 0 ? 'eager' : 'lazy'}
+              fetchPriority={index === 0 ? 'high' : 'low'}
+              decoding={index === 0 ? 'sync' : 'async'}
               style={{
                 width: '100%',
                 height: '100%',

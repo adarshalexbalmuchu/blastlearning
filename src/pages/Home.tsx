@@ -381,6 +381,8 @@ export default function Home() {
                 <img
                   src={ebbinghausCurve}
                   alt="Ebbinghaus Forgetting Curve"
+                  loading="lazy"
+                  decoding="async"
                   style={{ width: '100%', height: 'auto', display: 'block' }}
                 />
               </motion.div>
