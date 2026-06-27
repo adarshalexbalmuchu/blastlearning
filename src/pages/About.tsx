@@ -492,11 +492,8 @@ export default function About() {
 
       {/* ── 7. Get In Touch ─────────────────────────────────────── */}
       <section style={{ paddingTop: '72px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
-          <div style={{ maxWidth: '600px' }}>
-          {/* Thin Cyan rule */}
-          <div style={{ height: '2px', background: 'linear-gradient(90deg, #0FA8DC 0%, #E8135A 100%)', marginBottom: '48px', borderRadius: '2px' }} />
-
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+          <div style={{ maxWidth: '560px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp}>
               <HeadingMarker text="Questions? Let's Connect" marginBottom="16px" fontSize="12px" />
