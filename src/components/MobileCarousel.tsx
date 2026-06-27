@@ -83,14 +83,14 @@ export default function MobileCarousel({ children, desktopGridClass = '', deskto
             </div>
           ))}
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '12px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', marginTop: '12px' }}>
           {items.map((_, i) => (
             <span
               key={i}
               style={{
                 display: 'block',
-                width: i === active ? '16px' : '8px',
-                height: '8px',
+                width: i === active ? '20px' : '6px',
+                height: '6px',
                 borderRadius: '9999px',
                 background: i === active ? '#E8135A' : '#DCDCE5',
                 transition: 'background 0.3s, width 0.3s',

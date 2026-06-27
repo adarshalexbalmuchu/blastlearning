@@ -17,6 +17,7 @@ export default function WhatsAppFloat() {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.93 }}
       aria-label="Chat with us on WhatsApp"
+      className="wa-float"
       style={{
         position: 'fixed', bottom: '24px', right: '24px', zIndex: 9000,
         width: '56px', height: '56px', borderRadius: '50%',

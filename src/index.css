@@ -507,8 +507,8 @@ p, li {
     right: auto !important;
     bottom: auto !important;
     margin-top: 14px !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   .programs-hero-cta {
@@ -582,6 +582,10 @@ p, li {
 
   .hero-cta-primary,
   .hero-cta-secondary {
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+    width: calc(100% - 32px) !important;
+    max-width: calc(100% - 32px) !important;
     min-height: 52px !important;
     border-radius: 14px !important;
     font-size: 15px !important;
@@ -659,20 +663,7 @@ p, li {
   }
 
   .hero-ctrl-mob {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255, 255, 255, 0.88);
-    color: #1C1C28;
-    font-size: 16px;
-    line-height: 1;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-    flex-shrink: 0;
+    display: none !important;
   }
 
   /* Hide old mobile controls row — it created a gap between image and CTAs */
@@ -872,6 +863,41 @@ p, li {
   .mc-desktop-grid { display: none !important; }
   .mc-mobile-carousel { display: block; padding-bottom: 24px; }
   .cta { padding: 12px 24px; }
+
+  /* Fix 4: Pricing card title — prevent 3-line wrap on narrow screens */
+  .pricing-card-title {
+    font-size: 1.5rem !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Fix 6: Deep Dive button — side margins + right clearance for scroll-to-top */
+  .deep-dive-btn-wrap {
+    padding: 0 60px 0 16px;
+  }
+  .deep-dive-btn-wrap .cta {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Fix 7: Footer logo — hidden on mobile (navbar already shows it) */
+  .footer-logo-link {
+    display: none !important;
+  }
+
+  /* Fix 8: Floating buttons — WhatsApp at bottom: 16px, scroll-to-top above it */
+  .wa-float {
+    bottom: 16px !important;
+    right: 16px !important;
+  }
+  .scroll-top-btn {
+    bottom: 72px !important;
+    right: 16px !important;
+  }
+
+  /* Fix 8: Main content — padding-bottom so last section clears floating buttons */
+  main {
+    padding-bottom: 140px !important;
+  }
 }
 
 /* Disable card hover-lift on touch devices — prevents jank during swipe */

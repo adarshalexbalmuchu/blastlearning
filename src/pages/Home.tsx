@@ -402,7 +402,7 @@ export default function Home() {
               </motion.div>
             ))}
           </MobileCarousel>
-          <div style={{ textAlign: 'center' }}>
+          <div className="deep-dive-btn-wrap" style={{ textAlign: 'center' }}>
             <Link className="cta cta-pink" to="/programs">
               Deep Dive Into Method & Science
             </Link>
@@ -456,7 +456,7 @@ export default function Home() {
                   <div style={{ height: '3px', width: '100%', background: accent }} />
                   <div style={{ padding: '18px 16px 14px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                     <HeadingMarker text={plan.classes} accent={accent} fontSize="11px" />
-                    <h3 style={{ margin: 0, fontFamily: 'Inter, sans-serif', fontSize: 'var(--fs-h3)', fontWeight: 700, color: '#1C1C28', lineHeight: 'var(--lh-card)' }}>
+                    <h3 className="pricing-card-title" style={{ margin: 0, fontFamily: 'Inter, sans-serif', fontSize: 'var(--fs-h3)', fontWeight: 700, color: '#1C1C28', lineHeight: 'var(--lh-card)' }}>
                       {plan.name}
                     </h3>
                     <p className="t-body" style={{ margin: '8px 0 0' }}>

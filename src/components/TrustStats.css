@@ -96,6 +96,12 @@
   color: #f03c6f;
 }
 
+/* NEP 2020 is a label, not a numeric stat — render smaller than numbers */
+.trust-strip__value--text {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
 @media (max-width: 1023px) {
   .trust-strip {
     padding: 10px 20px;

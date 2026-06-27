@@ -349,7 +349,7 @@ export default function Programs() {
                   <div style={{ height: '3px', width: '100%', background: accent }} />
                   <div style={{ padding: '18px 16px 14px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                     <HeadingMarker text={prog.classes} accent={accent} fontSize="11px" />
-                    <h3 style={{ margin: 0, fontFamily: 'Inter, sans-serif', fontSize: 'var(--fs-h3)', fontWeight: 700, color: '#1C1C28', lineHeight: 'var(--lh-card)' }}>
+                    <h3 className="pricing-card-title" style={{ margin: 0, fontFamily: 'Inter, sans-serif', fontSize: 'var(--fs-h3)', fontWeight: 700, color: '#1C1C28', lineHeight: 'var(--lh-card)' }}>
                       {prog.name}
                     </h3>
                     <p className="t-body" style={{ margin: '8px 0 0' }}>
