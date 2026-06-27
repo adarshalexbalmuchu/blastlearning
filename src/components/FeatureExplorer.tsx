@@ -169,12 +169,14 @@ export default function FeatureExplorer() {
             display: 'flex',
             gap: '16px',
             overflowX: 'scroll',
-            overflowY: 'visible',
+            overflowY: 'hidden',
             scrollSnapType: 'x mandatory',
             WebkitOverflowScrolling: 'touch',
             scrollBehavior: 'smooth',
             padding: '0 16px 16px 16px',
             scrollbarWidth: 'none',
+            touchAction: 'pan-x',
+            overscrollBehaviorX: 'contain',
           }}
         >
           {features.map((feature, i) => {
