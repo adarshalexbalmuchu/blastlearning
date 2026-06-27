@@ -6,6 +6,7 @@ type HeadingMarkerProps = {
   marginBottom?: string;
   fontSize?: string;
   accent?: string;
+  alignItems?: string;
 };
 
 const CYAN_COLORS = ['#D2E9F8', '#A6D4EE', '#0FA8DC', '#0FA8DC', '#0FA8DC'];
@@ -49,7 +50,7 @@ const TEXT_VARIANTS: any = {
   },
 };
 
-export default function HeadingMarker({ text, marginBottom = '12px', fontSize = '12px', accent }: HeadingMarkerProps) {
+export default function HeadingMarker({ text, marginBottom = '12px', fontSize = '12px', accent, alignItems = 'center' }: HeadingMarkerProps) {
   const colors = accent === '#E8135A' ? PINK_COLORS : CYAN_COLORS;
   const textColor = accent ?? '#4B6B80';
 
@@ -60,7 +61,7 @@ export default function HeadingMarker({ text, marginBottom = '12px', fontSize = 
       viewport={{ once: true, margin: '-5% 0px' }}
       style={{
         display: 'inline-flex',
-        alignItems: 'flex-start',
+        alignItems,
         gap: '8px',
         marginBottom,
       }}
