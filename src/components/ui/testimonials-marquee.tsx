@@ -50,7 +50,7 @@ function TestimonialCard({ card, cardIndex }: { card: CardT; cardIndex: number }
 
       {/* Role / plan heading */}
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
-        <HeadingMarker text={card.role} fontSize="11px" marginBottom="0" accent={markerAccent} alignItems="flex-start" />
+        <HeadingMarker text={card.role} fontSize="11px" marginBottom="0" accent={markerAccent} alignItems="center" noWrap />
       </div>
 
       {/* Quote text */}
