@@ -871,6 +871,7 @@ p, li {
 @media (max-width: 768px) {
   .mc-desktop-grid { display: none !important; }
   .mc-mobile-carousel { display: block; padding-bottom: 24px; }
+  .cta { padding: 12px 24px; }
 }
 
 /* Disable card hover-lift on touch devices — prevents jank during swipe */
