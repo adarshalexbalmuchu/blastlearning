@@ -11,36 +11,36 @@ import { sharedFaqs } from '../data/faqs';
 import { fadeUp, stagger } from '../constants/animations';
 
 const team = [
-  { name: 'Arjun Mehta', role: 'Co-founder & CEO' },
-  { name: 'Priya Sharma', role: 'Co-founder & CTO' },
-  { name: 'Kiran Reddy', role: 'Head of Curriculum' },
-  { name: 'Sunita Nair', role: 'Head of Product' },
-  { name: 'Rahul Kumar', role: 'Head of Engineering' },
-  { name: 'Deepa Iyer', role: 'Head of Learning Science' },
+  { name: 'Bruce Lewolt', role: 'Founder' },
+  { name: 'Ankit Sahu', role: 'Founder & Managing Director' },
+  { name: 'Purvi Sahu', role: 'Director & Chief Marketing Officer' },
+  { name: 'Arun Kumar Tyagi', role: 'Director of Alliances' },
+  { name: 'Reena Prakash Tyagi', role: 'Director of Content Management' },
+  { name: 'Aditya Reddy Dinesh', role: 'Head of Business Development' },
 ];
 
 const companyStats = [
-  { value: '2022', label: 'Founded' },
-  { value: '4,999+', label: 'Students Helped' },
-  { value: '49+', label: 'Cities Across India' },
-  { value: '91%', label: 'Improvement Rate' },
+  { value: '500+', label: 'Peer-reviewed learning science studies behind the methodology' },
+  { value: '100,000+', label: 'Students taught under this system, across multiple countries' },
+  { value: 'US & International', label: 'Patents protecting the core methodology' },
+  { value: 'IBM & McGraw-Hill', label: 'Institutional partners who have licensed the underlying technology' },
 ];
 
 const values = [
   {
     icon: Lightbulb,
-    title: 'Retention First',
-    desc: 'We obsess over one question: will the student still remember this in 30 days? Everything we build is measured against long-term retention, not short-term engagement.',
+    title: 'No Child Is Weak',
+    desc: 'A low mark rarely measures ability. More often, it measures whether a student was ever shown a method that matches how their memory actually works, and Blast Learning India is built on the assumption that every student can close that gap once the method is right.',
   },
   {
     icon: Heart,
-    title: 'Student Empathy',
-    desc: 'We remember what it felt like to be an Indian student, the pressure, the expectations, the fear of exams. Every decision we make starts with empathy for that experience.',
+    title: 'Skills Over Marks',
+    desc: 'Marks fade faster than the skills that produced them. We teach the underlying skill: recall under pressure, structured revision, honest self-assessment. That skill outlasts a single board exam and applies to the next one, and the one after that.',
   },
   {
     icon: Users,
-    title: 'Family Partnership',
-    desc: 'Education is a family effort. We build tools for students and parents together, because the best outcomes happen when everyone is informed and aligned.',
+    title: 'Made for India',
+    desc: "Most international education platforms arrive in India after being built for someone else's curriculum, then get retrofitted to CBSE timelines and exam formats. Blast Learning India was rebuilt around the CBSE calendar, the realities of joint-family study schedules, and the particular pressure of board season.",
   },
   {
     icon: Shield,
@@ -67,12 +67,12 @@ export default function About() {
         </div>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px', textAlign: 'center', position: 'relative' }}>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <HeadingMarker text="Our Mission" marginBottom="24px" fontSize="12px" />
+            <HeadingMarker text="Who We Are" marginBottom="24px" fontSize="12px" />
             <h1 className="page-hero-title">
-              Making <AccentText tone="blue">Learning</AccentText> <AccentText tone="pink">Stick</AccentText> for Every Indian Student
+              About <AccentText tone="blue">Blast</AccentText> <AccentText tone="pink">Learning</AccentText> India
             </h1>
             <p className="page-hero-copy" style={{ maxWidth: '640px', margin: '0 auto' }}>
-              India spends billions on education every year, yet most students forget 90% of what they learn within a week. We built Blast Learning to fix that, to make every hour of study count, permanently.
+              Ask a parent managing a child's CBSE or ICSE schedule what worries them most, and marks rarely top the list. The real worry is retention. Months of tuition fade within days, and no extra coaching class has ever fixed that on its own. Blast Learning is not a tutoring platform. It is the self-study operating system beneath all other educational investment, the layer that decides whether anything taught survives past the exam it was meant for.
             </p>
           </motion.div>
         </div>
@@ -92,13 +92,13 @@ export default function About() {
             <motion.div variants={fadeUp} style={{ minWidth: 0 }}>
               <HeadingMarker text="Our Story" marginBottom="16px" fontSize="12px" />
               <h2 className="t-h2" style={{ marginBottom: '28px' }}>
-                Why We <AccentText tone="blue">Built</AccentText> Blast <AccentText tone="pink">Learning</AccentText>
+                A System <AccentText tone="blue">Built</AccentText> Before It Had a <AccentText tone="pink">Market</AccentText>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 {[
-                  "It started with a frustration. Our founders watched their younger siblings spend hours at coaching classes, only to draw blanks on exam papers weeks later. The problem wasn't intelligence or effort. Nobody had taught them how to make learning stick.",
-                  'Cognitive science has known for decades that spaced repetition and active recall are the most effective learning techniques available. Yet the Indian education system (coaching classes, textbooks, tutors) delivers content without any retention strategy.',
-                  'Blast Learning was built to bridge that gap. We take the science of how memory actually works and translate it into a daily experience that any student can follow, regardless of their school, city, or coaching setup.',
+                  "Bruce Lewolt spent twenty-five years building learning technology before most of today's edtech platforms existed, work that was eventually licensed by IBM and McGraw-Hill and used by more than 100,000 students across multiple countries. His research rests on one observation: most students who underperform are missing a method that fits how their memory actually works, not additional ability.",
+                  "That research sat largely behind enterprise licensing deals until 2020, when remote schooling exposed how few students could study without a teacher physically present. Reading and mathematics scores fell to their lowest recorded levels within months. Lewolt made a decision that turned twenty-five years of licensed research into a direct-to-student platform, founding Blast Learning that year on a narrow premise: give every student the same independent-learning training that, until then, only large institutions could afford to license.",
+                  "Ankit Sahu, an electrical engineer with an MBA from the University of San Francisco and a record of building businesses across India's financial sector, partnered with Lewolt in 2024 to adapt that platform for students in India. The result is Blast Learning India, the same patented methodology rebuilt for the CBSE curriculum and the realities of the Indian coaching economy.",
                   "Our Metacognition Engine doesn't just deliver content. It tracks how well you remember, identifies what's at risk of being forgotten, and schedules review at the exact right time. The result: 90% retention instead of 10%.",
                 ].map((text, i) => (
                   <p key={i} style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
@@ -162,9 +162,9 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <HeadingMarker text="Our Team" marginBottom="16px" fontSize="12px" />
+            <HeadingMarker text="Leadership" marginBottom="16px" fontSize="12px" />
             <h2 className="t-h2" style={{ marginBottom: 0 }}>
-              The <AccentText tone="blue">Team</AccentText> Behind Blast <AccentText tone="pink">Learning</AccentText>
+              The <AccentText tone="blue">People</AccentText> Building <AccentText tone="pink">It</AccentText>
             </h2>
           </motion.div>
           <MobileCarousel desktopGridClass="grid-cols-2-sm grid-cols-3-lg" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', alignItems: 'stretch' }}>
@@ -208,7 +208,7 @@ export default function About() {
           >
             <HeadingMarker text="Our Values" marginBottom="16px" fontSize="12px" />
             <h2 className="t-h2" style={{ marginBottom: 0 }}>
-              What We <AccentText tone="blue">Stand</AccentText> <AccentText tone="pink">For</AccentText>
+              What We <AccentText tone="blue">Believe</AccentText> <AccentText tone="pink">In</AccentText>
             </h2>
           </motion.div>
           <MobileCarousel desktopGridClass="grid-cols-2-sm" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', alignItems: 'stretch' }}>
