@@ -509,9 +509,6 @@ export default function About() {
                 <div style={{ fontSize: '17px', fontFamily: 'Inter, sans-serif', color: '#1C1C28', fontWeight: 500 }}>
                   team@blastlearning.in
                 </div>
-                <div style={{ fontSize: '11px', color: '#C4C4D0', fontFamily: 'Inter, sans-serif', marginTop: '3px' }}>
-                  Verify before publishing
-                </div>
               </div>
               <div>
                 <div style={{ fontSize: '11px', fontWeight: 600, color: '#8E8EA0', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '4px' }}>
@@ -519,9 +516,6 @@ export default function About() {
                 </div>
                 <div style={{ fontSize: '17px', fontFamily: 'Inter, sans-serif', color: '#1C1C28', fontWeight: 500 }}>
                   +91 XXXXX XXXXX
-                </div>
-                <div style={{ fontSize: '11px', color: '#C4C4D0', fontFamily: 'Inter, sans-serif', marginTop: '3px' }}>
-                  Verify before publishing
                 </div>
               </div>
             </motion.div>
