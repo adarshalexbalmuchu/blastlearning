@@ -470,10 +470,10 @@ export default function About() {
 
                 {/* Content */}
                 <div style={{ padding: '20px 20px 20px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <h3 style={{ fontSize: '16px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '4px' }}>
+                  <HeadingMarker text={leader.title} fontSize="10px" marginBottom="8px" accent={leader.accent} />
+                  <h3 style={{ fontSize: '16px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>
                     {leader.name}
                   </h3>
-                  <HeadingMarker text={leader.title} fontSize="10px" marginBottom="12px" accent={leader.accent} />
                   <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', flex: 1, margin: '0 0 16px' }}>
                     {leader.bio}
                   </p>
