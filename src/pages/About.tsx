@@ -5,7 +5,6 @@ import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import MobileCarousel from '../components/MobileCarousel';
 import { fadeUp, stagger } from '../constants/animations';
-import aboutBg from '../assets/image 27.svg';
 
 const leaders = [
   {
@@ -125,23 +124,6 @@ export default function About() {
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
-        <img
-          aria-hidden="true"
-          src={aboutBg}
-          alt=""
-          loading="eager"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-            opacity: 0.07,
-            pointerEvents: 'none',
-            mixBlendMode: 'multiply',
-          }}
-        />
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           <div
             style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'start' }}
@@ -156,7 +138,7 @@ export default function About() {
             </div>
 
             {/* Right: description */}
-            <div style={{ paddingTop: '4px' }}>
+            <div>
               <p className="page-hero-copy" style={{ marginBottom: '16px' }}>
                 Ask a parent managing a child's CBSE or ICSE schedule what worries them most, and marks rarely top the list. The real worry is retention. Months of tuition fade within days, and no extra coaching class has ever fixed that on its own.
               </p>
@@ -199,7 +181,7 @@ export default function About() {
             </motion.div>
 
             {/* Right: vertical timeline */}
-            <motion.div variants={fadeUp} style={{ paddingTop: '4px' }}>
+            <motion.div variants={fadeUp} style={{ paddingTop: '136px' }}>
               <div style={{ position: 'relative' }}>
                 {/* Connector line */}
                 <div style={{
