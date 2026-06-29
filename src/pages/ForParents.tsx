@@ -36,7 +36,7 @@ export default function ForParents() {
         lineHeight: 1.15,
         marginBottom: '20px',
       }}>
-        Coming Soon
+        The Real Question Isn't Whether Your Child Is Trying
       </h1>
       <p style={{
         fontSize: '16px',
