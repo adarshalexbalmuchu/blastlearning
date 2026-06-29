@@ -10,20 +10,24 @@ import { fadeUp, stagger } from '../constants/animations';
 
 const parentFaqs = [
   {
-    q: 'How often will I receive updates about my child\'s progress?',
-    a: 'You\'ll receive a daily digest summarising what your child studied and their retention scores. Weekly detailed reports include subject-wise performance trends. You can also check the parent dashboard anytime for real-time information.',
+    q: 'Will this replace our tutor?',
+    a: 'No. It sits beneath the tutoring, making it stick.',
   },
   {
-    q: 'Can I contact a tutor if my child has specific doubts?',
-    a: 'Yes. Our Tutor Mom team includes qualified subject-matter experts available Monday to Saturday, 9 AM to 9 PM. You can message them through the parent portal, and they\'ll respond within 2 hours during business hours.',
+    q: 'What if my child stops using it?',
+    a: 'The system flags missed sessions and you\'ll receive a notification. The AI automatically adjusts the study plan so your child can catch up without being overwhelmed when they return. Our Tutor Mom team can also reach out directly if a student goes quiet.',
   },
   {
-    q: 'What happens if my child misses study sessions?',
-    a: 'You\'ll receive an alert when your child misses a scheduled session. The AI automatically adjusts the study plan to catch up without overwhelming the student. Our Tutor Mom team can also reach out directly to check in with your child.',
+    q: 'What happens after the 14-day trial?',
+    a: 'You choose a plan that fits your child\'s programme. There is no obligation to continue, no automatic charge, and your child\'s progress data remains accessible to you regardless of what you decide.',
   },
   {
-    q: 'Is there a family discount for multiple children?',
-    a: 'Yes, families enrolling two or more children receive a 20% discount on the second subscription and beyond. Contact us to set up a family account.',
+    q: 'Is this just another screen?',
+    a: 'No. The platform requires active recall — your child has to produce answers, not passively read content. That is the difference between the feeling of learning and actual retention. Most sessions are under 20 minutes.',
+  },
+  {
+    q: 'Can I talk to a person first?',
+    a: 'Yes. Our team is available to answer questions before you start anything. Use the Contact page and someone will respond within 24 hours.',
   },
 ];
 
@@ -43,16 +47,30 @@ const transparencyItems = [
 ];
 
 const programs = [
-  { name: 'CBSE Full Syllabus', subtitle: 'Class 10 board exam preparation', desc: 'Complete NCERT coverage with retention-first pacing across all seven core subjects.', path: '/programs/cbse-plan', accent: '#0FA8DC' },
-  { name: 'Math Genius Maker', subtitle: 'Targeted gap assessment', desc: 'Finds the exact concepts holding your child back in Mathematics and builds a focused practice plan.', path: '/programs/math-genius', accent: '#E8135A' },
-  { name: 'English Mastery', subtitle: 'Grammar, writing, comprehension', desc: 'Structured skill-building for the English paper — the subject most students underestimate.', path: '/programs/english-mastery', accent: '#0FA8DC' },
-  { name: 'SAT Prep Pass', subtitle: 'US college admission', desc: 'Foundation to advanced SAT preparation, suitable from Class 10 onward.', path: '/programs/sat-prep', accent: '#E8135A' },
+  { name: 'CBSE Full Syllabus', situation: 'Boards, any core subject', price: 'Rs 1,299/month', subtitle: 'Class 10 board exam preparation', desc: 'Complete NCERT coverage with retention-first pacing across all seven core subjects.', path: '/programs/cbse-plan', accent: '#E8135A' },
+  { name: 'Math Genius Maker', situation: 'Math gap or JEE/NEET', price: 'Rs 999/month', subtitle: 'Targeted gap assessment', desc: 'Finds the exact concepts holding your child back in Mathematics and builds a focused practice plan.', path: '/programs/math-genius', accent: '#0FA8DC' },
+  { name: 'English Mastery Pass', situation: 'Comprehension or SAT-track', price: 'Rs 999/month', subtitle: 'Grammar, writing, comprehension', desc: 'Structured skill-building for the English paper — the subject most students underestimate.', path: '/programs/english-mastery', accent: '#E8135A' },
+  { name: 'SAT Prep Pass', situation: 'Digital SAT specifically', price: 'Rs 999/month', subtitle: 'US college admission', desc: 'Foundation to advanced SAT preparation, suitable from Class 10 onward.', path: '/programs/sat-prep', accent: '#0FA8DC' },
 ];
 
 const mechanismStats = [
   { value: '80%', label: 'of new information forgotten within 24 hours without structured revision', color: '#E8135A' },
   { value: '91%', label: 'of Blast Learning students improve what they retain within the first month', color: '#0FA8DC' },
   { value: '500+', label: 'peer-reviewed studies behind the spaced repetition methodology', color: '#E8135A' },
+];
+
+const researchStats = [
+  { value: '500+', label: 'peer-reviewed learning studies', color: '#E8135A' },
+  { value: '100,000+', label: 'students taught under this system', color: '#0FA8DC' },
+  { value: 'US & International', label: 'patents protecting the methodology', color: '#E8135A' },
+  { value: 'IBM & McGraw-Hill', label: 'institutional licensing partners', color: '#0FA8DC' },
+];
+
+const researchTimeline = [
+  { label: '25 years', sublabel: 'Lewolt builds the methodology', color: '#E8135A' },
+  { label: 'Licensed', sublabel: 'IBM and McGraw-Hill adopt it', color: '#0FA8DC' },
+  { label: 'Mind Coach', sublabel: 'Co-developed with Dr. Jon Finn', color: '#E8135A' },
+  { label: '2024', sublabel: 'Rebuilt for India', color: '#0FA8DC' },
 ];
 
 export default function ForParents() {
@@ -82,7 +100,7 @@ export default function ForParents() {
             className="grid-cols-2-lg"
           >
             <div>
-              <HeadingMarker text="For Parents" marginBottom="24px" fontSize="12px" accent="#E8135A" />
+              <HeadingMarker text="FOR PARENTS" marginBottom="24px" fontSize="12px" accent="#E8135A" />
               <h1 className="page-hero-title">
                 The Real Question Isn't Whether Your Child Is <AccentText tone="pink">Trying</AccentText>
               </h1>
@@ -111,7 +129,7 @@ export default function ForParents() {
             className="grid-cols-2-lg"
           >
             <motion.div variants={fadeUp}>
-              <HeadingMarker text="The Mechanism" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="THE MECHANISM" marginBottom="16px" fontSize="12px" />
               <h2 className="t-h2" style={{ marginBottom: '28px' }}>
                 Re-Reading Feels Like <AccentText tone="blue">Learning</AccentText>. It <AccentText tone="pink">Isn't</AccentText>.
               </h2>
@@ -151,7 +169,7 @@ export default function ForParents() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
-              <HeadingMarker text="A Tool, Not a Pitch" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="A TOOL, NOT A PITCH" marginBottom="16px" fontSize="12px" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
                 Run the Numbers Before You <AccentText tone="blue">Decide</AccentText> Anything
               </h2>
@@ -180,21 +198,50 @@ export default function ForParents() {
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
-              <HeadingMarker text="Why This Isn't a New Idea" marginBottom="16px" fontSize="12px" />
-              <h2 className="t-h2" style={{ marginBottom: '28px' }}>
+            <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
+              <HeadingMarker text="WHY THIS ISN'T A NEW IDEA" marginBottom="16px" fontSize="12px" />
+              <h2 className="t-h2" style={{ marginBottom: '16px' }}>
                 Twenty-Five Years Before the First <AccentText tone="blue">Indian</AccentText> Student <AccentText tone="pink">Used It</AccentText>
               </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  The methodology behind Blast Learning was not built for the Indian market. It was built over twenty-five years of applied research by Bruce Lewolt — research that was independently validated, licensed by IBM, embedded in McGraw-Hill's curriculum tools, and used by more than 100,000 students across the United States and internationally before it ever reached India.
-                </p>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  In 2024, Ankit Sahu — an electrical engineer with an MBA from the University of San Francisco and a track record of building businesses across India's financial sector — partnered with Lewolt to adapt the platform for CBSE and ICSE students. The result is not a local product borrowing global language. It is the same patented system rebuilt specifically for the curriculum your child is studying today.
-                </p>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  You are not the first parent to ask whether a new edtech product is worth trusting. The answer here is that the product is not new — only the country is.
-                </p>
+            </motion.div>
+
+            {/* Stat cards */}
+            <motion.div variants={fadeUp} style={{ marginBottom: '64px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }} className="grid-cols-2-md grid-cols-4-lg">
+                {researchStats.map((stat) => (
+                  <div key={stat.value} style={{ background: '#FFFFFF', border: '1px solid #ECECF1', borderRadius: '16px', padding: '32px 20px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', boxShadow: '0 1px 4px rgba(28,28,40,0.04)' }}>
+                    <p style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.4rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: stat.color, margin: 0, lineHeight: 1 }}>
+                      {stat.value}
+                    </p>
+                    <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Timeline */}
+            <motion.div variants={fadeUp}>
+              <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', height: '20px', marginBottom: '16px' }}>
+                <div style={{ position: 'absolute', top: '50%', left: '12.5%', right: '12.5%', height: '1.5px', background: '#D1D5DB', transform: 'translateY(-50%)' }} />
+                {researchTimeline.map((point, i) => (
+                  <div key={i} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <div style={{ width: '16px', height: '16px', borderRadius: '50%', background: point.color, position: 'relative', zIndex: 1, flexShrink: 0 }} />
+                  </div>
+                ))}
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
+                {researchTimeline.map((point, i) => (
+                  <div key={i} style={{ textAlign: 'center', padding: '12px 12px 0' }}>
+                    <p style={{ fontWeight: 700, fontSize: '16px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28', margin: '0 0 4px' }}>
+                      {point.label}
+                    </p>
+                    <p style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
+                      {point.sublabel}
+                    </p>
+                  </div>
+                ))}
               </div>
             </motion.div>
           </motion.div>
@@ -206,7 +253,7 @@ export default function ForParents() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
-              <HeadingMarker text="Transparency, Not Reassurance" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="TRANSPARENCY, NOT REASSURANCE" marginBottom="16px" fontSize="12px" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
                 A Human Partner, Visible Progress, <AccentText tone="blue">No Surprises</AccentText>
               </h2>
@@ -244,7 +291,7 @@ export default function ForParents() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
-              <HeadingMarker text="Choosing, Not Browsing" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="CHOOSING, NOT BROWSING" marginBottom="16px" fontSize="12px" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
                 Start From Where Your Child <AccentText tone="pink">Actually Is</AccentText>
               </h2>
@@ -253,24 +300,69 @@ export default function ForParents() {
               </p>
             </motion.div>
             <motion.div variants={fadeUp}>
-              <MobileCarousel desktopGridClass="grid-cols-2-md grid-cols-4-lg">
-                {programs.map((prog) => (
-                  <div key={prog.name} className="card-subtle surface-card" style={{ height: '100%', display: 'flex', flexDirection: 'column', borderTop: `3px solid ${prog.accent}`, padding: '24px' }}>
-                    <p style={{ fontSize: '11px', fontWeight: 600, fontFamily: 'Inter, sans-serif', color: prog.accent, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>
-                      {prog.subtitle}
-                    </p>
-                    <h3 style={{ fontSize: '17px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>
-                      {prog.name}
-                    </h3>
-                    <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', flex: 1, marginBottom: '20px' }}>
-                      {prog.desc}
-                    </p>
-                    <Link to={prog.path} style={{ fontSize: '13px', fontWeight: 600, fontFamily: 'Inter, sans-serif', color: prog.accent, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                      View program →
-                    </Link>
+              {/* Desktop: decision tree layout */}
+              <div className="show-lg-blk">
+                {/* Top node */}
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                  <div style={{ border: '1.5px solid #1C1C28', borderRadius: '12px', padding: '14px 32px', fontFamily: 'Poppins, sans-serif', fontWeight: 600, fontSize: '16px', color: '#1C1C28', background: '#FFFFFF', whiteSpace: 'nowrap' }}>
+                    What's the situation?
                   </div>
-                ))}
-              </MobileCarousel>
+                </div>
+                {/* Stem + horizontal bar + 4 vertical drops */}
+                <div style={{ position: 'relative', height: '72px' }}>
+                  <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '1.5px', height: '36px', background: '#D1D5DB' }} />
+                  <div style={{ position: 'absolute', top: '35px', left: '12.5%', right: '12.5%', height: '1.5px', background: '#D1D5DB' }} />
+                  {[0, 1, 2, 3].map(i => (
+                    <div key={i} style={{ position: 'absolute', top: '35px', left: `${12.5 + i * 25}%`, transform: 'translateX(-50%)', width: '1.5px', height: '37px', background: '#D1D5DB' }} />
+                  ))}
+                </div>
+                {/* 4-col cards */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
+                  {programs.map((prog) => (
+                    <Link key={prog.name} to={prog.path} style={{ textDecoration: 'none' }}>
+                      <div style={{ border: `2px solid ${prog.accent}`, borderRadius: '16px', padding: '28px 20px', textAlign: 'center', background: '#FFFFFF', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', boxSizing: 'border-box' }}>
+                        <p style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0, lineHeight: 1.5 }}>
+                          {prog.situation}
+                        </p>
+                        <h3 style={{ fontSize: '18px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: prog.accent, margin: 0 }}>
+                          {prog.name}
+                        </h3>
+                        <p style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: 0 }}>
+                          {prog.price}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                <p style={{ textAlign: 'center', fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginTop: '28px', marginBottom: 0 }}>
+                  14-day free trial. No credit card. 20% off two or more courses.
+                </p>
+              </div>
+
+              {/* Mobile: simple carousel (hidden on desktop) */}
+              <div className="hide-lg">
+                <MobileCarousel desktopGridClass="grid-cols-2-md">
+                  {programs.map((prog) => (
+                    <div key={prog.name} style={{ border: `2px solid ${prog.accent}`, borderRadius: '16px', padding: '24px', textAlign: 'center', background: '#FFFFFF', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+                      <p style={{ fontSize: '12px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
+                        {prog.situation}
+                      </p>
+                      <h3 style={{ fontSize: '17px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: prog.accent, margin: 0 }}>
+                        {prog.name}
+                      </h3>
+                      <p style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: 0, flex: 1 }}>
+                        {prog.price}
+                      </p>
+                      <Link to={prog.path} style={{ fontSize: '13px', fontWeight: 600, color: prog.accent, textDecoration: 'none' }}>
+                        View program →
+                      </Link>
+                    </div>
+                  ))}
+                </MobileCarousel>
+                <p style={{ textAlign: 'center', fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginTop: '24px', marginBottom: 0 }}>
+                  14-day free trial. No credit card. 20% off two or more courses.
+                </p>
+              </div>
             </motion.div>
           </motion.div>
         </div>
@@ -281,7 +373,7 @@ export default function ForParents() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
-              <HeadingMarker text="Before You Decide" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="BEFORE YOU DECIDE" marginBottom="16px" fontSize="12px" />
               <h2 className="t-h2">
                 The Questions We'd <AccentText tone="blue">Ask Too</AccentText>
               </h2>
@@ -305,7 +397,7 @@ export default function ForParents() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ maxWidth: '640px' }}>
-              <HeadingMarker text="Two Ways Forward" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="TWO WAYS FORWARD" marginBottom="16px" fontSize="12px" />
               <h2 className="t-h2" style={{ marginBottom: '20px' }}>
                 Begin the Trial, or Talk to <AccentText tone="pink">Someone First</AccentText>
               </h2>
