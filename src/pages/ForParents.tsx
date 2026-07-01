@@ -248,7 +248,7 @@ export default function ForParents() {
       <section style={{
         position: 'relative',
         overflow: 'hidden',
-        background: '#FFFFFF',
+        background: 'linear-gradient(135deg, rgba(15, 168, 220, 0.03) 0%, #FFFFFF 30%, rgba(232, 19, 90, 0.06) 80%, rgba(232, 19, 90, 0.04) 100%)',
         paddingTop: '112px',
         paddingBottom: '80px',
         borderBottom: '1px solid #ECECF1',
@@ -256,7 +256,20 @@ export default function ForParents() {
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
+        {/* ── Brand background decorations ── */}
+        {/* Main pink glow — right side, behind rings illustration */}
+        <div aria-hidden="true" style={{ position: 'absolute', right: '-120px', top: '50%', transform: 'translateY(-50%)', width: '850px', height: '850px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(232, 19, 90, 0.15) 0%, rgba(232, 19, 90, 0.06) 45%, transparent 68%)', pointerEvents: 'none' }} />
+        {/* Blue accent blob — top-left corner */}
+        <div aria-hidden="true" style={{ position: 'absolute', left: '-100px', top: '-100px', width: '480px', height: '480px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(15, 168, 220, 0.11) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        {/* Pink stroke ring — right area */}
+        <div aria-hidden="true" style={{ position: 'absolute', right: '8%', top: '12%', width: '220px', height: '220px', borderRadius: '50%', border: '1.5px solid rgba(232, 19, 90, 0.2)', background: 'transparent', pointerEvents: 'none' }} />
+        {/* Blue stroke ring — bottom-left */}
+        <div aria-hidden="true" style={{ position: 'absolute', left: '18%', bottom: '8%', width: '140px', height: '140px', borderRadius: '50%', border: '1.5px solid rgba(15, 168, 220, 0.22)', background: 'transparent', pointerEvents: 'none' }} />
+        {/* Small pink dot accent */}
+        <div aria-hidden="true" style={{ position: 'absolute', left: '42%', top: '18%', width: '10px', height: '10px', borderRadius: '50%', background: 'rgba(232, 19, 90, 0.32)', pointerEvents: 'none' }} />
+        {/* Small blue dot accent */}
+        <div aria-hidden="true" style={{ position: 'absolute', left: '36%', bottom: '20%', width: '7px', height: '7px', borderRadius: '50%', background: 'rgba(15, 168, 220, 0.36)', pointerEvents: 'none' }} />
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           <motion.div
             initial="hidden"
             animate="visible"
@@ -272,11 +285,11 @@ export default function ForParents() {
 
             {/* Retention rings: an "x-ray" of the problem, surface effort down to the core truth */}
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px', width: '100%', maxWidth: '260px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px', width: '100%', maxWidth: '400px' }}>
                 <svg
                   viewBox="0 0 300 300"
                   width="100%"
-                  style={{ maxWidth: '260px', overflow: 'visible' }}
+                  style={{ maxWidth: '340px', overflow: 'visible' }}
                   aria-label="Three nested rings, from outer to inner: Effort (what you see), Method (what's missing), and Retention (what actually matters)"
                 >
                   <motion.circle variants={hv.ring(0)} cx="150" cy="150" r="112.5" fill="none" stroke={retentionLayers[0].color} strokeWidth="35" />
@@ -316,7 +329,7 @@ export default function ForParents() {
 
       {/* ── 2. The Mechanism ────────────────────────────────────── */}
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <HeadingMarker text="THE MECHANISM" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
             <h2 className="t-h2">
@@ -329,7 +342,7 @@ export default function ForParents() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.4 }}
             className="row-sm"
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '48px', maxWidth: '720px', margin: '64px auto 0' }}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '48px', maxWidth: '860px', margin: '64px auto 0' }}
           >
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
               <p style={{ fontSize: '15px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', margin: 0 }}>

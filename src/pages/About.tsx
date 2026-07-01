@@ -131,7 +131,7 @@ export default function About() {
       <section style={{
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)',
+        background: 'linear-gradient(135deg, rgba(232, 19, 90, 0.03) 0%, #FFFFFF 30%, rgba(15, 168, 220, 0.06) 75%, rgba(15, 168, 220, 0.04) 100%)',
         paddingTop: '120px',
         paddingBottom: '100px',
         borderBottom: '1px solid #DAEEF6',
@@ -139,6 +139,19 @@ export default function About() {
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
+        {/* ── Brand background decorations ── */}
+        {/* Main blue glow — right side */}
+        <div aria-hidden="true" style={{ position: 'absolute', right: '-120px', top: '50%', transform: 'translateY(-50%)', width: '850px', height: '850px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(15, 168, 220, 0.13) 0%, rgba(15, 168, 220, 0.05) 45%, transparent 68%)', pointerEvents: 'none' }} />
+        {/* Pink accent blob — top-left corner */}
+        <div aria-hidden="true" style={{ position: 'absolute', left: '-100px', top: '-100px', width: '480px', height: '480px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(232, 19, 90, 0.1) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        {/* Blue stroke ring — right upper */}
+        <div aria-hidden="true" style={{ position: 'absolute', right: '10%', top: '10%', width: '200px', height: '200px', borderRadius: '50%', border: '1.5px solid rgba(15, 168, 220, 0.22)', background: 'transparent', pointerEvents: 'none' }} />
+        {/* Pink stroke ring — left lower */}
+        <div aria-hidden="true" style={{ position: 'absolute', left: '20%', bottom: '12%', width: '130px', height: '130px', borderRadius: '50%', border: '1.5px solid rgba(232, 19, 90, 0.2)', background: 'transparent', pointerEvents: 'none' }} />
+        {/* Small blue dot */}
+        <div aria-hidden="true" style={{ position: 'absolute', left: '44%', top: '20%', width: '9px', height: '9px', borderRadius: '50%', background: 'rgba(15, 168, 220, 0.34)', pointerEvents: 'none' }} />
+        {/* Small pink dot */}
+        <div aria-hidden="true" style={{ position: 'absolute', left: '38%', bottom: '22%', width: '7px', height: '7px', borderRadius: '50%', background: 'rgba(232, 19, 90, 0.3)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           <motion.div
             variants={stagger}
