@@ -1,13 +1,16 @@
 import { useRef, useEffect } from 'react';
 import { useSEO } from '../hooks/useSEO';
-import { motion, useInView, useMotionValue, useTransform, animate as fmAnimate, useReducedMotion } from 'framer-motion';
+import { motion, useInView, useMotionValue, useTransform, animate as fmAnimate, useReducedMotion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import MobileCarousel from '../components/MobileCarousel';
 import { SharedFaqSection } from '../components/MarketingSections';
+import { DashboardMockup, TutorTeamMockup } from '../components/TransparencyMockups';
 import { fadeUp, stagger } from '../constants/animations';
+
+const MotionLink = motion.create(Link);
 
 function StatValue({ raw, color }: { raw: string; color: string }) {
   const ref = useRef<HTMLParagraphElement>(null);
@@ -28,6 +31,46 @@ function StatValue({ raw, color }: { raw: string; color: string }) {
   const style = { fontSize: 'clamp(1.6rem, 2.5vw, 2.4rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color, lineHeight: 1, margin: 0 } as const;
   if (numericTarget !== null) return <motion.p ref={ref} style={style}>{displayVal}</motion.p>;
   return <p ref={ref} style={style}>{raw}</p>;
+}
+
+// Decision-tree scroll animation: box -> stem -> branch -> drops -> cards -> caption.
+// Connectors are animated via CSS transform (scaleX/scaleY + transform-origin) on the
+// existing div-based lines rather than converting to SVG, since they're straight
+// segments and this keeps the corrected layout/markup untouched.
+function decisionTreeVariants(reduced: boolean) {
+  const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
+  const t = (duration: number, delay: number) => (reduced ? { duration: 0.25, delay: 0 } : { duration, delay, ease });
+
+  const cardBaseDelay = 1.13;
+  const cardStagger = 0.09;
+  const cardDuration = 0.3;
+
+  return {
+    node: {
+      hidden: { opacity: 0, y: reduced ? 0 : -10 },
+      visible: { opacity: 1, y: 0, transition: t(0.4, 0) },
+    } as Variants,
+    stem: {
+      hidden: { scaleY: reduced ? 1 : 0 },
+      visible: { scaleY: 1, transition: t(0.25, 0.4) },
+    } as Variants,
+    branch: {
+      hidden: { scaleX: reduced ? 1 : 0 },
+      visible: { scaleX: 1, transition: t(0.3, 0.65) },
+    } as Variants,
+    drops: {
+      hidden: { scaleY: reduced ? 1 : 0 },
+      visible: { scaleY: 1, transition: t(0.18, 0.95) },
+    } as Variants,
+    card: (index: number): Variants => ({
+      hidden: { opacity: 0, y: reduced ? 0 : 14 },
+      visible: { opacity: 1, y: 0, transition: t(cardDuration, cardBaseDelay + index * cardStagger) },
+    }),
+    caption: {
+      hidden: { opacity: 0 },
+      visible: { opacity: 1, transition: t(0.25, cardBaseDelay + 3 * cardStagger + cardDuration) },
+    } as Variants,
+  };
 }
 
 const parentFaqs = [
@@ -59,12 +102,14 @@ const transparencyItems = [
     title: 'The Parent Dashboard',
     body: 'A daily digest of exactly what your child studied, how long they spent, and their retention score by subject. Weekly summaries track progress over time. No interpretation required — the numbers speak plainly.',
     accent: '#0FA8DC',
+    kind: 'dashboard' as const,
   },
   {
     label: 'Who\'s with your child.',
     title: 'The Tutor Mom Team',
     body: 'Real educators, available Monday to Saturday, 9 AM to 9 PM. They monitor session quality, answer subject doubts within two hours, and reach out proactively when a student\'s retention drops below target.',
     accent: '#E8135A',
+    kind: 'tutor' as const,
   },
 ];
 
@@ -101,6 +146,11 @@ export default function ForParents() {
     description: 'Understand how Blast Learning makes your child\'s existing study time more effective — with full visibility, human support, and a methodology built over twenty-five years.',
   });
   const shouldReduce = useReducedMotion();
+
+  const programColumns = programs.length;
+  const programCardGapPx = 20;
+  const programHorizontalInset = `calc((100% - ${(programColumns - 1) * programCardGapPx}px) / ${programColumns * 2})`;
+  const dt = decisionTreeVariants(!!shouldReduce);
 
   return (
     <div style={{ background: '#FFFFFF' }}>
@@ -342,6 +392,7 @@ export default function ForParents() {
                     <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
                       {item.body}
                     </p>
+                    {item.kind === 'dashboard' ? <DashboardMockup accent={item.accent} /> : <TutorTeamMockup accent={item.accent} />}
                   </div>
                 </motion.div>
               ))}
@@ -365,25 +416,50 @@ export default function ForParents() {
             </motion.div>
             <motion.div variants={fadeUp}>
               {/* Desktop: decision tree layout */}
-              <div className="show-lg-blk">
+              <motion.div
+                className="show-lg-blk"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+              >
                 {/* Top node */}
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <div style={{ border: '1.5px solid #1C1C28', borderRadius: '12px', padding: '14px 32px', fontFamily: 'Poppins, sans-serif', fontWeight: 600, fontSize: '16px', color: '#1C1C28', background: '#FFFFFF', whiteSpace: 'nowrap' }}>
+                  <motion.div variants={dt.node} style={{ border: '1.5px solid #1C1C28', borderRadius: '12px', padding: '14px 32px', fontFamily: 'Poppins, sans-serif', fontWeight: 600, fontSize: '16px', color: '#1C1C28', background: '#FFFFFF', whiteSpace: 'nowrap' }}>
                     What's the situation?
-                  </div>
+                  </motion.div>
                 </div>
-                {/* Stem + horizontal bar + 4 vertical drops */}
+                {/* Stem + horizontal bar + vertical drops aligned to card centers */}
                 <div style={{ position: 'relative', height: '72px' }}>
-                  <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: '1.5px', height: '36px', background: '#D1D5DB' }} />
-                  <div style={{ position: 'absolute', top: '35px', left: '12.5%', right: '12.5%', height: '1.5px', background: '#D1D5DB' }} />
-                  {[0, 1, 2, 3].map(i => (
-                    <div key={i} style={{ position: 'absolute', top: '35px', left: `${12.5 + i * 25}%`, transform: 'translateX(-50%)', width: '1.5px', height: '37px', background: '#D1D5DB' }} />
-                  ))}
+                  <motion.div variants={dt.stem} style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', transformOrigin: 'top', width: '1.5px', height: '36px', background: '#D1D5DB' }} />
+                  <motion.div variants={dt.branch} style={{ position: 'absolute', top: '35px', left: programHorizontalInset, right: programHorizontalInset, transformOrigin: 'center', height: '1.5px', background: '#D1D5DB' }} />
+                  <motion.div
+                    variants={dt.drops}
+                    style={{
+                      position: 'absolute',
+                      top: '35px',
+                      left: 0,
+                      right: 0,
+                      transformOrigin: 'top',
+                      display: 'grid',
+                      gridTemplateColumns: `repeat(${programColumns}, minmax(0, 1fr))`,
+                      gap: `${programCardGapPx}px`,
+                    }}
+                  >
+                    {programs.map((prog) => (
+                      <div key={`${prog.name}-connector`} style={{ width: '1.5px', height: '37px', background: '#D1D5DB', margin: '0 auto' }} />
+                    ))}
+                  </motion.div>
                 </div>
                 {/* 4-col cards */}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
-                  {programs.map((prog) => (
-                    <Link key={prog.name} to={prog.path} style={{ textDecoration: 'none' }}>
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: `repeat(${programColumns}, minmax(0, 1fr))`,
+                    gap: `${programCardGapPx}px`,
+                  }}
+                >
+                  {programs.map((prog, i) => (
+                    <MotionLink key={prog.name} to={prog.path} variants={dt.card(i)} style={{ textDecoration: 'none' }}>
                       <div style={{ border: `2px solid ${prog.accent}`, borderRadius: '16px', padding: '28px 20px', textAlign: 'center', background: '#FFFFFF', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', boxSizing: 'border-box' }}>
                         <p style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0, lineHeight: 1.5 }}>
                           {prog.situation}
@@ -395,13 +471,13 @@ export default function ForParents() {
                           {prog.price}
                         </p>
                       </div>
-                    </Link>
+                    </MotionLink>
                   ))}
                 </div>
-                <p style={{ textAlign: 'center', fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginTop: '28px', marginBottom: 0 }}>
+                <motion.p variants={dt.caption} style={{ textAlign: 'center', fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginTop: '28px', marginBottom: 0 }}>
                   14-day free trial. No credit card. 20% off two or more courses.
-                </p>
-              </div>
+                </motion.p>
+              </motion.div>
 
               {/* Mobile: simple carousel (hidden on desktop) */}
               <div className="hide-lg">
