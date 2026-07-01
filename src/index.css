@@ -385,6 +385,22 @@ p, li {
   .row-sm { flex-direction: row; }
 }
 
+/* Comparison visual (Parents page "Mechanism" section): a thin divider that
+   flips orientation in step with .row-sm — horizontal while stacked on
+   mobile, vertical once the two panels sit side by side. */
+.comparison-divider {
+  width: 100%;
+  height: 1px;
+  background: #ECECF1;
+}
+
+@media (min-width: 640px) {
+  .comparison-divider {
+    width: 1px;
+    height: 160px;
+  }
+}
+
 @media (min-width: 768px) {
   .hide-md { display: none !important; }
   .footer-root { padding-bottom: 0 !important; }

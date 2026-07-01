@@ -1,11 +1,60 @@
 import { useSEO } from '../hooks/useSEO';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Book, Calculator, Type, Target, Brain } from 'lucide-react';
 import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection } from '../components/MarketingSections';
 import { fadeUp, stagger } from '../constants/animations';
+
+// Converging diagram (reverse of the Parents-page decision tree): four program
+// cards fade in, their connector lines draw inward, then the central node
+// pulses as they "land". Mirrors decisionTreeVariants() in ForParents.tsx.
+function recallDiagramVariants(reduced: boolean) {
+  const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
+  const t = (duration: number, delay: number) => (reduced ? { duration: 0.25, delay: 0 } : { duration, delay, ease });
+
+  const cardStagger = 0.09;
+  const cardDuration = 0.3;
+  const lineDelay = 3 * cardStagger + cardDuration - 0.05;
+  const lineDuration = 0.35;
+  const nodeDelay = lineDelay + lineDuration - 0.05;
+  const nodeDuration = 0.4;
+  const captionDelay = nodeDelay + nodeDuration;
+
+  return {
+    card: (index: number): Variants => ({
+      hidden: { opacity: 0, y: reduced ? 0 : 16 },
+      visible: { opacity: 1, y: 0, transition: t(cardDuration, index * cardStagger) },
+    }),
+    line: {
+      hidden: { pathLength: reduced ? 1 : 0, opacity: reduced ? 1 : 0 },
+      visible: { pathLength: 1, opacity: 1, transition: t(lineDuration, lineDelay) },
+    } as Variants,
+    node: {
+      hidden: { scale: reduced ? 1 : 0.8, opacity: 0 },
+      visible: {
+        scale: reduced ? 1 : [0.8, 1.05, 1],
+        opacity: 1,
+        transition: reduced ? { duration: 0.25, delay: 0 } : { duration: nodeDuration, delay: nodeDelay, ease, times: [0, 0.6, 1] },
+      },
+    } as Variants,
+    caption: {
+      hidden: { opacity: 0 },
+      visible: { opacity: 1, transition: t(0.3, captionDelay) },
+    } as Variants,
+  };
+}
+
+const recallPrograms = [
+  { name: 'CBSE Full Syllabus', Icon: Book, accent: '#E8135A' },
+  { name: 'Math Genius Maker', Icon: Calculator, accent: '#0FA8DC' },
+  { name: 'English Mastery Pass', Icon: Type, accent: '#E8135A' },
+  { name: 'SAT Prep Pass', Icon: Target, accent: '#0FA8DC' },
+];
+
+const recallCardCenters = [12.5, 37.5, 62.5, 87.5];
 
 const supportCards = [
   {
@@ -46,6 +95,8 @@ export default function ForStudents() {
     title: 'For Students | Blast Learning India',
     description: 'Blast Learning trains you to remember what you study — not just recognise it. Built on 25 years of research. Free 14-day trial.',
   });
+  const shouldReduce = useReducedMotion();
+  const rd = recallDiagramVariants(!!shouldReduce);
 
   return (
     <div style={{ background: '#FFFFFF' }}>
@@ -69,10 +120,10 @@ export default function ForStudents() {
           >
             <div>
               <HeadingMarker text="FOR STUDENTS" marginBottom="24px" fontSize="12px" accent="#0FA8DC" />
-              <h1 className="page-hero-title" style={{ color: '#E8135A' }}>
+              <h1 className="page-hero-title">
                 You Studied for Six Hours. The Formula Still Didn't Show Up.
               </h1>
-              <p style={{ fontSize: '17px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginTop: '24px' }}>
+              <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginTop: '24px' }}>
                 That's a method problem, not a you problem.
               </p>
             </div>
@@ -105,10 +156,10 @@ export default function ForStudents() {
                 Reading It Again Isn't the <AccentText tone="pink">Same as Knowing It</AccentText>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                   Hermann Ebbinghaus documented the forgetting curve in 1885: without active reinforcement, your brain loses up to 80% of new information within 24 hours. When you re-read your notes the day before an exam, your brain recognises the content. But recognition is not recall. In an exam hall, recognition does nothing.
                 </p>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                   Blast Learning uses spaced repetition and active recall — two techniques backed by over 500 peer-reviewed studies. Each session is timed to hit precisely when your memory is about to fade. You are not just revising. You are training your brain to retrieve information under pressure.
                 </p>
               </div>
@@ -213,14 +264,14 @@ export default function ForStudents() {
             >
               {supportCards.map((item) => (
                 <motion.div key={item.label} variants={fadeUp}>
-                  <div style={{ height: '100%', background: '#FFFFFF', borderRadius: '20px', border: '1px solid #ECECF1', padding: '32px', borderTop: `3px solid ${item.accent}` }}>
+                  <div style={{ height: '100%', background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', padding: '32px', borderTop: `3px solid ${item.accent}` }}>
                     <p style={{ fontSize: '11px', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: item.accent, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '12px' }}>
                       {item.label}
                     </p>
                     <h3 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '16px' }}>
                       {item.title}
                     </h3>
-                    <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
+                    <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
                       {item.body}
                     </p>
                   </div>
@@ -238,11 +289,11 @@ export default function ForStudents() {
             <motion.div variants={fadeUp} style={{ maxWidth: '720px', marginBottom: '40px' }}>
               <HeadingMarker text="STUCK AT 11PM" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <h2 className="t-h2">
-                Get Unstuck Without Waiting for <AccentText tone="blue">Tomorrow's Class</AccentText>
+                Get Unstuck Without Waiting for Tomorrow's Class
               </h2>
             </motion.div>
             <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
-              <div style={{ background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: '20px', padding: '24px 28px 36px' }}>
+              <div style={{ background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: '16px', padding: '24px 28px 36px' }}>
                 <p style={{ fontWeight: 700, fontSize: '15px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '24px' }}>
                   AI Tutor
                 </p>
@@ -279,10 +330,10 @@ export default function ForStudents() {
                 Knowing It Isn't the Same as <AccentText tone="pink">Staying Calm With It</AccentText>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                   Exam anxiety is not a personality trait. It is what happens when your brain tries to recall something it has only ever recognised. Under pressure, recognition fails. Recall — trained through active retrieval — holds.
                 </p>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                   Blast Learning builds retrieval practice into every session. By the time you sit your exam, your brain has practised producing the answer — not just seeing it. That is the difference between knowing a formula and being able to write it down in a hall where nothing feels familiar.
                 </p>
               </div>
@@ -301,22 +352,121 @@ export default function ForStudents() {
                 The Skill Isn't the Subject. It's the <AccentText tone="blue">Recall</AccentText>.
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                   Spaced repetition and active recall are not CBSE techniques. They are memory techniques. What you learn here works whether you are revising for boards, preparing for JEE, studying for your first job interview, or trying to hold onto a language you are learning at twenty-three.
                 </p>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                   Most students come to Blast Learning for a grade. They leave with a method. That is what IBM, McGraw-Hill, and 100,000 students before you paid for.
                 </p>
               </div>
             </motion.div>
           </motion.div>
+
+          {/* Converging diagram: four programs, one underlying skill */}
+          <motion.div
+            className="show-lg-blk"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            style={{ maxWidth: '820px', margin: '64px auto 0' }}
+          >
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: `repeat(${recallPrograms.length}, minmax(0, 1fr))`,
+                gap: '20px',
+              }}
+            >
+              {recallPrograms.map((prog, i) => (
+                <motion.div key={prog.name} variants={rd.card(i)}>
+                  <div style={{ border: `2px solid ${prog.accent}`, borderRadius: '16px', padding: '22px 14px', textAlign: 'center', background: '#FFFFFF', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', boxSizing: 'border-box' }}>
+                    <prog.Icon size={20} color={prog.accent} strokeWidth={2} aria-hidden="true" />
+                    <h3 style={{ fontSize: '13px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: prog.accent, margin: 0, lineHeight: 1.35 }}>
+                      {prog.name}
+                    </h3>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div style={{ position: 'relative', height: '80px' }}>
+              <svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0, overflow: 'visible' }} aria-hidden="true">
+                {recallPrograms.map((prog, i) => (
+                  <motion.line
+                    key={`${prog.name}-line`}
+                    x1={`${recallCardCenters[i]}%`}
+                    y1="0"
+                    x2="50%"
+                    y2="100%"
+                    stroke={prog.accent}
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    variants={rd.line}
+                  />
+                ))}
+              </svg>
+              <motion.div
+                variants={rd.node}
+                style={{
+                  position: 'absolute',
+                  left: 'calc(50% - 32px)',
+                  top: '48px',
+                  width: '64px',
+                  height: '64px',
+                  borderRadius: '50%',
+                  background: '#E8135A',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  boxShadow: '0 12px 28px rgba(232, 19, 90, 0.35)',
+                }}
+              >
+                <Brain size={26} color="#FFFFFF" strokeWidth={2} aria-hidden="true" />
+              </motion.div>
+            </div>
+
+            <motion.p variants={rd.caption} style={{ textAlign: 'center', fontSize: '14px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginTop: '48px', marginBottom: '4px' }}>
+              Active Recall
+            </motion.p>
+            <motion.p variants={rd.caption} style={{ textAlign: 'center', fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
+              One skill. Every subject.
+            </motion.p>
+          </motion.div>
+
+          {/* Mobile: simplified stacked fallback (no diagonal converge) */}
+          <div className="hide-lg" style={{ marginTop: '48px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '14px', maxWidth: '360px', margin: '0 auto' }}>
+              {recallPrograms.map((prog) => (
+                <div key={prog.name} style={{ border: `2px solid ${prog.accent}`, borderRadius: '16px', padding: '18px 10px', textAlign: 'center', background: '#FFFFFF', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                  <prog.Icon size={18} color={prog.accent} strokeWidth={2} aria-hidden="true" />
+                  <h3 style={{ fontSize: '12px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: prog.accent, margin: 0, lineHeight: 1.3 }}>
+                    {prog.name}
+                  </h3>
+                </div>
+              ))}
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div style={{ width: '1.5px', height: '28px', background: '#D1D5DB' }} />
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#E8135A', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 12px 28px rgba(232, 19, 90, 0.35)' }}>
+                <Brain size={26} color="#FFFFFF" strokeWidth={2} aria-hidden="true" />
+              </div>
+            </div>
+            <p style={{ textAlign: 'center', fontSize: '14px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginTop: '16px', marginBottom: '4px' }}>
+              Active Recall
+            </p>
+            <p style={{ textAlign: 'center', fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
+              One skill. Every subject.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* ── 8. FAQ ──────────────────────────────────────────────── */}
       <SharedFaqSection
         eyebrow="BEFORE YOU START"
-        title={<>Quick Answers for <AccentText tone="blue">Quick Doubts</AccentText></>}
+        title={<>Quick Answers for Quick Doubts</>}
         subtitle="If your question isn't here, the full FAQ page covers every edge case — billing, syllabus details, and technical requirements."
         items={studentFaqs}
         linkLabel="View all FAQs"
@@ -324,7 +474,7 @@ export default function ForStudents() {
       />
 
       {/* ── 9. CTA ──────────────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 60%, #FFFFFF 100%)', borderTop: '1px solid #DAEEF6' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF', borderTop: '1px solid #ECECF1' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}

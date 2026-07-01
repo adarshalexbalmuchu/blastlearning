@@ -33,6 +33,101 @@ function StatValue({ raw, color }: { raw: string; color: string }) {
   return <p ref={ref} style={style}>{raw}</p>;
 }
 
+// Hero "retention rings" animation: loads immediately (not scroll-triggered,
+// since it's above the fold). Rings reveal outer -> inner ~180ms apart, the
+// core does the same scale-pulse used for the recall diagram on /for-students,
+// and each legend line lands right after its matching ring.
+function heroVariants(reduced: boolean) {
+  const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
+  const ringStagger = 0.18;
+  const ringDuration = 0.35;
+  const coreDelay = 2 * ringStagger;
+  const coreDuration = 0.4;
+  const ringEnds = [ringDuration, ringStagger + ringDuration, coreDelay + coreDuration];
+
+  return {
+    text: {
+      hidden: { opacity: 0, y: reduced ? 0 : 16 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
+    } as Variants,
+    ring: (index: number): Variants => ({
+      hidden: { opacity: 0, scale: reduced ? 1 : 0.85 },
+      visible: {
+        opacity: 1,
+        scale: 1,
+        transition: reduced ? { duration: 0.25, delay: 0 } : { duration: ringDuration, delay: index * ringStagger, ease },
+      },
+    }),
+    core: {
+      hidden: { opacity: 0, scale: reduced ? 1 : 0.8 },
+      visible: {
+        opacity: 1,
+        scale: reduced ? 1 : [0.8, 1.05, 1],
+        transition: reduced ? { duration: 0.25, delay: 0 } : { duration: coreDuration, delay: coreDelay, ease, times: [0, 0.6, 1] },
+      },
+    } as Variants,
+    legend: (index: number): Variants => ({
+      hidden: { opacity: 0, y: reduced ? 0 : 8 },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: reduced ? { duration: 0.25, delay: 0 } : { duration: 0.25, delay: ringEnds[index], ease },
+      },
+    }),
+  };
+}
+
+const retentionLayers = [
+  { key: 'effort', label: 'Effort', desc: 'what you see', color: '#FAD9E3' },
+  { key: 'method', label: 'Method', desc: 'what\'s missing', color: '#F08CAD' },
+  { key: 'retention', label: 'Retention', desc: 'what actually matters', color: '#E8135A' },
+];
+
+// "Re-reading vs. retrieval practice" comparison, scroll-triggered once. The left
+// rings draw in outer -> inner ~150ms apart (multi-step, effortful); the right
+// solid circle lands in one clean 300ms motion (single, decisive) — the pacing
+// contrast is deliberate and mirrors what the shapes already argue visually.
+function comparisonVariants(reduced: boolean) {
+  const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
+  const ringStagger = 0.15;
+  const ringDuration = 0.32;
+  const solidDuration = 0.3;
+  const leftCaptionDelay = 2 * ringStagger + ringDuration;
+
+  return {
+    ring: (index: number): Variants => ({
+      hidden: { opacity: 0, scale: reduced ? 1 : 0.85 },
+      visible: {
+        opacity: 1,
+        scale: 1,
+        transition: reduced ? { duration: 0.25, delay: 0 } : { duration: ringDuration, delay: index * ringStagger, ease },
+      },
+    }),
+    solid: {
+      hidden: { opacity: 0, scale: reduced ? 1 : 0.85 },
+      visible: {
+        opacity: 1,
+        scale: 1,
+        transition: reduced ? { duration: 0.25, delay: 0 } : { duration: solidDuration, delay: 0, ease },
+      },
+    } as Variants,
+    captionLeft: {
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: reduced ? { duration: 0.25, delay: 0 } : { duration: 0.25, delay: leftCaptionDelay, ease },
+      },
+    } as Variants,
+    captionRight: {
+      hidden: { opacity: 0 },
+      visible: {
+        opacity: 1,
+        transition: reduced ? { duration: 0.25, delay: 0 } : { duration: 0.25, delay: solidDuration, ease },
+      },
+    } as Variants,
+  };
+}
+
 // Decision-tree scroll animation: box -> stem -> branch -> drops -> cards -> caption.
 // Connectors are animated via CSS transform (scaleX/scaleY + transform-origin) on the
 // existing div-based lines rather than converting to SVG, since they're straight
@@ -146,6 +241,8 @@ export default function ForParents() {
     description: 'Understand how Blast Learning makes your child\'s existing study time more effective — with full visibility, human support, and a methodology built over twenty-five years.',
   });
   const shouldReduce = useReducedMotion();
+  const hv = heroVariants(!!shouldReduce);
+  const cv = comparisonVariants(!!shouldReduce);
 
   const programColumns = programs.length;
   const programCardGapPx = 20;
@@ -159,34 +256,69 @@ export default function ForParents() {
       <section style={{
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(170deg, #FCE4EC 0%, #FFF5F8 40%, #FFFFFF 100%)',
-        paddingTop: '120px',
-        paddingBottom: '100px',
-        borderBottom: '1px solid #F9DAEA',
+        background: '#FFFFFF',
+        paddingTop: '112px',
+        paddingBottom: '80px',
+        borderBottom: '1px solid #ECECF1',
       }}>
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
-          <div
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'start' }}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '56px', alignItems: 'center' }}
             className="grid-cols-2-lg"
           >
-            <div>
+            <motion.div variants={hv.text}>
               <HeadingMarker text="FOR PARENTS" marginBottom="24px" fontSize="12px" accent="#E8135A" />
               <h1 className="page-hero-title">
                 The Real Question Isn't Whether Your Child Is <AccentText tone="pink">Trying</AccentText>
               </h1>
+            </motion.div>
+
+            {/* Retention rings: an "x-ray" of the problem, surface effort down to the core truth */}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '28px', width: '100%', maxWidth: '260px' }}>
+                <svg
+                  viewBox="0 0 300 300"
+                  width="100%"
+                  style={{ maxWidth: '260px', overflow: 'visible' }}
+                  aria-label="Three nested rings, from outer to inner: Effort (what you see), Method (what's missing), and Retention (what actually matters)"
+                >
+                  <motion.circle variants={hv.ring(0)} cx="150" cy="150" r="112.5" fill="none" stroke={retentionLayers[0].color} strokeWidth="35" />
+                  <motion.circle variants={hv.ring(0)} cx="150" cy="150" r="130" fill="none" stroke="rgba(240, 140, 173, 0.35)" strokeWidth="1.5" />
+                  <motion.circle variants={hv.ring(1)} cx="150" cy="150" r="75" fill="none" stroke={retentionLayers[1].color} strokeWidth="40" />
+                  <motion.circle variants={hv.core} cx="150" cy="150" r="55" fill={retentionLayers[2].color} />
+                  <motion.text
+                    variants={hv.core}
+                    x="150"
+                    y="150"
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fill="#FFFFFF"
+                    fontFamily="Poppins, sans-serif"
+                    fontWeight={600}
+                    fontSize="16"
+                  >
+                    Retention
+                  </motion.text>
+                </svg>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
+                  {retentionLayers.map((layer, i) => (
+                    <motion.div key={layer.key} variants={hv.legend(i)} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                      <span style={{ width: '11px', height: '11px', borderRadius: '50%', background: layer.color, flexShrink: 0, marginTop: '4px', border: i === 0 ? '1px solid #F3C6D4' : 'none' }} />
+                      <p style={{ margin: 0, fontSize: '14px', lineHeight: 1.5, fontFamily: 'Inter, sans-serif', color: '#5A5A6E' }}>
+                        <strong style={{ fontFamily: 'Poppins, sans-serif', color: '#1C1C28', fontWeight: 600 }}>{layer.label}</strong> — {layer.desc}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div>
-              <p className="page-hero-copy" style={{ marginBottom: '16px' }}>
-                Most children who struggle academically are trying. The problem is not effort — it is that nobody ever taught them how memory actually works, and every hour of coaching they attend fades faster than anyone admits.
-              </p>
-              <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                Blast Learning does not add more content to your child's day. It makes everything they are already learning stay. That distinction is why parents who try it stop asking whether it is worth the cost.
-              </p>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -204,16 +336,16 @@ export default function ForParents() {
             <motion.div variants={fadeUp}>
               <HeadingMarker text="THE MECHANISM" marginBottom="16px" fontSize="12px" />
               <h2 className="t-h2" style={{ marginBottom: '28px' }}>
-                Re-Reading Feels Like <AccentText tone="blue">Learning</AccentText>. It <AccentText tone="pink">Isn't</AccentText>.
+                Re-Reading Feels Like Learning. It <AccentText tone="pink">Isn't</AccentText>.
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                   Hermann Ebbinghaus documented the forgetting curve in 1885: without active reinforcement, students lose up to 80% of new information within 24 hours. Re-reading the same notes gives the feeling of familiarity, which the brain misinterprets as memory. It is not. Familiarity and recall are different cognitive processes, and only one of them works in an exam hall.
                 </p>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                   Blast Learning's Metacognition Engine applies spaced repetition and active recall at precisely the intervals where memory loss is about to occur. Each session is not revision for its own sake — it is a timed intervention that moves information from short-term exposure to long-term storage. The science behind this has been peer-reviewed in over 500 studies.
                 </p>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                   This is not a new technique dressed up in software. It is what IBM paid to license, what McGraw-Hill embedded into their curriculum tools, and what 100,000 students across multiple countries have studied with before a single Indian student used it.
                 </p>
               </div>
@@ -234,6 +366,43 @@ export default function ForParents() {
               </div>
             </motion.div>
           </motion.div>
+
+          {/* Re-reading vs. retrieval practice: a quiet visual argument, not an infographic */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.4 }}
+            className="row-sm"
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '48px', maxWidth: '720px', margin: '80px auto 0' }}
+          >
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+              <p style={{ fontSize: '15px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', margin: 0 }}>
+                Re-reading
+              </p>
+              <svg viewBox="0 0 160 160" width="160" height="160" aria-label="Three overlapping, hazy rings representing re-reading">
+                <motion.circle variants={cv.ring(0)} cx="80" cy="80" r="60.5" fill="none" stroke="#FAD9E3" strokeWidth="19" />
+                <motion.circle variants={cv.ring(1)} cx="80" cy="80" r="40.5" fill="none" stroke="#F08CAD" strokeWidth="21" />
+                <motion.circle variants={cv.ring(2)} cx="80" cy="80" r="30" fill="#E8135A" />
+              </svg>
+              <motion.p variants={cv.captionLeft} style={{ fontSize: '14px', fontFamily: 'Inter, sans-serif', color: '#5A5A6E', margin: 0 }}>
+                Feels productive.
+              </motion.p>
+            </div>
+
+            <div className="comparison-divider" aria-hidden="true" />
+
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+              <p style={{ fontSize: '15px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', margin: 0 }}>
+                Retrieval practice
+              </p>
+              <div style={{ width: '160px', height: '160px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <motion.div variants={cv.solid} style={{ width: '60px', height: '60px', borderRadius: '50%', background: '#0FA8DC' }} />
+              </div>
+              <motion.p variants={cv.captionRight} style={{ fontSize: '14px', fontFamily: 'Inter, sans-serif', color: '#5A5A6E', margin: 0 }}>
+                Builds memory.
+              </motion.p>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -244,7 +413,7 @@ export default function ForParents() {
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
               <HeadingMarker text="A TOOL, NOT A PITCH" marginBottom="16px" fontSize="12px" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
-                Run the Numbers Before You <AccentText tone="blue">Decide</AccentText> Anything
+                Run the Numbers Before You Decide Anything
               </h2>
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px' }}>
                 Enter what you currently spend on coaching. The calculator shows you exactly what percentage of that investment is retained by your child after 30 days — and what Blast Learning adds to that figure. No sales language. One comparison line.
@@ -274,7 +443,7 @@ export default function ForParents() {
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
               <HeadingMarker text="WHY THIS ISN'T A NEW IDEA" marginBottom="16px" fontSize="12px" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
-                Twenty-Five Years Before the First <AccentText tone="blue">Indian</AccentText> Student <AccentText tone="pink">Used It</AccentText>
+                Twenty-Five Years Before the First Indian Student <AccentText tone="pink">Used It</AccentText>
               </h2>
             </motion.div>
 
@@ -369,7 +538,7 @@ export default function ForParents() {
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
               <HeadingMarker text="TRANSPARENCY, NOT REASSURANCE" marginBottom="16px" fontSize="12px" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
-                A Human Partner, Visible Progress, <AccentText tone="blue">No Surprises</AccentText>
+                A Human Partner, Visible Progress, No Surprises
               </h2>
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px' }}>
                 Most edtech platforms ask parents to trust a dashboard. Blast Learning gives you a dashboard and a person — so that what you see is always accompanied by someone who can explain it.
@@ -382,14 +551,14 @@ export default function ForParents() {
             >
               {transparencyItems.map((item) => (
                 <motion.div key={item.label} variants={fadeUp}>
-                  <div style={{ height: '100%', background: '#F9FAFB', borderRadius: '20px', border: '1px solid #ECECF1', padding: '32px', borderTop: `3px solid ${item.accent}` }}>
+                  <div style={{ height: '100%', background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', padding: '32px', borderTop: `3px solid ${item.accent}` }}>
                     <p style={{ fontSize: '11px', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: item.accent, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '12px' }}>
                       {item.label}
                     </p>
                     <h3 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '16px' }}>
                       {item.title}
                     </h3>
-                    <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
+                    <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
                       {item.body}
                     </p>
                     {item.kind === 'dashboard' ? <DashboardMockup accent={item.accent} /> : <TutorTeamMockup accent={item.accent} />}
@@ -511,7 +680,7 @@ export default function ForParents() {
       {/* ── 7. FAQ ──────────────────────────────────────────────── */}
       <SharedFaqSection
         eyebrow="BEFORE YOU DECIDE"
-        title={<>The Questions We'd <AccentText tone="blue">Ask Too</AccentText></>}
+        title={<>The Questions We'd Ask Too</>}
         subtitle="If your question isn't here, the full FAQ page covers every edge case — billing, syllabus details, and technical requirements."
         items={parentFaqs}
         linkLabel="View all FAQs"
@@ -519,7 +688,7 @@ export default function ForParents() {
       />
 
       {/* ── 8. CTA ──────────────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 60%, #FFFFFF 100%)', borderTop: '1px solid #DAEEF6' }}>
+      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF', borderTop: '1px solid #ECECF1' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
