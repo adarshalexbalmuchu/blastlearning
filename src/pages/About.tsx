@@ -43,6 +43,7 @@ const leaders = [
     initials: 'AT',
     accent: '#E8135A',
     image: arunImg,
+    photoScale: 0.74,
     bio: 'A professor with decades inside Indian education and innovation circles, Tyagi manages the partnerships that extend Blast Learning India\'s reach across CBSE, ICSE, and NEP 2020-aligned institutions.',
   },
   {
@@ -51,6 +52,7 @@ const leaders = [
     initials: 'RT',
     accent: '#0FA8DC',
     image: reenaImg,
+    photoScale: 0.74,
     bio: "Reena Prakash Tyagi founded SEAS Global Institute, recognised as India's first fully virtual school, before joining Blast Learning India to oversee how content gets built and maintained.",
   },
   {
@@ -467,20 +469,11 @@ export default function About() {
                 style={{ overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}
               >
                 {/* Image slot */}
-                <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#F3F4F6', overflow: 'hidden', flexShrink: 0 }}>
-                  {/* Triangle corner accent */}
-                  <div style={{
-                    position: 'absolute', top: 0, right: 0,
-                    width: 0, height: 0,
-                    borderStyle: 'solid',
-                    borderWidth: '0 44px 44px 0',
-                    borderColor: `transparent ${leader.accent} transparent transparent`,
-                    zIndex: 1,
-                  }} />
+                <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#FFFFFF', overflow: 'hidden', flexShrink: 0 }}>
                   <img
                     src={leader.image}
                     alt={leader.name}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block', transform: `scale(${(leader as { photoScale?: number }).photoScale ?? 0.9})` }}
                   />
                 </div>
 

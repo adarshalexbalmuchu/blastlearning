@@ -582,7 +582,7 @@ export default function ForStudents() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'center' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'flex-start' }}
             className="grid-cols-2-lg"
           >
             {/* Left: heading */}
