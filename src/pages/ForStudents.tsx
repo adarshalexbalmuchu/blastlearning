@@ -355,95 +355,123 @@ export default function ForStudents() {
               </h2>
             </motion.div>
 
-            {/* Two-curve Ebbinghaus chart — full-width focal illustration */}
-            <motion.div variants={fadeUp} style={{ maxWidth: '880px', margin: '0 auto' }}>
-              <svg
-                ref={chartRef}
-                viewBox="0 0 820 370"
-                width="100%"
-                style={{ fontFamily: 'Inter, sans-serif', overflow: 'visible', display: 'block' }}
-                aria-label="Two memory curves compared: spaced retrieval (pink, jagged but recovering with each dip shallower) versus re-reading only (gray dashed, steady decline with no recovery)"
-              >
-                {/* Axis labels — "memory strength" top-left, "time" bottom-right corner well clear of curves */}
-                <text x="10" y="20" fontSize="11" fill="#9CA3AF">memory strength</text>
-                <text x="640" y="362" fontSize="11" fill="#9CA3AF">time</text>
-
-                {/* Legend — sits well above chart area (curves start at y≈125, legend bottom at y≈72) */}
-                <line x1="10" y1="42" x2="46" y2="42" stroke="#E8135A" strokeWidth="2.5" strokeLinecap="round" />
-                <text x="52" y="46" fontSize="11" fill="#5A5A6E">spaced retrieval</text>
-                <line x1="10" y1="62" x2="46" y2="62" stroke="#9CA3AF" strokeWidth="2" strokeDasharray="5 3" strokeLinecap="round" />
-                <text x="52" y="66" fontSize="11" fill="#5A5A6E">re-reading only</text>
-
-                {/* ── Both clipPath reveals live here: proven mechanism for SVG draw animations ── */}
-                <defs>
-                  {/* Pink curve reveal: left-to-right, duration 0.56s, no delay */}
-                  <clipPath id="pink-reveal-clip">
-                    <motion.rect
-                      x="24" y="0" height="385"
-                      animate={{ width: (shouldReduce || chartInView) ? 530 : 0 }}
-                      transition={shouldReduce ? { duration: 0 } : { duration: 0.56, ease: 'easeInOut' }}
-                    />
-                  </clipPath>
-                  {/* Gray curve reveal: left-to-right, 0.42s at delay 0.72s */}
-                  <clipPath id="gray-reveal-clip">
-                    <motion.rect
-                      x="24" y="0" height="385"
-                      animate={{ width: (shouldReduce || chartInView) ? 572 : 0 }}
-                      transition={shouldReduce ? { duration: 0 } : { duration: 0.42, delay: 0.72, ease: 'easeInOut' }}
-                    />
-                  </clipPath>
-                </defs>
-                {/* Curve shifted +70 from original: 55→125, 132→202, 222→292, 263→333 */}
-                <path
-                  d="M25,125 C240,202 430,292 592,333"
-                  fill="none"
-                  stroke="#9CA3AF"
-                  strokeWidth="2"
-                  strokeDasharray="6 4"
-                  strokeLinecap="round"
-                  clipPath="url(#gray-reveal-clip)"
-                />
-
-                {/* Pink retrieval curve — clipPath reveal (reliable in SVG; no pathLength conflict) */}
-                <path
-                  d="M25,125 L135,310 L215,158 L305,275 L375,175 L445,248 L515,168 L545,195"
-                  fill="none"
-                  stroke="#E8135A"
-                  strokeWidth="2.5"
-                  strokeLinejoin="round"
-                  strokeLinecap="round"
-                  clipPath="url(#pink-reveal-clip)"
-                />
-
-                {/* ── Blue retrieval dots: fade in as pink curve reaches each peak ── */}
-                {([
-                  { cx: 215, cy: 158, delay: 0.20 },
-                  { cx: 375, cy: 175, delay: 0.38 },
-                  { cx: 515, cy: 168, delay: 0.52 },
-                ] as { cx: number; cy: number; delay: number }[]).map(({ cx, cy, delay }) => (
-                  <motion.circle
-                    key={cx}
-                    cx={cx} cy={cy} r="8"
-                    fill="#0FA8DC"
-                    animate={{ opacity: (shouldReduce || chartInView) ? 1 : 0 }}
-                    transition={shouldReduce ? { duration: 0 } : { duration: 0.25, delay }}
-                  />
-                ))}
-
-                {/* ── Annotations (useInView-driven, no whileInView on SVG children) ── */}
-                <motion.g
-                  animate={{ opacity: (shouldReduce || chartInView) ? 1 : 0 }}
-                  transition={shouldReduce ? { duration: 0 } : { duration: 0.3, delay: 1.18 }}
+            {/* Two-curve Ebbinghaus chart — card-wrapped, captions in HTML for correct responsive spacing */}
+            <motion.div variants={fadeUp} style={{ maxWidth: '860px', margin: '0 auto' }}>
+              <div style={{
+                background: '#FFFFFF',
+                border: '1px solid #E5E7EB',
+                borderRadius: '16px',
+                boxShadow: '0 2px 8px rgba(28,28,40,0.04)',
+                padding: '28px 28px 24px',
+                position: 'relative',
+              }}>
+                {/* ── 91% stat badge — fades/scales in as final payoff beat ── */}
+                <motion.div
+                  animate={{ opacity: (!!shouldReduce || chartInView) ? 1 : 0, scale: (!!shouldReduce || chartInView) ? 1 : 0.88 }}
+                  transition={!!shouldReduce ? { duration: 0 } : { duration: 0.4, delay: 1.65 }}
+                  style={{ position: 'absolute', top: '24px', right: '28px', textAlign: 'right' }}
                 >
-                  {/* "retrieval restores it" — level with first peak (cy=158) */}
-                  <text x="610" y="157" fontSize="11" fill="#6B7280">retrieval restores it</text>
-                  {/* "dips shrink over time" — level with 3rd dip (y=248) */}
-                  <text x="610" y="245" fontSize="11" fill="#6B7280">dips shrink</text>
-                  <text x="610" y="259" fontSize="11" fill="#6B7280">over time</text>
-                  {/* "memory fades fast" — level with gray curve end (y=333); "time" is 30px lower */}
-                  <text x="610" y="332" fontSize="11" fill="#6B7280">memory fades fast</text>
-                </motion.g>
-              </svg>
+                  <p style={{ fontSize: '28px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: '#0FA8DC', margin: 0, lineHeight: 1 }}>91%</p>
+                  <p style={{ fontSize: '11px', color: '#9CA3AF', fontFamily: 'Inter, sans-serif', margin: '3px 0 0', maxWidth: '108px', lineHeight: 1.35 }}>retain more within 30 days</p>
+                </motion.div>
+
+                <svg
+                  ref={chartRef}
+                  viewBox="0 0 620 370"
+                  width="100%"
+                  style={{ fontFamily: 'Inter, sans-serif', overflow: 'visible', display: 'block' }}
+                  aria-label="Two memory curves compared: spaced retrieval (pink, jagged but recovering with each dip shallower) versus re-reading only (gray dashed, steady decline with no recovery)"
+                >
+                  {/* Axis labels */}
+                  <text x="10" y="20" fontSize="11" fill="#9CA3AF">memory strength</text>
+                  <text x="490" y="362" fontSize="11" fill="#9CA3AF">time</text>
+
+                  {/* Legend */}
+                  <line x1="10" y1="42" x2="46" y2="42" stroke="#E8135A" strokeWidth="2.5" strokeLinecap="round" />
+                  <text x="52" y="46" fontSize="11" fill="#5A5A6E">spaced retrieval</text>
+                  <line x1="10" y1="62" x2="46" y2="62" stroke="#9CA3AF" strokeWidth="2" strokeDasharray="5 3" strokeLinecap="round" />
+                  <text x="52" y="66" fontSize="11" fill="#5A5A6E">re-reading only</text>
+
+                  <defs>
+                    <clipPath id="pink-reveal-clip">
+                      <motion.rect
+                        x="24" y="0" height="385"
+                        animate={{ width: (!!shouldReduce || chartInView) ? 530 : 0 }}
+                        transition={!!shouldReduce ? { duration: 0 } : { duration: 0.56, ease: 'easeInOut' }}
+                      />
+                    </clipPath>
+                    <clipPath id="gray-reveal-clip">
+                      <motion.rect
+                        x="24" y="0" height="385"
+                        animate={{ width: (!!shouldReduce || chartInView) ? 572 : 0 }}
+                        transition={!!shouldReduce ? { duration: 0 } : { duration: 0.42, delay: 0.72, ease: 'easeInOut' }}
+                      />
+                    </clipPath>
+                  </defs>
+
+                  {/* Gray dashed curve (re-reading) — slightly thicker */}
+                  <path
+                    d="M25,125 C240,202 430,292 592,333"
+                    fill="none"
+                    stroke="#9CA3AF"
+                    strokeWidth="2.5"
+                    strokeDasharray="6 4"
+                    strokeLinecap="round"
+                    clipPath="url(#gray-reveal-clip)"
+                  />
+
+                  {/* Pink retrieval curve — thicker */}
+                  <path
+                    d="M25,125 L135,310 L215,158 L305,275 L375,175 L445,248 L515,168 L545,195"
+                    fill="none"
+                    stroke="#E8135A"
+                    strokeWidth="3.5"
+                    strokeLinejoin="round"
+                    strokeLinecap="round"
+                    clipPath="url(#pink-reveal-clip)"
+                  />
+
+                  {/* Blue retrieval dots — larger */}
+                  {([
+                    { cx: 215, cy: 158, delay: 0.20 },
+                    { cx: 375, cy: 175, delay: 0.38 },
+                    { cx: 515, cy: 168, delay: 0.52 },
+                  ] as { cx: number; cy: number; delay: number }[]).map(({ cx, cy, delay }) => (
+                    <motion.circle
+                      key={cx}
+                      cx={cx} cy={cy} r="10"
+                      fill="#0FA8DC"
+                      animate={{ opacity: (!!shouldReduce || chartInView) ? 1 : 0 }}
+                      transition={!!shouldReduce ? { duration: 0 } : { duration: 0.25, delay }}
+                    />
+                  ))}
+                </svg>
+
+                {/* ── HTML captions — properly spaced at all widths, staggered fade-in ── */}
+                <div style={{ marginTop: '20px', paddingTop: '18px', borderTop: '1px solid #F3F4F6', display: 'flex', flexWrap: 'wrap', gap: '12px 32px' }}>
+                  {([
+                    { label: 'retrieval restores it', color: '#0FA8DC', dashed: false, lowOpacity: false, delay: 1.22 },
+                    { label: 'dips shrink over time',  color: '#E8135A', dashed: false, lowOpacity: true,  delay: 1.38 },
+                    { label: 'memory fades fast',      color: '#9CA3AF', dashed: true,  lowOpacity: false, delay: 1.52 },
+                  ] as { label: string; color: string; dashed: boolean; lowOpacity: boolean; delay: number }[]).map(({ label, color, dashed, lowOpacity, delay }) => (
+                    <motion.div
+                      key={label}
+                      animate={{ opacity: (!!shouldReduce || chartInView) ? 1 : 0 }}
+                      transition={!!shouldReduce ? { duration: 0 } : { duration: 0.28, delay }}
+                      style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+                    >
+                      {dashed ? (
+                        <svg width="20" height="10" viewBox="0 0 20 10" style={{ flexShrink: 0 }} aria-hidden="true">
+                          <line x1="0" y1="5" x2="20" y2="5" stroke={color} strokeWidth="2" strokeDasharray="4 3" />
+                        </svg>
+                      ) : (
+                        <div style={{ width: '20px', height: '3px', borderRadius: '2px', background: color, flexShrink: 0, opacity: lowOpacity ? 0.45 : 1 }} />
+                      )}
+                      <span style={{ fontSize: '12px', color: '#6B7280', fontFamily: 'Inter, sans-serif' }}>{label}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
