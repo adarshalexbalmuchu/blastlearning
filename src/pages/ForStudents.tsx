@@ -7,12 +7,6 @@ import HeadingMarker from '../components/HeadingMarker';
 import FAQItem from '../components/FAQItem';
 import { fadeUp, stagger } from '../constants/animations';
 
-const scienceStats = [
-  { value: '80%', label: 'of new information forgotten within 24 hours without structured revision', color: '#E8135A' },
-  { value: '91%', label: 'of Blast Learning students improve retention within the first month', color: '#0FA8DC' },
-  { value: '500+', label: 'peer-reviewed studies behind the spaced repetition methodology', color: '#E8135A' },
-];
-
 const supportCards = [
   {
     label: 'When you\'re stuck.',
@@ -120,19 +114,38 @@ export default function ForStudents() {
               </div>
             </motion.div>
 
-            <motion.div variants={fadeUp} style={{ paddingTop: '136px' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                {scienceStats.map((stat) => (
-                  <div key={stat.value} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', padding: '24px', background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', boxShadow: '0 1px 4px rgba(28,28,40,0.04)' }}>
-                    <div style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: stat.color, lineHeight: 1, flexShrink: 0, minWidth: '72px' }}>
-                      {stat.value}
-                    </div>
-                    <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0, paddingTop: '4px' }}>
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
+            <motion.div variants={fadeUp} style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
+              <svg
+                viewBox="0 0 660 320"
+                width="100%"
+                style={{ maxWidth: '560px', fontFamily: 'Inter, sans-serif', overflow: 'visible' }}
+                aria-label="Ebbinghaus forgetting curve: memory strength drops steeply, then retrieval practice restores it with shallower dips over time"
+              >
+                {/* Axis labels */}
+                <text x="10" y="18" fontSize="11" fill="#9CA3AF">memory strength</text>
+                <text x="510" y="308" fontSize="11" fill="#9CA3AF">time</text>
+
+                {/* Forgetting curve */}
+                <polyline
+                  points="25,65 145,235 220,100 310,205 375,115 430,180 480,105 530,165"
+                  fill="none"
+                  stroke="#E8135A"
+                  strokeWidth="2.5"
+                  strokeLinejoin="round"
+                  strokeLinecap="round"
+                />
+
+                {/* Retrieval dots */}
+                <circle cx="220" cy="100" r="8" fill="#0FA8DC" />
+                <circle cx="375" cy="115" r="8" fill="#0FA8DC" />
+                <circle cx="480" cy="105" r="8" fill="#0FA8DC" />
+
+                {/* Annotations */}
+                <text x="548" y="88" fontSize="11" fill="#6B7280">retrieval restores it</text>
+                <text x="548" y="168" fontSize="11" fill="#6B7280">dips shrink</text>
+                <text x="548" y="183" fontSize="11" fill="#6B7280">over time</text>
+                <text x="548" y="218" fontSize="11" fill="#6B7280">memory fades fast</text>
+              </svg>
             </motion.div>
           </motion.div>
         </div>
@@ -142,19 +155,39 @@ export default function ForStudents() {
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
+            <motion.div variants={fadeUp} style={{ maxWidth: '720px', marginBottom: '64px' }}>
               <HeadingMarker text="NOT YOUR GRADE. YOU." marginBottom="16px" fontSize="12px" accent="#E8135A" />
-              <h2 className="t-h2" style={{ marginBottom: '28px' }}>
+              <h2 className="t-h2">
                 The GAP Assessment Doesn't <AccentText tone="pink">Assume Anything</AccentText>
               </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  Most programmes assume you are behind because you haven't tried hard enough. The GAP Assessment does the opposite: it maps the exact concepts you haven't retained — not the ones your teacher thinks you're missing — and builds your study plan around that specific gap.
-                </p>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  A student in Class 10 who struggles with quadratic equations might be missing a Class 7 concept that was never consolidated. The assessment finds it. Your plan starts there — not at the chapter your class is on.
-                </p>
-              </div>
+            </motion.div>
+            <motion.div variants={fadeUp}>
+              <svg
+                viewBox="0 0 1000 190"
+                width="100%"
+                style={{ maxWidth: '900px', display: 'block', margin: '0 auto', overflow: 'visible' }}
+                aria-label="A horizontal scale with 9 points. The fifth point drops down to a pink marker — your exact knowledge gap."
+              >
+                <line x1="60" y1="70" x2="940" y2="70" stroke="#D1D5DB" strokeWidth="1.5" />
+                {[0, 1, 2, 3, 4, 5, 6, 7, 8].map(i => {
+                  const cx = 60 + i * 110;
+                  const isActive = i === 4;
+                  return (
+                    <g key={i}>
+                      <circle cx={cx} cy="70" r="14" fill="white" stroke="#D1D5DB" strokeWidth="1.5" />
+                      {isActive && (
+                        <>
+                          <line x1={cx} y1="84" x2={cx} y2="130" stroke="#D1D5DB" strokeWidth="1.5" />
+                          <circle cx={cx} cy="152" r="22" fill="#E8135A" />
+                        </>
+                      )}
+                    </g>
+                  );
+                })}
+              </svg>
+              <p style={{ textAlign: 'center', fontSize: '14px', color: '#9CA3AF', fontFamily: 'Inter, sans-serif', marginTop: '28px' }}>
+                Built from what you know, not your grade.
+              </p>
             </motion.div>
           </motion.div>
         </div>
@@ -202,18 +235,34 @@ export default function ForStudents() {
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
+            <motion.div variants={fadeUp} style={{ maxWidth: '720px', marginBottom: '40px' }}>
               <HeadingMarker text="STUCK AT 11PM" marginBottom="16px" fontSize="12px" accent="#E8135A" />
-              <h2 className="t-h2" style={{ marginBottom: '28px' }}>
+              <h2 className="t-h2">
                 Get Unstuck Without Waiting for <AccentText tone="blue">Tomorrow's Class</AccentText>
               </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  Most studying happens at night. Most doubts arrive at night. Most solutions wait until the next morning's class — by which point you've moved on and the concept has slipped further.
+            </motion.div>
+            <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
+              <div style={{ background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: '20px', padding: '24px 28px 36px' }}>
+                <p style={{ fontWeight: 700, fontSize: '15px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '24px' }}>
+                  AI Tutor
                 </p>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  The Tutor Mom team is available Monday to Saturday, 9 AM to 9 PM. Message a doubt and get a response within 2 hours. Outside those hours, the platform's guided problem-solving walks you through the concept step by step — not by giving you the answer, but by showing you how to reach it.
-                </p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                    <div style={{ maxWidth: '65%', background: '#F3F4F6', borderRadius: '16px 16px 16px 4px', padding: '14px 18px', fontSize: '15px', color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>
+                      Stuck on question 14, the substitution step.
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <div style={{ maxWidth: '65%', background: '#DBEAFE', borderRadius: '16px 16px 4px 16px', padding: '14px 18px', fontSize: '15px', color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>
+                      Let's check what you substituted first.
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                    <div style={{ maxWidth: '50%', background: '#F3F4F6', borderRadius: '16px 16px 16px 4px', padding: '14px 18px', fontSize: '15px', color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>
+                      Oh, I flipped the sign.
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </motion.div>
