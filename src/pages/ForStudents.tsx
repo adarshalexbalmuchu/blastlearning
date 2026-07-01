@@ -1,49 +1,50 @@
 import { useSEO } from '../hooks/useSEO';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useReducedMotion, useInView, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Book, Calculator, Type, Target, Brain } from 'lucide-react';
+import { Book, Calculator, Type, Target } from 'lucide-react';
 import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection } from '../components/MarketingSections';
 import { fadeUp, stagger } from '../constants/animations';
 
-// Converging diagram (reverse of the Parents-page decision tree): four program
-// cards fade in, their connector lines draw inward, then the central node
-// pulses as they "land". Mirrors decisionTreeVariants() in ForParents.tsx.
+// Converging diagram — inverted decision tree using the same orthogonal connector
+// grammar as the Parents page. Animation mirrors decisionTreeVariants() in
+// ForParents.tsx but reversed: cards land first, then drops/branch/stem draw in,
+// then the destination node arrives last.
 function recallDiagramVariants(reduced: boolean) {
   const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
   const t = (duration: number, delay: number) => (reduced ? { duration: 0.25, delay: 0 } : { duration, delay, ease });
 
   const cardStagger = 0.09;
   const cardDuration = 0.3;
-  const lineDelay = 3 * cardStagger + cardDuration - 0.05;
-  const lineDuration = 0.35;
-  const nodeDelay = lineDelay + lineDuration - 0.05;
-  const nodeDuration = 0.4;
-  const captionDelay = nodeDelay + nodeDuration;
+  const afterCards = 3 * cardStagger + cardDuration; // ≈0.57s — last card done
 
   return {
     card: (index: number): Variants => ({
-      hidden: { opacity: 0, y: reduced ? 0 : 16 },
+      hidden: { opacity: 0, y: reduced ? 0 : 14 },
       visible: { opacity: 1, y: 0, transition: t(cardDuration, index * cardStagger) },
     }),
-    line: {
-      hidden: { pathLength: reduced ? 1 : 0, opacity: reduced ? 1 : 0 },
-      visible: { pathLength: 1, opacity: 1, transition: t(lineDuration, lineDelay) },
+    drops: {
+      hidden: { scaleY: reduced ? 1 : 0 },
+      visible: { scaleY: 1, transition: t(0.18, afterCards + 0.04) },
+    } as Variants,
+    branch: {
+      hidden: { scaleX: reduced ? 1 : 0 },
+      visible: { scaleX: 1, transition: t(0.28, afterCards + 0.26) },
+    } as Variants,
+    stem: {
+      hidden: { scaleY: reduced ? 1 : 0 },
+      visible: { scaleY: 1, transition: t(0.22, afterCards + 0.58) },
     } as Variants,
     node: {
-      hidden: { scale: reduced ? 1 : 0.8, opacity: 0 },
-      visible: {
-        scale: reduced ? 1 : [0.8, 1.05, 1],
-        opacity: 1,
-        transition: reduced ? { duration: 0.25, delay: 0 } : { duration: nodeDuration, delay: nodeDelay, ease, times: [0, 0.6, 1] },
-      },
+      hidden: { opacity: 0, y: reduced ? 0 : 10 },
+      visible: { opacity: 1, y: 0, transition: t(0.35, afterCards + 0.84) },
     } as Variants,
     caption: {
       hidden: { opacity: 0 },
-      visible: { opacity: 1, transition: t(0.3, captionDelay) },
+      visible: { opacity: 1, transition: t(0.25, afterCards + 1.24) },
     } as Variants,
   };
 }
@@ -55,7 +56,31 @@ const recallPrograms = [
   { name: 'SAT Prep Pass', Icon: Target, accent: '#0FA8DC' },
 ];
 
-const recallCardCenters = [12.5, 37.5, 62.5, 87.5];
+// ── Seeded noise field for the "calm amid pressure" wave illustration ────────
+// Computed once at module load (stable across re-renders, not Math.random()).
+const _waveY = (x: number) => 100 - 40 * Math.sin((x / 900) * 2 * Math.PI);
+const examNoiseTicks = (() => {
+  let s = 42; // fixed seed
+  const r = () => { s = (Math.imul(1664525, s) + 1013904223) >>> 0; return s / 4294967296; };
+  const CLEAR = 30; // px clearance around the wave path
+  type Tick = { x1: number; y1: number; x2: number; y2: number; opacity: number; delay: number };
+  const ticks: Tick[] = [];
+  for (let i = 0; i < 140; i++) {
+    const cx = r() * 900;
+    const cy = r() * 200;
+    const angle = (r() - 0.5) * Math.PI;
+    const len = 8 + r() * 18;
+    const baseOp = 0.14 + r() * 0.48;
+    const delay = r() * 0.45;
+    const dist = Math.abs(cy - _waveY(cx));
+    if (dist < CLEAR) continue; // skip ticks inside the clear channel
+    const edgeFade = dist < CLEAR + 18 ? (dist - CLEAR) / 18 : 1;
+    const hx = Math.cos(angle) * len / 2;
+    const hy = Math.sin(angle) * len / 2;
+    ticks.push({ x1: cx - hx, y1: cy - hy, x2: cx + hx, y2: cy + hy, opacity: baseOp * edgeFade, delay });
+  }
+  return ticks;
+})();
 
 const supportCards = [
   {
@@ -98,8 +123,68 @@ export default function ForStudents() {
   });
   const shouldReduce = useReducedMotion();
   const rd = recallDiagramVariants(!!shouldReduce);
+  // Connector geometry — same formula as programHorizontalInset on Parents page
+  const recallCardGapPx = 20;
+  const recallCardCols = recallPrograms.length;
+  const recallHorizontalInset = `calc((100% - ${(recallCardCols - 1) * recallCardGapPx}px) / ${recallCardCols * 2})`;
   const chartRef = useRef<SVGSVGElement>(null);
   const chartInView = useInView(chartRef, { once: true, margin: '0px 0px -10% 0px' });
+  const examRef = useRef<SVGSVGElement>(null);
+  const examInView = useInView(examRef, { once: true, margin: '0px 0px -10% 0px' });
+
+  // GAP Assessment continuum illustration animation
+  const gapRef = useRef<SVGSVGElement>(null);
+  const gapInView = useInView(gapRef, { once: true, margin: '0px 0px -10% 0px' });
+  const [gapPhase, setGapPhase] = useState(0);
+  useEffect(() => {
+    if (!gapInView) return;
+    if (shouldReduce) { setGapPhase(4); return; }
+    const timers: ReturnType<typeof setTimeout>[] = [
+      setTimeout(() => setGapPhase(1), 80),   // base line draws
+      setTimeout(() => setGapPhase(2), 580),  // assumed marker + labels
+      setTimeout(() => setGapPhase(3), 1000), // gap segment + actual marker
+      setTimeout(() => setGapPhase(4), 1450), // "the gap" brace label
+    ];
+    return () => timers.forEach(clearTimeout);
+  }, [gapInView, shouldReduce]);
+
+  // Chat mockup sequential animation
+  const chatRef = useRef<HTMLDivElement>(null);
+  const chatInView = useInView(chatRef, { once: true, margin: '0px 0px -10% 0px' });
+  const [chatPhase, setChatPhase] = useState(0);
+  useEffect(() => {
+    if (!chatInView) return;
+    if (shouldReduce) { setChatPhase(7); return; }
+    const timers: ReturnType<typeof setTimeout>[] = [
+      setTimeout(() => setChatPhase(1), 350),   // student msg 1
+      setTimeout(() => setChatPhase(2), 800),   // typing indicator — AI 1
+      setTimeout(() => setChatPhase(3), 1240),  // AI msg 1
+      setTimeout(() => setChatPhase(4), 1680),  // student msg 2
+      setTimeout(() => setChatPhase(5), 2100),  // typing indicator — AI 2
+      setTimeout(() => setChatPhase(6), 2540),  // AI msg 2
+      setTimeout(() => setChatPhase(7), 3020),  // resolved badge
+    ];
+    return () => timers.forEach(clearTimeout);
+  }, [chatInView, shouldReduce]);
+
+  // Typing dots shared style helper
+  const typingAvatar = (
+    <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#E8135A', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+      <span style={{ color: '#FFFFFF', fontSize: '9px', fontWeight: 700, fontFamily: 'Poppins, sans-serif' }}>AI</span>
+    </div>
+  );
+  const typingBubble = (
+    <div style={{ background: '#F3F4F6', borderRadius: '4px 16px 16px 16px', padding: '12px 16px', display: 'flex', gap: '4px', alignItems: 'center' }}>
+      {[0, 1, 2].map(i => (
+        <motion.span
+          key={i}
+          style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#9CA3AF', display: 'inline-block', flexShrink: 0 }}
+          animate={{ opacity: [0.3, 1, 0.3], y: [0, -3, 0] }}
+          transition={{ duration: 0.7, repeat: Infinity, delay: i * 0.22, ease: 'easeInOut' }}
+        />
+      ))}
+    </div>
+  );
 
   return (
     <div style={{ background: '#FFFFFF' }}>
@@ -376,27 +461,74 @@ export default function ForStudents() {
             </motion.div>
             <motion.div variants={fadeUp}>
               <svg
-                viewBox="0 0 1000 190"
+                ref={gapRef}
+                viewBox="0 0 900 160"
                 width="100%"
-                style={{ maxWidth: '900px', display: 'block', margin: '0 auto', overflow: 'visible' }}
-                aria-label="A horizontal scale with 9 points. The fifth point drops down to a pink marker — your exact knowledge gap."
+                style={{ maxWidth: '860px', display: 'block', margin: '0 auto', overflow: 'visible', fontFamily: 'Inter, sans-serif' }}
+                aria-label="Knowledge continuum: a dashed 'assumed' marker at one point based on grade level, and a solid pink 'actual' marker at a different point from your real answers — the highlighted gap between them is what the assessment finds"
               >
-                <line x1="60" y1="70" x2="940" y2="70" stroke="#D1D5DB" strokeWidth="1.5" />
-                {[0, 1, 2, 3, 4, 5, 6, 7, 8].map(i => {
-                  const cx = 60 + i * 110;
-                  const isActive = i === 4;
-                  return (
-                    <g key={i}>
-                      <circle cx={cx} cy="70" r="14" fill="white" stroke="#D1D5DB" strokeWidth="1.5" />
-                      {isActive && (
-                        <>
-                          <line x1={cx} y1="84" x2={cx} y2="130" stroke="#D1D5DB" strokeWidth="1.5" />
-                          <circle cx={cx} cy="152" r="22" fill="#E8135A" />
-                        </>
-                      )}
-                    </g>
-                  );
-                })}
+                <defs>
+                  {/* Base line reveal — draws left to right */}
+                  <clipPath id="gap-baseline-clip">
+                    <motion.rect
+                      x="60" y="0" height="160"
+                      animate={{ width: (!!shouldReduce || gapPhase >= 1) ? 780 : 0 }}
+                      transition={{ duration: !!shouldReduce ? 0 : 0.5, ease: 'easeInOut' }}
+                    />
+                  </clipPath>
+                  {/* Gap segment reveal — draws from assumed marker rightward */}
+                  <clipPath id="gap-segment-clip">
+                    <motion.rect
+                      x="285" y="0" height="160"
+                      animate={{ width: (!!shouldReduce || gapPhase >= 3) ? 295 : 0 }}
+                      transition={{ duration: !!shouldReduce ? 0 : 0.45, ease: 'easeInOut' }}
+                    />
+                  </clipPath>
+                </defs>
+
+                {/* Base line (gray) */}
+                <line x1="60" y1="88" x2="840" y2="88" stroke="#D1D5DB" strokeWidth="2" clipPath="url(#gap-baseline-clip)" />
+
+                {/* Gap segment (brand pink, thicker) — IS the gap */}
+                <line x1="285" y1="88" x2="580" y2="88" stroke="#E8135A" strokeWidth="4" strokeLinecap="round" clipPath="url(#gap-segment-clip)" />
+
+                {/* ── Assumed marker (dashed outline) ─── */}
+                <circle cx="285" cy="88" r="16" fill="#FFFFFF" stroke="#9CA3AF" strokeWidth="2" strokeDasharray="4 3"
+                  style={{ opacity: !!shouldReduce || gapPhase >= 2 ? 1 : 0, transition: !!shouldReduce ? 'none' : 'opacity 0.3s ease' }} />
+                <line x1="285" y1="105" x2="285" y2="114" stroke="#9CA3AF" strokeWidth="1.5"
+                  style={{ opacity: !!shouldReduce || gapPhase >= 2 ? 1 : 0, transition: !!shouldReduce ? 'none' : 'opacity 0.3s ease' }} />
+                <text x="285" y="127" textAnchor="middle" fontSize="12" fontWeight="600" fill="#5A5A6E"
+                  style={{ opacity: !!shouldReduce || gapPhase >= 2 ? 1 : 0, transition: !!shouldReduce ? 'none' : 'opacity 0.3s ease' }}>
+                  assumed
+                </text>
+                <text x="285" y="143" textAnchor="middle" fontSize="11" fill="#9CA3AF"
+                  style={{ opacity: !!shouldReduce || gapPhase >= 2 ? 1 : 0, transition: !!shouldReduce ? 'none' : 'opacity 0.3s ease' }}>
+                  grade-level assumption
+                </text>
+
+                {/* ── Actual marker (solid pink) ─── */}
+                <circle cx="580" cy="88" r="16" fill="#E8135A"
+                  style={{ opacity: !!shouldReduce || gapPhase >= 3 ? 1 : 0, transition: !!shouldReduce ? 'none' : 'opacity 0.25s ease 0.38s' }} />
+                <line x1="580" y1="105" x2="580" y2="114" stroke="#E8135A" strokeWidth="1.5"
+                  style={{ opacity: !!shouldReduce || gapPhase >= 3 ? 1 : 0, transition: !!shouldReduce ? 'none' : 'opacity 0.25s ease 0.38s' }} />
+                <text x="580" y="127" textAnchor="middle" fontSize="12" fontWeight="600" fill="#E8135A"
+                  style={{ opacity: !!shouldReduce || gapPhase >= 3 ? 1 : 0, transition: !!shouldReduce ? 'none' : 'opacity 0.25s ease 0.38s' }}>
+                  actual
+                </text>
+                <text x="580" y="143" textAnchor="middle" fontSize="11" fill="#E8135A"
+                  style={{ opacity: !!shouldReduce || gapPhase >= 3 ? 0.7 : 0, transition: !!shouldReduce ? 'none' : 'opacity 0.25s ease 0.38s' }}>
+                  from your answers
+                </text>
+
+                {/* ── "the gap" brace label above the pink segment ─── */}
+                <line x1="298" y1="66" x2="418" y2="66" stroke="#E8135A" strokeWidth="1"
+                  style={{ opacity: !!shouldReduce || gapPhase >= 4 ? 0.35 : 0, transition: !!shouldReduce ? 'none' : 'opacity 0.3s ease' }} />
+                <text x="432" y="62" textAnchor="middle" fontSize="11" fontWeight="500" fill="#E8135A"
+                  style={{ opacity: !!shouldReduce || gapPhase >= 4 ? 1 : 0, transition: !!shouldReduce ? 'none' : 'opacity 0.3s ease' }}>
+                  the gap
+                </text>
+                <line x1="445" y1="66" x2="567" y2="66" stroke="#E8135A" strokeWidth="1"
+                  style={{ opacity: !!shouldReduce || gapPhase >= 4 ? 0.35 : 0, transition: !!shouldReduce ? 'none' : 'opacity 0.3s ease' }} />
               </svg>
               <p style={{ textAlign: 'center', fontSize: '14px', color: '#9CA3AF', fontFamily: 'Inter, sans-serif', marginTop: '28px' }}>
                 Built from what you know, not your grade.
@@ -445,35 +577,125 @@ export default function ForStudents() {
       {/* ── 5. Stuck at 11pm ────────────────────────────────────── */}
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ maxWidth: '720px', marginBottom: '40px' }}>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'center' }}
+            className="grid-cols-2-lg"
+          >
+            {/* Left: heading */}
+            <motion.div variants={fadeUp}>
               <HeadingMarker text="STUCK AT 11PM" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2">
                 Get <AccentText tone="blue">Unstuck</AccentText> Without Waiting for <AccentText tone="pink">Tomorrow's Class</AccentText>
               </h2>
             </motion.div>
-            <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
-              <div style={{ background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: '16px', padding: '24px 28px 36px', boxShadow: '0 2px 8px rgba(28,28,40,0.04)' }}>
-                <p style={{ fontWeight: 700, fontSize: '15px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '24px' }}>
-                  AI Tutor
-                </p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                    <div style={{ maxWidth: '65%', background: '#F3F4F6', borderRadius: '16px 16px 16px 4px', padding: '14px 18px', fontSize: '15px', color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>
-                      Stuck on question 14, the substitution step.
-                    </div>
+
+            {/* Right: chat illustration */}
+            <motion.div variants={fadeUp}>
+              <div
+                ref={chatRef}
+                style={{ background: '#FFFFFF', border: '1px solid #E5E7EB', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 2px 8px rgba(28,28,40,0.04)' }}
+              >
+                {/* Chat header row */}
+                <div style={{ display: 'flex', alignItems: 'center', padding: '13px 18px', borderBottom: '1px solid #E5E7EB', gap: '10px' }}>
+                  <div style={{ width: '34px', height: '34px', borderRadius: '50%', background: '#E8135A', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                    <span style={{ color: '#FFFFFF', fontSize: '11px', fontWeight: 700, fontFamily: 'Poppins, sans-serif' }}>AI</span>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    <div style={{ maxWidth: '65%', background: '#DBEAFE', borderRadius: '16px 16px 4px 16px', padding: '14px 18px', fontSize: '15px', color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>
-                      Let's check what you substituted first.
-                    </div>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                    <div style={{ maxWidth: '50%', background: '#F3F4F6', borderRadius: '16px 16px 16px 4px', padding: '14px 18px', fontSize: '15px', color: '#1C1C28', fontFamily: 'Inter, sans-serif' }}>
-                      Oh, I flipped the sign.
-                    </div>
+                  <p style={{ margin: 0, fontSize: '14px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', flex: 1 }}>AI Tutor</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+                    <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#22C55E', flexShrink: 0 }} />
+                    <span style={{ fontSize: '12px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>active now</span>
                   </div>
                 </div>
+
+                {/* Message thread */}
+                <div style={{ padding: '18px 18px 12px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+
+                  {/* Student → RIGHT | blue bubble */}
+                  {chatPhase >= 1 && (
+                    <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] as const }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                      <div>
+                        <div style={{ background: '#0FA8DC', borderRadius: '16px 4px 16px 16px', padding: '10px 14px', fontSize: '14px', color: '#FFFFFF', fontFamily: 'Inter, sans-serif', lineHeight: 1.45, maxWidth: '240px' }}>
+                          stuck on question 14 — the substitution step isn't working.
+                        </div>
+                        <p style={{ textAlign: 'right', margin: '3px 2px 0 0', fontSize: '11px', color: '#9CA3AF', fontFamily: 'Inter, sans-serif' }}>11:42 pm</p>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* AI typing indicator 1 */}
+                  {chatPhase === 2 && (
+                    <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px' }}>
+                      {typingAvatar}{typingBubble}
+                    </div>
+                  )}
+
+                  {/* AI ← LEFT | gray bubble */}
+                  {chatPhase >= 3 && (
+                    <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] as const }} style={{ display: 'flex', alignItems: 'flex-end', gap: '8px' }}>
+                      <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#E8135A', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <span style={{ color: '#FFFFFF', fontSize: '9px', fontWeight: 700, fontFamily: 'Poppins, sans-serif' }}>AI</span>
+                      </div>
+                      <div>
+                        <div style={{ background: '#F3F4F6', borderRadius: '4px 16px 16px 16px', padding: '10px 14px', fontSize: '14px', color: '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.45, maxWidth: '240px' }}>
+                          what did you substitute in first?
+                        </div>
+                        <p style={{ margin: '3px 0 0 2px', fontSize: '11px', color: '#9CA3AF', fontFamily: 'Inter, sans-serif' }}>11:42 pm</p>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* Student → RIGHT */}
+                  {chatPhase >= 4 && (
+                    <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] as const }} style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                      <div>
+                        <div style={{ background: '#0FA8DC', borderRadius: '16px 4px 16px 16px', padding: '10px 14px', fontSize: '14px', color: '#FFFFFF', fontFamily: 'Inter, sans-serif', lineHeight: 1.45, maxWidth: '240px' }}>
+                          oh — I think I flipped the sign on the second term.
+                        </div>
+                        <p style={{ textAlign: 'right', margin: '3px 2px 0 0', fontSize: '11px', color: '#9CA3AF', fontFamily: 'Inter, sans-serif' }}>11:43 pm</p>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* AI typing indicator 2 */}
+                  {chatPhase === 5 && (
+                    <div style={{ display: 'flex', alignItems: 'flex-end', gap: '8px' }}>
+                      {typingAvatar}{typingBubble}
+                    </div>
+                  )}
+
+                  {/* AI ← LEFT | resolution message */}
+                  {chatPhase >= 6 && (
+                    <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] as const }} style={{ display: 'flex', alignItems: 'flex-end', gap: '8px' }}>
+                      <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#E8135A', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <span style={{ color: '#FFFFFF', fontSize: '9px', fontWeight: 700, fontFamily: 'Poppins, sans-serif' }}>AI</span>
+                      </div>
+                      <div>
+                        <div style={{ background: '#F3F4F6', borderRadius: '4px 16px 16px 16px', padding: '10px 14px', fontSize: '14px', color: '#1C1C28', fontFamily: 'Inter, sans-serif', lineHeight: 1.45, maxWidth: '240px' }}>
+                          exactly. fix that sign and try the next line — everything else is right.
+                        </div>
+                        <p style={{ margin: '3px 0 0 2px', fontSize: '11px', color: '#9CA3AF', fontFamily: 'Inter, sans-serif' }}>11:43 pm</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+
+                {/* Resolved badge — PLACEHOLDER: confirm actual average resolution time before go-live */}
+                {chatPhase >= 7 && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ padding: '6px 18px 18px', textAlign: 'center' }}
+                  >
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px', background: '#E0F5FC', border: '1px solid #BAE6FD', borderRadius: '9999px', padding: '5px 14px', fontSize: '12px', color: '#0FA8DC', fontFamily: 'Inter, sans-serif', fontWeight: 600 }}>
+                      ✓ resolved in under 2 minutes
+                    </span>
+                  </motion.div>
+                )}
               </div>
             </motion.div>
           </motion.div>
@@ -484,20 +706,77 @@ export default function ForStudents() {
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
+            <motion.div variants={fadeUp} style={{ marginBottom: '52px' }}>
               <HeadingMarker text="THE PART NOBODY ELSE TEACHES" marginBottom="16px" fontSize="12px" accent="#E8135A" />
-              <h2 className="t-h2" style={{ marginBottom: '28px' }}>
+              <h2 className="t-h2">
                 <AccentText tone="blue">Knowing It</AccentText> Isn't the Same as <AccentText tone="pink">Staying Calm With It</AccentText>
               </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  Exam anxiety is not a personality trait. It is what happens when your brain tries to recall something it has only ever recognised. Under pressure, recognition fails. Recall — trained through active retrieval — holds.
-                </p>
-                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  Blast Learning builds retrieval practice into every session. By the time you sit your exam, your brain has practised producing the answer — not just seeing it. That is the difference between knowing a formula and being able to write it down in a hall where nothing feels familiar.
-                </p>
-              </div>
             </motion.div>
+
+            {/* Wave-amid-noise illustration — smooth pink wave through scattered gray pressure ticks */}
+            <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+              <svg
+                ref={examRef}
+                viewBox="0 0 900 200"
+                width="100%"
+                style={{ display: 'block', overflow: 'visible' }}
+                aria-label="A smooth pink wave representing a calm, trained response, cutting through a field of gray scattered tick marks representing exam pressure"
+              >
+                <defs>
+                  <clipPath id="wave-reveal-clip">
+                    <motion.rect
+                      x="0" y="0" height="200"
+                      animate={{ width: (shouldReduce || examInView) ? 900 : 0 }}
+                      transition={shouldReduce ? { duration: 0 } : { duration: 0.72, ease: 'easeInOut' }}
+                    />
+                  </clipPath>
+                </defs>
+
+                {/* Noise field: gray ticks, sparser in the wave's clear channel */}
+                {examNoiseTicks.map((tick, i) => (
+                  <line
+                    key={i}
+                    x1={tick.x1} y1={tick.y1} x2={tick.x2} y2={tick.y2}
+                    stroke="#9CA3AF"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                    style={{
+                      opacity: (shouldReduce || examInView) ? tick.opacity : 0,
+                      transition: shouldReduce
+                        ? 'opacity 0.25s'
+                        : `opacity 0.2s ease ${(0.68 + tick.delay).toFixed(3)}s`,
+                    }}
+                  />
+                ))}
+
+                {/* Calm pink wave — draws left-to-right, thicker stroke than noise */}
+                <path
+                  d="M0,100 C150,55 300,55 450,100 C600,145 750,145 900,100"
+                  fill="none"
+                  stroke="#E8135A"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  clipPath="url(#wave-reveal-clip)"
+                />
+              </svg>
+
+              {/* Attribution caption */}
+              <motion.p
+                animate={{ opacity: (shouldReduce || examInView) ? 1 : 0 }}
+                transition={shouldReduce ? { duration: 0.25 } : { duration: 0.3, delay: 1.22 }}
+                style={{
+                  textAlign: 'center',
+                  margin: '24px auto 0',
+                  fontSize: '13px',
+                  lineHeight: 1.6,
+                  color: '#8E8EA0',
+                  fontFamily: 'Inter, sans-serif',
+                  maxWidth: '540px',
+                }}
+              >
+                Built with Dr. Jon Finn, the performance psychologist behind Tougher Minds, used by Premier League clubs and the NHS.
+              </motion.p>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -522,7 +801,7 @@ export default function ForStudents() {
             </motion.div>
           </motion.div>
 
-          {/* Converging diagram: four programs, one underlying skill */}
+          {/* Converging diagram: orthogonal connectors matching Parents decision-tree grammar */}
           <motion.div
             className="show-lg-blk"
             initial="hidden"
@@ -530,11 +809,12 @@ export default function ForStudents() {
             viewport={{ once: true, amount: 0.3 }}
             style={{ maxWidth: '820px', margin: '64px auto 0' }}
           >
+            {/* 4-col program cards */}
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: `repeat(${recallPrograms.length}, minmax(0, 1fr))`,
-                gap: '20px',
+                gridTemplateColumns: `repeat(${recallCardCols}, minmax(0, 1fr))`,
+                gap: `${recallCardGapPx}px`,
               }}
             >
               {recallPrograms.map((prog, i) => (
@@ -549,51 +829,68 @@ export default function ForStudents() {
               ))}
             </div>
 
-            <div style={{ position: 'relative', height: '80px' }}>
-              <svg width="100%" height="100%" style={{ position: 'absolute', top: 0, left: 0, overflow: 'visible' }} aria-hidden="true">
-                {recallPrograms.map((prog, i) => (
-                  <motion.line
-                    key={`${prog.name}-line`}
-                    x1={`${recallCardCenters[i]}%`}
-                    y1="0"
-                    x2="50%"
-                    y2="100%"
-                    stroke={prog.accent}
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    variants={rd.line}
-                  />
-                ))}
-              </svg>
+            {/* Connector zone: drops → spine → trunk — same div-based approach as Parents */}
+            <div style={{ position: 'relative', height: '72px' }}>
+              {/* Vertical drops from each card center, scaleY from top */}
               <motion.div
-                variants={rd.node}
+                variants={rd.drops}
                 style={{
-                  position: 'absolute',
-                  left: 'calc(50% - 32px)',
-                  top: '48px',
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '50%',
-                  background: '#E8135A',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 12px 28px rgba(232, 19, 90, 0.35)',
+                  position: 'absolute', top: 0, left: 0, right: 0,
+                  transformOrigin: 'top',
+                  display: 'grid',
+                  gridTemplateColumns: `repeat(${recallCardCols}, minmax(0, 1fr))`,
+                  gap: `${recallCardGapPx}px`,
                 }}
               >
-                <Brain size={26} color="#FFFFFF" strokeWidth={2} aria-hidden="true" />
+                {recallPrograms.map((prog) => (
+                  <div key={`${prog.name}-drop`} style={{ width: '1.5px', height: '36px', background: '#D1D5DB', margin: '0 auto' }} />
+                ))}
+              </motion.div>
+
+              {/* Horizontal spine */}
+              <motion.div
+                variants={rd.branch}
+                style={{ position: 'absolute', top: '35px', left: recallHorizontalInset, right: recallHorizontalInset, transformOrigin: 'center', height: '1.5px', background: '#D1D5DB' }}
+              />
+
+              {/* Junction dot markers where each drop meets the spine */}
+              <motion.div
+                variants={rd.branch}
+                style={{
+                  position: 'absolute', top: '35px', left: 0, right: 0,
+                  display: 'grid',
+                  gridTemplateColumns: `repeat(${recallCardCols}, minmax(0, 1fr))`,
+                  gap: `${recallCardGapPx}px`,
+                }}
+              >
+                {recallPrograms.map((prog) => (
+                  <div key={`${prog.name}-dot`} style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#9CA3AF', margin: '0 auto', marginTop: '-2.5px' }} />
+                ))}
+              </motion.div>
+
+              {/* Vertical trunk down from spine center to node */}
+              <motion.div
+                variants={rd.stem}
+                style={{ position: 'absolute', top: '35px', left: '50%', transform: 'translateX(-50%)', transformOrigin: 'top', width: '1.5px', height: '37px', background: '#D1D5DB' }}
+              />
+            </div>
+
+            {/* Destination node — flat pink pill, no glow, matching Parents' pill style */}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <motion.div
+                variants={rd.node}
+                style={{ background: '#E8135A', borderRadius: '12px', padding: '14px 32px', fontFamily: 'Poppins, sans-serif', fontWeight: 600, fontSize: '16px', color: '#FFFFFF', whiteSpace: 'nowrap' }}
+              >
+                Active Recall
               </motion.div>
             </div>
 
-            <motion.p variants={rd.caption} style={{ textAlign: 'center', fontSize: '14px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginTop: '48px', marginBottom: '4px' }}>
-              Active Recall
-            </motion.p>
-            <motion.p variants={rd.caption} style={{ textAlign: 'center', fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
+            <motion.p variants={rd.caption} style={{ textAlign: 'center', fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginTop: '20px', marginBottom: 0 }}>
               One skill. Every subject.
             </motion.p>
           </motion.div>
 
-          {/* Mobile: simplified stacked fallback (no diagonal converge) */}
+          {/* Mobile: simplified stacked fallback */}
           <div className="hide-lg" style={{ marginTop: '48px' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '14px', maxWidth: '360px', margin: '0 auto' }}>
               {recallPrograms.map((prog) => (
@@ -609,14 +906,11 @@ export default function ForStudents() {
               <div style={{ width: '1.5px', height: '28px', background: '#D1D5DB' }} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#E8135A', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 12px 28px rgba(232, 19, 90, 0.35)' }}>
-                <Brain size={26} color="#FFFFFF" strokeWidth={2} aria-hidden="true" />
+              <div style={{ background: '#E8135A', borderRadius: '12px', padding: '12px 28px', fontFamily: 'Poppins, sans-serif', fontWeight: 600, fontSize: '15px', color: '#FFFFFF' }}>
+                Active Recall
               </div>
             </div>
-            <p style={{ textAlign: 'center', fontSize: '14px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginTop: '16px', marginBottom: '4px' }}>
-              Active Recall
-            </p>
-            <p style={{ textAlign: 'center', fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
+            <p style={{ textAlign: 'center', fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: '16px 0 0' }}>
               One skill. Every subject.
             </p>
           </div>
@@ -659,7 +953,15 @@ export default function ForStudents() {
             {/* Right: buttons */}
             <motion.div variants={fadeUp} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center', justifyContent: 'center' }}>
-                <Link to="/programs" className="cta cta-blue">
+                <Link
+                  to="/programs"
+                  className="cta"
+                  style={{
+                    background: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)',
+                    color: '#FFFFFF',
+                    border: 'none',
+                  }}
+                >
                   Start Free Trial
                 </Link>
                 <Link to="/for-parents" className="cta cta-pink">

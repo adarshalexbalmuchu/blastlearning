@@ -5,6 +5,12 @@ import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import MobileCarousel from '../components/MobileCarousel';
 import { fadeUp, stagger } from '../constants/animations';
+import bruceImg  from '../assets/bruce.jpeg';
+import ankitImg  from '../assets/ankit.jpeg';
+import purviImg  from '../assets/purvi.jpeg';
+import arunImg   from '../assets/arun.jpeg';
+import reenaImg  from '../assets/reena.jpg';
+import adityaImg from '../assets/aditya.jpeg';
 
 const leaders = [
   {
@@ -12,6 +18,7 @@ const leaders = [
     title: 'Founder',
     initials: 'BL',
     accent: '#0FA8DC',
+    image: bruceImg,
     bio: 'Built the underlying methodology over twenty-five years, later licensed by IBM and McGraw-Hill and protected by patents in the US and internationally. He remains the architect of the system Blast Learning India runs on.',
   },
   {
@@ -19,6 +26,7 @@ const leaders = [
     title: 'Founder & Managing Director',
     initials: 'AS',
     accent: '#E8135A',
+    image: ankitImg,
     bio: "An electrical engineer with an MBA from the University of San Francisco, Sahu has built and scaled businesses across India's financial sector, including a digital payments platform serving rural communities. He brought Lewolt's methodology to India in 2024.",
   },
   {
@@ -26,6 +34,7 @@ const leaders = [
     title: 'Director & Chief Marketing Officer',
     initials: 'PS',
     accent: '#0FA8DC',
+    image: purviImg,
     bio: "Twenty-eight years in business and operations inform how Purvi Sahu shapes the brand a parent encounters before they ever speak to a counsellor. Her role spans strategy and the daily decisions that keep that strategy consistent.",
   },
   {
@@ -33,6 +42,7 @@ const leaders = [
     title: 'Director of Alliances',
     initials: 'AT',
     accent: '#E8135A',
+    image: arunImg,
     bio: 'A professor with decades inside Indian education and innovation circles, Tyagi manages the partnerships that extend Blast Learning India\'s reach across CBSE, ICSE, and NEP 2020-aligned institutions.',
   },
   {
@@ -40,6 +50,7 @@ const leaders = [
     title: 'Director of Content Management',
     initials: 'RT',
     accent: '#0FA8DC',
+    image: reenaImg,
     bio: "Reena Prakash Tyagi founded SEAS Global Institute, recognised as India's first fully virtual school, before joining Blast Learning India to oversee how content gets built and maintained.",
   },
   {
@@ -47,6 +58,7 @@ const leaders = [
     title: 'Head of Business Development',
     initials: 'AD',
     accent: '#E8135A',
+    image: adityaImg,
     bio: 'Studied international hospitality management at the Swiss Hotel Management School before moving into startups and customer-facing growth roles. He owns the commercial relationships that turn product readiness into actual enrolment.',
   },
 ];
@@ -400,9 +412,7 @@ export default function About() {
                 {/* Accent bar */}
                 <div style={{ height: '3px', background: b.accent, flexShrink: 0 }} />
                 <div style={{ padding: '28px 28px 24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                  <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>
-                    {b.title}
-                  </h3>
+                  <HeadingMarker text={b.title} accent={b.accent} fontSize="13px" marginBottom="14px" />
                   <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', flex: 1, margin: 0 }}>
                     {b.desc}
                   </p>
@@ -446,8 +456,8 @@ export default function About() {
                 className="card-subtle surface-card"
                 style={{ overflow: 'hidden', height: '100%', display: 'flex', flexDirection: 'column' }}
               >
-                {/* Image slot — replace inner div with <img src="…" /> when photos are ready */}
-                <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#F3F4F6', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                {/* Image slot */}
+                <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#F3F4F6', overflow: 'hidden', flexShrink: 0 }}>
                   {/* Triangle corner accent */}
                   <div style={{
                     position: 'absolute', top: 0, right: 0,
@@ -457,22 +467,11 @@ export default function About() {
                     borderColor: `transparent ${leader.accent} transparent transparent`,
                     zIndex: 1,
                   }} />
-                  {/* Initials placeholder */}
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                    <div style={{
-                      width: '76px', height: '76px', borderRadius: '50%',
-                      background: `${leader.accent}18`,
-                      border: `2px solid ${leader.accent}50`,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: '24px', fontWeight: 700, fontFamily: 'Poppins, sans-serif',
-                      color: leader.accent,
-                    }}>
-                      {leader.initials}
-                    </div>
-                    <span style={{ fontSize: '10px', color: '#B0B0C0', fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                      Photo coming soon
-                    </span>
-                  </div>
+                  <img
+                    src={leader.image}
+                    alt={leader.name}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
+                  />
                 </div>
 
                 {/* Content */}
