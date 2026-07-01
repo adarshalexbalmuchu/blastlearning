@@ -158,15 +158,22 @@ export default function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'start' }}
-            className="grid-cols-2-lg"
           >
-            {/* Left: copy */}
-            <motion.div variants={fadeUp}>
+            {/* Heading block — full width, above the two-column split */}
+            <motion.div variants={fadeUp} style={{ marginBottom: '36px' }}>
               <HeadingMarker text="Our Story" marginBottom="16px" fontSize="12px" />
-              <h2 className="t-h2" style={{ marginBottom: '28px' }}>
+              <h2 className="t-h2">
                 A System Built Before It <AccentText tone="blue">Had</AccentText> a <AccentText tone="pink">Market</AccentText>
               </h2>
+            </motion.div>
+
+            {/* Two-column: body paragraphs vs timeline — top edges aligned by layout */}
+            <div
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'start' }}
+              className="grid-cols-2-lg"
+            >
+            {/* Left: body paragraphs only */}
+            <motion.div variants={fadeUp}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                   Bruce Lewolt spent twenty-five years building learning technology before most of today's edtech platforms existed; work that was eventually licensed by IBM and McGraw-Hill and used by more than 100,000 students across multiple countries. His research rests on one observation: most students who underperform are missing a method that fits how their memory actually works, not additional ability.
@@ -180,8 +187,8 @@ export default function About() {
               </div>
             </motion.div>
 
-            {/* Right: vertical timeline */}
-            <motion.div variants={fadeUp} style={{ paddingTop: '136px' }}>
+            {/* Right: vertical timeline — no offset needed */}
+            <motion.div variants={fadeUp}>
               <div style={{ position: 'relative' }}>
                 {/* Connector line */}
                 <div style={{
@@ -226,6 +233,7 @@ export default function About() {
                 ))}
               </div>
             </motion.div>
+            </div>{/* end two-column grid */}
           </motion.div>
         </div>
       </section>
