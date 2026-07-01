@@ -1,12 +1,34 @@
+import { useRef, useEffect } from 'react';
 import { useSEO } from '../hooks/useSEO';
-import { motion } from 'framer-motion';
+import { motion, useInView, useMotionValue, useTransform, animate as fmAnimate, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import MobileCarousel from '../components/MobileCarousel';
-import FAQItem from '../components/FAQItem';
+import { SharedFaqSection } from '../components/MarketingSections';
 import { fadeUp, stagger } from '../constants/animations';
+
+function StatValue({ raw, color }: { raw: string; color: string }) {
+  const ref = useRef<HTMLParagraphElement>(null);
+  const inView = useInView(ref, { once: true });
+  const shouldReduce = useReducedMotion();
+  const numMatch = raw.match(/^([\d,]+)(\+?)$/);
+  const numericTarget = numMatch ? parseInt(numMatch[1].replace(/,/g, ''), 10) : null;
+  const suffix = numMatch?.[2] ?? '';
+  const motionVal = useMotionValue(0);
+  const displayVal = useTransform(motionVal, (v) => Math.round(v).toLocaleString('en-IN') + suffix);
+
+  useEffect(() => {
+    if (!inView || numericTarget === null) return;
+    if (shouldReduce) { motionVal.set(numericTarget); return; }
+    fmAnimate(motionVal, numericTarget, { duration: 1.3, ease: 'easeOut' });
+  }, [inView, shouldReduce]);
+
+  const style = { fontSize: 'clamp(1.6rem, 2.5vw, 2.4rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color, lineHeight: 1, margin: 0 } as const;
+  if (numericTarget !== null) return <motion.p ref={ref} style={style}>{displayVal}</motion.p>;
+  return <p ref={ref} style={style}>{raw}</p>;
+}
 
 const parentFaqs = [
   {
@@ -78,6 +100,7 @@ export default function ForParents() {
     title: 'For Parents | Blast Learning India',
     description: 'Understand how Blast Learning makes your child\'s existing study time more effective — with full visibility, human support, and a methodology built over twenty-five years.',
   });
+  const shouldReduce = useReducedMotion();
 
   return (
     <div style={{ background: '#FFFFFF' }}>
@@ -205,29 +228,70 @@ export default function ForParents() {
               </h2>
             </motion.div>
 
-            {/* Stat cards */}
-            <motion.div variants={fadeUp} style={{ marginBottom: '64px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px' }} className="grid-cols-2-md grid-cols-4-lg">
-                {researchStats.map((stat) => (
-                  <div key={stat.value} style={{ background: '#FFFFFF', border: '1px solid #ECECF1', borderRadius: '16px', padding: '32px 20px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', boxShadow: '0 1px 4px rgba(28,28,40,0.04)' }}>
-                    <p style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.4rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: stat.color, margin: 0, lineHeight: 1 }}>
-                      {stat.value}
-                    </p>
-                    <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
+            {/* Stat cards — staggered fade-up, count-up on numeric values */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.09 } } }}
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', marginBottom: '64px' }}
+              className="grid-cols-2-md grid-cols-4-lg"
+            >
+              {researchStats.map((stat) => (
+                <motion.div
+                  key={stat.value}
+                  variants={fadeUp}
+                  style={{
+                    background: '#FFFFFF',
+                    border: '1px solid #ECECF1',
+                    borderRadius: '16px',
+                    padding: '32px 20px',
+                    textAlign: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    boxShadow: '0 1px 4px rgba(28,28,40,0.04)',
+                  }}
+                >
+                  <StatValue raw={stat.value} color={stat.color} />
+                  <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: '16px 0 0' }}>
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
             </motion.div>
 
-            {/* Timeline */}
-            <motion.div variants={fadeUp}>
-              <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', height: '20px', marginBottom: '16px' }}>
-                <div style={{ position: 'absolute', top: '50%', left: '12.5%', right: '12.5%', height: '1.5px', background: '#D1D5DB', transform: 'translateY(-50%)' }} />
+            {/* Timeline — line draws left-to-right, dots bounce in as line reaches them */}
+            <div>
+              <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', height: '24px', marginBottom: '16px' }}>
+                {/* Animated connecting line */}
+                <motion.div
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '12.5%',
+                    right: '12.5%',
+                    height: '1.5px',
+                    background: '#D1D5DB',
+                    transformOrigin: '0% 50%',
+                    transform: 'translateY(-50%)',
+                  }}
+                  initial={shouldReduce ? {} : { scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={shouldReduce ? {} : { duration: 0.85, ease: 'easeOut' }}
+                  viewport={{ once: true }}
+                />
+                {/* Dots — pop in staggered after line starts drawing */}
                 {researchTimeline.map((point, i) => (
                   <div key={i} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                    <div style={{ width: '16px', height: '16px', borderRadius: '50%', background: point.color, position: 'relative', zIndex: 1, flexShrink: 0 }} />
+                    <motion.div
+                      style={{ width: '16px', height: '16px', borderRadius: '50%', background: point.color, position: 'relative', zIndex: 1, flexShrink: 0 }}
+                      initial={shouldReduce ? {} : { scale: 0, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      transition={shouldReduce ? {} : { type: 'spring', stiffness: 420, damping: 14, delay: i * 0.2 + 0.35 }}
+                      viewport={{ once: true }}
+                    />
                   </div>
                 ))}
               </div>
@@ -243,7 +307,7 @@ export default function ForParents() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -369,50 +433,48 @@ export default function ForParents() {
       </section>
 
       {/* ── 7. FAQ ──────────────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
-              <HeadingMarker text="BEFORE YOU DECIDE" marginBottom="16px" fontSize="12px" />
-              <h2 className="t-h2">
-                The Questions We'd <AccentText tone="blue">Ask Too</AccentText>
-              </h2>
-            </motion.div>
-            <motion.div variants={fadeUp} style={{ maxWidth: '800px' }}>
-              <div style={{ background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', padding: '4px 20px', boxShadow: '0 1px 4px rgba(28,28,40,0.04)' }}>
-                {parentFaqs.map((faq) => (
-                  <FAQItem key={faq.q} question={faq.q} answer={faq.a} />
-                ))}
-              </div>
-              <div style={{ marginTop: '24px' }}>
-                <Link to="/faq" className="cta cta-outline">View all FAQs</Link>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      <SharedFaqSection
+        eyebrow="BEFORE YOU DECIDE"
+        title={<>The Questions We'd <AccentText tone="blue">Ask Too</AccentText></>}
+        subtitle="If your question isn't here, the full FAQ page covers every edge case — billing, syllabus details, and technical requirements."
+        items={parentFaqs}
+        linkLabel="View all FAQs"
+        background="#FFFFFF"
+      />
 
       {/* ── 8. CTA ──────────────────────────────────────────────── */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 60%, #FFFFFF 100%)', borderTop: '1px solid #DAEEF6' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ maxWidth: '640px' }}>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }}
+            className="grid-cols-2-lg"
+          >
+            {/* Left: copy */}
+            <motion.div variants={fadeUp}>
               <HeadingMarker text="TWO WAYS FORWARD" marginBottom="16px" fontSize="12px" />
               <h2 className="t-h2" style={{ marginBottom: '20px' }}>
                 Begin the Trial, or Talk to <AccentText tone="pink">Someone First</AccentText>
               </h2>
-              <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '36px' }}>
+              <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
                 The 14-day free trial requires no credit card and gives you full access to every feature, including the parent dashboard, daily digests, and the Tutor Mom team. If you'd prefer to speak with someone before starting, we're available.
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center' }}>
+            </motion.div>
+
+            {/* Right: buttons */}
+            <motion.div variants={fadeUp} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center', justifyContent: 'center' }}>
                 <Link to="/programs" className="cta cta-pink">
                   Start Free Trial
                 </Link>
-                <Link to="/contact" className="cta cta-outline">
+                <Link to="/contact" className="cta cta-blue">
                   Talk to Our Team
                 </Link>
               </div>
-              <p style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '16px' }}>
+              <p style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: 0, textAlign: 'center' }}>
                 No credit card required. Cancel anytime.
               </p>
             </motion.div>

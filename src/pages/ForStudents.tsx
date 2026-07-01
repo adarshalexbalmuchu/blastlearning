@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
-import FAQItem from '../components/FAQItem';
+import { SharedFaqSection } from '../components/MarketingSections';
 import { fadeUp, stagger } from '../constants/animations';
 
 const supportCards = [
@@ -314,50 +314,48 @@ export default function ForStudents() {
       </section>
 
       {/* ── 8. FAQ ──────────────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
-              <HeadingMarker text="BEFORE YOU START" marginBottom="16px" fontSize="12px" />
-              <h2 className="t-h2">
-                Quick Answers for <AccentText tone="blue">Quick Doubts</AccentText>
-              </h2>
-            </motion.div>
-            <motion.div variants={fadeUp} style={{ maxWidth: '800px' }}>
-              <div style={{ background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', padding: '4px 20px', boxShadow: '0 1px 4px rgba(28,28,40,0.04)' }}>
-                {studentFaqs.map((faq) => (
-                  <FAQItem key={faq.q} question={faq.q} answer={faq.a} />
-                ))}
-              </div>
-              <div style={{ marginTop: '24px' }}>
-                <Link to="/faq" className="cta cta-outline">View all FAQs</Link>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      <SharedFaqSection
+        eyebrow="BEFORE YOU START"
+        title={<>Quick Answers for <AccentText tone="blue">Quick Doubts</AccentText></>}
+        subtitle="If your question isn't here, the full FAQ page covers every edge case — billing, syllabus details, and technical requirements."
+        items={studentFaqs}
+        linkLabel="View all FAQs"
+        background="#F9FAFB"
+      />
 
       {/* ── 9. CTA ──────────────────────────────────────────────── */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 60%, #FFFFFF 100%)', borderTop: '1px solid #DAEEF6' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ maxWidth: '640px' }}>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '48px', alignItems: 'center' }}
+            className="grid-cols-2-lg"
+          >
+            {/* Left: copy */}
+            <motion.div variants={fadeUp}>
               <HeadingMarker text="YOUR MOVE" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2" style={{ marginBottom: '20px' }}>
                 Try It Free for 14 Days. <AccentText tone="pink">Show a Parent the Rest</AccentText>.
               </h2>
-              <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '36px' }}>
+              <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
                 The trial is free. No credit card. No commitment. You get the full platform — GAP Assessment, personalised study plan, subject doubt support, and daily retention tracking. If it doesn't change how you study, there is nothing to cancel.
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center' }}>
+            </motion.div>
+
+            {/* Right: buttons */}
+            <motion.div variants={fadeUp} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center', justifyContent: 'center' }}>
                 <Link to="/programs" className="cta cta-blue">
                   Start Free Trial
                 </Link>
-                <Link to="/for-parents" className="cta cta-outline">
+                <Link to="/for-parents" className="cta cta-pink">
                   For Parents
                 </Link>
               </div>
-              <p style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', marginTop: '16px' }}>
+              <p style={{ fontSize: '13px', color: '#8E8EA0', fontFamily: 'Inter, sans-serif', margin: 0, textAlign: 'center' }}>
                 No credit card required. Cancel anytime.
               </p>
             </motion.div>
