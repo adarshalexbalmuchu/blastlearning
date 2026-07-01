@@ -1,10 +1,10 @@
 import { useSEO } from '../hooks/useSEO';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import MobileCarousel from '../components/MobileCarousel';
-import { fadeUp, stagger } from '../constants/animations';
+import { fadeUp, stagger, springUp, popIn } from '../constants/animations';
 import bruceImg  from '../assets/bruce.jpeg';
 import ankitImg  from '../assets/ankit.jpeg';
 import purviImg  from '../assets/purvi.jpeg';
@@ -120,6 +120,7 @@ export default function About() {
     description:
       "Blast Learning India is the self-study operating system beneath every family's existing educational investment. Twenty-five years of patented learning science rebuilt for CBSE, ICSE, and SAT-track students.",
   });
+  const shouldReduce = useReducedMotion();
 
   return (
     <div style={{ background: '#FFFFFF' }}>
@@ -175,7 +176,7 @@ export default function About() {
             viewport={{ once: true }}
           >
             {/* Heading block — full width, above the two-column split */}
-            <motion.div variants={fadeUp} style={{ marginBottom: '36px' }}>
+            <motion.div variants={springUp} style={{ marginBottom: '36px' }}>
               <HeadingMarker text="Our Story" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2">
                 A System Built Before It <AccentText tone="blue">Had</AccentText> a <AccentText tone="pink">Market</AccentText>
@@ -217,8 +218,12 @@ export default function About() {
                 }} />
 
                 {timelinePoints.map((item, i) => (
-                  <div
+                  <motion.div
                     key={i}
+                    initial={shouldReduce ? undefined : { opacity: 0, x: -24 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 24, delay: i * 0.18 }}
                     style={{ display: 'flex', gap: '24px', alignItems: 'flex-start', paddingBottom: i < timelinePoints.length - 1 ? '44px' : 0 }}
                   >
                     {/* Dot */}
@@ -244,7 +249,7 @@ export default function About() {
                         {item.desc}
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
@@ -263,7 +268,7 @@ export default function About() {
             viewport={{ once: true }}
           >
             {/* Section intro */}
-            <motion.div variants={fadeUp} style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <motion.div variants={springUp} style={{ textAlign: 'center', marginBottom: '48px' }}>
               <HeadingMarker text="The Research Behind the System" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <p className="t-body" style={{ maxWidth: '680px', margin: '0 auto' }}>
                 Every claim on this page is traceable to a study, a patent filing, or a partnership that predates Blast Learning India itself.
@@ -307,8 +312,12 @@ export default function About() {
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center' }}>
                 {curriculumPills.map((pill, i) => (
-                  <span
+                  <motion.span
                     key={pill}
+                    initial={shouldReduce ? undefined : { opacity: 0, scale: 0.75, y: 10 }}
+                    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ type: 'spring', stiffness: 430, damping: 20, delay: i * 0.06 }}
                     style={{
                       padding: '5px 16px',
                       borderRadius: '9999px',
@@ -318,10 +327,11 @@ export default function About() {
                       background: i % 2 === 0 ? '#E0F5FC' : '#FFF0F4',
                       color: i % 2 === 0 ? '#0FA8DC' : '#E8135A',
                       border: `1px solid ${i % 2 === 0 ? '#B3E5F5' : '#FBCCD8'}`,
+                      display: 'inline-block',
                     }}
                   >
                     {pill}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
@@ -333,7 +343,7 @@ export default function About() {
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <motion.div variants={springUp} style={{ textAlign: 'center', marginBottom: '48px' }}>
               <HeadingMarker text="Our Position" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2" style={{ marginBottom: '20px' }}>
                 Why a <AccentText tone="blue">System</AccentText>, Not a <AccentText tone="pink">Service</AccentText>
@@ -349,7 +359,7 @@ export default function About() {
               style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', marginBottom: '40px' }}
               className="grid-cols-2-md"
             >
-              <motion.div variants={fadeUp} whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 22 } }} className="card-subtle surface-card" style={{ overflow: 'hidden', height: '100%' }}>
+              <motion.div variants={popIn} whileHover={{ y: -8, scale: 1.02, transition: { type: 'spring', stiffness: 320, damping: 20 } }} className="card-subtle surface-card" style={{ overflow: 'hidden', height: '100%' }}>
                 <div style={{ height: '3px', background: '#0FA8DC' }} />
                 <div style={{ padding: '28px' }}>
                   <HeadingMarker text="Vision" marginBottom="16px" fontSize="11px" accent="#0FA8DC" />
@@ -358,7 +368,7 @@ export default function About() {
                   </p>
                 </div>
               </motion.div>
-              <motion.div variants={fadeUp} whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 22 } }} className="card-subtle surface-card" style={{ overflow: 'hidden', height: '100%' }}>
+              <motion.div variants={popIn} whileHover={{ y: -8, scale: 1.02, transition: { type: 'spring', stiffness: 320, damping: 20 } }} className="card-subtle surface-card" style={{ overflow: 'hidden', height: '100%' }}>
                 <div style={{ height: '3px', background: '#E8135A' }} />
                 <div style={{ padding: '28px' }}>
                   <HeadingMarker text="Mission" marginBottom="16px" fontSize="11px" accent="#E8135A" />

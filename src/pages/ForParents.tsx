@@ -9,7 +9,7 @@ import MobileCarousel from '../components/MobileCarousel';
 import { SharedFaqSection } from '../components/MarketingSections';
 import { DashboardMockup, TutorTeamMockup } from '../components/TransparencyMockups';
 import CoachingCalculator from '../components/CoachingCalculator';
-import { fadeUp, stagger } from '../constants/animations';
+import { fadeUp, stagger, springUp, popIn } from '../constants/animations';
 
 const MotionLink = motion.create(Link);
 
@@ -365,7 +365,7 @@ export default function ForParents() {
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
+            <motion.div variants={springUp} style={{ marginBottom: '48px' }}>
               <HeadingMarker text="A TOOL, NOT A PITCH" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
                 Run the <AccentText tone="blue">Numbers</AccentText> Before You Decide <AccentText tone="pink">Anything</AccentText>
@@ -385,7 +385,7 @@ export default function ForParents() {
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
+            <motion.div variants={springUp} style={{ marginBottom: '48px' }}>
               <HeadingMarker text="WHY THIS ISN'T A NEW IDEA" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
                 <AccentText tone="blue">Twenty-Five Years</AccentText> Before the First Indian Student <AccentText tone="pink">Used It</AccentText>
@@ -404,8 +404,8 @@ export default function ForParents() {
               {researchStats.map((stat) => (
                 <motion.div
                   key={stat.value}
-                  variants={fadeUp}
-                  whileHover={{ y: -6, boxShadow: '0 16px 40px rgba(15,23,42,0.10), 0 4px 12px rgba(15,23,42,0.06)', transition: { type: 'spring', stiffness: 300, damping: 22 } }}
+                  variants={popIn}
+                  whileHover={{ y: -6, scale: 1.03, boxShadow: '0 16px 40px rgba(15,23,42,0.10), 0 4px 12px rgba(15,23,42,0.06)', transition: { type: 'spring', stiffness: 300, damping: 22 } }}
                   style={{
                     background: '#FFFFFF',
                     border: '1px solid #ECECF1',
@@ -481,7 +481,7 @@ export default function ForParents() {
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
+            <motion.div variants={springUp} style={{ marginBottom: '48px' }}>
               <HeadingMarker text="TRANSPARENCY, NOT REASSURANCE" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
                 A <AccentText tone="pink">Human Partner</AccentText>, <AccentText tone="blue">Visible Progress</AccentText>, No Surprises
@@ -496,7 +496,7 @@ export default function ForParents() {
               className="grid-cols-2-md"
             >
               {transparencyItems.map((item) => (
-                <motion.div key={item.label} variants={fadeUp} whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 22 } }}>
+                <motion.div key={item.label} variants={popIn} whileHover={{ y: -8, scale: 1.02, transition: { type: 'spring', stiffness: 320, damping: 20 } }}>
                   <div style={{ height: '100%', background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', padding: '32px', borderTop: `3px solid ${item.accent}`, boxShadow: '0 2px 8px rgba(28,28,40,0.04)' }}>
                     <HeadingMarker text={item.label} accent={item.accent} fontSize="11px" marginBottom="12px" />
                     <h3 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '16px' }}>
@@ -518,7 +518,7 @@ export default function ForParents() {
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
+            <motion.div variants={springUp} style={{ marginBottom: '48px' }}>
               <HeadingMarker text="CHOOSING, NOT BROWSING" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
                 <AccentText tone="blue">Start</AccentText> From Where Your Child <AccentText tone="pink">Actually Is</AccentText>
@@ -664,7 +664,6 @@ export default function ForParents() {
                     background: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)',
                     color: '#FFFFFF',
                     border: 'none',
-                    boxShadow: '0 4px 18px rgba(232,19,90,0.28)',
                   }}
                 >
                   Start Free Trial

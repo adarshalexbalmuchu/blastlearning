@@ -7,7 +7,7 @@ import AccentText from '../components/AccentText';
 import BrandArc from '../components/BrandArc';
 import HeadingMarker from '../components/HeadingMarker';
 import { SharedFaqSection } from '../components/MarketingSections';
-import { fadeUp, stagger } from '../constants/animations';
+import { fadeUp, stagger, springUp, popIn } from '../constants/animations';
 
 // Converging diagram — inverted decision tree using the same orthogonal connector
 // grammar as the Parents page. Animation mirrors decisionTreeVariants() in
@@ -348,7 +348,7 @@ export default function ForStudents() {
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ marginBottom: '52px' }}>
+            <motion.div variants={springUp} style={{ marginBottom: '52px' }}>
               <HeadingMarker text="THE ACTUAL SCIENCE" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <h2 className="t-h2">
                 <AccentText tone="blue">Reading It Again</AccentText> Isn't the <AccentText tone="pink">Same as Knowing It</AccentText>
@@ -453,7 +453,7 @@ export default function ForStudents() {
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ maxWidth: '720px', marginBottom: '64px' }}>
+            <motion.div variants={springUp} style={{ maxWidth: '720px', marginBottom: '64px' }}>
               <HeadingMarker text="NOT YOUR GRADE. YOU." marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2">
                 The <AccentText tone="blue">GAP Assessment</AccentText> Doesn't <AccentText tone="pink">Assume Anything</AccentText>
@@ -557,7 +557,7 @@ export default function ForStudents() {
               className="grid-cols-2-md"
             >
               {supportCards.map((item) => (
-                <motion.div key={item.label} variants={fadeUp} whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 22 } }}>
+                <motion.div key={item.label} variants={popIn} whileHover={{ y: -8, scale: 1.02, transition: { type: 'spring', stiffness: 320, damping: 20 } }}>
                   <div style={{ height: '100%', background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', padding: '32px', borderTop: `3px solid ${item.accent}`, boxShadow: '0 2px 8px rgba(28,28,40,0.04)' }}>
                     <HeadingMarker text={item.label} accent={item.accent} fontSize="11px" marginBottom="12px" />
                     <h3 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '16px' }}>
@@ -706,7 +706,7 @@ export default function ForStudents() {
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ marginBottom: '52px' }}>
+            <motion.div variants={springUp} style={{ marginBottom: '52px' }}>
               <HeadingMarker text="THE PART NOBODY ELSE TEACHES" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <h2 className="t-h2">
                 <AccentText tone="blue">Knowing It</AccentText> Isn't the Same as <AccentText tone="pink">Staying Calm With It</AccentText>
@@ -785,7 +785,7 @@ export default function ForStudents() {
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-            <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
+            <motion.div variants={springUp} style={{ maxWidth: '720px' }}>
               <HeadingMarker text="IT TRAVELS WITH YOU" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2" style={{ marginBottom: '28px' }}>
                 The Skill Isn't the <AccentText tone="pink">Subject</AccentText>. It's the <AccentText tone="blue">Recall</AccentText>.
@@ -818,9 +818,16 @@ export default function ForStudents() {
               }}
             >
               {recallPrograms.map((prog, i) => (
-                <motion.div key={prog.name} variants={rd.card(i)} whileHover={{ y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}>
+                <motion.div key={prog.name} variants={rd.card(i)} whileHover={{ y: -6, scale: 1.04, transition: { type: 'spring', stiffness: 400, damping: 22 } }}>
                   <div style={{ border: `2px solid ${prog.accent}`, borderRadius: '16px', padding: '22px 14px', textAlign: 'center', background: '#FFFFFF', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', boxSizing: 'border-box' }}>
-                    <prog.Icon size={20} color={prog.accent} strokeWidth={2} aria-hidden="true" />
+                    <motion.div
+                      initial={shouldReduce ? undefined : { scale: 0, rotate: -15 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ type: 'spring', stiffness: 500, damping: 18, delay: i * 0.1 }}
+                    >
+                      <prog.Icon size={20} color={prog.accent} strokeWidth={2} aria-hidden="true" />
+                    </motion.div>
                     <h3 style={{ fontSize: '13px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: prog.accent, margin: 0, lineHeight: 1.35 }}>
                       {prog.name}
                     </h3>
