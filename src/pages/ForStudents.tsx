@@ -1,5 +1,6 @@
 import { useSEO } from '../hooks/useSEO';
-import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useReducedMotion, useInView, type Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Book, Calculator, Type, Target, Brain } from 'lucide-react';
 import AccentText from '../components/AccentText';
@@ -97,6 +98,8 @@ export default function ForStudents() {
   });
   const shouldReduce = useReducedMotion();
   const rd = recallDiagramVariants(!!shouldReduce);
+  const chartRef = useRef<SVGSVGElement>(null);
+  const chartInView = useInView(chartRef, { once: true, margin: '0px 0px -10% 0px' });
 
   return (
     <div style={{ background: '#FFFFFF' }}>
@@ -130,12 +133,126 @@ export default function ForStudents() {
                 That's a method problem, not a you problem.
               </p>
             </motion.div>
-            {/* Geometric illustration */}
+            {/* Clock → blank paper illustration (ties directly to the headline) */}
             <motion.div variants={fadeUp} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <svg viewBox="0 0 520 520" width="100%" style={{ maxWidth: '420px' }} aria-hidden="true">
-                <rect x="170" y="185" width="200" height="200" fill="#0FA8DC" transform="rotate(45 270 285)" />
-                <circle cx="255" cy="248" r="92" fill="#E8135A" />
-                <line x1="80" y1="490" x2="480" y2="80" stroke="#1C1C28" strokeWidth="2.5" />
+              <svg
+                viewBox="0 0 480 218"
+                width="100%"
+                style={{ maxWidth: '440px', overflow: 'visible' }}
+                aria-label="A clock showing 6 hours studied, connected by a dashed arrow to a blank exam paper — representing time spent but nothing retained"
+              >
+                {/* ── Clock ──────────────────────────────────────────── */}
+                <motion.g
+                  style={{ transformBox: 'fill-box', transformOrigin: 'center' } as React.CSSProperties}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={shouldReduce ? { duration: 0.25 } : { duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
+                >
+                  <circle cx="110" cy="103" r="60" fill="#E0F5FC" stroke="#0FA8DC" strokeWidth="2.5" />
+                  {/* Cardinal tick marks */}
+                  <line x1="110" y1="45"  x2="110" y2="54"  stroke="#0FA8DC" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+                  <line x1="168" y1="103" x2="159" y2="103" stroke="#0FA8DC" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+                  <line x1="110" y1="161" x2="110" y2="152" stroke="#0FA8DC" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+                  <line x1="52"  y1="103" x2="61"  y2="103" stroke="#0FA8DC" strokeWidth="2" strokeLinecap="round" opacity="0.5" />
+                  {/* Hour hand at 6 o'clock (pointing straight down) */}
+                  <line x1="110" y1="103" x2="110" y2="148" stroke="#0FA8DC" strokeWidth="4"   strokeLinecap="round" />
+                  {/* Minute hand at 12 o'clock (pointing straight up) */}
+                  <line x1="110" y1="103" x2="110" y2="56"  stroke="#0FA8DC" strokeWidth="2.5" strokeLinecap="round" />
+                  <circle cx="110" cy="103" r="5" fill="#0FA8DC" />
+                </motion.g>
+
+                {/* Clock label */}
+                <motion.text
+                  x="110" y="186"
+                  textAnchor="middle"
+                  fontSize="11"
+                  fontFamily="Inter, sans-serif"
+                  fill="#5A5A6E"
+                  fontWeight="500"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={shouldReduce ? { duration: 0.25 } : { duration: 0.3, delay: 0.42 }}
+                >
+                  6 hours studied
+                </motion.text>
+
+                {/* ── Dashed connector with arrowhead ────────────────── */}
+                <motion.g
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={shouldReduce ? { duration: 0.25 } : { duration: 0.3, delay: 0.28 }}
+                >
+                  <line
+                    x1="172" y1="103" x2="262" y2="103"
+                    stroke="#9CA3AF" strokeWidth="1.5"
+                    strokeDasharray="5 4" strokeLinecap="round"
+                  />
+                  <path
+                    d="M252,96 L263,103 L252,110"
+                    fill="none" stroke="#9CA3AF" strokeWidth="1.5"
+                    strokeLinecap="round" strokeLinejoin="round"
+                  />
+                </motion.g>
+
+                {/* ── Paper body (dog-ear top-right) ──────────────────── */}
+                <motion.path
+                  d="M273,44 Q273,38 279,38 L372,38 L394,60 L394,181 Q394,187 388,187 L279,187 Q273,187 273,181 Z"
+                  fill="#FFFFFF" stroke="#E8135A" strokeWidth="2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={shouldReduce ? { duration: 0.25 } : { duration: 0.3, delay: 0.52 }}
+                />
+                {/* Dog-ear fold triangle */}
+                <motion.path
+                  d="M372,38 L394,38 L394,60 Z"
+                  fill="#FBCCD8" stroke="#E8135A" strokeWidth="1.5" strokeLinejoin="round"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={shouldReduce ? { duration: 0.25 } : { duration: 0.3, delay: 0.52 }}
+                />
+
+                {/* Wavy line 1 — blank ruled space */}
+                <motion.path
+                  d="M284,90 Q295,83 306,90 Q317,97 328,90 Q339,83 350,90 Q361,97 372,90 Q380,84 385,88"
+                  fill="none" stroke="#E8135A" strokeWidth="1.5" strokeLinecap="round" opacity="0.28"
+                  initial={{ pathLength: shouldReduce ? 1 : 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={shouldReduce ? { duration: 0.25 } : { duration: 0.38, delay: 0.7, ease: 'easeInOut' }}
+                />
+
+                {/* Wavy line 2 — blank ruled space */}
+                <motion.path
+                  d="M284,114 Q295,107 306,114 Q317,121 328,114 Q339,107 350,114 Q361,121 372,114 Q380,108 385,112"
+                  fill="none" stroke="#E8135A" strokeWidth="1.5" strokeLinecap="round" opacity="0.28"
+                  initial={{ pathLength: shouldReduce ? 1 : 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={shouldReduce ? { duration: 0.25 } : { duration: 0.38, delay: 0.86, ease: 'easeInOut' }}
+                />
+
+                {/* Scribble — incomplete attempt */}
+                <motion.path
+                  d="M284,146 L294,137 L304,146 L314,137 L324,146 L334,137 L339,140"
+                  fill="none" stroke="#E8135A" strokeWidth="2"
+                  strokeLinecap="round" strokeLinejoin="round" opacity="0.52"
+                  initial={{ pathLength: shouldReduce ? 1 : 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={shouldReduce ? { duration: 0.25 } : { duration: 0.3, delay: 1.02, ease: 'easeInOut' }}
+                />
+
+                {/* Paper label */}
+                <motion.text
+                  x="333" y="206"
+                  textAnchor="middle"
+                  fontSize="11"
+                  fontFamily="Inter, sans-serif"
+                  fill="#5A5A6E"
+                  fontWeight="500"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={shouldReduce ? { duration: 0.25 } : { duration: 0.3, delay: 1.12 }}
+                >
+                  still blank
+                </motion.text>
               </svg>
             </motion.div>
           </motion.div>
@@ -143,62 +260,104 @@ export default function ForStudents() {
       </section>
 
       {/* ── 2. The Actual Science ────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'start' }}
-            className="grid-cols-2-lg"
-          >
-            <motion.div variants={fadeUp}>
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.div variants={fadeUp} style={{ marginBottom: '52px' }}>
               <HeadingMarker text="THE ACTUAL SCIENCE" marginBottom="16px" fontSize="12px" accent="#E8135A" />
-              <h2 className="t-h2" style={{ marginBottom: '28px' }}>
+              <h2 className="t-h2">
                 <AccentText tone="blue">Reading It Again</AccentText> Isn't the <AccentText tone="pink">Same as Knowing It</AccentText>
               </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  Hermann Ebbinghaus documented the forgetting curve in 1885: without active reinforcement, your brain loses up to 80% of new information within 24 hours. When you re-read your notes the day before an exam, your brain recognises the content. But recognition is not recall. In an exam hall, recognition does nothing.
-                </p>
-                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  Blast Learning uses spaced repetition and active recall — two techniques backed by over 500 peer-reviewed studies. Each session is timed to hit precisely when your memory is about to fade. You are not just revising. You are training your brain to retrieve information under pressure.
-                </p>
-              </div>
             </motion.div>
 
-            <motion.div variants={fadeUp} style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start' }}>
+            {/* Two-curve Ebbinghaus chart — full-width focal illustration */}
+            <motion.div variants={fadeUp} style={{ maxWidth: '880px', margin: '0 auto' }}>
               <svg
-                viewBox="0 0 660 320"
+                ref={chartRef}
+                viewBox="0 0 820 370"
                 width="100%"
-                style={{ maxWidth: '560px', fontFamily: 'Inter, sans-serif', overflow: 'visible' }}
-                aria-label="Ebbinghaus forgetting curve: memory strength drops steeply, then retrieval practice restores it with shallower dips over time"
+                style={{ fontFamily: 'Inter, sans-serif', overflow: 'visible', display: 'block' }}
+                aria-label="Two memory curves compared: spaced retrieval (pink, jagged but recovering with each dip shallower) versus re-reading only (gray dashed, steady decline with no recovery)"
               >
-                {/* Axis labels */}
-                <text x="10" y="18" fontSize="11" fill="#9CA3AF">memory strength</text>
-                <text x="510" y="308" fontSize="11" fill="#9CA3AF">time</text>
+                {/* Axis labels — "memory strength" top-left, "time" bottom-right corner well clear of curves */}
+                <text x="10" y="20" fontSize="11" fill="#9CA3AF">memory strength</text>
+                <text x="640" y="362" fontSize="11" fill="#9CA3AF">time</text>
 
-                {/* Forgetting curve */}
-                <polyline
-                  points="25,65 145,235 220,100 310,205 375,115 430,180 480,105 530,165"
+                {/* Legend — sits well above chart area (curves start at y≈125, legend bottom at y≈72) */}
+                <line x1="10" y1="42" x2="46" y2="42" stroke="#E8135A" strokeWidth="2.5" strokeLinecap="round" />
+                <text x="52" y="46" fontSize="11" fill="#5A5A6E">spaced retrieval</text>
+                <line x1="10" y1="62" x2="46" y2="62" stroke="#9CA3AF" strokeWidth="2" strokeDasharray="5 3" strokeLinecap="round" />
+                <text x="52" y="66" fontSize="11" fill="#5A5A6E">re-reading only</text>
+
+                {/* ── Both clipPath reveals live here: proven mechanism for SVG draw animations ── */}
+                <defs>
+                  {/* Pink curve reveal: left-to-right, duration 0.56s, no delay */}
+                  <clipPath id="pink-reveal-clip">
+                    <motion.rect
+                      x="24" y="0" height="385"
+                      animate={{ width: (shouldReduce || chartInView) ? 530 : 0 }}
+                      transition={shouldReduce ? { duration: 0 } : { duration: 0.56, ease: 'easeInOut' }}
+                    />
+                  </clipPath>
+                  {/* Gray curve reveal: left-to-right, 0.42s at delay 0.72s */}
+                  <clipPath id="gray-reveal-clip">
+                    <motion.rect
+                      x="24" y="0" height="385"
+                      animate={{ width: (shouldReduce || chartInView) ? 572 : 0 }}
+                      transition={shouldReduce ? { duration: 0 } : { duration: 0.42, delay: 0.72, ease: 'easeInOut' }}
+                    />
+                  </clipPath>
+                </defs>
+                {/* Curve shifted +70 from original: 55→125, 132→202, 222→292, 263→333 */}
+                <path
+                  d="M25,125 C240,202 430,292 592,333"
+                  fill="none"
+                  stroke="#9CA3AF"
+                  strokeWidth="2"
+                  strokeDasharray="6 4"
+                  strokeLinecap="round"
+                  clipPath="url(#gray-reveal-clip)"
+                />
+
+                {/* Pink retrieval curve — clipPath reveal (reliable in SVG; no pathLength conflict) */}
+                <path
+                  d="M25,125 L135,310 L215,158 L305,275 L375,175 L445,248 L515,168 L545,195"
                   fill="none"
                   stroke="#E8135A"
                   strokeWidth="2.5"
                   strokeLinejoin="round"
                   strokeLinecap="round"
+                  clipPath="url(#pink-reveal-clip)"
                 />
 
-                {/* Retrieval dots */}
-                <circle cx="220" cy="100" r="8" fill="#0FA8DC" />
-                <circle cx="375" cy="115" r="8" fill="#0FA8DC" />
-                <circle cx="480" cy="105" r="8" fill="#0FA8DC" />
+                {/* ── Blue retrieval dots: fade in as pink curve reaches each peak ── */}
+                {([
+                  { cx: 215, cy: 158, delay: 0.20 },
+                  { cx: 375, cy: 175, delay: 0.38 },
+                  { cx: 515, cy: 168, delay: 0.52 },
+                ] as { cx: number; cy: number; delay: number }[]).map(({ cx, cy, delay }) => (
+                  <motion.circle
+                    key={cx}
+                    cx={cx} cy={cy} r="8"
+                    fill="#0FA8DC"
+                    animate={{ opacity: (shouldReduce || chartInView) ? 1 : 0 }}
+                    transition={shouldReduce ? { duration: 0 } : { duration: 0.25, delay }}
+                  />
+                ))}
 
-                {/* Annotations */}
-                <text x="548" y="88" fontSize="11" fill="#6B7280">retrieval restores it</text>
-                <text x="548" y="168" fontSize="11" fill="#6B7280">dips shrink</text>
-                <text x="548" y="183" fontSize="11" fill="#6B7280">over time</text>
-                <text x="548" y="218" fontSize="11" fill="#6B7280">memory fades fast</text>
+                {/* ── Annotations (useInView-driven, no whileInView on SVG children) ── */}
+                <motion.g
+                  animate={{ opacity: (shouldReduce || chartInView) ? 1 : 0 }}
+                  transition={shouldReduce ? { duration: 0 } : { duration: 0.3, delay: 1.18 }}
+                >
+                  {/* "retrieval restores it" — level with first peak (cy=158) */}
+                  <text x="610" y="157" fontSize="11" fill="#6B7280">retrieval restores it</text>
+                  {/* "dips shrink over time" — level with 3rd dip (y=248) */}
+                  <text x="610" y="245" fontSize="11" fill="#6B7280">dips shrink</text>
+                  <text x="610" y="259" fontSize="11" fill="#6B7280">over time</text>
+                  {/* "memory fades fast" — level with gray curve end (y=333); "time" is 30px lower */}
+                  <text x="610" y="332" fontSize="11" fill="#6B7280">memory fades fast</text>
+                </motion.g>
               </svg>
             </motion.div>
           </motion.div>
@@ -206,7 +365,7 @@ export default function ForStudents() {
       </section>
 
       {/* ── 3. GAP Assessment ───────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ maxWidth: '720px', marginBottom: '64px' }}>
@@ -248,7 +407,7 @@ export default function ForStudents() {
       </section>
 
       {/* ── 4. Human Support ────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
@@ -267,7 +426,7 @@ export default function ForStudents() {
             >
               {supportCards.map((item) => (
                 <motion.div key={item.label} variants={fadeUp} whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 22 } }}>
-                  <div style={{ height: '100%', background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', padding: '32px', borderTop: `3px solid ${item.accent}` }}>
+                  <div style={{ height: '100%', background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', padding: '32px', borderTop: `3px solid ${item.accent}`, boxShadow: '0 2px 8px rgba(28,28,40,0.04)' }}>
                     <HeadingMarker text={item.label} accent={item.accent} fontSize="11px" marginBottom="12px" />
                     <h3 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '16px' }}>
                       {item.title}
@@ -284,7 +443,7 @@ export default function ForStudents() {
       </section>
 
       {/* ── 5. Stuck at 11pm ────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ maxWidth: '720px', marginBottom: '40px' }}>
@@ -294,7 +453,7 @@ export default function ForStudents() {
               </h2>
             </motion.div>
             <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
-              <div style={{ background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: '16px', padding: '24px 28px 36px' }}>
+              <div style={{ background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: '16px', padding: '24px 28px 36px', boxShadow: '0 2px 8px rgba(28,28,40,0.04)' }}>
                 <p style={{ fontWeight: 700, fontSize: '15px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '24px' }}>
                   AI Tutor
                 </p>
@@ -322,7 +481,7 @@ export default function ForStudents() {
       </section>
 
       {/* ── 6. Exam Technique ───────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
@@ -344,7 +503,7 @@ export default function ForStudents() {
       </section>
 
       {/* ── 7. Transfer ─────────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
@@ -472,11 +631,11 @@ export default function ForStudents() {
         subtitle="If your question isn't here, the full FAQ page covers every edge case — billing, syllabus details, and technical requirements."
         items={studentFaqs}
         linkLabel="View all FAQs"
-        background="#F9FAFB"
+        background="#F7FAFC"
       />
 
       {/* ── 9. CTA ──────────────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF', borderTop: '1px solid #ECECF1' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF', borderTop: '1px solid #ECECF1' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}

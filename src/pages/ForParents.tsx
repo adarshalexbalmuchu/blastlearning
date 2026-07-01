@@ -315,7 +315,7 @@ export default function ForParents() {
       </section>
 
       {/* ── 2. The Mechanism ────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <HeadingMarker text="THE MECHANISM" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
@@ -362,7 +362,7 @@ export default function ForParents() {
       </section>
 
       {/* ── 3. Calculator ───────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
@@ -382,7 +382,7 @@ export default function ForParents() {
       </section>
 
       {/* ── 4. Research / History ───────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
@@ -478,7 +478,7 @@ export default function ForParents() {
       </section>
 
       {/* ── 5. Transparency ─────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
@@ -497,7 +497,7 @@ export default function ForParents() {
             >
               {transparencyItems.map((item) => (
                 <motion.div key={item.label} variants={fadeUp} whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 22 } }}>
-                  <div style={{ height: '100%', background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', padding: '32px', borderTop: `3px solid ${item.accent}` }}>
+                  <div style={{ height: '100%', background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', padding: '32px', borderTop: `3px solid ${item.accent}`, boxShadow: '0 2px 8px rgba(28,28,40,0.04)' }}>
                     <HeadingMarker text={item.label} accent={item.accent} fontSize="11px" marginBottom="12px" />
                     <h3 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '16px' }}>
                       {item.title}
@@ -515,7 +515,7 @@ export default function ForParents() {
       </section>
 
       {/* ── 6. Program Selection ────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
@@ -633,7 +633,7 @@ export default function ForParents() {
       />
 
       {/* ── 8. CTA ──────────────────────────────────────────────── */}
-      <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF', borderTop: '1px solid #ECECF1' }}>
+      <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF', borderTop: '1px solid #ECECF1' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             variants={stagger}
@@ -657,7 +657,16 @@ export default function ForParents() {
             {/* Right: buttons */}
             <motion.div variants={fadeUp} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', alignItems: 'center', justifyContent: 'center' }}>
-                <Link to="/programs" className="cta cta-pink">
+                <Link
+                  to="/programs"
+                  className="cta"
+                  style={{
+                    background: 'linear-gradient(90deg, #E8135A 0%, #0FA8DC 100%)',
+                    color: '#FFFFFF',
+                    border: 'none',
+                    boxShadow: '0 4px 18px rgba(232,19,90,0.28)',
+                  }}
+                >
                   Start Free Trial
                 </Link>
                 <Link to="/contact" className="cta cta-blue">
