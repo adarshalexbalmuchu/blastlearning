@@ -114,28 +114,31 @@ export default function ForStudents() {
           <BrandArc width="100%" opacity={0.03} />
         </div>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
-          <div
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="visible"
             style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'center' }}
             className="grid-cols-2-lg"
           >
-            <div>
+            <motion.div variants={fadeUp}>
               <HeadingMarker text="FOR STUDENTS" marginBottom="24px" fontSize="12px" accent="#0FA8DC" />
               <h1 className="page-hero-title">
-                You Studied for Six Hours. The Formula Still Didn't Show Up.
+                You Studied for Six Hours. The <AccentText tone="blue">Formula</AccentText> Still Didn't <AccentText tone="pink">Show Up</AccentText>.
               </h1>
               <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginTop: '24px' }}>
                 That's a method problem, not a you problem.
               </p>
-            </div>
+            </motion.div>
             {/* Geometric illustration */}
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <motion.div variants={fadeUp} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <svg viewBox="0 0 520 520" width="100%" style={{ maxWidth: '420px' }} aria-hidden="true">
                 <rect x="170" y="185" width="200" height="200" fill="#0FA8DC" transform="rotate(45 270 285)" />
                 <circle cx="255" cy="248" r="92" fill="#E8135A" />
                 <line x1="80" y1="490" x2="480" y2="80" stroke="#1C1C28" strokeWidth="2.5" />
               </svg>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -151,9 +154,9 @@ export default function ForStudents() {
             className="grid-cols-2-lg"
           >
             <motion.div variants={fadeUp}>
-              <HeadingMarker text="THE ACTUAL SCIENCE" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="THE ACTUAL SCIENCE" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <h2 className="t-h2" style={{ marginBottom: '28px' }}>
-                Reading It Again Isn't the <AccentText tone="pink">Same as Knowing It</AccentText>
+                <AccentText tone="blue">Reading It Again</AccentText> Isn't the <AccentText tone="pink">Same as Knowing It</AccentText>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
@@ -207,9 +210,9 @@ export default function ForStudents() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ maxWidth: '720px', marginBottom: '64px' }}>
-              <HeadingMarker text="NOT YOUR GRADE. YOU." marginBottom="16px" fontSize="12px" accent="#E8135A" />
+              <HeadingMarker text="NOT YOUR GRADE. YOU." marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2">
-                The GAP Assessment Doesn't <AccentText tone="pink">Assume Anything</AccentText>
+                The <AccentText tone="blue">GAP Assessment</AccentText> Doesn't <AccentText tone="pink">Assume Anything</AccentText>
               </h2>
             </motion.div>
             <motion.div variants={fadeUp}>
@@ -249,9 +252,9 @@ export default function ForStudents() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
-              <HeadingMarker text="YOU'RE NOT DOING THIS ALONE" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="YOU'RE NOT DOING THIS ALONE" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
-                A Partner Who Studies <AccentText tone="blue">With You</AccentText>, Not a Bot Checking In
+                A Partner Who Studies <AccentText tone="blue">With You</AccentText>, Not a <AccentText tone="pink">Bot</AccentText> Checking In
               </h2>
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px' }}>
                 The Tutor Mom team watches your retention data in real time. When you drop off, they reach out — not to pressure you, but because they can see exactly where you got stuck.
@@ -263,11 +266,9 @@ export default function ForStudents() {
               className="grid-cols-2-md"
             >
               {supportCards.map((item) => (
-                <motion.div key={item.label} variants={fadeUp}>
+                <motion.div key={item.label} variants={fadeUp} whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 22 } }}>
                   <div style={{ height: '100%', background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', padding: '32px', borderTop: `3px solid ${item.accent}` }}>
-                    <p style={{ fontSize: '11px', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: item.accent, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '12px' }}>
-                      {item.label}
-                    </p>
+                    <HeadingMarker text={item.label} accent={item.accent} fontSize="11px" marginBottom="12px" />
                     <h3 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '16px' }}>
                       {item.title}
                     </h3>
@@ -287,9 +288,9 @@ export default function ForStudents() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ maxWidth: '720px', marginBottom: '40px' }}>
-              <HeadingMarker text="STUCK AT 11PM" marginBottom="16px" fontSize="12px" accent="#E8135A" />
+              <HeadingMarker text="STUCK AT 11PM" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2">
-                Get Unstuck Without Waiting for Tomorrow's Class
+                Get <AccentText tone="blue">Unstuck</AccentText> Without Waiting for <AccentText tone="pink">Tomorrow's Class</AccentText>
               </h2>
             </motion.div>
             <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
@@ -325,9 +326,9 @@ export default function ForStudents() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
-              <HeadingMarker text="THE PART NOBODY ELSE TEACHES" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="THE PART NOBODY ELSE TEACHES" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <h2 className="t-h2" style={{ marginBottom: '28px' }}>
-                Knowing It Isn't the Same as <AccentText tone="pink">Staying Calm With It</AccentText>
+                <AccentText tone="blue">Knowing It</AccentText> Isn't the Same as <AccentText tone="pink">Staying Calm With It</AccentText>
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
@@ -349,7 +350,7 @@ export default function ForStudents() {
             <motion.div variants={fadeUp} style={{ maxWidth: '720px' }}>
               <HeadingMarker text="IT TRAVELS WITH YOU" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2" style={{ marginBottom: '28px' }}>
-                The Skill Isn't the Subject. It's the <AccentText tone="blue">Recall</AccentText>.
+                The Skill Isn't the <AccentText tone="pink">Subject</AccentText>. It's the <AccentText tone="blue">Recall</AccentText>.
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
@@ -378,7 +379,7 @@ export default function ForStudents() {
               }}
             >
               {recallPrograms.map((prog, i) => (
-                <motion.div key={prog.name} variants={rd.card(i)}>
+                <motion.div key={prog.name} variants={rd.card(i)} whileHover={{ y: -4, transition: { type: 'spring', stiffness: 400, damping: 25 } }}>
                   <div style={{ border: `2px solid ${prog.accent}`, borderRadius: '16px', padding: '22px 14px', textAlign: 'center', background: '#FFFFFF', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', boxSizing: 'border-box' }}>
                     <prog.Icon size={20} color={prog.accent} strokeWidth={2} aria-hidden="true" />
                     <h3 style={{ fontSize: '13px', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: prog.accent, margin: 0, lineHeight: 1.35 }}>
@@ -466,7 +467,8 @@ export default function ForStudents() {
       {/* ── 8. FAQ ──────────────────────────────────────────────── */}
       <SharedFaqSection
         eyebrow="BEFORE YOU START"
-        title={<>Quick Answers for Quick Doubts</>}
+        accent="#E8135A"
+        title={<>Quick <AccentText tone="blue">Answers</AccentText> for <AccentText tone="pink">Quick Doubts</AccentText></>}
         subtitle="If your question isn't here, the full FAQ page covers every edge case — billing, syllabus details, and technical requirements."
         items={studentFaqs}
         linkLabel="View all FAQs"
@@ -488,7 +490,7 @@ export default function ForStudents() {
             <motion.div variants={fadeUp}>
               <HeadingMarker text="YOUR MOVE" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2" style={{ marginBottom: '20px' }}>
-                Try It Free for 14 Days. <AccentText tone="pink">Show a Parent the Rest</AccentText>.
+                Try It <AccentText tone="blue">Free</AccentText> for 14 Days. <AccentText tone="pink">Show a Parent the Rest</AccentText>.
               </h2>
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
                 The trial is free. No credit card. No commitment. You get the full platform — GAP Assessment, personalised study plan, subject doubt support, and daily retention tracking. If it doesn't change how you study, there is nothing to cancel.

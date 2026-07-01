@@ -8,6 +8,7 @@ import HeadingMarker from '../components/HeadingMarker';
 import MobileCarousel from '../components/MobileCarousel';
 import { SharedFaqSection } from '../components/MarketingSections';
 import { DashboardMockup, TutorTeamMockup } from '../components/TransparencyMockups';
+import CoachingCalculator from '../components/CoachingCalculator';
 import { fadeUp, stagger } from '../constants/animations';
 
 const MotionLink = motion.create(Link);
@@ -28,7 +29,7 @@ function StatValue({ raw, color }: { raw: string; color: string }) {
     fmAnimate(motionVal, numericTarget, { duration: 1.3, ease: 'easeOut' });
   }, [inView, shouldReduce]);
 
-  const style = { fontSize: 'clamp(1.6rem, 2.5vw, 2.4rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color, lineHeight: 1, margin: 0 } as const;
+  const style = { fontSize: 'clamp(1rem, 1.4vw, 1.35rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color, lineHeight: 1, margin: 0, opacity: 0.7 } as const;
   if (numericTarget !== null) return <motion.p ref={ref} style={style}>{displayVal}</motion.p>;
   return <p ref={ref} style={style}>{raw}</p>;
 }
@@ -83,10 +84,7 @@ const retentionLayers = [
   { key: 'retention', label: 'Retention', desc: 'what actually matters', color: '#E8135A' },
 ];
 
-// "Re-reading vs. retrieval practice" comparison, scroll-triggered once. The left
-// rings draw in outer -> inner ~150ms apart (multi-step, effortful); the right
-// solid circle lands in one clean 300ms motion (single, decisive) — the pacing
-// contrast is deliberate and mirrors what the shapes already argue visually.
+// Re-reading vs. retrieval practice comparison, scroll-triggered once.
 function comparisonVariants(reduced: boolean) {
   const ease = [0.16, 1, 0.3, 1] as [number, number, number, number];
   const ringStagger = 0.15;
@@ -215,12 +213,6 @@ const programs = [
   { name: 'SAT Prep Pass', situation: 'Digital SAT specifically', price: 'Rs 999/month', subtitle: 'US college admission', desc: 'Foundation to advanced SAT preparation, suitable from Class 10 onward.', path: '/programs/sat-prep', accent: '#0FA8DC' },
 ];
 
-const mechanismStats = [
-  { value: '80%', label: 'of new information forgotten within 24 hours without structured revision', color: '#E8135A' },
-  { value: '91%', label: 'of Blast Learning students improve what they retain within the first month', color: '#0FA8DC' },
-  { value: '500+', label: 'peer-reviewed studies behind the spaced repetition methodology', color: '#E8135A' },
-];
-
 const researchStats = [
   { value: '500+', label: 'peer-reviewed learning studies', color: '#E8135A' },
   { value: '100,000+', label: 'students taught under this system', color: '#0FA8DC' },
@@ -274,7 +266,7 @@ export default function ForParents() {
             <motion.div variants={hv.text}>
               <HeadingMarker text="FOR PARENTS" marginBottom="24px" fontSize="12px" accent="#E8135A" />
               <h1 className="page-hero-title">
-                The Real Question Isn't Whether Your Child Is <AccentText tone="pink">Trying</AccentText>
+                The <AccentText tone="blue">Real Question</AccentText> Isn't Whether Your Child Is <AccentText tone="pink">Trying</AccentText>
               </h1>
             </motion.div>
 
@@ -325,61 +317,25 @@ export default function ForParents() {
       {/* ── 2. The Mechanism ────────────────────────────────────── */}
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'start' }}
-            className="grid-cols-2-lg"
-          >
-            <motion.div variants={fadeUp}>
-              <HeadingMarker text="THE MECHANISM" marginBottom="16px" fontSize="12px" />
-              <h2 className="t-h2" style={{ marginBottom: '28px' }}>
-                Re-Reading Feels Like Learning. It <AccentText tone="pink">Isn't</AccentText>.
-              </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  Hermann Ebbinghaus documented the forgetting curve in 1885: without active reinforcement, students lose up to 80% of new information within 24 hours. Re-reading the same notes gives the feeling of familiarity, which the brain misinterprets as memory. It is not. Familiarity and recall are different cognitive processes, and only one of them works in an exam hall.
-                </p>
-                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  Blast Learning's Metacognition Engine applies spaced repetition and active recall at precisely the intervals where memory loss is about to occur. Each session is not revision for its own sake — it is a timed intervention that moves information from short-term exposure to long-term storage. The science behind this has been peer-reviewed in over 500 studies.
-                </p>
-                <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                  This is not a new technique dressed up in software. It is what IBM paid to license, what McGraw-Hill embedded into their curriculum tools, and what 100,000 students across multiple countries have studied with before a single Indian student used it.
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div variants={fadeUp} style={{ paddingTop: '136px' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                {mechanismStats.map((stat) => (
-                  <div key={stat.value} style={{ display: 'flex', alignItems: 'flex-start', gap: '20px', padding: '24px', background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', boxShadow: '0 1px 4px rgba(28,28,40,0.04)' }}>
-                    <div style={{ fontSize: 'clamp(1.8rem, 3vw, 2.4rem)', fontWeight: 700, fontFamily: 'Poppins, sans-serif', color: stat.color, lineHeight: 1, flexShrink: 0, minWidth: '72px' }}>
-                      {stat.value}
-                    </div>
-                    <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0, paddingTop: '4px' }}>
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <HeadingMarker text="THE MECHANISM" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
+            <h2 className="t-h2">
+              <AccentText tone="blue">Re-Reading</AccentText> Feels Like Learning. It <AccentText tone="pink">Isn't</AccentText>.
+            </h2>
           </motion.div>
-
-          {/* Re-reading vs. retrieval practice: a quiet visual argument, not an infographic */}
+          {/* Re-reading vs. retrieval practice illustration */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.4 }}
             className="row-sm"
-            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '48px', maxWidth: '720px', margin: '80px auto 0' }}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '48px', maxWidth: '720px', margin: '64px auto 0' }}
           >
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
               <p style={{ fontSize: '15px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', margin: 0 }}>
                 Re-reading
               </p>
-              <svg viewBox="0 0 160 160" width="160" height="160" aria-label="Three overlapping, hazy rings representing re-reading">
+              <svg viewBox="0 0 160 160" width="160" height="160" aria-label="Three overlapping rings representing re-reading">
                 <motion.circle variants={cv.ring(0)} cx="80" cy="80" r="60.5" fill="none" stroke="#FAD9E3" strokeWidth="19" />
                 <motion.circle variants={cv.ring(1)} cx="80" cy="80" r="40.5" fill="none" stroke="#F08CAD" strokeWidth="21" />
                 <motion.circle variants={cv.ring(2)} cx="80" cy="80" r="30" fill="#E8135A" />
@@ -402,8 +358,7 @@ export default function ForParents() {
                 Builds memory.
               </motion.p>
             </div>
-          </motion.div>
-        </div>
+          </motion.div>        </div>
       </section>
 
       {/* ── 3. Calculator ───────────────────────────────────────── */}
@@ -411,26 +366,16 @@ export default function ForParents() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
-              <HeadingMarker text="A TOOL, NOT A PITCH" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="A TOOL, NOT A PITCH" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
-                Run the Numbers Before You Decide Anything
+                Run the <AccentText tone="blue">Numbers</AccentText> Before You Decide <AccentText tone="pink">Anything</AccentText>
               </h2>
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px' }}>
                 Enter what you currently spend on coaching. The calculator shows you exactly what percentage of that investment is retained by your child after 30 days — and what Blast Learning adds to that figure. No sales language. One comparison line.
               </p>
             </motion.div>
             <motion.div variants={fadeUp}>
-              <div style={{ background: '#F9FAFB', border: '1.5px dashed #DCDCE5', borderRadius: '20px', padding: '64px 24px', textAlign: 'center' }}>
-                <p style={{ fontSize: '13px', fontWeight: 600, color: '#8E8EA0', fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
-                  Coaching ROI Calculator
-                </p>
-                <p style={{ fontSize: '15px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '0' }}>
-                  Interactive calculator coming soon. Contact us to get a personalised estimate now.
-                </p>
-                <Link to="/contact" className="cta cta-outline" style={{ marginTop: '24px', display: 'inline-flex' }}>
-                  Talk to Our Team
-                </Link>
-              </div>
+              <CoachingCalculator />
             </motion.div>
           </motion.div>
         </div>
@@ -441,9 +386,9 @@ export default function ForParents() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
-              <HeadingMarker text="WHY THIS ISN'T A NEW IDEA" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="WHY THIS ISN'T A NEW IDEA" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
-                Twenty-Five Years Before the First Indian Student <AccentText tone="pink">Used It</AccentText>
+                <AccentText tone="blue">Twenty-Five Years</AccentText> Before the First Indian Student <AccentText tone="pink">Used It</AccentText>
               </h2>
             </motion.div>
 
@@ -460,6 +405,7 @@ export default function ForParents() {
                 <motion.div
                   key={stat.value}
                   variants={fadeUp}
+                  whileHover={{ y: -6, boxShadow: '0 16px 40px rgba(15,23,42,0.10), 0 4px 12px rgba(15,23,42,0.06)', transition: { type: 'spring', stiffness: 300, damping: 22 } }}
                   style={{
                     background: '#FFFFFF',
                     border: '1px solid #ECECF1',
@@ -536,9 +482,9 @@ export default function ForParents() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
-              <HeadingMarker text="TRANSPARENCY, NOT REASSURANCE" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="TRANSPARENCY, NOT REASSURANCE" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
-                A Human Partner, Visible Progress, No Surprises
+                A <AccentText tone="pink">Human Partner</AccentText>, <AccentText tone="blue">Visible Progress</AccentText>, No Surprises
               </h2>
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px' }}>
                 Most edtech platforms ask parents to trust a dashboard. Blast Learning gives you a dashboard and a person — so that what you see is always accompanied by someone who can explain it.
@@ -550,11 +496,9 @@ export default function ForParents() {
               className="grid-cols-2-md"
             >
               {transparencyItems.map((item) => (
-                <motion.div key={item.label} variants={fadeUp}>
+                <motion.div key={item.label} variants={fadeUp} whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 22 } }}>
                   <div style={{ height: '100%', background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', padding: '32px', borderTop: `3px solid ${item.accent}` }}>
-                    <p style={{ fontSize: '11px', fontWeight: 700, fontFamily: 'Inter, sans-serif', color: item.accent, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '12px' }}>
-                      {item.label}
-                    </p>
+                    <HeadingMarker text={item.label} accent={item.accent} fontSize="11px" marginBottom="12px" />
                     <h3 style={{ fontSize: '20px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '16px' }}>
                       {item.title}
                     </h3>
@@ -575,9 +519,9 @@ export default function ForParents() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
-              <HeadingMarker text="CHOOSING, NOT BROWSING" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="CHOOSING, NOT BROWSING" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
-                Start From Where Your Child <AccentText tone="pink">Actually Is</AccentText>
+                <AccentText tone="blue">Start</AccentText> From Where Your Child <AccentText tone="pink">Actually Is</AccentText>
               </h2>
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px' }}>
                 Most programs ask you to choose a plan before knowing where your child struggles. We start with a GAP Assessment that identifies exactly which concepts are missing, so the program your child uses is built around their actual gaps, not a generic syllabus.
@@ -628,7 +572,7 @@ export default function ForParents() {
                   }}
                 >
                   {programs.map((prog, i) => (
-                    <MotionLink key={prog.name} to={prog.path} variants={dt.card(i)} style={{ textDecoration: 'none' }}>
+                    <MotionLink key={prog.name} to={prog.path} variants={dt.card(i)} whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 22 } }} style={{ textDecoration: 'none' }}>
                       <div style={{ border: `2px solid ${prog.accent}`, borderRadius: '16px', padding: '28px 20px', textAlign: 'center', background: '#FFFFFF', height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', boxSizing: 'border-box' }}>
                         <p style={{ fontSize: '13px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0, lineHeight: 1.5 }}>
                           {prog.situation}
@@ -680,7 +624,8 @@ export default function ForParents() {
       {/* ── 7. FAQ ──────────────────────────────────────────────── */}
       <SharedFaqSection
         eyebrow="BEFORE YOU DECIDE"
-        title={<>The Questions We'd Ask Too</>}
+        accent="#E8135A"
+        title={<>The <AccentText tone="blue">Questions</AccentText> We'd <AccentText tone="pink">Ask</AccentText> Too</>}
         subtitle="If your question isn't here, the full FAQ page covers every edge case — billing, syllabus details, and technical requirements."
         items={parentFaqs}
         linkLabel="View all FAQs"
@@ -700,9 +645,9 @@ export default function ForParents() {
           >
             {/* Left: copy */}
             <motion.div variants={fadeUp}>
-              <HeadingMarker text="TWO WAYS FORWARD" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="TWO WAYS FORWARD" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2" style={{ marginBottom: '20px' }}>
-                Begin the Trial, or Talk to <AccentText tone="pink">Someone First</AccentText>
+                Begin the <AccentText tone="blue">Trial</AccentText>, or Talk to <AccentText tone="pink">Someone First</AccentText>
               </h2>
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
                 The 14-day free trial requires no credit card and gives you full access to every feature, including the parent dashboard, daily digests, and the Tutor Mom team. If you'd prefer to speak with someone before starting, we're available.

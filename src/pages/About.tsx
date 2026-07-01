@@ -125,28 +125,31 @@ export default function About() {
           <BrandArc width="100%" opacity={0.04} />
         </div>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
-          <div
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="visible"
             style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'start' }}
             className="grid-cols-2-lg"
           >
             {/* Left: label + title */}
-            <div>
-              <HeadingMarker text="Who We Are" marginBottom="24px" fontSize="12px" />
+            <motion.div variants={fadeUp}>
+              <HeadingMarker text="Who We Are" marginBottom="24px" fontSize="12px" accent="#E8135A" />
               <h1 className="page-hero-title">
                 About <AccentText tone="blue">Blast</AccentText> <AccentText tone="pink">Learning</AccentText> India
               </h1>
-            </div>
+            </motion.div>
 
             {/* Right: description */}
-            <div>
+            <motion.div variants={fadeUp}>
               <p className="page-hero-copy" style={{ marginBottom: '16px' }}>
                 Ask a parent managing a child's CBSE or ICSE schedule what worries them most, and marks rarely top the list. The real worry is retention. Months of tuition fade within days, and no extra coaching class has ever fixed that on its own.
               </p>
               <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
                 Blast Learning is not a tutoring platform. It is the self-study operating system beneath all other educational investment, the layer that decides whether anything taught survives past the exam it was meant for.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -161,7 +164,7 @@ export default function About() {
           >
             {/* Heading block — full width, above the two-column split */}
             <motion.div variants={fadeUp} style={{ marginBottom: '36px' }}>
-              <HeadingMarker text="Our Story" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="Our Story" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2">
                 A System Built Before It <AccentText tone="blue">Had</AccentText> a <AccentText tone="pink">Market</AccentText>
               </h2>
@@ -249,7 +252,7 @@ export default function About() {
           >
             {/* Section intro */}
             <motion.div variants={fadeUp} style={{ textAlign: 'center', marginBottom: '48px' }}>
-              <HeadingMarker text="The Research Behind the System" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="The Research Behind the System" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <p className="t-body" style={{ maxWidth: '680px', margin: '0 auto' }}>
                 Every claim on this page is traceable to a study, a patent filing, or a partnership that predates Blast Learning India itself.
               </p>
@@ -319,7 +322,7 @@ export default function About() {
         <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ textAlign: 'center', marginBottom: '48px' }}>
-              <HeadingMarker text="Our Position" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="Our Position" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2" style={{ marginBottom: '20px' }}>
                 Why a <AccentText tone="blue">System</AccentText>, Not a <AccentText tone="pink">Service</AccentText>
               </h2>
@@ -334,7 +337,7 @@ export default function About() {
               style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '20px', marginBottom: '40px' }}
               className="grid-cols-2-md"
             >
-              <motion.div variants={fadeUp} className="card-subtle surface-card" style={{ overflow: 'hidden', height: '100%' }}>
+              <motion.div variants={fadeUp} whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 22 } }} className="card-subtle surface-card" style={{ overflow: 'hidden', height: '100%' }}>
                 <div style={{ height: '3px', background: '#0FA8DC' }} />
                 <div style={{ padding: '28px' }}>
                   <HeadingMarker text="Vision" marginBottom="16px" fontSize="11px" accent="#0FA8DC" />
@@ -343,7 +346,7 @@ export default function About() {
                   </p>
                 </div>
               </motion.div>
-              <motion.div variants={fadeUp} className="card-subtle surface-card" style={{ overflow: 'hidden', height: '100%' }}>
+              <motion.div variants={fadeUp} whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300, damping: 22 } }} className="card-subtle surface-card" style={{ overflow: 'hidden', height: '100%' }}>
                 <div style={{ height: '3px', background: '#E8135A' }} />
                 <div style={{ padding: '28px' }}>
                   <HeadingMarker text="Mission" marginBottom="16px" fontSize="11px" accent="#E8135A" />
@@ -374,9 +377,9 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <HeadingMarker text="What We Believe" marginBottom="16px" fontSize="12px" />
+            <HeadingMarker text="What We Believe" marginBottom="16px" fontSize="12px" accent="#E8135A" />
             <h2 className="t-h2" style={{ marginBottom: 0 }}>
-              What We <AccentText tone="blue">Believe</AccentText>
+              What <AccentText tone="pink">We</AccentText> <AccentText tone="blue">Believe</AccentText>
             </h2>
           </motion.div>
           <MobileCarousel
@@ -396,11 +399,7 @@ export default function About() {
               >
                 {/* Accent bar */}
                 <div style={{ height: '3px', background: b.accent, flexShrink: 0 }} />
-                <div style={{ padding: '28px 28px 24px', display: 'flex', flexDirection: 'column', flex: 1, position: 'relative' }}>
-                  {/* Large abstract number — structural, not decorative */}
-                  <div aria-hidden="true" style={{ position: 'absolute', top: '10px', right: '18px', fontSize: '56px', fontWeight: 800, fontFamily: 'Poppins, sans-serif', color: b.accent, opacity: 0.07, lineHeight: 1, userSelect: 'none' }}>
-                    {b.num}
-                  </div>
+                <div style={{ padding: '28px 28px 24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <h3 style={{ fontSize: '18px', fontWeight: 600, fontFamily: 'Poppins, sans-serif', color: '#1C1C28', marginBottom: '12px' }}>
                     {b.title}
                   </h3>
@@ -424,7 +423,7 @@ export default function About() {
             viewport={{ once: true }}
             style={{ textAlign: 'center', marginBottom: '56px' }}
           >
-            <HeadingMarker text="Leadership" marginBottom="16px" fontSize="12px" />
+            <HeadingMarker text="Leadership" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
             <h2 className="t-h2" style={{ marginBottom: '16px' }}>
               The People <AccentText tone="blue">Building</AccentText> <AccentText tone="pink">It</AccentText>
             </h2>
@@ -503,7 +502,7 @@ export default function About() {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={fadeUp} style={{ maxWidth: '560px' }}>
-              <HeadingMarker text="Questions? Let's Connect" marginBottom="16px" fontSize="12px" />
+              <HeadingMarker text="Questions? Let's Connect" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', marginBottom: '36px' }}>
                 Every question a parent asks during the trial period gets answered by someone who actually understands the methodology, not a script.
               </p>
