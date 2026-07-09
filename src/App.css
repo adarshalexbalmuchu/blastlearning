@@ -1,0 +1,6 @@
+/* Clear default Vite styles that interfere with the layout */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}

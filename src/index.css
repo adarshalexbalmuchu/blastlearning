@@ -1,0 +1,996 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400;1,9..144,600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #1C1C28;
+  --color-body: #5A5A6E;
+  --color-muted: #8E8EA0;
+  --color-border: #ECECF1;
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F7F7F8;
+
+  --color-indigo: #0FA8DC;
+  --color-indigo-dark: #0D8BB5;
+  --color-indigo-soft: #E0F5FC;
+
+  --color-rose: #F03C6F;
+  --color-rose-dark: #D42D5E;
+  --color-rose-soft: #FFF0F4;
+
+  --color-peach: #FDF3E7;
+  --color-pink: #FCEEF1;
+  --color-cyan: #E7F6FB;
+  --color-lavender: #F0EDFC;
+  --color-mint: #E9F7EF;
+  --color-blue: #E9F2FC;
+
+  --font-sans: 'Inter', sans-serif;
+  --font-head: 'Poppins', sans-serif;
+  --font-serif: 'Fraunces', serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+:root {
+  /* Golden-ratio type scale from a 16px body base */
+  --fs-body: 1rem;
+  --fs-small: 0.9375rem;
+  --fs-h3: 2rem;
+  --fs-h2: 3.25rem;
+  --fs-h1: 5.25rem;
+
+  --fs-h3-fluid: clamp(1.5rem, 1.1rem + 1.5vw, var(--fs-h3));
+  --fs-h2-fluid: clamp(2.1rem, 1.3rem + 3.5vw, var(--fs-h2));
+  --fs-h1-fluid: clamp(2.75rem, 1.25rem + 5.5vw, var(--fs-h1));
+
+  --lh-body: 1.7;
+  --lh-small: 1.5;
+
+  /* ── Design System Tokens ─────────────────────────────────────────────────── */
+  --color-brand-pink: #E8135A;
+  --color-brand-teal: #0FA8DC;
+  --color-text-dark: #1C1C28;
+  --color-text-muted: #5A5A6E;
+  --color-bg-section: #F9FAFB;
+  --color-card-border: #ECECF1;
+  --radius-card: 16px;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  color: #1C1C28;
+  background: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+/* Subtle text motion site-wide for a softer feel on load */
+@keyframes text-soft-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+:where(h1, h2, h3, h4, h5, h6, p, li, a, button, label, small, strong, em, blockquote) {
+  animation: text-soft-in 380ms ease-out both;
+}
+
+/* Global focus-visible ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #0FA8DC;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Remove outline for mouse users only */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  color: #1C1C28;
+}
+
+h1 { font-size: var(--fs-h1-fluid); line-height: 1.12; }
+h2 { font-size: var(--fs-h2-fluid); line-height: 1.16; }
+h3 { font-size: var(--fs-h3-fluid); line-height: 1.2; }
+
+p, li {
+  font-size: var(--fs-body);
+}
+
+.page-hero-title {
+  font-size: var(--fs-h2-fluid);
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #1C1C28;
+  margin-bottom: 24px;
+}
+
+.page-hero-copy {
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  color: #5A5A6E;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── Design-system utility classes ─────────────────────────────────────────── */
+.section-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+}
+
+.section-subtext {
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.card-base {
+  background: #FFFFFF;
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-card);
+  box-shadow: 0 2px 12px rgba(28, 28, 40, 0.05);
+}
+
+.eyebrow-label {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  background: #E0F5FC;
+  color: #0FA8DC;
+}
+
+/* ── Typography helpers used across pages ──────────────────────────────────── */
+.t-h2 {
+  font-family: var(--font-heading);
+  font-size: var(--fs-h2-fluid);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-text-dark);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.t-body {
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-muted);
+}
+
+.surface-card {
+  background: #FFFFFF;
+  border: 1px solid #ECECF1;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(28, 28, 40, 0.04);
+}
+
+.surface-card-subtle {
+  background: #FFFFFF;
+  border: 1px solid #ECECF1;
+  border-radius: 16px;
+  box-shadow: 0 1px 4px rgba(28, 28, 40, 0.04);
+}
+
+#root {
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+/* Subtle section separators without hard borders */
+.section-pad {
+  position: relative;
+  box-shadow:
+    inset 0 12px 18px -20px rgba(15, 23, 42, 0.14),
+    inset 0 -12px 18px -20px rgba(15, 23, 42, 0.14);
+}
+
+/* ── CTA buttons: one consistent, premium style across the whole site ── */
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 28px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: box-shadow 0.2s ease, filter 0.2s ease, transform 0.15s ease,
+              background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  will-change: transform;
+  animation: cta-soft-in 320ms ease-out both;
+}
+.cta:hover { transform: translateY(-2px); }
+.cta:active { transform: translateY(0); filter: brightness(0.97); }
+
+@keyframes cta-soft-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reusable subtle card animation class */
+.card-subtle {
+  animation: card-soft-in 420ms ease-out both;
+  transition: border-color 0.22s ease, filter 0.22s ease;
+}
+
+.card-subtle:hover {
+  filter: saturate(1.02) brightness(1.01);
+}
+
+@keyframes card-soft-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pink — outline style */
+.cta-pink {
+  background: transparent;
+  color: #F03C6F;
+  border-color: #F03C6F;
+}
+.cta-pink:hover { background: #FFF5F8; }
+
+/* Blue — outline style */
+.cta-blue {
+  background: transparent;
+  color: #0FA8DC;
+  border-color: #0FA8DC;
+}
+.cta-blue:hover { background: #F0FBFF; }
+
+/* Outlined / ghost — pink border, pink text */
+.cta-outline {
+  background: transparent;
+  color: #F03C6F;
+  border-color: #F03C6F;
+}
+.cta-outline:hover { background: #FFF5F8; }
+
+/* Light button sitting on a colored surface */
+.cta-onfill {
+  background: rgba(255,255,255,0.15);
+  color: #FFFFFF;
+  border-color: rgba(255,255,255,0.5);
+}
+.cta-onfill:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta:hover, .cta:active { transform: none; }
+}
+
+/* ── Reduced-motion: respect user OS preference ───────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Keyframes ──────────────────────────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(20px, -20px) scale(1.05); }
+  66%  { transform: translate(-10px, 15px) scale(0.97); }
+}
+
+/* ── Responsive grid helpers ────────────────────────────────────────────────── */
+@media (min-width: 640px) {
+  .grid-cols-2-sm {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .grid-cols-2-md {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .grid-cols-3-md {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .grid-cols-4-md {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-hero {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .grid-cols-hero-asym {
+    grid-template-columns: 58fr 42fr !important;
+  }
+  .grid-cols-2-lg {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .grid-cols-3-lg {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .grid-cols-4-lg {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
+/* ── Responsive display helpers ─────────────────────────────────────────────── */
+.show-sm-blk  { display: none; }
+.show-lg-flex { display: none; }
+.show-lg-blk  { display: none; }
+.show-md      { display: none; }
+.row-sm       { flex-direction: column; }
+.footer-root  { padding-bottom: 0; }
+
+@media (min-width: 640px) {
+  .show-sm-blk { display: block !important; }
+  .row-sm { flex-direction: row; }
+}
+
+/* Comparison visual (Parents page "Mechanism" section): a thin divider that
+   flips orientation in step with .row-sm — horizontal while stacked on
+   mobile, vertical once the two panels sit side by side. */
+.comparison-divider {
+  width: 100%;
+  height: 1px;
+  background: #ECECF1;
+}
+
+@media (min-width: 640px) {
+  .comparison-divider {
+    width: 1px;
+    height: 160px;
+  }
+}
+
+/* ── Coaching calculator range inputs ───────────────────────────────────────
+   Two colour variants: pink (spend) and blue (hours).
+   Track fill is driven by an inline background gradient on the element itself.
+   Thumb is white with a coloured border to match its track.             */
+.calc-range-pink,
+.calc-range-blue {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 9999px;
+  outline: none;
+  cursor: pointer;
+  border: none;
+}
+.calc-range-pink::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2.5px solid #E8135A;
+  box-shadow: 0 1px 4px rgba(232, 19, 90, 0.25);
+  cursor: pointer;
+}
+.calc-range-pink::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2.5px solid #E8135A;
+  box-shadow: 0 1px 4px rgba(232, 19, 90, 0.25);
+  cursor: pointer;
+}
+.calc-range-blue::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2.5px solid #0FA8DC;
+  box-shadow: 0 1px 4px rgba(15, 168, 220, 0.25);
+  cursor: pointer;
+}
+.calc-range-blue::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2.5px solid #0FA8DC;
+  box-shadow: 0 1px 4px rgba(15, 168, 220, 0.25);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .hide-md { display: none !important; }
+  .footer-root { padding-bottom: 0 !important; }
+  .show-md { display: block !important; }
+}
+
+@media (min-width: 1024px) {
+  .show-lg-flex { display: flex !important; }
+  .show-lg-blk  { display: block !important; }
+  .hide-lg      { display: none !important; }
+}
+
+/* ── Stat strip: 2-col mobile, 4-col desktop, border dividers ────────────────── */
+.stat-strip { display: grid; grid-template-columns: repeat(2, 1fr); }
+.stat-strip > * { border-right: 1px solid #ECECF1; border-bottom: 1px solid #ECECF1; }
+.stat-strip > *:nth-child(2n) { border-right: none; }
+.stat-strip > *:nth-last-child(-n+2) { border-bottom: none; }
+@media (min-width: 1024px) {
+  .stat-strip { grid-template-columns: repeat(4, 1fr); }
+  .stat-strip > *:nth-child(2n) { border-right: 1px solid #ECECF1; }
+  .stat-strip > *:nth-child(4n) { border-right: none; }
+  .stat-strip > *:nth-last-child(-n+4) { border-bottom: none; }
+}
+
+/* ── Programs: horizontal scroll on mobile, grid on tablet/desktop ───────────── */
+.programs-scroll {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 16px;
+  scroll-snap-type: x proximity;
+  touch-action: pan-x;
+  padding-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
+}
+.programs-scroll::-webkit-scrollbar { display: none; }
+.programs-scroll > * {
+  flex: 0 0 min(280px, 80vw);
+  scroll-snap-align: start;
+  min-width: 0;
+}
+@media (min-width: 768px) {
+  .programs-scroll {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow-x: visible;
+    padding-bottom: 0;
+    gap: 20px;
+  }
+  .programs-scroll > * { flex: none; }
+}
+@media (min-width: 1024px) {
+  .programs-scroll { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ── Scroll container utility ────────────────────────────────────────────────── */
+.scroll-container-x {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+.scroll-container-x::-webkit-scrollbar { display: none; }
+.scroll-container-x > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+/* ── Mobile responsive improvements (≤767px) ─────────────────────────────────── */
+@media (max-width: 767px) {
+  .section-pad {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+  /* Push hero banners below the fixed 64px navbar so their top isn't clipped on mobile */
+  .hero-banner-offset {
+    padding-top: 80px !important;
+  }
+  .hero-section {
+    padding-top: 84px !important;
+    padding-bottom: 52px !important;
+  }
+  .banner-controls { margin-top: 28px !important; }
+  .float-card { display: none !important; }
+  .stat-card  { min-height: 190px !important; }
+  .char-wrap svg { width: 110px !important; height: 110px !important; }
+  .hide-mobile { display: none !important; }
+  .hero-left-col { text-align: center !important; }
+  .hero-left-col h1 { text-align: center !important; }
+  .hero-left-col p { max-width: 100% !important; margin-left: auto !important; margin-right: auto !important; }
+  .hero-trust-row { justify-content: center !important; }
+
+  .method-heading,
+  .faq-heading-line,
+  .nep-subtitle-line {
+    white-space: normal !important;
+  }
+
+  .method-intro-row {
+    flex-direction: column !important;
+    gap: 18px !important;
+  }
+
+  .method-intro-copy {
+    max-width: 100% !important;
+  }
+
+  .method-curve-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
+    transform: none !important;
+  }
+
+  .hero-cta-floating {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin-top: 14px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .programs-hero-cta {
+    position: static !important;
+    left: auto !important;
+    bottom: auto !important;
+    padding: 16px 16px 0 !important;
+    display: block !important;
+  }
+
+  .hero-controls-main {
+    display: none !important;
+  }
+
+  .hero-controls-mobile {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 6px;
+  }
+
+  .hero-control-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .hero-control-prev {
+    border: 1.5px solid rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.92);
+    color: #1C1C28;
+  }
+
+  .hero-control-next {
+    border: 1.5px solid #F03C6F;
+    background: #F03C6F;
+    color: #FFFFFF;
+  }
+
+  .hero-cta-floating > span {
+    display: none !important;
+  }
+
+  .hero-cta-actions {
+    width: 100% !important;
+    top: 0 !important;
+    justify-content: center !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+
+  .hero-cta-primary-wrap {
+    width: 100% !important;
+  }
+
+  .hero-cta-floating .cta,
+  .hero-cta-primary,
+  .hero-cta-secondary {
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center !important;
+  }
+
+  .hero-cta-primary,
+  .hero-cta-secondary {
+    min-height: 52px !important;
+    border-radius: 14px !important;
+    font-size: 15px !important;
+  }
+
+  .hero-cta-note {
+    margin-top: 2px !important;
+  }
+
+  .nav-logo-link {
+    margin-left: 0 !important;
+  }
+
+  .nav-logo-img {
+    height: 42px !important;
+  }
+
+  .nav-inner-bar {
+    padding: 0 14px !important;
+  }
+
+  .nav-mobile-auth {
+    padding: 9px 14px !important;
+    border-radius: 12px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+  }
+
+  .nav-mobile-menu-btn {
+    min-width: 42px !important;
+    min-height: 42px !important;
+    padding: 8px !important;
+  }
+
+  .program-detail-page .program-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .program-detail-page .program-hero-section {
+    padding-bottom: 48px !important;
+  }
+
+  .program-detail-page .program-hero-grid,
+  .program-detail-page .program-features-grid {
+    gap: 24px !important;
+  }
+
+  .program-detail-page .program-detail-form-card,
+  .program-detail-page .program-pricing-card {
+    padding: 24px !important;
+    border-radius: 16px !important;
+  }
+
+  .program-detail-page .program-curriculum-card button {
+    padding: 16px 18px !important;
+  }
+
+  .program-detail-page .program-curriculum-card > div {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  /* ── Hero: overlay controls inside image ── */
+  .hero-slide-overlay-controls {
+    display: flex;
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    z-index: 5;
+  }
+
+  .hero-ctrl-mob {
+    display: none !important;
+  }
+
+  /* Hide old mobile controls row — it created a gap between image and CTAs */
+  .hero-controls-mobile {
+    display: none !important;
+  }
+
+  /* ── FAQ: single-column stacked layout ── */
+  .faq-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .faq-section {
+    padding-bottom: 80px !important;
+  }
+
+  /* ── Global: prevent horizontal scroll ── */
+  body, html {
+    overflow-x: hidden;
+  }
+
+  img, video, iframe {
+    max-width: 100%;
+  }
+}
+
+/* ── Tablet (768–1023px): medium section padding ─────────────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .section-pad {
+    padding-top: 44px !important;
+    padding-bottom: 44px !important;
+  }
+
+  .method-intro-row {
+    flex-direction: column !important;
+    gap: 22px !important;
+  }
+
+  .method-intro-copy {
+    max-width: 100% !important;
+  }
+
+  .method-curve-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
+    transform: none !important;
+  }
+
+  .program-detail-page .program-section {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+  }
+
+  .program-detail-page .program-hero-grid,
+  .program-detail-page .program-features-grid {
+    gap: 28px !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-controls-mobile {
+    display: none !important;
+  }
+  .hero-slide-overlay-controls {
+    display: none !important;
+  }
+}
+
+/* ── Grid: 3 columns from 640px ─────────────────────────────────────────────── */
+@media (min-width: 640px) {
+  .grid-cols-3-sm {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* ── Hero: single full-width primary CTA on mobile ───────────────────────────── */
+.hero-cta-wrap { flex-direction: column !important; gap: 8px !important; }
+@media (max-width: 639px) { .hero-cta-wrap { margin-bottom: 24px !important; } }
+@media (min-width: 640px) {
+  .hero-cta-wrap { flex-direction: row !important; flex-wrap: wrap !important; gap: 14px !important; }
+}
+.hero-cta-motion { width: 100% !important; }
+@media (min-width: 640px) { .hero-cta-motion { width: auto !important; } }
+.hero-cta-primary { width: 100% !important; justify-content: center !important; }
+@media (min-width: 640px) {
+  .hero-cta-primary { width: auto !important; justify-content: flex-start !important; }
+}
+
+/* ── Hero: secondary CTA → minimal text-link on mobile ──────────────────────── */
+@media (max-width: 639px) {
+  .hero-ghost-btn {
+    padding: 6px 0 !important;
+    border: none !important;
+    background: transparent !important;
+    color: #5A5A6E !important;
+    box-shadow: none !important;
+    width: 100% !important;
+    justify-content: center !important;
+    font-size: 14px !important;
+  }
+}
+
+/* ── City chips: horizontal scroll on mobile, wrap on desktop ────────────────── */
+.city-chips-row { overflow-x: auto; overflow-y: hidden; touch-action: pan-x; scrollbar-width: none; -ms-overflow-style: none; }
+.city-chips-row::-webkit-scrollbar { display: none; }
+@media (max-width: 767px) { .city-chips-row { flex-wrap: nowrap !important; padding-bottom: 4px; } }
+
+/* ── CTA banner (before footer) ─────────────────────────────────────────────── */
+.cta-banner-img {
+  width: 100%;
+  display: block;
+  height: 180px;
+  object-fit: cover;
+  object-position: left center;
+}
+@media (min-width: 480px) { .cta-banner-img { height: 220px; } }
+@media (min-width: 640px) { .cta-banner-img { height: 280px; } }
+@media (min-width: 768px) { .cta-banner-img { height: auto; object-position: center; } }
+
+/* ── Testimonials grid: 1 col → 2 col (sm) → 3 col (md) ──────────────────── */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  align-items: stretch;
+  width: 100%;
+}
+@media (min-width: 600px) {
+  .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+  .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Programs category cards: 1 col → 2 col ───────────────────────────────── */
+.programs-cat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media (min-width: 640px) {
+  .programs-cat-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Footer 4-col grid: 1 → 2 → 4 col ───────────────────────────────────── */
+.footer-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 32px !important;
+}
+@media (min-width: 600px) {
+  .footer-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (min-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr 1fr 1fr !important; gap: 48px !important; }
+}
+
+/* ── Footer inner container: responsive padding ────────────────────────────── */
+.footer-inner { padding: 0 16px; }
+@media (min-width: 640px) { .footer-inner { padding: 0 24px; } }
+@media (min-width: 1024px) { .footer-inner { padding: 0 32px; } }
+
+/* ── Comparison table: horizontally scrollable on mobile ─────────────────── */
+.comparison-table-wrap { overflow-x: auto; overflow-y: hidden; touch-action: pan-x; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.comparison-table-wrap::-webkit-scrollbar { display: none; }
+.comparison-table-wrap > * { min-width: 560px; }
+
+/* ── Two-col stat cards: 2 col on mobile for compact stat cards ───────────── */
+.stat-cards-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* ── Hero banner image carousel responsive heights ─────────────────────────── */
+.hero-banner-img {
+  width: 100%;
+  display: block;
+  height: 200px;
+  object-fit: cover;
+  object-position: left center;
+}
+@media (min-width: 480px) { .hero-banner-img { height: 240px; } }
+@media (min-width: 640px) { .hero-banner-img { height: 300px; } }
+@media (min-width: 768px) { .hero-banner-img { height: 360px; object-position: center; } }
+@media (min-width: 1024px) { .hero-banner-img { height: auto; object-fit: unset; object-position: unset; } }
+
+/* ── MobileCarousel ───────────────────────────── */
+.mc-desktop-grid { display: grid; }
+.mc-mobile-carousel { display: none; }
+.mc-scroll-track::-webkit-scrollbar { display: none; }
+
+@media (max-width: 768px) {
+  .mc-desktop-grid { display: none !important; }
+  .mc-mobile-carousel { display: block; padding-bottom: 24px; }
+  .cta { padding: 12px 24px; }
+
+  /* Fix 4: Pricing card title — prevent 3-line wrap on narrow screens */
+  .pricing-card-title {
+    font-size: 1.5rem !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Fix 6: Deep Dive button — side margins + right clearance for scroll-to-top */
+  .deep-dive-btn-wrap {
+    padding: 0 60px 0 16px;
+  }
+  .deep-dive-btn-wrap .cta {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Fix 7: Footer logo — hidden on mobile (navbar already shows it) */
+  .footer-logo-link {
+    display: none !important;
+  }
+
+  /* Fix 8: Floating buttons — WhatsApp at bottom: 16px, scroll-to-top above it */
+  .wa-float {
+    bottom: 16px !important;
+    right: 16px !important;
+  }
+  .scroll-top-btn {
+    bottom: 72px !important;
+    right: 16px !important;
+  }
+
+  /* Fix 8: Main content — padding-bottom so last section clears floating buttons */
+  main {
+    padding-bottom: 140px !important;
+  }
+}
+
+/* Disable card hover-lift on touch devices — prevents jank during swipe */
+@media (hover: none) {
+  .card-subtle:hover,
+  .card-subtle { transform: none !important; }
+}
+
+/* ── How It Works alternating rows (Programs page) ─────────────────────────── */
+.hiw-row {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(28,28,40,0.06);
+}
+.hiw-row .hiw-content { flex: 1 1 50%; }
+.hiw-row .hiw-image  { flex: 1 1 50%; min-height: 280px; }
+@media (min-width: 768px) {
+  .hiw-row { flex-direction: row; }
+  .hiw-row.reversed { flex-direction: row-reverse; }
+}
