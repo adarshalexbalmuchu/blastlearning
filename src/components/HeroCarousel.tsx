@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const bannerModules = import.meta.glob('../assets/banners/*.{png,jpg,jpeg,webp,avif}', {
+// .png excluded on purpose — the originals in this folder are unoptimized
+// 5990x3200 source files kept only for reference; the real banners are the
+// resized/compressed .jpg versions the pipeline should always pick up.
+const bannerModules = import.meta.glob('../assets/banners/*.{jpg,jpeg,webp,avif}', {
   eager: true,
   import: 'default',
 }) as Record<string, string>;

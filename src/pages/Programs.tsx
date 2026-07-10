@@ -5,7 +5,7 @@ import { ArrowRight, CheckCircle } from 'lucide-react';
 // import ComparisonTable from '../components/ComparisonTable'; // hidden with the Comparison section below, not deleted
 import AccentText from '../components/AccentText';
 import HeadingMarker from '../components/HeadingMarker';
-import heroBanner4 from '../assets/banners/HB 4.png';
+import heroBanner4 from '../assets/banners/HB 4.jpg';
 import BrandArc from '../components/BrandArc';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import MobileCarousel from '../components/MobileCarousel';
@@ -15,7 +15,7 @@ import step3Img from '../assets/shared/curriculum-load-reduction.png';
 import step4Img from '../assets/pages/programs/study-buddy.png';
 import step5Img from '../assets/shared/holistic-assessment.png';
 // import step6Img from '../assets/pages/programs/english-image.png'; // English Mastery step card — hidden, not deleted
-import ebbinghausImg from '../assets/shared/ebbinghaus-curve.png';
+import ebbinghausImg from '../assets/shared/ebbinghaus-curve.jpg';
 import { sharedFaqs } from '../data/faqs';
 import { fadeUp } from '../constants/animations';
 

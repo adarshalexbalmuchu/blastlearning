@@ -214,7 +214,7 @@ export default function ForStudents() {
         <div aria-hidden="true" style={{ position: 'absolute', left: '44%', top: '20%', width: '9px', height: '9px', borderRadius: '50%', background: 'rgba(15, 168, 220, 0.34)', pointerEvents: 'none' }} />
         {/* Small pink dot accent */}
         <div aria-hidden="true" style={{ position: 'absolute', left: '38%', bottom: '22%', width: '7px', height: '7px', borderRadius: '50%', background: 'rgba(232, 19, 90, 0.3)', pointerEvents: 'none' }} />
-        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -359,7 +359,7 @@ export default function ForStudents() {
 
       {/* ── 2. The Actual Science ────────────────────────────────── */}
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={springUp} style={{ marginBottom: '52px', maxWidth: '900px' }}>
               <HeadingMarker text="THE ACTUAL SCIENCE" marginBottom="16px" fontSize="12px" accent="#E8135A" />

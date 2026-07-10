@@ -203,7 +203,7 @@ export default function FAQ() {
   return (
     <div style={{ background: '#FFFFFF' }}>
       {/* Hero */}
-      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', paddingTop: '80px', paddingBottom: '60px', borderBottom: '1px solid #DAEEF6' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', background: 'linear-gradient(170deg, #E0F4FB 0%, #F5FBFF 40%, #FFFFFF 100%)', paddingTop: '120px', paddingBottom: '60px', borderBottom: '1px solid #DAEEF6' }}>
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
           <BrandArc width="100%" opacity={0.04} />
         </div>

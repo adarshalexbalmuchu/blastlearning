@@ -8,10 +8,10 @@ import PageHeading from '../../components/PageHeading';
 import HeadingMarker from '../../components/HeadingMarker';
 import { SharedFaqSection, SharedTestimonialsSection } from '../../components/MarketingSections';
 import MobileCarousel from '../../components/MobileCarousel';
-import banner1 from '../../assets/banners/HB 1.png';
-import banner2 from '../../assets/banners/HB 2.png';
-import banner3 from '../../assets/banners/HB 3.png';
-import banner4 from '../../assets/banners/HB 4.png';
+import banner1 from '../../assets/banners/HB 1.jpg';
+import banner2 from '../../assets/banners/HB 2.jpg';
+import banner3 from '../../assets/banners/HB 3.jpg';
+import banner4 from '../../assets/banners/HB 4.jpg';
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -239,12 +239,7 @@ export default function ProgramDetail() {
 
           <MobileCarousel desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px', alignItems: 'stretch' }}>
             {program.forWhom.map((card, index) => {
-              const cardAccent = [
-                '#0FA8DC',
-                '#E8135A',
-                '#4F46E5',
-                '#F59E0B',
-              ][index % 4];
+              const cardAccent = ['#0FA8DC', '#E8135A'][index % 2];
 
               return (
                 <motion.article

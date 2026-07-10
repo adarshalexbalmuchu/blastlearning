@@ -10,7 +10,7 @@ import TrustStats from '../components/TrustStats';
 import HowItWorksCard from '../components/HowItWorksCard';
 import { SharedFaqSection, SharedTestimonialsSection } from '../components/MarketingSections';
 import HeadingMarker from '../components/HeadingMarker';
-import ebbinghausCurve from '../assets/shared/ebbinghaus-curve.png';
+import ebbinghausCurve from '../assets/shared/ebbinghaus-curve.jpg';
 import { useSEO } from '../hooks/useSEO';
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
