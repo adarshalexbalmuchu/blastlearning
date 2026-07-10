@@ -8,12 +8,18 @@ const bannerModules = import.meta.glob('../assets/banners/*.{png,jpg,jpeg,webp,a
 
 const BANNER_ORDER = [1, 3, 2, 4];
 
+// Only Math Genius Maker (HB 3) and Methodology (HB 4) slides are shown —
+// hidden, not deleted. Add the index back here (and to PRIMARY_CTA_CONFIG /
+// HERO_DOT_COLORS below, in the same order) to re-enable a banner.
+const VISIBLE_BANNER_INDEXES = [3, 4];
+
 function getBannerIndex(path: string): number {
   const match = path.match(/(?:hb|hero\s*banner|banner)\s*(\d+)/i);
   return match ? Number(match[1]) : Number.MAX_SAFE_INTEGER;
 }
 
 const SLIDES = Object.entries(bannerModules)
+  .filter(([path]) => VISIBLE_BANNER_INDEXES.includes(getBannerIndex(path)))
   .sort(([a], [b]) => {
     const aIndex = getBannerIndex(a);
     const bIndex = getBannerIndex(b);
@@ -28,14 +34,14 @@ const SLIDES = Object.entries(bannerModules)
   .map(([, src]) => src)
 ;
 
+// One entry per visible slide, in the same order as SLIDES above
+// (HB 3 — Math Genius Maker, then HB 4 — Methodology).
 const PRIMARY_CTA_CONFIG = [
-  { text: 'Explore CBSE Program', to: '/programs/cbse-plan' },
-  { text: 'Start Your Journey Now', to: '/programs/english-mastery' },
   { text: 'Try The GAP Assessment', to: '/programs/math-genius' },
   { text: 'See How It Works', to: '/programs' },
 ];
 
-const HERO_DOT_COLORS = ['#0FA8DC', '#E8135A', '#0FA8DC', '#E8135A'];
+const HERO_DOT_COLORS = ['#E8135A', '#E8135A'];
 
 // ─── Carousel ────────────────────────────────────────────────────────────────────
 export default function HeroCarousel() {
@@ -150,6 +156,30 @@ export default function HeroCarousel() {
             />
           ))}
 
+          {/* Slide accent dots — anchored to the image itself (percentage
+              position) so it stays put at the same spot on the banner art
+              at every width, instead of tracking the CTA button box below. */}
+          <span
+            aria-hidden="true"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 'clamp(0px, 0.31vw, 4px)',
+              position: 'absolute',
+              top: '16.7%',
+              left: '8.5%',
+              zIndex: 2,
+              pointerEvents: 'none',
+              transform: firstBannerDotNudge,
+            }}
+          >
+            <span style={{ width: 'clamp(0px, 0.31vw, 4px)', height: 'clamp(0px, 0.31vw, 4px)', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: 'clamp(0px, 0.39vw, 5px)', height: 'clamp(0px, 0.39vw, 5px)', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: 'clamp(0px, 0.47vw, 6px)', height: 'clamp(0px, 0.47vw, 6px)', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: 'clamp(0px, 0.7vw, 9px)', height: 'clamp(0px, 0.23vw, 3px)', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: 'clamp(0px, 1.09vw, 14px)', height: 'clamp(0px, 0.23vw, 3px)', borderRadius: '9999px', background: activeDotColor }} />
+          </span>
+
           {/* Mobile-only overlay controls — inside image, clears the gap below */}
           {canRotate && (
             <div className="hero-slide-overlay-controls">
@@ -229,16 +259,6 @@ export default function HeroCarousel() {
             </button>
           </div>
 
-          <span
-            aria-hidden="true"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '-335px', left: '18.5px', pointerEvents: 'none', transform: firstBannerDotNudge }}
-          >
-            <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: '6px', height: '6px', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: '9px', height: '3px', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: '14px', height: '3px', borderRadius: '9999px', background: activeDotColor }} />
-          </span>
           <div className="hero-cta-actions" style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', position: 'relative', top: '-35px' }}>
           <div
             className="hero-cta-primary-wrap"

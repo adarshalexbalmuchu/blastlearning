@@ -10,8 +10,22 @@ type HeadingMarkerProps = {
   noWrap?: boolean;
 };
 
-const CYAN_COLORS = ['#D2E9F8', '#A6D4EE', '#0FA8DC', '#0FA8DC', '#0FA8DC'];
-const PINK_COLORS = ['#FAD9E3', '#F08CAD', '#E8135A', '#E8135A', '#E8135A'];
+// Light-to-full tint progression derived from the accent color itself, so the
+// dots always match the eyebrow text next to them regardless of which accent
+// is passed in (previously only exact blue/pink had matching dot palettes —
+// any other accent, e.g. indigo or amber, silently fell back to blue dots).
+function tint(hex: string, whiteAmount: number): string {
+  const clean = hex.replace('#', '');
+  const r = parseInt(clean.slice(0, 2), 16);
+  const g = parseInt(clean.slice(2, 4), 16);
+  const b = parseInt(clean.slice(4, 6), 16);
+  const mix = (c: number) => Math.round(c + (255 - c) * whiteAmount);
+  return `rgb(${mix(r)}, ${mix(g)}, ${mix(b)})`;
+}
+
+function markerColors(accent: string): string[] {
+  return [tint(accent, 0.8), tint(accent, 0.55), accent, accent, accent];
+}
 
 // 3 circles (increasing size) then 2 dashes (increasing length)
 const MARKER_SHAPES = [
@@ -52,8 +66,8 @@ const TEXT_VARIANTS: any = {
 };
 
 export default function HeadingMarker({ text, marginBottom = '12px', fontSize = '12px', accent, alignItems = 'center', noWrap = false }: HeadingMarkerProps) {
-  const colors = accent === '#E8135A' ? PINK_COLORS : CYAN_COLORS;
-  const textColor = accent ?? '#4B6B80';
+  const textColor = accent ?? '#0FA8DC';
+  const colors = markerColors(textColor);
 
   return (
     <motion.div

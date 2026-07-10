@@ -2,7 +2,7 @@ import { useSEO } from '../hooks/useSEO';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle } from 'lucide-react';
-import ComparisonTable from '../components/ComparisonTable';
+// import ComparisonTable from '../components/ComparisonTable'; // hidden with the Comparison section below, not deleted
 import AccentText from '../components/AccentText';
 import HeadingMarker from '../components/HeadingMarker';
 import heroBanner4 from '../assets/banners/HB 4.png';
@@ -14,7 +14,7 @@ import step2Img from '../assets/shared/critical-thinking.png';
 import step3Img from '../assets/shared/curriculum-load-reduction.png';
 import step4Img from '../assets/pages/programs/study-buddy.png';
 import step5Img from '../assets/shared/holistic-assessment.png';
-import step6Img from '../assets/pages/programs/english-image.png';
+// import step6Img from '../assets/pages/programs/english-image.png'; // English Mastery step card — hidden, not deleted
 import ebbinghausImg from '../assets/shared/ebbinghaus-curve.png';
 import { sharedFaqs } from '../data/faqs';
 import { fadeUp } from '../constants/animations';
@@ -31,23 +31,24 @@ const testimonialsRow2 = [
   { name: 'A Student of Class 10 from Ahmedabad', role: 'CBSE Class 10', text: 'I could always read a passage fine, I just couldn\'t explain what it meant. English Mastery has me working out the writer\'s point instead of summarising the lines, and that\'s exactly where my marks were slipping.' },
 ];
 const programs = [
-  {
-    slug: 'cbse-plan',
-    name: 'CBSE Plan',
-    price: '₹1,299',
-    classes: 'Class 10',
-    description: 'Full CBSE syllabus coverage with a retention-first study system. Designed for Class 10 with the board exam content taught in a way that actually sticks.',
-    outcomes: ['Board readiness', 'Retention tracking', 'Concept mastery'],
-    features: [
-      'Complete CBSE Class 10 curriculum coverage',
-      'AI-powered gap assessment and targeted revision',
-      'Board-focused practice built around retention, not just coverage',
-      'Subject-wise retention tracking across all core subjects',
-      'Weekly performance reports for parents',
-      'Live doubt resolution sessions',
-    ],
-    featured: true,
-  },
+  // Hidden, not deleted — uncomment to re-enable.
+  // {
+  //   slug: 'cbse-plan',
+  //   name: 'CBSE Plan',
+  //   price: '₹1,299',
+  //   classes: 'Class 10',
+  //   description: 'Full CBSE syllabus coverage with a retention-first study system. Designed for Class 10 with the board exam content taught in a way that actually sticks.',
+  //   outcomes: ['Board readiness', 'Retention tracking', 'Concept mastery'],
+  //   features: [
+  //     'Complete CBSE Class 10 curriculum coverage',
+  //     'AI-powered gap assessment and targeted revision',
+  //     'Board-focused practice built around retention, not just coverage',
+  //     'Subject-wise retention tracking across all core subjects',
+  //     'Weekly performance reports for parents',
+  //     'Live doubt resolution sessions',
+  //   ],
+  //   featured: true,
+  // },
   {
     slug: 'math-genius',
     name: 'Math Genius Maker Pass',
@@ -65,40 +66,40 @@ const programs = [
     ],
     featured: false,
   },
-  {
-    slug: 'english-mastery',
-    name: 'English Mastery Pass',
-    price: '₹999',
-    classes: 'All Classes',
-    description: 'Grammar, writing, reading, and comprehension. Develop strong English language skills systematically. From basic grammar foundations to advanced writing skills for Classes 8-12.',
-    outcomes: ['Grammar excellence', 'Writing fluency', 'Reading comprehension'],
-    features: [
-      'Complete grammar coverage from Class 8 to 12',
-      'Structured writing program: letters, essays, stories',
-      'Reading comprehension practice with varied passages',
-      'Vocabulary building through spaced repetition',
-      'Speaking and pronunciation guidance (audio-based)',
-      'Literature analysis support for board exams',
-    ],
-    featured: false,
-  },
-  {
-    slug: 'sat-prep',
-    name: 'SAT Prep Pass',
-    price: '₹999',
-    classes: 'Classes 10-12',
-    description: 'Foundation-level SAT preparation with adaptive tests and practice. Complete score optimization program targeting 1400+ scores with proven test-taking strategies.',
-    outcomes: ['High SAT scores', 'Test strategies', 'College readiness'],
-    features: [
-      'Full SAT syllabus: Math, Reading, Writing',
-      'Adaptive practice tests with instant scoring',
-      'Time management strategies for each section',
-      'College application support and guidance',
-      'Score progression tracking and projections',
-      'Access to 500+ SAT practice questions',
-    ],
-    featured: false,
-  },
+  // {
+  //   slug: 'english-mastery',
+  //   name: 'English Mastery Pass',
+  //   price: '₹999',
+  //   classes: 'All Classes',
+  //   description: 'Grammar, writing, reading, and comprehension. Develop strong English language skills systematically. From basic grammar foundations to advanced writing skills for Classes 8-12.',
+  //   outcomes: ['Grammar excellence', 'Writing fluency', 'Reading comprehension'],
+  //   features: [
+  //     'Complete grammar coverage from Class 8 to 12',
+  //     'Structured writing program: letters, essays, stories',
+  //     'Reading comprehension practice with varied passages',
+  //     'Vocabulary building through spaced repetition',
+  //     'Speaking and pronunciation guidance (audio-based)',
+  //     'Literature analysis support for board exams',
+  //   ],
+  //   featured: false,
+  // },
+  // {
+  //   slug: 'sat-prep',
+  //   name: 'SAT Prep Pass',
+  //   price: '₹999',
+  //   classes: 'Classes 10-12',
+  //   description: 'Foundation-level SAT preparation with adaptive tests and practice. Complete score optimization program targeting 1400+ scores with proven test-taking strategies.',
+  //   outcomes: ['High SAT scores', 'Test strategies', 'College readiness'],
+  //   features: [
+  //     'Full SAT syllabus: Math, Reading, Writing',
+  //     'Adaptive practice tests with instant scoring',
+  //     'Time management strategies for each section',
+  //     'College application support and guidance',
+  //     'Score progression tracking and projections',
+  //     'Access to 500+ SAT practice questions',
+  //   ],
+  //   featured: false,
+  // },
 ];
 
 
@@ -124,12 +125,12 @@ export default function Programs() {
               style={{ width: '100%', height: '100%', display: 'block', objectFit: 'contain', objectPosition: 'center center' }}
             />
             {/* dots — top-left, matches home hero */}
-            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '17%', left: 'calc(7.5% + 5px)', zIndex: 3, pointerEvents: 'none' }}>
-              <span style={{ width: '3px', height: '3px', borderRadius: '9999px', background: '#E8135A' }} />
-              <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: '#E8135A' }} />
-              <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: '#E8135A' }} />
-              <span style={{ width: '8px', height: '2px', borderRadius: '9999px', background: '#E8135A' }} />
-              <span style={{ width: '13px', height: '2px', borderRadius: '9999px', background: '#E8135A' }} />
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: 'clamp(0px, 0.31vw, 4px)', position: 'absolute', top: '17%', left: 'calc(7.5% + 5px)', zIndex: 3, pointerEvents: 'none' }}>
+              <span style={{ width: 'clamp(0px, 0.23vw, 3px)', height: 'clamp(0px, 0.23vw, 3px)', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: 'clamp(0px, 0.31vw, 4px)', height: 'clamp(0px, 0.31vw, 4px)', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: 'clamp(0px, 0.39vw, 5px)', height: 'clamp(0px, 0.39vw, 5px)', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: 'clamp(0px, 0.63vw, 8px)', height: 'clamp(0px, 0.16vw, 2px)', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: 'clamp(0px, 1.02vw, 13px)', height: 'clamp(0px, 0.16vw, 2px)', borderRadius: '9999px', background: '#E8135A' }} />
             </span>
             {/* CTA — bottom-left */}
             <div
@@ -250,12 +251,14 @@ export default function Programs() {
                 body: 'Mind Coach treats focus, emotional control, goal-setting, agency, and exam composure as skills built through practice, not traits a student happens to have or lack. A child who freezes on a hard question is missing one specific, trainable skill, and Mind Coach builds it directly, the same way, regardless of which exam or course a student is preparing for, whatever it is.',
                 img: step5Img,
               },
+              /* Hidden, not deleted — re-enable by uncommenting and restoring the step6Img import above.
               {
                 num: '6', eyebrow: 'Perceptive by Design', accent: '#0FA8DC', bg: '#E0F5FC',
                 title: 'English Mastery',
                 body: 'English Mastery builds comprehension as inference, working out what a passage actually implies rather than only what it states, a skill rote reading rarely builds on its own. That is the exact skill both board exams and the SAT test in their reading and writing sections, so a student who builds it once carries it directly into whichever exam, subject, or course comes next.',
                 img: step6Img,
               },
+              */
             ].map((step, idx) => {
               const isReversed = idx % 2 !== 0;
               return (
@@ -316,7 +319,16 @@ export default function Programs() {
               The five-mechanism system above runs identically across every course. What changes is the subject, the syllabus, and the specific gap each course is built to close.
             </p>
           </motion.div>
-          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px', alignItems: 'stretch' }}>
+          <MobileCarousel
+            desktopGridClass={programs.length === 1 ? undefined : 'grid-cols-2-md'}
+            desktopGridStyle={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(1, 1fr)',
+              gap: '16px',
+              alignItems: 'stretch',
+              ...(programs.length === 1 ? { maxWidth: '460px', margin: '0 auto' } : {}),
+            }}
+          >
             {programs.map((prog, idx) => {
               const isPink = idx % 2 === 0;
               const accent = isPink ? '#E8135A' : '#0FA8DC';
@@ -414,7 +426,7 @@ export default function Programs() {
         </div>
       </section>
 
-      {/* Comparison Table */}
+      {/* Comparison Table — hidden, not deleted. Uncomment to re-enable.
       <section style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F9FAFB' }}>
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
           <div style={{ textAlign: 'center', marginBottom: '56px' }}>
@@ -444,6 +456,7 @@ export default function Programs() {
           </div>
         </div>
       </section>
+      */}
 
       {/* ── Testimonials ── */}
       <SharedTestimonialsSection row1={testimonialsRow1} row2={testimonialsRow2} eyebrow="Observed Evidence" subtitle="Hear from students who chose the right program and saw real results." />

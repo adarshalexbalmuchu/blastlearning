@@ -380,6 +380,16 @@ p, li {
 .row-sm       { flex-direction: column; }
 .footer-root  { padding-bottom: 0; }
 
+/* ── Navbar-only breakpoint: the full logo + nav items + CTA + login row
+   needs ~1280px to lay out without the centered nav block overlapping the
+   logo (confirmed overlapping at 1130px, clean at 1288px). Kept separate
+   from .show-lg-flex/.hide-lg (1024px), which other pages still rely on. ── */
+.nav-desktop-flex { display: none; }
+@media (min-width: 1280px) {
+  .nav-desktop-flex { display: flex !important; }
+  .nav-hamburger-only { display: none !important; }
+}
+
 @media (min-width: 640px) {
   .show-sm-blk { display: block !important; }
   .row-sm { flex-direction: row; }
@@ -629,10 +639,6 @@ p, li {
     color: #FFFFFF;
   }
 
-  .hero-cta-floating > span {
-    display: none !important;
-  }
-
   .hero-cta-actions {
     width: 100% !important;
     top: 0 !important;
@@ -805,6 +811,43 @@ p, li {
   }
   .hero-slide-overlay-controls {
     display: none !important;
+  }
+}
+
+/* ── Tablet (768–1279px): hero CTAs use fixed px offsets tuned for the
+   1280px desktop container; below that, the aspect-ratio'd hero image is
+   short enough that the buttons drift up over the banner art/text, and the
+   image top can sit behind the fixed navbar. Drop the CTAs below the image
+   instead of floating on top of it (same approach as mobile), and give the
+   banner the same navbar-clearance padding used below 768px. The range
+   matches the navbar's own 1280px breakpoint — the fixed-px math is only
+   correct once the container hits its max width and stops shrinking. ── */
+@media (min-width: 768px) and (max-width: 1279px) {
+  /* The fixed 64px navbar has no offsetting padding in this range, so it
+     overlaps the top of the hero banner image (mobile already handles this
+     via the 80px rule below 768px). */
+  .hero-banner-offset {
+    padding-top: 84px !important;
+  }
+
+  .hero-cta-floating {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin-top: 20px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100%;
+  }
+
+  .hero-cta-actions {
+    position: static !important;
+    top: 0 !important;
+    width: 100%;
+    justify-content: center !important;
+    flex-wrap: wrap;
+    gap: 14px !important;
   }
 }
 

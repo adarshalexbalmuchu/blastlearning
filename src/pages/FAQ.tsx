@@ -17,6 +17,8 @@ interface FAQEntry {
 }
 
 const faqs: FAQEntry[] = [
+  // Hidden, not deleted — these reference CBSE/SAT Prep specifically. Uncomment to re-enable.
+  /*
   {
     category: 'General',
     question: 'What is the best online CBSE course for Class 10 students?',
@@ -32,11 +34,14 @@ const faqs: FAQEntry[] = [
     question: 'Are online CBSE classes effective for weak students?',
     answer: 'Absolutely. Blast Learning is particularly effective for students who struggle with retention. Our adaptive system identifies exactly where a student is weak and focuses revision there. The AI adjusts difficulty based on performance, so students are never overwhelmed and always making measurable progress.',
   },
+  */
   {
     category: 'General',
     question: 'How can my child improve CBSE Math marks quickly?',
     answer: 'The Math Genius Maker Pass begins with a comprehensive gap assessment to find exactly which concepts are holding your child back. Then it builds a personalized practice plan targeting those gaps. Most students see measurable improvement in their math scores within 4-6 weeks.',
   },
+  // Hidden, not deleted — CBSE-specific. Uncomment to re-enable.
+  /*
   {
     category: 'General',
     question: 'Is Blast Learning affordable compared to traditional CBSE coaching?',
@@ -47,6 +52,7 @@ const faqs: FAQEntry[] = [
     question: 'How to finish CBSE syllabus quickly before board exams?',
     answer: 'Our AI creates an optimized study schedule based on your exam dates and the time available. It prioritizes high-weightage topics, uses spaced repetition for efficient revision, and helps you cover the entire syllabus systematically without last-minute panic.',
   },
+  */
   {
     category: 'General',
     question: 'Can online coaching actually replace traditional tuition?',
@@ -57,21 +63,27 @@ const faqs: FAQEntry[] = [
     question: 'How can my child stay consistent and improve concentration while studying?',
     answer: 'Our Focus Trainer module teaches proven focus techniques and creates structured study sessions with timed intervals. The daily study streak feature gamifies consistency, and the progress dashboard gives students motivation by making improvement visible.',
   },
+  // Hidden, not deleted — CBSE Plan specific. Uncomment to re-enable.
+  /*
   {
     category: 'Programs',
     question: 'What subjects are covered in the CBSE Plan?',
     answer: 'The CBSE Full Syllabus plan covers all seven core subjects for Class 10: History, Political Science, Geography, Economics, Physics, Chemistry, and Biology. Each subject has retention-first pacing, AI-powered revision, and practice quizzes.',
   },
+  */
   {
     category: 'Programs',
     question: 'Can I switch between programs?',
     answer: "Yes, you can upgrade, downgrade, or switch programs at any time. If your needs change (for example, your child moves from Class 10 to 11 and needs SAT prep), we'll help you transition smoothly with no data loss.",
   },
+  // Hidden, not deleted — SAT Prep Pass specific. Uncomment to re-enable.
+  /*
   {
     category: 'Programs',
     question: 'Is the SAT Prep Pass suitable for Class 10 students?',
     answer: 'Yes. Many families start SAT preparation in Class 10 to get a head start. Our SAT Prep Pass begins with foundation-level content suitable for Class 10, progressively building to advanced SAT-level material over Class 11 and 12.',
   },
+  */
   {
     category: 'Programs',
     question: 'Do programs include live classes or just self-paced content?',

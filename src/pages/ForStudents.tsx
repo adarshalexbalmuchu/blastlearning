@@ -827,7 +827,8 @@ export default function ForStudents() {
         </div>
       </section>
 
-      {/* ── 7. Transfer ─────────────────────────────────────────── */}
+      {/* ── 7. Transfer — hidden, not deleted. Flip to true to re-enable. */}
+      {false && (
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
@@ -969,6 +970,7 @@ export default function ForStudents() {
           </div>
         </div>
       </section>
+      )}
 
       {/* ── 8. FAQ ──────────────────────────────────────────────── */}
       <SharedFaqSection

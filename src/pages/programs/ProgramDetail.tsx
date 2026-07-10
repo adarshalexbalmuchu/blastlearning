@@ -58,7 +58,7 @@ export default function ProgramDetail() {
   return (
     <div className="program-detail-page" style={{ background: '#FFFFFF' }}>
       {/* ─── Hero Banner ───────────────────────────────────────── */}
-      <section style={{ paddingTop: '18px', paddingBottom: '10px', background: '#FFFFFF' }}>
+      <section className="hero-banner-offset" style={{ paddingTop: '18px', paddingBottom: '10px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div
             initial={{ opacity: 0, y: 18 }}
@@ -91,12 +91,12 @@ export default function ProgramDetail() {
               }}
             />
             {/* dots-only overlay — top-left, matches home hero style */}
-            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', position: 'absolute', top: '17%', left: 'calc(7.5% + 5px)', zIndex: 3, pointerEvents: 'none' }}>
-              <span style={{ width: '3px', height: '3px', borderRadius: '9999px', background: dotColor }} />
-              <span style={{ width: '4px', height: '4px', borderRadius: '9999px', background: dotColor }} />
-              <span style={{ width: '5px', height: '5px', borderRadius: '9999px', background: dotColor }} />
-              <span style={{ width: '8px', height: '2px', borderRadius: '9999px', background: dotColor }} />
-              <span style={{ width: '13px', height: '2px', borderRadius: '9999px', background: dotColor }} />
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: 'clamp(0px, 0.31vw, 4px)', position: 'absolute', top: '17%', left: 'calc(7.5% + 5px)', zIndex: 3, pointerEvents: 'none' }}>
+              <span style={{ width: 'clamp(0px, 0.23vw, 3px)', height: 'clamp(0px, 0.23vw, 3px)', borderRadius: '9999px', background: dotColor }} />
+              <span style={{ width: 'clamp(0px, 0.31vw, 4px)', height: 'clamp(0px, 0.31vw, 4px)', borderRadius: '9999px', background: dotColor }} />
+              <span style={{ width: 'clamp(0px, 0.39vw, 5px)', height: 'clamp(0px, 0.39vw, 5px)', borderRadius: '9999px', background: dotColor }} />
+              <span style={{ width: 'clamp(0px, 0.63vw, 8px)', height: 'clamp(0px, 0.16vw, 2px)', borderRadius: '9999px', background: dotColor }} />
+              <span style={{ width: 'clamp(0px, 1.02vw, 13px)', height: 'clamp(0px, 0.16vw, 2px)', borderRadius: '9999px', background: dotColor }} />
             </span>
           </motion.div>
         </div>
@@ -233,7 +233,6 @@ export default function ProgramDetail() {
             <PageHeading
               eyebrow="NEP 2020"
               title={<>Who This <AccentText tone="blue">Programme</AccentText> Is <AccentText tone="pink">For</AccentText></>}
-              subtitle="The same card design and image language as the Home page, reused across every program so the site feels consistent end to end."
               maxWidth="880px"
             />
           </motion.div>

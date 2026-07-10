@@ -106,23 +106,24 @@ const howItWorks = [
 ];
 
 const pricingPlans = [
-  {
-    id: 'cbse',
-    slug: 'cbse-plan',
-    name: 'CBSE Full Syllabus',
-    classes: 'Retention-Optimized · Class 10',
-    desc: 'The CBSE course is built on spaced repetition from the ground up, with each chapter sequenced for maximum and lasting retention.',
-    monthlyPrice: 1299,
-    yearlyMonthly: 1039,
-    features: [
-      'All core NCERT subjects covered',
-      'Spaced repetition session engine',
-      'AI Tutor with doubt resolution',
-      'Study Buddy matching',
-      'Weekly parent progress reports',
-    ],
-    featured: true,
-  },
+  // Hidden, not deleted — uncomment to re-enable.
+  // {
+  //   id: 'cbse',
+  //   slug: 'cbse-plan',
+  //   name: 'CBSE Full Syllabus',
+  //   classes: 'Retention-Optimized · Class 10',
+  //   desc: 'The CBSE course is built on spaced repetition from the ground up, with each chapter sequenced for maximum and lasting retention.',
+  //   monthlyPrice: 1299,
+  //   yearlyMonthly: 1039,
+  //   features: [
+  //     'All core NCERT subjects covered',
+  //     'Spaced repetition session engine',
+  //     'AI Tutor with doubt resolution',
+  //     'Study Buddy matching',
+  //     'Weekly parent progress reports',
+  //   ],
+  //   featured: true,
+  // },
   {
     id: 'math',
     slug: 'math-genius',
@@ -140,49 +141,51 @@ const pricingPlans = [
     ],
     featured: false,
   },
-  {
-    id: 'english',
-    slug: 'english-mastery',
-    name: 'English Mastery Pass',
-    classes: 'SAT-Compatible · CBSE & ICSE',
-    desc: 'Comprehension and grammar training serves both board exams and the Digital SAT, producing one system with two distinct outcomes.',
-    monthlyPrice: 999,
-    yearlyMonthly: 799,
-    features: [
-      'Reading, grammar, & writing modules',
-      'CBSE and ICSE board aligned',
-      'Digital SAT format compatible',
-      'AI Tutor with doubt resolution',
-      'Study Buddy matching',
-    ],
-    featured: false,
-  },
-  {
-    id: 'sat',
-    slug: 'sat-prep',
-    name: 'SAT Prep Pass',
-    classes: 'Diagnostic-Engineered · Digital SAT',
-    desc: "Mirrors the Digital SAT's adaptive format. Retrieval practice calibrated to exact question types and time pressures of the exam.",
-    monthlyPrice: 999,
-    yearlyMonthly: 799,
-    features: [
-      'Full Digital SAT syllabus coverage',
-      'Adaptive question sets per session',
-      '6 full-length mock tests included',
-      'AI Tutor with doubt resolution',
-      'Study Buddy matching',
-    ],
-    featured: false,
-  },
+  // {
+  //   id: 'english',
+  //   slug: 'english-mastery',
+  //   name: 'English Mastery Pass',
+  //   classes: 'SAT-Compatible · CBSE & ICSE',
+  //   desc: 'Comprehension and grammar training serves both board exams and the Digital SAT, producing one system with two distinct outcomes.',
+  //   monthlyPrice: 999,
+  //   yearlyMonthly: 799,
+  //   features: [
+  //     'Reading, grammar, & writing modules',
+  //     'CBSE and ICSE board aligned',
+  //     'Digital SAT format compatible',
+  //     'AI Tutor with doubt resolution',
+  //     'Study Buddy matching',
+  //   ],
+  //   featured: false,
+  // },
+  // {
+  //   id: 'sat',
+  //   slug: 'sat-prep',
+  //   name: 'SAT Prep Pass',
+  //   classes: 'Diagnostic-Engineered · Digital SAT',
+  //   desc: "Mirrors the Digital SAT's adaptive format. Retrieval practice calibrated to exact question types and time pressures of the exam.",
+  //   monthlyPrice: 999,
+  //   yearlyMonthly: 799,
+  //   features: [
+  //     'Full Digital SAT syllabus coverage',
+  //     'Adaptive question sets per session',
+  //     '6 full-length mock tests included',
+  //     'AI Tutor with doubt resolution',
+  //     'Study Buddy matching',
+  //   ],
+  //   featured: false,
+  // },
 ];
 
 const homeFaqs = [
   { q: 'Is Blast Learning a tutoring platform?', a: 'Blast Learning is not a tutoring platform. It is a self-study operating system built on retrieval practice, spaced repetition, and habits that turn instruction into memory.' },
-  { q: 'Which boards and exams does Blast Learning cover?', a: 'Blast supports CBSE and ICSE school tracks, plus JEE, NEET, and SAT-aligned preparation paths depending on course selection.' },
+  // Hidden, not deleted — mentions other boards/exams beyond Math Genius Maker. Uncomment to re-enable.
+  // { q: 'Which boards and exams does Blast Learning cover?', a: 'Blast supports CBSE and ICSE school tracks, plus JEE, NEET, and SAT-aligned preparation paths depending on course selection.' },
   { q: 'How is the 14-day free trial structured?', a: 'Every course includes a full 14-day trial with core features enabled, and no credit card is required to begin.' },
   { q: 'What is a Study Buddy and how are they matched?', a: 'A Study Buddy is a peer accountability partner working through aligned adaptive sessions, with progress tracked for both students.' },
   { q: 'How much time does a student need to spend each day?', a: 'Most students spend 45 minutes to 1.5 hours per day depending on their syllabus load. The AI optimizes study time so every minute is spent on high-priority material.' },
-  { q: 'Do you offer a discount for enrolling in multiple courses?', a: 'Yes. Families enrolling in two or more courses receive a 20% discount on the second subscription and beyond.' },
+  // Hidden, not deleted — assumes multiple courses, which no longer applies. Uncomment to re-enable.
+  // { q: 'Do you offer a discount for enrolling in multiple courses?', a: 'Yes. Families enrolling in two or more courses receive a 20% discount on the second subscription and beyond.' },
 ];
 
 const resourceArticles = [
@@ -419,12 +422,21 @@ export default function Home() {
             eyebrow="Courses & Pricing"
             accent={CYAN}
             align="center"
-            title={<>Four {G('courses', CYAN)}. One underlying {G('system', PINK)}.</>}
-            subtitle="Different subjects, different exams - the same science of memory underneath all of them."
+            title={<>One {G('course', CYAN)}. One underlying {G('system', PINK)}.</>}
+            subtitle="Built on the same retention science behind every Blast Learning course — GAP Assessment, spaced repetition, and retrieval practice, focused entirely on closing math gaps."
           />
 
           {/* Pricing cards (Figma layout) */}
-          <MobileCarousel desktopGridClass="grid-cols-2-md" desktopGridStyle={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '16px', alignItems: 'stretch' }}>
+          <MobileCarousel
+            desktopGridClass={pricingPlans.length === 1 ? undefined : 'grid-cols-2-md'}
+            desktopGridStyle={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(1, 1fr)',
+              gap: '16px',
+              alignItems: 'stretch',
+              ...(pricingPlans.length === 1 ? { maxWidth: '460px', margin: '0 auto' } : {}),
+            }}
+          >
             {pricingPlans.map((plan, idx) => {
               const isPink = idx % 2 === 0;
               const accent = isPink ? '#E8135A' : '#0FA8DC';
@@ -530,6 +542,8 @@ export default function Home() {
         title={<>What changes once {GP('retrieval')} replaces {G('re-reading', CYAN)}.</>}
         subtitle="Students and parents describe what changed after shifting from passive review to retrieval-based study."
         row1={[
+          // Hidden, not deleted — uncomment to re-enable (non–Math Genius testimonials).
+          /*
           {
             image: 'https://randomuser.me/api/portraits/women/44.jpg',
             name: 'Ananya Krishnan',
@@ -551,20 +565,25 @@ export default function Home() {
             planName: 'English Mastery',
             text: 'I went in expecting to study for CBSE and ended up fully prepared for the SAT as well. The English Mastery Pass does exactly what it says.',
           },
+          */
           {
             image: 'https://randomuser.me/api/portraits/men/77.jpg',
             name: 'Arjun Nair',
             role: 'Class 11, Math Genius · Chennai',
             text: 'Trigonometry and integration used to vanish from my head overnight. After two months with the Math Genius plan, I actually remember the concepts a week later without re-reading.',
           },
+          /*
           {
             image: 'https://randomuser.me/api/portraits/men/11.jpg',
             name: 'Karan Malhotra',
             role: 'Class 12, SAT Prep Pass · Gurgaon',
             text: 'Blast\'s SAT plan is ruthlessly efficient. It tracked which question types I kept getting wrong and drilled those specifically. Went from 1090 to 1380 across three months.',
           },
+          */
         ]}
         row2={[
+          // Hidden, not deleted — none of these reference Math Genius Maker. Uncomment to re-enable.
+          /*
           {
             image: 'https://randomuser.me/api/portraits/men/54.jpg',
             name: 'Deepak Sharma',
@@ -595,6 +614,7 @@ export default function Home() {
             role: 'Parent · Class 12 CBSE, Jaipur',
             text: 'I was sceptical of another EdTech app. But the Focus Trainer kept my daughter off her phone during study hours, and her prelim scores jumped 18 marks across all subjects.',
           },
+          */
         ]}
       />
 

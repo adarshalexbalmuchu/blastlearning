@@ -23,17 +23,18 @@ const sections = [
   {
     title: 'Program Pages',
     links: [
-      { name: 'CBSE Plan', href: '/programs/cbse-plan' },
+      // Hidden, not deleted — uncomment to re-enable.
+      // { name: 'CBSE Plan', href: '/programs/cbse-plan' },
       { name: 'Math Genius Maker', href: '/programs/math-genius' },
-      { name: 'English Mastery', href: '/programs/english-mastery' },
-      { name: 'SAT Prep Pass', href: '/programs/sat-prep' },
+      // { name: 'English Mastery', href: '/programs/english-mastery' },
+      // { name: 'SAT Prep Pass', href: '/programs/sat-prep' },
     ],
   },
   {
     title: 'Access',
     links: [
       { name: 'Login', href: '/login' },
-      { name: 'Institutions', href: '/contact' },
+      // { name: 'Institutions', href: '/contact' }, // hidden, not deleted
     ],
   },
 ];

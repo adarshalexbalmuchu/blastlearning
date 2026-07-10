@@ -91,10 +91,11 @@ const navItems: NavItem[] = [
       {
         title: '',
         items: [
-          { label: 'CBSE Plan', description: 'Full CBSE syllabus for Class 10', icon: IconBook, iconBg: 'linear-gradient(135deg,#EEF2FF 0%,#E0E7FF 100%)', iconBorder: '#C7D2FE', path: '/programs/cbse-plan' },
+          // Hidden, not deleted — uncomment to re-enable.
+          // { label: 'CBSE Plan', description: 'Full CBSE syllabus for Class 10', icon: IconBook, iconBg: 'linear-gradient(135deg,#EEF2FF 0%,#E0E7FF 100%)', iconBorder: '#C7D2FE', path: '/programs/cbse-plan' },
           { label: 'Math Genius Maker', description: 'Gap assessment & targeted math practice', icon: IconBulb, iconBg: 'linear-gradient(135deg,#FFFBEB 0%,#FEF3C7 100%)', iconBorder: '#FDE68A', path: '/programs/math-genius' },
-          { label: 'English Mastery', description: 'Grammar, comprehension & writing skills', icon: IconPen, iconBg: 'linear-gradient(135deg,#F0FDF4 0%,#DCFCE7 100%)', iconBorder: '#BBF7D0', path: '/programs/english-mastery' },
-          { label: 'SAT Prep Pass', description: 'US college admission test preparation', icon: IconTrophy, iconBg: 'linear-gradient(135deg,#F5F3FF 0%,#EDE9FE 100%)', iconBorder: '#DDD6FE', path: '/programs/sat-prep' },
+          // { label: 'English Mastery', description: 'Grammar, comprehension & writing skills', icon: IconPen, iconBg: 'linear-gradient(135deg,#F0FDF4 0%,#DCFCE7 100%)', iconBorder: '#BBF7D0', path: '/programs/english-mastery' },
+          // { label: 'SAT Prep Pass', description: 'US college admission test preparation', icon: IconTrophy, iconBg: 'linear-gradient(135deg,#F5F3FF 0%,#EDE9FE 100%)', iconBorder: '#DDD6FE', path: '/programs/sat-prep' },
         ],
       },
     ],
@@ -109,6 +110,7 @@ const navItems: NavItem[] = [
     label: 'Students',
     path: '/for-students',
   },
+  // Hidden, not deleted — remove from HIDDEN_NAV_IDS below to re-enable.
   {
     id: 5,
     label: 'Institutions',
@@ -130,6 +132,10 @@ const navItems: NavItem[] = [
   { id: 8, label: 'About us', path: '/about' },
   { id: 9, label: 'Contact', path: '/contact' },
 ];
+
+// Nav items hidden from the menu without deleting their entries — remove an id here to re-enable.
+const HIDDEN_NAV_IDS = [5];
+const visibleNavItems = navItems.filter((item) => !HIDDEN_NAV_IDS.includes(item.id));
 
 const loginOptions = [
   { label: 'Login', to: '/login' },
@@ -190,7 +196,7 @@ export default function Navbar() {
 
           {/* Nav items + Start Free Trial — absolutely centered in 1280px hero zone */}
           <div
-            className="show-lg-flex"
+            className="nav-desktop-flex"
             style={{
               position: 'absolute',
               left: '50%',
@@ -208,7 +214,7 @@ export default function Navbar() {
           >
           <div style={{ display: 'flex', alignItems: 'center', gap: 'clamp(9px, 1.1vw, 17px)', pointerEvents: 'auto' }}>
             <ul style={{ display: 'flex', alignItems: 'center', gap: 'clamp(7px, 0.9vw, 15px)', listStyle: 'none', margin: 0, padding: 0 }}>
-                {navItems.map((item) => (
+                {visibleNavItems.map((item) => (
                   <li
                     key={item.id}
                     style={{ position: 'relative' }}
@@ -405,7 +411,7 @@ export default function Navbar() {
               </ul>
 
             {/* CTA + Login inline after nav items */}
-            <div className="show-lg-flex items-center" style={{ gap: 'clamp(6px, 0.8vw, 12px)', flexShrink: 0, marginLeft: 'clamp(8px, 1.2vw, 20px)' }}>
+            <div className="nav-desktop-flex items-center" style={{ gap: 'clamp(6px, 0.8vw, 12px)', flexShrink: 0, marginLeft: 'clamp(8px, 1.2vw, 20px)' }}>
 
               {/* Start Free Trial Button */}
               <Link
@@ -421,7 +427,7 @@ export default function Navbar() {
           {/* ↑ closes the absolutely-centered nav+CTA overlay */}
 
           {/* Login — centered in the white gap to the right of the 1280px hero zone */}
-          <div className="show-lg-flex items-center" style={{ marginLeft: 'auto', marginRight: 'calc((100vw - min(100vw, 1280px)) / 8)', position: 'relative', zIndex: 2 }}>
+          <div className="nav-desktop-flex items-center" style={{ marginLeft: 'auto', marginRight: 'calc((100vw - min(100vw, 1280px)) / 8)', position: 'relative', zIndex: 2 }}>
             <div style={{ position: 'relative' }}>
               <button
                 onClick={() => setLoginOpen((v) => !v)}
@@ -487,7 +493,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile: hamburger only */}
-          <div className="hide-lg" style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+          <div className="nav-hamburger-only" style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
             <button
               className="nav-mobile-menu-btn"
               style={{ color: '#1C1C28', background: 'transparent', border: 'none', cursor: 'pointer', padding: '10px', borderRadius: '8px', minWidth: '44px', minHeight: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
@@ -559,7 +565,7 @@ export default function Navbar() {
             >
               {/* Nav links */}
               <div style={{ flex: 1, padding: '8px 0' }}>
-                {navItems.map((item) => {
+                {visibleNavItems.map((item) => {
                   const active = location.pathname === item.path;
                   const expanded = openMenu === item.id;
 

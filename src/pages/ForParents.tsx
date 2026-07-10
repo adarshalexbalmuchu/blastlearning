@@ -224,7 +224,6 @@ const researchTimeline = [
   { label: '25 years', sublabel: 'Lewolt builds the methodology', color: '#E8135A' },
   { label: 'Licensed', sublabel: 'IBM and McGraw-Hill adopt it', color: '#0FA8DC' },
   { label: 'Mind Coach', sublabel: 'Co-developed with Dr. Jon Finn', color: '#E8135A' },
-  { label: '2024', sublabel: 'Rebuilt for India', color: '#0FA8DC' },
 ];
 
 export default function ForParents() {
@@ -235,6 +234,9 @@ export default function ForParents() {
   const shouldReduce = useReducedMotion();
   const hv = heroVariants(!!shouldReduce);
   const cv = comparisonVariants(!!shouldReduce);
+
+  // Parent Dashboard card hidden, not deleted — drop this filter to re-enable it.
+  const visibleTransparencyItems = transparencyItems.filter((item) => item.kind !== 'dashboard');
 
   const programColumns = programs.length;
   const programCardGapPx = 20;
@@ -441,14 +443,14 @@ export default function ForParents() {
 
             {/* Timeline — line draws left-to-right, dots bounce in as line reaches them */}
             <div>
-              <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', height: '24px', marginBottom: '16px' }}>
+              <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: `repeat(${researchTimeline.length}, 1fr)`, height: '24px', marginBottom: '16px' }}>
                 {/* Animated connecting line */}
                 <motion.div
                   style={{
                     position: 'absolute',
                     top: '50%',
-                    left: '12.5%',
-                    right: '12.5%',
+                    left: `${100 / (2 * researchTimeline.length)}%`,
+                    right: `${100 / (2 * researchTimeline.length)}%`,
                     height: '1.5px',
                     background: '#D1D5DB',
                     transformOrigin: '0% 50%',
@@ -472,7 +474,7 @@ export default function ForParents() {
                   </div>
                 ))}
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: `repeat(${researchTimeline.length}, 1fr)` }}>
                 {researchTimeline.map((point, i) => (
                   <div key={i} style={{ textAlign: 'center', padding: '12px 12px 0' }}>
                     <p style={{ fontWeight: 700, fontSize: '16px', fontFamily: 'Poppins, sans-serif', color: '#1C1C28', margin: '0 0 4px' }}>
@@ -504,10 +506,10 @@ export default function ForParents() {
             </motion.div>
             <motion.div
               variants={stagger}
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px' }}
-              className="grid-cols-2-md"
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', maxWidth: visibleTransparencyItems.length === 1 ? '560px' : undefined }}
+              className={visibleTransparencyItems.length === 1 ? undefined : 'grid-cols-2-md'}
             >
-              {transparencyItems.map((item) => (
+              {visibleTransparencyItems.map((item) => (
                 <motion.div key={item.label} variants={popIn} whileHover={{ y: -8, scale: 1.02, transition: { type: 'spring', stiffness: 320, damping: 20 } }}>
                   <div style={{ height: '100%', background: '#FFFFFF', borderRadius: '16px', border: '1px solid #ECECF1', padding: '32px', borderTop: `3px solid ${item.accent}`, boxShadow: '0 2px 8px rgba(28,28,40,0.04)' }}>
                     <HeadingMarker text={item.label} accent={item.accent} fontSize="11px" marginBottom="12px" />
@@ -526,7 +528,8 @@ export default function ForParents() {
         </div>
       </section>
 
-      {/* ── 6. Program Selection ────────────────────────────────── */}
+      {/* ── 6. Program Selection — hidden, not deleted. Flip to true to re-enable. */}
+      {false && (
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#F7FAFC' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
@@ -632,6 +635,7 @@ export default function ForParents() {
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* ── 7. FAQ ──────────────────────────────────────────────── */}
       <SharedFaqSection
