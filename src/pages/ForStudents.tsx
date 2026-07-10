@@ -372,7 +372,7 @@ export default function ForStudents() {
             </motion.div>
 
             {/* Two-curve Ebbinghaus chart — card-wrapped, captions in HTML for correct responsive spacing */}
-            <motion.div variants={fadeUp} style={{ maxWidth: '1000px', margin: '0 auto' }}>
+            <motion.div variants={fadeUp} style={{ maxWidth: '620px', margin: '0 auto' }}>
               <div style={{
                 background: '#FFFFFF',
                 border: '1px solid #E5E7EB',
