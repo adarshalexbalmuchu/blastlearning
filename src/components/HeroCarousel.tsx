@@ -52,8 +52,8 @@ const HERO_DOT_COLORS = ['#E8135A', '#E8135A'];
 const HERO_DOT_LEFT = ['9.3%', '7.5%'];
 
 // Top offset of the accent dots, tuned per slide — Math Genius Maker's is
-// lifted 1.5% higher than the shared default.
-const HERO_DOT_TOP = ['15.2%', '16.7%'];
+// lifted 2% higher than the shared default.
+const HERO_DOT_TOP = ['14.7%', '16.7%'];
 
 // ─── Carousel ────────────────────────────────────────────────────────────────────
 export default function HeroCarousel() {
