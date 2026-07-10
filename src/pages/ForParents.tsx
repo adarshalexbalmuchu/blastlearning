@@ -253,6 +253,9 @@ export default function ForParents() {
         background: 'linear-gradient(135deg, rgba(15, 168, 220, 0.03) 0%, #FFFFFF 30%, rgba(232, 19, 90, 0.06) 80%, rgba(232, 19, 90, 0.04) 100%)',
         paddingTop: '120px',
         paddingBottom: '80px',
+        minHeight: '760px',
+        display: 'flex',
+        alignItems: 'center',
         borderBottom: '1px solid #ECECF1',
       }}>
         <div aria-hidden="true" style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '1200px', pointerEvents: 'none' }}>
