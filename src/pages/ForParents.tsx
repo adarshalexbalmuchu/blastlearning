@@ -509,7 +509,7 @@ export default function ForParents() {
             </motion.div>
             <motion.div
               variants={stagger}
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', maxWidth: visibleTransparencyItems.length === 1 ? '560px' : undefined }}
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '24px', maxWidth: visibleTransparencyItems.length === 1 ? '560px' : undefined, margin: visibleTransparencyItems.length === 1 ? '0 auto' : undefined }}
               className={visibleTransparencyItems.length === 1 ? undefined : 'grid-cols-2-md'}
             >
               {visibleTransparencyItems.map((item) => (
