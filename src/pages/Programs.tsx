@@ -315,7 +315,7 @@ export default function Programs() {
           >
             <HeadingMarker text="Programs" marginBottom="16px" fontSize="12px" />
             <h2 className="t-h2" style={{ marginBottom: '20px' }}>
-              Four <AccentText tone="blue">Courses</AccentText>. One <AccentText tone="pink">Method</AccentText>.
+              One <AccentText tone="blue">Course</AccentText>. One <AccentText tone="pink">Method</AccentText>.
             </h2>
             <p className="t-body">
               The five-mechanism system above runs identically across every course. What changes is the subject, the syllabus, and the specific gap each course is built to close.
