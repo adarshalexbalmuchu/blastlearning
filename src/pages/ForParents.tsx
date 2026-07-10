@@ -519,7 +519,7 @@ export default function ForParents() {
                     <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', margin: 0 }}>
                       {item.body}
                     </p>
-                    {item.kind === 'dashboard' ? <DashboardMockup accent={item.accent} /> : <TutorTeamMockup accent={item.accent} />}
+                    {item.kind === 'tutor' ? <TutorTeamMockup accent={item.accent} /> : <DashboardMockup accent={item.accent} />}
                   </div>
                 </motion.div>
               ))}
