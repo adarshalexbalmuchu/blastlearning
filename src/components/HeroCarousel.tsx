@@ -52,8 +52,8 @@ const HERO_DOT_COLORS = ['#E8135A', '#E8135A'];
 const HERO_DOT_LEFT = ['8.3%', '7.75%'];
 
 // Top offset of the accent dots, tuned per slide — Methodology's is nudged
-// 0.25% lower than the shared default.
-const HERO_DOT_TOP = ['16.7%', '16.95%'];
+// 0.375% lower than the shared default.
+const HERO_DOT_TOP = ['16.7%', '17.075%'];
 
 // ─── Carousel ────────────────────────────────────────────────────────────────────
 export default function HeroCarousel() {
