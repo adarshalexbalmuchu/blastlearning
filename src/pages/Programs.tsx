@@ -105,8 +105,8 @@ const programs = [
 
 export default function Programs() {
   useSEO({
-    title: 'Programs | CBSE, Maths, English & SAT Prep · Blast Learning',
-    description: 'Explore CBSE, Maths Genius, English Edge, and SAT Prep programs designed for Classes 8-12. AI-powered spaced repetition. Start from ₹999/month.',
+    title: 'Math Genius Maker | Blast Learning',
+    description: 'Math Genius Maker uses a GAP Assessment and AI-powered spaced repetition to find and close exactly the concepts holding a student back. Classes 8-12, starting from ₹999/month.',
   });
 
   return (
@@ -191,7 +191,7 @@ export default function Programs() {
               whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 280, damping: 22 } }}
               style={{ borderRadius: '16px', overflow: 'hidden', boxShadow: '0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06)', background: '#fff' }}
             >
-              <img src={ebbinghausImg} alt="Ebbinghaus Forgetting Curve" style={{ width: '100%', height: 'auto', display: 'block' }} />
+              <img src={ebbinghausImg} alt="Ebbinghaus Forgetting Curve" loading="lazy" decoding="async" style={{ width: '100%', height: 'auto', display: 'block' }} />
             </motion.div>
           </div>
         </div>
@@ -215,7 +215,7 @@ export default function Programs() {
               The <AccentText tone="blue">Method</AccentText> Behind the <AccentText tone="pink">Marks</AccentText>
             </h2>
             <p className="t-body">
-              Blast Learning runs on seven features: GAP Assessment, AI Tutor, Study Buddy, Mind Coach, spaced repetition, retrieval practice, and English Mastery. Each one builds a different part of how a student learns, and together they develop the same thing: the skills to learn independently, for life, in any course a student takes.
+              Blast Learning runs on five features: GAP Assessment, AI Tutor, Study Buddy, Mind Coach, and spaced repetition with retrieval practice. Each one builds a different part of how a student learns, and together they develop the same thing: the skills to learn independently, for life, in whatever a student studies next.
             </p>
           </motion.div>
 
@@ -318,7 +318,7 @@ export default function Programs() {
               One <AccentText tone="blue">Course</AccentText>. One <AccentText tone="pink">Method</AccentText>.
             </h2>
             <p className="t-body">
-              The five-mechanism system above runs identically across every course. What changes is the subject, the syllabus, and the specific gap each course is built to close.
+              The five-mechanism system above is what Math Genius Maker is built on — the same GAP Assessment, AI Tutor, Study Buddy, Mind Coach, and spaced retrieval practice, applied to exactly the concepts holding a student back in math.
             </p>
           </motion.div>
           <MobileCarousel
@@ -423,7 +423,7 @@ export default function Programs() {
             })}
           </MobileCarousel>
           <p style={{ textAlign: 'center', marginTop: '32px', fontSize: '14px', color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-            Every course opens with a 14-day free trial and no credit card requirement. Enrol in two or more courses and a 20% discount applies automatically.
+            Math Genius Maker opens with a 14-day free trial and no credit card requirement.
           </p>
         </div>
       </section>

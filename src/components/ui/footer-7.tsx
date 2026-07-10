@@ -78,6 +78,7 @@ export const Footer7 = ({
                 <img
                   src={logo.src}
                   alt={logo.alt}
+                  loading="lazy"
                   style={{ height: "36px", width: "auto" }}
                 />
               </Link>

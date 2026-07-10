@@ -122,7 +122,7 @@ export default function BlogPost() {
       {/* Featured image */}
       {featuredImg && (
         <div style={{ maxWidth: '1000px', margin: '0 auto', padding: '40px 24px 0' }}>
-          <img src={featuredImg} alt={post ? getFeaturedAlt(post) : ''} style={{ width: '100%', height: 'auto', maxHeight: '500px', objectFit: 'cover', borderRadius: '16px', display: 'block' }} />
+          <img src={featuredImg} alt={post ? getFeaturedAlt(post) : ''} loading="eager" decoding="async" fetchPriority="high" style={{ width: '100%', height: 'auto', maxHeight: '500px', objectFit: 'cover', borderRadius: '16px', display: 'block' }} />
         </div>
       )}
 

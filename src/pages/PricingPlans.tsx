@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom'
-import { Check, Star, BookOpen, GraduationCap, ArrowLeft, Trophy } from 'lucide-react'
+import { Check, Star, ArrowLeft } from 'lucide-react'
+// GraduationCap, BookOpen, Trophy — only used by the hidden CBSE/English/SAT passes below. Re-add to the import above if those are re-enabled.
 
 type SelectedPlanPayload = {
     planId: string
@@ -43,6 +44,8 @@ export default function PricingPlans({ onSelectPlan }: PricingPlansProps) {
     }, [incoming, paramPlanId, paramBilling])
 
     const additionalPasses = [
+        // Hidden, not deleted — uncomment to re-enable.
+        /*
         {
             id: '#4',
             name: 'CBSE Learning Pass',
@@ -61,6 +64,7 @@ export default function PricingPlans({ onSelectPlan }: PricingPlansProps) {
             colorWrapper: 'from-purple-500/5 to-purple-500/10',
             color: 'border-purple-500'
         },
+        */
         {
             id: '#5',
             name: 'Math Genius Maker Pass',
@@ -79,6 +83,8 @@ export default function PricingPlans({ onSelectPlan }: PricingPlansProps) {
             colorWrapper: 'from-blue-500/5 to-blue-500/10',
             color: 'border-blue-500'
         },
+        // Hidden, not deleted — uncomment to re-enable.
+        /*
         {
             id: '#6',
             name: 'English Mastery Pass',
@@ -115,6 +121,7 @@ export default function PricingPlans({ onSelectPlan }: PricingPlansProps) {
             colorWrapper: 'from-orange-500/5 to-orange-500/10',
             color: 'border-orange-500'
         }
+        */
     ]
 
     return (
@@ -197,7 +204,7 @@ export default function PricingPlans({ onSelectPlan }: PricingPlansProps) {
                 </div>
 
                 {/* Plans Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className={`grid gap-6 ${additionalPasses.length === 1 ? 'max-w-sm mx-auto' : 'md:grid-cols-2 lg:grid-cols-4'}`}>
                     {additionalPasses.map(plan => (
                         <div
                             key={plan.id}

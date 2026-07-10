@@ -71,11 +71,14 @@ const faqs: FAQEntry[] = [
     answer: 'The CBSE Full Syllabus plan covers all seven core subjects for Class 10: History, Political Science, Geography, Economics, Physics, Chemistry, and Biology. Each subject has retention-first pacing, AI-powered revision, and practice quizzes.',
   },
   */
+  // Hidden, not deleted — assumes multiple programs to switch between. Uncomment to re-enable.
+  /*
   {
     category: 'Programs',
     question: 'Can I switch between programs?',
     answer: "Yes, you can upgrade, downgrade, or switch programs at any time. If your needs change (for example, your child moves from Class 10 to 11 and needs SAT prep), we'll help you transition smoothly with no data loss.",
   },
+  */
   // Hidden, not deleted — SAT Prep Pass specific. Uncomment to re-enable.
   /*
   {
