@@ -173,7 +173,7 @@ export default function HeroCarousel() {
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: 'clamp(0px, 0.31vw, 4px)',
+              gap: 'clamp(0px, 0.35vw, 4.5px)',
               position: 'absolute',
               top: '16.7%',
               left: activeDotLeft,
@@ -182,11 +182,11 @@ export default function HeroCarousel() {
               transform: firstBannerDotNudge,
             }}
           >
-            <span style={{ width: 'clamp(0px, 0.23vw, 3px)', height: 'clamp(0px, 0.23vw, 3px)', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: 'clamp(0px, 0.31vw, 4px)', height: 'clamp(0px, 0.31vw, 4px)', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: 'clamp(0px, 0.39vw, 5px)', height: 'clamp(0px, 0.39vw, 5px)', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: 'clamp(0px, 0.63vw, 8px)', height: 'clamp(0px, 0.16vw, 2px)', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: 'clamp(0px, 1.02vw, 13px)', height: 'clamp(0px, 0.16vw, 2px)', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: 'clamp(0px, 0.27vw, 3.5px)', height: 'clamp(0px, 0.27vw, 3.5px)', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: 'clamp(0px, 0.35vw, 4.5px)', height: 'clamp(0px, 0.35vw, 4.5px)', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: 'clamp(0px, 0.43vw, 5.5px)', height: 'clamp(0px, 0.43vw, 5.5px)', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: 'clamp(0px, 0.66vw, 8.5px)', height: 'clamp(0px, 0.2vw, 2.5px)', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: 'clamp(0px, 1.05vw, 13.5px)', height: 'clamp(0px, 0.2vw, 2.5px)', borderRadius: '9999px', background: activeDotColor }} />
           </span>
 
           {/* Mobile-only overlay controls — inside image, clears the gap below */}

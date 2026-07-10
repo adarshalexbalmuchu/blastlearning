@@ -142,12 +142,12 @@ export default function Programs() {
               style={{ width: '100%', height: '100%', display: 'block', objectFit: 'contain', objectPosition: 'center center' }}
             />
             {/* dots — top-left, matches home hero */}
-            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: 'clamp(0px, 0.31vw, 4px)', position: 'absolute', top: '17%', left: 'calc(7.5% + 5px)', zIndex: 3, pointerEvents: 'none' }}>
-              <span style={{ width: 'clamp(0px, 0.23vw, 3px)', height: 'clamp(0px, 0.23vw, 3px)', borderRadius: '9999px', background: '#E8135A' }} />
-              <span style={{ width: 'clamp(0px, 0.31vw, 4px)', height: 'clamp(0px, 0.31vw, 4px)', borderRadius: '9999px', background: '#E8135A' }} />
-              <span style={{ width: 'clamp(0px, 0.39vw, 5px)', height: 'clamp(0px, 0.39vw, 5px)', borderRadius: '9999px', background: '#E8135A' }} />
-              <span style={{ width: 'clamp(0px, 0.63vw, 8px)', height: 'clamp(0px, 0.16vw, 2px)', borderRadius: '9999px', background: '#E8135A' }} />
-              <span style={{ width: 'clamp(0px, 1.02vw, 13px)', height: 'clamp(0px, 0.16vw, 2px)', borderRadius: '9999px', background: '#E8135A' }} />
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: 'clamp(0px, 0.35vw, 4.5px)', position: 'absolute', top: '17%', left: 'calc(7.5% + 5px)', zIndex: 3, pointerEvents: 'none' }}>
+              <span style={{ width: 'clamp(0px, 0.27vw, 3.5px)', height: 'clamp(0px, 0.27vw, 3.5px)', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: 'clamp(0px, 0.35vw, 4.5px)', height: 'clamp(0px, 0.35vw, 4.5px)', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: 'clamp(0px, 0.43vw, 5.5px)', height: 'clamp(0px, 0.43vw, 5.5px)', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: 'clamp(0px, 0.66vw, 8.5px)', height: 'clamp(0px, 0.2vw, 2.5px)', borderRadius: '9999px', background: '#E8135A' }} />
+              <span style={{ width: 'clamp(0px, 1.05vw, 13.5px)', height: 'clamp(0px, 0.2vw, 2.5px)', borderRadius: '9999px', background: '#E8135A' }} />
             </span>
             {/* CTA — bottom-left */}
             <div
