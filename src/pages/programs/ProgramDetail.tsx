@@ -91,7 +91,7 @@ export default function ProgramDetail() {
               }}
             />
             {/* dots-only overlay — top-left, matches home hero style */}
-            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: 'clamp(0px, 0.35vw, 4.5px)', position: 'absolute', top: '17%', left: 'calc(7.5% + 5px)', zIndex: 3, pointerEvents: 'none' }}>
+            <span aria-hidden="true" style={{ display: 'inline-flex', alignItems: 'center', gap: 'clamp(0px, 0.35vw, 4.5px)', position: 'absolute', top: program.slug === 'math-genius' ? '16%' : '17%', left: 'calc(7.5% + 5px)', zIndex: 3, pointerEvents: 'none' }}>
               <span style={{ width: 'clamp(0px, 0.27vw, 3.5px)', height: 'clamp(0px, 0.27vw, 3.5px)', borderRadius: '9999px', background: dotColor }} />
               <span style={{ width: 'clamp(0px, 0.35vw, 4.5px)', height: 'clamp(0px, 0.35vw, 4.5px)', borderRadius: '9999px', background: dotColor }} />
               <span style={{ width: 'clamp(0px, 0.43vw, 5.5px)', height: 'clamp(0px, 0.43vw, 5.5px)', borderRadius: '9999px', background: dotColor }} />

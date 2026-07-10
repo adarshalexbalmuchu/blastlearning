@@ -49,11 +49,7 @@ const HERO_DOT_COLORS = ['#E8135A', '#E8135A'];
 // Left offset of the accent dots, tuned per slide since the eyebrow label is
 // baked into each banner image at a slightly different spot — Math Genius
 // Maker's label sits further right than Methodology's.
-const HERO_DOT_LEFT = ['10.3%', '7.5%'];
-
-// Top offset of the accent dots, tuned per slide — Math Genius Maker's is
-// lifted 2% higher than the shared default.
-const HERO_DOT_TOP = ['14.7%', '16.7%'];
+const HERO_DOT_LEFT = ['8.3%', '7.5%'];
 
 // ─── Carousel ────────────────────────────────────────────────────────────────────
 export default function HeroCarousel() {
@@ -65,7 +61,6 @@ export default function HeroCarousel() {
   const activePrimaryCta = PRIMARY_CTA_CONFIG[activeIndex] ?? { text: 'Start Your Journey Today', to: '/programs' };
   const activeDotColor = HERO_DOT_COLORS[activeIndex] ?? '#0FA8DC';
   const activeDotLeft = HERO_DOT_LEFT[activeIndex] ?? '8.5%';
-  const activeDotTop = HERO_DOT_TOP[activeIndex] ?? '16.7%';
   const firstBannerDotNudge = activeIndex === 0 ? 'translate(0.5px, -1px)' : undefined;
 
   useEffect(() => {
@@ -180,7 +175,7 @@ export default function HeroCarousel() {
               alignItems: 'center',
               gap: 'clamp(0px, 0.35vw, 4.5px)',
               position: 'absolute',
-              top: activeDotTop,
+              top: '16.7%',
               left: activeDotLeft,
               zIndex: 2,
               pointerEvents: 'none',
