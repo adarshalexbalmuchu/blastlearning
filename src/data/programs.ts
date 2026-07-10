@@ -726,6 +726,153 @@ const programsData: ProgramData[] = [
       },
     ],
   },
+
+  // ── Placeholder — not linked from nav, footer, or any program listing.
+  // Reachable only by visiting /programs/new-program directly. Mirrors the
+  // Math Genius Maker entry above field-for-field; replace every value with
+  // real content before linking it anywhere.
+  {
+    slug: 'new-program',
+    name: '[New Program Name]',
+    tagline: '[One-sentence tagline that captures the core promise of this program.]',
+    price: '₹999',
+    classes: '[Classes X-Y]',
+    description:
+      '[Two to three sentences describing the problem this program solves for the student, and how it solves it differently from generic coaching or self-study.]',
+    accentBg: '#FCEEF1',
+    heroStats: [
+      { value: '₹999', label: 'per month' },
+      { value: '14 days', label: 'free trial' },
+      { value: '[Stat]', label: '[label]' },
+      { value: '[Stat]', label: '[label]' },
+    ],
+    forWhom: [
+      {
+        title: '[Who this is for — headline 1]',
+        desc: '[One to two sentences describing this student profile and why the program fits them specifically.]',
+      },
+      {
+        title: '[Who this is for — headline 2]',
+        desc: '[One to two sentences describing this student profile and why the program fits them specifically.]',
+      },
+      {
+        title: '[Who this is for — headline 3]',
+        desc: '[One to two sentences describing this student profile and why the program fits them specifically.]',
+      },
+      {
+        title: '[Who this is for — headline 4]',
+        desc: '[One to two sentences describing this student profile and why the program fits them specifically.]',
+      },
+    ],
+    curriculum: [
+      {
+        title: '[Curriculum module 1 title]',
+        topics: [
+          '[Topic 1]', '[Topic 2]', '[Topic 3]', '[Topic 4]',
+          '[Topic 5]', '[Topic 6]', '[Topic 7]', '[Topic 8]',
+        ],
+      },
+      {
+        title: '[Curriculum module 2 title]',
+        topics: [
+          '[Topic 1]', '[Topic 2]', '[Topic 3]', '[Topic 4]',
+          '[Topic 5]', '[Topic 6]', '[Topic 7]', '[Topic 8]',
+        ],
+      },
+      {
+        title: '[Curriculum module 3 title]',
+        topics: [
+          '[Topic 1]', '[Topic 2]', '[Topic 3]', '[Topic 4]',
+          '[Topic 5]', '[Topic 6]', '[Topic 7]', '[Topic 8]',
+        ],
+      },
+      {
+        title: '[Curriculum module 4 title]',
+        topics: [
+          '[Topic 1]', '[Topic 2]', '[Topic 3]', '[Topic 4]',
+          '[Topic 5]', '[Topic 6]', '[Topic 7]', '[Topic 8]',
+        ],
+      },
+      {
+        title: '[Curriculum module 5 title]',
+        topics: [
+          '[Topic 1]', '[Topic 2]', '[Topic 3]', '[Topic 4]',
+          '[Topic 5]', '[Topic 6]', '[Topic 7]', '[Topic 8]',
+        ],
+      },
+    ],
+    features: [
+      '[Feature 1]: [one-sentence description of what it does for the student]',
+      '[Feature 2]: [one-sentence description of what it does for the student]',
+      '[Feature 3]: [one-sentence description of what it does for the student]',
+      '[Feature 4]: [one-sentence description of what it does for the student]',
+      '[Feature 5]: [one-sentence description of what it does for the student]',
+      '[Feature 6]: [one-sentence description of what it does for the student]',
+      '14-day free trial, no card required',
+      '[Feature 8]: [one-sentence description of what it does for the student]',
+    ],
+    outcomes: [
+      {
+        value: '[Stat]',
+        label: '[Outcome label 1]',
+        desc: '[One to two sentences describing this measurable outcome and how it was measured.]',
+      },
+      {
+        value: '[Stat]',
+        label: '[Outcome label 2]',
+        desc: '[One to two sentences describing this measurable outcome and how it was measured.]',
+      },
+      {
+        value: '[Stat]',
+        label: '[Outcome label 3]',
+        desc: '[One to two sentences describing this measurable outcome and how it was measured.]',
+      },
+    ],
+    testimonials: [
+      {
+        name: '[Student Name]',
+        role: '[Class/Grade, Program · City]',
+        content:
+          '[A first-person testimonial describing the student\'s starting struggle, what changed after using the program, and the result — 2-4 sentences.]',
+        before: '[e.g. 38%]',
+        after: '[e.g. 84%]',
+        metric: '[What was measured]',
+        improvement: '[e.g. 46%]',
+      },
+      {
+        name: '[Student Name]',
+        role: '[Class/Grade, Program · City]',
+        content:
+          '[A first-person testimonial describing the student\'s starting struggle, what changed after using the program, and the result — 2-4 sentences.]',
+        before: '[e.g. 41%]',
+        after: '[e.g. 79%]',
+        metric: '[What was measured]',
+        improvement: '[e.g. 38%]',
+      },
+    ],
+    faqs: [
+      {
+        q: '[Frequently asked question 1]',
+        a: '[Answer — 2-4 sentences.]',
+      },
+      {
+        q: '[Frequently asked question 2]',
+        a: '[Answer — 2-4 sentences.]',
+      },
+      {
+        q: '[Frequently asked question 3]',
+        a: '[Answer — 2-4 sentences.]',
+      },
+      {
+        q: '[Frequently asked question 4]',
+        a: '[Answer — 2-4 sentences.]',
+      },
+      {
+        q: 'What does the 14-day free trial include?',
+        a: 'The full program, including the GAP Assessment diagnostic, AI Tutor sessions, spaced retrieval practice, and Study Buddy access. No credit card is required to start. At the end of 14 days you decide whether to continue at Rs 999 per month.',
+      },
+    ],
+  },
 ];
 
 export function getProgramBySlug(slug: string): ProgramData | undefined {

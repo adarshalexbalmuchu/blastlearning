@@ -125,7 +125,13 @@ export default function ProgramDetail() {
             <motion.div initial="hidden" animate="visible" variants={stagger}>
               <PageHeading
                 eyebrow={`AI Powered · ${program.classes}`}
-                title={program.slug === 'cbse-plan' ? <><AccentText tone="blue">CBSE</AccentText> Full <AccentText tone="pink">Syllabus</AccentText></> : program.slug === 'math-genius' ? <><AccentText tone="blue">Math</AccentText> <AccentText tone="pink">Genius</AccentText> Maker</> : program.slug === 'english-mastery' ? <><AccentText tone="blue">English</AccentText> <AccentText tone="pink">Mastery</AccentText> Pass</> : <><AccentText tone="blue">SAT</AccentText> Prep <AccentText tone="pink">Pass</AccentText></>}
+                title={
+                  program.slug === 'cbse-plan' ? <><AccentText tone="blue">CBSE</AccentText> Full <AccentText tone="pink">Syllabus</AccentText></> :
+                  program.slug === 'math-genius' ? <><AccentText tone="blue">Math</AccentText> <AccentText tone="pink">Genius</AccentText> Maker</> :
+                  program.slug === 'english-mastery' ? <><AccentText tone="blue">English</AccentText> <AccentText tone="pink">Mastery</AccentText> Pass</> :
+                  program.slug === 'sat-prep' ? <><AccentText tone="blue">SAT</AccentText> Prep <AccentText tone="pink">Pass</AccentText></> :
+                  <AccentText tone="blue">{program.name}</AccentText>
+                }
                 subtitle={<>{program.tagline} {program.description}</>}
                 maxWidth="560px"
               />
@@ -259,7 +265,18 @@ export default function ProgramDetail() {
                   <div style={{ height: '3px', width: '100%', background: cardAccent }} />
                   <div style={{ padding: '22px 20px 20px' }}>
                     <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap' }}>
-                      <HeadingMarker text={program.slug === 'cbse-plan' ? 'CBSE' : program.slug === 'math-genius' ? 'Math' : program.slug === 'english-mastery' ? 'English' : 'SAT'} accent={cardAccent} fontSize="10px" marginBottom="0" />
+                      <HeadingMarker
+                        text={
+                          program.slug === 'cbse-plan' ? 'CBSE' :
+                          program.slug === 'math-genius' ? 'Math' :
+                          program.slug === 'english-mastery' ? 'English' :
+                          program.slug === 'sat-prep' ? 'SAT' :
+                          program.name.split(' ')[0]
+                        }
+                        accent={cardAccent}
+                        fontSize="10px"
+                        marginBottom="0"
+                      />
                       <span style={{ fontSize: '11px', color: '#A0A5B1', fontFamily: 'Inter, sans-serif' }}>For whom</span>
                     </div>
                     <h3 style={{ margin: '0 0 10px', fontFamily: 'Poppins, sans-serif', fontWeight: 700, fontSize: '1.05rem', lineHeight: 1.35, color: '#1C1C28' }}>
