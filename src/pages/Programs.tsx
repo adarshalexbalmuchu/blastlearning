@@ -460,8 +460,9 @@ export default function Programs() {
       </section>
       */}
 
-      {/* ── Testimonials ── */}
+      {/* ── Testimonials — hidden, not deleted. None of these reference Math Genius Maker. Uncomment to re-enable.
       <SharedTestimonialsSection row1={testimonialsRow1} row2={testimonialsRow2} eyebrow="Observed Evidence" subtitle="Hear from students who chose the right program and saw real results." />
+      */}
 
       {/* ── FAQ ── */}
       <SharedFaqSection
