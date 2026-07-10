@@ -66,6 +66,23 @@ const programs = [
     ],
     featured: false,
   },
+  {
+    slug: 'new-program',
+    name: '[New Program Name]',
+    price: '[₹Price]',
+    classes: '[Classes X-Y]',
+    description: '[Two to three sentences describing the problem this program solves and how, matching the style of the description above.]',
+    outcomes: ['[Outcome 1]', '[Outcome 2]', '[Outcome 3]'],
+    features: [
+      '[Feature 1]',
+      '[Feature 2]',
+      '[Feature 3]',
+      '[Feature 4]',
+      '[Feature 5]',
+      '[Feature 6]',
+    ],
+    featured: false,
+  },
   // {
   //   slug: 'english-mastery',
   //   name: 'English Mastery Pass',

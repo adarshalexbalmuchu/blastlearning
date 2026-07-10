@@ -94,6 +94,7 @@ const navItems: NavItem[] = [
           // Hidden, not deleted — uncomment to re-enable.
           // { label: 'CBSE Plan', description: 'Full CBSE syllabus for Class 10', icon: IconBook, iconBg: 'linear-gradient(135deg,#EEF2FF 0%,#E0E7FF 100%)', iconBorder: '#C7D2FE', path: '/programs/cbse-plan' },
           { label: 'Math Genius Maker', description: 'Gap assessment & targeted math practice', icon: IconBulb, iconBg: 'linear-gradient(135deg,#FFFBEB 0%,#FEF3C7 100%)', iconBorder: '#FDE68A', path: '/programs/math-genius' },
+          { label: '[New Program Name]', description: 'Placeholder — content coming soon', icon: IconBook, iconBg: 'linear-gradient(135deg,#EEF2FF 0%,#E0E7FF 100%)', iconBorder: '#C7D2FE', path: '/programs/new-program' },
           // { label: 'English Mastery', description: 'Grammar, comprehension & writing skills', icon: IconPen, iconBg: 'linear-gradient(135deg,#F0FDF4 0%,#DCFCE7 100%)', iconBorder: '#BBF7D0', path: '/programs/english-mastery' },
           // { label: 'SAT Prep Pass', description: 'US college admission test preparation', icon: IconTrophy, iconBg: 'linear-gradient(135deg,#F5F3FF 0%,#EDE9FE 100%)', iconBorder: '#DDD6FE', path: '/programs/sat-prep' },
         ],
