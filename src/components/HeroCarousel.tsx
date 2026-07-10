@@ -49,7 +49,7 @@ const HERO_DOT_COLORS = ['#E8135A', '#E8135A'];
 // Left offset of the accent dots, tuned per slide since the eyebrow label is
 // baked into each banner image at a slightly different spot — Math Genius
 // Maker's label sits further right than Methodology's.
-const HERO_DOT_LEFT = ['8.3%', '7.5%'];
+const HERO_DOT_LEFT = ['9.3%', '7.5%'];
 
 // Top offset of the accent dots, tuned per slide — Math Genius Maker's is
 // lifted 1.5% higher than the shared default.
