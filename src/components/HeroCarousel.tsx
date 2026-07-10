@@ -182,11 +182,11 @@ export default function HeroCarousel() {
               transform: firstBannerDotNudge,
             }}
           >
+            <span style={{ width: 'clamp(0px, 0.23vw, 3px)', height: 'clamp(0px, 0.23vw, 3px)', borderRadius: '9999px', background: activeDotColor }} />
             <span style={{ width: 'clamp(0px, 0.31vw, 4px)', height: 'clamp(0px, 0.31vw, 4px)', borderRadius: '9999px', background: activeDotColor }} />
             <span style={{ width: 'clamp(0px, 0.39vw, 5px)', height: 'clamp(0px, 0.39vw, 5px)', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: 'clamp(0px, 0.47vw, 6px)', height: 'clamp(0px, 0.47vw, 6px)', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: 'clamp(0px, 0.7vw, 9px)', height: 'clamp(0px, 0.23vw, 3px)', borderRadius: '9999px', background: activeDotColor }} />
-            <span style={{ width: 'clamp(0px, 1.09vw, 14px)', height: 'clamp(0px, 0.23vw, 3px)', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: 'clamp(0px, 0.63vw, 8px)', height: 'clamp(0px, 0.16vw, 2px)', borderRadius: '9999px', background: activeDotColor }} />
+            <span style={{ width: 'clamp(0px, 1.02vw, 13px)', height: 'clamp(0px, 0.16vw, 2px)', borderRadius: '9999px', background: activeDotColor }} />
           </span>
 
           {/* Mobile-only overlay controls — inside image, clears the gap below */}
