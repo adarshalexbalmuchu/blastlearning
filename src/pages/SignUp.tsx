@@ -305,6 +305,7 @@ export default function SignUp({ onChangePlan, selectedPlan }: SignUpProps) {
                                     <input
                                         type="text"
                                         name="firstName"
+                                        autoComplete="given-name"
                                         value={formData.firstName}
                                         onChange={handleChange}
                                         placeholder="John"
@@ -327,6 +328,7 @@ export default function SignUp({ onChangePlan, selectedPlan }: SignUpProps) {
                                     <input
                                         type="text"
                                         name="lastName"
+                                        autoComplete="family-name"
                                         value={formData.lastName}
                                         onChange={handleChange}
                                         placeholder="Doe"
@@ -350,6 +352,7 @@ export default function SignUp({ onChangePlan, selectedPlan }: SignUpProps) {
                                 <input
                                     type="email"
                                     name="email"
+                                    autoComplete="email"
                                     value={formData.email}
                                     onChange={handleChange}
                                     placeholder="john@example.com"
@@ -372,6 +375,7 @@ export default function SignUp({ onChangePlan, selectedPlan }: SignUpProps) {
                                 <input
                                     type="password"
                                     name="password"
+                                    autoComplete="new-password"
                                     value={formData.password}
                                     onChange={handleChange}
                                     placeholder="••••••••"
@@ -411,6 +415,7 @@ export default function SignUp({ onChangePlan, selectedPlan }: SignUpProps) {
                                 <input
                                     type="password"
                                     name="confirmPassword"
+                                    autoComplete="new-password"
                                     value={formData.confirmPassword}
                                     onChange={handleChange}
                                     placeholder="••••••••"

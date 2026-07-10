@@ -173,6 +173,7 @@ export default function ProgramDetail() {
                       <input
                         type="text"
                         required
+                        autoComplete="off"
                         placeholder="e.g. Arjun Sharma"
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -186,6 +187,7 @@ export default function ProgramDetail() {
                       <input
                         type="tel"
                         required
+                        autoComplete="tel"
                         placeholder="+91 98765 43210"
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}

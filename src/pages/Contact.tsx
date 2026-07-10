@@ -251,6 +251,7 @@ export default function Contact() {
                             id="contact-name"
                             type="text"
                             name="name"
+                            autoComplete="name"
                             required
                             aria-required="true"
                             aria-invalid={!!errors.name}
@@ -270,6 +271,7 @@ export default function Contact() {
                             id="contact-email"
                             type="email"
                             name="email"
+                            autoComplete="email"
                             required
                             aria-required="true"
                             aria-invalid={!!errors.email}
@@ -291,6 +293,7 @@ export default function Contact() {
                             id="contact-phone"
                             type="tel"
                             name="phone"
+                            autoComplete="tel"
                             value={form.phone}
                             onChange={handleChange}
                             placeholder="+91 XXXXX XXXXX"
