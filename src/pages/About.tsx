@@ -486,6 +486,8 @@ export default function About() {
                   <img
                     src={leader.image}
                     alt={leader.name}
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block', transform: `scale(${(leader as { photoScale?: number }).photoScale ?? 0.9})` }}
                   />
                 </div>

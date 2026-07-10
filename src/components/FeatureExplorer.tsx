@@ -226,6 +226,8 @@ export default function FeatureExplorer() {
                     src={feature.img}
                     alt=""
                     aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '100%', maxHeight: '200px', objectFit: 'cover', objectPosition: 'center top', display: 'block' }}
                   />
                 </div>

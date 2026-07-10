@@ -291,6 +291,8 @@ export default function Programs() {
                     <img
                       src={step.img}
                       alt={step.title}
+                      loading="lazy"
+                      decoding="async"
                       style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
                     />
                   </div>
