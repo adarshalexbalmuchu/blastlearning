@@ -175,7 +175,7 @@ export default function FeatureExplorer() {
             scrollBehavior: 'smooth',
             padding: '0 16px 16px 16px',
             scrollbarWidth: 'none',
-            touchAction: 'pan-x',
+            touchAction: 'pan-x pan-y',
             overscrollBehaviorX: 'contain',
           }}
         >

@@ -58,7 +58,7 @@ export default function ComparisonTable() {
   const lastIdx = rows.length - 1;
 
   return (
-    <div style={{ overflowX: 'auto', width: '100%', touchAction: 'pan-x' }}>
+    <div style={{ overflowX: 'auto', width: '100%', touchAction: 'pan-x pan-y' }}>
       <div
         style={{
           border: `1px solid ${BORDER}`,

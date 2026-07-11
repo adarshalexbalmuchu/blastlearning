@@ -59,7 +59,7 @@ export default function MobileCarousel({ children, desktopGridClass = '', deskto
             overflowX: 'auto',
             overflowY: 'hidden',
             scrollSnapType: 'x proximity',
-            touchAction: 'pan-x',
+            touchAction: 'pan-x pan-y',
             overscrollBehaviorX: 'contain',
             padding: '4px 16px 16px 16px',
             scrollbarWidth: 'none',
