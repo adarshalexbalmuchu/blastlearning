@@ -593,7 +593,8 @@ export default function ForStudents() {
             <motion.div variants={fadeUp} style={{ marginBottom: '48px' }}>
               <HeadingMarker text="YOU'RE NOT DOING THIS ALONE" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
-                A Partner Who Studies <AccentText tone="blue">With You</AccentText>, Not a <AccentText tone="pink">Bot</AccentText> Checking In
+                <span style={{ display: 'block' }}>A Partner Who Studies <AccentText tone="blue">With You</AccentText>,</span>
+                <span style={{ display: 'block' }}>Not a <AccentText tone="pink">Bot</AccentText> Checking In</span>
               </h2>
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px' }}>
                 Study Buddy pairs a student with a human partner working through the same synchronised, adaptive question set, so neither one studies alone or loses momentum. A notification from an app rarely keeps a habit alive past the second week, a person checking in does, and that accountability habit holds whether the course changes from one term to the next, regardless of subject.
