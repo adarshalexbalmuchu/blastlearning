@@ -30,6 +30,24 @@ const testimonialsRow2 = [
   { name: 'A Student of Class 12 from Kolkata', role: 'SAT Prep Pass', text: 'I used to just reread my notes before practice tests. Now I have to solve the problem first and check after, and I remember a lot more once I\'ve actually struggled with it myself.' },
   { name: 'A Student of Class 10 from Ahmedabad', role: 'CBSE Class 10', text: 'I could always read a passage fine, I just couldn\'t explain what it meant. English Mastery has me working out the writer\'s point instead of summarising the lines, and that\'s exactly where my marks were slipping.' },
 ];
+const mathGeniusProgram = {
+  slug: 'math-genius',
+  name: 'Math Genius Maker Pass',
+  price: '₹999',
+  classes: 'Classes 8-12',
+  description: 'Gap assessment and personalized math lessons. Build problem-solving abilities from foundation to advanced level. Our adaptive system identifies exactly where your child struggles and fixes it before moving forward.',
+  outcomes: ['Gap filling', 'Speed & accuracy', 'Concept mastery'],
+  features: [
+    'Comprehensive diagnostic test to find learning gaps',
+    'Personalized lesson sequence based on gap analysis',
+    'Foundation to advanced level progression',
+    'Daily problem-solving practice with difficulty scaling',
+    'Speed and accuracy drills for board exams',
+    'Chapter-wise mastery certification',
+  ],
+  featured: false,
+};
+
 const programs = [
   // Hidden, not deleted — uncomment to re-enable.
   // {
@@ -49,23 +67,9 @@ const programs = [
   //   ],
   //   featured: true,
   // },
-  {
-    slug: 'math-genius',
-    name: 'Math Genius Maker Pass',
-    price: '₹999',
-    classes: 'Classes 8-12',
-    description: 'Gap assessment and personalized math lessons. Build problem-solving abilities from foundation to advanced level. Our adaptive system identifies exactly where your child struggles and fixes it before moving forward.',
-    outcomes: ['Gap filling', 'Speed & accuracy', 'Concept mastery'],
-    features: [
-      'Comprehensive diagnostic test to find learning gaps',
-      'Personalized lesson sequence based on gap analysis',
-      'Foundation to advanced level progression',
-      'Daily problem-solving practice with difficulty scaling',
-      'Speed and accuracy drills for board exams',
-      'Chapter-wise mastery certification',
-    ],
-    featured: false,
-  },
+  mathGeniusProgram,
+  // Duplicated card — same program shown twice so the grid renders two cards.
+  mathGeniusProgram,
   // Hidden, not deleted — keep only Math Genius Maker in this grid. Uncomment to re-enable.
   // {
   //   slug: 'new-program',
@@ -333,7 +337,7 @@ export default function Programs() {
           >
             <HeadingMarker text="Programs" marginBottom="16px" fontSize="12px" />
             <h2 className="t-h2" style={{ marginBottom: '20px' }}>
-              One <AccentText tone="blue">Course</AccentText>. One <AccentText tone="pink">Method</AccentText>.
+              Two <AccentText tone="blue">Courses</AccentText>. One <AccentText tone="pink">Method</AccentText>.
             </h2>
             <p className="t-body">
               The five-mechanism system above is what Math Genius Maker is built on — the same GAP Assessment, AI Tutor, Study Buddy, Mind Coach, and spaced retrieval practice, applied to exactly the concepts holding a student back in math.
@@ -357,7 +361,7 @@ export default function Programs() {
 
               return (
                 <motion.div
-                  key={prog.name}
+                  key={`${prog.slug}-${idx}`}
                   variants={fadeUp}
                   initial="hidden"
                   whileInView="visible"

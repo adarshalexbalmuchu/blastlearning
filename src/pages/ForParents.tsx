@@ -386,7 +386,7 @@ export default function ForParents() {
             <motion.div variants={springUp} style={{ marginBottom: '48px' }}>
               <HeadingMarker text="A TOOL, NOT A PITCH" marginBottom="16px" fontSize="12px" accent="#E8135A" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
-                Run the <AccentText tone="blue">Numbers</AccentText> Before You Decide <AccentText tone="pink">Anything</AccentText>
+                Run the <AccentText tone="blue">Numbers</AccentText> Before You <AccentText tone="pink">Decide</AccentText> Anything
               </h2>
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px' }}>
                 Enter what you currently spend on coaching. The calculator shows you exactly what percentage of that investment is retained by your child after 30 days — and what Blast Learning adds to that figure. No sales language. One comparison line.

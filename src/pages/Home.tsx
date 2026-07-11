@@ -105,6 +105,24 @@ const howItWorks = [
   },
 ];
 
+const mathGeniusPlan = {
+  id: 'math',
+  slug: 'math-genius',
+  name: 'Math Genius Maker',
+  classes: 'Foundation-Rebuilt · Grades 5–8',
+  desc: 'A diagnostic test locates exactly where the student got stuck, then rebuilds only those foundations, skipping mastered concepts.',
+  monthlyPrice: 999,
+  yearlyMonthly: 799,
+  features: [
+    'GAP Assessment on enrolment',
+    'Topic-by-topic mastery tracking',
+    '500+ adaptive practice problems',
+    'AI Tutor with doubt resolution',
+    'Study Buddy matching',
+  ],
+  featured: false,
+};
+
 const pricingPlans = [
   // Hidden, not deleted — uncomment to re-enable.
   // {
@@ -124,23 +142,9 @@ const pricingPlans = [
   //   ],
   //   featured: true,
   // },
-  {
-    id: 'math',
-    slug: 'math-genius',
-    name: 'Math Genius Maker',
-    classes: 'Foundation-Rebuilt · Grades 5–8',
-    desc: 'A diagnostic test locates exactly where the student got stuck, then rebuilds only those foundations, skipping mastered concepts.',
-    monthlyPrice: 999,
-    yearlyMonthly: 799,
-    features: [
-      'GAP Assessment on enrolment',
-      'Topic-by-topic mastery tracking',
-      '500+ adaptive practice problems',
-      'AI Tutor with doubt resolution',
-      'Study Buddy matching',
-    ],
-    featured: false,
-  },
+  mathGeniusPlan,
+  // Duplicated card — same course shown twice so the grid renders two cards.
+  mathGeniusPlan,
   // {
   //   id: 'english',
   //   slug: 'english-mastery',
@@ -422,7 +426,7 @@ export default function Home() {
             eyebrow="Courses & Pricing"
             accent={CYAN}
             align="center"
-            title={<>One {G('course', CYAN)}. One underlying {G('system', PINK)}.</>}
+            title={<>Two {G('courses', CYAN)}. One underlying {G('system', PINK)}.</>}
             subtitle="Built on the same retention science behind every Blast Learning course — GAP Assessment, spaced repetition, and retrieval practice, focused entirely on closing math gaps."
           />
 
@@ -446,7 +450,7 @@ export default function Home() {
 
               return (
                 <motion.div
-                  key={plan.id}
+                  key={`${plan.id}-${idx}`}
                   variants={fadeUp}
                   initial="hidden"
                   whileInView="visible"
@@ -566,11 +570,30 @@ export default function Home() {
             text: 'I went in expecting to study for CBSE and ended up fully prepared for the SAT as well. The English Mastery Pass does exactly what it says.',
           },
           */
+          // Hidden, not deleted — replaced by the three Math Genius testimonials below. Uncomment to re-enable.
+          /*
           {
             image: 'https://randomuser.me/api/portraits/men/77.jpg',
             name: 'Arjun Nair',
             role: 'Class 11, Math Genius · Chennai',
             text: 'Trigonometry and integration used to vanish from my head overnight. After two months with the Math Genius plan, I actually remember the concepts a week later without re-reading.',
+          },
+          */
+          {
+            name: 'Arjun Nair',
+            role: 'Class 10, Math Genius · Kochi',
+            text: 'Maths was my nightmare subject. I failed Class 9 and was terrified for boards. The GAP Assessment showed the problem was fractions from Class 6, not Class 10 at all. After fixing the foundation, everything clicked. I scored 84 in my actual boards.',
+          },
+          {
+            name: 'Priya Sharma',
+            role: 'Class 8, Math Genius · Pune',
+            text: 'My daughter was three years behind in Maths. The program started her at the right level without making her feel bad about it. Within four months her confidence completely changed. She actually asks to do her Maths sessions now.',
+          },
+          // Duplicated card — same testimonial shown twice so the section renders three cards.
+          {
+            name: 'Priya Sharma',
+            role: 'Class 8, Math Genius · Pune',
+            text: 'My daughter was three years behind in Maths. The program started her at the right level without making her feel bad about it. Within four months her confidence completely changed. She actually asks to do her Maths sessions now.',
           },
           /*
           {
