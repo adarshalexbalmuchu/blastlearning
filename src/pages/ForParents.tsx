@@ -406,7 +406,8 @@ export default function ForParents() {
             <motion.div variants={springUp} style={{ marginBottom: '48px' }}>
               <HeadingMarker text="WHY THIS ISN'T A NEW IDEA" marginBottom="16px" fontSize="12px" accent="#0FA8DC" />
               <h2 className="t-h2" style={{ marginBottom: '16px' }}>
-                <AccentText tone="blue">Twenty-Five Years</AccentText> Before the First Student <AccentText tone="pink">Used It</AccentText>
+                <span style={{ display: 'block' }}><AccentText tone="blue">Twenty-Five Years</AccentText></span>
+                <span style={{ display: 'block' }}>Before the First Student <AccentText tone="pink">Used It</AccentText></span>
               </h2>
             </motion.div>
 
