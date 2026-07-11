@@ -410,7 +410,7 @@ export default function Programs() {
                     </div>
 
                     <Link
-                      to="/plans"
+                      to={`/programs/${prog.slug}`}
                       className="cta"
                       style={{
                         marginTop: 'auto',
