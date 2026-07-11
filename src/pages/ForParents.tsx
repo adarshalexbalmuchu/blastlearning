@@ -495,7 +495,8 @@ export default function ForParents() {
         </div>
       </section>
 
-      {/* ── 5. Transparency ─────────────────────────────────────── */}
+      {/* ── 5. Transparency — hidden, not deleted. Flip to true to re-enable. */}
+      {false && (
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }}>
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
@@ -531,6 +532,7 @@ export default function ForParents() {
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* ── 6. Program Selection — hidden, not deleted. Flip to true to re-enable. */}
       {false && (
