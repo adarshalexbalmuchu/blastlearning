@@ -580,11 +580,10 @@ export default function Navbar() {
                             to={item.path ?? '/'}
                             onClick={() => setMobileOpen(false)}
                             style={{
-                              flex: 1,
                               display: 'flex',
                               alignItems: 'center',
                               gap: '6px',
-                              padding: '14px 20px',
+                              padding: '14px 4px 14px 20px',
                               fontSize: '15px',
                               fontWeight: active ? 600 : 500,
                               fontFamily: 'Inter, sans-serif',
@@ -603,7 +602,7 @@ export default function Navbar() {
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
-                              padding: '14px 20px',
+                              padding: '14px 12px',
                               background: 'none',
                               border: 'none',
                               cursor: 'pointer',
