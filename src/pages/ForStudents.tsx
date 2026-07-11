@@ -641,7 +641,7 @@ export default function ForStudents() {
                 Get <AccentText tone="blue">Unstuck</AccentText> Without Waiting for <AccentText tone="pink">Tomorrow's Class</AccentText>
               </h2>
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px' }}>
-                The AI Tutor works out exactly where a student's understanding breaks down, then sets each question right at that edge, hard enough to demand real effort and forgiving enough that the student keeps going. That balance gets recalculated after every session, the same way, always, no matter the subject or course, so doubt-resolution carries into whatever a student studies next.
+                description to be added
               </p>
             </motion.div>
 
