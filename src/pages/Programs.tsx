@@ -188,14 +188,17 @@ export default function Programs() {
       {/* Overview */}
       <section className="section-pad" style={{ paddingTop: '96px', paddingBottom: '96px', background: '#FFFFFF' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }}>
+          {/* Eyebrow + heading above the grid so the figure top-aligns with the description, not the heading */}
+          <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }} style={{ marginBottom: '24px' }}>
+            <HeadingMarker text="Our Approach" marginBottom="16px" fontSize="12px" />
+            <h2 className="t-h2" style={{ margin: 0 }}>
+              The <AccentText tone="blue">science</AccentText> of lasting <AccentText tone="pink">retention</AccentText>
+            </h2>
+          </motion.div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'start' }} className="grid-cols-2-md">
             {/* Text */}
             <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
-              <HeadingMarker text="Our Approach" marginBottom="16px" fontSize="12px" />
-              <h2 className="t-h2" style={{ marginBottom: '24px' }}>
-                The <AccentText tone="blue">science</AccentText> of lasting <AccentText tone="pink">retention</AccentText>
-              </h2>
-              <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginBottom: '20px' }}>
+              <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif", marginTop: 0, marginBottom: '20px' }}>
                 A coaching class can teach a concept twice and still lose a student to the forgetting curve by Friday, because re-reading and highlighting create a sense of familiarity that has almost nothing to do with retention. Blast Learning starts from that gap. Each session is scheduled by an adaptive engine that tracks what a student has seen, how confidently they answered it, and when that memory is due to fade.
               </p>
               <p style={{ fontSize: 'var(--fs-body)', lineHeight: 1.8, color: '#5A5A6E', fontFamily: "'Inter', sans-serif" }}>
