@@ -157,18 +157,20 @@ export default function About() {
             variants={stagger}
             initial="hidden"
             animate="visible"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', gap: '64px', alignItems: 'start' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', columnGap: '64px', rowGap: '8px', alignItems: 'start' }}
             className="grid-cols-2-lg"
           >
-            {/* Left: label + title */}
+            {/* Row 1: label + title (left), empty right cell on desktop */}
             <motion.div variants={fadeUp}>
               <HeadingMarker text="Who We Are" marginBottom="24px" fontSize="12px" accent="#E8135A" />
               <h1 className="page-hero-title">
                 About <AccentText tone="blue">Blast</AccentText> <AccentText tone="pink">Learning</AccentText> India
               </h1>
             </motion.div>
+            <div className="show-lg-blk" aria-hidden="true" />
 
-            {/* Right: description */}
+            {/* Row 2: empty left cell on desktop, description on the right starting below the heading */}
+            <div className="show-lg-blk" aria-hidden="true" />
             <motion.div variants={fadeUp}>
               <p className="page-hero-copy" style={{ marginBottom: '16px' }}>
                 Ask a parent managing a child's CBSE or ICSE schedule what worries them most, and marks rarely top the list. The real worry is retention. Months of tuition fade within days, and no extra coaching class has ever fixed that on its own.
