@@ -596,7 +596,7 @@ export default function ForStudents() {
                 A Partner Who Studies <AccentText tone="blue">With You</AccentText>, Not a <AccentText tone="pink">Bot</AccentText> Checking In
               </h2>
               <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px' }}>
-                The Tutor Mom team watches your retention data in real time. When you drop off, they reach out — not to pressure you, but because they can see exactly where you got stuck.
+                Study Buddy pairs a student with a human partner working through the same synchronised, adaptive question set, so neither one studies alone or loses momentum. A notification from an app rarely keeps a habit alive past the second week, a person checking in does, and that accountability habit holds whether the course changes from one term to the next, regardless of subject.
               </p>
             </motion.div>
             <motion.div
