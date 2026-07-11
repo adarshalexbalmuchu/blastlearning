@@ -760,9 +760,13 @@ export default function ForStudents() {
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <motion.div variants={springUp} style={{ marginBottom: '52px' }}>
               <HeadingMarker text="THE PART NOBODY ELSE TEACHES" marginBottom="16px" fontSize="12px" accent="#E8135A" />
-              <h2 className="t-h2">
-                <AccentText tone="blue">Knowing It</AccentText> Isn't the Same as <AccentText tone="pink">Staying Calm With It</AccentText>
+              <h2 className="t-h2" style={{ marginBottom: '16px' }}>
+                <span style={{ display: 'block' }}><AccentText tone="blue">Knowing It</AccentText> Isn't the Same as</span>
+                <span style={{ display: 'block' }}><AccentText tone="pink">Staying Calm With It</AccentText></span>
               </h2>
+              <p style={{ fontSize: '16px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif', maxWidth: '640px' }}>
+                description to be added
+              </p>
             </motion.div>
 
             {/* Wave-amid-noise illustration — smooth pink wave through scattered gray pressure ticks */}
