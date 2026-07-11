@@ -153,32 +153,40 @@ export default function About() {
         {/* Small pink dot */}
         <div aria-hidden="true" style={{ position: 'absolute', left: '38%', bottom: '22%', width: '7px', height: '7px', borderRadius: '50%', background: 'rgba(232, 19, 90, 0.3)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px', position: 'relative' }}>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', columnGap: '64px', rowGap: '8px', alignItems: 'start' }}
-            className="grid-cols-2-lg"
-          >
-            {/* Row 1: label + title (left), empty right cell on desktop */}
-            <motion.div variants={fadeUp}>
+          <motion.div variants={stagger} initial="hidden" animate="visible">
+            {/* Heading — full width so it holds one line on desktop */}
+            <motion.div variants={fadeUp} style={{ marginBottom: '8px' }}>
               <HeadingMarker text="Who We Are" marginBottom="24px" fontSize="12px" accent="#E8135A" />
               <h1 className="page-hero-title">
                 About <AccentText tone="blue">Blast</AccentText> <AccentText tone="pink">Learning</AccentText> India
               </h1>
             </motion.div>
-            <div className="show-lg-blk" aria-hidden="true" />
 
-            {/* Row 2: empty left cell on desktop, description on the right starting below the heading */}
-            <div className="show-lg-blk" aria-hidden="true" />
-            <motion.div variants={fadeUp}>
-              <p className="page-hero-copy" style={{ marginBottom: '16px' }}>
-                Ask a parent managing a child's CBSE or ICSE schedule what worries them most, and marks rarely top the list. The real worry is retention. Months of tuition fade within days, and no extra coaching class has ever fixed that on its own.
-              </p>
-              <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
-                Blast Learning is not a tutoring platform. It is the self-study operating system beneath all other educational investment, the layer that decides whether anything taught survives past the exam it was meant for.
-              </p>
-            </motion.div>
+            {/* Below the heading: description left, decorative circles right */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(1, 1fr)', columnGap: '64px', alignItems: 'center' }} className="grid-cols-2-lg">
+              <motion.div variants={fadeUp}>
+                <p className="page-hero-copy" style={{ marginBottom: '16px' }}>
+                  Ask a parent managing a child's CBSE or ICSE schedule what worries them most, and marks rarely top the list. The real worry is retention. Months of tuition fade within days, and no extra coaching class has ever fixed that on its own.
+                </p>
+                <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#5A5A6E', fontFamily: 'Inter, sans-serif' }}>
+                  Blast Learning is not a tutoring platform. It is the self-study operating system beneath all other educational investment, the layer that decides whether anything taught survives past the exam it was meant for.
+                </p>
+              </motion.div>
+              {/* Decorative brand circles — desktop only, keeps the right side from looking empty */}
+              <div className="show-lg-blk" aria-hidden="true">
+                <motion.div
+                  animate={{ y: [0, -12, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{ position: 'relative', width: '260px', height: '260px', margin: '0 auto' }}
+                >
+                  <div style={{ position: 'absolute', inset: 0, borderRadius: '50%', border: '1.5px solid rgba(15, 168, 220, 0.35)' }} />
+                  <div style={{ position: 'absolute', inset: '34px', borderRadius: '50%', border: '1.5px solid rgba(232, 19, 90, 0.3)' }} />
+                  <div style={{ position: 'absolute', inset: '72px', borderRadius: '50%', background: 'linear-gradient(135deg, rgba(232, 19, 90, 0.16) 0%, rgba(15, 168, 220, 0.16) 100%)' }} />
+                  <div style={{ position: 'absolute', top: '14px', right: '46px', width: '12px', height: '12px', borderRadius: '50%', background: '#E8135A' }} />
+                  <div style={{ position: 'absolute', bottom: '24px', left: '30px', width: '9px', height: '9px', borderRadius: '50%', background: '#0FA8DC' }} />
+                </motion.div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
